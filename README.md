@@ -1,22 +1,31 @@
-# {Company} Node Library
+# Vellum Node Library
 
-[![npm shield](https://img.shields.io/npm/v/@fern-api/{company})](https://www.npmjs.com/package/@fern-api/{company})
+[![npm shield](https://img.shields.io/npm/v/@fern-api/vellum)](https://www.npmjs.com/package/@fern-api/vellum)
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)
 
-The {Company} Node.js library provides access to the {Company} API from JavaScript/TypeScript.
-
-## Documentation
-
-API reference documentation is available [here](docs_url).
+The Vellum Node.js library provides access to the Vellum API from JavaScript/TypeScript.
 
 ## Usage
 
-[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](TODO)
+[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-hfcepn?file=app.ts,node_modules%2F%40fern-api%2Fvellum%2Fapi%2Ftypes%2FGenerateRequestBodyRequest.d.ts,node_modules%2F%40fern-api%2Fvellum%2Fapi%2Ftypes%2FGenerateRequestRequest.d.ts)
 
 ```typescript
-import { TODO } from "TODO";
+import { VellumApiClient } from '@fern-api/vellum';
 
-const TODO
+void main();
+
+async function main() {
+  const client = new VellumApiClient({
+    apiKey: 'VELLUM_API_KEY',
+    environment: 'VELLUM_ENVIRONMENT',
+  });
+
+  await client.generate({
+    deploymentName: '<DEPLOYMENT_NAME>',
+    requests: [{ inputValues: { sample_key: 'sample_value' } }],
+  });
+}
+
 ```
 
 ## Beta status
