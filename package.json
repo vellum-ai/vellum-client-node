@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/vellum",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "private": false,
     "repository": "https://github.com/fern-vellum/vellum-node",
     "files": [
