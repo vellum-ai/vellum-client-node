@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
 export const EnrichedNormalizedCompletion: core.serialization.ObjectSchema<
     serializers.EnrichedNormalizedCompletion.Raw,
-    VellumApi.EnrichedNormalizedCompletion
+    Vellum.EnrichedNormalizedCompletion
 > = core.serialization.object({
     id: core.serialization.string(),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),

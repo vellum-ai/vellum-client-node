@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
-export const Document: core.serialization.ObjectSchema<serializers.Document.Raw, VellumApi.Document> =
+export const Document: core.serialization.ObjectSchema<serializers.Document.Raw, Vellum.Document> =
     core.serialization.object({
         id: core.serialization.string(),
         label: core.serialization.string(),

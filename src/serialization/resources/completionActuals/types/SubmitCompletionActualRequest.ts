@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../../../core";
 
 export const SubmitCompletionActualRequest: core.serialization.ObjectSchema<
     serializers.SubmitCompletionActualRequest.Raw,
-    VellumApi.SubmitCompletionActualRequest
+    Vellum.SubmitCompletionActualRequest
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),

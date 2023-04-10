@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
 export const GenerateResultData: core.serialization.ObjectSchema<
     serializers.GenerateResultData.Raw,
-    VellumApi.GenerateResultData
+    Vellum.GenerateResultData
 > = core.serialization.object({
     completions: core.serialization.list(
         core.serialization.lazyObject(async () => (await import("..")).EnrichedNormalizedCompletion)

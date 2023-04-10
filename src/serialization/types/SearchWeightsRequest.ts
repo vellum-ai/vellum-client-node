@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
 export const SearchWeightsRequest: core.serialization.ObjectSchema<
     serializers.SearchWeightsRequest.Raw,
-    VellumApi.SearchWeightsRequest
+    Vellum.SearchWeightsRequest
 > = core.serialization.object({
     semanticSimilarity: core.serialization.property("semantic_similarity", core.serialization.number()),
     keywords: core.serialization.number(),

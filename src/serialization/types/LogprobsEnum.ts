@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
-export const LogprobsEnum: core.serialization.Schema<serializers.LogprobsEnum.Raw, VellumApi.LogprobsEnum> =
+export const LogprobsEnum: core.serialization.Schema<serializers.LogprobsEnum.Raw, Vellum.LogprobsEnum> =
     core.serialization.enum_(["ALL", "NONE"]);
 
 export declare namespace LogprobsEnum {

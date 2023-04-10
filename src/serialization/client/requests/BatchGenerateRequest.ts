@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../../core";
 
 export const BatchGenerateRequest: core.serialization.Schema<
     serializers.BatchGenerateRequest.Raw,
-    VellumApi.BatchGenerateRequest
+    Vellum.BatchGenerateRequest
 > = core.serialization.object({
     deploymentId: core.serialization.property("deployment_id", core.serialization.string().optional()),
     deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),

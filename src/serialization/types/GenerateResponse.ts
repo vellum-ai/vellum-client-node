@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
 export const GenerateResponse: core.serialization.ObjectSchema<
     serializers.GenerateResponse.Raw,
-    VellumApi.GenerateResponse
+    Vellum.GenerateResponse
 > = core.serialization.object({
     results: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).GenerateResult)),
 });

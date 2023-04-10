@@ -4,32 +4,32 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import urlJoin from "url-join";
 import * as serializers from "./serialization";
 import * as errors from "./errors";
 import { CompletionActuals } from "./api/resources/completionActuals/client/Client";
 import { Document } from "./api/resources/document/client/Client";
 
-export declare namespace VellumApiClient {
+export declare namespace VellumClient {
     interface Options {
-        environment?: environments.VellumApiEnvironment | environments.VellumApiEnvironmentUrls;
+        environment?: environments.VellumEnvironment | environments.VellumEnvironmentUrls;
         apiKey: core.Supplier<string>;
     }
 }
 
-export class VellumApiClient {
-    constructor(private readonly options: VellumApiClient.Options) {}
+export class VellumClient {
+    constructor(private readonly options: VellumClient.Options) {}
 
     /**
-     * @throws {VellumApi.BadRequestError}
-     * @throws {VellumApi.NotFoundError}
-     * @throws {VellumApi.InternalServerError}
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
      */
-    public async generate(request: VellumApi.BatchGenerateRequest): Promise<VellumApi.GenerateResponse> {
+    public async generate(request: Vellum.BatchGenerateRequest): Promise<Vellum.GenerateResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumApiEnvironment.Production).predict,
+                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
                 "v1/generate"
             ),
             method: "POST",
@@ -47,7 +47,7 @@ export class VellumApiClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new VellumApi.BadRequestError(
+                    throw new Vellum.BadRequestError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -55,7 +55,7 @@ export class VellumApiClient {
                         })
                     );
                 case 400:
-                    throw new VellumApi.NotFoundError(
+                    throw new Vellum.NotFoundError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -63,7 +63,7 @@ export class VellumApiClient {
                         })
                     );
                 case 400:
-                    throw new VellumApi.InternalServerError(
+                    throw new Vellum.InternalServerError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -71,7 +71,7 @@ export class VellumApiClient {
                         })
                     );
                 default:
-                    throw new errors.VellumApiError({
+                    throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -80,30 +80,27 @@ export class VellumApiClient {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.VellumApiError({
+                throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.VellumApiTimeoutError();
+                throw new errors.VellumTimeoutError();
             case "unknown":
-                throw new errors.VellumApiError({
+                throw new errors.VellumError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {VellumApi.BadRequestError}
-     * @throws {VellumApi.NotFoundError}
-     * @throws {VellumApi.InternalServerError}
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
      */
-    public async search(request: VellumApi.SearchRequest): Promise<VellumApi.SearchResponse> {
+    public async search(request: Vellum.SearchRequest): Promise<Vellum.SearchResponse> {
         const _response = await core.fetcher({
-            url: urlJoin(
-                (this.options.environment ?? environments.VellumApiEnvironment.Production).predict,
-                "v1/search"
-            ),
+            url: urlJoin((this.options.environment ?? environments.VellumEnvironment.Production).predict, "v1/search"),
             method: "POST",
             contentType: "application/json",
             body: await serializers.SearchRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -119,7 +116,7 @@ export class VellumApiClient {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new VellumApi.BadRequestError(
+                    throw new Vellum.BadRequestError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -127,7 +124,7 @@ export class VellumApiClient {
                         })
                     );
                 case 400:
-                    throw new VellumApi.NotFoundError(
+                    throw new Vellum.NotFoundError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -135,7 +132,7 @@ export class VellumApiClient {
                         })
                     );
                 case 400:
-                    throw new VellumApi.InternalServerError(
+                    throw new Vellum.InternalServerError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -143,7 +140,7 @@ export class VellumApiClient {
                         })
                     );
                 default:
-                    throw new errors.VellumApiError({
+                    throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -152,14 +149,14 @@ export class VellumApiClient {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.VellumApiError({
+                throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.VellumApiTimeoutError();
+                throw new errors.VellumTimeoutError();
             case "unknown":
-                throw new errors.VellumApiError({
+                throw new errors.VellumError({
                     message: _response.error.errorMessage,
                 });
         }

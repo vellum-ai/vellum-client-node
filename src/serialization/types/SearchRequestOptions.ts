@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
 export const SearchRequestOptions: core.serialization.ObjectSchema<
     serializers.SearchRequestOptions.Raw,
-    VellumApi.SearchRequestOptions
+    Vellum.SearchRequestOptions
 > = core.serialization.object({
     limit: core.serialization.number().optional(),
     weights: core.serialization.lazyObject(async () => (await import("..")).SearchWeightsRequest).optional(),

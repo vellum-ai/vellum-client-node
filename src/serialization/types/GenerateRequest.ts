@@ -3,22 +3,20 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
-export const GenerateRequest: core.serialization.ObjectSchema<
-    serializers.GenerateRequest.Raw,
-    VellumApi.GenerateRequest
-> = core.serialization.object({
-    inputValues: core.serialization.property(
-        "input_values",
-        core.serialization.record(core.serialization.string(), core.serialization.unknown())
-    ),
-    externalIds: core.serialization.property(
-        "external_ids",
-        core.serialization.list(core.serialization.string()).optional()
-    ),
-});
+export const GenerateRequest: core.serialization.ObjectSchema<serializers.GenerateRequest.Raw, Vellum.GenerateRequest> =
+    core.serialization.object({
+        inputValues: core.serialization.property(
+            "input_values",
+            core.serialization.record(core.serialization.string(), core.serialization.unknown())
+        ),
+        externalIds: core.serialization.property(
+            "external_ids",
+            core.serialization.list(core.serialization.string()).optional()
+        ),
+    });
 
 export declare namespace GenerateRequest {
     interface Raw {

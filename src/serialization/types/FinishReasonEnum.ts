@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
-export const FinishReasonEnum: core.serialization.Schema<serializers.FinishReasonEnum.Raw, VellumApi.FinishReasonEnum> =
+export const FinishReasonEnum: core.serialization.Schema<serializers.FinishReasonEnum.Raw, Vellum.FinishReasonEnum> =
     core.serialization.enum_(["LENGTH", "STOP", "UNKNOWN"]);
 
 export declare namespace FinishReasonEnum {

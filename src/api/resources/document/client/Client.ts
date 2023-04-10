@@ -5,7 +5,7 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as fs from "fs";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import FormData from "form-data";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
@@ -13,7 +13,7 @@ import * as errors from "../../../../errors";
 
 export declare namespace Document {
     interface Options {
-        environment?: environments.VellumApiEnvironment | environments.VellumApiEnvironmentUrls;
+        environment?: environments.VellumEnvironment | environments.VellumEnvironmentUrls;
         apiKey: core.Supplier<string>;
     }
 }
@@ -22,14 +22,14 @@ export class Document {
     constructor(private readonly options: Document.Options) {}
 
     /**
-     * @throws {VellumApi.BadRequestError}
-     * @throws {VellumApi.NotFoundError}
-     * @throws {VellumApi.InternalServerError}
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
      */
     public async upload(
         contents: File | fs.ReadStream,
-        request: VellumApi.UploadDocumentRequest
-    ): Promise<VellumApi.UploadDocumentResponse> {
+        request: Vellum.UploadDocumentRequest
+    ): Promise<Vellum.UploadDocumentResponse> {
         const _request = new FormData();
         if (request.addToIndexNames != null) {
             _request.append("add_to_index_names", JSON.stringify(request.addToIndexNames));
@@ -47,7 +47,7 @@ export class Document {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumApiEnvironment.Production).document,
+                (this.options.environment ?? environments.VellumEnvironment.Production).document,
                 "/v1/upload-document"
             ),
             method: "POST",
@@ -65,7 +65,7 @@ export class Document {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new VellumApi.BadRequestError(
+                    throw new Vellum.BadRequestError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -73,7 +73,7 @@ export class Document {
                         })
                     );
                 case 400:
-                    throw new VellumApi.NotFoundError(
+                    throw new Vellum.NotFoundError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -81,7 +81,7 @@ export class Document {
                         })
                     );
                 case 400:
-                    throw new VellumApi.InternalServerError(
+                    throw new Vellum.InternalServerError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -89,7 +89,7 @@ export class Document {
                         })
                     );
                 default:
-                    throw new errors.VellumApiError({
+                    throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -98,14 +98,14 @@ export class Document {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.VellumApiError({
+                throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.VellumApiTimeoutError();
+                throw new errors.VellumTimeoutError();
             case "unknown":
-                throw new errors.VellumApiError({
+                throw new errors.VellumError({
                     message: _response.error.errorMessage,
                 });
         }

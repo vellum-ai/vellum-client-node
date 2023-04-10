@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
 export const NormalizedTokenLogProbs: core.serialization.ObjectSchema<
     serializers.NormalizedTokenLogProbs.Raw,
-    VellumApi.NormalizedTokenLogProbs
+    Vellum.NormalizedTokenLogProbs
 > = core.serialization.object({
     token: core.serialization.string(),
     logprob: core.serialization.number().optional(),

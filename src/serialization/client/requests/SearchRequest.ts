@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../../core";
 
-export const SearchRequest: core.serialization.Schema<serializers.SearchRequest.Raw, VellumApi.SearchRequest> =
+export const SearchRequest: core.serialization.Schema<serializers.SearchRequest.Raw, Vellum.SearchRequest> =
     core.serialization.object({
         indexId: core.serialization.property("index_id", core.serialization.string().optional()),
         indexName: core.serialization.property("index_name", core.serialization.string().optional()),

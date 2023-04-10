@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
-export const SearchResponse: core.serialization.ObjectSchema<serializers.SearchResponse.Raw, VellumApi.SearchResponse> =
+export const SearchResponse: core.serialization.ObjectSchema<serializers.SearchResponse.Raw, Vellum.SearchResponse> =
     core.serialization.object({
         results: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).SearchResult)),
     });

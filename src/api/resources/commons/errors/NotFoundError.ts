@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../../../errors";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 
-export class NotFoundError extends errors.VellumApiError {
-    constructor(body: VellumApi.ErrorResponse) {
+export class NotFoundError extends errors.VellumError {
+    constructor(body: Vellum.ErrorResponse) {
         super({
             message: "NotFoundError",
             statusCode: 400,

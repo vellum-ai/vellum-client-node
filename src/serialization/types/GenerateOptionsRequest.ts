@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
 export const GenerateOptionsRequest: core.serialization.ObjectSchema<
     serializers.GenerateOptionsRequest.Raw,
-    VellumApi.GenerateOptionsRequest
+    Vellum.GenerateOptionsRequest
 > = core.serialization.object({
     logprobs: core.serialization.lazy(async () => (await import("..")).LogprobsEnum).optional(),
 });

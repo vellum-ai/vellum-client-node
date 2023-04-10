@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../../../core";
 
 export const UploadDocumentResponse: core.serialization.ObjectSchema<
     serializers.UploadDocumentResponse.Raw,
-    VellumApi.UploadDocumentResponse
+    Vellum.UploadDocumentResponse
 > = core.serialization.object({
     documentId: core.serialization.property("document_id", core.serialization.string()),
 });

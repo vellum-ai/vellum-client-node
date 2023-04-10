@@ -1,2 +1,2 @@
-export { VellumApiError } from "./VellumApiError";
-export { VellumApiTimeoutError } from "./VellumApiTimeoutError";
+export { VellumError } from "./VellumError";
+export { VellumTimeoutError } from "./VellumTimeoutError";

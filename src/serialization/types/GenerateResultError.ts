@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import * as core from "../../core";
 
 export const GenerateResultError: core.serialization.ObjectSchema<
     serializers.GenerateResultError.Raw,
-    VellumApi.GenerateResultError
+    Vellum.GenerateResultError
 > = core.serialization.object({
     message: core.serialization.string(),
 });

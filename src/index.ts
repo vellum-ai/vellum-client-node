@@ -1,4 +1,4 @@
-export * as VellumApi from "./api";
-export { VellumApiClient } from "./Client";
-export { VellumApiEnvironment, VellumApiEnvironmentUrls } from "./environments";
-export { VellumApiError, VellumApiTimeoutError } from "./errors";
+export * as Vellum from "./api";
+export { VellumClient } from "./Client";
+export { VellumEnvironment, VellumEnvironmentUrls } from "./environments";
+export { VellumError, VellumTimeoutError } from "./errors";

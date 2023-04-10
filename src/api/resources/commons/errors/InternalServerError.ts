@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../../../errors";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 
-export class InternalServerError extends errors.VellumApiError {
-    constructor(body: VellumApi.ErrorResponse) {
+export class InternalServerError extends errors.VellumError {
+    constructor(body: Vellum.ErrorResponse) {
         super({
             message: "InternalServerError",
             statusCode: 400,

@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { VellumApi } from "@fern-api/vellum";
+import { Vellum } from "@fern-api/vellum";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
 export declare namespace CompletionActuals {
     interface Options {
-        environment?: environments.VellumApiEnvironment | environments.VellumApiEnvironmentUrls;
+        environment?: environments.VellumEnvironment | environments.VellumEnvironmentUrls;
         apiKey: core.Supplier<string>;
     }
 }
@@ -20,14 +20,14 @@ export class CompletionActuals {
     constructor(private readonly options: CompletionActuals.Options) {}
 
     /**
-     * @throws {VellumApi.BadRequestError}
-     * @throws {VellumApi.NotFoundError}
-     * @throws {VellumApi.InternalServerError}
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
      */
-    public async submit(request: VellumApi.BatchSubmitCompletionActualsRequest): Promise<void> {
+    public async submit(request: Vellum.BatchSubmitCompletionActualsRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumApiEnvironment.Production).predict,
+                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
                 "/v1/submit-completion-actuals"
             ),
             method: "POST",
@@ -43,7 +43,7 @@ export class CompletionActuals {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new VellumApi.BadRequestError(
+                    throw new Vellum.BadRequestError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -51,7 +51,7 @@ export class CompletionActuals {
                         })
                     );
                 case 400:
-                    throw new VellumApi.NotFoundError(
+                    throw new Vellum.NotFoundError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -59,7 +59,7 @@ export class CompletionActuals {
                         })
                     );
                 case 400:
-                    throw new VellumApi.InternalServerError(
+                    throw new Vellum.InternalServerError(
                         await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -67,7 +67,7 @@ export class CompletionActuals {
                         })
                     );
                 default:
-                    throw new errors.VellumApiError({
+                    throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -76,14 +76,14 @@ export class CompletionActuals {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.VellumApiError({
+                throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.VellumApiTimeoutError();
+                throw new errors.VellumTimeoutError();
             case "unknown":
-                throw new errors.VellumApiError({
+                throw new errors.VellumError({
                     message: _response.error.errorMessage,
                 });
         }
