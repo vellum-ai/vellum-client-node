@@ -6,6 +6,5 @@ export interface UploadDocumentRequest {
     addToIndexNames?: string[];
     externalId?: string;
     label: string;
-    contents: string;
     keywords?: string[];
 }

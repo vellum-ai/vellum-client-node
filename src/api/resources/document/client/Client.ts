@@ -4,7 +4,9 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
+import * as fs from "fs";
 import { VellumApi } from "@fern-api/vellum";
+import FormData from "form-data";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
@@ -24,15 +26,33 @@ export class Document {
      * @throws {VellumApi.NotFoundError}
      * @throws {VellumApi.InternalServerError}
      */
-    public async upload(request: VellumApi.UploadDocumentRequest): Promise<VellumApi.UploadDocumentResponse> {
+    public async upload(
+        contents: File | fs.ReadStream,
+        request: VellumApi.UploadDocumentRequest
+    ): Promise<VellumApi.UploadDocumentResponse> {
+        const _request = new FormData();
+        if (request.addToIndexNames != null) {
+            _request.append("add_to_index_names", JSON.stringify(request.addToIndexNames));
+        }
+
+        if (request.externalId != null) {
+            _request.append("external_id", request.externalId);
+        }
+
+        _request.append("label", request.label);
+        _request.append("contents", contents);
+        if (request.keywords != null) {
+            _request.append("keywords", JSON.stringify(request.keywords));
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (this.options.environment ?? environments.VellumApiEnvironment.Production).document,
                 "/v1/upload-document"
             ),
             method: "POST",
-            contentType: "application/json",
-            body: await serializers.UploadDocumentRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            contentType: "multipart/form-data",
+            body: _request,
         });
         if (_response.ok) {
             return await serializers.UploadDocumentResponse.parseOrThrow(_response.body, {
