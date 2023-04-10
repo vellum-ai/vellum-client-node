@@ -5,26 +5,32 @@
 
 The Vellum Node.js library provides access to the Vellum API from JavaScript/TypeScript.
 
+
+## Installation
+
+```
+npm install --save @fern-api/vellum
+# or
+yarn add @fern-api/vellum
+```
+
 ## Usage
 
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-hfcepn?file=app.ts,node_modules%2F%40fern-api%2Fvellum%2Fapi%2Ftypes%2FGenerateRequestBodyRequest.d.ts,node_modules%2F%40fern-api%2Fvellum%2Fapi%2Ftypes%2FGenerateRequestRequest.d.ts)
 
 ```typescript
-import { VellumApiClient } from '@fern-api/vellum';
+import { VellumClient } from '@fern-api/vellum';
 
-void main();
+const vellum = new VellumClient({
+  apiKey: 'VELLUM_API_KEY',
+});
 
-async function main() {
-  const client = new VellumApiClient({
-    apiKey: 'VELLUM_API_KEY',
-    environment: 'VELLUM_ENVIRONMENT',
-  });
-
-  await client.generate({
-    deploymentName: '<DEPLOYMENT_NAME>',
-    requests: [{ inputValues: { sample_key: 'sample_value' } }],
-  });
-}
+const generation = await vellum.generate({
+  deploymentName: "my-deployment",
+  requests: [{
+    inputValues: {"question": "Could I please get a refund?"},
+  }],
+});
 
 ```
 
