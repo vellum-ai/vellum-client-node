@@ -1,20 +1,8 @@
 {
     "name": "@fern-api/vellum",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "private": false,
     "repository": "https://github.com/fern-vellum/vellum-node",
-    "files": [
-        "Client.d.ts",
-        "Client.js",
-        "environments.d.ts",
-        "environments.js",
-        "index.d.ts",
-        "index.js",
-        "api",
-        "core",
-        "errors",
-        "serialization"
-    ],
     "main": "./index.js",
     "types": "./index.d.ts",
     "scripts": {
@@ -25,7 +13,8 @@
     "dependencies": {
         "url-join": "4.0.1",
         "@types/url-join": "4.0.1",
-        "axios": "0.27.2"
+        "axios": "0.27.2",
+        "@ungap/url-search-params": "0.2.2"
     },
     "devDependencies": {
         "@types/node": "17.0.33",

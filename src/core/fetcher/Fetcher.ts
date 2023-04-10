@@ -1,3 +1,4 @@
+import URLSearchParams from "@ungap/url-search-params";
 import axios, { AxiosError } from "axios";
 import { APIResponse } from "./APIResponse";
 
@@ -7,6 +8,7 @@ export declare namespace Fetcher {
     export interface Args {
         url: string;
         method: string;
+        contentType?: string;
         headers?: Record<string, string | undefined>;
         queryParameters?: URLSearchParams;
         body?: unknown;
@@ -39,10 +41,10 @@ export declare namespace Fetcher {
 }
 
 export const fetcher: FetchFunction = async (args) => {
-    const headers: Record<string, string> = {
-        "Content-Type": "application/json",
-    };
-
+    const headers: Record<string, string> = {};
+    if (args.contentType != null) {
+        headers["Content-Type"] = args.contentType;
+    }
     if (args.headers != null) {
         for (const [key, value] of Object.entries(args.headers)) {
             if (value != null) {

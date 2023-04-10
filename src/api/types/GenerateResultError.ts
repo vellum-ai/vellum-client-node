@@ -3,6 +3,5 @@
  */
 
 export interface GenerateResultError {
-    /** The error message returned by the LLM provider. */
     message: string;
 }

@@ -11,12 +11,3 @@ node_modules
 /core
 /errors
 /serialization
-
-# yarn berry
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions

@@ -8,11 +8,13 @@ import { VellumApi } from "@fern-api/vellum";
 import urlJoin from "url-join";
 import * as serializers from "./serialization";
 import * as errors from "./errors";
+import { CompletionActuals } from "./api/resources/completionActuals/client/Client";
+import { Document } from "./api/resources/document/client/Client";
 
 export declare namespace VellumApiClient {
     interface Options {
-        environment: environments.VellumApiEnvironment | string;
-        apiKey?: core.Supplier<string>;
+        environment?: environments.VellumApiEnvironment | environments.VellumApiEnvironmentUrls;
+        apiKey: core.Supplier<string>;
     }
 }
 
@@ -20,32 +22,60 @@ export class VellumApiClient {
     constructor(private readonly options: VellumApiClient.Options) {}
 
     /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
-     * Generate a completion using a previously defined deployment.
-     *
-     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     * @throws {VellumApi.BadRequestError}
+     * @throws {VellumApi.NotFoundError}
+     * @throws {VellumApi.InternalServerError}
      */
-    public async generate(request: VellumApi.GenerateRequestBodyRequest): Promise<VellumApi.GenerateResponse> {
+    public async generate(request: VellumApi.BatchGenerateRequest): Promise<VellumApi.GenerateResponse> {
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment, "/v1/generate"),
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumApiEnvironment.Production).predict,
+                "v1/generate"
+            ),
             method: "POST",
-            headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
-            },
-            body: await serializers.GenerateRequestBodyRequest.jsonOrThrow(request),
+            contentType: "application/json",
+            body: await serializers.BatchGenerateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
-            return await serializers.GenerateResponse.parseOrThrow(_response.body as serializers.GenerateResponse.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.GenerateResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new VellumApi.BadRequestError(
+                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 400:
+                    throw new VellumApi.NotFoundError(
+                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 400:
+                    throw new VellumApi.InternalServerError(
+                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.VellumApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -64,31 +94,60 @@ export class VellumApiClient {
     }
 
     /**
-     *
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
-     * Used to retrieve a model version given its ID.
-     *
+     * @throws {VellumApi.BadRequestError}
+     * @throws {VellumApi.NotFoundError}
+     * @throws {VellumApi.InternalServerError}
      */
-    public async retrieveModelVersions(id: string): Promise<VellumApi.ModelVersionRead> {
+    public async search(request: VellumApi.SearchRequest): Promise<VellumApi.SearchResponse> {
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment, `/v1/model-versions/${id}`),
-            method: "GET",
-            headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
-            },
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumApiEnvironment.Production).predict,
+                "v1/search"
+            ),
+            method: "POST",
+            contentType: "application/json",
+            body: await serializers.SearchRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
-            return await serializers.ModelVersionRead.parseOrThrow(_response.body as serializers.ModelVersionRead.Raw, {
-                allowUnknownKeys: true,
+            return await serializers.SearchResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
             });
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new VellumApi.BadRequestError(
+                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 400:
+                    throw new VellumApi.NotFoundError(
+                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 400:
+                    throw new VellumApi.InternalServerError(
+                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.VellumApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -106,131 +165,15 @@ export class VellumApiClient {
         }
     }
 
-    /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
-     * Perform a search against a document index.
-     *
-     * **Note:** Uses a base url of `https://predict.vellum.ai`.
-     */
-    public async search(request: VellumApi.SearchRequestBodyRequest): Promise<VellumApi.SearchResponse> {
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment, "/v1/search"),
-            method: "POST",
-            headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
-            },
-            body: await serializers.SearchRequestBodyRequest.jsonOrThrow(request),
-        });
-        if (_response.ok) {
-            return await serializers.SearchResponse.parseOrThrow(_response.body as serializers.SearchResponse.Raw, {
-                allowUnknownKeys: true,
-            });
-        }
+    private _completionActuals: CompletionActuals | undefined;
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.VellumApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VellumApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VellumApiTimeoutError();
-            case "unknown":
-                throw new errors.VellumApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+    public get completionActuals(): CompletionActuals {
+        return (this._completionActuals ??= new CompletionActuals(this.options));
     }
 
-    /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
-     * Used to submit feedback regarding the quality of previously generated completions.
-     *
-     * **Note:** Uses a base url of `https://predict.vellum.ai`.
-     */
-    public async submitCompletionActuals(request: VellumApi.SubmitCompletionActualsRequestRequest): Promise<void> {
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment, "/v1/submit-completion-actuals"),
-            method: "POST",
-            headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
-            },
-            body: await serializers.SubmitCompletionActualsRequestRequest.jsonOrThrow(request),
-        });
-        if (_response.ok) {
-            return;
-        }
+    private _document: Document | undefined;
 
-        if (_response.error.reason === "status-code") {
-            throw new errors.VellumApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VellumApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VellumApiTimeoutError();
-            case "unknown":
-                throw new errors.VellumApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
-     * Upload a document to be indexed and used for search.
-     *
-     * **Note:** Uses a base url of `https://documents.vellum.ai`.
-     */
-    public async uploadDocument(request: VellumApi.UploadDocumentRequestBodyRequest): Promise<void> {
-        const _response = await core.fetcher({
-            url: urlJoin(this.options.environment, "/v1/upload-document"),
-            method: "POST",
-            headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
-            },
-            body: await serializers.UploadDocumentRequestBodyRequest.jsonOrThrow(request),
-        });
-        if (_response.ok) {
-            return;
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.VellumApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VellumApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VellumApiTimeoutError();
-            case "unknown":
-                throw new errors.VellumApiError({
-                    message: _response.error.errorMessage,
-                });
-        }
+    public get document(): Document {
+        return (this._document ??= new Document(this.options));
     }
 }

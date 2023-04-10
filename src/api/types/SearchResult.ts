@@ -6,9 +6,7 @@ import { VellumApi } from "@fern-api/vellum";
 
 export interface SearchResult {
     document: VellumApi.Document;
-    /** The text of the chunk that matched the search query. */
     text: string;
     keywords: string[];
-    /** A score representing how well the chunk matches the search query. */
     score: number;
 }
