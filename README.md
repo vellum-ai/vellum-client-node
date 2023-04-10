@@ -25,11 +25,9 @@ const vellum = new VellumClient({
   apiKey: 'VELLUM_API_KEY',
 });
 
-const generation = await vellum.generate({
-  deploymentName: "my-deployment",
-  requests: [{
-    inputValues: {"question": "Could I please get a refund?"},
-  }],
+await client.generate({
+  deploymentName: 'my-deployment',
+  requests: [{ inputValues: { question: 'Could I please get a refund' } }],
 });
 
 ```
