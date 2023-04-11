@@ -32,6 +32,21 @@ await client.generate({
 
 ```
 
+## Uploading documents
+
+Documents can be uploaded to Vellum via either the UI or this API. Once uploaded and indexed, Vellum's Search allows you to perform semantic searches against them.
+
+```typescript
+import * as fs from 'fs';
+
+await client.document.upload(fs.createReadStream('/path/to/your/file.txt'), {
+  addToIndexNames: ['<your-index-name>'],
+  externalId: '<your-external-id>',
+  label: 'Human-friendly label for your document',
+  keywords: [],
+});
+```
+
 ## Beta status
 
 This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning the package version to a specific version in your package.json file. This way, you can install the same version each time without breaking changes unless you are intentionally looking for the latest version.
