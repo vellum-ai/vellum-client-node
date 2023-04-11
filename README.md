@@ -16,7 +16,7 @@ yarn add @fern-api/vellum
 
 ## Usage
 
-[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-hfcepn?file=app.ts,node_modules%2F%40fern-api%2Fvellum%2Fapi%2Ftypes%2FGenerateRequestBodyRequest.d.ts,node_modules%2F%40fern-api%2Fvellum%2Fapi%2Ftypes%2FGenerateRequestRequest.d.ts)
+[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-xbs4jx?file=app.ts)
 
 ```typescript
 import { VellumClient } from '@fern-api/vellum';
