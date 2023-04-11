@@ -25,7 +25,7 @@ const vellum = new VellumClient({
   apiKey: 'VELLUM_API_KEY',
 });
 
-await client.generate({
+await vellum.generate({
   deploymentName: 'my-deployment',
   requests: [{ inputValues: { question: 'Could I please get a refund' } }],
 });
@@ -39,7 +39,7 @@ Documents can be uploaded to Vellum via either the UI or this API. Once uploaded
 ```typescript
 import * as fs from 'fs';
 
-await client.document.upload(fs.createReadStream('/path/to/your/file.txt'), {
+await vellum.document.upload(fs.createReadStream('/path/to/your/file.txt'), {
   addToIndexNames: ['<your-index-name>'],
   externalId: '<your-external-id>',
   label: 'Human-friendly label for your document',
