@@ -19,7 +19,7 @@ export declare namespace VellumClient {
 }
 
 export class VellumClient {
-    constructor(private readonly options: VellumClient.Options) {}
+    constructor(protected readonly options: VellumClient.Options) {}
 
     /**
      * @throws {Vellum.BadRequestError}
@@ -33,6 +33,9 @@ export class VellumClient {
                 "v1/generate"
             ),
             method: "POST",
+            headers: {
+                "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+            },
             contentType: "application/json",
             body: await serializers.BatchGenerateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
@@ -102,6 +105,9 @@ export class VellumClient {
         const _response = await core.fetcher({
             url: urlJoin((this.options.environment ?? environments.VellumEnvironment.Production).predict, "v1/search"),
             method: "POST",
+            headers: {
+                "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+            },
             contentType: "application/json",
             body: await serializers.SearchRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
@@ -162,13 +168,13 @@ export class VellumClient {
         }
     }
 
-    private _completionActuals: CompletionActuals | undefined;
+    protected _completionActuals: CompletionActuals | undefined;
 
     public get completionActuals(): CompletionActuals {
         return (this._completionActuals ??= new CompletionActuals(this.options));
     }
 
-    private _document: Document | undefined;
+    protected _document: Document | undefined;
 
     public get document(): Document {
         return (this._document ??= new Document(this.options));

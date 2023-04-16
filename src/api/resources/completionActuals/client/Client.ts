@@ -17,7 +17,7 @@ export declare namespace CompletionActuals {
 }
 
 export class CompletionActuals {
-    constructor(private readonly options: CompletionActuals.Options) {}
+    constructor(protected readonly options: CompletionActuals.Options) {}
 
     /**
      * @throws {Vellum.BadRequestError}
@@ -31,6 +31,9 @@ export class CompletionActuals {
                 "/v1/submit-completion-actuals"
             ),
             method: "POST",
+            headers: {
+                "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+            },
             contentType: "application/json",
             body: await serializers.BatchSubmitCompletionActualsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",

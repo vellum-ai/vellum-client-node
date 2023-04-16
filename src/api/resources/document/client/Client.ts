@@ -19,7 +19,7 @@ export declare namespace Document {
 }
 
 export class Document {
-    constructor(private readonly options: Document.Options) {}
+    constructor(protected readonly options: Document.Options) {}
 
     /**
      * @throws {Vellum.BadRequestError}
@@ -51,6 +51,9 @@ export class Document {
                 "/v1/upload-document"
             ),
             method: "POST",
+            headers: {
+                "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+            },
             contentType: "multipart/form-data",
             body: _request,
         });
