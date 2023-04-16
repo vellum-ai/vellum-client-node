@@ -4,5 +4,5 @@
 
 export interface ErrorResponse {
     /** Details about why the request failed. */
-    detail: string;
+    detail?: string;
 }
