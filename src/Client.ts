@@ -10,6 +10,7 @@ import * as serializers from "./serialization";
 import * as errors from "./errors";
 import { CompletionActuals } from "./api/resources/completionActuals/client/Client";
 import { Document } from "./api/resources/document/client/Client";
+import { ModelVersions } from "./api/resources/modelVersions/client/Client";
 
 export declare namespace VellumClient {
     interface Options {
@@ -178,5 +179,11 @@ export class VellumClient {
 
     public get document(): Document {
         return (this._document ??= new Document(this.options));
+    }
+
+    protected _modelVersions: ModelVersions | undefined;
+
+    public get modelVersions(): ModelVersions {
+        return (this._modelVersions ??= new ModelVersions(this.options));
     }
 }

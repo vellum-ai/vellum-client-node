@@ -10,6 +10,7 @@ import FormData from "form-data";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
+import URLSearchParams from "@ungap/url-search-params";
 
 export declare namespace Document {
     interface Options {
@@ -97,6 +98,71 @@ export class Document {
                         body: _response.error.body,
                     });
             }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong> Used to list documents. Optionally filter on supported fields.
+     *
+     */
+    public async list(request: Vellum.ListDocumentsRequest = {}): Promise<Vellum.PaginatedSlimDocumentList> {
+        const { documentIndexId, limit, offset, ordering } = request;
+        const _queryParams = new URLSearchParams();
+        if (documentIndexId != null) {
+            _queryParams.append("document_index_id", documentIndexId);
+        }
+
+        if (limit != null) {
+            _queryParams.append("limit", limit.toString());
+        }
+
+        if (offset != null) {
+            _queryParams.append("offset", offset.toString());
+        }
+
+        if (ordering != null) {
+            _queryParams.append("ordering", ordering);
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                "/v1/documents"
+            ),
+            method: "GET",
+            headers: {
+                "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+        });
+        if (_response.ok) {
+            return await serializers.PaginatedSlimDocumentList.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
         }
 
         switch (_response.error.reason) {

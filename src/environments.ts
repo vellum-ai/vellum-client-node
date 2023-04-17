@@ -3,12 +3,14 @@
  */
 
 export interface VellumEnvironmentUrls {
+    default: string;
     predict: string;
     document: string;
 }
 
 export const VellumEnvironment = {
     Production: {
+        default: "https://api.vellum.ai",
         predict: "https://predict.vellum.ai",
         document: "https://documents.vellum.ai",
     },

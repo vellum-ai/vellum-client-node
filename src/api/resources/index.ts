@@ -4,6 +4,8 @@ export * as completionActuals from "./completionActuals";
 export * from "./completionActuals/types";
 export * as document from "./document";
 export * from "./document/types";
+export * as modelVersions from "./modelVersions";
+export * from "./modelVersions/types";
 export * from "./commons/errors";
 export * from "./completionActuals/client/requests";
 export * from "./document/client/requests";
