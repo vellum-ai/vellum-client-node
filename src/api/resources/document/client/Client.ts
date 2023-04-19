@@ -33,7 +33,9 @@ export class Document {
     ): Promise<Vellum.UploadDocumentResponse> {
         const _request = new FormData();
         if (request.addToIndexNames != null) {
-            _request.append("add_to_index_names", JSON.stringify(request.addToIndexNames));
+            for (const _item of request.addToIndexNames) {
+                _request.append("add_to_index_names", _item);
+            }
         }
 
         if (request.externalId != null) {
@@ -43,7 +45,9 @@ export class Document {
         _request.append("label", request.label);
         _request.append("contents", contents);
         if (request.keywords != null) {
-            _request.append("keywords", JSON.stringify(request.keywords));
+            for (const _item of request.keywords) {
+                _request.append("keywords", _item);
+            }
         }
 
         const _response = await core.fetcher({
@@ -54,8 +58,9 @@ export class Document {
             method: "POST",
             headers: {
                 "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+                "Content-Length": (await core.getFormDataContentLength(_request)).toString(),
             },
-            contentType: "multipart/form-data",
+            contentType: "multipart/form-data; boundary=" + _request.getBoundary(),
             body: _request,
         });
         if (_response.ok) {
