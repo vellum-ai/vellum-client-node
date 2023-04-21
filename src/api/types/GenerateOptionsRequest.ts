@@ -5,5 +5,6 @@
 import { Vellum } from "@fern-api/vellum";
 
 export interface GenerateOptionsRequest {
+    /** Which logprobs to include, if any. Defaults to NONE. */
     logprobs?: Vellum.LogprobsEnum;
 }

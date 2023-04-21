@@ -19,18 +19,15 @@ export declare namespace ModelVersions {
 export class ModelVersions {
     constructor(protected readonly options: ModelVersions.Options) {}
 
-    /**
-     * Used to retrieve a model version given its ID.
-     */
-    public async retrieve(modelVersionId: string): Promise<Vellum.ModelVersionRead> {
+    public async retrieve(id: string): Promise<Vellum.ModelVersionRead> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (this.options.environment ?? environments.VellumEnvironment.Production).default,
-                `/v1/model-versions/${modelVersionId}`
+                `v1/model-versions/${id}`
             ),
             method: "GET",
             headers: {
-                "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
             },
             contentType: "application/json",
         });

@@ -1,11 +1,3 @@
-export * as commons from "./commons";
-export * from "./commons/types";
-export * as completionActuals from "./completionActuals";
-export * from "./completionActuals/types";
-export * as document from "./document";
-export * from "./document/types";
+export * as documents from "./documents";
 export * as modelVersions from "./modelVersions";
-export * from "./modelVersions/types";
-export * from "./commons/errors";
-export * from "./completionActuals/client/requests";
-export * from "./document/client/requests";
+export * from "./documents/client/requests";

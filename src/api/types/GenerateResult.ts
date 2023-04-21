@@ -5,6 +5,8 @@
 import { Vellum } from "@fern-api/vellum";
 
 export interface GenerateResult {
+    /** An object containing the resulting generation. This key will be absent if the LLM provider experienced an error. */
     data?: Vellum.GenerateResultData;
+    /** An object containing details about the error that occurred. This key will be absent if the LLM provider did not experience an error. */
     error?: Vellum.GenerateResultError;
 }

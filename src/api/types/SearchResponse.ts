@@ -5,5 +5,6 @@
 import { Vellum } from "@fern-api/vellum";
 
 export interface SearchResponse {
+    /** The results of the search. Each result represents a chunk that matches the search query. */
     results: Vellum.SearchResult[];
 }

@@ -5,5 +5,6 @@
 import { Vellum } from "@fern-api/vellum";
 
 export interface GenerateResponse {
+    /** The results of each generation request. */
     results: Vellum.GenerateResult[];
 }

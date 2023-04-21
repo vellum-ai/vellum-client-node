@@ -8,8 +8,7 @@ import { Vellum } from "@fern-api/vellum";
 import urlJoin from "url-join";
 import * as serializers from "./serialization";
 import * as errors from "./errors";
-import { CompletionActuals } from "./api/resources/completionActuals/client/Client";
-import { Document } from "./api/resources/document/client/Client";
+import { Documents } from "./api/resources/documents/client/Client";
 import { ModelVersions } from "./api/resources/modelVersions/client/Client";
 
 export declare namespace VellumClient {
@@ -22,12 +21,7 @@ export declare namespace VellumClient {
 export class VellumClient {
     constructor(protected readonly options: VellumClient.Options) {}
 
-    /**
-     * @throws {Vellum.BadRequestError}
-     * @throws {Vellum.NotFoundError}
-     * @throws {Vellum.InternalServerError}
-     */
-    public async generate(request: Vellum.BatchGenerateRequest): Promise<Vellum.GenerateResponse> {
+    public async generate(request: Vellum.GenerateRequestBodyRequest): Promise<Vellum.GenerateResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (this.options.environment ?? environments.VellumEnvironment.Production).predict,
@@ -35,10 +29,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
             },
             contentType: "application/json",
-            body: await serializers.BatchGenerateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.GenerateRequestBodyRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
         });
         if (_response.ok) {
             return await serializers.GenerateResponse.parseOrThrow(_response.body, {
@@ -49,37 +45,10 @@ export class VellumClient {
         }
 
         if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 400:
-                    throw new Vellum.BadRequestError(
-                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                        })
-                    );
-                case 400:
-                    throw new Vellum.NotFoundError(
-                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                        })
-                    );
-                case 400:
-                    throw new Vellum.InternalServerError(
-                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                        })
-                    );
-                default:
-                    throw new errors.VellumError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
         }
 
         switch (_response.error.reason) {
@@ -97,20 +66,15 @@ export class VellumClient {
         }
     }
 
-    /**
-     * @throws {Vellum.BadRequestError}
-     * @throws {Vellum.NotFoundError}
-     * @throws {Vellum.InternalServerError}
-     */
-    public async search(request: Vellum.SearchRequest): Promise<Vellum.SearchResponse> {
+    public async search(request: Vellum.SearchRequestBodyRequest): Promise<Vellum.SearchResponse> {
         const _response = await core.fetcher({
             url: urlJoin((this.options.environment ?? environments.VellumEnvironment.Production).predict, "v1/search"),
             method: "POST",
             headers: {
-                "X-API-KEY": await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
             },
             contentType: "application/json",
-            body: await serializers.SearchRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.SearchRequestBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
             return await serializers.SearchResponse.parseOrThrow(_response.body, {
@@ -121,37 +85,10 @@ export class VellumClient {
         }
 
         if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 400:
-                    throw new Vellum.BadRequestError(
-                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                        })
-                    );
-                case 400:
-                    throw new Vellum.NotFoundError(
-                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                        })
-                    );
-                case 400:
-                    throw new Vellum.InternalServerError(
-                        await serializers.ErrorResponse.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                        })
-                    );
-                default:
-                    throw new errors.VellumError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
         }
 
         switch (_response.error.reason) {
@@ -169,16 +106,51 @@ export class VellumClient {
         }
     }
 
-    protected _completionActuals: CompletionActuals | undefined;
+    public async submitCompletionActuals(request: Vellum.SubmitCompletionActualsRequestRequest): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
+                "v1/submit-completion-actuals"
+            ),
+            method: "POST",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+            },
+            contentType: "application/json",
+            body: await serializers.SubmitCompletionActualsRequestRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+        });
+        if (_response.ok) {
+            return;
+        }
 
-    public get completionActuals(): CompletionActuals {
-        return (this._completionActuals ??= new CompletionActuals(this.options));
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
     }
 
-    protected _document: Document | undefined;
+    protected _documents: Documents | undefined;
 
-    public get document(): Document {
-        return (this._document ??= new Document(this.options));
+    public get documents(): Documents {
+        return (this._documents ??= new Documents(this.options));
     }
 
     protected _modelVersions: ModelVersions | undefined;

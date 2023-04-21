@@ -5,5 +5,6 @@
 import { Vellum } from "@fern-api/vellum";
 
 export interface GenerateResultData {
+    /** The generated completions. This will generally be a list of length one. */
     completions: Vellum.EnrichedNormalizedCompletion[];
 }

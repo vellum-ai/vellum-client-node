@@ -3,6 +3,8 @@
  */
 
 export interface SearchWeightsRequest {
+    /** The relative weight to give to semantic similarity */
     semanticSimilarity: number;
+    /** The relative weight to give to keyword matches */
     keywords: number;
 }

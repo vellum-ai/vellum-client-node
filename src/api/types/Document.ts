@@ -3,9 +3,10 @@
  */
 
 export interface Document {
+    /** The ID of the document. */
     id: string;
-    /** A human-readable label for the document. Defaults to the originally uploaded file's file name. */
+    /** The human-readable name for the document. */
     label: string;
-    /** The unique id of this document as it exists in the user's system. If not provided, will be set to the document's id. */
+    /** The unique ID of the document as represented in an external system and specified when it was originally uploaded. */
     externalId?: string;
 }
