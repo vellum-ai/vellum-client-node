@@ -6,23 +6,23 @@ import * as serializers from "../..";
 import { Vellum } from "vellum-ai";
 import * as core from "../../../core";
 
-export const GenerateRequestBodyRequest: core.serialization.Schema<
-    serializers.GenerateRequestBodyRequest.Raw,
-    Vellum.GenerateRequestBodyRequest
+export const GenerateBodyRequest: core.serialization.Schema<
+    serializers.GenerateBodyRequest.Raw,
+    Vellum.GenerateBodyRequest
 > = core.serialization.object({
     deploymentId: core.serialization.property("deployment_id", core.serialization.string().optional()),
     deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),
     requests: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../..")).GenerateRequestRequest)
+        core.serialization.lazyObject(async () => (await import("../..")).GenerateRequest)
     ),
     options: core.serialization.lazyObject(async () => (await import("../..")).GenerateOptionsRequest).optional(),
 });
 
-export declare namespace GenerateRequestBodyRequest {
+export declare namespace GenerateBodyRequest {
     interface Raw {
         deployment_id?: string | null;
         deployment_name?: string | null;
-        requests: serializers.GenerateRequestRequest.Raw[];
+        requests: serializers.GenerateRequest.Raw[];
         options?: serializers.GenerateOptionsRequest.Raw | null;
     }
 }

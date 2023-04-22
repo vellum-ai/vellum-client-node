@@ -1,3 +1,3 @@
-export { GenerateRequestBodyRequest } from "./GenerateRequestBodyRequest";
+export { GenerateBodyRequest } from "./GenerateBodyRequest";
 export { SearchRequestBodyRequest } from "./SearchRequestBodyRequest";
-export { SubmitCompletionActualsRequestRequest } from "./SubmitCompletionActualsRequestRequest";
+export { SubmitCompletionActualsRequest } from "./SubmitCompletionActualsRequest";

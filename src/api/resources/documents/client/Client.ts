@@ -85,7 +85,7 @@ export class Documents {
 
     public async upload(
         contents: File | fs.ReadStream,
-        request: Vellum.UploadDocumentRequestBodyRequest
+        request: Vellum.UploadDocumentBodyRequest
     ): Promise<Vellum.UploadDocumentResponse> {
         const _request = new FormData();
         for (const _item of request.addToIndexNames) {

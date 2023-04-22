@@ -21,7 +21,7 @@ export declare namespace VellumClient {
 export class VellumClient {
     constructor(protected readonly options: VellumClient.Options) {}
 
-    public async generate(request: Vellum.GenerateRequestBodyRequest): Promise<Vellum.GenerateResponse> {
+    public async generate(request: Vellum.GenerateBodyRequest): Promise<Vellum.GenerateResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (this.options.environment ?? environments.VellumEnvironment.Production).predict,
@@ -32,9 +32,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this.options.apiKey),
             },
             contentType: "application/json",
-            body: await serializers.GenerateRequestBodyRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            body: await serializers.GenerateBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
         });
         if (_response.ok) {
             return await serializers.GenerateResponse.parseOrThrow(_response.body, {
@@ -106,7 +104,7 @@ export class VellumClient {
         }
     }
 
-    public async submitCompletionActuals(request: Vellum.SubmitCompletionActualsRequestRequest): Promise<void> {
+    public async submitCompletionActuals(request: Vellum.SubmitCompletionActualsRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (this.options.environment ?? environments.VellumEnvironment.Production).predict,
@@ -117,7 +115,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this.options.apiKey),
             },
             contentType: "application/json",
-            body: await serializers.SubmitCompletionActualsRequestRequest.jsonOrThrow(request, {
+            body: await serializers.SubmitCompletionActualsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
         });

@@ -4,7 +4,7 @@
 
 import { Vellum } from "vellum-ai";
 
-export interface SubmitCompletionActualsRequestRequest {
+export interface SubmitCompletionActualsRequest {
     /** The ID of the deployment. Must provide either this or deployment_name. */
     deploymentId?: string;
     /** The name of the deployment. Must provide either this or deployment_id. */

@@ -6,9 +6,9 @@ import * as serializers from "../..";
 import { Vellum } from "vellum-ai";
 import * as core from "../../../core";
 
-export const SubmitCompletionActualsRequestRequest: core.serialization.Schema<
-    serializers.SubmitCompletionActualsRequestRequest.Raw,
-    Vellum.SubmitCompletionActualsRequestRequest
+export const SubmitCompletionActualsRequest: core.serialization.Schema<
+    serializers.SubmitCompletionActualsRequest.Raw,
+    Vellum.SubmitCompletionActualsRequest
 > = core.serialization.object({
     deploymentId: core.serialization.property("deployment_id", core.serialization.string().optional()),
     deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),
@@ -17,7 +17,7 @@ export const SubmitCompletionActualsRequestRequest: core.serialization.Schema<
     ),
 });
 
-export declare namespace SubmitCompletionActualsRequestRequest {
+export declare namespace SubmitCompletionActualsRequest {
     interface Raw {
         deployment_id?: string | null;
         deployment_name?: string | null;

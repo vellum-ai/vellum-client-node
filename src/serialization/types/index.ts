@@ -6,7 +6,7 @@ export * from "./EnrichedNormalizedCompletion";
 export * from "./FinishReasonEnum";
 export * from "./GenerateErrorResponse";
 export * from "./GenerateOptionsRequest";
-export * from "./GenerateRequestRequest";
+export * from "./GenerateRequest";
 export * from "./GenerateResponse";
 export * from "./GenerateResult";
 export * from "./GenerateResultData";
