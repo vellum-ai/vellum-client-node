@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "@fern-api/vellum";
+import { Vellum } from "vellum-ai";
 import * as core from "../../core";
 
 export const ProviderEnum: core.serialization.Schema<serializers.ProviderEnum.Raw, Vellum.ProviderEnum> =
-    core.serialization.enum_(["OPENAI", "COHERE", "ANTHROPIC"]);
+    core.serialization.enum_(["ANTHROPIC", "COHERE", "GOOGLE", "HOSTED", "OPENAI", "PYQ"]);
 
 export declare namespace ProviderEnum {
-    type Raw = "OPENAI" | "COHERE" | "ANTHROPIC";
+    type Raw = "ANTHROPIC" | "COHERE" | "GOOGLE" | "HOSTED" | "OPENAI" | "PYQ";
 }

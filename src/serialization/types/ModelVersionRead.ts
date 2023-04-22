@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "@fern-api/vellum";
+import { Vellum } from "vellum-ai";
 import * as core from "../../core";
 
 export const ModelVersionRead: core.serialization.ObjectSchema<
@@ -27,6 +27,7 @@ export const ModelVersionRead: core.serialization.ObjectSchema<
         "exec_config",
         core.serialization.lazyObject(async () => (await import("..")).ModelVersionExecConfigRead)
     ),
+    status: core.serialization.lazy(async () => (await import("..")).ModelVersionReadStatusEnum).optional(),
 });
 
 export declare namespace ModelVersionRead {
@@ -39,5 +40,6 @@ export declare namespace ModelVersionRead {
         external_id: string;
         build_config: serializers.ModelVersionBuildConfig.Raw;
         exec_config: serializers.ModelVersionExecConfigRead.Raw;
+        status?: serializers.ModelVersionReadStatusEnum.Raw | null;
     }
 }

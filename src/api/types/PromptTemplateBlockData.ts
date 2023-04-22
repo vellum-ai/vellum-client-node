@@ -4,7 +4,7 @@
 
 import { Vellum } from "vellum-ai";
 
-export interface NormalizedLogProbs {
-    tokens: Vellum.NormalizedTokenLogProbs[];
-    likelihood: number;
+export interface PromptTemplateBlockData {
+    version: number;
+    blocks: Vellum.PromptTemplateBlock[];
 }

@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "@fern-api/vellum";
+import { Vellum } from "vellum-ai";
 import * as core from "../../core";
 
 export const SearchWeightsRequest: core.serialization.ObjectSchema<

@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "@fern-api/vellum";
+import { Vellum } from "vellum-ai";
 import * as core from "../../core";
 
 export const SlimDocument: core.serialization.ObjectSchema<serializers.SlimDocument.Raw, Vellum.SlimDocument> =
@@ -16,7 +16,7 @@ export const SlimDocument: core.serialization.ObjectSchema<serializers.SlimDocum
             "processing_state",
             core.serialization.lazy(async () => (await import("..")).ProcessingStateEnum).optional()
         ),
-        status: core.serialization.lazy(async () => (await import("..")).StatusEnum).optional(),
+        status: core.serialization.lazy(async () => (await import("..")).SlimDocumentStatusEnum).optional(),
         keywords: core.serialization.list(core.serialization.string()).optional(),
         documentToDocumentIndexes: core.serialization.property(
             "document_to_document_indexes",
@@ -33,7 +33,7 @@ export declare namespace SlimDocument {
         last_uploaded_at: string;
         label: string;
         processing_state?: serializers.ProcessingStateEnum.Raw | null;
-        status?: serializers.StatusEnum.Raw | null;
+        status?: serializers.SlimDocumentStatusEnum.Raw | null;
         keywords?: string[] | null;
         document_to_document_indexes: serializers.DocumentDocumentToDocumentIndex.Raw[];
     }

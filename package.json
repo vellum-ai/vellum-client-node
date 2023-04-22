@@ -1,8 +1,8 @@
 {
-    "name": "@fern-api/vellum",
-    "version": "0.0.20",
+    "name": "vellum-ai",
+    "version": "v0.0.2",
     "private": false,
-    "repository": "https://github.com/fern-vellum/vellum-node",
+    "repository": "https://github.com/vellum-ai/vellum-client-node",
     "main": "./index.js",
     "types": "./index.d.ts",
     "scripts": {

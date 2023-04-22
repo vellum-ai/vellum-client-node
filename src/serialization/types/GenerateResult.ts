@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "@fern-api/vellum";
+import { Vellum } from "vellum-ai";
 import * as core from "../../core";
 
 export const GenerateResult: core.serialization.ObjectSchema<serializers.GenerateResult.Raw, Vellum.GenerateResult> =
