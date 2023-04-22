@@ -19,7 +19,7 @@ yarn add vellum-ai
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-xbs4jx?file=app.ts)
 
 ```typescript
-import { VellumClient } from '@fern-api/vellum';
+import { VellumClient } from 'vellum-ai';
 
 const vellum = new VellumClient({
   apiKey: 'VELLUM_API_KEY',
