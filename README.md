@@ -1,6 +1,6 @@
 # Vellum Node Library
 
-[![npm shield](https://img.shields.io/npm/v/@fern-api/vellum)](https://www.npmjs.com/package/@fern-api/vellum)
+[![npm shield](https://img.shields.io/npm/v/vellum-ai)](https://www.npmjs.com/package/vellum-ai)
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)
 
 The Vellum Node.js library provides access to the Vellum API from JavaScript/TypeScript.
@@ -9,9 +9,9 @@ The Vellum Node.js library provides access to the Vellum API from JavaScript/Typ
 ## Installation
 
 ```
-npm install --save @fern-api/vellum
+npm install --save vellum-ai
 # or
-yarn add @fern-api/vellum
+yarn add vellum-ai
 ```
 
 ## Usage
