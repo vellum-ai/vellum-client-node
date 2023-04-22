@@ -39,7 +39,7 @@ Documents can be uploaded to Vellum via either the UI or this API. Once uploaded
 ```typescript
 import * as fs from 'fs';
 
-await vellum.document.upload(fs.createReadStream('/path/to/your/file.txt'), {
+await vellum.documents.upload(fs.createReadStream('/path/to/your/file.txt'), {
   addToIndexNames: ['<your-index-name>'],
   externalId: '<your-external-id>',
   label: 'Human-friendly label for your document',
