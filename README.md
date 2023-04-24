@@ -5,6 +5,9 @@
 
 The Vellum Node.js library provides access to the Vellum API from JavaScript/TypeScript.
 
+## API Docs
+You can find Vellum's complete API docs at [docs.vellum.ai](https://docs.vellum.ai).
+
 
 ## Installation
 
