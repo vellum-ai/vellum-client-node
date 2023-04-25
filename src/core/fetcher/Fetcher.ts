@@ -64,10 +64,6 @@ export const fetcher: FetchFunction = async (args) => {
             data: args.body,
             validateStatus: () => true,
             transformResponse: (response) => response,
-            timeout: args.timeoutMs ?? 60_000,
-            transitional: {
-                clarifyTimeoutError: true,
-            },
             withCredentials: args.withCredentials,
             adapter: args.adapter,
         });
