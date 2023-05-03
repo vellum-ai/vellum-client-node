@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const GenerateRequest: core.serialization.ObjectSchema<serializers.GenerateRequest.Raw, Vellum.GenerateRequest> =
@@ -11,6 +11,12 @@ export const GenerateRequest: core.serialization.ObjectSchema<serializers.Genera
         inputValues: core.serialization.property(
             "input_values",
             core.serialization.record(core.serialization.string(), core.serialization.unknown())
+        ),
+        chatHistory: core.serialization.property(
+            "chat_history",
+            core.serialization
+                .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessageRequest))
+                .optional()
         ),
         externalIds: core.serialization.property(
             "external_ids",
@@ -21,6 +27,7 @@ export const GenerateRequest: core.serialization.ObjectSchema<serializers.Genera
 export declare namespace GenerateRequest {
     interface Raw {
         input_values: Record<string, unknown>;
+        chat_history?: serializers.ChatMessageRequest.Raw[] | null;
         external_ids?: string[] | null;
     }
 }

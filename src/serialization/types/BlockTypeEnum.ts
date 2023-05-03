@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const BlockTypeEnum: core.serialization.Schema<serializers.BlockTypeEnum.Raw, Vellum.BlockTypeEnum> =

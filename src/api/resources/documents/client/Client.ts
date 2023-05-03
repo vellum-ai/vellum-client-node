@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../..";
 import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
@@ -88,15 +88,22 @@ export class Documents {
         request: Vellum.UploadDocumentBodyRequest
     ): Promise<Vellum.UploadDocumentResponse> {
         const _request = new FormData();
-        for (const _item of request.addToIndexNames) {
-            _request.append("add_to_index_names", _item);
+        if (request.addToIndexNames != null) {
+            for (const _item of request.addToIndexNames) {
+                _request.append("add_to_index_names", _item);
+            }
         }
 
-        _request.append("external_id", request.externalId);
+        if (request.externalId != null) {
+            _request.append("external_id", request.externalId);
+        }
+
         _request.append("label", request.label);
         _request.append("contents", contents);
-        for (const _item of request.keywords) {
-            _request.append("keywords", _item);
+        if (request.keywords != null) {
+            for (const _item of request.keywords) {
+                _request.append("keywords", _item);
+            }
         }
 
         const _response = await core.fetcher({

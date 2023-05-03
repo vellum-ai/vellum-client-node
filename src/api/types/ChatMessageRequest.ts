@@ -4,7 +4,7 @@
 
 import * as Vellum from "..";
 
-export interface PromptTemplateBlockData {
-    version: number;
-    blocks: Vellum.PromptTemplateBlock[];
+export interface ChatMessageRequest {
+    text: string;
+    role: Vellum.ChatMessageRole;
 }

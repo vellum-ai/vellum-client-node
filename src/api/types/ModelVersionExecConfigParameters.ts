@@ -5,7 +5,7 @@
 export interface ModelVersionExecConfigParameters {
     temperature: number;
     maxTokens: number;
-    stop: string[];
+    stop?: string[];
     topP: number;
     topK?: number;
     frequencyPenalty: number;

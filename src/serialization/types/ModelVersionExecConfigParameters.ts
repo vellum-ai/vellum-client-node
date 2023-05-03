@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const ModelVersionExecConfigParameters: core.serialization.ObjectSchema<
@@ -12,7 +12,7 @@ export const ModelVersionExecConfigParameters: core.serialization.ObjectSchema<
 > = core.serialization.object({
     temperature: core.serialization.number(),
     maxTokens: core.serialization.property("max_tokens", core.serialization.number()),
-    stop: core.serialization.list(core.serialization.string()),
+    stop: core.serialization.list(core.serialization.string()).optional(),
     topP: core.serialization.property("top_p", core.serialization.number()),
     topK: core.serialization.property("top_k", core.serialization.number().optional()),
     frequencyPenalty: core.serialization.property("frequency_penalty", core.serialization.number()),
@@ -27,7 +27,7 @@ export declare namespace ModelVersionExecConfigParameters {
     interface Raw {
         temperature: number;
         max_tokens: number;
-        stop: string[];
+        stop?: string[] | null;
         top_p: number;
         top_k?: number | null;
         frequency_penalty: number;

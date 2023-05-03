@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const SlimDocumentStatusEnum: core.serialization.Schema<

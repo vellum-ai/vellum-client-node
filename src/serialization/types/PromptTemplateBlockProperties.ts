@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const PromptTemplateBlockProperties: core.serialization.ObjectSchema<
@@ -12,7 +12,7 @@ export const PromptTemplateBlockProperties: core.serialization.ObjectSchema<
 > = core.serialization.object({
     chatRole: core.serialization.property(
         "chat_role",
-        core.serialization.lazy(async () => (await import("..")).ChatRoleEnum).optional()
+        core.serialization.lazy(async () => (await import("..")).ChatMessageRole).optional()
     ),
     text: core.serialization.string().optional(),
     variableName: core.serialization.property("variable_name", core.serialization.string().optional()),
@@ -23,7 +23,7 @@ export const PromptTemplateBlockProperties: core.serialization.ObjectSchema<
 
 export declare namespace PromptTemplateBlockProperties {
     interface Raw {
-        chat_role?: serializers.ChatRoleEnum.Raw | null;
+        chat_role?: serializers.ChatMessageRole.Raw | null;
         text?: string | null;
         variable_name?: string | null;
         blocks?: Record<string, unknown>[] | null;

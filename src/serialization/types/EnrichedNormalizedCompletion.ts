@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const EnrichedNormalizedCompletion: core.serialization.ObjectSchema<
@@ -15,7 +15,7 @@ export const EnrichedNormalizedCompletion: core.serialization.ObjectSchema<
     text: core.serialization.string(),
     finishReason: core.serialization.property(
         "finish_reason",
-        core.serialization.lazy(async () => (await import("..")).FinishReasonEnum)
+        core.serialization.lazy(async () => (await import("..")).FinishReasonEnum).optional()
     ),
     logprobs: core.serialization.lazyObject(async () => (await import("..")).NormalizedLogProbs).optional(),
     modelVersionId: core.serialization.property("model_version_id", core.serialization.string()),
@@ -26,7 +26,7 @@ export declare namespace EnrichedNormalizedCompletion {
         id: string;
         external_id?: string | null;
         text: string;
-        finish_reason: serializers.FinishReasonEnum.Raw;
+        finish_reason?: serializers.FinishReasonEnum.Raw | null;
         logprobs?: serializers.NormalizedLogProbs.Raw | null;
         model_version_id: string;
     }

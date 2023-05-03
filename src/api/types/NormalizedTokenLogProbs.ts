@@ -4,7 +4,7 @@
 
 export interface NormalizedTokenLogProbs {
     token: string;
-    logprob: number;
-    topLogprobs: Record<string, number>;
+    logprob?: number;
+    topLogprobs?: Record<string, number | undefined>;
     textOffset: number;
 }

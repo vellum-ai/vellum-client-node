@@ -1,5 +1,6 @@
 export * from "./BlockTypeEnum";
-export * from "./ChatRoleEnum";
+export * from "./ChatMessageRequest";
+export * from "./ChatMessageRole";
 export * from "./Document";
 export * from "./DocumentDocumentToDocumentIndex";
 export * from "./EnrichedNormalizedCompletion";

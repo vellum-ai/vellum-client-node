@@ -11,12 +11,7 @@
         "noUnusedParameters": true,
         "outDir": "dist",
         "rootDir": "src",
-        "baseUrl": "src",
-        "paths": {
-            "vellum-ai": [
-                "."
-            ]
-        }
+        "baseUrl": "src"
     },
     "include": [
         "src"

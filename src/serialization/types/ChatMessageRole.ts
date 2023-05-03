@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const ChatRoleEnum: core.serialization.Schema<serializers.ChatRoleEnum.Raw, Vellum.ChatRoleEnum> =
+export const ChatMessageRole: core.serialization.Schema<serializers.ChatMessageRole.Raw, Vellum.ChatMessageRole> =
     core.serialization.enum_(["SYSTEM", "ASSISTANT", "USER"]);
 
-export declare namespace ChatRoleEnum {
+export declare namespace ChatMessageRole {
     type Raw = "SYSTEM" | "ASSISTANT" | "USER";
 }

@@ -3,7 +3,7 @@
  */
 
 import * as serializers from "..";
-import { Vellum } from "vellum-ai";
+import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const NormalizedLogProbs: core.serialization.ObjectSchema<
@@ -13,12 +13,12 @@ export const NormalizedLogProbs: core.serialization.ObjectSchema<
     tokens: core.serialization.list(
         core.serialization.lazyObject(async () => (await import("..")).NormalizedTokenLogProbs)
     ),
-    likelihood: core.serialization.number(),
+    likelihood: core.serialization.number().optional(),
 });
 
 export declare namespace NormalizedLogProbs {
     interface Raw {
         tokens: serializers.NormalizedTokenLogProbs.Raw[];
-        likelihood: number;
+        likelihood?: number | null;
     }
 }
