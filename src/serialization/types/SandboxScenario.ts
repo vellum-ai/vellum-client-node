@@ -10,18 +10,18 @@ export const SandboxScenario: core.serialization.ObjectSchema<serializers.Sandbo
     core.serialization.object({
         label: core.serialization.string().optional(),
         inputs: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).SandboxInput)),
+        id: core.serialization.string(),
         metricInputParams: core.serialization.property(
             "metric_input_params",
-            core.serialization.lazyObject(async () => (await import("..")).SandboxMetricInputParams).optional()
+            core.serialization.lazyObject(async () => (await import("..")).SandboxMetricInputParams)
         ),
-        id: core.serialization.string(),
     });
 
 export declare namespace SandboxScenario {
     interface Raw {
         label?: string | null;
         inputs: serializers.SandboxInput.Raw[];
-        metric_input_params?: serializers.SandboxMetricInputParams.Raw | null;
         id: string;
+        metric_input_params: serializers.SandboxMetricInputParams.Raw;
     }
 }

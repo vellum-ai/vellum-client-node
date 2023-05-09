@@ -14,20 +14,20 @@ export const UpsertSandboxScenarioRequestRequest: core.serialization.Schema<
     inputs: core.serialization.list(
         core.serialization.lazyObject(async () => (await import("../../../..")).SandboxInputRequest)
     ),
+    scenarioId: core.serialization.property("scenario_id", core.serialization.string().optional()),
     metricInputParams: core.serialization.property(
         "metric_input_params",
         core.serialization
             .lazyObject(async () => (await import("../../../..")).SandboxMetricInputParamsRequest)
             .optional()
     ),
-    id: core.serialization.string().optional(),
 });
 
 export declare namespace UpsertSandboxScenarioRequestRequest {
     interface Raw {
         label?: string | null;
         inputs: serializers.SandboxInputRequest.Raw[];
+        scenario_id?: string | null;
         metric_input_params?: serializers.SandboxMetricInputParamsRequest.Raw | null;
-        id?: string | null;
     }
 }

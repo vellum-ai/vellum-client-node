@@ -14,8 +14,7 @@ export const PromptTemplateBlockProperties: core.serialization.ObjectSchema<
         "chat_role",
         core.serialization.lazy(async () => (await import("..")).ChatMessageRole).optional()
     ),
-    text: core.serialization.string().optional(),
-    variableName: core.serialization.property("variable_name", core.serialization.string().optional()),
+    template: core.serialization.string().optional(),
     blocks: core.serialization
         .list(core.serialization.record(core.serialization.string(), core.serialization.unknown()))
         .optional(),
@@ -24,8 +23,7 @@ export const PromptTemplateBlockProperties: core.serialization.ObjectSchema<
 export declare namespace PromptTemplateBlockProperties {
     interface Raw {
         chat_role?: serializers.ChatMessageRole.Raw | null;
-        text?: string | null;
-        variable_name?: string | null;
+        template?: string | null;
         blocks?: Record<string, unknown>[] | null;
     }
 }

@@ -6,7 +6,6 @@ import * as Vellum from "..";
 
 export interface PromptTemplateBlockProperties {
     chatRole?: Vellum.ChatMessageRole;
-    text?: string;
-    variableName?: string;
+    template?: string;
     blocks?: Record<string, unknown>[];
 }
