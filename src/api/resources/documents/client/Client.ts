@@ -22,7 +22,7 @@ export declare namespace Documents {
 export class Documents {
     constructor(protected readonly options: Documents.Options) {}
 
-    public async list(request: Vellum.ListDocumentsRequest = {}): Promise<Vellum.PaginatedSlimDocumentList> {
+    public async list(request: Vellum.DocumentsListRequest = {}): Promise<Vellum.PaginatedSlimDocumentList> {
         const { documentIndexId, limit, offset, ordering } = request;
         const _queryParams = new URLSearchParams();
         if (documentIndexId != null) {

@@ -5,6 +5,7 @@
 import * as Vellum from "..";
 
 export interface PromptTemplateBlock {
+    id: string;
     blockType: Vellum.BlockTypeEnum;
     properties: Vellum.PromptTemplateBlockProperties;
 }

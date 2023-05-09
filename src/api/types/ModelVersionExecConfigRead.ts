@@ -10,6 +10,7 @@ export interface ModelVersionExecConfigRead {
     /** Names of the template variables specified in the prompt template. */
     inputVariables: string[];
     /** The template used to generate prompts for this model version. */
-    promptTemplate: string;
+    promptTemplate?: string;
     promptBlockData?: Vellum.PromptTemplateBlockData;
+    promptSyntaxVersion: number;
 }

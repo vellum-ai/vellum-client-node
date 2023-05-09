@@ -10,6 +10,7 @@ export const PromptTemplateBlock: core.serialization.ObjectSchema<
     serializers.PromptTemplateBlock.Raw,
     Vellum.PromptTemplateBlock
 > = core.serialization.object({
+    id: core.serialization.string(),
     blockType: core.serialization.property(
         "block_type",
         core.serialization.lazy(async () => (await import("..")).BlockTypeEnum)
@@ -19,6 +20,7 @@ export const PromptTemplateBlock: core.serialization.ObjectSchema<
 
 export declare namespace PromptTemplateBlock {
     interface Raw {
+        id: string;
         block_type: serializers.BlockTypeEnum.Raw;
         properties: serializers.PromptTemplateBlockProperties.Raw;
     }

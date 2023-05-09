@@ -10,6 +10,7 @@ import * as serializers from "./serialization";
 import * as errors from "./errors";
 import { Documents } from "./api/resources/documents/client/Client";
 import { ModelVersions } from "./api/resources/modelVersions/client/Client";
+import { Sandboxes } from "./api/resources/sandboxes/client/Client";
 
 export declare namespace VellumClient {
     interface Options {
@@ -155,5 +156,11 @@ export class VellumClient {
 
     public get modelVersions(): ModelVersions {
         return (this._modelVersions ??= new ModelVersions(this.options));
+    }
+
+    protected _sandboxes: Sandboxes | undefined;
+
+    public get sandboxes(): Sandboxes {
+        return (this._sandboxes ??= new Sandboxes(this.options));
     }
 }

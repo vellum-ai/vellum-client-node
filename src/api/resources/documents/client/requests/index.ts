@@ -1,2 +1,2 @@
-export { ListDocumentsRequest } from "./ListDocumentsRequest";
+export { DocumentsListRequest } from "./DocumentsListRequest";
 export { UploadDocumentBodyRequest } from "./UploadDocumentBodyRequest";
