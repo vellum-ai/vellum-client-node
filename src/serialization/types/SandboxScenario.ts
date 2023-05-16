@@ -9,7 +9,7 @@ import * as core from "../../core";
 export const SandboxScenario: core.serialization.ObjectSchema<serializers.SandboxScenario.Raw, Vellum.SandboxScenario> =
     core.serialization.object({
         label: core.serialization.string().optional(),
-        inputs: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).SandboxInput)),
+        inputs: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ScenarioInput)),
         id: core.serialization.string(),
         metricInputParams: core.serialization.property(
             "metric_input_params",
@@ -20,7 +20,7 @@ export const SandboxScenario: core.serialization.ObjectSchema<serializers.Sandbo
 export declare namespace SandboxScenario {
     interface Raw {
         label?: string | null;
-        inputs: serializers.SandboxInput.Raw[];
+        inputs: serializers.ScenarioInput.Raw[];
         id: string;
         metric_input_params: serializers.SandboxMetricInputParams.Raw;
     }

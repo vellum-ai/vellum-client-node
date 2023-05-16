@@ -6,7 +6,7 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const SandboxInput: core.serialization.ObjectSchema<serializers.SandboxInput.Raw, Vellum.SandboxInput> =
+export const ScenarioInput: core.serialization.ObjectSchema<serializers.ScenarioInput.Raw, Vellum.ScenarioInput> =
     core.serialization.object({
         key: core.serialization.string(),
         type: core.serialization.lazy(async () => (await import("..")).TypeEnum).optional(),
@@ -19,7 +19,7 @@ export const SandboxInput: core.serialization.ObjectSchema<serializers.SandboxIn
         ),
     });
 
-export declare namespace SandboxInput {
+export declare namespace ScenarioInput {
     interface Raw {
         key: string;
         type?: serializers.TypeEnum.Raw | null;

@@ -6,9 +6,9 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const SandboxInputRequest: core.serialization.ObjectSchema<
-    serializers.SandboxInputRequest.Raw,
-    Vellum.SandboxInputRequest
+export const ScenarioInputRequest: core.serialization.ObjectSchema<
+    serializers.ScenarioInputRequest.Raw,
+    Vellum.ScenarioInputRequest
 > = core.serialization.object({
     key: core.serialization.string(),
     type: core.serialization.lazy(async () => (await import("..")).TypeEnum).optional(),
@@ -21,7 +21,7 @@ export const SandboxInputRequest: core.serialization.ObjectSchema<
     ),
 });
 
-export declare namespace SandboxInputRequest {
+export declare namespace ScenarioInputRequest {
     interface Raw {
         key: string;
         type?: serializers.TypeEnum.Raw | null;

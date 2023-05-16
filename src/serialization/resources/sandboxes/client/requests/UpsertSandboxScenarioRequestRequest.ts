@@ -12,7 +12,7 @@ export const UpsertSandboxScenarioRequestRequest: core.serialization.Schema<
 > = core.serialization.object({
     label: core.serialization.string().optional(),
     inputs: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../../../..")).SandboxInputRequest)
+        core.serialization.lazyObject(async () => (await import("../../../..")).ScenarioInputRequest)
     ),
     scenarioId: core.serialization.property("scenario_id", core.serialization.string().optional()),
     metricInputParams: core.serialization.property(
@@ -26,7 +26,7 @@ export const UpsertSandboxScenarioRequestRequest: core.serialization.Schema<
 export declare namespace UpsertSandboxScenarioRequestRequest {
     interface Raw {
         label?: string | null;
-        inputs: serializers.SandboxInputRequest.Raw[];
+        inputs: serializers.ScenarioInputRequest.Raw[];
         scenario_id?: string | null;
         metric_input_params?: serializers.SandboxMetricInputParamsRequest.Raw | null;
     }

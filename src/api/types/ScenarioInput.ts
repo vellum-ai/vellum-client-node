@@ -4,9 +4,9 @@
 
 import * as Vellum from "..";
 
-export interface SandboxInputRequest {
+export interface ScenarioInput {
     key: string;
     type?: Vellum.TypeEnum;
     value?: string;
-    chatHistory?: Vellum.ChatMessageRequest[];
+    chatHistory?: Vellum.ChatMessage[];
 }

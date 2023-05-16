@@ -16,6 +16,10 @@ export const SlimDocument: core.serialization.ObjectSchema<serializers.SlimDocum
             "processing_state",
             core.serialization.lazy(async () => (await import("..")).ProcessingStateEnum).optional()
         ),
+        processingFailureReason: core.serialization.property(
+            "processing_failure_reason",
+            core.serialization.lazy(async () => (await import("..")).ProcessingFailureReasonEnum).optional()
+        ),
         status: core.serialization.lazy(async () => (await import("..")).SlimDocumentStatusEnum).optional(),
         keywords: core.serialization.list(core.serialization.string()).optional(),
         documentToDocumentIndexes: core.serialization.property(
@@ -33,6 +37,7 @@ export declare namespace SlimDocument {
         last_uploaded_at: string;
         label: string;
         processing_state?: serializers.ProcessingStateEnum.Raw | null;
+        processing_failure_reason?: serializers.ProcessingFailureReasonEnum.Raw | null;
         status?: serializers.SlimDocumentStatusEnum.Raw | null;
         keywords?: string[] | null;
         document_to_document_indexes: serializers.DocumentDocumentToDocumentIndex.Raw[];

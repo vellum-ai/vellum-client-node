@@ -10,11 +10,11 @@ export const SandboxMetricInputParams: core.serialization.ObjectSchema<
     serializers.SandboxMetricInputParams.Raw,
     Vellum.SandboxMetricInputParams
 > = core.serialization.object({
-    params: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    params: core.serialization.lazyObject(async () => (await import("..")).EvaluationParams).optional(),
 });
 
 export declare namespace SandboxMetricInputParams {
     interface Raw {
-        params?: Record<string, unknown> | null;
+        params?: serializers.EvaluationParams.Raw | null;
     }
 }

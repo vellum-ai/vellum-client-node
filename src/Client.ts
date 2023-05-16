@@ -11,6 +11,7 @@ import * as errors from "./errors";
 import { Documents } from "./api/resources/documents/client/Client";
 import { ModelVersions } from "./api/resources/modelVersions/client/Client";
 import { Sandboxes } from "./api/resources/sandboxes/client/Client";
+import { TestSuites } from "./api/resources/testSuites/client/Client";
 
 export declare namespace VellumClient {
     interface Options {
@@ -162,5 +163,11 @@ export class VellumClient {
 
     public get sandboxes(): Sandboxes {
         return (this._sandboxes ??= new Sandboxes(this.options));
+    }
+
+    protected _testSuites: TestSuites | undefined;
+
+    public get testSuites(): TestSuites {
+        return (this._testSuites ??= new TestSuites(this.options));
     }
 }
