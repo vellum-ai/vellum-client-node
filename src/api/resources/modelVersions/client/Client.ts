@@ -19,6 +19,13 @@ export declare namespace ModelVersions {
 export class ModelVersions {
     constructor(protected readonly options: ModelVersions.Options) {}
 
+    /**
+     *
+     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
+     *
+     * Used to retrieve a model version given its ID.
+     *
+     */
     public async retrieve(id: string): Promise<Vellum.ModelVersionRead> {
         const _response = await core.fetcher({
             url: urlJoin(

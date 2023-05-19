@@ -23,6 +23,16 @@ export declare namespace VellumClient {
 export class VellumClient {
     constructor(protected readonly options: VellumClient.Options) {}
 
+    /**
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *
+     * Generate a completion using a previously defined deployment.
+     *
+     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
+     */
     public async generate(request: Vellum.GenerateBodyRequest): Promise<Vellum.GenerateResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -45,10 +55,19 @@ export class VellumClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -66,6 +85,55 @@ export class VellumClient {
         }
     }
 
+    /**
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
+     */
+    public async generateStream(
+        request: Vellum.GenerateBodyRequest,
+        cb: (data: Vellum.GenerateStreamResponse) => void,
+        opts?: Pick<core.StreamingFetcher.Args, "onError" | "onFinish" | "abortController" | "timeoutMs">
+    ): Promise<void> {
+        const _queue = new core.CallbackQueue();
+        await core.streamingFetcher({
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                "v1/generate-stream"
+            ),
+            method: "POST",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+            },
+            body: await serializers.GenerateBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            onData: _queue.wrap(async (data) => {
+                const parsed = await serializers.GenerateStreamResponse.parse(data, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                });
+                if (parsed.ok) {
+                    cb(parsed.value);
+                } else {
+                    opts?.onError?.(parsed.errors);
+                }
+            }),
+            onError: opts?.onError != null ? _queue.wrap(opts.onError) : undefined,
+            onFinish: opts?.onFinish != null ? _queue.wrap(opts.onFinish) : undefined,
+            abortController: opts?.abortController,
+        });
+    }
+
+    /**
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *
+     * Perform a search against a document index.
+     *
+     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
+     */
     public async search(request: Vellum.SearchRequestBodyRequest): Promise<Vellum.SearchResponse> {
         const _response = await core.fetcher({
             url: urlJoin((this.options.environment ?? environments.VellumEnvironment.Production).predict, "v1/search"),
@@ -85,10 +153,19 @@ export class VellumClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -106,6 +183,16 @@ export class VellumClient {
         }
     }
 
+    /**
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *
+     * Used to submit feedback regarding the quality of previously generated completions.
+     *
+     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
+     */
     public async submitCompletionActuals(request: Vellum.SubmitCompletionActualsRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -126,10 +213,19 @@ export class VellumClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

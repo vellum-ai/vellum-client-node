@@ -19,6 +19,17 @@ export declare namespace Sandboxes {
 export class Sandboxes {
     constructor(protected readonly options: Sandboxes.Options) {}
 
+    /**
+     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
+     *
+     * Upserts a new scenario for a sandbox, keying off of the optionally provided scenario id.
+     *
+     * If an id is provided and has a match, the scenario will be updated. If no id is provided or no match
+     * is found, a new scenario will be appended to the end.
+     *
+     * Note that a full replacement of the scenario is performed, so any fields not provided will be removed
+     * or overwritten with default values.
+     */
     public async upsertSandboxScenario(
         id: string,
         request: Vellum.UpsertSandboxScenarioRequestRequest

@@ -22,6 +22,13 @@ export declare namespace Documents {
 export class Documents {
     constructor(protected readonly options: Documents.Options) {}
 
+    /**
+     *
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *
+     * Used to list documents. Optionally filter on supported fields.
+     *
+     */
     public async list(request: Vellum.DocumentsListRequest = {}): Promise<Vellum.PaginatedSlimDocumentList> {
         const { documentIndexId, limit, offset, ordering } = request;
         const _queryParams = new URLSearchParams();
@@ -83,6 +90,16 @@ export class Documents {
         }
     }
 
+    /**
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *
+     * Upload a document to be indexed and used for search.
+     *
+     * **Note:** Uses a base url of `https://documents.vellum.ai`.
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
+     */
     public async upload(
         contents: File | fs.ReadStream,
         request: Vellum.UploadDocumentBodyRequest
@@ -128,10 +145,19 @@ export class Documents {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

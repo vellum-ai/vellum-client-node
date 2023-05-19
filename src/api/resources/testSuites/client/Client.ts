@@ -19,6 +19,17 @@ export declare namespace TestSuites {
 export class TestSuites {
     constructor(protected readonly options: TestSuites.Options) {}
 
+    /**
+     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
+     *
+     * Upserts a new test case for a test suite, keying off of the optionally provided test case id.
+     *
+     * If an id is provided and has a match, the test case will be updated. If no id is provided or no match
+     * is found, a new test case will be appended to the end.
+     *
+     * Note that a full replacement of the test case is performed, so any fields not provided will be removed
+     * or overwritten with default values.
+     */
     public async upsertTestSuiteTestCase(
         id: string,
         request: Vellum.TestSuiteTestCaseRequest

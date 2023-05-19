@@ -1,3 +1,4 @@
+export * from "./GenerateBodyRequest";
 export * from "./BlockTypeEnum";
 export * from "./ChatMessage";
 export * from "./ChatMessageRequest";
@@ -15,6 +16,9 @@ export * from "./GenerateResponse";
 export * from "./GenerateResult";
 export * from "./GenerateResultData";
 export * from "./GenerateResultError";
+export * from "./GenerateStreamResponse";
+export * from "./GenerateStreamResult";
+export * from "./GenerateStreamResultData";
 export * from "./IndexingStateEnum";
 export * from "./LogprobsEnum";
 export * from "./ModelTypeEnum";
