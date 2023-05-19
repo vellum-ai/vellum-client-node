@@ -8,6 +8,7 @@ import * as Vellum from "./api";
 import urlJoin from "url-join";
 import * as serializers from "./serialization";
 import * as errors from "./errors";
+import { Deployments } from "./api/resources/deployments/client/Client";
 import { Documents } from "./api/resources/documents/client/Client";
 import { ModelVersions } from "./api/resources/modelVersions/client/Client";
 import { Sandboxes } from "./api/resources/sandboxes/client/Client";
@@ -86,6 +87,11 @@ export class VellumClient {
     }
 
     /**
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *
+     * Generate a stream of completions using a previously defined deployment.
+     *
+     * **Note:** Uses a base url of `https://predict.vellum.ai`.
      * @throws {Vellum.BadRequestError}
      * @throws {Vellum.NotFoundError}
      * @throws {Vellum.InternalServerError}
@@ -241,6 +247,12 @@ export class VellumClient {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected _deployments: Deployments | undefined;
+
+    public get deployments(): Deployments {
+        return (this._deployments ??= new Deployments(this.options));
     }
 
     protected _documents: Documents | undefined;

@@ -1,3 +1,4 @@
+export * as deployments from "./deployments";
 export * as documents from "./documents";
 export * as modelVersions from "./modelVersions";
 export * as sandboxes from "./sandboxes";
