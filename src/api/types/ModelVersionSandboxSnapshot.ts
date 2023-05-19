@@ -6,7 +6,7 @@ export interface ModelVersionSandboxSnapshot {
     /** The ID of the sandbox snapshot. */
     id: string;
     /** The index of the prompt in the sandbox snapshot. */
-    promptIndex: number;
+    promptIndex?: number;
     /** The id of the prompt in the sandbox snapshot. */
     promptId?: string;
 }

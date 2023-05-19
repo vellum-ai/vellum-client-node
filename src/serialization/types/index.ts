@@ -1,4 +1,3 @@
-export * from "./GenerateBodyRequest";
 export * from "./BlockTypeEnum";
 export * from "./ChatMessage";
 export * from "./ChatMessageRequest";

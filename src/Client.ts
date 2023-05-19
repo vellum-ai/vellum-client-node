@@ -91,7 +91,7 @@ export class VellumClient {
      * @throws {Vellum.InternalServerError}
      */
     public async generateStream(
-        request: Vellum.GenerateBodyRequest,
+        request: Vellum.GenerateStreamBodyRequest,
         cb: (data: Vellum.GenerateStreamResponse) => void,
         opts?: Pick<core.StreamingFetcher.Args, "onError" | "onFinish" | "abortController" | "timeoutMs">
     ): Promise<void> {
@@ -105,7 +105,7 @@ export class VellumClient {
             headers: {
                 X_API_KEY: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.GenerateBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.GenerateStreamBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             onData: _queue.wrap(async (data) => {
                 const parsed = await serializers.GenerateStreamResponse.parse(data, {
                     unrecognizedObjectKeys: "passthrough",

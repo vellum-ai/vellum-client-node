@@ -11,14 +11,14 @@ export const ModelVersionSandboxSnapshot: core.serialization.ObjectSchema<
     Vellum.ModelVersionSandboxSnapshot
 > = core.serialization.object({
     id: core.serialization.string(),
-    promptIndex: core.serialization.property("prompt_index", core.serialization.number()),
+    promptIndex: core.serialization.property("prompt_index", core.serialization.number().optional()),
     promptId: core.serialization.property("prompt_id", core.serialization.string().optional()),
 });
 
 export declare namespace ModelVersionSandboxSnapshot {
     interface Raw {
         id: string;
-        prompt_index: number;
+        prompt_index?: number | null;
         prompt_id?: string | null;
     }
 }
