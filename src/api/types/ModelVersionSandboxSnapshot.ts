@@ -9,4 +9,5 @@ export interface ModelVersionSandboxSnapshot {
     promptIndex?: number;
     /** The id of the prompt in the sandbox snapshot. */
     promptId?: string;
+    sandboxId: string;
 }

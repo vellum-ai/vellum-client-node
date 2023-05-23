@@ -7,8 +7,8 @@ import * as Vellum from "..";
 export interface ModelVersionExecConfigRead {
     /** The generation parameters that are passed to the LLM provider at runtime. */
     parameters: Vellum.ModelVersionExecConfigParameters;
-    /** Names of the template variables specified in the prompt template. */
-    inputVariables: string[];
+    /** Names of the input variables specified in the prompt template. */
+    inputVariables: Vellum.PromptTemplateInputVariable[];
     /** The template used to generate prompts for this model version. */
     promptTemplate?: string;
     promptBlockData?: Vellum.PromptTemplateBlockData;

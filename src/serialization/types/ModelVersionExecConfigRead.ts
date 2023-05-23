@@ -13,7 +13,9 @@ export const ModelVersionExecConfigRead: core.serialization.ObjectSchema<
     parameters: core.serialization.lazyObject(async () => (await import("..")).ModelVersionExecConfigParameters),
     inputVariables: core.serialization.property(
         "input_variables",
-        core.serialization.list(core.serialization.string())
+        core.serialization.list(
+            core.serialization.lazyObject(async () => (await import("..")).PromptTemplateInputVariable)
+        )
     ),
     promptTemplate: core.serialization.property("prompt_template", core.serialization.string().optional()),
     promptBlockData: core.serialization.property(
@@ -26,7 +28,7 @@ export const ModelVersionExecConfigRead: core.serialization.ObjectSchema<
 export declare namespace ModelVersionExecConfigRead {
     interface Raw {
         parameters: serializers.ModelVersionExecConfigParameters.Raw;
-        input_variables: string[];
+        input_variables: serializers.PromptTemplateInputVariable.Raw[];
         prompt_template?: string | null;
         prompt_block_data?: serializers.PromptTemplateBlockData.Raw | null;
         prompt_syntax_version: number;
