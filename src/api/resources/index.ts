@@ -1,9 +1,11 @@
 export * as deployments from "./deployments";
 export * as documents from "./documents";
 export * as modelVersions from "./modelVersions";
+export * as registeredPrompts from "./registeredPrompts";
 export * as sandboxes from "./sandboxes";
 export * as testSuites from "./testSuites";
 export * from "./documents/client/requests";
 export * from "./modelVersions/client/requests";
+export * from "./registeredPrompts/client/requests";
 export * from "./sandboxes/client/requests";
 export * from "./testSuites/client/requests";

@@ -1,5 +1,7 @@
 export * as modelVersions from "./modelVersions";
 export * from "./modelVersions/client/requests";
+export * as registeredPrompts from "./registeredPrompts";
+export * from "./registeredPrompts/client/requests";
 export * as sandboxes from "./sandboxes";
 export * from "./sandboxes/client/requests";
 export * as testSuites from "./testSuites";

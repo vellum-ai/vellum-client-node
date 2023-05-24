@@ -11,6 +11,7 @@ import * as errors from "./errors";
 import { Deployments } from "./api/resources/deployments/client/Client";
 import { Documents } from "./api/resources/documents/client/Client";
 import { ModelVersions } from "./api/resources/modelVersions/client/Client";
+import { RegisteredPrompts } from "./api/resources/registeredPrompts/client/Client";
 import { Sandboxes } from "./api/resources/sandboxes/client/Client";
 import { TestSuites } from "./api/resources/testSuites/client/Client";
 
@@ -265,6 +266,12 @@ export class VellumClient {
 
     public get modelVersions(): ModelVersions {
         return (this._modelVersions ??= new ModelVersions(this.options));
+    }
+
+    protected _registeredPrompts: RegisteredPrompts | undefined;
+
+    public get registeredPrompts(): RegisteredPrompts {
+        return (this._registeredPrompts ??= new RegisteredPrompts(this.options));
     }
 
     protected _sandboxes: Sandboxes | undefined;
