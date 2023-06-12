@@ -9,6 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "./serialization";
 import * as errors from "./errors";
 import { Deployments } from "./api/resources/deployments/client/Client";
+import { DocumentIndexes } from "./api/resources/documentIndexes/client/Client";
 import { Documents } from "./api/resources/documents/client/Client";
 import { ModelVersions } from "./api/resources/modelVersions/client/Client";
 import { RegisteredPrompts } from "./api/resources/registeredPrompts/client/Client";
@@ -254,6 +255,12 @@ export class VellumClient {
 
     public get deployments(): Deployments {
         return (this._deployments ??= new Deployments(this.options));
+    }
+
+    protected _documentIndexes: DocumentIndexes | undefined;
+
+    public get documentIndexes(): DocumentIndexes {
+        return (this._documentIndexes ??= new DocumentIndexes(this.options));
     }
 
     protected _documents: Documents | undefined;

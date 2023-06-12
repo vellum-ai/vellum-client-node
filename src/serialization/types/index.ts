@@ -6,6 +6,8 @@ export * from "./DeploymentRead";
 export * from "./DeploymentReadStatusEnum";
 export * from "./Document";
 export * from "./DocumentDocumentToDocumentIndex";
+export * from "./DocumentIndexRead";
+export * from "./DocumentIndexStatus";
 export * from "./EnrichedNormalizedCompletion";
 export * from "./EnvironmentEnum";
 export * from "./EvaluationParams";
