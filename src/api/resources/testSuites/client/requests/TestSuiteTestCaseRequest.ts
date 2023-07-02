@@ -5,7 +5,7 @@
 import * as Vellum from "../../../..";
 
 export interface TestSuiteTestCaseRequest {
-    /** The id of the test case to update. If none is provided, an id will be generated and a new test case will be appended. */
+    /** The id of the test case to update. If none is provided, an id will be generated and a new test case will be appended. <span style="white-space: nowrap">`non-empty`</span> */
     testCaseId?: string;
     /** A human-friendly label for the test case. */
     label?: string;

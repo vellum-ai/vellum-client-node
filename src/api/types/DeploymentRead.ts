@@ -7,9 +7,9 @@ import * as Vellum from "..";
 export interface DeploymentRead {
     id: string;
     created: string;
-    /** A human-readable label for the deployment */
+    /** A human-readable label for the deployment <span style="white-space: nowrap">`<= 150 characters`</span> */
     label: string;
-    /** A name that uniquely identifies this deployment within its workspace */
+    /** A name that uniquely identifies this deployment within its workspace <span style="white-space: nowrap">`<= 150 characters`</span> */
     name: string;
     /** The current status of the deployment */
     status?: Vellum.DeploymentReadStatusEnum;

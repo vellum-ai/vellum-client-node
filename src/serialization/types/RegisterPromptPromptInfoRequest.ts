@@ -13,20 +13,20 @@ export const RegisterPromptPromptInfoRequest: core.serialization.ObjectSchema<
     promptSyntaxVersion: core.serialization.property("prompt_syntax_version", core.serialization.number().optional()),
     promptBlockData: core.serialization.property(
         "prompt_block_data",
-        core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlockDataRequest).optional()
+        core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlockDataRequest)
     ),
     inputVariables: core.serialization.property(
         "input_variables",
-        core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("..")).PromptTemplateInputVariableRequest))
-            .optional()
+        core.serialization.list(
+            core.serialization.lazyObject(async () => (await import("..")).PromptTemplateInputVariableRequest)
+        )
     ),
 });
 
 export declare namespace RegisterPromptPromptInfoRequest {
     interface Raw {
         prompt_syntax_version?: number | null;
-        prompt_block_data?: serializers.PromptTemplateBlockDataRequest.Raw | null;
-        input_variables?: serializers.PromptTemplateInputVariableRequest.Raw[] | null;
+        prompt_block_data: serializers.PromptTemplateBlockDataRequest.Raw;
+        input_variables: serializers.PromptTemplateInputVariableRequest.Raw[];
     }
 }

@@ -3,6 +3,6 @@
  */
 
 export interface PromptTemplateInputVariableRequest {
-    /** The name of the input variable. */
+    /** The name of the input variable. <span style="white-space: nowrap">`non-empty`</span> */
     key: string;
 }

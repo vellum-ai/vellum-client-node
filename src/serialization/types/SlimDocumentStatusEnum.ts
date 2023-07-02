@@ -9,7 +9,7 @@ import * as core from "../../core";
 export const SlimDocumentStatusEnum: core.serialization.Schema<
     serializers.SlimDocumentStatusEnum.Raw,
     Vellum.SlimDocumentStatusEnum
-> = core.serialization.enum_(["ACTIVE"]);
+> = core.serialization.stringLiteral("ACTIVE");
 
 export declare namespace SlimDocumentStatusEnum {
     type Raw = "ACTIVE";

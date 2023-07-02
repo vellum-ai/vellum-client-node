@@ -5,6 +5,7 @@
 import * as Vellum from "..";
 
 export interface ScenarioInputRequest {
+    /** <span style="white-space: nowrap">`non-empty`</span> */
     key: string;
     type?: Vellum.TypeEnum;
     value?: string;

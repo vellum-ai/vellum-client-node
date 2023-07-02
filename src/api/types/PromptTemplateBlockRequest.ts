@@ -5,6 +5,7 @@
 import * as Vellum from "..";
 
 export interface PromptTemplateBlockRequest {
+    /** <span style="white-space: nowrap">`non-empty`</span> */
     id: string;
     blockType: Vellum.BlockTypeEnum;
     properties: Vellum.PromptTemplateBlockPropertiesRequest;

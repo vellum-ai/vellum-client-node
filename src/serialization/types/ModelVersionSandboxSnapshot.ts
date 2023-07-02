@@ -13,7 +13,7 @@ export const ModelVersionSandboxSnapshot: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     promptIndex: core.serialization.property("prompt_index", core.serialization.number().optional()),
     promptId: core.serialization.property("prompt_id", core.serialization.string().optional()),
-    sandboxId: core.serialization.property("sandbox_id", core.serialization.string()),
+    sandboxId: core.serialization.property("sandbox_id", core.serialization.string().optional()),
 });
 
 export declare namespace ModelVersionSandboxSnapshot {
@@ -21,6 +21,6 @@ export declare namespace ModelVersionSandboxSnapshot {
         id: string;
         prompt_index?: number | null;
         prompt_id?: string | null;
-        sandbox_id: string;
+        sandbox_id?: string | null;
     }
 }

@@ -75,4 +75,47 @@ export class TestSuites {
                 });
         }
     }
+
+    /**
+     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
+     *
+     * Deletes an existing test case for a test suite, keying off of the test case id.
+     */
+    public async deleteTestSuiteTestCase(id: string, testCaseId: string): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                `v1/test-suites/${id}/test-cases/${testCaseId}`
+            ),
+            method: "DELETE",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+            },
+            contentType: "application/json",
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
 }

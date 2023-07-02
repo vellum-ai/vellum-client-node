@@ -11,7 +11,7 @@ export interface SlimDocument {
     externalId?: string;
     /** A timestamp representing when this document was most recently uploaded. */
     lastUploadedAt: string;
-    /** Human-friendly name for this document. */
+    /** Human-friendly name for this document. <span style="white-space: nowrap">`<= 1000 characters`</span> */
     label: string;
     /** An enum value representing where this document is along its processing lifecycle. Note that this is different than its indexing lifecycle. */
     processingState?: Vellum.ProcessingStateEnum;

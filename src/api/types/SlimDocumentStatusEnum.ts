@@ -3,7 +3,3 @@
  */
 
 export type SlimDocumentStatusEnum = "ACTIVE";
-
-export const SlimDocumentStatusEnum = {
-    Active: "ACTIVE",
-} as const;

@@ -3,7 +3,3 @@
  */
 
 export type ProcessingFailureReasonEnum = "EXCEEDED_CHARACTER_LIMIT";
-
-export const ProcessingFailureReasonEnum = {
-    ExceededCharacterLimit: "EXCEEDED_CHARACTER_LIMIT",
-} as const;

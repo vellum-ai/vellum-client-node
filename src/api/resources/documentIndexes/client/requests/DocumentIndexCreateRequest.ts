@@ -5,13 +5,14 @@
 import * as Vellum from "../../../..";
 
 export interface DocumentIndexCreateRequest {
-    /** A human-readable label for the document index. */
+    /** A human-readable label for the document index <span style="white-space: nowrap">`non-empty`</span> <span style="white-space: nowrap">`<= 150 characters`</span> */
     label: string;
-    /** A name that uniquely identifies this index within its workspace */
+    /** A name that uniquely identifies this index within its workspace <span style="white-space: nowrap">`non-empty`</span> <span style="white-space: nowrap">`<= 150 characters`</span> */
     name: string;
     /** The current status of the document index */
     status?: Vellum.DocumentIndexStatus;
-    /** Configuration representing how documents should be indexed. */
+    /** Configuration representing how documents should be indexed */
     indexingConfig: Record<string, unknown>;
+    /** Optionally specify the id of a document index from which you'd like to copy and re-index its documents into this newly created index */
     copyDocumentsFromIndexId?: string;
 }

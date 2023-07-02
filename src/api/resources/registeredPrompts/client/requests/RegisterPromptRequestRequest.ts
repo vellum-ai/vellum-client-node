@@ -5,15 +5,15 @@
 import * as Vellum from "../../../..";
 
 export interface RegisterPromptRequestRequest {
-    /** A human-friendly label for corresponding entities created in Vellum. */
+    /** A human-friendly label for corresponding entities created in Vellum. <span style="white-space: nowrap">`non-empty`</span> */
     label: string;
-    /** A uniquely-identifying name for corresponding entities created in Vellum. */
+    /** A uniquely-identifying name for corresponding entities created in Vellum. <span style="white-space: nowrap">`non-empty`</span> */
     name: string;
     /** Information about how to execute the prompt template. */
     prompt: Vellum.RegisterPromptPromptInfoRequest;
     /** The initial LLM provider to use for this prompt */
     provider: Vellum.ProviderEnum;
-    /** The initial model to use for this prompt */
+    /** The initial model to use for this prompt <span style="white-space: nowrap">`non-empty`</span> */
     model: string;
     /** The initial model parameters to use for  this prompt */
     parameters: Vellum.RegisterPromptModelParametersRequest;

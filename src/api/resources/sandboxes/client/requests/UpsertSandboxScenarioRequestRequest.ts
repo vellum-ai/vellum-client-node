@@ -8,7 +8,7 @@ export interface UpsertSandboxScenarioRequestRequest {
     label?: string;
     /** The inputs for the scenario */
     inputs: Vellum.ScenarioInputRequest[];
-    /** The id of the scenario to update. If none is provided, an id will be generated and a new scenario will be appended. */
+    /** The id of the scenario to update. If none is provided, an id will be generated and a new scenario will be appended. <span style="white-space: nowrap">`non-empty`</span> */
     scenarioId?: string;
     metricInputParams?: Vellum.SandboxMetricInputParamsRequest;
 }
