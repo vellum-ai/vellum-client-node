@@ -13,11 +13,26 @@ export interface SlimDocument {
     lastUploadedAt: string;
     /** Human-friendly name for this document. <span style="white-space: nowrap">`<= 1000 characters`</span> */
     label: string;
-    /** An enum value representing where this document is along its processing lifecycle. Note that this is different than its indexing lifecycle. */
+    /**
+     * An enum value representing where this document is along its processing lifecycle. Note that this is different than its indexing lifecycle.
+     *
+     * * `QUEUED` - Queued
+     * * `PROCESSING` - Processing
+     * * `PROCESSED` - Processed
+     * * `FAILED` - Failed
+     */
     processingState?: Vellum.ProcessingStateEnum;
-    /** An enum value representing why the document could not be processed. Is null unless processing_state is FAILED. */
+    /**
+     * An enum value representing why the document could not be processed. Is null unless processing_state is FAILED.
+     *
+     * * `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
+     */
     processingFailureReason?: Vellum.ProcessingFailureReasonEnum;
-    /** The document's current status. */
+    /**
+     * The document's current status.
+     *
+     * * `ACTIVE` - Active
+     */
     status?: Vellum.SlimDocumentStatusEnum;
     /** A list of keywords associated with this document. Originally provided when uploading the document. */
     keywords?: string[];

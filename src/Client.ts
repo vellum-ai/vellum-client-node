@@ -106,7 +106,7 @@ export class VellumClient {
         const _queue = new core.CallbackQueue();
         await core.streamingFetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
                 "v1/generate-stream"
             ),
             method: "POST",

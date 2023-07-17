@@ -6,9 +6,9 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const ModelVersionExecConfigRead: core.serialization.ObjectSchema<
-    serializers.ModelVersionExecConfigRead.Raw,
-    Vellum.ModelVersionExecConfigRead
+export const ModelVersionExecConfig: core.serialization.ObjectSchema<
+    serializers.ModelVersionExecConfig.Raw,
+    Vellum.ModelVersionExecConfig
 > = core.serialization.object({
     parameters: core.serialization.lazyObject(async () => (await import("..")).ModelVersionExecConfigParameters),
     inputVariables: core.serialization.property(
@@ -22,15 +22,15 @@ export const ModelVersionExecConfigRead: core.serialization.ObjectSchema<
         "prompt_block_data",
         core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlockData).optional()
     ),
-    promptSyntaxVersion: core.serialization.property("prompt_syntax_version", core.serialization.number()),
+    promptSyntaxVersion: core.serialization.property("prompt_syntax_version", core.serialization.number().optional()),
 });
 
-export declare namespace ModelVersionExecConfigRead {
+export declare namespace ModelVersionExecConfig {
     interface Raw {
         parameters: serializers.ModelVersionExecConfigParameters.Raw;
         input_variables: serializers.PromptTemplateInputVariable.Raw[];
         prompt_template?: string | null;
         prompt_block_data?: serializers.PromptTemplateBlockData.Raw | null;
-        prompt_syntax_version: number;
+        prompt_syntax_version?: number | null;
     }
 }

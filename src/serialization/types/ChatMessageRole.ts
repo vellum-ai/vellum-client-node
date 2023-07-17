@@ -7,8 +7,8 @@ import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const ChatMessageRole: core.serialization.Schema<serializers.ChatMessageRole.Raw, Vellum.ChatMessageRole> =
-    core.serialization.enum_(["SYSTEM", "ASSISTANT", "USER"]);
+    core.serialization.enum_(["SYSTEM", "ASSISTANT", "USER", "FUNCTION"]);
 
 export declare namespace ChatMessageRole {
-    type Raw = "SYSTEM" | "ASSISTANT" | "USER";
+    type Raw = "SYSTEM" | "ASSISTANT" | "USER" | "FUNCTION";
 }

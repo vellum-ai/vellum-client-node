@@ -13,6 +13,7 @@ export const DocumentIndexCreateRequest: core.serialization.Schema<
     label: core.serialization.string(),
     name: core.serialization.string(),
     status: core.serialization.lazy(async () => (await import("../../../..")).DocumentIndexStatus).optional(),
+    environment: core.serialization.lazy(async () => (await import("../../../..")).EnvironmentEnum).optional(),
     indexingConfig: core.serialization.property(
         "indexing_config",
         core.serialization.record(core.serialization.string(), core.serialization.unknown())
@@ -28,6 +29,7 @@ export declare namespace DocumentIndexCreateRequest {
         label: string;
         name: string;
         status?: serializers.DocumentIndexStatus.Raw | null;
+        environment?: serializers.EnvironmentEnum.Raw | null;
         indexing_config: Record<string, unknown>;
         copy_documents_from_index_id?: string | null;
     }

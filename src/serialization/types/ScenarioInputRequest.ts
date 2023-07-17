@@ -11,7 +11,7 @@ export const ScenarioInputRequest: core.serialization.ObjectSchema<
     Vellum.ScenarioInputRequest
 > = core.serialization.object({
     key: core.serialization.string(),
-    type: core.serialization.lazy(async () => (await import("..")).TypeEnum).optional(),
+    type: core.serialization.lazy(async () => (await import("..")).ScenarioInputTypeEnum).optional(),
     value: core.serialization.string().optional(),
     chatHistory: core.serialization.property(
         "chat_history",
@@ -24,7 +24,7 @@ export const ScenarioInputRequest: core.serialization.ObjectSchema<
 export declare namespace ScenarioInputRequest {
     interface Raw {
         key: string;
-        type?: serializers.TypeEnum.Raw | null;
+        type?: serializers.ScenarioInputTypeEnum.Raw | null;
         value?: string | null;
         chat_history?: serializers.ChatMessageRequest.Raw[] | null;
     }

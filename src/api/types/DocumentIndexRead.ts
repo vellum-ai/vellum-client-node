@@ -11,8 +11,21 @@ export interface DocumentIndexRead {
     label: string;
     /** A name that uniquely identifies this index within its workspace <span style="white-space: nowrap">`<= 150 characters`</span> */
     name: string;
-    /** The current status of the document index */
+    /**
+     * The current status of the document index
+     *
+     * * `ACTIVE` - Active
+     * * `ARCHIVED` - Archived
+     */
     status?: Vellum.DocumentIndexStatus;
+    /**
+     * The environment this document index is used in
+     *
+     * * `DEVELOPMENT` - Development
+     * * `STAGING` - Staging
+     * * `PRODUCTION` - Production
+     */
+    environment?: Vellum.EnvironmentEnum;
     /** Configuration representing how documents should be indexed */
     indexingConfig: Record<string, unknown>;
 }

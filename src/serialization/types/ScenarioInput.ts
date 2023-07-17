@@ -9,7 +9,7 @@ import * as core from "../../core";
 export const ScenarioInput: core.serialization.ObjectSchema<serializers.ScenarioInput.Raw, Vellum.ScenarioInput> =
     core.serialization.object({
         key: core.serialization.string(),
-        type: core.serialization.lazy(async () => (await import("..")).TypeEnum).optional(),
+        type: core.serialization.lazy(async () => (await import("..")).ScenarioInputTypeEnum).optional(),
         value: core.serialization.string().optional(),
         chatHistory: core.serialization.property(
             "chat_history",
@@ -22,7 +22,7 @@ export const ScenarioInput: core.serialization.ObjectSchema<serializers.Scenario
 export declare namespace ScenarioInput {
     interface Raw {
         key: string;
-        type?: serializers.TypeEnum.Raw | null;
+        type?: serializers.ScenarioInputTypeEnum.Raw | null;
         value?: string | null;
         chat_history?: serializers.ChatMessage.Raw[] | null;
     }

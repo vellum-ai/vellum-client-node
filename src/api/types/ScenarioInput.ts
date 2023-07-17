@@ -6,7 +6,7 @@ import * as Vellum from "..";
 
 export interface ScenarioInput {
     key: string;
-    type?: Vellum.TypeEnum;
+    type?: Vellum.ScenarioInputTypeEnum;
     value?: string;
     chatHistory?: Vellum.ChatMessage[];
 }

@@ -9,6 +9,14 @@ export interface DocumentDocumentToDocumentIndex {
     id: string;
     /** Vellum-generated ID that uniquely identifies the index this document is included in. */
     documentIndexId: string;
-    /** An enum value representing where this document is along its indexing lifecycle for this index. */
+    /**
+     * An enum value representing where this document is along its indexing lifecycle for this index.
+     *
+     * * `AWAITING_PROCESSING` - Awaiting Processing
+     * * `QUEUED` - Queued
+     * * `INDEXING` - Indexing
+     * * `INDEXED` - Indexed
+     * * `FAILED` - Failed
+     */
     indexingState?: Vellum.IndexingStateEnum;
 }

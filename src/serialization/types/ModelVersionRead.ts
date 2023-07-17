@@ -25,7 +25,7 @@ export const ModelVersionRead: core.serialization.ObjectSchema<
     ),
     execConfig: core.serialization.property(
         "exec_config",
-        core.serialization.lazyObject(async () => (await import("..")).ModelVersionExecConfigRead)
+        core.serialization.lazyObject(async () => (await import("..")).ModelVersionExecConfig)
     ),
     status: core.serialization.lazy(async () => (await import("..")).ModelVersionReadStatusEnum).optional(),
 });
@@ -39,7 +39,7 @@ export declare namespace ModelVersionRead {
         provider: serializers.ProviderEnum.Raw;
         external_id: string;
         build_config: serializers.ModelVersionBuildConfig.Raw;
-        exec_config: serializers.ModelVersionExecConfigRead.Raw;
+        exec_config: serializers.ModelVersionExecConfig.Raw;
         status?: serializers.ModelVersionReadStatusEnum.Raw | null;
     }
 }

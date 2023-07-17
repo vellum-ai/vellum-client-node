@@ -11,15 +11,30 @@ export interface ModelVersionRead {
     created: string;
     /** Human-friendly name for this model version. <span style="white-space: nowrap">`<= 150 characters`</span> */
     label: string;
-    /** The type of task this model is used for. */
+    /**
+     * The type of task this model is used for.
+     *
+     * * `GENERATE` - Generate
+     * * `CLASSIFY` - Classify
+     */
     modelType: Vellum.ModelTypeEnum;
-    /** Which LLM provider this model version is associated with. */
+    /**
+     * Which LLM provider this model version is associated with.
+     *
+     * * `ANTHROPIC` - Anthropic
+     * * `COHERE` - Cohere
+     * * `GOOGLE` - Google
+     * * `HOSTED` - Hosted
+     * * `MOSAICML` - MosaicML
+     * * `OPENAI` - OpenAI
+     * * `PYQ` - Pyq
+     */
     provider: Vellum.ProviderEnum;
     /** The unique id of this model version as it exists in the above provider's system. <span style="white-space: nowrap">`<= 250 characters`</span> */
     externalId: string;
     /** Configuration used to build this model version. */
     buildConfig: Vellum.ModelVersionBuildConfig;
     /** Configuration used to execute this model version. */
-    execConfig: Vellum.ModelVersionExecConfigRead;
+    execConfig: Vellum.ModelVersionExecConfig;
     status?: Vellum.ModelVersionReadStatusEnum;
 }

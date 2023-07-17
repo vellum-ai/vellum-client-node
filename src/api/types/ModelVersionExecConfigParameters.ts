@@ -5,10 +5,10 @@
 export interface ModelVersionExecConfigParameters {
     temperature: number;
     maxTokens: number;
-    stop?: string[];
     topP: number;
-    topK?: number;
     frequencyPenalty: number;
     presencePenalty: number;
     logitBias?: Record<string, number | undefined>;
+    stop?: string[];
+    topK?: number;
 }

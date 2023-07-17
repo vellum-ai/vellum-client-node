@@ -7,8 +7,8 @@ import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const BlockTypeEnum: core.serialization.Schema<serializers.BlockTypeEnum.Raw, Vellum.BlockTypeEnum> =
-    core.serialization.enum_(["CHAT_MESSAGE", "CHAT_HISTORY", "JINJA"]);
+    core.serialization.enum_(["CHAT_MESSAGE", "CHAT_HISTORY", "JINJA", "FUNCTION_DEFINITION"]);
 
 export declare namespace BlockTypeEnum {
-    type Raw = "CHAT_MESSAGE" | "CHAT_HISTORY" | "JINJA";
+    type Raw = "CHAT_MESSAGE" | "CHAT_HISTORY" | "JINJA" | "FUNCTION_DEFINITION";
 }

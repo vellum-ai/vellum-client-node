@@ -11,11 +11,28 @@ export interface DeploymentRead {
     label: string;
     /** A name that uniquely identifies this deployment within its workspace <span style="white-space: nowrap">`<= 150 characters`</span> */
     name: string;
-    /** The current status of the deployment */
+    /**
+     * The current status of the deployment
+     *
+     * * `ACTIVE` - Active
+     * * `INACTIVE` - Inactive
+     * * `ARCHIVED` - Archived
+     */
     status?: Vellum.DeploymentReadStatusEnum;
-    /** The environment this deployment is used in */
+    /**
+     * The environment this deployment is used in
+     *
+     * * `DEVELOPMENT` - Development
+     * * `STAGING` - Staging
+     * * `PRODUCTION` - Production
+     */
     environment?: Vellum.EnvironmentEnum;
-    /** The type of model this deployment serves */
+    /**
+     * The type of model this deployment serves
+     *
+     * * `GENERATE` - Generate
+     * * `CLASSIFY` - Classify
+     */
     modelType: Vellum.ModelTypeEnum;
     activeModelVersionIds: string[];
     lastDeployedOn: string;

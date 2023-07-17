@@ -8,5 +8,11 @@ export interface PromptTemplateBlockPropertiesRequest {
     chatRole?: Vellum.ChatMessageRole;
     chatMessageUnterminated?: boolean;
     template?: string;
-    blocks?: Record<string, unknown>[];
+    templateType?: Vellum.ContentType;
+    /** <span style="white-space: nowrap">`non-empty`</span> */
+    functionName?: string;
+    /** <span style="white-space: nowrap">`non-empty`</span> */
+    functionDescription?: string;
+    functionParameters?: Record<string, unknown>;
+    blocks?: Vellum.PromptTemplateBlockRequest[];
 }

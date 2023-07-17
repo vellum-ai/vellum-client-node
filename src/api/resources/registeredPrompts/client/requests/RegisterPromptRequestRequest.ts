@@ -11,7 +11,17 @@ export interface RegisterPromptRequestRequest {
     name: string;
     /** Information about how to execute the prompt template. */
     prompt: Vellum.RegisterPromptPromptInfoRequest;
-    /** The initial LLM provider to use for this prompt */
+    /**
+     * The initial LLM provider to use for this prompt
+     *
+     * * `ANTHROPIC` - Anthropic
+     * * `COHERE` - Cohere
+     * * `GOOGLE` - Google
+     * * `HOSTED` - Hosted
+     * * `MOSAICML` - MosaicML
+     * * `OPENAI` - OpenAI
+     * * `PYQ` - Pyq
+     */
     provider: Vellum.ProviderEnum;
     /** The initial model to use for this prompt <span style="white-space: nowrap">`non-empty`</span> */
     model: string;
