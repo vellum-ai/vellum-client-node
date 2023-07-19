@@ -27,12 +27,54 @@ export class VellumClient {
     constructor(protected readonly options: VellumClient.Options) {}
 
     /**
+     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
+     *
+     * Executes a deployed Workflow and streams back its results.
+     */
+    public async executeWorkflowStream(
+        request: Vellum.ExecuteWorkflowStreamRequest,
+        cb: (data: Vellum.WorkflowStreamEvent) => void,
+        opts?: Pick<core.StreamingFetcher.Args, "onError" | "onFinish" | "abortController" | "timeoutMs">
+    ): Promise<void> {
+        const _queue = new core.CallbackQueue();
+        await core.streamingFetcher({
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
+                "v1/execute-workflow-stream"
+            ),
+            method: "POST",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+            },
+            body: await serializers.ExecuteWorkflowStreamRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            onData: _queue.wrap(async (data) => {
+                const parsed = await serializers.WorkflowStreamEvent.parse(data, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                });
+                if (parsed.ok) {
+                    cb(parsed.value);
+                } else {
+                    opts?.onError?.(parsed.errors);
+                }
+            }),
+            onError: opts?.onError != null ? _queue.wrap(opts.onError) : undefined,
+            onFinish: opts?.onFinish != null ? _queue.wrap(opts.onFinish) : undefined,
+            abortController: opts?.abortController,
+        });
+    }
+
+    /**
      * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
      *
      * Generate a completion using a previously defined deployment.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
      * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.ForbiddenError}
      * @throws {Vellum.NotFoundError}
      * @throws {Vellum.InternalServerError}
      */
@@ -61,6 +103,14 @@ export class VellumClient {
             switch (_response.error.statusCode) {
                 case 400:
                     throw new Vellum.BadRequestError(_response.error.body);
+                case 403:
+                    throw new Vellum.ForbiddenError(
+                        await serializers.GenerateErrorResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
                 case 404:
                     throw new Vellum.NotFoundError(_response.error.body);
                 case 500:
@@ -95,6 +145,7 @@ export class VellumClient {
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
      * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.ForbiddenError}
      * @throws {Vellum.NotFoundError}
      * @throws {Vellum.InternalServerError}
      */
