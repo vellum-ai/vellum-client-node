@@ -10,15 +10,15 @@ export type TerminalNodeResultOutput =
     | Vellum.TerminalNodeResultOutput.ChatHistory;
 
 export declare namespace TerminalNodeResultOutput {
-    interface String extends Vellum.ConstantValueStringVariable {
+    interface String extends Vellum.TerminalNodeStringResult {
         type: "STRING";
     }
 
-    interface Json extends Vellum.ConstantValueJsonVariable {
+    interface Json extends Vellum.TerminalNodeJsonResult {
         type: "JSON";
     }
 
-    interface ChatHistory extends Vellum.ConstantValueChatHistoryVariable {
+    interface ChatHistory extends Vellum.TerminalNodeChatHistoryResult {
         type: "CHAT_HISTORY";
     }
 }

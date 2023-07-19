@@ -11,9 +11,9 @@ export const TerminalNodeResultOutput: core.serialization.Schema<
     Vellum.TerminalNodeResultOutput
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).ConstantValueStringVariable),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).ConstantValueJsonVariable),
-        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).ConstantValueChatHistoryVariable),
+        STRING: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeStringResult),
+        JSON: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeJsonResult),
+        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeChatHistoryResult),
     })
     .transform<Vellum.TerminalNodeResultOutput>({
         transform: (value) => value,
@@ -23,15 +23,15 @@ export const TerminalNodeResultOutput: core.serialization.Schema<
 export declare namespace TerminalNodeResultOutput {
     type Raw = TerminalNodeResultOutput.String | TerminalNodeResultOutput.Json | TerminalNodeResultOutput.ChatHistory;
 
-    interface String extends serializers.ConstantValueStringVariable.Raw {
+    interface String extends serializers.TerminalNodeStringResult.Raw {
         type: "STRING";
     }
 
-    interface Json extends serializers.ConstantValueJsonVariable.Raw {
+    interface Json extends serializers.TerminalNodeJsonResult.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.ConstantValueChatHistoryVariable.Raw {
+    interface ChatHistory extends serializers.TerminalNodeChatHistoryResult.Raw {
         type: "CHAT_HISTORY";
     }
 }
