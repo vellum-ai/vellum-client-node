@@ -13,10 +13,10 @@ export const WorkflowNodeResultEvent: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
-    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventStateEnum),
+    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
     ts: core.serialization.string().optional(),
     data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
-    error: core.serialization.string().optional(),
+    error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError).optional(),
 });
 
 export declare namespace WorkflowNodeResultEvent {
@@ -24,9 +24,9 @@ export declare namespace WorkflowNodeResultEvent {
         id: string;
         node_id: string;
         node_result_id: string;
-        state: serializers.WorkflowNodeResultEventStateEnum.Raw;
+        state: serializers.WorkflowNodeResultEventState.Raw;
         ts?: string | null;
         data?: serializers.WorkflowNodeResultData.Raw | null;
-        error?: string | null;
+        error?: serializers.WorkflowEventError.Raw | null;
     }
 }

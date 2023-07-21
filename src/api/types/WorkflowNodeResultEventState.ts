@@ -4,13 +4,15 @@
 
 /**
  * * `INITIATED` - INITIATED
+ * * `STREAMING` - STREAMING
  * * `FULFILLED` - FULFILLED
  * * `REJECTED` - REJECTED
  */
-export type WorkflowResultEventStateEnum = "INITIATED" | "FULFILLED" | "REJECTED";
+export type WorkflowNodeResultEventState = "INITIATED" | "STREAMING" | "FULFILLED" | "REJECTED";
 
-export const WorkflowResultEventStateEnum = {
+export const WorkflowNodeResultEventState = {
     Initiated: "INITIATED",
+    Streaming: "STREAMING",
     Fulfilled: "FULFILLED",
     Rejected: "REJECTED",
 } as const;

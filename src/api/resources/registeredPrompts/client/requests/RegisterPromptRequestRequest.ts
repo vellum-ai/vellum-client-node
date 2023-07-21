@@ -19,6 +19,7 @@ export interface RegisterPromptRequestRequest {
      * * `GOOGLE` - Google
      * * `HOSTED` - Hosted
      * * `MOSAICML` - MosaicML
+     * * `MYSTIC` - Mystic
      * * `OPENAI` - OpenAI
      * * `PYQ` - Pyq
      */

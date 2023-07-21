@@ -8,8 +8,8 @@ export interface WorkflowNodeResultEvent {
     id: string;
     nodeId: string;
     nodeResultId: string;
-    state: Vellum.WorkflowNodeResultEventStateEnum;
+    state: Vellum.WorkflowNodeResultEventState;
     ts?: string;
     data?: Vellum.WorkflowNodeResultData;
-    error?: string;
+    error?: Vellum.WorkflowEventError;
 }

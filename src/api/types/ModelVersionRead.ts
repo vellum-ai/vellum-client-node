@@ -26,6 +26,7 @@ export interface ModelVersionRead {
      * * `GOOGLE` - Google
      * * `HOSTED` - Hosted
      * * `MOSAICML` - MosaicML
+     * * `MYSTIC` - Mystic
      * * `OPENAI` - OpenAI
      * * `PYQ` - Pyq
      */

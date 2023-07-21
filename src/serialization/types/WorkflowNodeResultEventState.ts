@@ -6,11 +6,11 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const WorkflowNodeResultEventStateEnum: core.serialization.Schema<
-    serializers.WorkflowNodeResultEventStateEnum.Raw,
-    Vellum.WorkflowNodeResultEventStateEnum
+export const WorkflowNodeResultEventState: core.serialization.Schema<
+    serializers.WorkflowNodeResultEventState.Raw,
+    Vellum.WorkflowNodeResultEventState
 > = core.serialization.enum_(["INITIATED", "STREAMING", "FULFILLED", "REJECTED"]);
 
-export declare namespace WorkflowNodeResultEventStateEnum {
+export declare namespace WorkflowNodeResultEventState {
     type Raw = "INITIATED" | "STREAMING" | "FULFILLED" | "REJECTED";
 }

@@ -11,16 +11,18 @@ export const WorkflowResultEvent: core.serialization.ObjectSchema<
     Vellum.WorkflowResultEvent
 > = core.serialization.object({
     id: core.serialization.string(),
-    state: core.serialization.lazy(async () => (await import("..")).WorkflowResultEventStateEnum),
+    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
     ts: core.serialization.string(),
-    error: core.serialization.string().optional(),
+    output: core.serialization.lazy(async () => (await import("..")).WorkflowResultEventOutputData).optional(),
+    error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError).optional(),
 });
 
 export declare namespace WorkflowResultEvent {
     interface Raw {
         id: string;
-        state: serializers.WorkflowResultEventStateEnum.Raw;
+        state: serializers.WorkflowNodeResultEventState.Raw;
         ts: string;
-        error?: string | null;
+        output?: serializers.WorkflowResultEventOutputData.Raw | null;
+        error?: serializers.WorkflowEventError.Raw | null;
     }
 }

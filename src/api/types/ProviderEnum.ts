@@ -8,10 +8,11 @@
  * * `GOOGLE` - Google
  * * `HOSTED` - Hosted
  * * `MOSAICML` - MosaicML
+ * * `MYSTIC` - Mystic
  * * `OPENAI` - OpenAI
  * * `PYQ` - Pyq
  */
-export type ProviderEnum = "ANTHROPIC" | "COHERE" | "GOOGLE" | "HOSTED" | "MOSAICML" | "OPENAI" | "PYQ";
+export type ProviderEnum = "ANTHROPIC" | "COHERE" | "GOOGLE" | "HOSTED" | "MOSAICML" | "MYSTIC" | "OPENAI" | "PYQ";
 
 export const ProviderEnum = {
     Anthropic: "ANTHROPIC",
@@ -19,6 +20,7 @@ export const ProviderEnum = {
     Google: "GOOGLE",
     Hosted: "HOSTED",
     Mosaicml: "MOSAICML",
+    Mystic: "MYSTIC",
     Openai: "OPENAI",
     Pyq: "PYQ",
 } as const;
