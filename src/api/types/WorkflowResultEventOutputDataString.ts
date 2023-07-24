@@ -8,5 +8,8 @@ export interface WorkflowResultEventOutputDataString {
     name: string;
     state: Vellum.WorkflowNodeResultEventState;
     nodeId: string;
+    /** The newly output string value, meant to be concatenated with all previous. Will be non-null for events of state STREAMING. */
+    delta?: string;
+    /** The entire string value. Will be non-null for events of state FULFILLED. */
     value?: string;
 }

@@ -13,6 +13,7 @@ export const WorkflowResultEventOutputDataChatHistory: core.serialization.Object
     name: core.serialization.string(),
     state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
     nodeId: core.serialization.property("node_id", core.serialization.string()),
+    delta: core.serialization.string().optional(),
     value: core.serialization
         .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage))
         .optional(),
@@ -23,6 +24,7 @@ export declare namespace WorkflowResultEventOutputDataChatHistory {
         name: string;
         state: serializers.WorkflowNodeResultEventState.Raw;
         node_id: string;
+        delta?: string | null;
         value?: serializers.ChatMessage.Raw[] | null;
     }
 }
