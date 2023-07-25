@@ -17,6 +17,7 @@ export * from "./EnrichedNormalizedCompletion";
 export * from "./EnvironmentEnum";
 export * from "./EvaluationParams";
 export * from "./EvaluationParamsRequest";
+export * from "./ExecuteWorkflowStreamErrorResponse";
 export * from "./FinishReasonEnum";
 export * from "./GenerateErrorResponse";
 export * from "./GenerateOptionsRequest";
