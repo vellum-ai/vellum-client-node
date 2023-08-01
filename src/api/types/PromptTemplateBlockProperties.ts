@@ -12,5 +12,6 @@ export interface PromptTemplateBlockProperties {
     functionName?: string;
     functionDescription?: string;
     functionParameters?: Record<string, unknown>;
+    functionForced?: boolean;
     blocks?: Vellum.PromptTemplateBlock[];
 }

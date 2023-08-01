@@ -29,6 +29,7 @@ export const PromptTemplateBlockProperties: core.serialization.ObjectSchema<
         "function_parameters",
         core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
     ),
+    functionForced: core.serialization.property("function_forced", core.serialization.boolean().optional()),
     blocks: core.serialization
         .list(core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlock))
         .optional(),
@@ -43,6 +44,7 @@ export declare namespace PromptTemplateBlockProperties {
         function_name?: string | null;
         function_description?: string | null;
         function_parameters?: Record<string, unknown> | null;
+        function_forced?: boolean | null;
         blocks?: serializers.PromptTemplateBlock.Raw[] | null;
     }
 }

@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const WorkflowExecutionEventErrorCode: core.serialization.Schema<
     serializers.WorkflowExecutionEventErrorCode.Raw,
     Vellum.WorkflowExecutionEventErrorCode
-> = core.serialization.enum_(["WORKFLOW_INITIALIZATION", "NODE_EXECUTION"]);
+> = core.serialization.enum_(["WORKFLOW_INITIALIZATION", "NODE_EXECUTION", "NODE_EXECUTION_COUNT_LIMIT_REACHED"]);
 
 export declare namespace WorkflowExecutionEventErrorCode {
-    type Raw = "WORKFLOW_INITIALIZATION" | "NODE_EXECUTION";
+    type Raw = "WORKFLOW_INITIALIZATION" | "NODE_EXECUTION" | "NODE_EXECUTION_COUNT_LIMIT_REACHED";
 }

@@ -14,5 +14,6 @@ export interface PromptTemplateBlockPropertiesRequest {
     /** <span style="white-space: nowrap">`non-empty`</span> */
     functionDescription?: string;
     functionParameters?: Record<string, unknown>;
+    functionForced?: boolean;
     blocks?: Vellum.PromptTemplateBlockRequest[];
 }
