@@ -1,0 +1,1 @@
+export { SetDocumentMetadataRequestBodyRequest } from "./SetDocumentMetadataRequestBodyRequest";

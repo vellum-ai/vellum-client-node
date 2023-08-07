@@ -14,10 +14,12 @@ export const SearchFiltersRequest: core.serialization.ObjectSchema<
         "external_ids",
         core.serialization.list(core.serialization.string()).optional()
     ),
+    metadata: core.serialization.lazyObject(async () => (await import("..")).MetadataFilterConfigRequest).optional(),
 });
 
 export declare namespace SearchFiltersRequest {
     interface Raw {
         external_ids?: string[] | null;
+        metadata?: serializers.MetadataFilterConfigRequest.Raw | null;
     }
 }

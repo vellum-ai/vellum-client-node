@@ -93,6 +93,72 @@ export class Documents {
     /**
      * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
      *
+     * Set the metadata for a document to be used for search filtering.
+     *
+     * **Note:** Uses a base url of `https://documents.vellum.ai`.
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
+     * @throws {Vellum.InternalServerError}
+     */
+    public async setDocumentMetadata(
+        request: Vellum.SetDocumentMetadataRequestBodyRequest
+    ): Promise<Vellum.SetDocumentMetadataResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).documents,
+                "v1/set-document-metadata"
+            ),
+            method: "POST",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+            },
+            contentType: "application/json",
+            body: await serializers.SetDocumentMetadataRequestBodyRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+        });
+        if (_response.ok) {
+            return await serializers.SetDocumentMetadataResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *
      * Upload a document to be indexed and used for search.
      *
      * **Note:** Uses a base url of `https://documents.vellum.ai`.

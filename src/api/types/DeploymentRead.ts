@@ -36,4 +36,5 @@ export interface DeploymentRead {
     modelType: Vellum.ModelTypeEnum;
     activeModelVersionIds: string[];
     lastDeployedOn: string;
+    inputVariables: Vellum.InputVariable[];
 }

@@ -18,7 +18,7 @@ export const RegisterPromptPromptInfoRequest: core.serialization.ObjectSchema<
     inputVariables: core.serialization.property(
         "input_variables",
         core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).PromptTemplateInputVariableRequest)
+            core.serialization.lazyObject(async () => (await import("..")).RegisteredPromptInputVariableRequest)
         )
     ),
 });
@@ -27,6 +27,6 @@ export declare namespace RegisterPromptPromptInfoRequest {
     interface Raw {
         prompt_syntax_version?: number | null;
         prompt_block_data: serializers.PromptTemplateBlockDataRequest.Raw;
-        input_variables: serializers.PromptTemplateInputVariableRequest.Raw[];
+        input_variables: serializers.RegisteredPromptInputVariableRequest.Raw[];
     }
 }

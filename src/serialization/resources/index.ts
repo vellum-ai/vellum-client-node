@@ -1,5 +1,7 @@
 export * as documentIndexes from "./documentIndexes";
 export * from "./documentIndexes/client/requests";
+export * as documents from "./documents";
+export * from "./documents/client/requests";
 export * as modelVersions from "./modelVersions";
 export * from "./modelVersions/client/requests";
 export * as registeredPrompts from "./registeredPrompts";
