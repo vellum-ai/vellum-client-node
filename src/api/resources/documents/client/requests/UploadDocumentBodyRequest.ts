@@ -11,4 +11,6 @@ export interface UploadDocumentBodyRequest {
     label: string;
     /** Optionally include a list of keywords that'll be associated with this document. Used when performing keyword searches. */
     keywords?: string[];
+    /** A stringified JSON object containing any metadata associated with the document that you'd like to filter upon later. */
+    metadata?: string;
 }

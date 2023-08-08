@@ -189,6 +189,10 @@ export class Documents {
             }
         }
 
+        if (request.metadata != null) {
+            _request.append("metadata", request.metadata);
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (this.options.environment ?? environments.VellumEnvironment.Production).documents,
