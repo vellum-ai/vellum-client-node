@@ -20,6 +20,12 @@ export const ExecuteWorkflowStreamRequest: core.serialization.Schema<
         core.serialization.lazy(async () => (await import("../..")).WorkflowRequestInputRequest)
     ),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+    eventTypes: core.serialization.property(
+        "event_types",
+        core.serialization
+            .list(core.serialization.lazy(async () => (await import("../..")).WorkflowExecutionEventType))
+            .optional()
+    ),
 });
 
 export declare namespace ExecuteWorkflowStreamRequest {
@@ -29,5 +35,6 @@ export declare namespace ExecuteWorkflowStreamRequest {
         release_tag?: string | null;
         inputs: serializers.WorkflowRequestInputRequest.Raw[];
         external_id?: string | null;
+        event_types?: serializers.WorkflowExecutionEventType.Raw[] | null;
     }
 }

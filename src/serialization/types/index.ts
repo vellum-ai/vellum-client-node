@@ -101,6 +101,7 @@ export * from "./UploadDocumentErrorResponse";
 export * from "./UploadDocumentResponse";
 export * from "./WorkflowEventError";
 export * from "./WorkflowExecutionEventErrorCode";
+export * from "./WorkflowExecutionEventType";
 export * from "./WorkflowExecutionNodeResultEvent";
 export * from "./WorkflowExecutionWorkflowResultEvent";
 export * from "./WorkflowNodeResultData";
