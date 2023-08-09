@@ -10,14 +10,16 @@ export const WorkflowExecutionNodeResultEvent: core.serialization.ObjectSchema<
     serializers.WorkflowExecutionNodeResultEvent.Raw,
     Vellum.WorkflowExecutionNodeResultEvent
 > = core.serialization.object({
-    runId: core.serialization.property("run_id", core.serialization.string()),
+    executionId: core.serialization.property("execution_id", core.serialization.string()),
+    runId: core.serialization.property("run_id", core.serialization.string().optional()),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     data: core.serialization.lazyObject(async () => (await import("..")).WorkflowNodeResultEvent),
 });
 
 export declare namespace WorkflowExecutionNodeResultEvent {
     interface Raw {
-        run_id: string;
+        execution_id: string;
+        run_id?: string | null;
         external_id?: string | null;
         data: serializers.WorkflowNodeResultEvent.Raw;
     }

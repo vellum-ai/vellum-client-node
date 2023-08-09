@@ -26,6 +26,7 @@ export interface SlimDocument {
      * An enum value representing why the document could not be processed. Is null unless processing_state is FAILED.
      *
      * * `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
+     * * `INVALID_FILE` - Invalid File
      */
     processingFailureReason?: Vellum.ProcessingFailureReasonEnum;
     /**

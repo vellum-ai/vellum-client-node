@@ -5,7 +5,8 @@
 import * as Vellum from "..";
 
 export interface WorkflowExecutionNodeResultEvent {
-    runId: string;
+    executionId: string;
+    runId?: string;
     externalId?: string;
     data: Vellum.WorkflowNodeResultEvent;
 }

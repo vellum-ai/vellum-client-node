@@ -86,8 +86,6 @@ export * from "./SearchResponse";
 export * from "./SearchResult";
 export * from "./SearchResultMergingRequest";
 export * from "./SearchWeightsRequest";
-export * from "./SetDocumentMetadataErrorResponse";
-export * from "./SetDocumentMetadataResponse";
 export * from "./SlimDocument";
 export * from "./SlimDocumentStatusEnum";
 export * from "./SubmitCompletionActualRequest";

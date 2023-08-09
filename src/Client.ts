@@ -197,7 +197,10 @@ export class VellumClient {
      */
     public async search(request: Vellum.SearchRequestBodyRequest): Promise<Vellum.SearchResponse> {
         const _response = await core.fetcher({
-            url: urlJoin((this.options.environment ?? environments.VellumEnvironment.Production).default, "v1/search"),
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).documents,
+                "v1/search"
+            ),
             method: "POST",
             headers: {
                 X_API_KEY: await core.Supplier.get(this.options.apiKey),
