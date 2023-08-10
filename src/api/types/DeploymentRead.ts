@@ -18,7 +18,7 @@ export interface DeploymentRead {
      * * `INACTIVE` - Inactive
      * * `ARCHIVED` - Archived
      */
-    status?: Vellum.DeploymentReadStatusEnum;
+    status?: Vellum.DeploymentStatus;
     /**
      * The environment this deployment is used in
      *

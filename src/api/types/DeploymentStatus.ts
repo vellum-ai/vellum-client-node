@@ -7,9 +7,9 @@
  * * `INACTIVE` - Inactive
  * * `ARCHIVED` - Archived
  */
-export type DeploymentReadStatusEnum = "ACTIVE" | "INACTIVE" | "ARCHIVED";
+export type DeploymentStatus = "ACTIVE" | "INACTIVE" | "ARCHIVED";
 
-export const DeploymentReadStatusEnum = {
+export const DeploymentStatus = {
     Active: "ACTIVE",
     Inactive: "INACTIVE",
     Archived: "ARCHIVED",

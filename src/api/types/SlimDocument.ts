@@ -34,7 +34,7 @@ export interface SlimDocument {
      *
      * * `ACTIVE` - Active
      */
-    status?: Vellum.SlimDocumentStatusEnum;
+    status?: Vellum.DocumentStatus;
     /** A list of keywords associated with this document. Originally provided when uploading the document. */
     keywords?: string[];
     documentToDocumentIndexes: Vellum.DocumentDocumentToDocumentIndex[];

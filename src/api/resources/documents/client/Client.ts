@@ -91,6 +91,61 @@ export class Documents {
     }
 
     /**
+     *
+     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
+     *
+     * Update a Document, keying off of its Vellum-generated ID. Particularly useful for updating its metadata.
+     *
+     */
+    public async partialUpdate(
+        id: string,
+        request: Vellum.PatchedDocumentUpdateRequest = {}
+    ): Promise<Vellum.DocumentRead> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                `v1/documents/${id}`
+            ),
+            method: "PATCH",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+            },
+            contentType: "application/json",
+            body: await serializers.PatchedDocumentUpdateRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+        });
+        if (_response.ok) {
+            return await serializers.DocumentRead.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
      *
      * Upload a document to be indexed and used for search.

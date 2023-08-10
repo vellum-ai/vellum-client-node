@@ -12,7 +12,7 @@ export const DeploymentRead: core.serialization.ObjectSchema<serializers.Deploym
         created: core.serialization.string(),
         label: core.serialization.string(),
         name: core.serialization.string(),
-        status: core.serialization.lazy(async () => (await import("..")).DeploymentReadStatusEnum).optional(),
+        status: core.serialization.lazy(async () => (await import("..")).DeploymentStatus).optional(),
         environment: core.serialization.lazy(async () => (await import("..")).EnvironmentEnum).optional(),
         modelType: core.serialization.property(
             "model_type",
@@ -35,7 +35,7 @@ export declare namespace DeploymentRead {
         created: string;
         label: string;
         name: string;
-        status?: serializers.DeploymentReadStatusEnum.Raw | null;
+        status?: serializers.DeploymentStatus.Raw | null;
         environment?: serializers.EnvironmentEnum.Raw | null;
         model_type: serializers.ModelTypeEnum.Raw;
         active_model_version_ids: string[];
