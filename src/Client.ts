@@ -30,6 +30,7 @@ export class VellumClient {
      * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
      *
      * Executes a deployed Workflow and streams back its results.
+     * @throws {Vellum.BadRequestError}
      * @throws {Vellum.NotFoundError}
      * @throws {Vellum.InternalServerError}
      */

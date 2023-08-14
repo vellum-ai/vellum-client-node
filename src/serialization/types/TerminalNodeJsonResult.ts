@@ -11,12 +11,12 @@ export const TerminalNodeJsonResult: core.serialization.ObjectSchema<
     Vellum.TerminalNodeJsonResult
 > = core.serialization.object({
     name: core.serialization.string(),
-    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
 export declare namespace TerminalNodeJsonResult {
     interface Raw {
         name: string;
-        value: Record<string, unknown>;
+        value?: Record<string, unknown> | null;
     }
 }

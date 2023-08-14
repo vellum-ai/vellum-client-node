@@ -5,5 +5,5 @@
 export interface TerminalNodeStringResult {
     /** The unique name given to the terminal node that produced this output. */
     name: string;
-    value: string;
+    value?: string;
 }

@@ -11,12 +11,14 @@ export const TerminalNodeChatHistoryResult: core.serialization.ObjectSchema<
     Vellum.TerminalNodeChatHistoryResult
 > = core.serialization.object({
     name: core.serialization.string(),
-    value: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage)),
+    value: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage))
+        .optional(),
 });
 
 export declare namespace TerminalNodeChatHistoryResult {
     interface Raw {
         name: string;
-        value: serializers.ChatMessage.Raw[];
+        value?: serializers.ChatMessage.Raw[] | null;
     }
 }
