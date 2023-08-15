@@ -4,16 +4,19 @@
 
 /**
  * * `WORKFLOW_INITIALIZATION` - WORKFLOW_INITIALIZATION
- * * `NODE_EXECUTION` - NODE_EXECUTION
  * * `NODE_EXECUTION_COUNT_LIMIT_REACHED` - NODE_EXECUTION_COUNT_LIMIT_REACHED
+ * * `NODE_EXECUTION` - NODE_EXECUTION
+ * * `LLM_PROVIDER` - LLM_PROVIDER
  */
 export type WorkflowExecutionEventErrorCode =
     | "WORKFLOW_INITIALIZATION"
+    | "NODE_EXECUTION_COUNT_LIMIT_REACHED"
     | "NODE_EXECUTION"
-    | "NODE_EXECUTION_COUNT_LIMIT_REACHED";
+    | "LLM_PROVIDER";
 
 export const WorkflowExecutionEventErrorCode = {
     WorkflowInitialization: "WORKFLOW_INITIALIZATION",
-    NodeExecution: "NODE_EXECUTION",
     NodeExecutionCountLimitReached: "NODE_EXECUTION_COUNT_LIMIT_REACHED",
+    NodeExecution: "NODE_EXECUTION",
+    LlmProvider: "LLM_PROVIDER",
 } as const;
