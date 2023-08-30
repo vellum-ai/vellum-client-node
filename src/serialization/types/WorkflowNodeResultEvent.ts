@@ -17,6 +17,12 @@ export const WorkflowNodeResultEvent: core.serialization.ObjectSchema<
     ts: core.serialization.string().optional(),
     data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
     error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError).optional(),
+    inputValues: core.serialization.property(
+        "input_values",
+        core.serialization
+            .list(core.serialization.lazy(async () => (await import("..")).NodeInputVariableCompiledValue))
+            .optional()
+    ),
 });
 
 export declare namespace WorkflowNodeResultEvent {
@@ -28,5 +34,6 @@ export declare namespace WorkflowNodeResultEvent {
         ts?: string | null;
         data?: serializers.WorkflowNodeResultData.Raw | null;
         error?: serializers.WorkflowEventError.Raw | null;
+        input_values?: serializers.NodeInputVariableCompiledValue.Raw[] | null;
     }
 }

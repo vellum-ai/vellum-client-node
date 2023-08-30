@@ -15,7 +15,7 @@ export const ModelVersionRead: core.serialization.ObjectSchema<
     label: core.serialization.string(),
     modelType: core.serialization.property(
         "model_type",
-        core.serialization.lazy(async () => (await import("..")).ModelTypeEnum)
+        core.serialization.lazy(async () => (await import("..")).ModelTypeDeprecated)
     ),
     provider: core.serialization.lazy(async () => (await import("..")).ProviderEnum),
     externalId: core.serialization.property("external_id", core.serialization.string()),
@@ -35,7 +35,7 @@ export declare namespace ModelVersionRead {
         id: string;
         created: string;
         label: string;
-        model_type: serializers.ModelTypeEnum.Raw;
+        model_type: serializers.ModelTypeDeprecated.Raw;
         provider: serializers.ProviderEnum.Raw;
         external_id: string;
         build_config: serializers.ModelVersionBuildConfig.Raw;

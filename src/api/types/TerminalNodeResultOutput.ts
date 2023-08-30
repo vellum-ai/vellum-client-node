@@ -7,7 +7,8 @@ import * as Vellum from "..";
 export type TerminalNodeResultOutput =
     | Vellum.TerminalNodeResultOutput.String
     | Vellum.TerminalNodeResultOutput.Json
-    | Vellum.TerminalNodeResultOutput.ChatHistory;
+    | Vellum.TerminalNodeResultOutput.ChatHistory
+    | Vellum.TerminalNodeResultOutput.SearchResults;
 
 export declare namespace TerminalNodeResultOutput {
     interface String extends Vellum.TerminalNodeStringResult {
@@ -20,5 +21,9 @@ export declare namespace TerminalNodeResultOutput {
 
     interface ChatHistory extends Vellum.TerminalNodeChatHistoryResult {
         type: "CHAT_HISTORY";
+    }
+
+    interface SearchResults extends Vellum.TerminalNodeSearchResultsResult {
+        type: "SEARCH_RESULTS";
     }
 }

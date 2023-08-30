@@ -7,7 +7,8 @@ import * as Vellum from "..";
 export type WorkflowResultEventOutputData =
     | Vellum.WorkflowResultEventOutputData.String
     | Vellum.WorkflowResultEventOutputData.Json
-    | Vellum.WorkflowResultEventOutputData.ChatHistory;
+    | Vellum.WorkflowResultEventOutputData.ChatHistory
+    | Vellum.WorkflowResultEventOutputData.SearchResults;
 
 export declare namespace WorkflowResultEventOutputData {
     interface String extends Vellum.WorkflowResultEventOutputDataString {
@@ -20,5 +21,9 @@ export declare namespace WorkflowResultEventOutputData {
 
     interface ChatHistory extends Vellum.WorkflowResultEventOutputDataChatHistory {
         type: "CHAT_HISTORY";
+    }
+
+    interface SearchResults extends Vellum.WorkflowResultEventOutputDataSearchResults {
+        type: "SEARCH_RESULTS";
     }
 }

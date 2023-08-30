@@ -4,6 +4,6 @@
 
 import * as Vellum from "..";
 
-export interface SandboxNodeResult {
-    data: Vellum.SandboxNodeResultData;
+export interface TemplatingNodeResult {
+    data: Vellum.TemplatingNodeResultData;
 }

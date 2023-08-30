@@ -4,12 +4,12 @@
 
 import * as Vellum from "..";
 
-export interface WorkflowResultEventOutputDataJson {
+export interface WorkflowResultEventOutputDataSearchResults {
     id?: string;
     name: string;
     state: Vellum.WorkflowNodeResultEventState;
     nodeId: string;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string;
-    value?: Record<string, unknown>;
+    value?: Vellum.SearchResult[];
 }

@@ -12,9 +12,8 @@ export const WorkflowNodeResultData: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         PROMPT: core.serialization.lazyObject(async () => (await import("..")).PromptNodeResult),
-        SANDBOX: core.serialization.lazyObject(async () => (await import("..")).SandboxNodeResult),
-        DEPLOYMENT: core.serialization.lazyObject(async () => (await import("..")).DeploymentNodeResult),
         SEARCH: core.serialization.lazyObject(async () => (await import("..")).SearchNodeResult),
+        TEMPLATING: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeResult),
         CONDITIONAL: core.serialization.lazyObject(async () => (await import("..")).ConditionalNodeResult),
         TERMINAL: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeResult),
     })
@@ -26,9 +25,8 @@ export const WorkflowNodeResultData: core.serialization.Schema<
 export declare namespace WorkflowNodeResultData {
     type Raw =
         | WorkflowNodeResultData.Prompt
-        | WorkflowNodeResultData.Sandbox
-        | WorkflowNodeResultData.Deployment
         | WorkflowNodeResultData.Search
+        | WorkflowNodeResultData.Templating
         | WorkflowNodeResultData.Conditional
         | WorkflowNodeResultData.Terminal;
 
@@ -36,16 +34,12 @@ export declare namespace WorkflowNodeResultData {
         type: "PROMPT";
     }
 
-    interface Sandbox extends serializers.SandboxNodeResult.Raw {
-        type: "SANDBOX";
-    }
-
-    interface Deployment extends serializers.DeploymentNodeResult.Raw {
-        type: "DEPLOYMENT";
-    }
-
     interface Search extends serializers.SearchNodeResult.Raw {
         type: "SEARCH";
+    }
+
+    interface Templating extends serializers.TemplatingNodeResult.Raw {
+        type: "TEMPLATING";
     }
 
     interface Conditional extends serializers.ConditionalNodeResult.Raw {

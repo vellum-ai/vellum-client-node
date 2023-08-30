@@ -3,6 +3,7 @@
  */
 
 export interface TerminalNodeJsonResult {
+    id?: string;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
     value?: Record<string, unknown>;

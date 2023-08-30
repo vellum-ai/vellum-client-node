@@ -10,6 +10,7 @@ export const WorkflowResultEventOutputDataChatHistory: core.serialization.Object
     serializers.WorkflowResultEventOutputDataChatHistory.Raw,
     Vellum.WorkflowResultEventOutputDataChatHistory
 > = core.serialization.object({
+    id: core.serialization.string().optional(),
     name: core.serialization.string(),
     state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
     nodeId: core.serialization.property("node_id", core.serialization.string()),
@@ -21,6 +22,7 @@ export const WorkflowResultEventOutputDataChatHistory: core.serialization.Object
 
 export declare namespace WorkflowResultEventOutputDataChatHistory {
     interface Raw {
+        id?: string | null;
         name: string;
         state: serializers.WorkflowNodeResultEventState.Raw;
         node_id: string;

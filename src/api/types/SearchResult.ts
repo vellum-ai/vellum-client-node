@@ -5,11 +5,11 @@
 import * as Vellum from "..";
 
 export interface SearchResult {
-    /** The document that contains the chunk that matched the search query. */
-    document: Vellum.Document;
     /** The text of the chunk that matched the search query. */
     text: string;
-    keywords: string[];
     /** A score representing how well the chunk matches the search query. */
     score: number;
+    keywords: string[];
+    /** The document that contains the chunk that matched the search query. */
+    document: Vellum.Document;
 }

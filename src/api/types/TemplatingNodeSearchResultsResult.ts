@@ -4,6 +4,7 @@
 
 import * as Vellum from "..";
 
-export interface DeploymentNodeResult {
-    data: Vellum.DeploymentNodeResultData;
+export interface TemplatingNodeSearchResultsResult {
+    id: string;
+    value?: Vellum.SearchResult[];
 }

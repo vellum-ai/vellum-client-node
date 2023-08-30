@@ -8,17 +8,17 @@ import * as core from "../../core";
 
 export const SearchResult: core.serialization.ObjectSchema<serializers.SearchResult.Raw, Vellum.SearchResult> =
     core.serialization.object({
-        document: core.serialization.lazyObject(async () => (await import("..")).Document),
         text: core.serialization.string(),
-        keywords: core.serialization.list(core.serialization.string()),
         score: core.serialization.number(),
+        keywords: core.serialization.list(core.serialization.string()),
+        document: core.serialization.lazyObject(async () => (await import("..")).Document),
     });
 
 export declare namespace SearchResult {
     interface Raw {
-        document: serializers.Document.Raw;
         text: string;
-        keywords: string[];
         score: number;
+        keywords: string[];
+        document: serializers.Document.Raw;
     }
 }

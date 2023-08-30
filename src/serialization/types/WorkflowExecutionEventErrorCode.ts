@@ -14,8 +14,14 @@ export const WorkflowExecutionEventErrorCode: core.serialization.Schema<
     "NODE_EXECUTION_COUNT_LIMIT_REACHED",
     "NODE_EXECUTION",
     "LLM_PROVIDER",
+    "INVALID_TEMPLATE",
 ]);
 
 export declare namespace WorkflowExecutionEventErrorCode {
-    type Raw = "WORKFLOW_INITIALIZATION" | "NODE_EXECUTION_COUNT_LIMIT_REACHED" | "NODE_EXECUTION" | "LLM_PROVIDER";
+    type Raw =
+        | "WORKFLOW_INITIALIZATION"
+        | "NODE_EXECUTION_COUNT_LIMIT_REACHED"
+        | "NODE_EXECUTION"
+        | "LLM_PROVIDER"
+        | "INVALID_TEMPLATE";
 }

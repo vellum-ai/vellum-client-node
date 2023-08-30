@@ -6,9 +6,9 @@
  * * `GENERATE` - Generate
  * * `CLASSIFY` - Classify
  */
-export type ModelTypeEnum = "GENERATE" | "CLASSIFY";
+export type ModelTypeDeprecated = "GENERATE" | "CLASSIFY";
 
-export const ModelTypeEnum = {
+export const ModelTypeDeprecated = {
     Generate: "GENERATE",
     Classify: "CLASSIFY",
 } as const;

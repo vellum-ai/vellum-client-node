@@ -14,6 +14,7 @@ export const TerminalNodeResultOutput: core.serialization.Schema<
         STRING: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeStringResult),
         JSON: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeJsonResult),
         CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeChatHistoryResult),
+        SEARCH_RESULTS: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeSearchResultsResult),
     })
     .transform<Vellum.TerminalNodeResultOutput>({
         transform: (value) => value,
@@ -21,7 +22,11 @@ export const TerminalNodeResultOutput: core.serialization.Schema<
     });
 
 export declare namespace TerminalNodeResultOutput {
-    type Raw = TerminalNodeResultOutput.String | TerminalNodeResultOutput.Json | TerminalNodeResultOutput.ChatHistory;
+    type Raw =
+        | TerminalNodeResultOutput.String
+        | TerminalNodeResultOutput.Json
+        | TerminalNodeResultOutput.ChatHistory
+        | TerminalNodeResultOutput.SearchResults;
 
     interface String extends serializers.TerminalNodeStringResult.Raw {
         type: "STRING";
@@ -33,5 +38,9 @@ export declare namespace TerminalNodeResultOutput {
 
     interface ChatHistory extends serializers.TerminalNodeChatHistoryResult.Raw {
         type: "CHAT_HISTORY";
+    }
+
+    interface SearchResults extends serializers.TerminalNodeSearchResultsResult.Raw {
+        type: "SEARCH_RESULTS";
     }
 }

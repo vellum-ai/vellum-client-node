@@ -6,11 +6,13 @@
  * * `STRING` - STRING
  * * `JSON` - JSON
  * * `CHAT_HISTORY` - CHAT_HISTORY
+ * * `SEARCH_RESULTS` - SEARCH_RESULTS
  */
-export type InputVariableType = "STRING" | "JSON" | "CHAT_HISTORY";
+export type InputVariableType = "STRING" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS";
 
 export const InputVariableType = {
     String: "STRING",
     Json: "JSON",
     ChatHistory: "CHAT_HISTORY",
+    SearchResults: "SEARCH_RESULTS",
 } as const;

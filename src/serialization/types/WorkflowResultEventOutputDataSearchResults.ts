@@ -6,25 +6,27 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const WorkflowResultEventOutputDataString: core.serialization.ObjectSchema<
-    serializers.WorkflowResultEventOutputDataString.Raw,
-    Vellum.WorkflowResultEventOutputDataString
+export const WorkflowResultEventOutputDataSearchResults: core.serialization.ObjectSchema<
+    serializers.WorkflowResultEventOutputDataSearchResults.Raw,
+    Vellum.WorkflowResultEventOutputDataSearchResults
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
     state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
-    value: core.serialization.string().optional(),
+    value: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("..")).SearchResult))
+        .optional(),
 });
 
-export declare namespace WorkflowResultEventOutputDataString {
+export declare namespace WorkflowResultEventOutputDataSearchResults {
     interface Raw {
         id?: string | null;
         name: string;
         state: serializers.WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
-        value?: string | null;
+        value?: serializers.SearchResult.Raw[] | null;
     }
 }

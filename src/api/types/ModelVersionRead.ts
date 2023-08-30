@@ -11,13 +11,7 @@ export interface ModelVersionRead {
     created: string;
     /** Human-friendly name for this model version. <span style="white-space: nowrap">`<= 150 characters`</span> */
     label: string;
-    /**
-     * The type of task this model is used for.
-     *
-     * * `GENERATE` - Generate
-     * * `CLASSIFY` - Classify
-     */
-    modelType: Vellum.ModelTypeEnum;
+    modelType: Vellum.ModelTypeDeprecated;
     /**
      * Which LLM provider this model version is associated with.
      *

@@ -7,8 +7,8 @@ import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const InputVariableType: core.serialization.Schema<serializers.InputVariableType.Raw, Vellum.InputVariableType> =
-    core.serialization.enum_(["STRING", "JSON", "CHAT_HISTORY"]);
+    core.serialization.enum_(["STRING", "JSON", "CHAT_HISTORY", "SEARCH_RESULTS"]);
 
 export declare namespace InputVariableType {
-    type Raw = "STRING" | "JSON" | "CHAT_HISTORY";
+    type Raw = "STRING" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS";
 }

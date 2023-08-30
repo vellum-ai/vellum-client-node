@@ -16,6 +16,9 @@ export const WorkflowResultEventOutputData: core.serialization.Schema<
         CHAT_HISTORY: core.serialization.lazyObject(
             async () => (await import("..")).WorkflowResultEventOutputDataChatHistory
         ),
+        SEARCH_RESULTS: core.serialization.lazyObject(
+            async () => (await import("..")).WorkflowResultEventOutputDataSearchResults
+        ),
     })
     .transform<Vellum.WorkflowResultEventOutputData>({
         transform: (value) => value,
@@ -26,7 +29,8 @@ export declare namespace WorkflowResultEventOutputData {
     type Raw =
         | WorkflowResultEventOutputData.String
         | WorkflowResultEventOutputData.Json
-        | WorkflowResultEventOutputData.ChatHistory;
+        | WorkflowResultEventOutputData.ChatHistory
+        | WorkflowResultEventOutputData.SearchResults;
 
     interface String extends serializers.WorkflowResultEventOutputDataString.Raw {
         type: "STRING";
@@ -38,5 +42,9 @@ export declare namespace WorkflowResultEventOutputData {
 
     interface ChatHistory extends serializers.WorkflowResultEventOutputDataChatHistory.Raw {
         type: "CHAT_HISTORY";
+    }
+
+    interface SearchResults extends serializers.WorkflowResultEventOutputDataSearchResults.Raw {
+        type: "SEARCH_RESULTS";
     }
 }

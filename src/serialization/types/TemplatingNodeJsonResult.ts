@@ -6,19 +6,17 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const TerminalNodeJsonResult: core.serialization.ObjectSchema<
-    serializers.TerminalNodeJsonResult.Raw,
-    Vellum.TerminalNodeJsonResult
+export const TemplatingNodeJsonResult: core.serialization.ObjectSchema<
+    serializers.TemplatingNodeJsonResult.Raw,
+    Vellum.TemplatingNodeJsonResult
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
-    name: core.serialization.string(),
+    id: core.serialization.string(),
     value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
-export declare namespace TerminalNodeJsonResult {
+export declare namespace TemplatingNodeJsonResult {
     interface Raw {
-        id?: string | null;
-        name: string;
+        id: string;
         value?: Record<string, unknown> | null;
     }
 }

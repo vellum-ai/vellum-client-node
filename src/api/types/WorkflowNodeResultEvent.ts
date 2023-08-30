@@ -12,4 +12,5 @@ export interface WorkflowNodeResultEvent {
     ts?: string;
     data?: Vellum.WorkflowNodeResultData;
     error?: Vellum.WorkflowEventError;
+    inputValues?: Vellum.NodeInputVariableCompiledValue[];
 }

@@ -5,6 +5,7 @@
 import * as Vellum from "..";
 
 export interface TerminalNodeChatHistoryResult {
+    id?: string;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
     value?: Vellum.ChatMessage[];

@@ -6,21 +6,21 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const TerminalNodeChatHistoryResult: core.serialization.ObjectSchema<
-    serializers.TerminalNodeChatHistoryResult.Raw,
-    Vellum.TerminalNodeChatHistoryResult
+export const TerminalNodeSearchResultsResult: core.serialization.ObjectSchema<
+    serializers.TerminalNodeSearchResultsResult.Raw,
+    Vellum.TerminalNodeSearchResultsResult
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
     value: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage))
+        .list(core.serialization.lazyObject(async () => (await import("..")).SearchResult))
         .optional(),
 });
 
-export declare namespace TerminalNodeChatHistoryResult {
+export declare namespace TerminalNodeSearchResultsResult {
     interface Raw {
         id?: string | null;
         name: string;
-        value?: serializers.ChatMessage.Raw[] | null;
+        value?: serializers.SearchResult.Raw[] | null;
     }
 }

@@ -6,9 +6,8 @@ import * as Vellum from "..";
 
 export type WorkflowNodeResultData =
     | Vellum.WorkflowNodeResultData.Prompt
-    | Vellum.WorkflowNodeResultData.Sandbox
-    | Vellum.WorkflowNodeResultData.Deployment
     | Vellum.WorkflowNodeResultData.Search
+    | Vellum.WorkflowNodeResultData.Templating
     | Vellum.WorkflowNodeResultData.Conditional
     | Vellum.WorkflowNodeResultData.Terminal;
 
@@ -17,16 +16,12 @@ export declare namespace WorkflowNodeResultData {
         type: "PROMPT";
     }
 
-    interface Sandbox extends Vellum.SandboxNodeResult {
-        type: "SANDBOX";
-    }
-
-    interface Deployment extends Vellum.DeploymentNodeResult {
-        type: "DEPLOYMENT";
-    }
-
     interface Search extends Vellum.SearchNodeResult {
         type: "SEARCH";
+    }
+
+    interface Templating extends Vellum.TemplatingNodeResult {
+        type: "TEMPLATING";
     }
 
     interface Conditional extends Vellum.ConditionalNodeResult {

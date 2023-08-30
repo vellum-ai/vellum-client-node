@@ -27,13 +27,7 @@ export interface DeploymentRead {
      * * `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
-    /**
-     * The type of model this deployment serves
-     *
-     * * `GENERATE` - Generate
-     * * `CLASSIFY` - Classify
-     */
-    modelType: Vellum.ModelTypeEnum;
+    modelType: Vellum.ModelTypeDeprecated;
     activeModelVersionIds: string[];
     lastDeployedOn: string;
     inputVariables: Vellum.InputVariable[];
