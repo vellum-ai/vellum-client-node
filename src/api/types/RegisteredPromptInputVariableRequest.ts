@@ -9,5 +9,5 @@ export interface RegisteredPromptInputVariableRequest {
     key: string;
     /** <span style="white-space: nowrap">`non-empty`</span> */
     id?: string;
-    type?: Vellum.InputVariableType;
+    type?: Vellum.VellumVariableType;
 }

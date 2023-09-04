@@ -4,8 +4,8 @@
 
 import * as Vellum from "..";
 
-export interface InputVariable {
+export interface VellumVariable {
     id: string;
     key: string;
-    type: Vellum.InputVariableType;
+    type: Vellum.VellumVariableType;
 }

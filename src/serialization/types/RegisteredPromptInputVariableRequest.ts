@@ -12,13 +12,13 @@ export const RegisteredPromptInputVariableRequest: core.serialization.ObjectSche
 > = core.serialization.object({
     key: core.serialization.string(),
     id: core.serialization.string().optional(),
-    type: core.serialization.lazy(async () => (await import("..")).InputVariableType).optional(),
+    type: core.serialization.lazy(async () => (await import("..")).VellumVariableType).optional(),
 });
 
 export declare namespace RegisteredPromptInputVariableRequest {
     interface Raw {
         key: string;
         id?: string | null;
-        type?: serializers.InputVariableType.Raw | null;
+        type?: serializers.VellumVariableType.Raw | null;
     }
 }

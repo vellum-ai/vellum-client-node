@@ -25,7 +25,7 @@ export const DeploymentRead: core.serialization.ObjectSchema<serializers.Deploym
         lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.string()),
         inputVariables: core.serialization.property(
             "input_variables",
-            core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).InputVariable))
+            core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).VellumVariable))
         ),
     });
 
@@ -40,6 +40,6 @@ export declare namespace DeploymentRead {
         model_type: serializers.ModelTypeDeprecated.Raw;
         active_model_version_ids: string[];
         last_deployed_on: string;
-        input_variables: serializers.InputVariable.Raw[];
+        input_variables: serializers.VellumVariable.Raw[];
     }
 }

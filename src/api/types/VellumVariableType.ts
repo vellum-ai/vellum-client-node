@@ -3,14 +3,14 @@
  */
 
 /**
- * * `STRING` - STRING
+ * * `STRING` - String
  * * `JSON` - JSON
- * * `CHAT_HISTORY` - CHAT_HISTORY
- * * `SEARCH_RESULTS` - SEARCH_RESULTS
+ * * `CHAT_HISTORY` - Chat History
+ * * `SEARCH_RESULTS` - Search Results
  */
-export type InputVariableType = "STRING" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS";
+export type VellumVariableType = "STRING" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS";
 
-export const InputVariableType = {
+export const VellumVariableType = {
     String: "STRING",
     Json: "JSON",
     ChatHistory: "CHAT_HISTORY",
