@@ -37,5 +37,7 @@ export interface SlimDocument {
     status?: Vellum.DocumentStatus;
     /** A list of keywords associated with this document. Originally provided when uploading the document. */
     keywords?: string[];
+    /** A previously supplied JSON object containing metadata that can be filtered on when searching. */
+    metadata?: Record<string, unknown>;
     documentToDocumentIndexes: Vellum.DocumentDocumentToDocumentIndex[];
 }

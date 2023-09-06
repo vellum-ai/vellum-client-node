@@ -11,5 +11,5 @@ export interface SearchResult {
     score: number;
     keywords: string[];
     /** The document that contains the chunk that matched the search query. */
-    document: Vellum.Document;
+    document: Vellum.SearchResultDocument;
 }

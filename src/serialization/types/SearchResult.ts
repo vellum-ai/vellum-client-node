@@ -11,7 +11,7 @@ export const SearchResult: core.serialization.ObjectSchema<serializers.SearchRes
         text: core.serialization.string(),
         score: core.serialization.number(),
         keywords: core.serialization.list(core.serialization.string()),
-        document: core.serialization.lazyObject(async () => (await import("..")).Document),
+        document: core.serialization.lazyObject(async () => (await import("..")).SearchResultDocument),
     });
 
 export declare namespace SearchResult {
@@ -19,6 +19,6 @@ export declare namespace SearchResult {
         text: string;
         score: number;
         keywords: string[];
-        document: serializers.Document.Raw;
+        document: serializers.SearchResultDocument.Raw;
     }
 }
