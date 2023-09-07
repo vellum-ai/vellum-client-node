@@ -315,7 +315,7 @@ export class VellumClient {
     public async submitWorkflowExecutionActuals(request: Vellum.SubmitWorkflowExecutionActualsRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
                 "v1/submit-workflow-execution-actuals"
             ),
             method: "POST",
