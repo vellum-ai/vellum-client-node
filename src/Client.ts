@@ -27,7 +27,7 @@ export class VellumClient {
     constructor(protected readonly options: VellumClient.Options) {}
 
     /**
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
+     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Stable</strong>
      *
      * Executes a deployed Workflow and streams back its results.
      * @throws {Vellum.BadRequestError}
@@ -288,6 +288,54 @@ export class VellumClient {
                         body: _response.error.body,
                     });
             }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *
+     * Used to submit feedback regarding the quality of previous workflow execution and its outputs.
+     *
+     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     */
+    public async submitWorkflowExecutionActuals(request: Vellum.SubmitWorkflowExecutionActualsRequest): Promise<void> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                "v1/submit-workflow-execution-actuals"
+            ),
+            method: "POST",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+            },
+            contentType: "application/json",
+            body: await serializers.SubmitWorkflowExecutionActualsRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+        });
+        if (_response.ok) {
+            return;
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
         }
 
         switch (_response.error.reason) {
