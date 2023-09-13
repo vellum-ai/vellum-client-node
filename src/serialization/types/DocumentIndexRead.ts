@@ -11,7 +11,7 @@ export const DocumentIndexRead: core.serialization.ObjectSchema<
     Vellum.DocumentIndexRead
 > = core.serialization.object({
     id: core.serialization.string(),
-    created: core.serialization.string(),
+    created: core.serialization.date(),
     label: core.serialization.string(),
     name: core.serialization.string(),
     status: core.serialization.lazy(async () => (await import("..")).DocumentIndexStatus).optional(),

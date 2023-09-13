@@ -3,7 +3,7 @@
  */
 
 export interface WorkflowRequestStringInputRequest {
-    /** The variable's name, as defined in the Workflow. <span style="white-space: nowrap">`non-empty`</span> */
+    /** The variable's name, as defined in the Workflow. */
     name: string;
     value: string;
 }

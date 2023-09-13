@@ -5,7 +5,7 @@
 import * as Vellum from "../../../..";
 
 export interface PatchedDocumentUpdateRequest {
-    /** A human-readable label for the document. Defaults to the originally uploaded file's file name. <span style="white-space: nowrap">`non-empty`</span> <span style="white-space: nowrap">`<= 1000 characters`</span> */
+    /** A human-readable label for the document. Defaults to the originally uploaded file's file name. */
     label?: string;
     /**
      * The current status of the document

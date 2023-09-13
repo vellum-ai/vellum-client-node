@@ -9,9 +9,7 @@ export interface PromptTemplateBlockPropertiesRequest {
     chatMessageUnterminated?: boolean;
     template?: string;
     templateType?: Vellum.ContentType;
-    /** <span style="white-space: nowrap">`non-empty`</span> */
     functionName?: string;
-    /** <span style="white-space: nowrap">`non-empty`</span> */
     functionDescription?: string;
     functionParameters?: Record<string, unknown>;
     functionForced?: boolean;

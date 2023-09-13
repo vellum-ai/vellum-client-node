@@ -20,11 +20,7 @@ export class Deployments {
     constructor(protected readonly options: Deployments.Options) {}
 
     /**
-     *
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
      * Used to retrieve a deployment given its ID or name.
-     *
      */
     public async retrieve(id: string): Promise<Vellum.DeploymentRead> {
         const _response = await core.fetcher({

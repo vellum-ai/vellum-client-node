@@ -27,8 +27,6 @@ export class VellumClient {
     constructor(protected readonly options: VellumClient.Options) {}
 
     /**
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
      * Executes a deployed Workflow and streams back its results.
      * @throws {Vellum.BadRequestError}
      * @throws {Vellum.NotFoundError}
@@ -71,8 +69,6 @@ export class VellumClient {
     }
 
     /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
      * Generate a completion using a previously defined deployment.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
@@ -142,8 +138,6 @@ export class VellumClient {
     }
 
     /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
      * Generate a stream of completions using a previously defined deployment.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
@@ -187,8 +181,6 @@ export class VellumClient {
     }
 
     /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
      * Perform a search against a document index.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
@@ -246,8 +238,6 @@ export class VellumClient {
     }
 
     /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
      * Used to submit feedback regarding the quality of previously generated completions.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
@@ -306,11 +296,9 @@ export class VellumClient {
     }
 
     /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
+     *     Used to submit feedback regarding the quality of previous workflow execution and its outputs.
      *
-     * Used to submit feedback regarding the quality of previous workflow execution and its outputs.
-     *
-     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     *     **Note:** Uses a base url of `https://predict.vellum.ai`.
      */
     public async submitWorkflowExecutionActuals(request: Vellum.SubmitWorkflowExecutionActualsRequest): Promise<void> {
         const _response = await core.fetcher({

@@ -20,8 +20,6 @@ export class TestSuites {
     constructor(protected readonly options: TestSuites.Options) {}
 
     /**
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
      * Upserts a new test case for a test suite, keying off of the optionally provided test case id.
      *
      * If an id is provided and has a match, the test case will be updated. If no id is provided or no match
@@ -77,9 +75,8 @@ export class TestSuites {
     }
 
     /**
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
      * Deletes an existing test case for a test suite, keying off of the test case id.
+     *
      */
     public async deleteTestSuiteTestCase(id: string, testCaseId: string): Promise<void> {
         const _response = await core.fetcher({

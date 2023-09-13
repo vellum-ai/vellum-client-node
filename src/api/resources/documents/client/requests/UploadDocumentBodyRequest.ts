@@ -7,7 +7,7 @@ export interface UploadDocumentBodyRequest {
     addToIndexNames?: string[];
     /** Optionally include an external ID for this document. This is useful if you want to re-upload the same document later when its contents change and would like it to be re-indexed. */
     externalId?: string;
-    /** A human-friendly name for this document. Typically the filename. <span style="white-space: nowrap">`non-empty`</span> */
+    /** A human-friendly name for this document. Typically the filename. */
     label: string;
     /** Optionally include a list of keywords that'll be associated with this document. Used when performing keyword searches. */
     keywords?: string[];

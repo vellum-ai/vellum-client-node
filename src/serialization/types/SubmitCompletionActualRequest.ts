@@ -14,7 +14,7 @@ export const SubmitCompletionActualRequest: core.serialization.ObjectSchema<
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     text: core.serialization.string().optional(),
     quality: core.serialization.number().optional(),
-    timestamp: core.serialization.string().optional(),
+    timestamp: core.serialization.date().optional(),
 });
 
 export declare namespace SubmitCompletionActualRequest {

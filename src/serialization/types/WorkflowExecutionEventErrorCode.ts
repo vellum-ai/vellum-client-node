@@ -12,6 +12,7 @@ export const WorkflowExecutionEventErrorCode: core.serialization.Schema<
 > = core.serialization.enum_([
     "WORKFLOW_INITIALIZATION",
     "NODE_EXECUTION_COUNT_LIMIT_REACHED",
+    "INTERNAL_SERVER_ERROR",
     "NODE_EXECUTION",
     "LLM_PROVIDER",
     "INVALID_TEMPLATE",
@@ -21,6 +22,7 @@ export declare namespace WorkflowExecutionEventErrorCode {
     type Raw =
         | "WORKFLOW_INITIALIZATION"
         | "NODE_EXECUTION_COUNT_LIMIT_REACHED"
+        | "INTERNAL_SERVER_ERROR"
         | "NODE_EXECUTION"
         | "LLM_PROVIDER"
         | "INVALID_TEMPLATE";

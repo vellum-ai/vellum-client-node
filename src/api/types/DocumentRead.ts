@@ -8,8 +8,8 @@ export interface DocumentRead {
     id: string;
     /** The unique id of this document as it exists in the user's system. */
     externalId?: string;
-    lastUploadedAt: string;
-    /** A human-readable label for the document. Defaults to the originally uploaded file's file name. <span style="white-space: nowrap">`<= 1000 characters`</span> */
+    lastUploadedAt: Date;
+    /** A human-readable label for the document. Defaults to the originally uploaded file's file name. */
     label: string;
     /**
      * The current processing state of the document

@@ -9,7 +9,7 @@ export interface SearchRequestBodyRequest {
     indexId?: string;
     /** The name of the index to search against. Must provide either this or index_id. */
     indexName?: string;
-    /** The query to search for. <span style="white-space: nowrap">`non-empty`</span> */
+    /** The query to search for. */
     query: string;
     /** Configuration options for the search. */
     options?: Vellum.SearchRequestOptionsRequest;

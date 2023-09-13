@@ -8,8 +8,8 @@ export interface ModelVersionRead {
     /** Vellum-generated ID that uniquely identifies this model version. */
     id: string;
     /** Timestamp of when this model version was created. */
-    created: string;
-    /** Human-friendly name for this model version. <span style="white-space: nowrap">`<= 150 characters`</span> */
+    created: Date;
+    /** Human-friendly name for this model version. */
     label: string;
     modelType: Vellum.ModelTypeDeprecated;
     /**
@@ -25,7 +25,7 @@ export interface ModelVersionRead {
      * * `PYQ` - Pyq
      */
     provider: Vellum.ProviderEnum;
-    /** The unique id of this model version as it exists in the above provider's system. <span style="white-space: nowrap">`<= 250 characters`</span> */
+    /** The unique id of this model version as it exists in the above provider's system. */
     externalId: string;
     /** Configuration used to build this model version. */
     buildConfig: Vellum.ModelVersionBuildConfig;

@@ -29,6 +29,7 @@ export * from "./GenerateStreamResponse";
 export * from "./GenerateStreamResult";
 export * from "./GenerateStreamResultData";
 export * from "./IndexingStateEnum";
+export * from "./LogicalOperator";
 export * from "./LogprobsEnum";
 export * from "./MetadataFilterConfigRequest";
 export * from "./MetadataFilterRuleCombinator";

@@ -20,8 +20,6 @@ export class Sandboxes {
     constructor(protected readonly options: Sandboxes.Options) {}
 
     /**
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
      * Upserts a new scenario for a sandbox, keying off of the optionally provided scenario id.
      *
      * If an id is provided and has a match, the scenario will be updated. If no id is provided or no match
@@ -79,8 +77,6 @@ export class Sandboxes {
     }
 
     /**
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
      * Deletes an existing scenario from a sandbox, keying off of the provided scenario id.
      */
     public async deleteSandboxScenario(id: string, scenarioId: string): Promise<void> {

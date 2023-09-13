@@ -20,8 +20,6 @@ export class DocumentIndexes {
     constructor(protected readonly options: DocumentIndexes.Options) {}
 
     /**
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
      * Creates a new document index.
      */
     public async create(request: Vellum.DocumentIndexCreateRequest): Promise<Vellum.DocumentIndexRead> {

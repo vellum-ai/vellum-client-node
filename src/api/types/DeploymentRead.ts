@@ -6,10 +6,10 @@ import * as Vellum from "..";
 
 export interface DeploymentRead {
     id: string;
-    created: string;
-    /** A human-readable label for the deployment <span style="white-space: nowrap">`<= 150 characters`</span> */
+    created: Date;
+    /** A human-readable label for the deployment */
     label: string;
-    /** A name that uniquely identifies this deployment within its workspace <span style="white-space: nowrap">`<= 150 characters`</span> */
+    /** A name that uniquely identifies this deployment within its workspace */
     name: string;
     /**
      * The current status of the deployment
@@ -29,6 +29,6 @@ export interface DeploymentRead {
     environment?: Vellum.EnvironmentEnum;
     modelType: Vellum.ModelTypeDeprecated;
     activeModelVersionIds: string[];
-    lastDeployedOn: string;
+    lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
 }

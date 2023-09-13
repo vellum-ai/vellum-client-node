@@ -8,10 +8,7 @@ export interface MetadataFilterConfigRequest {
     combinator?: Vellum.MetadataFilterRuleCombinator;
     negated?: boolean;
     rules?: Vellum.MetadataFilterRuleRequest[];
-    /** <span style="white-space: nowrap">`non-empty`</span> */
     field?: string;
-    /** <span style="white-space: nowrap">`non-empty`</span> */
-    operator?: string;
-    /** <span style="white-space: nowrap">`non-empty`</span> */
+    operator?: Vellum.LogicalOperator;
     value?: string;
 }

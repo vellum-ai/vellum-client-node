@@ -12,7 +12,7 @@ export const WorkflowResultEvent: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
-    ts: core.serialization.string(),
+    ts: core.serialization.date(),
     output: core.serialization.lazy(async () => (await import("..")).WorkflowResultEventOutputData).optional(),
     error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError).optional(),
 });

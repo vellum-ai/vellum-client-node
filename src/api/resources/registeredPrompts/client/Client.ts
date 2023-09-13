@@ -20,8 +20,6 @@ export class RegisteredPrompts {
     constructor(protected readonly options: RegisteredPrompts.Options) {}
 
     /**
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
      * Registers a prompt within Vellum and creates associated Vellum entities. Intended to be used by integration
      * partners, not directly by Vellum users.
      *

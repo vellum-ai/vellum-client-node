@@ -11,7 +11,7 @@ export const ModelVersionRead: core.serialization.ObjectSchema<
     Vellum.ModelVersionRead
 > = core.serialization.object({
     id: core.serialization.string(),
-    created: core.serialization.string(),
+    created: core.serialization.date(),
     label: core.serialization.string(),
     modelType: core.serialization.property(
         "model_type",

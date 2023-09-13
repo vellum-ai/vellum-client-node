@@ -9,7 +9,7 @@ export interface WorkflowNodeResultEvent {
     nodeId: string;
     nodeResultId: string;
     state: Vellum.WorkflowNodeResultEventState;
-    ts?: string;
+    ts?: Date;
     data?: Vellum.WorkflowNodeResultData;
     error?: Vellum.WorkflowEventError;
     inputValues?: Vellum.NodeInputVariableCompiledValue[];

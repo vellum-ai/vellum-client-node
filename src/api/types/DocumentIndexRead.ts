@@ -6,10 +6,10 @@ import * as Vellum from "..";
 
 export interface DocumentIndexRead {
     id: string;
-    created: string;
-    /** A human-readable label for the document index <span style="white-space: nowrap">`<= 150 characters`</span> */
+    created: Date;
+    /** A human-readable label for the document index */
     label: string;
-    /** A name that uniquely identifies this index within its workspace <span style="white-space: nowrap">`<= 150 characters`</span> */
+    /** A name that uniquely identifies this index within its workspace */
     name: string;
     /**
      * The current status of the document index

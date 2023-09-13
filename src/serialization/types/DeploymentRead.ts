@@ -9,7 +9,7 @@ import * as core from "../../core";
 export const DeploymentRead: core.serialization.ObjectSchema<serializers.DeploymentRead.Raw, Vellum.DeploymentRead> =
     core.serialization.object({
         id: core.serialization.string(),
-        created: core.serialization.string(),
+        created: core.serialization.date(),
         label: core.serialization.string(),
         name: core.serialization.string(),
         status: core.serialization.lazy(async () => (await import("..")).DeploymentStatus).optional(),
@@ -22,7 +22,7 @@ export const DeploymentRead: core.serialization.ObjectSchema<serializers.Deploym
             "active_model_version_ids",
             core.serialization.list(core.serialization.string())
         ),
-        lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.string()),
+        lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date()),
         inputVariables: core.serialization.property(
             "input_variables",
             core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).VellumVariable))

@@ -16,7 +16,7 @@ export const MetadataFilterConfigRequest: core.serialization.ObjectSchema<
         .list(core.serialization.lazyObject(async () => (await import("..")).MetadataFilterRuleRequest))
         .optional(),
     field: core.serialization.string().optional(),
-    operator: core.serialization.string().optional(),
+    operator: core.serialization.lazy(async () => (await import("..")).LogicalOperator).optional(),
     value: core.serialization.string().optional(),
 });
 
@@ -26,7 +26,7 @@ export declare namespace MetadataFilterConfigRequest {
         negated?: boolean | null;
         rules?: serializers.MetadataFilterRuleRequest.Raw[] | null;
         field?: string | null;
-        operator?: string | null;
+        operator?: serializers.LogicalOperator.Raw | null;
         value?: string | null;
     }
 }

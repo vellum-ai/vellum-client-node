@@ -5,7 +5,7 @@
 export interface SearchResultDocument {
     /** The ID of the document. */
     id: string;
-    /** The human-readable name for the document. <span style="white-space: nowrap">`<= 1000 characters`</span> */
+    /** The human-readable name for the document. */
     label: string;
     /** The unique ID of the document as represented in an external system and specified when it was originally uploaded. */
     externalId?: string;

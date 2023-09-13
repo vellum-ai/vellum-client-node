@@ -12,5 +12,5 @@ export interface SubmitCompletionActualRequest {
     /** A number between 0 and 1 representing the quality of the completion. 0 is the worst, 1 is the best. */
     quality?: number;
     /** Optionally provide the timestamp representing when this feedback was collected. Used for reporting purposes. */
-    timestamp?: string;
+    timestamp?: Date;
 }

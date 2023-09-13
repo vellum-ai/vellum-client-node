@@ -23,11 +23,7 @@ export class Documents {
     constructor(protected readonly options: Documents.Options) {}
 
     /**
-     *
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
      * Used to list documents. Optionally filter on supported fields.
-     *
      */
     public async list(request: Vellum.DocumentsListRequest = {}): Promise<Vellum.PaginatedSlimDocumentList> {
         const { documentIndexId, limit, offset, ordering } = request;
@@ -91,11 +87,7 @@ export class Documents {
     }
 
     /**
-     *
-     * <strong style="background-color:#ffc107; color:white; padding:4px; border-radius:4px">Unstable</strong>
-     *
      * Update a Document, keying off of its Vellum-generated ID. Particularly useful for updating its metadata.
-     *
      */
     public async partialUpdate(
         id: string,
@@ -184,8 +176,6 @@ export class Documents {
     }
 
     /**
-     * <strong style="background-color:#4caf50; color:white; padding:4px; border-radius:4px">Stable</strong>
-     *
      * Upload a document to be indexed and used for search.
      *
      * **Note:** Uses a base url of `https://documents.vellum.ai`.

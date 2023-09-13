@@ -5,9 +5,9 @@
 import * as Vellum from "../../../..";
 
 export interface DocumentIndexCreateRequest {
-    /** A human-readable label for the document index <span style="white-space: nowrap">`non-empty`</span> <span style="white-space: nowrap">`<= 150 characters`</span> */
+    /** A human-readable label for the document index */
     label: string;
-    /** A name that uniquely identifies this index within its workspace <span style="white-space: nowrap">`non-empty`</span> <span style="white-space: nowrap">`<= 150 characters`</span> */
+    /** A name that uniquely identifies this index within its workspace */
     name: string;
     /**
      * The current status of the document index

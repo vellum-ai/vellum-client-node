@@ -10,7 +10,7 @@ export const DocumentRead: core.serialization.ObjectSchema<serializers.DocumentR
     core.serialization.object({
         id: core.serialization.string(),
         externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-        lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.string()),
+        lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.date()),
         label: core.serialization.string(),
         processingState: core.serialization.property(
             "processing_state",

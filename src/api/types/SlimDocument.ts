@@ -10,8 +10,8 @@ export interface SlimDocument {
     /** The external ID that was originally provided when uploading the document. */
     externalId?: string;
     /** A timestamp representing when this document was most recently uploaded. */
-    lastUploadedAt: string;
-    /** Human-friendly name for this document. <span style="white-space: nowrap">`<= 1000 characters`</span> */
+    lastUploadedAt: Date;
+    /** Human-friendly name for this document. */
     label: string;
     /**
      * An enum value representing where this document is along its processing lifecycle. Note that this is different than its indexing lifecycle.

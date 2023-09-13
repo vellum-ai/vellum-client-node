@@ -5,9 +5,9 @@
 import * as Vellum from "../../../..";
 
 export interface RegisterPromptRequestRequest {
-    /** A human-friendly label for corresponding entities created in Vellum. <span style="white-space: nowrap">`non-empty`</span> */
+    /** A human-friendly label for corresponding entities created in Vellum. */
     label: string;
-    /** A uniquely-identifying name for corresponding entities created in Vellum. <span style="white-space: nowrap">`non-empty`</span> */
+    /** A uniquely-identifying name for corresponding entities created in Vellum. */
     name: string;
     /** Information about how to execute the prompt template. */
     prompt: Vellum.RegisterPromptPromptInfoRequest;
@@ -24,7 +24,7 @@ export interface RegisterPromptRequestRequest {
      * * `PYQ` - Pyq
      */
     provider: Vellum.ProviderEnum;
-    /** The initial model to use for this prompt <span style="white-space: nowrap">`non-empty`</span> */
+    /** The initial model to use for this prompt */
     model: string;
     /** The initial model parameters to use for  this prompt */
     parameters: Vellum.RegisterPromptModelParametersRequest;

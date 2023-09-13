@@ -5,9 +5,7 @@
 import * as Vellum from "..";
 
 export interface RegisteredPromptInputVariableRequest {
-    /** <span style="white-space: nowrap">`non-empty`</span> */
     key: string;
-    /** <span style="white-space: nowrap">`non-empty`</span> */
     id?: string;
     type?: Vellum.VellumVariableType;
 }
