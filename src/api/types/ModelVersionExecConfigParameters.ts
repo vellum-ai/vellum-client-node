@@ -3,8 +3,8 @@
  */
 
 export interface ModelVersionExecConfigParameters {
-    temperature: number;
-    maxTokens: number;
+    temperature?: number;
+    maxTokens?: number;
     topP: number;
     frequencyPenalty: number;
     presencePenalty: number;

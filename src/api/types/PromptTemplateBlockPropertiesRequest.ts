@@ -8,7 +8,7 @@ export interface PromptTemplateBlockPropertiesRequest {
     chatRole?: Vellum.ChatMessageRole;
     chatMessageUnterminated?: boolean;
     template?: string;
-    templateType?: Vellum.ContentType;
+    templateType?: Vellum.VellumVariableType;
     functionName?: string;
     functionDescription?: string;
     functionParameters?: Record<string, unknown>;

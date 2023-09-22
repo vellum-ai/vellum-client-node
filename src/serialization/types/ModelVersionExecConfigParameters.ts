@@ -10,8 +10,8 @@ export const ModelVersionExecConfigParameters: core.serialization.ObjectSchema<
     serializers.ModelVersionExecConfigParameters.Raw,
     Vellum.ModelVersionExecConfigParameters
 > = core.serialization.object({
-    temperature: core.serialization.number(),
-    maxTokens: core.serialization.property("max_tokens", core.serialization.number()),
+    temperature: core.serialization.number().optional(),
+    maxTokens: core.serialization.property("max_tokens", core.serialization.number().optional()),
     topP: core.serialization.property("top_p", core.serialization.number()),
     frequencyPenalty: core.serialization.property("frequency_penalty", core.serialization.number()),
     presencePenalty: core.serialization.property("presence_penalty", core.serialization.number()),
@@ -25,8 +25,8 @@ export const ModelVersionExecConfigParameters: core.serialization.ObjectSchema<
 
 export declare namespace ModelVersionExecConfigParameters {
     interface Raw {
-        temperature: number;
-        max_tokens: number;
+        temperature?: number | null;
+        max_tokens?: number | null;
         top_p: number;
         frequency_penalty: number;
         presence_penalty: number;

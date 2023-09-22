@@ -15,6 +15,7 @@ export const WorkflowNodeResultData: core.serialization.Schema<
         SEARCH: core.serialization.lazyObject(async () => (await import("..")).SearchNodeResult),
         TEMPLATING: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeResult),
         CONDITIONAL: core.serialization.lazyObject(async () => (await import("..")).ConditionalNodeResult),
+        API: core.serialization.lazyObject(async () => (await import("..")).ApiNodeResult),
         TERMINAL: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeResult),
     })
     .transform<Vellum.WorkflowNodeResultData>({
@@ -28,6 +29,7 @@ export declare namespace WorkflowNodeResultData {
         | WorkflowNodeResultData.Search
         | WorkflowNodeResultData.Templating
         | WorkflowNodeResultData.Conditional
+        | WorkflowNodeResultData.Api
         | WorkflowNodeResultData.Terminal;
 
     interface Prompt extends serializers.PromptNodeResult.Raw {
@@ -44,6 +46,10 @@ export declare namespace WorkflowNodeResultData {
 
     interface Conditional extends serializers.ConditionalNodeResult.Raw {
         type: "CONDITIONAL";
+    }
+
+    interface Api extends serializers.ApiNodeResult.Raw {
+        type: "API";
     }
 
     interface Terminal extends serializers.TerminalNodeResult.Raw {

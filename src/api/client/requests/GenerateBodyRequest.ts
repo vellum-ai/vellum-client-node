@@ -9,7 +9,7 @@ export interface GenerateBodyRequest {
     deploymentId?: string;
     /** The name of the deployment. Must provide either this or deployment_id. */
     deploymentName?: string;
-    /** The generation requests to make. Supplying multiple will perform a bulk request to the LLM provided when possible. */
+    /** The generation request to make. Bulk requests are no longer supported, this field must be an array of length 1. */
     requests: Vellum.GenerateRequest[];
     /** Additional configuration that can be used to control what's included in the response. */
     options?: Vellum.GenerateOptionsRequest;

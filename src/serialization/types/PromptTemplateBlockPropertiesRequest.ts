@@ -21,7 +21,7 @@ export const PromptTemplateBlockPropertiesRequest: core.serialization.ObjectSche
     template: core.serialization.string().optional(),
     templateType: core.serialization.property(
         "template_type",
-        core.serialization.lazy(async () => (await import("..")).ContentType).optional()
+        core.serialization.lazy(async () => (await import("..")).VellumVariableType).optional()
     ),
     functionName: core.serialization.property("function_name", core.serialization.string().optional()),
     functionDescription: core.serialization.property("function_description", core.serialization.string().optional()),
@@ -40,7 +40,7 @@ export declare namespace PromptTemplateBlockPropertiesRequest {
         chat_role?: serializers.ChatMessageRole.Raw | null;
         chat_message_unterminated?: boolean | null;
         template?: string | null;
-        template_type?: serializers.ContentType.Raw | null;
+        template_type?: serializers.VellumVariableType.Raw | null;
         function_name?: string | null;
         function_description?: string | null;
         function_parameters?: Record<string, unknown> | null;

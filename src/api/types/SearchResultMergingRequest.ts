@@ -4,5 +4,5 @@
 
 export interface SearchResultMergingRequest {
     /** Whether to enable merging results */
-    enabled: boolean;
+    enabled?: boolean;
 }

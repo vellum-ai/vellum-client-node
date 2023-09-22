@@ -12,6 +12,7 @@ export const WorkflowResultEventOutputData: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         STRING: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataString),
+        NUMBER: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataNumber),
         JSON: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataJson),
         CHAT_HISTORY: core.serialization.lazyObject(
             async () => (await import("..")).WorkflowResultEventOutputDataChatHistory
@@ -28,12 +29,17 @@ export const WorkflowResultEventOutputData: core.serialization.Schema<
 export declare namespace WorkflowResultEventOutputData {
     type Raw =
         | WorkflowResultEventOutputData.String
+        | WorkflowResultEventOutputData.Number
         | WorkflowResultEventOutputData.Json
         | WorkflowResultEventOutputData.ChatHistory
         | WorkflowResultEventOutputData.SearchResults;
 
     interface String extends serializers.WorkflowResultEventOutputDataString.Raw {
         type: "STRING";
+    }
+
+    interface Number extends serializers.WorkflowResultEventOutputDataNumber.Raw {
+        type: "NUMBER";
     }
 
     interface Json extends serializers.WorkflowResultEventOutputDataJson.Raw {

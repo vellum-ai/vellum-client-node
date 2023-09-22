@@ -12,6 +12,7 @@ export const NodeInputVariableCompiledValue: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         STRING: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledStringValue),
+        NUMBER: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledNumberValue),
         JSON: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledJsonValue),
         CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledChatHistoryValue),
         SEARCH_RESULTS: core.serialization.lazyObject(
@@ -26,12 +27,17 @@ export const NodeInputVariableCompiledValue: core.serialization.Schema<
 export declare namespace NodeInputVariableCompiledValue {
     type Raw =
         | NodeInputVariableCompiledValue.String
+        | NodeInputVariableCompiledValue.Number
         | NodeInputVariableCompiledValue.Json
         | NodeInputVariableCompiledValue.ChatHistory
         | NodeInputVariableCompiledValue.SearchResults;
 
     interface String extends serializers.NodeInputCompiledStringValue.Raw {
         type: "STRING";
+    }
+
+    interface Number extends serializers.NodeInputCompiledNumberValue.Raw {
+        type: "NUMBER";
     }
 
     interface Json extends serializers.NodeInputCompiledJsonValue.Raw {

@@ -6,6 +6,7 @@ import * as Vellum from "..";
 
 export type NodeInputVariableCompiledValue =
     | Vellum.NodeInputVariableCompiledValue.String
+    | Vellum.NodeInputVariableCompiledValue.Number
     | Vellum.NodeInputVariableCompiledValue.Json
     | Vellum.NodeInputVariableCompiledValue.ChatHistory
     | Vellum.NodeInputVariableCompiledValue.SearchResults;
@@ -13,6 +14,10 @@ export type NodeInputVariableCompiledValue =
 export declare namespace NodeInputVariableCompiledValue {
     interface String extends Vellum.NodeInputCompiledStringValue {
         type: "STRING";
+    }
+
+    interface Number extends Vellum.NodeInputCompiledNumberValue {
+        type: "NUMBER";
     }
 
     interface Json extends Vellum.NodeInputCompiledJsonValue {

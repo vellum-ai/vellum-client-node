@@ -6,6 +6,7 @@ import * as Vellum from "..";
 
 export type TemplatingNodeResultOutput =
     | Vellum.TemplatingNodeResultOutput.String
+    | Vellum.TemplatingNodeResultOutput.Number
     | Vellum.TemplatingNodeResultOutput.Json
     | Vellum.TemplatingNodeResultOutput.ChatHistory
     | Vellum.TemplatingNodeResultOutput.SearchResults;
@@ -13,6 +14,10 @@ export type TemplatingNodeResultOutput =
 export declare namespace TemplatingNodeResultOutput {
     interface String extends Vellum.TemplatingNodeStringResult {
         type: "STRING";
+    }
+
+    interface Number extends Vellum.TemplatingNodeNumberResult {
+        type: "NUMBER";
     }
 
     interface Json extends Vellum.TemplatingNodeJsonResult {

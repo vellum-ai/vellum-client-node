@@ -12,6 +12,7 @@ export const TemplatingNodeResultOutput: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         STRING: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeStringResult),
+        NUMBER: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeNumberResult),
         JSON: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeJsonResult),
         CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeChatHistoryResult),
         SEARCH_RESULTS: core.serialization.lazyObject(
@@ -26,12 +27,17 @@ export const TemplatingNodeResultOutput: core.serialization.Schema<
 export declare namespace TemplatingNodeResultOutput {
     type Raw =
         | TemplatingNodeResultOutput.String
+        | TemplatingNodeResultOutput.Number
         | TemplatingNodeResultOutput.Json
         | TemplatingNodeResultOutput.ChatHistory
         | TemplatingNodeResultOutput.SearchResults;
 
     interface String extends serializers.TemplatingNodeStringResult.Raw {
         type: "STRING";
+    }
+
+    interface Number extends serializers.TemplatingNodeNumberResult.Raw {
+        type: "NUMBER";
     }
 
     interface Json extends serializers.TemplatingNodeJsonResult.Raw {

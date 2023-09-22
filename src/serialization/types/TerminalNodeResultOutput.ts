@@ -12,6 +12,7 @@ export const TerminalNodeResultOutput: core.serialization.Schema<
 > = core.serialization
     .union("type", {
         STRING: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeStringResult),
+        NUMBER: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeNumberResult),
         JSON: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeJsonResult),
         CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeChatHistoryResult),
         SEARCH_RESULTS: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeSearchResultsResult),
@@ -24,12 +25,17 @@ export const TerminalNodeResultOutput: core.serialization.Schema<
 export declare namespace TerminalNodeResultOutput {
     type Raw =
         | TerminalNodeResultOutput.String
+        | TerminalNodeResultOutput.Number
         | TerminalNodeResultOutput.Json
         | TerminalNodeResultOutput.ChatHistory
         | TerminalNodeResultOutput.SearchResults;
 
     interface String extends serializers.TerminalNodeStringResult.Raw {
         type: "STRING";
+    }
+
+    interface Number extends serializers.TerminalNodeNumberResult.Raw {
+        type: "NUMBER";
     }
 
     interface Json extends serializers.TerminalNodeJsonResult.Raw {

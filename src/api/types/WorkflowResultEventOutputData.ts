@@ -6,6 +6,7 @@ import * as Vellum from "..";
 
 export type WorkflowResultEventOutputData =
     | Vellum.WorkflowResultEventOutputData.String
+    | Vellum.WorkflowResultEventOutputData.Number
     | Vellum.WorkflowResultEventOutputData.Json
     | Vellum.WorkflowResultEventOutputData.ChatHistory
     | Vellum.WorkflowResultEventOutputData.SearchResults;
@@ -13,6 +14,10 @@ export type WorkflowResultEventOutputData =
 export declare namespace WorkflowResultEventOutputData {
     interface String extends Vellum.WorkflowResultEventOutputDataString {
         type: "STRING";
+    }
+
+    interface Number extends Vellum.WorkflowResultEventOutputDataNumber {
+        type: "NUMBER";
     }
 
     interface Json extends Vellum.WorkflowResultEventOutputDataJson {

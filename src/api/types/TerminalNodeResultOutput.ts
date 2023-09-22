@@ -6,6 +6,7 @@ import * as Vellum from "..";
 
 export type TerminalNodeResultOutput =
     | Vellum.TerminalNodeResultOutput.String
+    | Vellum.TerminalNodeResultOutput.Number
     | Vellum.TerminalNodeResultOutput.Json
     | Vellum.TerminalNodeResultOutput.ChatHistory
     | Vellum.TerminalNodeResultOutput.SearchResults;
@@ -13,6 +14,10 @@ export type TerminalNodeResultOutput =
 export declare namespace TerminalNodeResultOutput {
     interface String extends Vellum.TerminalNodeStringResult {
         type: "STRING";
+    }
+
+    interface Number extends Vellum.TerminalNodeNumberResult {
+        type: "NUMBER";
     }
 
     interface Json extends Vellum.TerminalNodeJsonResult {

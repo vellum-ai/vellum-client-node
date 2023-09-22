@@ -10,13 +10,13 @@ export const SearchWeightsRequest: core.serialization.ObjectSchema<
     serializers.SearchWeightsRequest.Raw,
     Vellum.SearchWeightsRequest
 > = core.serialization.object({
-    semanticSimilarity: core.serialization.property("semantic_similarity", core.serialization.number()),
-    keywords: core.serialization.number(),
+    semanticSimilarity: core.serialization.property("semantic_similarity", core.serialization.number().optional()),
+    keywords: core.serialization.number().optional(),
 });
 
 export declare namespace SearchWeightsRequest {
     interface Raw {
-        semantic_similarity: number;
-        keywords: number;
+        semantic_similarity?: number | null;
+        keywords?: number | null;
     }
 }

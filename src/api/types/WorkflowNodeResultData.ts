@@ -9,6 +9,7 @@ export type WorkflowNodeResultData =
     | Vellum.WorkflowNodeResultData.Search
     | Vellum.WorkflowNodeResultData.Templating
     | Vellum.WorkflowNodeResultData.Conditional
+    | Vellum.WorkflowNodeResultData.Api
     | Vellum.WorkflowNodeResultData.Terminal;
 
 export declare namespace WorkflowNodeResultData {
@@ -26,6 +27,10 @@ export declare namespace WorkflowNodeResultData {
 
     interface Conditional extends Vellum.ConditionalNodeResult {
         type: "CONDITIONAL";
+    }
+
+    interface Api extends Vellum.ApiNodeResult {
+        type: "API";
     }
 
     interface Terminal extends Vellum.TerminalNodeResult {

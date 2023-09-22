@@ -10,11 +10,11 @@ export const SearchResultMergingRequest: core.serialization.ObjectSchema<
     serializers.SearchResultMergingRequest.Raw,
     Vellum.SearchResultMergingRequest
 > = core.serialization.object({
-    enabled: core.serialization.boolean(),
+    enabled: core.serialization.boolean().optional(),
 });
 
 export declare namespace SearchResultMergingRequest {
     interface Raw {
-        enabled: boolean;
+        enabled?: boolean | null;
     }
 }

@@ -3,15 +3,17 @@
  */
 
 /**
- * * `STRING` - String
+ * * `STRING` - STRING
+ * * `NUMBER` - NUMBER
  * * `JSON` - JSON
- * * `CHAT_HISTORY` - Chat History
- * * `SEARCH_RESULTS` - Search Results
+ * * `CHAT_HISTORY` - CHAT_HISTORY
+ * * `SEARCH_RESULTS` - SEARCH_RESULTS
  */
-export type VellumVariableType = "STRING" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS";
+export type VellumVariableType = "STRING" | "NUMBER" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS";
 
 export const VellumVariableType = {
     String: "STRING",
+    Number: "NUMBER",
     Json: "JSON",
     ChatHistory: "CHAT_HISTORY",
     SearchResults: "SEARCH_RESULTS",
