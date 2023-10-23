@@ -7,8 +7,18 @@ import * as Vellum from "../../api";
 import * as core from "../../core";
 
 export const ProviderEnum: core.serialization.Schema<serializers.ProviderEnum.Raw, Vellum.ProviderEnum> =
-    core.serialization.enum_(["ANTHROPIC", "COHERE", "GOOGLE", "HOSTED", "MOSAICML", "MYSTIC", "OPENAI", "PYQ"]);
+    core.serialization.enum_([
+        "ANTHROPIC",
+        "COHERE",
+        "GOOGLE",
+        "HOSTED",
+        "MOSAICML",
+        "OPENAI",
+        "HUGGINGFACE",
+        "MYSTIC",
+        "PYQ",
+    ]);
 
 export declare namespace ProviderEnum {
-    type Raw = "ANTHROPIC" | "COHERE" | "GOOGLE" | "HOSTED" | "MOSAICML" | "MYSTIC" | "OPENAI" | "PYQ";
+    type Raw = "ANTHROPIC" | "COHERE" | "GOOGLE" | "HOSTED" | "MOSAICML" | "OPENAI" | "HUGGINGFACE" | "MYSTIC" | "PYQ";
 }

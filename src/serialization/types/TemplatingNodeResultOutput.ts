@@ -18,6 +18,7 @@ export const TemplatingNodeResultOutput: core.serialization.Schema<
         SEARCH_RESULTS: core.serialization.lazyObject(
             async () => (await import("..")).TemplatingNodeSearchResultsResult
         ),
+        ERROR: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeErrorResult),
     })
     .transform<Vellum.TemplatingNodeResultOutput>({
         transform: (value) => value,
@@ -30,7 +31,8 @@ export declare namespace TemplatingNodeResultOutput {
         | TemplatingNodeResultOutput.Number
         | TemplatingNodeResultOutput.Json
         | TemplatingNodeResultOutput.ChatHistory
-        | TemplatingNodeResultOutput.SearchResults;
+        | TemplatingNodeResultOutput.SearchResults
+        | TemplatingNodeResultOutput.Error;
 
     interface String extends serializers.TemplatingNodeStringResult.Raw {
         type: "STRING";
@@ -50,5 +52,9 @@ export declare namespace TemplatingNodeResultOutput {
 
     interface SearchResults extends serializers.TemplatingNodeSearchResultsResult.Raw {
         type: "SEARCH_RESULTS";
+    }
+
+    interface Error extends serializers.TemplatingNodeErrorResult.Raw {
+        type: "ERROR";
     }
 }

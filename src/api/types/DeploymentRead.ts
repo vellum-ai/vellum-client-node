@@ -27,7 +27,6 @@ export interface DeploymentRead {
      * * `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
-    modelType: Vellum.ModelTypeDeprecated;
     activeModelVersionIds: string[];
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];

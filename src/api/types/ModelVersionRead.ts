@@ -11,7 +11,6 @@ export interface ModelVersionRead {
     created: Date;
     /** Human-friendly name for this model version. */
     label: string;
-    modelType: Vellum.ModelTypeDeprecated;
     /**
      * Which LLM provider this model version is associated with.
      *
@@ -20,8 +19,9 @@ export interface ModelVersionRead {
      * * `GOOGLE` - Google
      * * `HOSTED` - Hosted
      * * `MOSAICML` - MosaicML
-     * * `MYSTIC` - Mystic
      * * `OPENAI` - OpenAI
+     * * `HUGGINGFACE` - HuggingFace
+     * * `MYSTIC` - Mystic
      * * `PYQ` - Pyq
      */
     provider: Vellum.ProviderEnum;

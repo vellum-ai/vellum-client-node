@@ -24,6 +24,8 @@ export class RegisteredPrompts {
      * partners, not directly by Vellum users.
      *
      * Under the hood, this endpoint creates a new sandbox, a new model version, and a new deployment.
+     * @throws {Vellum.BadRequestError}
+     * @throws {Vellum.NotFoundError}
      * @throws {Vellum.ConflictError}
      */
     public async registerPrompt(request: Vellum.RegisterPromptRequestRequest): Promise<Vellum.RegisterPromptResponse> {
@@ -51,6 +53,10 @@ export class RegisteredPrompts {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
                 case 409:
                     throw new Vellum.ConflictError(
                         await serializers.RegisterPromptErrorResponse.parseOrThrow(_response.error.body, {

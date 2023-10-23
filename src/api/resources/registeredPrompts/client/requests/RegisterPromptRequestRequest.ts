@@ -19,8 +19,9 @@ export interface RegisterPromptRequestRequest {
      * * `GOOGLE` - Google
      * * `HOSTED` - Hosted
      * * `MOSAICML` - MosaicML
-     * * `MYSTIC` - Mystic
      * * `OPENAI` - OpenAI
+     * * `HUGGINGFACE` - HuggingFace
+     * * `MYSTIC` - Mystic
      * * `PYQ` - Pyq
      */
     provider: Vellum.ProviderEnum;

@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const VellumVariableType: core.serialization.Schema<
     serializers.VellumVariableType.Raw,
     Vellum.VellumVariableType
-> = core.serialization.enum_(["STRING", "NUMBER", "JSON", "CHAT_HISTORY", "SEARCH_RESULTS"]);
+> = core.serialization.enum_(["STRING", "NUMBER", "JSON", "CHAT_HISTORY", "SEARCH_RESULTS", "ERROR"]);
 
 export declare namespace VellumVariableType {
-    type Raw = "STRING" | "NUMBER" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS";
+    type Raw = "STRING" | "NUMBER" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS" | "ERROR";
 }

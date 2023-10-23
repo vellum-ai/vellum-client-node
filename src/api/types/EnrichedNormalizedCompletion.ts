@@ -23,5 +23,6 @@ export interface EnrichedNormalizedCompletion {
     logprobs?: Vellum.NormalizedLogProbs;
     /** The ID of the model version used to generate this completion. */
     modelVersionId: string;
+    promptVersionId?: string;
     type?: Vellum.VellumVariableType;
 }

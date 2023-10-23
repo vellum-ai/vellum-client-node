@@ -9,4 +9,5 @@ export interface ModelVersionBuildConfig {
     baseModel: string;
     /** Information about the sandbox snapshot that was used to create this model version, if applicable. */
     sandboxSnapshot?: Vellum.ModelVersionSandboxSnapshot;
+    promptVersionId?: string;
 }

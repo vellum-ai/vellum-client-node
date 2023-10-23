@@ -15,11 +15,13 @@ export const ModelVersionBuildConfig: core.serialization.ObjectSchema<
         "sandbox_snapshot",
         core.serialization.lazyObject(async () => (await import("..")).ModelVersionSandboxSnapshot).optional()
     ),
+    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optional()),
 });
 
 export declare namespace ModelVersionBuildConfig {
     interface Raw {
         base_model: string;
         sandbox_snapshot?: serializers.ModelVersionSandboxSnapshot.Raw | null;
+        prompt_version_id?: string | null;
     }
 }

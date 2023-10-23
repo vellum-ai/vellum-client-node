@@ -9,7 +9,8 @@ export type NodeInputVariableCompiledValue =
     | Vellum.NodeInputVariableCompiledValue.Number
     | Vellum.NodeInputVariableCompiledValue.Json
     | Vellum.NodeInputVariableCompiledValue.ChatHistory
-    | Vellum.NodeInputVariableCompiledValue.SearchResults;
+    | Vellum.NodeInputVariableCompiledValue.SearchResults
+    | Vellum.NodeInputVariableCompiledValue.Error_;
 
 export declare namespace NodeInputVariableCompiledValue {
     interface String extends Vellum.NodeInputCompiledStringValue {
@@ -30,5 +31,9 @@ export declare namespace NodeInputVariableCompiledValue {
 
     interface SearchResults extends Vellum.NodeInputCompiledSearchResultsValue {
         type: "SEARCH_RESULTS";
+    }
+
+    interface Error_ extends Vellum.NodeInputCompiledErrorValue {
+        type: "ERROR";
     }
 }

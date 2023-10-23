@@ -8,8 +8,9 @@
  * * `JSON` - JSON
  * * `CHAT_HISTORY` - CHAT_HISTORY
  * * `SEARCH_RESULTS` - SEARCH_RESULTS
+ * * `ERROR` - ERROR
  */
-export type VellumVariableType = "STRING" | "NUMBER" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS";
+export type VellumVariableType = "STRING" | "NUMBER" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS" | "ERROR";
 
 export const VellumVariableType = {
     String: "STRING",
@@ -17,4 +18,5 @@ export const VellumVariableType = {
     Json: "JSON",
     ChatHistory: "CHAT_HISTORY",
     SearchResults: "SEARCH_RESULTS",
+    Error: "ERROR",
 } as const;
