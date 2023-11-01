@@ -1,6 +1,6 @@
 {
     "name": "vellum-ai",
-    "version": "v0.0.44",
+    "version": "v0.0.45",
     "private": false,
     "repository": "https://github.com/vellum-ai/vellum-client-node",
     "main": "./index.js",
