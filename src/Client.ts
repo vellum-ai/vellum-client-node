@@ -5,8 +5,8 @@
 import * as environments from "./environments";
 import * as core from "./core";
 import * as Vellum from "./api";
-import urlJoin from "url-join";
 import * as serializers from "./serialization";
+import urlJoin from "url-join";
 import * as errors from "./errors";
 import { Deployments } from "./api/resources/deployments/client/Client";
 import { DocumentIndexes } from "./api/resources/documentIndexes/client/Client";
@@ -18,53 +18,55 @@ import { TestSuites } from "./api/resources/testSuites/client/Client";
 
 export declare namespace VellumClient {
     interface Options {
-        environment?: environments.VellumEnvironment | environments.VellumEnvironmentUrls;
+        environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey: core.Supplier<string>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
 export class VellumClient {
-    constructor(protected readonly options: VellumClient.Options) {}
+    constructor(protected readonly _options: VellumClient.Options) {}
 
     /**
      * Executes a deployed Workflow and streams back its results.
-     * @throws {Vellum.BadRequestError}
-     * @throws {Vellum.NotFoundError}
-     * @throws {Vellum.InternalServerError}
      */
     public async executeWorkflowStream(
         request: Vellum.ExecuteWorkflowStreamRequest,
-        cb: (data: Vellum.WorkflowStreamEvent) => void,
-        opts?: Pick<core.StreamingFetcher.Args, "onError" | "onFinish" | "abortController" | "timeoutMs">
-    ): Promise<void> {
-        const _queue = new core.CallbackQueue();
-        await core.streamingFetcher({
+        requestOptions?: VellumClient.RequestOptions
+    ): Promise<core.Stream<Vellum.WorkflowStreamEvent>> {
+        const _response = await core.streamingFetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .predict,
                 "v1/execute-workflow-stream"
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             body: await serializers.ExecuteWorkflowStreamRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
-            onData: _queue.wrap(async (data) => {
-                const parsed = await serializers.WorkflowStreamEvent.parse(data, {
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+        });
+        return new core.Stream({
+            stream: _response.data,
+            terminator: "\n",
+            parse: async (data) => {
+                return await serializers.WorkflowStreamEvent.parseOrThrow(data, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
                 });
-                if (parsed.ok) {
-                    cb(parsed.value);
-                } else {
-                    opts?.onError?.(parsed.errors);
-                }
-            }),
-            onError: opts?.onError != null ? _queue.wrap(opts.onError) : undefined,
-            onFinish: opts?.onFinish != null ? _queue.wrap(opts.onFinish) : undefined,
-            abortController: opts?.abortController,
+            },
         });
     }
 
@@ -72,29 +74,39 @@ export class VellumClient {
      * Generate a completion using a previously defined deployment.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
-     * @throws {Vellum.BadRequestError}
-     * @throws {Vellum.ForbiddenError}
-     * @throws {Vellum.NotFoundError}
-     * @throws {Vellum.InternalServerError}
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.ForbiddenError}
+     * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.InternalServerError}
      */
-    public async generate(request: Vellum.GenerateBodyRequest): Promise<Vellum.GenerateResponse> {
+    public async generate(
+        request: Vellum.GenerateBodyRequest,
+        requestOptions?: VellumClient.RequestOptions
+    ): Promise<Vellum.GenerateResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .predict,
                 "v1/generate"
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
             body: await serializers.GenerateBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.GenerateResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -108,6 +120,7 @@ export class VellumClient {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 404:
@@ -141,42 +154,38 @@ export class VellumClient {
      * Generate a stream of completions using a previously defined deployment.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
-     * @throws {Vellum.BadRequestError}
-     * @throws {Vellum.ForbiddenError}
-     * @throws {Vellum.NotFoundError}
-     * @throws {Vellum.InternalServerError}
      */
     public async generateStream(
         request: Vellum.GenerateStreamBodyRequest,
-        cb: (data: Vellum.GenerateStreamResponse) => void,
-        opts?: Pick<core.StreamingFetcher.Args, "onError" | "onFinish" | "abortController" | "timeoutMs">
-    ): Promise<void> {
-        const _queue = new core.CallbackQueue();
-        await core.streamingFetcher({
+        requestOptions?: VellumClient.RequestOptions
+    ): Promise<core.Stream<Vellum.GenerateStreamResponse>> {
+        const _response = await core.streamingFetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .predict,
                 "v1/generate-stream"
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             body: await serializers.GenerateStreamBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            onData: _queue.wrap(async (data) => {
-                const parsed = await serializers.GenerateStreamResponse.parse(data, {
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+        });
+        return new core.Stream({
+            stream: _response.data,
+            terminator: "\n",
+            parse: async (data) => {
+                return await serializers.GenerateStreamResponse.parseOrThrow(data, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
                 });
-                if (parsed.ok) {
-                    cb(parsed.value);
-                } else {
-                    opts?.onError?.(parsed.errors);
-                }
-            }),
-            onError: opts?.onError != null ? _queue.wrap(opts.onError) : undefined,
-            onFinish: opts?.onFinish != null ? _queue.wrap(opts.onFinish) : undefined,
-            abortController: opts?.abortController,
+            },
         });
     }
 
@@ -184,25 +193,38 @@ export class VellumClient {
      * Perform a search against a document index.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
-     * @throws {Vellum.BadRequestError}
-     * @throws {Vellum.NotFoundError}
-     * @throws {Vellum.InternalServerError}
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.InternalServerError}
      */
-    public async search(request: Vellum.SearchRequestBodyRequest): Promise<Vellum.SearchResponse> {
+    public async search(
+        request: Vellum.SearchRequestBodyRequest,
+        requestOptions?: VellumClient.RequestOptions
+    ): Promise<Vellum.SearchResponse> {
         const _response = await core.fetcher({
-            url: urlJoin((this.options.environment ?? environments.VellumEnvironment.Production).predict, "v1/search"),
+            url: urlJoin(
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .predict,
+                "v1/search"
+            ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
             body: await serializers.SearchRequestBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.SearchResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -241,24 +263,33 @@ export class VellumClient {
      * Used to submit feedback regarding the quality of previously generated completions.
      *
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
-     * @throws {Vellum.BadRequestError}
-     * @throws {Vellum.NotFoundError}
-     * @throws {Vellum.InternalServerError}
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.InternalServerError}
      */
-    public async submitCompletionActuals(request: Vellum.SubmitCompletionActualsRequest): Promise<void> {
+    public async submitCompletionActuals(
+        request: Vellum.SubmitCompletionActualsRequest,
+        requestOptions?: VellumClient.RequestOptions
+    ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .predict,
                 "v1/submit-completion-actuals"
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
             body: await serializers.SubmitCompletionActualsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -300,20 +331,29 @@ export class VellumClient {
      *
      *     **Note:** Uses a base url of `https://predict.vellum.ai`.
      */
-    public async submitWorkflowExecutionActuals(request: Vellum.SubmitWorkflowExecutionActualsRequest): Promise<void> {
+    public async submitWorkflowExecutionActuals(
+        request: Vellum.SubmitWorkflowExecutionActualsRequest,
+        requestOptions?: VellumClient.RequestOptions
+    ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).predict,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .predict,
                 "v1/submit-workflow-execution-actuals"
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
             body: await serializers.SubmitWorkflowExecutionActualsRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;
@@ -344,42 +384,42 @@ export class VellumClient {
     protected _deployments: Deployments | undefined;
 
     public get deployments(): Deployments {
-        return (this._deployments ??= new Deployments(this.options));
+        return (this._deployments ??= new Deployments(this._options));
     }
 
     protected _documentIndexes: DocumentIndexes | undefined;
 
     public get documentIndexes(): DocumentIndexes {
-        return (this._documentIndexes ??= new DocumentIndexes(this.options));
+        return (this._documentIndexes ??= new DocumentIndexes(this._options));
     }
 
     protected _documents: Documents | undefined;
 
     public get documents(): Documents {
-        return (this._documents ??= new Documents(this.options));
+        return (this._documents ??= new Documents(this._options));
     }
 
     protected _modelVersions: ModelVersions | undefined;
 
     public get modelVersions(): ModelVersions {
-        return (this._modelVersions ??= new ModelVersions(this.options));
+        return (this._modelVersions ??= new ModelVersions(this._options));
     }
 
     protected _registeredPrompts: RegisteredPrompts | undefined;
 
     public get registeredPrompts(): RegisteredPrompts {
-        return (this._registeredPrompts ??= new RegisteredPrompts(this.options));
+        return (this._registeredPrompts ??= new RegisteredPrompts(this._options));
     }
 
     protected _sandboxes: Sandboxes | undefined;
 
     public get sandboxes(): Sandboxes {
-        return (this._sandboxes ??= new Sandboxes(this.options));
+        return (this._sandboxes ??= new Sandboxes(this._options));
     }
 
     protected _testSuites: TestSuites | undefined;
 
     public get testSuites(): TestSuites {
-        return (this._testSuites ??= new TestSuites(this.options));
+        return (this._testSuites ??= new TestSuites(this._options));
     }
 }

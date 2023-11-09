@@ -5,19 +5,24 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vellum from "../../..";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
 export declare namespace TestSuites {
     interface Options {
-        environment?: environments.VellumEnvironment | environments.VellumEnvironmentUrls;
+        environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey: core.Supplier<string>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
 export class TestSuites {
-    constructor(protected readonly options: TestSuites.Options) {}
+    constructor(protected readonly _options: TestSuites.Options) {}
 
     /**
      * Upserts a new test case for a test suite, keying off of the optionally provided test case id.
@@ -30,25 +35,33 @@ export class TestSuites {
      */
     public async upsertTestSuiteTestCase(
         id: string,
-        request: Vellum.TestSuiteTestCaseRequest
+        request: Vellum.TestSuiteTestCaseRequest,
+        requestOptions?: TestSuites.RequestOptions
     ): Promise<Vellum.TestSuiteTestCase> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
                 `v1/test-suites/${id}/test-cases`
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
             body: await serializers.TestSuiteTestCaseRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.TestSuiteTestCase.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -78,17 +91,27 @@ export class TestSuites {
      * Deletes an existing test case for a test suite, keying off of the test case id.
      *
      */
-    public async deleteTestSuiteTestCase(id: string, testCaseId: string): Promise<void> {
+    public async deleteTestSuiteTestCase(
+        id: string,
+        testCaseId: string,
+        requestOptions?: TestSuites.RequestOptions
+    ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
                 `v1/test-suites/${id}/test-cases/${testCaseId}`
             ),
             method: "DELETE",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;

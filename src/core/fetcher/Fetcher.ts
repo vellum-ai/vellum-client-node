@@ -1,8 +1,8 @@
-import URLSearchParams from "@ungap/url-search-params";
-import axios, { AxiosAdapter, AxiosError } from "axios";
+import axios, { AxiosAdapter, AxiosError, AxiosResponse } from "axios";
+import qs from "qs";
 import { APIResponse } from "./APIResponse";
 
-export type FetchFunction = (args: Fetcher.Args) => Promise<APIResponse<unknown, Fetcher.Error>>;
+export type FetchFunction = <R = unknown>(args: Fetcher.Args) => Promise<APIResponse<R, Fetcher.Error>>;
 
 export declare namespace Fetcher {
     export interface Args {
@@ -10,11 +10,14 @@ export declare namespace Fetcher {
         method: string;
         contentType?: string;
         headers?: Record<string, string | undefined>;
-        queryParameters?: URLSearchParams;
+        queryParameters?: Record<string, string | string[]>;
         body?: unknown;
         timeoutMs?: number;
+        maxRetries?: number;
         withCredentials?: boolean;
+        responseType?: "json" | "blob";
         adapter?: AxiosAdapter;
+        onUploadProgress?: (event: ProgressEvent) => void;
     }
 
     export type Error = FailedStatusCodeError | NonJsonError | TimeoutError | UnknownError;
@@ -41,7 +44,11 @@ export declare namespace Fetcher {
     }
 }
 
-export const fetcher: FetchFunction = async (args) => {
+const INITIAL_RETRY_DELAY = 1;
+const MAX_RETRY_DELAY = 60;
+const DEFAULT_MAX_RETRIES = 2;
+
+async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIResponse<R, Fetcher.Error>> {
     const headers: Record<string, string> = {};
     if (args.body !== undefined && args.contentType != null) {
         headers["Content-Type"] = args.contentType;
@@ -55,10 +62,13 @@ export const fetcher: FetchFunction = async (args) => {
         }
     }
 
-    try {
-        const response = await axios({
+    const makeRequest = async (): Promise<AxiosResponse> =>
+        await axios({
             url: args.url,
             params: args.queryParameters,
+            paramsSerializer: (params) => {
+                return qs.stringify(params, { arrayFormat: "repeat" });
+            },
             method: args.method,
             headers,
             data: args.body,
@@ -70,10 +80,33 @@ export const fetcher: FetchFunction = async (args) => {
             },
             withCredentials: args.withCredentials,
             adapter: args.adapter,
+            onUploadProgress: args.onUploadProgress,
+            maxBodyLength: Infinity,
+            maxContentLength: Infinity,
+            responseType: args.responseType ?? "json",
         });
 
+    try {
+        let response = await makeRequest();
+
+        for (let i = 0; i < (args.maxRetries ?? DEFAULT_MAX_RETRIES); ++i) {
+            if (
+                response.status === 408 ||
+                response.status === 409 ||
+                response.status === 429 ||
+                response.status >= 500
+            ) {
+                const delay = Math.min(INITIAL_RETRY_DELAY * Math.pow(i, 2), MAX_RETRY_DELAY);
+                response = await new Promise((resolve) => setTimeout(resolve, delay));
+            } else {
+                break;
+            }
+        }
+
         let body: unknown;
-        if (response.data != null && response.data.length > 0) {
+        if (args.responseType === "blob") {
+            body = response.data;
+        } else if (response.data != null && response.data.length > 0) {
             try {
                 body = JSON.parse(response.data) ?? undefined;
             } catch {
@@ -88,10 +121,10 @@ export const fetcher: FetchFunction = async (args) => {
             }
         }
 
-        if (response.status >= 200 && response.status < 300) {
+        if (response.status >= 200 && response.status < 400) {
             return {
                 ok: true,
-                body,
+                body: body as R,
             };
         } else {
             return {
@@ -121,4 +154,6 @@ export const fetcher: FetchFunction = async (args) => {
             },
         };
     }
-};
+}
+
+export const fetcher: FetchFunction = fetcherImpl;

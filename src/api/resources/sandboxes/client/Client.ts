@@ -5,19 +5,24 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vellum from "../../..";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
 export declare namespace Sandboxes {
     interface Options {
-        environment?: environments.VellumEnvironment | environments.VellumEnvironmentUrls;
+        environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey: core.Supplier<string>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
 export class Sandboxes {
-    constructor(protected readonly options: Sandboxes.Options) {}
+    constructor(protected readonly _options: Sandboxes.Options) {}
 
     /**
      * Upserts a new scenario for a sandbox, keying off of the optionally provided scenario id.
@@ -30,27 +35,35 @@ export class Sandboxes {
      */
     public async upsertSandboxScenario(
         id: string,
-        request: Vellum.UpsertSandboxScenarioRequestRequest
+        request: Vellum.UpsertSandboxScenarioRequestRequest,
+        requestOptions?: Sandboxes.RequestOptions
     ): Promise<Vellum.SandboxScenario> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
                 `v1/sandboxes/${id}/scenarios`
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
             body: await serializers.UpsertSandboxScenarioRequestRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.SandboxScenario.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -79,17 +92,27 @@ export class Sandboxes {
     /**
      * Deletes an existing scenario from a sandbox, keying off of the provided scenario id.
      */
-    public async deleteSandboxScenario(id: string, scenarioId: string): Promise<void> {
+    public async deleteSandboxScenario(
+        id: string,
+        scenarioId: string,
+        requestOptions?: Sandboxes.RequestOptions
+    ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
                 `v1/sandboxes/${id}/scenarios/${scenarioId}`
             ),
             method: "DELETE",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return;

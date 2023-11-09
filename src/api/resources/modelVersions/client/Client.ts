@@ -11,34 +11,46 @@ import * as errors from "../../../../errors";
 
 export declare namespace ModelVersions {
     interface Options {
-        environment?: environments.VellumEnvironment | environments.VellumEnvironmentUrls;
+        environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey: core.Supplier<string>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
 export class ModelVersions {
-    constructor(protected readonly options: ModelVersions.Options) {}
+    constructor(protected readonly _options: ModelVersions.Options) {}
 
     /**
      * Used to retrieve a model version given its ID.
      */
-    public async retrieve(id: string): Promise<Vellum.ModelVersionRead> {
+    public async retrieve(id: string, requestOptions?: ModelVersions.RequestOptions): Promise<Vellum.ModelVersionRead> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
                 `v1/model-versions/${id}`
             ),
             method: "GET",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.ModelVersionRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -69,27 +81,35 @@ export class ModelVersions {
      */
     public async modelVersionCompilePrompt(
         id: string,
-        request: Vellum.ModelVersionCompilePromptRequestRequest
+        request: Vellum.ModelVersionCompilePromptRequestRequest,
+        requestOptions?: ModelVersions.RequestOptions
     ): Promise<Vellum.ModelVersionCompilePromptResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
                 `v1/model-versions/${id}/compile-prompt`
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
             body: await serializers.ModelVersionCompilePromptRequestRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.ModelVersionCompilePromptResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 

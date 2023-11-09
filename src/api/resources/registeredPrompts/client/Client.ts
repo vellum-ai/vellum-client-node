@@ -5,49 +5,64 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vellum from "../../..";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
 export declare namespace RegisteredPrompts {
     interface Options {
-        environment?: environments.VellumEnvironment | environments.VellumEnvironmentUrls;
+        environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey: core.Supplier<string>;
+    }
+
+    interface RequestOptions {
+        timeoutInSeconds?: number;
+        maxRetries?: number;
     }
 }
 
 export class RegisteredPrompts {
-    constructor(protected readonly options: RegisteredPrompts.Options) {}
+    constructor(protected readonly _options: RegisteredPrompts.Options) {}
 
     /**
      * Registers a prompt within Vellum and creates associated Vellum entities. Intended to be used by integration
      * partners, not directly by Vellum users.
      *
      * Under the hood, this endpoint creates a new sandbox, a new model version, and a new deployment.
-     * @throws {Vellum.BadRequestError}
-     * @throws {Vellum.NotFoundError}
-     * @throws {Vellum.ConflictError}
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.ConflictError}
      */
-    public async registerPrompt(request: Vellum.RegisterPromptRequestRequest): Promise<Vellum.RegisterPromptResponse> {
+    public async registerPrompt(
+        request: Vellum.RegisterPromptRequestRequest,
+        requestOptions?: RegisteredPrompts.RequestOptions
+    ): Promise<Vellum.RegisterPromptResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                (this.options.environment ?? environments.VellumEnvironment.Production).default,
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
                 "v1/registered-prompts/register"
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this.options.apiKey),
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.0",
             },
             contentType: "application/json",
             body: await serializers.RegisterPromptRequestRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
             return await serializers.RegisterPromptResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -63,6 +78,7 @@ export class RegisteredPrompts {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 default:
