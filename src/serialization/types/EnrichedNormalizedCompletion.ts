@@ -19,8 +19,10 @@ export const EnrichedNormalizedCompletion: core.serialization.ObjectSchema<
     ),
     logprobs: core.serialization.lazyObject(async () => (await import("..")).NormalizedLogProbs).optional(),
     modelVersionId: core.serialization.property("model_version_id", core.serialization.string()),
-    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optional()),
+    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string()),
     type: core.serialization.lazy(async () => (await import("..")).VellumVariableType).optional(),
+    deploymentReleaseTag: core.serialization.property("deployment_release_tag", core.serialization.string()),
+    modelName: core.serialization.property("model_name", core.serialization.string()),
 });
 
 export declare namespace EnrichedNormalizedCompletion {
@@ -31,7 +33,9 @@ export declare namespace EnrichedNormalizedCompletion {
         finish_reason?: serializers.FinishReasonEnum.Raw | null;
         logprobs?: serializers.NormalizedLogProbs.Raw | null;
         model_version_id: string;
-        prompt_version_id?: string | null;
+        prompt_version_id: string;
         type?: serializers.VellumVariableType.Raw | null;
+        deployment_release_tag: string;
+        model_name: string;
     }
 }

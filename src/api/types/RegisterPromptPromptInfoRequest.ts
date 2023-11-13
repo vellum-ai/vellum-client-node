@@ -5,7 +5,6 @@
 import * as Vellum from "..";
 
 export interface RegisterPromptPromptInfoRequest {
-    promptSyntaxVersion?: number;
     promptBlockData: Vellum.PromptTemplateBlockDataRequest;
     /** The input variables specified in the prompt template. */
     inputVariables: Vellum.RegisteredPromptInputVariableRequest[];

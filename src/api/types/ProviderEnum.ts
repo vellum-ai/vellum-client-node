@@ -4,6 +4,8 @@
 
 /**
  * * `ANTHROPIC` - Anthropic
+ * * `AWS_BEDROCK` - AWS Bedrock
+ * * `AZURE_OPENAI` - Azure OpenAI
  * * `COHERE` - Cohere
  * * `GOOGLE` - Google
  * * `HOSTED` - Hosted
@@ -12,9 +14,12 @@
  * * `HUGGINGFACE` - HuggingFace
  * * `MYSTIC` - Mystic
  * * `PYQ` - Pyq
+ * * `REPLICATE` - Replicate
  */
 export type ProviderEnum =
     | "ANTHROPIC"
+    | "AWS_BEDROCK"
+    | "AZURE_OPENAI"
     | "COHERE"
     | "GOOGLE"
     | "HOSTED"
@@ -22,10 +27,13 @@ export type ProviderEnum =
     | "OPENAI"
     | "HUGGINGFACE"
     | "MYSTIC"
-    | "PYQ";
+    | "PYQ"
+    | "REPLICATE";
 
 export const ProviderEnum = {
     Anthropic: "ANTHROPIC",
+    AwsBedrock: "AWS_BEDROCK",
+    AzureOpenai: "AZURE_OPENAI",
     Cohere: "COHERE",
     Google: "GOOGLE",
     Hosted: "HOSTED",
@@ -34,4 +42,5 @@ export const ProviderEnum = {
     Huggingface: "HUGGINGFACE",
     Mystic: "MYSTIC",
     Pyq: "PYQ",
+    Replicate: "REPLICATE",
 } as const;

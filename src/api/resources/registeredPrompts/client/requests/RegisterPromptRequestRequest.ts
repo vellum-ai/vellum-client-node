@@ -15,6 +15,8 @@ export interface RegisterPromptRequestRequest {
      * The initial LLM provider to use for this prompt
      *
      * * `ANTHROPIC` - Anthropic
+     * * `AWS_BEDROCK` - AWS Bedrock
+     * * `AZURE_OPENAI` - Azure OpenAI
      * * `COHERE` - Cohere
      * * `GOOGLE` - Google
      * * `HOSTED` - Hosted
@@ -23,8 +25,9 @@ export interface RegisterPromptRequestRequest {
      * * `HUGGINGFACE` - HuggingFace
      * * `MYSTIC` - Mystic
      * * `PYQ` - Pyq
+     * * `REPLICATE` - Replicate
      */
-    provider: Vellum.ProviderEnum;
+    provider?: Vellum.ProviderEnum;
     /** The initial model to use for this prompt */
     model: string;
     /** The initial model parameters to use for  this prompt */

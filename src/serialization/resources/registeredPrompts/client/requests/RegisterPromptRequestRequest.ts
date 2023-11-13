@@ -13,7 +13,7 @@ export const RegisterPromptRequestRequest: core.serialization.Schema<
     label: core.serialization.string(),
     name: core.serialization.string(),
     prompt: core.serialization.lazyObject(async () => (await import("../../../..")).RegisterPromptPromptInfoRequest),
-    provider: core.serialization.lazy(async () => (await import("../../../..")).ProviderEnum),
+    provider: core.serialization.lazy(async () => (await import("../../../..")).ProviderEnum).optional(),
     model: core.serialization.string(),
     parameters: core.serialization.lazyObject(
         async () => (await import("../../../..")).RegisterPromptModelParametersRequest
@@ -26,7 +26,7 @@ export declare namespace RegisterPromptRequestRequest {
         label: string;
         name: string;
         prompt: serializers.RegisterPromptPromptInfoRequest.Raw;
-        provider: serializers.ProviderEnum.Raw;
+        provider?: serializers.ProviderEnum.Raw | null;
         model: string;
         parameters: serializers.RegisterPromptModelParametersRequest.Raw;
         meta?: Record<string, unknown> | null;

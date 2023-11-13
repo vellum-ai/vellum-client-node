@@ -39,7 +39,7 @@ export class ModelVersions {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.0",
+                "X-Fern-SDK-Version": "v0.1.1",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -47,65 +47,6 @@ export class ModelVersions {
         });
         if (_response.ok) {
             return await serializers.ModelVersionRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VellumError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VellumTimeoutError();
-            case "unknown":
-                throw new errors.VellumError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Compiles the prompt backing the model version using the provided input values.
-     */
-    public async modelVersionCompilePrompt(
-        id: string,
-        request: Vellum.ModelVersionCompilePromptRequestRequest,
-        requestOptions?: ModelVersions.RequestOptions
-    ): Promise<Vellum.ModelVersionCompilePromptResponse> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                    .default,
-                `v1/model-versions/${id}/compile-prompt`
-            ),
-            method: "POST",
-            headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.0",
-            },
-            contentType: "application/json",
-            body: await serializers.ModelVersionCompilePromptRequestRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
-            maxRetries: requestOptions?.maxRetries,
-        });
-        if (_response.ok) {
-            return await serializers.ModelVersionCompilePromptResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

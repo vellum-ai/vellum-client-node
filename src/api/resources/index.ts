@@ -7,7 +7,6 @@ export * as sandboxes from "./sandboxes";
 export * as testSuites from "./testSuites";
 export * from "./documentIndexes/client/requests";
 export * from "./documents/client/requests";
-export * from "./modelVersions/client/requests";
 export * from "./registeredPrompts/client/requests";
 export * from "./sandboxes/client/requests";
 export * from "./testSuites/client/requests";

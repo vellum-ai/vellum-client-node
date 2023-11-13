@@ -20,6 +20,7 @@ export const RegisterPromptResponse: core.serialization.ObjectSchema<
         "model_version",
         core.serialization.lazyObject(async () => (await import("..")).RegisteredPromptModelVersion)
     ),
+    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string()),
     deployment: core.serialization.lazyObject(async () => (await import("..")).RegisteredPromptDeployment),
 });
 
@@ -29,6 +30,7 @@ export declare namespace RegisterPromptResponse {
         sandbox_snapshot: serializers.RegisteredPromptSandboxSnapshot.Raw;
         sandbox: serializers.RegisteredPromptSandbox.Raw;
         model_version: serializers.RegisteredPromptModelVersion.Raw;
+        prompt_version_id: string;
         deployment: serializers.RegisteredPromptDeployment.Raw;
     }
 }

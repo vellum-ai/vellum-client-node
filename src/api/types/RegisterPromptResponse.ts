@@ -13,6 +13,8 @@ export interface RegisterPromptResponse {
     sandbox: Vellum.RegisteredPromptSandbox;
     /** Information about the generated model version */
     modelVersion: Vellum.RegisteredPromptModelVersion;
+    /** The ID of the generated prompt version */
+    promptVersionId: string;
     /** Information about the generated deployment */
     deployment: Vellum.RegisteredPromptDeployment;
 }

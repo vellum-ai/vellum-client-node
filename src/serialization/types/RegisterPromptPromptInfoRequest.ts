@@ -10,7 +10,6 @@ export const RegisterPromptPromptInfoRequest: core.serialization.ObjectSchema<
     serializers.RegisterPromptPromptInfoRequest.Raw,
     Vellum.RegisterPromptPromptInfoRequest
 > = core.serialization.object({
-    promptSyntaxVersion: core.serialization.property("prompt_syntax_version", core.serialization.number().optional()),
     promptBlockData: core.serialization.property(
         "prompt_block_data",
         core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlockDataRequest)
@@ -25,7 +24,6 @@ export const RegisterPromptPromptInfoRequest: core.serialization.ObjectSchema<
 
 export declare namespace RegisterPromptPromptInfoRequest {
     interface Raw {
-        prompt_syntax_version?: number | null;
         prompt_block_data: serializers.PromptTemplateBlockDataRequest.Raw;
         input_variables: serializers.RegisteredPromptInputVariableRequest.Raw[];
     }

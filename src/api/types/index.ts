@@ -36,8 +36,6 @@ export * from "./MetadataFilterConfigRequest";
 export * from "./MetadataFilterRuleCombinator";
 export * from "./MetadataFilterRuleRequest";
 export * from "./ModelVersionBuildConfig";
-export * from "./ModelVersionCompilePromptResponse";
-export * from "./ModelVersionCompiledPrompt";
 export * from "./ModelVersionExecConfig";
 export * from "./ModelVersionExecConfigParameters";
 export * from "./ModelVersionRead";
