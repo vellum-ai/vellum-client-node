@@ -11,6 +11,7 @@ export interface ExecuteWorkflowStreamRequest {
     workflowDeploymentName?: string;
     /** Optionally specify a release tag if you want to pin to a specific release of the Workflow Deployment */
     releaseTag?: string;
+    /** The list of inputs defined in the Workflow's deployment with their corresponding values. */
     inputs: Vellum.WorkflowRequestInputRequest[];
     /** Optionally include a unique identifier for tracking purposes. */
     externalId?: string;

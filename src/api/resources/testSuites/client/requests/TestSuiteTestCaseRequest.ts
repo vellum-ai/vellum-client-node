@@ -5,12 +5,8 @@
 import * as Vellum from "../../../..";
 
 export interface TestSuiteTestCaseRequest {
-    /** The id of the test case to update. If none is provided, an id will be generated and a new test case will be appended. */
-    testCaseId?: string;
-    /** A human-friendly label for the test case. */
+    testSuiteTestCaseRequestId?: string;
     label?: string;
-    /** Key/value pairs for each input variable that the Test Suite expects. */
-    inputValues: Record<string, unknown>;
-    /** Parameters to use when evaluating the test case, specific to the test suite's evaluation metric. */
-    evaluationParams: Vellum.EvaluationParamsRequest;
+    inputValues: Vellum.TestCaseVariableValueRequest[];
+    evaluationValues: Vellum.TestCaseVariableValueRequest[];
 }

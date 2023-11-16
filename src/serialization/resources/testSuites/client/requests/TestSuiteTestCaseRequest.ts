@@ -10,23 +10,27 @@ export const TestSuiteTestCaseRequest: core.serialization.Schema<
     serializers.TestSuiteTestCaseRequest.Raw,
     Vellum.TestSuiteTestCaseRequest
 > = core.serialization.object({
-    testCaseId: core.serialization.property("test_case_id", core.serialization.string().optional()),
+    testSuiteTestCaseRequestId: core.serialization.property("id", core.serialization.string().optional()),
     label: core.serialization.string().optional(),
     inputValues: core.serialization.property(
         "input_values",
-        core.serialization.record(core.serialization.string(), core.serialization.unknown())
+        core.serialization.list(
+            core.serialization.lazy(async () => (await import("../../../..")).TestCaseVariableValueRequest)
+        )
     ),
-    evaluationParams: core.serialization.property(
-        "evaluation_params",
-        core.serialization.lazyObject(async () => (await import("../../../..")).EvaluationParamsRequest)
+    evaluationValues: core.serialization.property(
+        "evaluation_values",
+        core.serialization.list(
+            core.serialization.lazy(async () => (await import("../../../..")).TestCaseVariableValueRequest)
+        )
     ),
 });
 
 export declare namespace TestSuiteTestCaseRequest {
     interface Raw {
-        test_case_id?: string | null;
+        id?: string | null;
         label?: string | null;
-        input_values: Record<string, unknown>;
-        evaluation_params: serializers.EvaluationParamsRequest.Raw;
+        input_values: serializers.TestCaseVariableValueRequest.Raw[];
+        evaluation_values: serializers.TestCaseVariableValueRequest.Raw[];
     }
 }
