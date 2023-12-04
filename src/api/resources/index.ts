@@ -5,6 +5,7 @@ export * as modelVersions from "./modelVersions";
 export * as registeredPrompts from "./registeredPrompts";
 export * as sandboxes from "./sandboxes";
 export * as testSuites from "./testSuites";
+export * from "./deployments/client/requests";
 export * from "./documentIndexes/client/requests";
 export * from "./documents/client/requests";
 export * from "./registeredPrompts/client/requests";

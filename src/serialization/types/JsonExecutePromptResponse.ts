@@ -10,13 +10,13 @@ export const JsonExecutePromptResponse: core.serialization.ObjectSchema<
     serializers.JsonExecutePromptResponse.Raw,
     Vellum.JsonExecutePromptResponse
 > = core.serialization.object({
-    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
+    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
 });
 
 export declare namespace JsonExecutePromptResponse {
     interface Raw {
-        value: Record<string, unknown>;
         execution_id: string;
+        value: Record<string, unknown>;
     }
 }

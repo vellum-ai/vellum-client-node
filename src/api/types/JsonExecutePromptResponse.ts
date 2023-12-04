@@ -3,6 +3,6 @@
  */
 
 export interface JsonExecutePromptResponse {
-    value: Record<string, unknown>;
     executionId: string;
+    value: Record<string, unknown>;
 }

@@ -3,6 +3,6 @@
  */
 
 export interface StringExecutePromptResponse {
-    value: string;
     executionId: string;
+    value: string;
 }

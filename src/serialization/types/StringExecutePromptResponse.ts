@@ -10,13 +10,13 @@ export const StringExecutePromptResponse: core.serialization.ObjectSchema<
     serializers.StringExecutePromptResponse.Raw,
     Vellum.StringExecutePromptResponse
 > = core.serialization.object({
-    value: core.serialization.string(),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
+    value: core.serialization.string(),
 });
 
 export declare namespace StringExecutePromptResponse {
     interface Raw {
-        value: string;
         execution_id: string;
+        value: string;
     }
 }

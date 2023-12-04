@@ -6,17 +6,17 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const ErrorExecutePromptResponse: core.serialization.ObjectSchema<
-    serializers.ErrorExecutePromptResponse.Raw,
-    Vellum.ErrorExecutePromptResponse
+export const InitiatedExecutePromptResponse: core.serialization.ObjectSchema<
+    serializers.InitiatedExecutePromptResponse.Raw,
+    Vellum.InitiatedExecutePromptResponse
 > = core.serialization.object({
+    type: core.serialization.lazy(async () => (await import("..")).VellumVariableType),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumError),
 });
 
-export declare namespace ErrorExecutePromptResponse {
+export declare namespace InitiatedExecutePromptResponse {
     interface Raw {
+        type: serializers.VellumVariableType.Raw;
         execution_id: string;
-        value: serializers.VellumError.Raw;
     }
 }

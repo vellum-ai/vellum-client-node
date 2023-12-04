@@ -4,7 +4,8 @@
 
 import * as Vellum from "..";
 
-export interface ErrorExecutePromptResponse {
-    executionId: string;
+export interface RejectedExecutePromptResponse {
+    type: string;
     value: Vellum.VellumError;
+    executionId: string;
 }

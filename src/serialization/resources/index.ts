@@ -1,3 +1,5 @@
+export * as deployments from "./deployments";
+export * from "./deployments/client/requests";
 export * as documentIndexes from "./documentIndexes";
 export * from "./documentIndexes/client/requests";
 export * as documents from "./documents";

@@ -27,6 +27,7 @@ export interface DeploymentRead {
      * * `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
+    /** Deprecated. The Prompt execution endpoints return a `prompt_version_id` that could be used instead. */
     activeModelVersionIds: string[];
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
