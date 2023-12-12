@@ -3,9 +3,10 @@
  */
 
 import * as errors from "../../errors";
+import * as Vellum from "..";
 
 export class ForbiddenError extends errors.VellumError {
-    constructor(body?: unknown) {
+    constructor(body: Vellum.GenerateErrorResponse) {
         super({
             message: "ForbiddenError",
             statusCode: 403,

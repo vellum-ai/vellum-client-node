@@ -8,6 +8,7 @@ export type WorkflowNodeResultData =
     | Vellum.WorkflowNodeResultData.Prompt
     | Vellum.WorkflowNodeResultData.Search
     | Vellum.WorkflowNodeResultData.Templating
+    | Vellum.WorkflowNodeResultData.CodeExecution
     | Vellum.WorkflowNodeResultData.Conditional
     | Vellum.WorkflowNodeResultData.Api
     | Vellum.WorkflowNodeResultData.Terminal;
@@ -23,6 +24,10 @@ export declare namespace WorkflowNodeResultData {
 
     interface Templating extends Vellum.TemplatingNodeResult {
         type: "TEMPLATING";
+    }
+
+    interface CodeExecution extends Vellum.CodeExecutionNodeResult {
+        type: "CODE_EXECUTION";
     }
 
     interface Conditional extends Vellum.ConditionalNodeResult {

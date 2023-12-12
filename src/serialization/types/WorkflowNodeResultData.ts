@@ -14,6 +14,7 @@ export const WorkflowNodeResultData: core.serialization.Schema<
         PROMPT: core.serialization.lazyObject(async () => (await import("..")).PromptNodeResult),
         SEARCH: core.serialization.lazyObject(async () => (await import("..")).SearchNodeResult),
         TEMPLATING: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeResult),
+        CODE_EXECUTION: core.serialization.lazyObject(async () => (await import("..")).CodeExecutionNodeResult),
         CONDITIONAL: core.serialization.lazyObject(async () => (await import("..")).ConditionalNodeResult),
         API: core.serialization.lazyObject(async () => (await import("..")).ApiNodeResult),
         TERMINAL: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeResult),
@@ -28,6 +29,7 @@ export declare namespace WorkflowNodeResultData {
         | WorkflowNodeResultData.Prompt
         | WorkflowNodeResultData.Search
         | WorkflowNodeResultData.Templating
+        | WorkflowNodeResultData.CodeExecution
         | WorkflowNodeResultData.Conditional
         | WorkflowNodeResultData.Api
         | WorkflowNodeResultData.Terminal;
@@ -42,6 +44,10 @@ export declare namespace WorkflowNodeResultData {
 
     interface Templating extends serializers.TemplatingNodeResult.Raw {
         type: "TEMPLATING";
+    }
+
+    interface CodeExecution extends serializers.CodeExecutionNodeResult.Raw {
+        type: "CODE_EXECUTION";
     }
 
     interface Conditional extends serializers.ConditionalNodeResult.Raw {

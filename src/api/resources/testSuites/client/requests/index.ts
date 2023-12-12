@@ -1,1 +1,1 @@
-export { TestSuiteTestCaseRequest } from "./TestSuiteTestCaseRequest";
+export { UpsertTestSuiteTestCaseRequest } from "./UpsertTestSuiteTestCaseRequest";
