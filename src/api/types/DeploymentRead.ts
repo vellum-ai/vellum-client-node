@@ -14,17 +14,17 @@ export interface DeploymentRead {
     /**
      * The current status of the deployment
      *
-     * * `ACTIVE` - Active
-     * * `INACTIVE` - Inactive
-     * * `ARCHIVED` - Archived
+     * - `ACTIVE` - Active
+     * - `INACTIVE` - Inactive
+     * - `ARCHIVED` - Archived
      */
     status?: Vellum.DeploymentStatus;
     /**
      * The environment this deployment is used in
      *
-     * * `DEVELOPMENT` - Development
-     * * `STAGING` - Staging
-     * * `PRODUCTION` - Production
+     * - `DEVELOPMENT` - Development
+     * - `STAGING` - Staging
+     * - `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
     /** Deprecated. The Prompt execution endpoints return a `prompt_version_id` that could be used instead. */

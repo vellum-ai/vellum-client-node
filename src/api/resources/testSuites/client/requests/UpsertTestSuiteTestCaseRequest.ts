@@ -4,6 +4,13 @@
 
 import * as Vellum from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         inputValues: [],
+ *         evaluationValues: []
+ *     }
+ */
 export interface UpsertTestSuiteTestCaseRequest {
     upsertTestSuiteTestCaseRequestId?: string;
     label?: string;

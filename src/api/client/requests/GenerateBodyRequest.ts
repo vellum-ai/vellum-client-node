@@ -4,6 +4,17 @@
 
 import * as Vellum from "../..";
 
+/**
+ * @example
+ *     {
+ *         requests: [{
+ *                 inputValues: {}
+ *             }],
+ *         options: {
+ *             logprobs: Vellum.LogprobsEnum.All
+ *         }
+ *     }
+ */
 export interface GenerateBodyRequest {
     /** The ID of the deployment. Must provide either this or deployment_name. */
     deploymentId?: string;

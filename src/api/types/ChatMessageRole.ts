@@ -3,10 +3,10 @@
  */
 
 /**
- * * `SYSTEM` - System
- * * `ASSISTANT` - Assistant
- * * `USER` - User
- * * `FUNCTION` - Function
+ * - `SYSTEM` - System
+ * - `ASSISTANT` - Assistant
+ * - `USER` - User
+ * - `FUNCTION` - Function
  */
 export type ChatMessageRole = "SYSTEM" | "ASSISTANT" | "USER" | "FUNCTION";
 

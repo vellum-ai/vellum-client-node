@@ -3,8 +3,8 @@
  */
 
 /**
- * * `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
- * * `INVALID_FILE` - Invalid File
+ * - `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
+ * - `INVALID_FILE` - Invalid File
  */
 export type ProcessingFailureReasonEnum = "EXCEEDED_CHARACTER_LIMIT" | "INVALID_FILE";
 

@@ -3,10 +3,10 @@
  */
 
 /**
- * * `CREATING` - Creating
- * * `READY` - Ready
- * * `CREATION_FAILED` - Creation Failed
- * * `DISABLED` - Disabled
+ * - `CREATING` - Creating
+ * - `READY` - Ready
+ * - `CREATION_FAILED` - Creation Failed
+ * - `DISABLED` - Disabled
  */
 export type ModelVersionReadStatusEnum = "CREATING" | "READY" | "CREATION_FAILED" | "DISABLED";
 

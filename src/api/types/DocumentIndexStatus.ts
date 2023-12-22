@@ -3,8 +3,8 @@
  */
 
 /**
- * * `ACTIVE` - Active
- * * `ARCHIVED` - Archived
+ * - `ACTIVE` - Active
+ * - `ARCHIVED` - Archived
  */
 export type DocumentIndexStatus = "ACTIVE" | "ARCHIVED";
 

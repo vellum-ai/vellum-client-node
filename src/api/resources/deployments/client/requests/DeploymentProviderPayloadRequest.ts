@@ -4,6 +4,12 @@
 
 import * as Vellum from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         inputs: []
+ *     }
+ */
 export interface DeploymentProviderPayloadRequest {
     /** The ID of the deployment. Must provide either this or deployment_name. */
     deploymentId?: string;

@@ -14,16 +14,16 @@ export interface DocumentRead {
     /**
      * The current processing state of the document
      *
-     * * `QUEUED` - Queued
-     * * `PROCESSING` - Processing
-     * * `PROCESSED` - Processed
-     * * `FAILED` - Failed
+     * - `QUEUED` - Queued
+     * - `PROCESSING` - Processing
+     * - `PROCESSED` - Processed
+     * - `FAILED` - Failed
      */
     processingState?: Vellum.ProcessingStateEnum;
     /**
      * The current status of the document
      *
-     * * `ACTIVE` - Active
+     * - `ACTIVE` - Active
      */
     status?: Vellum.DocumentStatus;
     originalFileUrl?: string;

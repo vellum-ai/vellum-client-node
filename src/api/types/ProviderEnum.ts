@@ -3,18 +3,19 @@
  */
 
 /**
- * * `ANTHROPIC` - Anthropic
- * * `AWS_BEDROCK` - AWS Bedrock
- * * `AZURE_OPENAI` - Azure OpenAI
- * * `COHERE` - Cohere
- * * `GOOGLE` - Google
- * * `HOSTED` - Hosted
- * * `MOSAICML` - MosaicML
- * * `OPENAI` - OpenAI
- * * `HUGGINGFACE` - HuggingFace
- * * `MYSTIC` - Mystic
- * * `PYQ` - Pyq
- * * `REPLICATE` - Replicate
+ * - `ANTHROPIC` - Anthropic
+ * - `AWS_BEDROCK` - AWS Bedrock
+ * - `AZURE_OPENAI` - Azure OpenAI
+ * - `COHERE` - Cohere
+ * - `GOOGLE` - Google
+ * - `HOSTED` - Hosted
+ * - `MOSAICML` - MosaicML
+ * - `OPENAI` - OpenAI
+ * - `FIREWORKS_AI` - Fireworks AI
+ * - `HUGGINGFACE` - HuggingFace
+ * - `MYSTIC` - Mystic
+ * - `PYQ` - Pyq
+ * - `REPLICATE` - Replicate
  */
 export type ProviderEnum =
     | "ANTHROPIC"
@@ -25,6 +26,7 @@ export type ProviderEnum =
     | "HOSTED"
     | "MOSAICML"
     | "OPENAI"
+    | "FIREWORKS_AI"
     | "HUGGINGFACE"
     | "MYSTIC"
     | "PYQ"
@@ -39,6 +41,7 @@ export const ProviderEnum = {
     Hosted: "HOSTED",
     Mosaicml: "MOSAICML",
     Openai: "OPENAI",
+    FireworksAi: "FIREWORKS_AI",
     Huggingface: "HUGGINGFACE",
     Mystic: "MYSTIC",
     Pyq: "PYQ",

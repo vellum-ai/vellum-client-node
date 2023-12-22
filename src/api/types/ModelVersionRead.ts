@@ -14,18 +14,19 @@ export interface ModelVersionRead {
     /**
      * Which LLM provider this model version is associated with.
      *
-     * * `ANTHROPIC` - Anthropic
-     * * `AWS_BEDROCK` - AWS Bedrock
-     * * `AZURE_OPENAI` - Azure OpenAI
-     * * `COHERE` - Cohere
-     * * `GOOGLE` - Google
-     * * `HOSTED` - Hosted
-     * * `MOSAICML` - MosaicML
-     * * `OPENAI` - OpenAI
-     * * `HUGGINGFACE` - HuggingFace
-     * * `MYSTIC` - Mystic
-     * * `PYQ` - Pyq
-     * * `REPLICATE` - Replicate
+     * - `ANTHROPIC` - Anthropic
+     * - `AWS_BEDROCK` - AWS Bedrock
+     * - `AZURE_OPENAI` - Azure OpenAI
+     * - `COHERE` - Cohere
+     * - `GOOGLE` - Google
+     * - `HOSTED` - Hosted
+     * - `MOSAICML` - MosaicML
+     * - `OPENAI` - OpenAI
+     * - `FIREWORKS_AI` - Fireworks AI
+     * - `HUGGINGFACE` - HuggingFace
+     * - `MYSTIC` - Mystic
+     * - `PYQ` - Pyq
+     * - `REPLICATE` - Replicate
      */
     provider: Vellum.ProviderEnum;
     /** The unique id of this model version as it exists in the above provider's system. */

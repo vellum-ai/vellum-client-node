@@ -4,6 +4,12 @@
 
 import * as Vellum from "../..";
 
+/**
+ * @example
+ *     {
+ *         actuals: []
+ *     }
+ */
 export interface SubmitWorkflowExecutionActualsRequest {
     /** Feedback regarding the quality of an output on a previously executed workflow. */
     actuals: Vellum.SubmitWorkflowExecutionActualRequest[];

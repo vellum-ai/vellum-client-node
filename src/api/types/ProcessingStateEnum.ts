@@ -3,10 +3,10 @@
  */
 
 /**
- * * `QUEUED` - Queued
- * * `PROCESSING` - Processing
- * * `PROCESSED` - Processed
- * * `FAILED` - Failed
+ * - `QUEUED` - Queued
+ * - `PROCESSING` - Processing
+ * - `PROCESSED` - Processed
+ * - `FAILED` - Failed
  */
 export type ProcessingStateEnum = "QUEUED" | "PROCESSING" | "PROCESSED" | "FAILED";
 

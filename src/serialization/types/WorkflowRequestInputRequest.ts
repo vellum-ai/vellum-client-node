@@ -16,6 +16,7 @@ export const WorkflowRequestInputRequest: core.serialization.Schema<
         CHAT_HISTORY: core.serialization.lazyObject(
             async () => (await import("..")).WorkflowRequestChatHistoryInputRequest
         ),
+        NUMBER: core.serialization.lazyObject(async () => (await import("..")).WorkflowRequestNumberInputRequest),
     })
     .transform<Vellum.WorkflowRequestInputRequest>({
         transform: (value) => value,
@@ -26,7 +27,8 @@ export declare namespace WorkflowRequestInputRequest {
     type Raw =
         | WorkflowRequestInputRequest.String
         | WorkflowRequestInputRequest.Json
-        | WorkflowRequestInputRequest.ChatHistory;
+        | WorkflowRequestInputRequest.ChatHistory
+        | WorkflowRequestInputRequest.Number;
 
     interface String extends serializers.WorkflowRequestStringInputRequest.Raw {
         type: "STRING";
@@ -38,5 +40,9 @@ export declare namespace WorkflowRequestInputRequest {
 
     interface ChatHistory extends serializers.WorkflowRequestChatHistoryInputRequest.Raw {
         type: "CHAT_HISTORY";
+    }
+
+    interface Number extends serializers.WorkflowRequestNumberInputRequest.Raw {
+        type: "NUMBER";
     }
 }

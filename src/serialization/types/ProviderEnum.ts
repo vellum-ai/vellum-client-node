@@ -16,6 +16,7 @@ export const ProviderEnum: core.serialization.Schema<serializers.ProviderEnum.Ra
         "HOSTED",
         "MOSAICML",
         "OPENAI",
+        "FIREWORKS_AI",
         "HUGGINGFACE",
         "MYSTIC",
         "PYQ",
@@ -32,6 +33,7 @@ export declare namespace ProviderEnum {
         | "HOSTED"
         | "MOSAICML"
         | "OPENAI"
+        | "FIREWORKS_AI"
         | "HUGGINGFACE"
         | "MYSTIC"
         | "PYQ"

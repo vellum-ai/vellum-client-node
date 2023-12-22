@@ -8,8 +8,8 @@ export interface GenerateOptionsRequest {
     /**
      * Which logprobs to include, if any. Defaults to NONE.
      *
-     * * `ALL` - ALL
-     * * `NONE` - NONE
+     * - `ALL` - ALL
+     * - `NONE` - NONE
      */
     logprobs?: Vellum.LogprobsEnum;
 }

@@ -22,6 +22,7 @@ export interface RegisterPromptRequestRequest {
      * * `HOSTED` - Hosted
      * * `MOSAICML` - MosaicML
      * * `OPENAI` - OpenAI
+     * * `FIREWORKS_AI` - Fireworks AI
      * * `HUGGINGFACE` - HuggingFace
      * * `MYSTIC` - Mystic
      * * `PYQ` - Pyq

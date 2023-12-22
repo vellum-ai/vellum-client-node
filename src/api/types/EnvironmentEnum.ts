@@ -3,9 +3,9 @@
  */
 
 /**
- * * `DEVELOPMENT` - Development
- * * `STAGING` - Staging
- * * `PRODUCTION` - Production
+ * - `DEVELOPMENT` - Development
+ * - `STAGING` - Staging
+ * - `PRODUCTION` - Production
  */
 export type EnvironmentEnum = "DEVELOPMENT" | "STAGING" | "PRODUCTION";
 

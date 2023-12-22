@@ -8,6 +8,7 @@ import * as Vellum from "./api";
 import * as serializers from "./serialization";
 import urlJoin from "url-join";
 import * as errors from "./errors";
+import * as stream from "stream";
 import { Deployments } from "./api/resources/deployments/client/Client";
 import { DocumentIndexes } from "./api/resources/documentIndexes/client/Client";
 import { Documents } from "./api/resources/documents/client/Client";
@@ -32,13 +33,160 @@ export class VellumClient {
     constructor(protected readonly _options: VellumClient.Options) {}
 
     /**
+     * Executes a deployed Prompt and returns the result.
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.ForbiddenError}
+     * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.InternalServerError}
+     */
+    public async executePrompt(
+        request: Vellum.ExecutePromptRequest,
+        requestOptions?: VellumClient.RequestOptions
+    ): Promise<Vellum.ExecutePromptResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .predict,
+                "v1/execute-prompt"
+            ),
+            method: "POST",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.9",
+            },
+            contentType: "application/json",
+            body: await serializers.ExecutePromptRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return await serializers.ExecutePromptResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 403:
+                    throw new Vellum.ForbiddenError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Executes a deployed Prompt and streams back the results.
+     */
+    public async executePromptStream(
+        request: Vellum.ExecutePromptStreamRequest,
+        requestOptions?: VellumClient.RequestOptions
+    ): Promise<core.Stream<Vellum.ExecutePromptEvent>> {
+        const _response = await core.fetcher<stream.Readable>({
+            url: urlJoin(
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .predict,
+                "v1/execute-prompt-stream"
+            ),
+            method: "POST",
+            headers: {
+                X_API_KEY: await core.Supplier.get(this._options.apiKey),
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.1.9",
+            },
+            contentType: "application/json",
+            body: await serializers.ExecutePromptStreamRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            responseType: "streaming",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return new core.Stream({
+                stream: _response.body,
+                terminator: "\n",
+                parse: async (data) => {
+                    return await serializers.ExecutePromptEvent.parseOrThrow(data, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    });
+                },
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 403:
+                    throw new Vellum.ForbiddenError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * Executes a deployed Workflow and streams back its results.
      */
     public async executeWorkflowStream(
         request: Vellum.ExecuteWorkflowStreamRequest,
         requestOptions?: VellumClient.RequestOptions
     ): Promise<core.Stream<Vellum.WorkflowStreamEvent>> {
-        const _response = await core.streamingFetcher({
+        const _response = await core.fetcher<stream.Readable>({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .predict,
@@ -49,25 +197,60 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.1.8",
+                "X-Fern-SDK-Version": "v0.1.9",
             },
+            contentType: "application/json",
             body: await serializers.ExecuteWorkflowStreamRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
+            responseType: "streaming",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
-        return new core.Stream({
-            stream: _response.data,
-            terminator: "\n",
-            parse: async (data) => {
-                return await serializers.WorkflowStreamEvent.parseOrThrow(data, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
+        if (_response.ok) {
+            return new core.Stream({
+                stream: _response.body,
+                terminator: "\n",
+                parse: async (data) => {
+                    return await serializers.WorkflowStreamEvent.parseOrThrow(data, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    });
+                },
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
                 });
-            },
-        });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
     }
 
     /**
@@ -78,6 +261,16 @@ export class VellumClient {
      * @throws {@link Vellum.ForbiddenError}
      * @throws {@link Vellum.NotFoundError}
      * @throws {@link Vellum.InternalServerError}
+     *
+     * @example
+     *     await vellum.generate({
+     *         requests: [{
+     *                 inputValues: {}
+     *             }],
+     *         options: {
+     *             logprobs: Vellum.LogprobsEnum.All
+     *         }
+     *     })
      */
     public async generate(
         request: Vellum.GenerateBodyRequest,
@@ -94,7 +287,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.1.8",
+                "X-Fern-SDK-Version": "v0.1.9",
             },
             contentType: "application/json",
             body: await serializers.GenerateBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -115,14 +308,7 @@ export class VellumClient {
                 case 400:
                     throw new Vellum.BadRequestError(_response.error.body);
                 case 403:
-                    throw new Vellum.ForbiddenError(
-                        await serializers.GenerateErrorResponse.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        })
-                    );
+                    throw new Vellum.ForbiddenError(_response.error.body);
                 case 404:
                     throw new Vellum.NotFoundError(_response.error.body);
                 case 500:
@@ -159,7 +345,7 @@ export class VellumClient {
         request: Vellum.GenerateStreamBodyRequest,
         requestOptions?: VellumClient.RequestOptions
     ): Promise<core.Stream<Vellum.GenerateStreamResponse>> {
-        const _response = await core.streamingFetcher({
+        const _response = await core.fetcher<stream.Readable>({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .predict,
@@ -170,23 +356,60 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.1.8",
+                "X-Fern-SDK-Version": "v0.1.9",
             },
+            contentType: "application/json",
             body: await serializers.GenerateStreamBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            responseType: "streaming",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
         });
-        return new core.Stream({
-            stream: _response.data,
-            terminator: "\n",
-            parse: async (data) => {
-                return await serializers.GenerateStreamResponse.parseOrThrow(data, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
+        if (_response.ok) {
+            return new core.Stream({
+                stream: _response.body,
+                terminator: "\n",
+                parse: async (data) => {
+                    return await serializers.GenerateStreamResponse.parseOrThrow(data, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    });
+                },
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 403:
+                    throw new Vellum.ForbiddenError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
                 });
-            },
-        });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
     }
 
     /**
@@ -212,7 +435,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.1.8",
+                "X-Fern-SDK-Version": "v0.1.9",
             },
             contentType: "application/json",
             body: await serializers.SearchRequestBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -266,6 +489,11 @@ export class VellumClient {
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.NotFoundError}
      * @throws {@link Vellum.InternalServerError}
+     *
+     * @example
+     *     await vellum.submitCompletionActuals({
+     *         actuals: []
+     *     })
      */
     public async submitCompletionActuals(
         request: Vellum.SubmitCompletionActualsRequest,
@@ -282,7 +510,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.1.8",
+                "X-Fern-SDK-Version": "v0.1.9",
             },
             contentType: "application/json",
             body: await serializers.SubmitCompletionActualsRequest.jsonOrThrow(request, {
@@ -330,6 +558,11 @@ export class VellumClient {
      *     Used to submit feedback regarding the quality of previous workflow execution and its outputs.
      *
      *     **Note:** Uses a base url of `https://predict.vellum.ai`.
+     *
+     * @example
+     *     await vellum.submitWorkflowExecutionActuals({
+     *         actuals: []
+     *     })
      */
     public async submitWorkflowExecutionActuals(
         request: Vellum.SubmitWorkflowExecutionActualsRequest,
@@ -346,7 +579,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.1.8",
+                "X-Fern-SDK-Version": "v0.1.9",
             },
             contentType: "application/json",
             body: await serializers.SubmitWorkflowExecutionActualsRequest.jsonOrThrow(request, {

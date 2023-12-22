@@ -49,7 +49,7 @@ export class Sandboxes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.1.8",
+                "X-Fern-SDK-Version": "v0.1.9",
             },
             contentType: "application/json",
             body: await serializers.UpsertSandboxScenarioRequestRequest.jsonOrThrow(request, {
@@ -91,6 +91,9 @@ export class Sandboxes {
 
     /**
      * Deletes an existing scenario from a sandbox, keying off of the provided scenario id.
+     *
+     * @example
+     *     await vellum.sandboxes.deleteSandboxScenario("id", "scenario-id")
      */
     public async deleteSandboxScenario(
         id: string,
@@ -108,7 +111,7 @@ export class Sandboxes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.1.8",
+                "X-Fern-SDK-Version": "v0.1.9",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,

@@ -14,16 +14,16 @@ export interface DocumentIndexRead {
     /**
      * The current status of the document index
      *
-     * * `ACTIVE` - Active
-     * * `ARCHIVED` - Archived
+     * - `ACTIVE` - Active
+     * - `ARCHIVED` - Archived
      */
     status?: Vellum.DocumentIndexStatus;
     /**
      * The environment this document index is used in
      *
-     * * `DEVELOPMENT` - Development
-     * * `STAGING` - Staging
-     * * `PRODUCTION` - Production
+     * - `DEVELOPMENT` - Development
+     * - `STAGING` - Staging
+     * - `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
     /** Configuration representing how documents should be indexed */

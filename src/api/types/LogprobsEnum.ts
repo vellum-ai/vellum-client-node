@@ -3,8 +3,8 @@
  */
 
 /**
- * * `ALL` - ALL
- * * `NONE` - NONE
+ * - `ALL` - ALL
+ * - `NONE` - NONE
  */
 export type LogprobsEnum = "ALL" | "NONE";
 

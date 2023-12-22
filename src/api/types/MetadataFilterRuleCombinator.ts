@@ -3,8 +3,8 @@
  */
 
 /**
- * * `and` - AND
- * * `or` - OR
+ * - `and` - AND
+ * - `or` - OR
  */
 export type MetadataFilterRuleCombinator = "and" | "or";
 

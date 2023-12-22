@@ -3,9 +3,9 @@
  */
 
 /**
- * * `ACTIVE` - Active
- * * `INACTIVE` - Inactive
- * * `ARCHIVED` - Archived
+ * - `ACTIVE` - Active
+ * - `INACTIVE` - Inactive
+ * - `ARCHIVED` - Archived
  */
 export type DeploymentStatus = "ACTIVE" | "INACTIVE" | "ARCHIVED";
 
