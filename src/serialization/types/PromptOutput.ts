@@ -12,6 +12,7 @@ export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Ra
             STRING: core.serialization.lazyObject(async () => (await import("..")).StringVariableValue),
             JSON: core.serialization.lazyObject(async () => (await import("..")).JsonVariableValue),
             ERROR: core.serialization.lazyObject(async () => (await import("..")).ErrorVariableValue),
+            FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).FunctionCallVariableValue),
         })
         .transform<Vellum.PromptOutput>({
             transform: (value) => value,
@@ -19,7 +20,7 @@ export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Ra
         });
 
 export declare namespace PromptOutput {
-    type Raw = PromptOutput.String | PromptOutput.Json | PromptOutput.Error;
+    type Raw = PromptOutput.String | PromptOutput.Json | PromptOutput.Error | PromptOutput.FunctionCall;
 
     interface String extends serializers.StringVariableValue.Raw {
         type: "STRING";
@@ -31,5 +32,9 @@ export declare namespace PromptOutput {
 
     interface Error extends serializers.ErrorVariableValue.Raw {
         type: "ERROR";
+    }
+
+    interface FunctionCall extends serializers.FunctionCallVariableValue.Raw {
+        type: "FUNCTION_CALL";
     }
 }

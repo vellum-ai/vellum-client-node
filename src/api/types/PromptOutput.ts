@@ -4,7 +4,11 @@
 
 import * as Vellum from "..";
 
-export type PromptOutput = Vellum.PromptOutput.String | Vellum.PromptOutput.Json | Vellum.PromptOutput.Error_;
+export type PromptOutput =
+    | Vellum.PromptOutput.String
+    | Vellum.PromptOutput.Json
+    | Vellum.PromptOutput.Error_
+    | Vellum.PromptOutput.FunctionCall;
 
 export declare namespace PromptOutput {
     interface String extends Vellum.StringVariableValue {
@@ -17,5 +21,9 @@ export declare namespace PromptOutput {
 
     interface Error_ extends Vellum.ErrorVariableValue {
         type: "ERROR";
+    }
+
+    interface FunctionCall extends Vellum.FunctionCallVariableValue {
+        type: "FUNCTION_CALL";
     }
 }
