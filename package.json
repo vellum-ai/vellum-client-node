@@ -1,11 +1,10 @@
 {
     "name": "vellum-ai",
-    "version": "0.1.12",
+    "version": "v0.1.13",
     "private": false,
     "repository": "https://github.com/vellum-ai/vellum-client-node",
     "main": "./index.js",
     "types": "./index.d.ts",
-    "license": "MIT",
     "scripts": {
         "format": "prettier --write 'src/**/*.ts'",
         "build": "tsc",
