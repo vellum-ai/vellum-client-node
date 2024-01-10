@@ -5,6 +5,7 @@
     "repository": "https://github.com/vellum-ai/vellum-client-node",
     "main": "./index.js",
     "types": "./index.d.ts",
+    "license": "MIT",
     "scripts": {
         "format": "prettier --write 'src/**/*.ts'",
         "build": "tsc",
