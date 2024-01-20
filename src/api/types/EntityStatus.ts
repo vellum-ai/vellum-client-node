@@ -4,13 +4,11 @@
 
 /**
  * - `ACTIVE` - Active
- * - `INACTIVE` - Inactive
  * - `ARCHIVED` - Archived
  */
-export type DeploymentStatus = "ACTIVE" | "INACTIVE" | "ARCHIVED";
+export type EntityStatus = "ACTIVE" | "ARCHIVED";
 
-export const DeploymentStatus = {
+export const EntityStatus = {
     Active: "ACTIVE",
-    Inactive: "INACTIVE",
     Archived: "ARCHIVED",
 } as const;

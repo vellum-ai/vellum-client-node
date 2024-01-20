@@ -4,6 +4,21 @@
 
 import * as Vellum from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         inputs: [{
+ *                 key: "string",
+ *                 type: Vellum.ScenarioInputTypeEnum.Text,
+ *                 chatHistory: [{
+ *                         role: Vellum.ChatMessageRole.System
+ *                     }]
+ *             }],
+ *         metricInputParams: {
+ *             params: {}
+ *         }
+ *     }
+ */
 export interface UpsertSandboxScenarioRequestRequest {
     label?: string;
     /** The inputs for the scenario */

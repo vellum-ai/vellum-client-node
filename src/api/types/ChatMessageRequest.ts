@@ -5,6 +5,7 @@
 import * as Vellum from "..";
 
 export interface ChatMessageRequest {
-    text: string;
+    text?: string;
     role: Vellum.ChatMessageRole;
+    content?: Vellum.ChatMessageContentRequest;
 }

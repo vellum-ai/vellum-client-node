@@ -21,6 +21,10 @@ export const ModelVersionExecConfigParameters: core.serialization.ObjectSchema<
     ),
     stop: core.serialization.list(core.serialization.string()).optional(),
     topK: core.serialization.property("top_k", core.serialization.number().optional()),
+    customParameters: core.serialization.property(
+        "custom_parameters",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
 });
 
 export declare namespace ModelVersionExecConfigParameters {
@@ -33,5 +37,6 @@ export declare namespace ModelVersionExecConfigParameters {
         logit_bias?: Record<string, number | null | undefined> | null;
         stop?: string[] | null;
         top_k?: number | null;
+        custom_parameters?: Record<string, unknown> | null;
     }
 }

@@ -1,4 +1,7 @@
 export * as deployments from "./deployments";
+export * from "./deployments/types";
+export * as workflowDeployments from "./workflowDeployments";
+export * from "./workflowDeployments/types";
 export * from "./deployments/client/requests";
 export * as documentIndexes from "./documentIndexes";
 export * from "./documentIndexes/client/requests";

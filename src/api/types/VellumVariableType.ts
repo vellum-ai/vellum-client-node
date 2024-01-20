@@ -11,6 +11,7 @@
  * - `ERROR` - ERROR
  * - `ARRAY` - ARRAY
  * - `FUNCTION_CALL` - FUNCTION_CALL
+ * - `IMAGE` - IMAGE
  */
 export type VellumVariableType =
     | "STRING"
@@ -20,7 +21,8 @@ export type VellumVariableType =
     | "SEARCH_RESULTS"
     | "ERROR"
     | "ARRAY"
-    | "FUNCTION_CALL";
+    | "FUNCTION_CALL"
+    | "IMAGE";
 
 export const VellumVariableType = {
     String: "STRING",
@@ -31,4 +33,5 @@ export const VellumVariableType = {
     Error: "ERROR",
     Array: "ARRAY",
     FunctionCall: "FUNCTION_CALL",
+    Image: "IMAGE",
 } as const;

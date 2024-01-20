@@ -18,8 +18,18 @@ export const VellumVariableType: core.serialization.Schema<
     "ERROR",
     "ARRAY",
     "FUNCTION_CALL",
+    "IMAGE",
 ]);
 
 export declare namespace VellumVariableType {
-    type Raw = "STRING" | "NUMBER" | "JSON" | "CHAT_HISTORY" | "SEARCH_RESULTS" | "ERROR" | "ARRAY" | "FUNCTION_CALL";
+    type Raw =
+        | "STRING"
+        | "NUMBER"
+        | "JSON"
+        | "CHAT_HISTORY"
+        | "SEARCH_RESULTS"
+        | "ERROR"
+        | "ARRAY"
+        | "FUNCTION_CALL"
+        | "IMAGE";
 }

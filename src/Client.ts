@@ -16,6 +16,7 @@ import { ModelVersions } from "./api/resources/modelVersions/client/Client";
 import { RegisteredPrompts } from "./api/resources/registeredPrompts/client/Client";
 import { Sandboxes } from "./api/resources/sandboxes/client/Client";
 import { TestSuites } from "./api/resources/testSuites/client/Client";
+import { WorkflowDeployments } from "./api/resources/workflowDeployments/client/Client";
 
 export declare namespace VellumClient {
     interface Options {
@@ -57,7 +58,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.ExecutePromptRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -127,7 +128,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.ExecutePromptStreamRequest.jsonOrThrow(request, {
@@ -203,7 +204,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.ExecuteWorkflowStreamRequest.jsonOrThrow(request, {
@@ -271,7 +272,12 @@ export class VellumClient {
      * @example
      *     await vellum.generate({
      *         requests: [{
-     *                 inputValues: {}
+     *                 inputValues: {
+     *                     "string": "string"
+     *                 },
+     *                 chatHistory: [{
+     *                         role: Vellum.ChatMessageRole.System
+     *                     }]
      *             }],
      *         options: {
      *             logprobs: Vellum.LogprobsEnum.All
@@ -293,7 +299,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.GenerateBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -362,7 +368,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.GenerateStreamBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -425,6 +431,25 @@ export class VellumClient {
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.NotFoundError}
      * @throws {@link Vellum.InternalServerError}
+     *
+     * @example
+     *     await vellum.search({
+     *         query: "string",
+     *         options: {
+     *             weights: {},
+     *             resultMerging: {},
+     *             filters: {
+     *                 metadata: {
+     *                     combinator: Vellum.MetadataFilterRuleCombinator.And,
+     *                     rules: [{
+     *                             combinator: Vellum.MetadataFilterRuleCombinator.And,
+     *                             operator: Vellum.LogicalOperator.Equals
+     *                         }],
+     *                     operator: Vellum.LogicalOperator.Equals
+     *                 }
+     *             }
+     *         }
+     *     })
      */
     public async search(
         request: Vellum.SearchRequestBodyRequest,
@@ -441,7 +466,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.SearchRequestBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -498,7 +523,7 @@ export class VellumClient {
      *
      * @example
      *     await vellum.submitCompletionActuals({
-     *         actuals: []
+     *         actuals: [{}]
      *     })
      */
     public async submitCompletionActuals(
@@ -516,7 +541,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.SubmitCompletionActualsRequest.jsonOrThrow(request, {
@@ -585,7 +610,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.SubmitWorkflowExecutionActualsRequest.jsonOrThrow(request, {
@@ -660,5 +685,11 @@ export class VellumClient {
 
     public get testSuites(): TestSuites {
         return (this._testSuites ??= new TestSuites(this._options));
+    }
+
+    protected _workflowDeployments: WorkflowDeployments | undefined;
+
+    public get workflowDeployments(): WorkflowDeployments {
+        return (this._workflowDeployments ??= new WorkflowDeployments(this._options));
     }
 }

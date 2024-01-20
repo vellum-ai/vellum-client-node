@@ -17,7 +17,7 @@ export interface DocumentIndexRead {
      * - `ACTIVE` - Active
      * - `ARCHIVED` - Archived
      */
-    status?: Vellum.DocumentIndexStatus;
+    status?: Vellum.EntityStatus;
     /**
      * The environment this document index is used in
      *

@@ -21,6 +21,10 @@ export const RegisterPromptModelParametersRequest: core.serialization.ObjectSche
         "logit_bias",
         core.serialization.record(core.serialization.string(), core.serialization.number().optional()).optional()
     ),
+    customParameters: core.serialization.property(
+        "custom_parameters",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
 });
 
 export declare namespace RegisterPromptModelParametersRequest {
@@ -33,5 +37,6 @@ export declare namespace RegisterPromptModelParametersRequest {
         frequency_penalty: number;
         presence_penalty: number;
         logit_bias?: Record<string, number | null | undefined> | null;
+        custom_parameters?: Record<string, unknown> | null;
     }
 }

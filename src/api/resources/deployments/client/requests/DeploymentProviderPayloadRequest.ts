@@ -15,5 +15,6 @@ export interface DeploymentProviderPayloadRequest {
     deploymentId?: string;
     /** The name of the deployment. Must provide either this or deployment_id. */
     deploymentName?: string;
+    /** The list of inputs defined in the Prompt's deployment with their corresponding values. */
     inputs: Vellum.PromptDeploymentInputRequest[];
 }

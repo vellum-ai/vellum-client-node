@@ -4,6 +4,18 @@
 
 import * as Vellum from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         label: "string",
+ *         name: "string",
+ *         status: Vellum.EntityStatus.Active,
+ *         environment: Vellum.EnvironmentEnum.Development,
+ *         indexingConfig: {
+ *             "string": "string"
+ *         }
+ *     }
+ */
 export interface DocumentIndexCreateRequest {
     /** A human-readable label for the document index */
     label: string;
@@ -15,7 +27,7 @@ export interface DocumentIndexCreateRequest {
      * * `ACTIVE` - Active
      * * `ARCHIVED` - Archived
      */
-    status?: Vellum.DocumentIndexStatus;
+    status?: Vellum.EntityStatus;
     /**
      * The environment this document index is used in
      *

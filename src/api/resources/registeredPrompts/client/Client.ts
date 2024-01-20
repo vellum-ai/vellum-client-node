@@ -32,6 +32,38 @@ export class RegisteredPrompts {
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.NotFoundError}
      * @throws {@link Vellum.ConflictError}
+     *
+     * @example
+     *     await vellum.registeredPrompts.registerPrompt({
+     *         label: "string",
+     *         name: "string",
+     *         prompt: {
+     *             promptBlockData: {
+     *                 version: 1,
+     *                 blocks: [{
+     *                         id: "string",
+     *                         blockType: Vellum.BlockTypeEnum.ChatMessage,
+     *                         properties: {
+     *                             chatRole: Vellum.ChatMessageRole.System,
+     *                             templateType: Vellum.VellumVariableType.String
+     *                         }
+     *                     }]
+     *             },
+     *             inputVariables: [{
+     *                     key: "string",
+     *                     type: Vellum.VellumVariableType.String
+     *                 }]
+     *         },
+     *         provider: Vellum.ProviderEnum.Anthropic,
+     *         model: "string",
+     *         parameters: {
+     *             temperature: 1.1,
+     *             maxTokens: 1,
+     *             topP: 1.1,
+     *             frequencyPenalty: 1.1,
+     *             presencePenalty: 1.1
+     *         }
+     *     })
      */
     public async registerPrompt(
         request: Vellum.RegisterPromptRequestRequest,
@@ -48,7 +80,7 @@ export class RegisteredPrompts {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.RegisterPromptRequestRequest.jsonOrThrow(request, {

@@ -11,4 +11,5 @@ export interface ModelVersionExecConfigParameters {
     logitBias?: Record<string, number | undefined>;
     stop?: string[];
     topK?: number;
+    customParameters?: Record<string, unknown>;
 }

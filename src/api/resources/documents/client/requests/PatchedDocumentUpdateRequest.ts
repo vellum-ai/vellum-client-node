@@ -4,6 +4,12 @@
 
 import * as Vellum from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         status: "ACTIVE"
+ *     }
+ */
 export interface PatchedDocumentUpdateRequest {
     /** A human-readable label for the document. Defaults to the originally uploaded file's file name. */
     label?: string;

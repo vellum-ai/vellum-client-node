@@ -8,13 +8,15 @@ import * as core from "../../core";
 
 export const ChatMessage: core.serialization.ObjectSchema<serializers.ChatMessage.Raw, Vellum.ChatMessage> =
     core.serialization.object({
-        text: core.serialization.string(),
+        text: core.serialization.string().optional(),
         role: core.serialization.lazy(async () => (await import("..")).ChatMessageRole),
+        content: core.serialization.lazy(async () => (await import("..")).ChatMessageContent).optional(),
     });
 
 export declare namespace ChatMessage {
     interface Raw {
-        text: string;
+        text?: string | null;
         role: serializers.ChatMessageRole.Raw;
+        content?: serializers.ChatMessageContent.Raw | null;
     }
 }

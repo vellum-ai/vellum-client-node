@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * A user input representing a list of chat messages
+ */
 export interface ChatHistoryInputRequest {
     /** The variable's name, as defined in the deployment. */
     name: string;

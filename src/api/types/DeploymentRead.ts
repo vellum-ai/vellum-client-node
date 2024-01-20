@@ -15,10 +15,9 @@ export interface DeploymentRead {
      * The current status of the deployment
      *
      * - `ACTIVE` - Active
-     * - `INACTIVE` - Inactive
      * - `ARCHIVED` - Archived
      */
-    status?: Vellum.DeploymentStatus;
+    status?: Vellum.EntityStatus;
     /**
      * The environment this deployment is used in
      *
@@ -27,8 +26,8 @@ export interface DeploymentRead {
      * - `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
-    /** Deprecated. The Prompt execution endpoints return a `prompt_version_id` that could be used instead. */
-    activeModelVersionIds: string[];
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
+    /** Deprecated. The Prompt execution endpoints return a `prompt_version_id` that could be used instead. */
+    activeModelVersionIds: string[];
 }

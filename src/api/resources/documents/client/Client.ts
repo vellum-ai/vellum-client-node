@@ -65,7 +65,7 @@ export class Documents {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -115,7 +115,7 @@ export class Documents {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -149,6 +149,11 @@ export class Documents {
 
     /**
      * Update a Document, keying off of its Vellum-generated ID. Particularly useful for updating its metadata.
+     *
+     * @example
+     *     await vellum.documents.partialUpdate("string", {
+     *         status: "ACTIVE"
+     *     })
      */
     public async partialUpdate(
         id: string,
@@ -166,7 +171,7 @@ export class Documents {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.PatchedDocumentUpdateRequest.jsonOrThrow(request, {
@@ -253,7 +258,7 @@ export class Documents {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "multipart/form-data; boundary=" + _request.getBoundary(),
             body: _request,

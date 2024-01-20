@@ -4,6 +4,26 @@
 
 import * as Vellum from "../..";
 
+/**
+ * @example
+ *     {
+ *         query: "string",
+ *         options: {
+ *             weights: {},
+ *             resultMerging: {},
+ *             filters: {
+ *                 metadata: {
+ *                     combinator: Vellum.MetadataFilterRuleCombinator.And,
+ *                     rules: [{
+ *                             combinator: Vellum.MetadataFilterRuleCombinator.And,
+ *                             operator: Vellum.LogicalOperator.Equals
+ *                         }],
+ *                     operator: Vellum.LogicalOperator.Equals
+ *                 }
+ *             }
+ *         }
+ *     }
+ */
 export interface SearchRequestBodyRequest {
     /** The ID of the index to search against. Must provide either this or index_name. */
     indexId?: string;

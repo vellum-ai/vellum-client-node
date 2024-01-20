@@ -5,6 +5,7 @@
 import * as Vellum from "../..";
 
 export interface ExecutePromptRequest {
+    /** The list of inputs defined in the Prompt's deployment with their corresponding values. */
     inputs: Vellum.PromptDeploymentInputRequest[];
     /** The ID of the Prompt Deployment. Must provide either this or prompt_deployment_name. */
     promptDeploymentId?: string;

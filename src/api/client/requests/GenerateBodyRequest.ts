@@ -8,7 +8,12 @@ import * as Vellum from "../..";
  * @example
  *     {
  *         requests: [{
- *                 inputValues: {}
+ *                 inputValues: {
+ *                     "string": "string"
+ *                 },
+ *                 chatHistory: [{
+ *                         role: Vellum.ChatMessageRole.System
+ *                     }]
  *             }],
  *         options: {
  *             logprobs: Vellum.LogprobsEnum.All

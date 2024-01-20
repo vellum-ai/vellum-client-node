@@ -10,13 +10,15 @@ export const ChatMessageRequest: core.serialization.ObjectSchema<
     serializers.ChatMessageRequest.Raw,
     Vellum.ChatMessageRequest
 > = core.serialization.object({
-    text: core.serialization.string(),
+    text: core.serialization.string().optional(),
     role: core.serialization.lazy(async () => (await import("..")).ChatMessageRole),
+    content: core.serialization.lazy(async () => (await import("..")).ChatMessageContentRequest).optional(),
 });
 
 export declare namespace ChatMessageRequest {
     interface Raw {
-        text: string;
+        text?: string | null;
         role: serializers.ChatMessageRole.Raw;
+        content?: serializers.ChatMessageContentRequest.Raw | null;
     }
 }

@@ -26,6 +26,17 @@ export class DocumentIndexes {
 
     /**
      * Creates a new document index.
+     *
+     * @example
+     *     await vellum.documentIndexes.create({
+     *         label: "string",
+     *         name: "string",
+     *         status: Vellum.EntityStatus.Active,
+     *         environment: Vellum.EnvironmentEnum.Development,
+     *         indexingConfig: {
+     *             "string": "string"
+     *         }
+     *     })
      */
     public async create(
         request: Vellum.DocumentIndexCreateRequest,
@@ -42,7 +53,7 @@ export class DocumentIndexes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             body: await serializers.DocumentIndexCreateRequest.jsonOrThrow(request, {
@@ -84,6 +95,9 @@ export class DocumentIndexes {
 
     /**
      * Used to retrieve a Document Index given its ID or name.
+     *
+     * @example
+     *     await vellum.documentIndexes.retrieve("string")
      */
     public async retrieve(
         id: string,
@@ -100,7 +114,7 @@ export class DocumentIndexes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.1.13",
+                "X-Fern-SDK-Version": "v0.2.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,

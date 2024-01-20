@@ -11,4 +11,5 @@ export interface RegisterPromptModelParametersRequest {
     frequencyPenalty: number;
     presencePenalty: number;
     logitBias?: Record<string, number | undefined>;
+    customParameters?: Record<string, unknown>;
 }

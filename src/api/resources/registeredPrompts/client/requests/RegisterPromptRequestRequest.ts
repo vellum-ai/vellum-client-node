@@ -4,6 +4,39 @@
 
 import * as Vellum from "../../../..";
 
+/**
+ * @example
+ *     {
+ *         label: "string",
+ *         name: "string",
+ *         prompt: {
+ *             promptBlockData: {
+ *                 version: 1,
+ *                 blocks: [{
+ *                         id: "string",
+ *                         blockType: Vellum.BlockTypeEnum.ChatMessage,
+ *                         properties: {
+ *                             chatRole: Vellum.ChatMessageRole.System,
+ *                             templateType: Vellum.VellumVariableType.String
+ *                         }
+ *                     }]
+ *             },
+ *             inputVariables: [{
+ *                     key: "string",
+ *                     type: Vellum.VellumVariableType.String
+ *                 }]
+ *         },
+ *         provider: Vellum.ProviderEnum.Anthropic,
+ *         model: "string",
+ *         parameters: {
+ *             temperature: 1.1,
+ *             maxTokens: 1,
+ *             topP: 1.1,
+ *             frequencyPenalty: 1.1,
+ *             presencePenalty: 1.1
+ *         }
+ *     }
+ */
 export interface RegisterPromptRequestRequest {
     /** A human-friendly label for corresponding entities created in Vellum. */
     label: string;
