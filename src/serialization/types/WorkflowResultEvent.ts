@@ -15,6 +15,9 @@ export const WorkflowResultEvent: core.serialization.ObjectSchema<
     ts: core.serialization.date(),
     output: core.serialization.lazy(async () => (await import("..")).WorkflowResultEventOutputData).optional(),
     error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError).optional(),
+    outputs: core.serialization
+        .list(core.serialization.lazy(async () => (await import("..")).WorkflowOutput))
+        .optional(),
 });
 
 export declare namespace WorkflowResultEvent {
@@ -24,5 +27,6 @@ export declare namespace WorkflowResultEvent {
         ts: string;
         output?: serializers.WorkflowResultEventOutputData.Raw | null;
         error?: serializers.WorkflowEventError.Raw | null;
+        outputs?: serializers.WorkflowOutput.Raw[] | null;
     }
 }

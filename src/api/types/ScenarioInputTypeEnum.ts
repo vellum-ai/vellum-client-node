@@ -3,8 +3,8 @@
  */
 
 /**
- * - `TEXT` - Text
- * - `CHAT_HISTORY` - Chat History
+ * - `TEXT` - TEXT
+ * - `CHAT_HISTORY` - CHAT_HISTORY
  */
 export type ScenarioInputTypeEnum = "TEXT" | "CHAT_HISTORY";
 

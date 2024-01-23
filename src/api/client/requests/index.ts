@@ -1,5 +1,6 @@
 export { ExecutePromptRequest } from "./ExecutePromptRequest";
 export { ExecutePromptStreamRequest } from "./ExecutePromptStreamRequest";
+export { ExecuteWorkflowRequest } from "./ExecuteWorkflowRequest";
 export { ExecuteWorkflowStreamRequest } from "./ExecuteWorkflowStreamRequest";
 export { GenerateBodyRequest } from "./GenerateBodyRequest";
 export { GenerateStreamBodyRequest } from "./GenerateStreamBodyRequest";

@@ -10,4 +10,5 @@ export interface WorkflowResultEvent {
     ts: Date;
     output?: Vellum.WorkflowResultEventOutputData;
     error?: Vellum.WorkflowEventError;
+    outputs?: Vellum.WorkflowOutput[];
 }
