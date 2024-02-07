@@ -29,12 +29,26 @@ export class DocumentIndexes {
      *
      * @example
      *     await vellum.documentIndexes.create({
-     *         label: "string",
-     *         name: "string",
+     *         label: "My Document Index",
+     *         name: "my-document-index",
      *         status: Vellum.EntityStatus.Active,
      *         environment: Vellum.EnvironmentEnum.Development,
      *         indexingConfig: {
-     *             "string": "string"
+     *             "chunking": {
+     *                 "chunker_name": "sentence-chunker",
+     *                 "chunker_config": {
+     *                     "character_limit": 1000,
+     *                     "min_overlap_ratio": 0.5
+     *                 }
+     *             },
+     *             "vectorizer": {
+     *                 "model_name": "hkunlp/instructor-xl",
+     *                 "config": {
+     *                     "instruction_domain": "",
+     *                     "instruction_document_text_type": "plain_text",
+     *                     "instruction_query_text_type": "plain_text"
+     *                 }
+     *             }
      *         }
      *     })
      */
@@ -53,7 +67,7 @@ export class DocumentIndexes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.2.2",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.DocumentIndexCreateRequest.jsonOrThrow(request, {
@@ -114,7 +128,7 @@ export class DocumentIndexes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.2.2",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,

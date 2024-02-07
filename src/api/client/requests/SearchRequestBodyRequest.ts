@@ -14,10 +14,6 @@ import * as Vellum from "../..";
  *             filters: {
  *                 metadata: {
  *                     combinator: Vellum.MetadataFilterRuleCombinator.And,
- *                     rules: [{
- *                             combinator: Vellum.MetadataFilterRuleCombinator.And,
- *                             operator: Vellum.LogicalOperator.Equals
- *                         }],
  *                     operator: Vellum.LogicalOperator.Equals
  *                 }
  *             }

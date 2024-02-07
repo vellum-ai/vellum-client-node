@@ -15,12 +15,6 @@ export const UpsertSandboxScenarioRequestRequest: core.serialization.Schema<
         core.serialization.lazyObject(async () => (await import("../../../..")).ScenarioInputRequest)
     ),
     scenarioId: core.serialization.property("scenario_id", core.serialization.string().optional()),
-    metricInputParams: core.serialization.property(
-        "metric_input_params",
-        core.serialization
-            .lazyObject(async () => (await import("../../../..")).SandboxMetricInputParamsRequest)
-            .optional()
-    ),
 });
 
 export declare namespace UpsertSandboxScenarioRequestRequest {
@@ -28,6 +22,5 @@ export declare namespace UpsertSandboxScenarioRequestRequest {
         label?: string | null;
         inputs: serializers.ScenarioInputRequest.Raw[];
         scenario_id?: string | null;
-        metric_input_params?: serializers.SandboxMetricInputParamsRequest.Raw | null;
     }
 }

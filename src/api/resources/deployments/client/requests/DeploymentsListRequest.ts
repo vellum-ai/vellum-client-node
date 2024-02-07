@@ -25,9 +25,6 @@ export interface DeploymentsListRequest {
     ordering?: string;
     /**
      * The current status of the deployment
-     *
-     * - `ACTIVE` - Active
-     * - `ARCHIVED` - Archived
      */
     status?: Vellum.DeploymentsListRequestStatus;
 }

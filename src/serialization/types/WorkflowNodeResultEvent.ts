@@ -6,34 +6,41 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const WorkflowNodeResultEvent: core.serialization.ObjectSchema<
+export const WorkflowNodeResultEvent: core.serialization.Schema<
     serializers.WorkflowNodeResultEvent.Raw,
     Vellum.WorkflowNodeResultEvent
-> = core.serialization.object({
-    id: core.serialization.string(),
-    nodeId: core.serialization.property("node_id", core.serialization.string()),
-    nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
-    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
-    ts: core.serialization.date().optional(),
-    data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
-    error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError).optional(),
-    inputValues: core.serialization.property(
-        "input_values",
-        core.serialization
-            .list(core.serialization.lazy(async () => (await import("..")).NodeInputVariableCompiledValue))
-            .optional()
-    ),
-});
+> = core.serialization
+    .union("state", {
+        INITIATED: core.serialization.lazyObject(async () => (await import("..")).InitiatedWorkflowNodeResultEvent),
+        STREAMING: core.serialization.lazyObject(async () => (await import("..")).StreamingWorkflowNodeResultEvent),
+        FULFILLED: core.serialization.lazyObject(async () => (await import("..")).FulfilledWorkflowNodeResultEvent),
+        REJECTED: core.serialization.lazyObject(async () => (await import("..")).RejectedWorkflowNodeResultEvent),
+    })
+    .transform<Vellum.WorkflowNodeResultEvent>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace WorkflowNodeResultEvent {
-    interface Raw {
-        id: string;
-        node_id: string;
-        node_result_id: string;
-        state: serializers.WorkflowNodeResultEventState.Raw;
-        ts?: string | null;
-        data?: serializers.WorkflowNodeResultData.Raw | null;
-        error?: serializers.WorkflowEventError.Raw | null;
-        input_values?: serializers.NodeInputVariableCompiledValue.Raw[] | null;
+    type Raw =
+        | WorkflowNodeResultEvent.Initiated
+        | WorkflowNodeResultEvent.Streaming
+        | WorkflowNodeResultEvent.Fulfilled
+        | WorkflowNodeResultEvent.Rejected;
+
+    interface Initiated extends serializers.InitiatedWorkflowNodeResultEvent.Raw {
+        state: "INITIATED";
+    }
+
+    interface Streaming extends serializers.StreamingWorkflowNodeResultEvent.Raw {
+        state: "STREAMING";
+    }
+
+    interface Fulfilled extends serializers.FulfilledWorkflowNodeResultEvent.Raw {
+        state: "FULFILLED";
+    }
+
+    interface Rejected extends serializers.RejectedWorkflowNodeResultEvent.Raw {
+        state: "REJECTED";
     }
 }

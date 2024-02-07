@@ -11,7 +11,6 @@ export type WorkflowOutput =
     | Vellum.WorkflowOutput.ChatHistory
     | Vellum.WorkflowOutput.SearchResults
     | Vellum.WorkflowOutput.Error_
-    | Vellum.WorkflowOutput.Array
     | Vellum.WorkflowOutput.FunctionCall
     | Vellum.WorkflowOutput.Image;
 
@@ -38,10 +37,6 @@ export declare namespace WorkflowOutput {
 
     interface Error_ extends Vellum.WorkflowOutputError {
         type: "ERROR";
-    }
-
-    interface Array extends Vellum.WorkflowOutputArray {
-        type: "ARRAY";
     }
 
     interface FunctionCall extends Vellum.WorkflowOutputFunctionCall {

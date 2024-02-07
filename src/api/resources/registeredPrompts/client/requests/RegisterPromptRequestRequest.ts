@@ -12,19 +12,9 @@ import * as Vellum from "../../../..";
  *         prompt: {
  *             promptBlockData: {
  *                 version: 1,
- *                 blocks: [{
- *                         id: "string",
- *                         blockType: Vellum.BlockTypeEnum.ChatMessage,
- *                         properties: {
- *                             chatRole: Vellum.ChatMessageRole.System,
- *                             templateType: Vellum.VellumVariableType.String
- *                         }
- *                     }]
+ *                 blocks: []
  *             },
- *             inputVariables: [{
- *                     key: "string",
- *                     type: Vellum.VellumVariableType.String
- *                 }]
+ *             inputVariables: []
  *         },
  *         provider: Vellum.ProviderEnum.Anthropic,
  *         model: "string",

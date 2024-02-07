@@ -7,12 +7,26 @@ import * as Vellum from "../../../..";
 /**
  * @example
  *     {
- *         label: "string",
- *         name: "string",
+ *         label: "My Document Index",
+ *         name: "my-document-index",
  *         status: Vellum.EntityStatus.Active,
  *         environment: Vellum.EnvironmentEnum.Development,
  *         indexingConfig: {
- *             "string": "string"
+ *             "chunking": {
+ *                 "chunker_name": "sentence-chunker",
+ *                 "chunker_config": {
+ *                     "character_limit": 1000,
+ *                     "min_overlap_ratio": 0.5
+ *                 }
+ *             },
+ *             "vectorizer": {
+ *                 "model_name": "hkunlp/instructor-xl",
+ *                 "config": {
+ *                     "instruction_domain": "",
+ *                     "instruction_document_text_type": "plain_text",
+ *                     "instruction_query_text_type": "plain_text"
+ *                 }
+ *             }
  *         }
  *     }
  */

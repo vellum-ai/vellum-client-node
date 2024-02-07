@@ -11,10 +11,6 @@ export const SandboxScenario: core.serialization.ObjectSchema<serializers.Sandbo
         label: core.serialization.string().optional(),
         inputs: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ScenarioInput)),
         id: core.serialization.string(),
-        metricInputParams: core.serialization.property(
-            "metric_input_params",
-            core.serialization.lazyObject(async () => (await import("..")).SandboxMetricInputParams)
-        ),
     });
 
 export declare namespace SandboxScenario {
@@ -22,6 +18,5 @@ export declare namespace SandboxScenario {
         label?: string | null;
         inputs: serializers.ScenarioInput.Raw[];
         id: string;
-        metric_input_params: serializers.SandboxMetricInputParams.Raw;
     }
 }

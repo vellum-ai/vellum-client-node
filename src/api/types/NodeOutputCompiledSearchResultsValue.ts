@@ -4,6 +4,7 @@
 
 import * as Vellum from "..";
 
-export interface SearchResultsVariableValue {
+export interface NodeOutputCompiledSearchResultsValue {
+    nodeOutputId: string;
     value?: Vellum.SearchResult[];
 }

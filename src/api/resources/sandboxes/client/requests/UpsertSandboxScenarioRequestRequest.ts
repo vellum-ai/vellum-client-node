@@ -7,16 +7,16 @@ import * as Vellum from "../../../..";
 /**
  * @example
  *     {
+ *         label: "Scenario 1",
  *         inputs: [{
- *                 key: "string",
+ *                 key: "var_1",
  *                 type: Vellum.ScenarioInputTypeEnum.Text,
- *                 chatHistory: [{
- *                         role: Vellum.ChatMessageRole.System
- *                     }]
- *             }],
- *         metricInputParams: {
- *             params: {}
- *         }
+ *                 value: "Hello, world!"
+ *             }, {
+ *                 key: "var_2",
+ *                 type: Vellum.ScenarioInputTypeEnum.Text,
+ *                 value: "Why hello, there!"
+ *             }]
  *     }
  */
 export interface UpsertSandboxScenarioRequestRequest {
@@ -25,5 +25,4 @@ export interface UpsertSandboxScenarioRequestRequest {
     inputs: Vellum.ScenarioInputRequest[];
     /** The id of the scenario to update. If none is provided, an id will be generated and a new scenario will be appended. */
     scenarioId?: string;
-    metricInputParams?: Vellum.SandboxMetricInputParamsRequest;
 }

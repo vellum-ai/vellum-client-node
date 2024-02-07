@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * A Node Result Event emitted from an API Node.
+ */
 export interface ApiNodeResult {
     data: Vellum.ApiNodeResultData;
 }

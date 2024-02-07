@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * A Node Result Event emitted from a Code Execution Node.
+ */
 export interface CodeExecutionNodeResult {
     data: Vellum.CodeExecutionNodeResultData;
 }

@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * An Error output streamed from a Workflow execution.
+ */
 export interface WorkflowResultEventOutputDataError {
     id?: string;
     name: string;

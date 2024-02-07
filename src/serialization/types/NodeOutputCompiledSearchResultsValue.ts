@@ -6,17 +6,19 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const SearchResultsVariableValue: core.serialization.ObjectSchema<
-    serializers.SearchResultsVariableValue.Raw,
-    Vellum.SearchResultsVariableValue
+export const NodeOutputCompiledSearchResultsValue: core.serialization.ObjectSchema<
+    serializers.NodeOutputCompiledSearchResultsValue.Raw,
+    Vellum.NodeOutputCompiledSearchResultsValue
 > = core.serialization.object({
+    nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     value: core.serialization
         .list(core.serialization.lazyObject(async () => (await import("..")).SearchResult))
         .optional(),
 });
 
-export declare namespace SearchResultsVariableValue {
+export declare namespace NodeOutputCompiledSearchResultsValue {
     interface Raw {
+        node_output_id: string;
         value?: serializers.SearchResult.Raw[] | null;
     }
 }

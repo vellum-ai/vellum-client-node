@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * A JSON output streamed from a Workflow execution.
+ */
 export interface WorkflowResultEventOutputDataJson {
     id?: string;
     name: string;

@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * A number output streamed from a Workflow execution.
+ */
 export interface WorkflowResultEventOutputDataNumber {
     id?: string;
     name: string;

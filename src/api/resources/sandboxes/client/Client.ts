@@ -35,16 +35,16 @@ export class Sandboxes {
      *
      * @example
      *     await vellum.sandboxes.upsertSandboxScenario("string", {
+     *         label: "Scenario 1",
      *         inputs: [{
-     *                 key: "string",
+     *                 key: "var_1",
      *                 type: Vellum.ScenarioInputTypeEnum.Text,
-     *                 chatHistory: [{
-     *                         role: Vellum.ChatMessageRole.System
-     *                     }]
-     *             }],
-     *         metricInputParams: {
-     *             params: {}
-     *         }
+     *                 value: "Hello, world!"
+     *             }, {
+     *                 key: "var_2",
+     *                 type: Vellum.ScenarioInputTypeEnum.Text,
+     *                 value: "Why hello, there!"
+     *             }]
      *     })
      */
     public async upsertSandboxScenario(
@@ -63,7 +63,7 @@ export class Sandboxes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.2.2",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             body: await serializers.UpsertSandboxScenarioRequestRequest.jsonOrThrow(request, {
@@ -125,7 +125,7 @@ export class Sandboxes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.2.2",
+                "X-Fern-SDK-Version": "v0.3.0",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,

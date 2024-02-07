@@ -4,6 +4,7 @@
 
 import * as Vellum from "..";
 
-export interface ChatHistoryVariableValue {
+export interface NodeOutputCompiledChatHistoryValue {
+    nodeOutputId: string;
     value?: Vellum.ChatMessage[];
 }

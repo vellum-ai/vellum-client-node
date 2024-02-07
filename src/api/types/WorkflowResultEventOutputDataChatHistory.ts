@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * A Chat History output streamed from a Workflow execution.
+ */
 export interface WorkflowResultEventOutputDataChatHistory {
     id?: string;
     name: string;

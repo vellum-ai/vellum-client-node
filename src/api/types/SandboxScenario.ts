@@ -10,5 +10,4 @@ export interface SandboxScenario {
     inputs: Vellum.ScenarioInput[];
     /** The id of the scenario */
     id: string;
-    metricInputParams: Vellum.SandboxMetricInputParams;
 }

@@ -4,6 +4,7 @@
 
 import * as Vellum from "..";
 
-export interface SandboxMetricInputParams {
-    params?: Vellum.EvaluationParams;
+export interface NodeOutputCompiledErrorValue {
+    nodeOutputId: string;
+    value?: Vellum.VellumError;
 }

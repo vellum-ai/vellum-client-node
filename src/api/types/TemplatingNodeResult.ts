@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * A Node Result Event emitted from a Templating Node.
+ */
 export interface TemplatingNodeResult {
     data: Vellum.TemplatingNodeResultData;
 }

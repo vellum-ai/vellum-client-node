@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * A WORKFLOW-level event emitted from the workflow's execution.
+ */
 export interface WorkflowExecutionWorkflowResultEvent {
     executionId: string;
     runId?: string;
