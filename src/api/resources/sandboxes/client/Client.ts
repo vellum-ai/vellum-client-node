@@ -63,7 +63,7 @@ export class Sandboxes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.3",
+                "X-Fern-SDK-Version": "0.3.4",
             },
             contentType: "application/json",
             body: await serializers.UpsertSandboxScenarioRequestRequest.jsonOrThrow(request, {
@@ -125,7 +125,7 @@ export class Sandboxes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.3",
+                "X-Fern-SDK-Version": "0.3.4",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
