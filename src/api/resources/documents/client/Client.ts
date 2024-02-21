@@ -65,7 +65,7 @@ export class Documents {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -115,7 +115,7 @@ export class Documents {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -151,9 +151,7 @@ export class Documents {
      * Update a Document, keying off of its Vellum-generated ID. Particularly useful for updating its metadata.
      *
      * @example
-     *     await vellum.documents.partialUpdate("string", {
-     *         status: "ACTIVE"
-     *     })
+     *     await vellum.documents.partialUpdate("id", {})
      */
     public async partialUpdate(
         id: string,
@@ -171,7 +169,7 @@ export class Documents {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.PatchedDocumentUpdateRequest.jsonOrThrow(request, {
@@ -266,7 +264,7 @@ export class Documents {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "multipart/form-data; boundary=" + _request.getBoundary(),
             body: _request,

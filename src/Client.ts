@@ -35,9 +35,6 @@ export class VellumClient {
 
     /**
      * Executes a deployed Prompt and returns the result.
-     *
-     * Note: This endpoint temporarily does not support prompts with function calling, support is coming soon.
-     * In the meantime, we recommend still using the `/generate` endpoint for prompts with function calling.
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.ForbiddenError}
      * @throws {@link Vellum.NotFoundError}
@@ -58,7 +55,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.ExecutePromptRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -109,9 +106,6 @@ export class VellumClient {
 
     /**
      * Executes a deployed Prompt and streams back the results.
-     *
-     * Note: This endpoint temporarily does not support prompts with function calling, support is coming soon.
-     * In the meantime, we recommend still using the `/generate-stream` endpoint for prompts with function calling
      */
     public async executePromptStream(
         request: Vellum.ExecutePromptStreamRequest,
@@ -128,7 +122,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.ExecutePromptStreamRequest.jsonOrThrow(request, {
@@ -207,7 +201,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.ExecuteWorkflowRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -272,7 +266,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.ExecuteWorkflowStreamRequest.jsonOrThrow(request, {
@@ -339,10 +333,9 @@ export class VellumClient {
      *
      * @example
      *     await vellum.generate({
-     *         requests: [],
-     *         options: {
-     *             logprobs: Vellum.LogprobsEnum.All
-     *         }
+     *         requests: [{
+     *                 inputValues: {}
+     *             }]
      *     })
      */
     public async generate(
@@ -360,7 +353,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.GenerateBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -429,7 +422,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.GenerateStreamBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -495,17 +488,7 @@ export class VellumClient {
      *
      * @example
      *     await vellum.search({
-     *         query: "string",
-     *         options: {
-     *             weights: {},
-     *             resultMerging: {},
-     *             filters: {
-     *                 metadata: {
-     *                     combinator: Vellum.MetadataFilterRuleCombinator.And,
-     *                     operator: Vellum.LogicalOperator.Equals
-     *                 }
-     *             }
-     *         }
+     *         query: "query"
      *     })
      */
     public async search(
@@ -523,7 +506,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.SearchRequestBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -580,7 +563,7 @@ export class VellumClient {
      *
      * @example
      *     await vellum.submitCompletionActuals({
-     *         actuals: []
+     *         actuals: [{}]
      *     })
      */
     public async submitCompletionActuals(
@@ -598,7 +581,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.SubmitCompletionActualsRequest.jsonOrThrow(request, {
@@ -667,7 +650,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.SubmitWorkflowExecutionActualsRequest.jsonOrThrow(request, {

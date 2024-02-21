@@ -31,8 +31,6 @@ export class DocumentIndexes {
      *     await vellum.documentIndexes.create({
      *         label: "My Document Index",
      *         name: "my-document-index",
-     *         status: Vellum.EntityStatus.Active,
-     *         environment: Vellum.EnvironmentEnum.Development,
      *         indexingConfig: {
      *             "chunking": {
      *                 "chunker_name": "sentence-chunker",
@@ -67,7 +65,7 @@ export class DocumentIndexes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.DocumentIndexCreateRequest.jsonOrThrow(request, {
@@ -111,7 +109,7 @@ export class DocumentIndexes {
      * Used to retrieve a Document Index given its ID or name.
      *
      * @example
-     *     await vellum.documentIndexes.retrieve("string")
+     *     await vellum.documentIndexes.retrieve("id")
      */
     public async retrieve(
         id: string,
@@ -128,7 +126,7 @@ export class DocumentIndexes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,

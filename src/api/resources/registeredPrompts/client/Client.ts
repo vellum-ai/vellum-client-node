@@ -35,17 +35,22 @@ export class RegisteredPrompts {
      *
      * @example
      *     await vellum.registeredPrompts.registerPrompt({
-     *         label: "string",
-     *         name: "string",
+     *         label: "label",
+     *         name: "name",
      *         prompt: {
      *             promptBlockData: {
      *                 version: 1,
-     *                 blocks: []
+     *                 blocks: [{
+     *                         id: "id",
+     *                         blockType: Vellum.BlockTypeEnum.ChatMessage,
+     *                         properties: {}
+     *                     }]
      *             },
-     *             inputVariables: []
+     *             inputVariables: [{
+     *                     key: "key"
+     *                 }]
      *         },
-     *         provider: Vellum.ProviderEnum.Anthropic,
-     *         model: "string",
+     *         model: "model",
      *         parameters: {
      *             temperature: 1.1,
      *             maxTokens: 1,
@@ -70,7 +75,7 @@ export class RegisteredPrompts {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.RegisterPromptRequestRequest.jsonOrThrow(request, {

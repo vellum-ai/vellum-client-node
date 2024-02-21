@@ -7,17 +7,22 @@ import * as Vellum from "../../../..";
 /**
  * @example
  *     {
- *         label: "string",
- *         name: "string",
+ *         label: "label",
+ *         name: "name",
  *         prompt: {
  *             promptBlockData: {
  *                 version: 1,
- *                 blocks: []
+ *                 blocks: [{
+ *                         id: "id",
+ *                         blockType: Vellum.BlockTypeEnum.ChatMessage,
+ *                         properties: {}
+ *                     }]
  *             },
- *             inputVariables: []
+ *             inputVariables: [{
+ *                     key: "key"
+ *                 }]
  *         },
- *         provider: Vellum.ProviderEnum.Anthropic,
- *         model: "string",
+ *         model: "model",
  *         parameters: {
  *             temperature: 1.1,
  *             maxTokens: 1,

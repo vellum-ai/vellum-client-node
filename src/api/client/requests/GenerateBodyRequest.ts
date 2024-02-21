@@ -7,10 +7,9 @@ import * as Vellum from "../..";
 /**
  * @example
  *     {
- *         requests: [],
- *         options: {
- *             logprobs: Vellum.LogprobsEnum.All
- *         }
+ *         requests: [{
+ *                 inputValues: {}
+ *             }]
  *     }
  */
 export interface GenerateBodyRequest {

@@ -6,9 +6,7 @@ import * as Vellum from "../../../..";
 
 /**
  * @example
- *     {
- *         status: Vellum.WorkflowDeploymentsListRequestStatus.Active
- *     }
+ *     {}
  */
 export interface WorkflowDeploymentsListRequest {
     /**

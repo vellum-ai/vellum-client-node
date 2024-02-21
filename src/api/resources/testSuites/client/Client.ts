@@ -34,7 +34,7 @@ export class TestSuites {
      * or overwritten with default values.
      *
      * @example
-     *     await vellum.testSuites.upsertTestSuiteTestCase("string", {
+     *     await vellum.testSuites.upsertTestSuiteTestCase("id", {
      *         inputValues: [],
      *         evaluationValues: []
      *     })
@@ -55,7 +55,7 @@ export class TestSuites {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             body: await serializers.UpsertTestSuiteTestCaseRequest.jsonOrThrow(request, {
@@ -99,7 +99,7 @@ export class TestSuites {
      * Deletes an existing test case for a test suite, keying off of the test case id.
      *
      * @example
-     *     await vellum.testSuites.deleteTestSuiteTestCase("string", "string")
+     *     await vellum.testSuites.deleteTestSuiteTestCase("id", "test_case_id")
      */
     public async deleteTestSuiteTestCase(
         id: string,
@@ -117,7 +117,7 @@ export class TestSuites {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,

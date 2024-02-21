@@ -7,17 +7,7 @@ import * as Vellum from "../..";
 /**
  * @example
  *     {
- *         query: "string",
- *         options: {
- *             weights: {},
- *             resultMerging: {},
- *             filters: {
- *                 metadata: {
- *                     combinator: Vellum.MetadataFilterRuleCombinator.And,
- *                     operator: Vellum.LogicalOperator.Equals
- *                 }
- *             }
- *         }
+ *         query: "query"
  *     }
  */
 export interface SearchRequestBodyRequest {

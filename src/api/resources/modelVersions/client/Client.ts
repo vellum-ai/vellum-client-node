@@ -28,7 +28,7 @@ export class ModelVersions {
      * Deprecated. Use the `deployments/provider-payload` endpoint to fetch information that we send to Model providers.
      *
      * @example
-     *     await vellum.modelVersions.retrieve("string")
+     *     await vellum.modelVersions.retrieve("id")
      */
     public async retrieve(id: string, requestOptions?: ModelVersions.RequestOptions): Promise<Vellum.ModelVersionRead> {
         const _response = await core.fetcher({
@@ -42,7 +42,7 @@ export class ModelVersions {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.4",
+                "X-Fern-SDK-Version": "0.3.5",
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,

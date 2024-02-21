@@ -9,8 +9,6 @@ import * as Vellum from "../../../..";
  *     {
  *         label: "My Document Index",
  *         name: "my-document-index",
- *         status: Vellum.EntityStatus.Active,
- *         environment: Vellum.EnvironmentEnum.Development,
  *         indexingConfig: {
  *             "chunking": {
  *                 "chunker_name": "sentence-chunker",
