@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 export declare namespace DocumentIndexes {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
@@ -22,7 +22,7 @@ export declare namespace DocumentIndexes {
 }
 
 export class DocumentIndexes {
-    constructor(protected readonly _options: DocumentIndexes.Options) {}
+    constructor(protected readonly _options: DocumentIndexes.Options = {}) {}
 
     /**
      * Creates a new document index.
@@ -65,7 +65,7 @@ export class DocumentIndexes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "0.3.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -128,7 +128,7 @@ export class DocumentIndexes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "0.3.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

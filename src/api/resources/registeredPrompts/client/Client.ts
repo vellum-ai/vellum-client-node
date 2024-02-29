@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 export declare namespace RegisteredPrompts {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
@@ -22,7 +22,7 @@ export declare namespace RegisteredPrompts {
 }
 
 export class RegisteredPrompts {
-    constructor(protected readonly _options: RegisteredPrompts.Options) {}
+    constructor(protected readonly _options: RegisteredPrompts.Options = {}) {}
 
     /**
      * Registers a prompt within Vellum and creates associated Vellum entities. Intended to be used by integration
@@ -75,7 +75,7 @@ export class RegisteredPrompts {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "0.3.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

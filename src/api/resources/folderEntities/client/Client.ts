@@ -5,11 +5,11 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vellum from "../../..";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
-export declare namespace WorkflowDeployments {
+export declare namespace FolderEntities {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey?: core.Supplier<string | undefined>;
@@ -21,38 +21,31 @@ export declare namespace WorkflowDeployments {
     }
 }
 
-export class WorkflowDeployments {
-    constructor(protected readonly _options: WorkflowDeployments.Options = {}) {}
+export class FolderEntities {
+    constructor(protected readonly _options: FolderEntities.Options = {}) {}
 
-    public async list(
-        request: Vellum.WorkflowDeploymentsListRequest = {},
-        requestOptions?: WorkflowDeployments.RequestOptions
-    ): Promise<Vellum.PaginatedSlimWorkflowDeploymentList> {
-        const { limit, offset, ordering, status } = request;
-        const _queryParams: Record<string, string | string[]> = {};
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
-        }
-
-        if (offset != null) {
-            _queryParams["offset"] = offset.toString();
-        }
-
-        if (ordering != null) {
-            _queryParams["ordering"] = ordering;
-        }
-
-        if (status != null) {
-            _queryParams["status"] = status;
-        }
-
+    /**
+     * Add an entity to a specific folder or root directory.
+     *
+     * Adding an entity to a folder will remove it from any other folders it might have been a member of.
+     *
+     * @example
+     *     await vellum.folderEntities.addEntityToFolder("folder_id", {
+     *         entityId: "entity_id"
+     *     })
+     */
+    public async addEntityToFolder(
+        folderId: string,
+        request: Vellum.AddEntityToFolderRequest,
+        requestOptions?: FolderEntities.RequestOptions
+    ): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                "v1/workflow-deployments"
+                `v1/folders/${folderId}/add-entity`
             ),
-            method: "GET",
+            method: "POST",
             headers: {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
@@ -62,17 +55,12 @@ export class WorkflowDeployments {
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
             contentType: "application/json",
-            queryParameters: _queryParams,
+            body: await serializers.AddEntityToFolderRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return await serializers.PaginatedSlimWorkflowDeploymentList.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return;
         }
 
         if (_response.error.reason === "status-code") {

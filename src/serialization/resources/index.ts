@@ -7,6 +7,8 @@ export * as documentIndexes from "./documentIndexes";
 export * from "./documentIndexes/client/requests";
 export * as documents from "./documents";
 export * from "./documents/client/requests";
+export * as folderEntities from "./folderEntities";
+export * from "./folderEntities/client/requests";
 export * as registeredPrompts from "./registeredPrompts";
 export * from "./registeredPrompts/client/requests";
 export * as sandboxes from "./sandboxes";

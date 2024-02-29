@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 export declare namespace TestSuites {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
@@ -22,7 +22,7 @@ export declare namespace TestSuites {
 }
 
 export class TestSuites {
-    constructor(protected readonly _options: TestSuites.Options) {}
+    constructor(protected readonly _options: TestSuites.Options = {}) {}
 
     /**
      * Upserts a new test case for a test suite, keying off of the optionally provided test case id.
@@ -55,7 +55,7 @@ export class TestSuites {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "0.3.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -119,7 +119,7 @@ export class TestSuites {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.6",
+                "X-Fern-SDK-Version": "0.3.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
