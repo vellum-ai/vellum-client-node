@@ -19,6 +19,7 @@ export const NodeInputVariableCompiledValue: core.serialization.Schema<
             async () => (await import("..")).NodeInputCompiledSearchResultsValue
         ),
         ERROR: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledErrorValue),
+        ARRAY: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledArrayValue),
     })
     .transform<Vellum.NodeInputVariableCompiledValue>({
         transform: (value) => value,
@@ -32,7 +33,8 @@ export declare namespace NodeInputVariableCompiledValue {
         | NodeInputVariableCompiledValue.Json
         | NodeInputVariableCompiledValue.ChatHistory
         | NodeInputVariableCompiledValue.SearchResults
-        | NodeInputVariableCompiledValue.Error;
+        | NodeInputVariableCompiledValue.Error
+        | NodeInputVariableCompiledValue.Array;
 
     interface String extends serializers.NodeInputCompiledStringValue.Raw {
         type: "STRING";
@@ -56,5 +58,9 @@ export declare namespace NodeInputVariableCompiledValue {
 
     interface Error extends serializers.NodeInputCompiledErrorValue.Raw {
         type: "ERROR";
+    }
+
+    interface Array extends serializers.NodeInputCompiledArrayValue.Raw {
+        type: "ARRAY";
     }
 }

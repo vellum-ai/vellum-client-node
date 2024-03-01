@@ -22,7 +22,7 @@ export interface DeploymentsListRequest {
      */
     ordering?: string;
     /**
-     * The current status of the deployment
+     * status
      */
     status?: Vellum.DeploymentsListRequestStatus;
 }

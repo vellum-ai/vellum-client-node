@@ -13,6 +13,7 @@ export interface ExecutePromptStreamRequest {
     promptDeploymentName?: string;
     /** Optionally specify a release tag if you want to pin to a specific release of the Prompt Deployment */
     releaseTag?: string;
+    /** "Optionally include a unique identifier for tracking purposes. Must be unique for a given prompt deployment. */
     externalId?: string;
     /** The name of the Prompt Deployment. Must provide either this or prompt_deployment_id. */
     expandMeta?: Vellum.PromptDeploymentExpandMetaRequestRequest;

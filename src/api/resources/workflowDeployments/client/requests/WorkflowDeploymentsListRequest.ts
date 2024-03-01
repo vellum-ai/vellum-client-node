@@ -22,10 +22,7 @@ export interface WorkflowDeploymentsListRequest {
      */
     ordering?: string;
     /**
-     * The current status of the workflow deployment
-     *
-     * - `ACTIVE` - Active
-     * - `ARCHIVED` - Archived
+     * status
      */
     status?: Vellum.WorkflowDeploymentsListRequestStatus;
 }

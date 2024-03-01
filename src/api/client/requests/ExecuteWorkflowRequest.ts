@@ -13,6 +13,6 @@ export interface ExecuteWorkflowRequest {
     releaseTag?: string;
     /** The list of inputs defined in the Workflow's Deployment with their corresponding values. */
     inputs: Vellum.WorkflowRequestInputRequest[];
-    /** Optionally include a unique identifier for monitoring purposes. */
+    /** Optionally include a unique identifier for monitoring purposes. Must be unique for a given workflow deployment. */
     externalId?: string;
 }

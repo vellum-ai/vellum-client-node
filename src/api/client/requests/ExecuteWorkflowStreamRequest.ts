@@ -13,7 +13,7 @@ export interface ExecuteWorkflowStreamRequest {
     releaseTag?: string;
     /** The list of inputs defined in the Workflow's deployment with their corresponding values. */
     inputs: Vellum.WorkflowRequestInputRequest[];
-    /** Optionally include a unique identifier for tracking purposes. */
+    /** Optionally include a unique identifier for tracking purposes. Must be unique for a given workflow deployment. */
     externalId?: string;
     /** Optionally specify which events you want to receive. Defaults to only WORKFLOW events. Note that the schema of non-WORKFLOW events is unstable and should be used with caution. */
     eventTypes?: Vellum.WorkflowExecutionEventType[];

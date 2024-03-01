@@ -11,6 +11,7 @@ export const PromptNodeResultData: core.serialization.ObjectSchema<
     Vellum.PromptNodeResultData
 > = core.serialization.object({
     outputId: core.serialization.property("output_id", core.serialization.string()),
+    arrayOutputId: core.serialization.property("array_output_id", core.serialization.string().optional()),
     text: core.serialization.string().optional(),
     delta: core.serialization.string().optional(),
 });
@@ -18,6 +19,7 @@ export const PromptNodeResultData: core.serialization.ObjectSchema<
 export declare namespace PromptNodeResultData {
     interface Raw {
         output_id: string;
+        array_output_id?: string | null;
         text?: string | null;
         delta?: string | null;
     }

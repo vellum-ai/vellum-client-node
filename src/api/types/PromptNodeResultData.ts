@@ -4,6 +4,7 @@
 
 export interface PromptNodeResultData {
     outputId: string;
+    arrayOutputId?: string;
     text?: string;
     delta?: string;
 }

@@ -21,6 +21,8 @@ export const NodeOutputCompiledValue: core.serialization.Schema<
             async () => (await import("..")).NodeOutputCompiledSearchResultsValue
         ),
         ERROR: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledErrorValue),
+        ARRAY: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledArrayValue),
+        FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledFunctionValue),
     })
     .transform<Vellum.NodeOutputCompiledValue>({
         transform: (value) => value,
@@ -34,7 +36,9 @@ export declare namespace NodeOutputCompiledValue {
         | NodeOutputCompiledValue.Json
         | NodeOutputCompiledValue.ChatHistory
         | NodeOutputCompiledValue.SearchResults
-        | NodeOutputCompiledValue.Error;
+        | NodeOutputCompiledValue.Error
+        | NodeOutputCompiledValue.Array
+        | NodeOutputCompiledValue.FunctionCall;
 
     interface String extends serializers.NodeOutputCompiledStringValue.Raw {
         type: "STRING";
@@ -58,5 +62,13 @@ export declare namespace NodeOutputCompiledValue {
 
     interface Error extends serializers.NodeOutputCompiledErrorValue.Raw {
         type: "ERROR";
+    }
+
+    interface Array extends serializers.NodeOutputCompiledArrayValue.Raw {
+        type: "ARRAY";
+    }
+
+    interface FunctionCall extends serializers.NodeOutputCompiledFunctionValue.Raw {
+        type: "FUNCTION_CALL";
     }
 }

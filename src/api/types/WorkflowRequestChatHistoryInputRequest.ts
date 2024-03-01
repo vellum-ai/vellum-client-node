@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * The input for a chat history variable in a Workflow.
+ */
 export interface WorkflowRequestChatHistoryInputRequest {
     /** The variable's name, as defined in the Workflow. */
     name: string;
