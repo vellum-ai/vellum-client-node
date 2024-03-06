@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 export declare namespace WorkflowDeployments {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
-        apiKey?: core.Supplier<string | undefined>;
+        apiKey: core.Supplier<string>;
     }
 
     interface RequestOptions {
@@ -22,7 +22,7 @@ export declare namespace WorkflowDeployments {
 }
 
 export class WorkflowDeployments {
-    constructor(protected readonly _options: WorkflowDeployments.Options = {}) {}
+    constructor(protected readonly _options: WorkflowDeployments.Options) {}
 
     public async list(
         request: Vellum.WorkflowDeploymentsListRequest = {},
@@ -57,7 +57,7 @@ export class WorkflowDeployments {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.8",
+                "X-Fern-SDK-Version": "0.3.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -118,7 +118,7 @@ export class WorkflowDeployments {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.8",
+                "X-Fern-SDK-Version": "0.3.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

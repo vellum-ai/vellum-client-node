@@ -11,12 +11,14 @@ export const NodeOutputCompiledArrayValue: core.serialization.ObjectSchema<
     Vellum.NodeOutputCompiledArrayValue
 > = core.serialization.object({
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
-    value: core.serialization.list(core.serialization.lazy(async () => (await import("..")).ArrayVariableValueItem)),
+    value: core.serialization
+        .list(core.serialization.lazy(async () => (await import("..")).ArrayVariableValueItem))
+        .optional(),
 });
 
 export declare namespace NodeOutputCompiledArrayValue {
     interface Raw {
         node_output_id: string;
-        value: serializers.ArrayVariableValueItem.Raw[];
+        value?: serializers.ArrayVariableValueItem.Raw[] | null;
     }
 }

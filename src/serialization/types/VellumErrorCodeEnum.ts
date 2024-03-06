@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const VellumErrorCodeEnum: core.serialization.Schema<
     serializers.VellumErrorCodeEnum.Raw,
     Vellum.VellumErrorCodeEnum
-> = core.serialization.enum_(["INVALID_REQUEST", "PROVIDER_ERROR", "INTERNAL_SERVER_ERROR"]);
+> = core.serialization.enum_(["INVALID_REQUEST", "PROVIDER_ERROR", "INTERNAL_SERVER_ERROR", "USER_DEFINED_ERROR"]);
 
 export declare namespace VellumErrorCodeEnum {
-    type Raw = "INVALID_REQUEST" | "PROVIDER_ERROR" | "INTERNAL_SERVER_ERROR";
+    type Raw = "INVALID_REQUEST" | "PROVIDER_ERROR" | "INTERNAL_SERVER_ERROR" | "USER_DEFINED_ERROR";
 }

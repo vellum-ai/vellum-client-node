@@ -18,6 +18,7 @@ export const WorkflowNodeResultData: core.serialization.Schema<
         CONDITIONAL: core.serialization.lazyObject(async () => (await import("..")).ConditionalNodeResult),
         API: core.serialization.lazyObject(async () => (await import("..")).ApiNodeResult),
         TERMINAL: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeResult),
+        SUBWORKFLOW: core.serialization.lazyObject(async () => (await import("..")).SubworkflowNodeResult),
     })
     .transform<Vellum.WorkflowNodeResultData>({
         transform: (value) => value,
@@ -32,7 +33,8 @@ export declare namespace WorkflowNodeResultData {
         | WorkflowNodeResultData.CodeExecution
         | WorkflowNodeResultData.Conditional
         | WorkflowNodeResultData.Api
-        | WorkflowNodeResultData.Terminal;
+        | WorkflowNodeResultData.Terminal
+        | WorkflowNodeResultData.Subworkflow;
 
     interface Prompt extends serializers.PromptNodeResult.Raw {
         type: "PROMPT";
@@ -60,5 +62,9 @@ export declare namespace WorkflowNodeResultData {
 
     interface Terminal extends serializers.TerminalNodeResult.Raw {
         type: "TERMINAL";
+    }
+
+    interface Subworkflow extends serializers.SubworkflowNodeResult.Raw {
+        type: "SUBWORKFLOW";
     }
 }

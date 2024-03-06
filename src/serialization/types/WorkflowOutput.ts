@@ -14,6 +14,7 @@ export const WorkflowOutput: core.serialization.Schema<serializers.WorkflowOutpu
             JSON: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputJson),
             CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputChatHistory),
             SEARCH_RESULTS: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputSearchResults),
+            ARRAY: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputArray),
             ERROR: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputError),
             FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputFunctionCall),
             IMAGE: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputImage),
@@ -30,6 +31,7 @@ export declare namespace WorkflowOutput {
         | WorkflowOutput.Json
         | WorkflowOutput.ChatHistory
         | WorkflowOutput.SearchResults
+        | WorkflowOutput.Array
         | WorkflowOutput.Error
         | WorkflowOutput.FunctionCall
         | WorkflowOutput.Image;
@@ -52,6 +54,10 @@ export declare namespace WorkflowOutput {
 
     interface SearchResults extends serializers.WorkflowOutputSearchResults.Raw {
         type: "SEARCH_RESULTS";
+    }
+
+    interface Array extends serializers.WorkflowOutputArray.Raw {
+        type: "ARRAY";
     }
 
     interface Error extends serializers.WorkflowOutputError.Raw {

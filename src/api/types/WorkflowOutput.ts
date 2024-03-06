@@ -10,6 +10,7 @@ export type WorkflowOutput =
     | Vellum.WorkflowOutput.Json
     | Vellum.WorkflowOutput.ChatHistory
     | Vellum.WorkflowOutput.SearchResults
+    | Vellum.WorkflowOutput.Array
     | Vellum.WorkflowOutput.Error_
     | Vellum.WorkflowOutput.FunctionCall
     | Vellum.WorkflowOutput.Image;
@@ -33,6 +34,10 @@ export declare namespace WorkflowOutput {
 
     interface SearchResults extends Vellum.WorkflowOutputSearchResults {
         type: "SEARCH_RESULTS";
+    }
+
+    interface Array extends Vellum.WorkflowOutputArray {
+        type: "ARRAY";
     }
 
     interface Error_ extends Vellum.WorkflowOutputError {

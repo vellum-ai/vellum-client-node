@@ -9,6 +9,7 @@
  * - `NODE_EXECUTION` - NODE_EXECUTION
  * - `LLM_PROVIDER` - LLM_PROVIDER
  * - `INVALID_TEMPLATE` - INVALID_TEMPLATE
+ * - `USER_DEFINED_ERROR` - USER_DEFINED_ERROR
  */
 export type WorkflowExecutionEventErrorCode =
     | "WORKFLOW_INITIALIZATION"
@@ -16,7 +17,8 @@ export type WorkflowExecutionEventErrorCode =
     | "INTERNAL_SERVER_ERROR"
     | "NODE_EXECUTION"
     | "LLM_PROVIDER"
-    | "INVALID_TEMPLATE";
+    | "INVALID_TEMPLATE"
+    | "USER_DEFINED_ERROR";
 
 export const WorkflowExecutionEventErrorCode = {
     WorkflowInitialization: "WORKFLOW_INITIALIZATION",
@@ -25,4 +27,5 @@ export const WorkflowExecutionEventErrorCode = {
     NodeExecution: "NODE_EXECUTION",
     LlmProvider: "LLM_PROVIDER",
     InvalidTemplate: "INVALID_TEMPLATE",
+    UserDefinedError: "USER_DEFINED_ERROR",
 } as const;

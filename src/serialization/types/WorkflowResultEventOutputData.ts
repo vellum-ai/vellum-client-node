@@ -20,6 +20,10 @@ export const WorkflowResultEventOutputData: core.serialization.Schema<
         SEARCH_RESULTS: core.serialization.lazyObject(
             async () => (await import("..")).WorkflowResultEventOutputDataSearchResults
         ),
+        ARRAY: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataArray),
+        FUNCTION_CALL: core.serialization.lazyObject(
+            async () => (await import("..")).WorkflowResultEventOutputDataFunctionCall
+        ),
         ERROR: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataError),
     })
     .transform<Vellum.WorkflowResultEventOutputData>({
@@ -34,6 +38,8 @@ export declare namespace WorkflowResultEventOutputData {
         | WorkflowResultEventOutputData.Json
         | WorkflowResultEventOutputData.ChatHistory
         | WorkflowResultEventOutputData.SearchResults
+        | WorkflowResultEventOutputData.Array
+        | WorkflowResultEventOutputData.FunctionCall
         | WorkflowResultEventOutputData.Error;
 
     interface String extends serializers.WorkflowResultEventOutputDataString.Raw {
@@ -54,6 +60,14 @@ export declare namespace WorkflowResultEventOutputData {
 
     interface SearchResults extends serializers.WorkflowResultEventOutputDataSearchResults.Raw {
         type: "SEARCH_RESULTS";
+    }
+
+    interface Array extends serializers.WorkflowResultEventOutputDataArray.Raw {
+        type: "ARRAY";
+    }
+
+    interface FunctionCall extends serializers.WorkflowResultEventOutputDataFunctionCall.Raw {
+        type: "FUNCTION_CALL";
     }
 
     interface Error extends serializers.WorkflowResultEventOutputDataError.Raw {

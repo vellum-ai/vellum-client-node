@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 export declare namespace Sandboxes {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
-        apiKey?: core.Supplier<string | undefined>;
+        apiKey: core.Supplier<string>;
     }
 
     interface RequestOptions {
@@ -22,7 +22,7 @@ export declare namespace Sandboxes {
 }
 
 export class Sandboxes {
-    constructor(protected readonly _options: Sandboxes.Options = {}) {}
+    constructor(protected readonly _options: Sandboxes.Options) {}
 
     /**
      * Upserts a new scenario for a sandbox, keying off of the optionally provided scenario id.
@@ -65,7 +65,7 @@ export class Sandboxes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.8",
+                "X-Fern-SDK-Version": "0.3.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -129,7 +129,7 @@ export class Sandboxes {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.8",
+                "X-Fern-SDK-Version": "0.3.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },

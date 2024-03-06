@@ -10,6 +10,8 @@ export type TerminalNodeResultOutput =
     | Vellum.TerminalNodeResultOutput.Json
     | Vellum.TerminalNodeResultOutput.ChatHistory
     | Vellum.TerminalNodeResultOutput.SearchResults
+    | Vellum.TerminalNodeResultOutput.Array
+    | Vellum.TerminalNodeResultOutput.FunctionCall
     | Vellum.TerminalNodeResultOutput.Error_;
 
 export declare namespace TerminalNodeResultOutput {
@@ -31,6 +33,14 @@ export declare namespace TerminalNodeResultOutput {
 
     interface SearchResults extends Vellum.TerminalNodeSearchResultsResult {
         type: "SEARCH_RESULTS";
+    }
+
+    interface Array extends Vellum.TerminalNodeArrayResult {
+        type: "ARRAY";
+    }
+
+    interface FunctionCall extends Vellum.TerminalNodeFunctionCallResult {
+        type: "FUNCTION_CALL";
     }
 
     interface Error_ extends Vellum.TerminalNodeErrorResult {

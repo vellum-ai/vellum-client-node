@@ -7,5 +7,5 @@ import * as Vellum from "..";
 export interface NodeInputCompiledArrayValue {
     nodeInputId: string;
     key: string;
-    value: Vellum.ArrayVariableValueItem[];
+    value?: Vellum.ArrayVariableValueItem[];
 }

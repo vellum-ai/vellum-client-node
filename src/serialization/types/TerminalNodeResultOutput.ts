@@ -16,6 +16,8 @@ export const TerminalNodeResultOutput: core.serialization.Schema<
         JSON: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeJsonResult),
         CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeChatHistoryResult),
         SEARCH_RESULTS: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeSearchResultsResult),
+        ARRAY: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeArrayResult),
+        FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeFunctionCallResult),
         ERROR: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeErrorResult),
     })
     .transform<Vellum.TerminalNodeResultOutput>({
@@ -30,6 +32,8 @@ export declare namespace TerminalNodeResultOutput {
         | TerminalNodeResultOutput.Json
         | TerminalNodeResultOutput.ChatHistory
         | TerminalNodeResultOutput.SearchResults
+        | TerminalNodeResultOutput.Array
+        | TerminalNodeResultOutput.FunctionCall
         | TerminalNodeResultOutput.Error;
 
     interface String extends serializers.TerminalNodeStringResult.Raw {
@@ -50,6 +54,14 @@ export declare namespace TerminalNodeResultOutput {
 
     interface SearchResults extends serializers.TerminalNodeSearchResultsResult.Raw {
         type: "SEARCH_RESULTS";
+    }
+
+    interface Array extends serializers.TerminalNodeArrayResult.Raw {
+        type: "ARRAY";
+    }
+
+    interface FunctionCall extends serializers.TerminalNodeFunctionCallResult.Raw {
+        type: "FUNCTION_CALL";
     }
 
     interface Error extends serializers.TerminalNodeErrorResult.Raw {

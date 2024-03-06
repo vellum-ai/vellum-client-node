@@ -11,7 +11,8 @@ export type WorkflowNodeResultData =
     | Vellum.WorkflowNodeResultData.CodeExecution
     | Vellum.WorkflowNodeResultData.Conditional
     | Vellum.WorkflowNodeResultData.Api
-    | Vellum.WorkflowNodeResultData.Terminal;
+    | Vellum.WorkflowNodeResultData.Terminal
+    | Vellum.WorkflowNodeResultData.Subworkflow;
 
 export declare namespace WorkflowNodeResultData {
     interface Prompt extends Vellum.PromptNodeResult {
@@ -40,5 +41,9 @@ export declare namespace WorkflowNodeResultData {
 
     interface Terminal extends Vellum.TerminalNodeResult {
         type: "TERMINAL";
+    }
+
+    interface Subworkflow extends Vellum.SubworkflowNodeResult {
+        type: "SUBWORKFLOW";
     }
 }
