@@ -1,8 +1,9 @@
 export * as deployments from "./deployments";
 export * from "./deployments/types";
+export * as documentIndexes from "./documentIndexes";
+export * from "./documentIndexes/types";
 export * as workflowDeployments from "./workflowDeployments";
 export * from "./workflowDeployments/types";
-export * as documentIndexes from "./documentIndexes";
 export * as documents from "./documents";
 export * as folderEntities from "./folderEntities";
 export * as modelVersions from "./modelVersions";

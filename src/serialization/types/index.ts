@@ -119,6 +119,7 @@ export * from "./NormalizedLogProbs";
 export * from "./NormalizedTokenLogProbs";
 export * from "./NumberEnum";
 export * from "./NumberVariableValue";
+export * from "./PaginatedDocumentIndexReadList";
 export * from "./PaginatedSlimDeploymentReadList";
 export * from "./PaginatedSlimDocumentList";
 export * from "./PaginatedSlimWorkflowDeploymentList";
