@@ -18,6 +18,9 @@ export const WorkflowResultEvent: core.serialization.ObjectSchema<
     outputs: core.serialization
         .list(core.serialization.lazy(async () => (await import("..")).WorkflowOutput))
         .optional(),
+    inputs: core.serialization
+        .list(core.serialization.lazy(async () => (await import("..")).ExecutionVellumValue))
+        .optional(),
 });
 
 export declare namespace WorkflowResultEvent {
@@ -28,5 +31,6 @@ export declare namespace WorkflowResultEvent {
         output?: serializers.WorkflowResultEventOutputData.Raw | null;
         error?: serializers.WorkflowEventError.Raw | null;
         outputs?: serializers.WorkflowOutput.Raw[] | null;
+        inputs?: serializers.ExecutionVellumValue.Raw[] | null;
     }
 }

@@ -3,8 +3,8 @@
  */
 
 /**
- * - `NODE` - Node
- * - `WORKFLOW` - Workflow
+ * - `NODE` - NODE
+ * - `WORKFLOW` - WORKFLOW
  */
 export type WorkflowExecutionEventType = "NODE" | "WORKFLOW";
 

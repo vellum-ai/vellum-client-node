@@ -11,4 +11,5 @@ export interface WorkflowResultEvent {
     output?: Vellum.WorkflowResultEventOutputData;
     error?: Vellum.WorkflowEventError;
     outputs?: Vellum.WorkflowOutput[];
+    inputs?: Vellum.ExecutionVellumValue[];
 }

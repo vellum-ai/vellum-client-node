@@ -18,6 +18,7 @@ export const PromptTemplateBlockPropertiesRequest: core.serialization.ObjectSche
         "chat_message_unterminated",
         core.serialization.boolean().optional()
     ),
+    chatSource: core.serialization.property("chat_source", core.serialization.string().optional()),
     template: core.serialization.string().optional(),
     templateType: core.serialization.property(
         "template_type",
@@ -39,6 +40,7 @@ export declare namespace PromptTemplateBlockPropertiesRequest {
     interface Raw {
         chat_role?: serializers.ChatMessageRole.Raw | null;
         chat_message_unterminated?: boolean | null;
+        chat_source?: string | null;
         template?: string | null;
         template_type?: serializers.VellumVariableType.Raw | null;
         function_name?: string | null;

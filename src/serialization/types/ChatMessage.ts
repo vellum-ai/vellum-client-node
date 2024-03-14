@@ -11,6 +11,7 @@ export const ChatMessage: core.serialization.ObjectSchema<serializers.ChatMessag
         text: core.serialization.string().optional(),
         role: core.serialization.lazy(async () => (await import("..")).ChatMessageRole),
         content: core.serialization.lazy(async () => (await import("..")).ChatMessageContent).optional(),
+        source: core.serialization.string().optional(),
     });
 
 export declare namespace ChatMessage {
@@ -18,5 +19,6 @@ export declare namespace ChatMessage {
         text?: string | null;
         role: serializers.ChatMessageRole.Raw;
         content?: serializers.ChatMessageContent.Raw | null;
+        source?: string | null;
     }
 }

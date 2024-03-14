@@ -8,4 +8,6 @@ export interface ChatMessageRequest {
     text?: string;
     role: Vellum.ChatMessageRole;
     content?: Vellum.ChatMessageContentRequest;
+    /** An optional identifier representing who or what generated this message. */
+    source?: string;
 }

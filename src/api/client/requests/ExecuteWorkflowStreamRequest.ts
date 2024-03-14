@@ -5,14 +5,14 @@
 import * as Vellum from "../..";
 
 export interface ExecuteWorkflowStreamRequest {
+    /** The list of inputs defined in the Workflow's Deployment with their corresponding values. */
+    inputs: Vellum.WorkflowRequestInputRequest[];
     /** The ID of the Workflow Deployment. Must provide either this or workflow_deployment_name. */
     workflowDeploymentId?: string;
     /** The name of the Workflow Deployment. Must provide either this or workflow_deployment_id. */
     workflowDeploymentName?: string;
     /** Optionally specify a release tag if you want to pin to a specific release of the Workflow Deployment */
     releaseTag?: string;
-    /** The list of inputs defined in the Workflow's deployment with their corresponding values. */
-    inputs: Vellum.WorkflowRequestInputRequest[];
     /** Optionally include a unique identifier for tracking purposes. Must be unique for a given workflow deployment. */
     externalId?: string;
     /** Optionally specify which events you want to receive. Defaults to only WORKFLOW events. Note that the schema of non-WORKFLOW events is unstable and should be used with caution. */

@@ -57,7 +57,7 @@ export class Deployments {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.10",
+                "X-Fern-SDK-Version": "0.3.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -115,7 +115,7 @@ export class Deployments {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.10",
+                "X-Fern-SDK-Version": "0.3.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -154,6 +154,17 @@ export class Deployments {
         }
     }
 
+    /**
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.ForbiddenError}
+     * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.InternalServerError}
+     *
+     * @example
+     *     await vellum.deployments.retrieveProviderPayload({
+     *         inputs: []
+     *     })
+     */
     public async retrieveProviderPayload(
         request: Vellum.DeploymentProviderPayloadRequest,
         requestOptions?: Deployments.RequestOptions
@@ -169,7 +180,7 @@ export class Deployments {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.10",
+                "X-Fern-SDK-Version": "0.3.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -190,10 +201,21 @@ export class Deployments {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 403:
+                    throw new Vellum.ForbiddenError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

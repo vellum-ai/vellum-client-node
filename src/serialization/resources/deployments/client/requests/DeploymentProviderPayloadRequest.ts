@@ -15,6 +15,7 @@ export const DeploymentProviderPayloadRequest: core.serialization.Schema<
     inputs: core.serialization.list(
         core.serialization.lazy(async () => (await import("../../../..")).PromptDeploymentInputRequest)
     ),
+    releaseTag: core.serialization.property("release_tag", core.serialization.string().optional()),
 });
 
 export declare namespace DeploymentProviderPayloadRequest {
@@ -22,5 +23,6 @@ export declare namespace DeploymentProviderPayloadRequest {
         deployment_id?: string | null;
         deployment_name?: string | null;
         inputs: serializers.PromptDeploymentInputRequest.Raw[];
+        release_tag?: string | null;
     }
 }

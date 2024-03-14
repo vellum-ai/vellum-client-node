@@ -17,4 +17,6 @@ export interface DeploymentProviderPayloadRequest {
     deploymentName?: string;
     /** The list of inputs defined in the Prompt's deployment with their corresponding values. */
     inputs: Vellum.PromptDeploymentInputRequest[];
+    /** Optionally specify a release tag if you want to pin to a specific release of the Workflow Deployment */
+    releaseTag?: string;
 }
