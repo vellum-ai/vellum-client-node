@@ -15,6 +15,7 @@ export const RejectedWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     ts: core.serialization.date().optional(),
     data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
+    sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
     error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError),
 });
 
@@ -25,6 +26,7 @@ export declare namespace RejectedWorkflowNodeResultEvent {
         node_result_id: string;
         ts?: string | null;
         data?: serializers.WorkflowNodeResultData.Raw | null;
+        source_execution_id?: string | null;
         error: serializers.WorkflowEventError.Raw;
     }
 }

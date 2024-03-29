@@ -11,6 +11,7 @@ export const WorkflowExecutionEventErrorCode: core.serialization.Schema<
     Vellum.WorkflowExecutionEventErrorCode
 > = core.serialization.enum_([
     "WORKFLOW_INITIALIZATION",
+    "WORKFLOW_CANCELLED",
     "NODE_EXECUTION_COUNT_LIMIT_REACHED",
     "INTERNAL_SERVER_ERROR",
     "NODE_EXECUTION",
@@ -22,6 +23,7 @@ export const WorkflowExecutionEventErrorCode: core.serialization.Schema<
 export declare namespace WorkflowExecutionEventErrorCode {
     type Raw =
         | "WORKFLOW_INITIALIZATION"
+        | "WORKFLOW_CANCELLED"
         | "NODE_EXECUTION_COUNT_LIMIT_REACHED"
         | "INTERNAL_SERVER_ERROR"
         | "NODE_EXECUTION"

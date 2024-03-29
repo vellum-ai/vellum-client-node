@@ -4,6 +4,7 @@
 
 /**
  * - `WORKFLOW_INITIALIZATION` - WORKFLOW_INITIALIZATION
+ * - `WORKFLOW_CANCELLED` - WORKFLOW_CANCELLED
  * - `NODE_EXECUTION_COUNT_LIMIT_REACHED` - NODE_EXECUTION_COUNT_LIMIT_REACHED
  * - `INTERNAL_SERVER_ERROR` - INTERNAL_SERVER_ERROR
  * - `NODE_EXECUTION` - NODE_EXECUTION
@@ -13,6 +14,7 @@
  */
 export type WorkflowExecutionEventErrorCode =
     | "WORKFLOW_INITIALIZATION"
+    | "WORKFLOW_CANCELLED"
     | "NODE_EXECUTION_COUNT_LIMIT_REACHED"
     | "INTERNAL_SERVER_ERROR"
     | "NODE_EXECUTION"
@@ -22,6 +24,7 @@ export type WorkflowExecutionEventErrorCode =
 
 export const WorkflowExecutionEventErrorCode = {
     WorkflowInitialization: "WORKFLOW_INITIALIZATION",
+    WorkflowCancelled: "WORKFLOW_CANCELLED",
     NodeExecutionCountLimitReached: "NODE_EXECUTION_COUNT_LIMIT_REACHED",
     InternalServerError: "INTERNAL_SERVER_ERROR",
     NodeExecution: "NODE_EXECUTION",

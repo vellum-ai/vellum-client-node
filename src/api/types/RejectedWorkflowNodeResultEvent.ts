@@ -13,5 +13,6 @@ export interface RejectedWorkflowNodeResultEvent {
     nodeResultId: string;
     ts?: Date;
     data?: Vellum.WorkflowNodeResultData;
+    sourceExecutionId?: string;
     error: Vellum.WorkflowEventError;
 }

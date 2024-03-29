@@ -18,6 +18,7 @@ export const ArrayVariableValueItem: core.serialization.Schema<
         SEARCH_RESULTS: core.serialization.lazyObject(async () => (await import("..")).SearchResultsVariableValue),
         ERROR: core.serialization.lazyObject(async () => (await import("..")).ErrorVariableValue),
         FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).FunctionCallVariableValue),
+        IMAGE: core.serialization.lazyObject(async () => (await import("..")).ImageVariableValue),
     })
     .transform<Vellum.ArrayVariableValueItem>({
         transform: (value) => value,
@@ -32,7 +33,8 @@ export declare namespace ArrayVariableValueItem {
         | ArrayVariableValueItem.ChatHistory
         | ArrayVariableValueItem.SearchResults
         | ArrayVariableValueItem.Error
-        | ArrayVariableValueItem.FunctionCall;
+        | ArrayVariableValueItem.FunctionCall
+        | ArrayVariableValueItem.Image;
 
     interface String extends serializers.StringVariableValue.Raw {
         type: "STRING";
@@ -60,5 +62,9 @@ export declare namespace ArrayVariableValueItem {
 
     interface FunctionCall extends serializers.FunctionCallVariableValue.Raw {
         type: "FUNCTION_CALL";
+    }
+
+    interface Image extends serializers.ImageVariableValue.Raw {
+        type: "IMAGE";
     }
 }

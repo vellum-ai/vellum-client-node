@@ -11,7 +11,8 @@ export type ArrayVariableValueItem =
     | Vellum.ArrayVariableValueItem.ChatHistory
     | Vellum.ArrayVariableValueItem.SearchResults
     | Vellum.ArrayVariableValueItem.Error_
-    | Vellum.ArrayVariableValueItem.FunctionCall;
+    | Vellum.ArrayVariableValueItem.FunctionCall
+    | Vellum.ArrayVariableValueItem.Image;
 
 export declare namespace ArrayVariableValueItem {
     interface String extends Vellum.StringVariableValue {
@@ -40,5 +41,9 @@ export declare namespace ArrayVariableValueItem {
 
     interface FunctionCall extends Vellum.FunctionCallVariableValue {
         type: "FUNCTION_CALL";
+    }
+
+    interface Image extends Vellum.ImageVariableValue {
+        type: "IMAGE";
     }
 }

@@ -81,6 +81,7 @@ export * from "./GenerateStreamResultData";
 export * from "./ImageChatMessageContent";
 export * from "./ImageChatMessageContentRequest";
 export * from "./ImageEnum";
+export * from "./ImageVariableValue";
 export * from "./IndexingStateEnum";
 export * from "./InitiatedEnum";
 export * from "./InitiatedExecutePromptEvent";

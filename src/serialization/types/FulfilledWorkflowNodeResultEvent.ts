@@ -15,12 +15,14 @@ export const FulfilledWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     ts: core.serialization.date().optional(),
     data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
+    sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
     outputValues: core.serialization.property(
         "output_values",
         core.serialization
             .list(core.serialization.lazy(async () => (await import("..")).NodeOutputCompiledValue))
             .optional()
     ),
+    mocked: core.serialization.boolean().optional(),
 });
 
 export declare namespace FulfilledWorkflowNodeResultEvent {
@@ -30,6 +32,8 @@ export declare namespace FulfilledWorkflowNodeResultEvent {
         node_result_id: string;
         ts?: string | null;
         data?: serializers.WorkflowNodeResultData.Raw | null;
+        source_execution_id?: string | null;
         output_values?: serializers.NodeOutputCompiledValue.Raw[] | null;
+        mocked?: boolean | null;
     }
 }

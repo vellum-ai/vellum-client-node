@@ -15,6 +15,7 @@ export const InitiatedWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     ts: core.serialization.date().optional(),
     data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
+    sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
     inputValues: core.serialization.property(
         "input_values",
         core.serialization
@@ -30,6 +31,7 @@ export declare namespace InitiatedWorkflowNodeResultEvent {
         node_result_id: string;
         ts?: string | null;
         data?: serializers.WorkflowNodeResultData.Raw | null;
+        source_execution_id?: string | null;
         input_values?: serializers.NodeInputVariableCompiledValue.Raw[] | null;
     }
 }

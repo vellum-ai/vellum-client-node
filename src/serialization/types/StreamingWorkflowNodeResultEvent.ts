@@ -15,6 +15,7 @@ export const StreamingWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     ts: core.serialization.date().optional(),
     data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
+    sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
     output: core.serialization.lazy(async () => (await import("..")).NodeOutputCompiledValue).optional(),
     outputIndex: core.serialization.property("output_index", core.serialization.number().optional()),
 });
@@ -26,6 +27,7 @@ export declare namespace StreamingWorkflowNodeResultEvent {
         node_result_id: string;
         ts?: string | null;
         data?: serializers.WorkflowNodeResultData.Raw | null;
+        source_execution_id?: string | null;
         output?: serializers.NodeOutputCompiledValue.Raw | null;
         output_index?: number | null;
     }

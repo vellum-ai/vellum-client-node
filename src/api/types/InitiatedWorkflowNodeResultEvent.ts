@@ -13,5 +13,6 @@ export interface InitiatedWorkflowNodeResultEvent {
     nodeResultId: string;
     ts?: Date;
     data?: Vellum.WorkflowNodeResultData;
+    sourceExecutionId?: string;
     inputValues?: Vellum.NodeInputVariableCompiledValue[];
 }

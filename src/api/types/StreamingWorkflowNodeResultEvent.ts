@@ -13,6 +13,7 @@ export interface StreamingWorkflowNodeResultEvent {
     nodeResultId: string;
     ts?: Date;
     data?: Vellum.WorkflowNodeResultData;
+    sourceExecutionId?: string;
     output?: Vellum.NodeOutputCompiledValue;
     outputIndex?: number;
 }
