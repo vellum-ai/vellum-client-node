@@ -12,13 +12,15 @@ export const WorkflowOutputChatHistory: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage)),
+    value: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage))
+        .optional(),
 });
 
 export declare namespace WorkflowOutputChatHistory {
     interface Raw {
         id: string;
         name: string;
-        value: serializers.ChatMessage.Raw[];
+        value?: serializers.ChatMessage.Raw[] | null;
     }
 }

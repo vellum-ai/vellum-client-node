@@ -12,13 +12,15 @@ export const WorkflowOutputSearchResults: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).SearchResult)),
+    value: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("..")).SearchResult))
+        .optional(),
 });
 
 export declare namespace WorkflowOutputSearchResults {
     interface Raw {
         id: string;
         name: string;
-        value: serializers.SearchResult.Raw[];
+        value?: serializers.SearchResult.Raw[] | null;
     }
 }

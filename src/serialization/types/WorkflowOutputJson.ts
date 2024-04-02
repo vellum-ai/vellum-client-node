@@ -12,13 +12,13 @@ export const WorkflowOutputJson: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
 export declare namespace WorkflowOutputJson {
     interface Raw {
         id: string;
         name: string;
-        value: Record<string, unknown>;
+        value?: Record<string, unknown> | null;
     }
 }

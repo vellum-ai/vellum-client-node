@@ -11,5 +11,5 @@ export interface WorkflowOutputFunctionCall {
     id: string;
     /** The output's name, as defined in the workflow */
     name: string;
-    value: Vellum.FunctionCall;
+    value?: Vellum.FunctionCall;
 }

@@ -12,13 +12,13 @@ export const WorkflowOutputError: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumError),
+    value: core.serialization.lazyObject(async () => (await import("..")).VellumError).optional(),
 });
 
 export declare namespace WorkflowOutputError {
     interface Raw {
         id: string;
         name: string;
-        value: serializers.VellumError.Raw;
+        value?: serializers.VellumError.Raw | null;
     }
 }

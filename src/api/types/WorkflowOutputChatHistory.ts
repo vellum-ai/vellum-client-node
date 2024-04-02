@@ -11,5 +11,5 @@ export interface WorkflowOutputChatHistory {
     id: string;
     /** The output's name, as defined in the workflow */
     name: string;
-    value: Vellum.ChatMessage[];
+    value?: Vellum.ChatMessage[];
 }

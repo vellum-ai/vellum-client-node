@@ -16,6 +16,7 @@ import { FolderEntities } from "./api/resources/folderEntities/client/Client";
 import { ModelVersions } from "./api/resources/modelVersions/client/Client";
 import { RegisteredPrompts } from "./api/resources/registeredPrompts/client/Client";
 import { Sandboxes } from "./api/resources/sandboxes/client/Client";
+import { TestSuiteRuns } from "./api/resources/testSuiteRuns/client/Client";
 import { TestSuites } from "./api/resources/testSuites/client/Client";
 import { WorkflowDeployments } from "./api/resources/workflowDeployments/client/Client";
 
@@ -56,7 +57,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -125,7 +126,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -206,7 +207,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -273,7 +274,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -362,7 +363,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -433,7 +434,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -519,7 +520,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -596,7 +597,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -667,7 +668,7 @@ export class VellumClient {
                 X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.12",
+                "X-Fern-SDK-Version": "0.3.13",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
             },
@@ -744,6 +745,12 @@ export class VellumClient {
 
     public get sandboxes(): Sandboxes {
         return (this._sandboxes ??= new Sandboxes(this._options));
+    }
+
+    protected _testSuiteRuns: TestSuiteRuns | undefined;
+
+    public get testSuiteRuns(): TestSuiteRuns {
+        return (this._testSuiteRuns ??= new TestSuiteRuns(this._options));
     }
 
     protected _testSuites: TestSuites | undefined;
