@@ -5,18 +5,20 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { StringChatMessageContentRequest } from "./StringChatMessageContentRequest";
+import { FunctionCallChatMessageContentRequest } from "./FunctionCallChatMessageContentRequest";
+import { ArrayChatMessageContentRequest } from "./ArrayChatMessageContentRequest";
+import { ImageChatMessageContentRequest } from "./ImageChatMessageContentRequest";
 
 export const ChatMessageContentRequest: core.serialization.Schema<
     serializers.ChatMessageContentRequest.Raw,
     Vellum.ChatMessageContentRequest
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).StringChatMessageContentRequest),
-        FUNCTION_CALL: core.serialization.lazyObject(
-            async () => (await import("..")).FunctionCallChatMessageContentRequest
-        ),
-        ARRAY: core.serialization.lazyObject(async () => (await import("..")).ArrayChatMessageContentRequest),
-        IMAGE: core.serialization.lazyObject(async () => (await import("..")).ImageChatMessageContentRequest),
+        STRING: StringChatMessageContentRequest,
+        FUNCTION_CALL: FunctionCallChatMessageContentRequest,
+        ARRAY: ArrayChatMessageContentRequest,
+        IMAGE: ImageChatMessageContentRequest,
     })
     .transform<Vellum.ChatMessageContentRequest>({
         transform: (value) => value,
@@ -30,19 +32,19 @@ export declare namespace ChatMessageContentRequest {
         | ChatMessageContentRequest.Array
         | ChatMessageContentRequest.Image;
 
-    interface String extends serializers.StringChatMessageContentRequest.Raw {
+    interface String extends StringChatMessageContentRequest.Raw {
         type: "STRING";
     }
 
-    interface FunctionCall extends serializers.FunctionCallChatMessageContentRequest.Raw {
+    interface FunctionCall extends FunctionCallChatMessageContentRequest.Raw {
         type: "FUNCTION_CALL";
     }
 
-    interface Array extends serializers.ArrayChatMessageContentRequest.Raw {
+    interface Array extends ArrayChatMessageContentRequest.Raw {
         type: "ARRAY";
     }
 
-    interface Image extends serializers.ImageChatMessageContentRequest.Raw {
+    interface Image extends ImageChatMessageContentRequest.Raw {
         type: "IMAGE";
     }
 }

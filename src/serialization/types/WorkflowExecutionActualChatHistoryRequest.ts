@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ChatMessageRequest } from "./ChatMessageRequest";
 
 export const WorkflowExecutionActualChatHistoryRequest: core.serialization.ObjectSchema<
     serializers.WorkflowExecutionActualChatHistoryRequest.Raw,
@@ -16,9 +17,7 @@ export const WorkflowExecutionActualChatHistoryRequest: core.serialization.Objec
     timestamp: core.serialization.number().optional(),
     desiredOutputValue: core.serialization.property(
         "desired_output_value",
-        core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessageRequest))
-            .optional()
+        core.serialization.list(ChatMessageRequest).optional()
     ),
 });
 
@@ -28,6 +27,6 @@ export declare namespace WorkflowExecutionActualChatHistoryRequest {
         output_key?: string | null;
         quality?: number | null;
         timestamp?: number | null;
-        desired_output_value?: serializers.ChatMessageRequest.Raw[] | null;
+        desired_output_value?: ChatMessageRequest.Raw[] | null;
     }
 }

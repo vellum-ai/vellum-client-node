@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { LogprobsEnum } from "./LogprobsEnum";
 
 export const GenerateOptionsRequest: core.serialization.ObjectSchema<
     serializers.GenerateOptionsRequest.Raw,
     Vellum.GenerateOptionsRequest
 > = core.serialization.object({
-    logprobs: core.serialization.lazy(async () => (await import("..")).LogprobsEnum).optional(),
+    logprobs: LogprobsEnum.optional(),
 });
 
 export declare namespace GenerateOptionsRequest {
     interface Raw {
-        logprobs?: serializers.LogprobsEnum.Raw | null;
+        logprobs?: LogprobsEnum.Raw | null;
     }
 }

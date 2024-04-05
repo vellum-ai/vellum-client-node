@@ -5,32 +5,31 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { RegisterPromptPrompt } from "./RegisterPromptPrompt";
+import { RegisteredPromptSandboxSnapshot } from "./RegisteredPromptSandboxSnapshot";
+import { RegisteredPromptSandbox } from "./RegisteredPromptSandbox";
+import { RegisteredPromptModelVersion } from "./RegisteredPromptModelVersion";
+import { RegisteredPromptDeployment } from "./RegisteredPromptDeployment";
 
 export const RegisterPromptResponse: core.serialization.ObjectSchema<
     serializers.RegisterPromptResponse.Raw,
     Vellum.RegisterPromptResponse
 > = core.serialization.object({
-    prompt: core.serialization.lazyObject(async () => (await import("..")).RegisterPromptPrompt),
-    sandboxSnapshot: core.serialization.property(
-        "sandbox_snapshot",
-        core.serialization.lazyObject(async () => (await import("..")).RegisteredPromptSandboxSnapshot)
-    ),
-    sandbox: core.serialization.lazyObject(async () => (await import("..")).RegisteredPromptSandbox),
-    modelVersion: core.serialization.property(
-        "model_version",
-        core.serialization.lazyObject(async () => (await import("..")).RegisteredPromptModelVersion)
-    ),
+    prompt: RegisterPromptPrompt,
+    sandboxSnapshot: core.serialization.property("sandbox_snapshot", RegisteredPromptSandboxSnapshot),
+    sandbox: RegisteredPromptSandbox,
+    modelVersion: core.serialization.property("model_version", RegisteredPromptModelVersion),
     promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string()),
-    deployment: core.serialization.lazyObject(async () => (await import("..")).RegisteredPromptDeployment),
+    deployment: RegisteredPromptDeployment,
 });
 
 export declare namespace RegisterPromptResponse {
     interface Raw {
-        prompt: serializers.RegisterPromptPrompt.Raw;
-        sandbox_snapshot: serializers.RegisteredPromptSandboxSnapshot.Raw;
-        sandbox: serializers.RegisteredPromptSandbox.Raw;
-        model_version: serializers.RegisteredPromptModelVersion.Raw;
+        prompt: RegisterPromptPrompt.Raw;
+        sandbox_snapshot: RegisteredPromptSandboxSnapshot.Raw;
+        sandbox: RegisteredPromptSandbox.Raw;
+        model_version: RegisteredPromptModelVersion.Raw;
         prompt_version_id: string;
-        deployment: serializers.RegisteredPromptDeployment.Raw;
+        deployment: RegisteredPromptDeployment.Raw;
     }
 }

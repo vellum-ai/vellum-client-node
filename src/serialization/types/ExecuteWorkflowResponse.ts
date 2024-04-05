@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ExecuteWorkflowWorkflowResultEvent } from "./ExecuteWorkflowWorkflowResultEvent";
 
 export const ExecuteWorkflowResponse: core.serialization.ObjectSchema<
     serializers.ExecuteWorkflowResponse.Raw,
@@ -13,7 +14,7 @@ export const ExecuteWorkflowResponse: core.serialization.ObjectSchema<
     executionId: core.serialization.property("execution_id", core.serialization.string()),
     runId: core.serialization.property("run_id", core.serialization.string().optional()),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    data: core.serialization.lazy(async () => (await import("..")).ExecuteWorkflowWorkflowResultEvent),
+    data: ExecuteWorkflowWorkflowResultEvent,
 });
 
 export declare namespace ExecuteWorkflowResponse {
@@ -21,6 +22,6 @@ export declare namespace ExecuteWorkflowResponse {
         execution_id: string;
         run_id?: string | null;
         external_id?: string | null;
-        data: serializers.ExecuteWorkflowWorkflowResultEvent.Raw;
+        data: ExecuteWorkflowWorkflowResultEvent.Raw;
     }
 }

@@ -5,14 +5,16 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FulfilledExecutePromptResponse } from "./FulfilledExecutePromptResponse";
+import { RejectedExecutePromptResponse } from "./RejectedExecutePromptResponse";
 
 export const ExecutePromptResponse: core.serialization.Schema<
     serializers.ExecutePromptResponse.Raw,
     Vellum.ExecutePromptResponse
 > = core.serialization
     .union("state", {
-        FULFILLED: core.serialization.lazyObject(async () => (await import("..")).FulfilledExecutePromptResponse),
-        REJECTED: core.serialization.lazyObject(async () => (await import("..")).RejectedExecutePromptResponse),
+        FULFILLED: FulfilledExecutePromptResponse,
+        REJECTED: RejectedExecutePromptResponse,
     })
     .transform<Vellum.ExecutePromptResponse>({
         transform: (value) => value,
@@ -22,11 +24,11 @@ export const ExecutePromptResponse: core.serialization.Schema<
 export declare namespace ExecutePromptResponse {
     type Raw = ExecutePromptResponse.Fulfilled | ExecutePromptResponse.Rejected;
 
-    interface Fulfilled extends serializers.FulfilledExecutePromptResponse.Raw {
+    interface Fulfilled extends FulfilledExecutePromptResponse.Raw {
         state: "FULFILLED";
     }
 
-    interface Rejected extends serializers.RejectedExecutePromptResponse.Raw {
+    interface Rejected extends RejectedExecutePromptResponse.Raw {
         state: "REJECTED";
     }
 }

@@ -5,22 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { CodeExecutionNodeStringResult } from "./CodeExecutionNodeStringResult";
+import { CodeExecutionNodeNumberResult } from "./CodeExecutionNodeNumberResult";
+import { CodeExecutionNodeJsonResult } from "./CodeExecutionNodeJsonResult";
+import { CodeExecutionNodeChatHistoryResult } from "./CodeExecutionNodeChatHistoryResult";
+import { CodeExecutionNodeSearchResultsResult } from "./CodeExecutionNodeSearchResultsResult";
+import { CodeExecutionNodeErrorResult } from "./CodeExecutionNodeErrorResult";
+import { CodeExecutionNodeArrayResult } from "./CodeExecutionNodeArrayResult";
+import { CodeExecutionNodeFunctionCallResult } from "./CodeExecutionNodeFunctionCallResult";
 
 export const CodeExecutionNodeResultOutput: core.serialization.Schema<
     serializers.CodeExecutionNodeResultOutput.Raw,
     Vellum.CodeExecutionNodeResultOutput
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).CodeExecutionNodeStringResult),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).CodeExecutionNodeNumberResult),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).CodeExecutionNodeJsonResult),
-        CHAT_HISTORY: core.serialization.lazyObject(
-            async () => (await import("..")).CodeExecutionNodeChatHistoryResult
-        ),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).CodeExecutionNodeSearchResultsResult
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).CodeExecutionNodeErrorResult),
+        STRING: CodeExecutionNodeStringResult,
+        NUMBER: CodeExecutionNodeNumberResult,
+        JSON: CodeExecutionNodeJsonResult,
+        CHAT_HISTORY: CodeExecutionNodeChatHistoryResult,
+        SEARCH_RESULTS: CodeExecutionNodeSearchResultsResult,
+        ERROR: CodeExecutionNodeErrorResult,
+        ARRAY: CodeExecutionNodeArrayResult,
+        FUNCTION_CALL: CodeExecutionNodeFunctionCallResult,
     })
     .transform<Vellum.CodeExecutionNodeResultOutput>({
         transform: (value) => value,
@@ -34,29 +40,39 @@ export declare namespace CodeExecutionNodeResultOutput {
         | CodeExecutionNodeResultOutput.Json
         | CodeExecutionNodeResultOutput.ChatHistory
         | CodeExecutionNodeResultOutput.SearchResults
-        | CodeExecutionNodeResultOutput.Error;
+        | CodeExecutionNodeResultOutput.Error
+        | CodeExecutionNodeResultOutput.Array
+        | CodeExecutionNodeResultOutput.FunctionCall;
 
-    interface String extends serializers.CodeExecutionNodeStringResult.Raw {
+    interface String extends CodeExecutionNodeStringResult.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.CodeExecutionNodeNumberResult.Raw {
+    interface Number extends CodeExecutionNodeNumberResult.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.CodeExecutionNodeJsonResult.Raw {
+    interface Json extends CodeExecutionNodeJsonResult.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.CodeExecutionNodeChatHistoryResult.Raw {
+    interface ChatHistory extends CodeExecutionNodeChatHistoryResult.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.CodeExecutionNodeSearchResultsResult.Raw {
+    interface SearchResults extends CodeExecutionNodeSearchResultsResult.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.CodeExecutionNodeErrorResult.Raw {
+    interface Error extends CodeExecutionNodeErrorResult.Raw {
         type: "ERROR";
+    }
+
+    interface Array extends CodeExecutionNodeArrayResult.Raw {
+        type: "ARRAY";
+    }
+
+    interface FunctionCall extends CodeExecutionNodeFunctionCallResult.Raw {
+        type: "FUNCTION_CALL";
     }
 }

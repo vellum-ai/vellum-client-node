@@ -6,7 +6,7 @@
  * @example
  *     {}
  */
-export interface ListTestSuiteRunExecutionsRequest {
+export interface TestSuiteRunsListExecutionsRequest {
     /**
      * Number of results to return per page.
      */

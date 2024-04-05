@@ -5,30 +5,27 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ModelVersionExecConfigParameters } from "./ModelVersionExecConfigParameters";
+import { VellumVariable } from "./VellumVariable";
+import { PromptTemplateBlockData } from "./PromptTemplateBlockData";
 
 export const ModelVersionExecConfig: core.serialization.ObjectSchema<
     serializers.ModelVersionExecConfig.Raw,
     Vellum.ModelVersionExecConfig
 > = core.serialization.object({
-    parameters: core.serialization.lazyObject(async () => (await import("..")).ModelVersionExecConfigParameters),
-    inputVariables: core.serialization.property(
-        "input_variables",
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).VellumVariable))
-    ),
+    parameters: ModelVersionExecConfigParameters,
+    inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     promptTemplate: core.serialization.property("prompt_template", core.serialization.string().optional()),
-    promptBlockData: core.serialization.property(
-        "prompt_block_data",
-        core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlockData).optional()
-    ),
+    promptBlockData: core.serialization.property("prompt_block_data", PromptTemplateBlockData.optional()),
     promptSyntaxVersion: core.serialization.property("prompt_syntax_version", core.serialization.number().optional()),
 });
 
 export declare namespace ModelVersionExecConfig {
     interface Raw {
-        parameters: serializers.ModelVersionExecConfigParameters.Raw;
-        input_variables: serializers.VellumVariable.Raw[];
+        parameters: ModelVersionExecConfigParameters.Raw;
+        input_variables: VellumVariable.Raw[];
         prompt_template?: string | null;
-        prompt_block_data?: serializers.PromptTemplateBlockData.Raw | null;
+        prompt_block_data?: PromptTemplateBlockData.Raw | null;
         prompt_syntax_version?: number | null;
     }
 }

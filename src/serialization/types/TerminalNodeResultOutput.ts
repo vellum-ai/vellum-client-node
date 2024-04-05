@@ -5,20 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TerminalNodeStringResult } from "./TerminalNodeStringResult";
+import { TerminalNodeNumberResult } from "./TerminalNodeNumberResult";
+import { TerminalNodeJsonResult } from "./TerminalNodeJsonResult";
+import { TerminalNodeChatHistoryResult } from "./TerminalNodeChatHistoryResult";
+import { TerminalNodeSearchResultsResult } from "./TerminalNodeSearchResultsResult";
+import { TerminalNodeArrayResult } from "./TerminalNodeArrayResult";
+import { TerminalNodeFunctionCallResult } from "./TerminalNodeFunctionCallResult";
+import { TerminalNodeErrorResult } from "./TerminalNodeErrorResult";
 
 export const TerminalNodeResultOutput: core.serialization.Schema<
     serializers.TerminalNodeResultOutput.Raw,
     Vellum.TerminalNodeResultOutput
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeStringResult),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeNumberResult),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeJsonResult),
-        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeChatHistoryResult),
-        SEARCH_RESULTS: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeSearchResultsResult),
-        ARRAY: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeArrayResult),
-        FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeFunctionCallResult),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeErrorResult),
+        STRING: TerminalNodeStringResult,
+        NUMBER: TerminalNodeNumberResult,
+        JSON: TerminalNodeJsonResult,
+        CHAT_HISTORY: TerminalNodeChatHistoryResult,
+        SEARCH_RESULTS: TerminalNodeSearchResultsResult,
+        ARRAY: TerminalNodeArrayResult,
+        FUNCTION_CALL: TerminalNodeFunctionCallResult,
+        ERROR: TerminalNodeErrorResult,
     })
     .transform<Vellum.TerminalNodeResultOutput>({
         transform: (value) => value,
@@ -36,35 +44,35 @@ export declare namespace TerminalNodeResultOutput {
         | TerminalNodeResultOutput.FunctionCall
         | TerminalNodeResultOutput.Error;
 
-    interface String extends serializers.TerminalNodeStringResult.Raw {
+    interface String extends TerminalNodeStringResult.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.TerminalNodeNumberResult.Raw {
+    interface Number extends TerminalNodeNumberResult.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.TerminalNodeJsonResult.Raw {
+    interface Json extends TerminalNodeJsonResult.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.TerminalNodeChatHistoryResult.Raw {
+    interface ChatHistory extends TerminalNodeChatHistoryResult.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.TerminalNodeSearchResultsResult.Raw {
+    interface SearchResults extends TerminalNodeSearchResultsResult.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Array extends serializers.TerminalNodeArrayResult.Raw {
+    interface Array extends TerminalNodeArrayResult.Raw {
         type: "ARRAY";
     }
 
-    interface FunctionCall extends serializers.TerminalNodeFunctionCallResult.Raw {
+    interface FunctionCall extends TerminalNodeFunctionCallResult.Raw {
         type: "FUNCTION_CALL";
     }
 
-    interface Error extends serializers.TerminalNodeErrorResult.Raw {
+    interface Error extends TerminalNodeErrorResult.Raw {
         type: "ERROR";
     }
 }

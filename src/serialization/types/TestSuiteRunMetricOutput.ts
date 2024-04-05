@@ -5,14 +5,16 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TestSuiteRunMetricNumberOutput } from "./TestSuiteRunMetricNumberOutput";
+import { TestSuiteRunMetricErrorOutput } from "./TestSuiteRunMetricErrorOutput";
 
 export const TestSuiteRunMetricOutput: core.serialization.Schema<
     serializers.TestSuiteRunMetricOutput.Raw,
     Vellum.TestSuiteRunMetricOutput
 > = core.serialization
     .union("type", {
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).TestSuiteRunMetricNumberOutput),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).TestSuiteRunMetricErrorOutput),
+        NUMBER: TestSuiteRunMetricNumberOutput,
+        ERROR: TestSuiteRunMetricErrorOutput,
     })
     .transform<Vellum.TestSuiteRunMetricOutput>({
         transform: (value) => value,
@@ -22,11 +24,11 @@ export const TestSuiteRunMetricOutput: core.serialization.Schema<
 export declare namespace TestSuiteRunMetricOutput {
     type Raw = TestSuiteRunMetricOutput.Number | TestSuiteRunMetricOutput.Error;
 
-    interface Number extends serializers.TestSuiteRunMetricNumberOutput.Raw {
+    interface Number extends TestSuiteRunMetricNumberOutput.Raw {
         type: "NUMBER";
     }
 
-    interface Error extends serializers.TestSuiteRunMetricErrorOutput.Raw {
+    interface Error extends TestSuiteRunMetricErrorOutput.Raw {
         type: "ERROR";
     }
 }

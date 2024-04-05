@@ -5,18 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ArrayChatMessageContentItemRequest } from "./ArrayChatMessageContentItemRequest";
 
 export const ArrayChatMessageContentRequest: core.serialization.ObjectSchema<
     serializers.ArrayChatMessageContentRequest.Raw,
     Vellum.ArrayChatMessageContentRequest
 > = core.serialization.object({
-    value: core.serialization.list(
-        core.serialization.lazy(async () => (await import("..")).ArrayChatMessageContentItemRequest)
-    ),
+    value: core.serialization.list(ArrayChatMessageContentItemRequest),
 });
 
 export declare namespace ArrayChatMessageContentRequest {
     interface Raw {
-        value: serializers.ArrayChatMessageContentItemRequest.Raw[];
+        value: ArrayChatMessageContentItemRequest.Raw[];
     }
 }

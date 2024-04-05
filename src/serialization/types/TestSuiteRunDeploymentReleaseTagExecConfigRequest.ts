@@ -5,14 +5,13 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TestSuiteRunDeploymentReleaseTagExecConfigDataRequest } from "./TestSuiteRunDeploymentReleaseTagExecConfigDataRequest";
 
 export const TestSuiteRunDeploymentReleaseTagExecConfigRequest: core.serialization.ObjectSchema<
     serializers.TestSuiteRunDeploymentReleaseTagExecConfigRequest.Raw,
     Vellum.TestSuiteRunDeploymentReleaseTagExecConfigRequest
 > = core.serialization.object({
-    data: core.serialization.lazyObject(
-        async () => (await import("..")).TestSuiteRunDeploymentReleaseTagExecConfigDataRequest
-    ),
+    data: TestSuiteRunDeploymentReleaseTagExecConfigDataRequest,
     testCaseIds: core.serialization.property(
         "test_case_ids",
         core.serialization.list(core.serialization.string()).optional()
@@ -21,7 +20,7 @@ export const TestSuiteRunDeploymentReleaseTagExecConfigRequest: core.serializati
 
 export declare namespace TestSuiteRunDeploymentReleaseTagExecConfigRequest {
     interface Raw {
-        data: serializers.TestSuiteRunDeploymentReleaseTagExecConfigDataRequest.Raw;
+        data: TestSuiteRunDeploymentReleaseTagExecConfigDataRequest.Raw;
         test_case_ids?: string[] | null;
     }
 }

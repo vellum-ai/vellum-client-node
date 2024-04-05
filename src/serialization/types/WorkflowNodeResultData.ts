@@ -5,20 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { PromptNodeResult } from "./PromptNodeResult";
+import { SearchNodeResult } from "./SearchNodeResult";
+import { TemplatingNodeResult } from "./TemplatingNodeResult";
+import { CodeExecutionNodeResult } from "./CodeExecutionNodeResult";
+import { ConditionalNodeResult } from "./ConditionalNodeResult";
+import { ApiNodeResult } from "./ApiNodeResult";
+import { TerminalNodeResult } from "./TerminalNodeResult";
+import { SubworkflowNodeResult } from "./SubworkflowNodeResult";
 
 export const WorkflowNodeResultData: core.serialization.Schema<
     serializers.WorkflowNodeResultData.Raw,
     Vellum.WorkflowNodeResultData
 > = core.serialization
     .union("type", {
-        PROMPT: core.serialization.lazyObject(async () => (await import("..")).PromptNodeResult),
-        SEARCH: core.serialization.lazyObject(async () => (await import("..")).SearchNodeResult),
-        TEMPLATING: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeResult),
-        CODE_EXECUTION: core.serialization.lazyObject(async () => (await import("..")).CodeExecutionNodeResult),
-        CONDITIONAL: core.serialization.lazyObject(async () => (await import("..")).ConditionalNodeResult),
-        API: core.serialization.lazyObject(async () => (await import("..")).ApiNodeResult),
-        TERMINAL: core.serialization.lazyObject(async () => (await import("..")).TerminalNodeResult),
-        SUBWORKFLOW: core.serialization.lazyObject(async () => (await import("..")).SubworkflowNodeResult),
+        PROMPT: PromptNodeResult,
+        SEARCH: SearchNodeResult,
+        TEMPLATING: TemplatingNodeResult,
+        CODE_EXECUTION: CodeExecutionNodeResult,
+        CONDITIONAL: ConditionalNodeResult,
+        API: ApiNodeResult,
+        TERMINAL: TerminalNodeResult,
+        SUBWORKFLOW: SubworkflowNodeResult,
     })
     .transform<Vellum.WorkflowNodeResultData>({
         transform: (value) => value,
@@ -36,35 +44,35 @@ export declare namespace WorkflowNodeResultData {
         | WorkflowNodeResultData.Terminal
         | WorkflowNodeResultData.Subworkflow;
 
-    interface Prompt extends serializers.PromptNodeResult.Raw {
+    interface Prompt extends PromptNodeResult.Raw {
         type: "PROMPT";
     }
 
-    interface Search extends serializers.SearchNodeResult.Raw {
+    interface Search extends SearchNodeResult.Raw {
         type: "SEARCH";
     }
 
-    interface Templating extends serializers.TemplatingNodeResult.Raw {
+    interface Templating extends TemplatingNodeResult.Raw {
         type: "TEMPLATING";
     }
 
-    interface CodeExecution extends serializers.CodeExecutionNodeResult.Raw {
+    interface CodeExecution extends CodeExecutionNodeResult.Raw {
         type: "CODE_EXECUTION";
     }
 
-    interface Conditional extends serializers.ConditionalNodeResult.Raw {
+    interface Conditional extends ConditionalNodeResult.Raw {
         type: "CONDITIONAL";
     }
 
-    interface Api extends serializers.ApiNodeResult.Raw {
+    interface Api extends ApiNodeResult.Raw {
         type: "API";
     }
 
-    interface Terminal extends serializers.TerminalNodeResult.Raw {
+    interface Terminal extends TerminalNodeResult.Raw {
         type: "TERMINAL";
     }
 
-    interface Subworkflow extends serializers.SubworkflowNodeResult.Raw {
+    interface Subworkflow extends SubworkflowNodeResult.Raw {
         type: "SUBWORKFLOW";
     }
 }

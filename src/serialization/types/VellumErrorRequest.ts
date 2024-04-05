@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumErrorCodeEnum } from "./VellumErrorCodeEnum";
 
 export const VellumErrorRequest: core.serialization.ObjectSchema<
     serializers.VellumErrorRequest.Raw,
     Vellum.VellumErrorRequest
 > = core.serialization.object({
     message: core.serialization.string(),
-    code: core.serialization.lazy(async () => (await import("..")).VellumErrorCodeEnum),
+    code: VellumErrorCodeEnum,
 });
 
 export declare namespace VellumErrorRequest {
     interface Raw {
         message: string;
-        code: serializers.VellumErrorCodeEnum.Raw;
+        code: VellumErrorCodeEnum.Raw;
     }
 }

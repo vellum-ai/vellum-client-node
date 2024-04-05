@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TerminalNodeResultOutput } from "./TerminalNodeResultOutput";
 
 export const TerminalNodeResultData: core.serialization.ObjectSchema<
     serializers.TerminalNodeResultData.Raw,
     Vellum.TerminalNodeResultData
 > = core.serialization.object({
-    output: core.serialization.lazy(async () => (await import("..")).TerminalNodeResultOutput),
+    output: TerminalNodeResultOutput,
 });
 
 export declare namespace TerminalNodeResultData {
     interface Raw {
-        output: serializers.TerminalNodeResultOutput.Raw;
+        output: TerminalNodeResultOutput.Raw;
     }
 }

@@ -5,25 +5,21 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ChatMessageRole } from "./ChatMessageRole";
+import { VellumVariableType } from "./VellumVariableType";
 
 export const PromptTemplateBlockPropertiesRequest: core.serialization.ObjectSchema<
     serializers.PromptTemplateBlockPropertiesRequest.Raw,
     Vellum.PromptTemplateBlockPropertiesRequest
 > = core.serialization.object({
-    chatRole: core.serialization.property(
-        "chat_role",
-        core.serialization.lazy(async () => (await import("..")).ChatMessageRole).optional()
-    ),
+    chatRole: core.serialization.property("chat_role", ChatMessageRole.optional()),
     chatMessageUnterminated: core.serialization.property(
         "chat_message_unterminated",
         core.serialization.boolean().optional()
     ),
     chatSource: core.serialization.property("chat_source", core.serialization.string().optional()),
     template: core.serialization.string().optional(),
-    templateType: core.serialization.property(
-        "template_type",
-        core.serialization.lazy(async () => (await import("..")).VellumVariableType).optional()
-    ),
+    templateType: core.serialization.property("template_type", VellumVariableType.optional()),
     functionName: core.serialization.property("function_name", core.serialization.string().optional()),
     functionDescription: core.serialization.property("function_description", core.serialization.string().optional()),
     functionParameters: core.serialization.property(
@@ -38,11 +34,11 @@ export const PromptTemplateBlockPropertiesRequest: core.serialization.ObjectSche
 
 export declare namespace PromptTemplateBlockPropertiesRequest {
     interface Raw {
-        chat_role?: serializers.ChatMessageRole.Raw | null;
+        chat_role?: ChatMessageRole.Raw | null;
         chat_message_unterminated?: boolean | null;
         chat_source?: string | null;
         template?: string | null;
-        template_type?: serializers.VellumVariableType.Raw | null;
+        template_type?: VellumVariableType.Raw | null;
         function_name?: string | null;
         function_description?: string | null;
         function_parameters?: Record<string, unknown> | null;

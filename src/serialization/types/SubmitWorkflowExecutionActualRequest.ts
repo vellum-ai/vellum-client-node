@@ -5,17 +5,18 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowExecutionActualStringRequest } from "./WorkflowExecutionActualStringRequest";
+import { WorkflowExecutionActualJsonRequest } from "./WorkflowExecutionActualJsonRequest";
+import { WorkflowExecutionActualChatHistoryRequest } from "./WorkflowExecutionActualChatHistoryRequest";
 
 export const SubmitWorkflowExecutionActualRequest: core.serialization.Schema<
     serializers.SubmitWorkflowExecutionActualRequest.Raw,
     Vellum.SubmitWorkflowExecutionActualRequest
 > = core.serialization
     .union(core.serialization.discriminant("outputType", "output_type"), {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).WorkflowExecutionActualStringRequest),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).WorkflowExecutionActualJsonRequest),
-        CHAT_HISTORY: core.serialization.lazyObject(
-            async () => (await import("..")).WorkflowExecutionActualChatHistoryRequest
-        ),
+        STRING: WorkflowExecutionActualStringRequest,
+        JSON: WorkflowExecutionActualJsonRequest,
+        CHAT_HISTORY: WorkflowExecutionActualChatHistoryRequest,
     })
     .transform<Vellum.SubmitWorkflowExecutionActualRequest>({
         transform: (value) => value,
@@ -28,15 +29,15 @@ export declare namespace SubmitWorkflowExecutionActualRequest {
         | SubmitWorkflowExecutionActualRequest.Json
         | SubmitWorkflowExecutionActualRequest.ChatHistory;
 
-    interface String extends serializers.WorkflowExecutionActualStringRequest.Raw {
+    interface String extends WorkflowExecutionActualStringRequest.Raw {
         output_type: "STRING";
     }
 
-    interface Json extends serializers.WorkflowExecutionActualJsonRequest.Raw {
+    interface Json extends WorkflowExecutionActualJsonRequest.Raw {
         output_type: "JSON";
     }
 
-    interface ChatHistory extends serializers.WorkflowExecutionActualChatHistoryRequest.Raw {
+    interface ChatHistory extends WorkflowExecutionActualChatHistoryRequest.Raw {
         output_type: "CHAT_HISTORY";
     }
 }

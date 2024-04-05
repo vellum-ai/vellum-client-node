@@ -5,20 +5,21 @@
 import * as serializers from "../../../..";
 import * as Vellum from "../../../../../api";
 import * as core from "../../../../../core";
+import { DocumentStatus } from "../../../../types/DocumentStatus";
 
 export const PatchedDocumentUpdateRequest: core.serialization.Schema<
     serializers.PatchedDocumentUpdateRequest.Raw,
     Vellum.PatchedDocumentUpdateRequest
 > = core.serialization.object({
     label: core.serialization.string().optional(),
-    status: core.serialization.lazy(async () => (await import("../../../..")).DocumentStatus).optional(),
+    status: DocumentStatus.optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
 export declare namespace PatchedDocumentUpdateRequest {
     interface Raw {
         label?: string | null;
-        status?: serializers.DocumentStatus.Raw | null;
+        status?: DocumentStatus.Raw | null;
         metadata?: Record<string, unknown> | null;
     }
 }

@@ -5,22 +5,24 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ChatMessageRole } from "./ChatMessageRole";
+import { ChatMessageContentRequest } from "./ChatMessageContentRequest";
 
 export const ChatMessageRequest: core.serialization.ObjectSchema<
     serializers.ChatMessageRequest.Raw,
     Vellum.ChatMessageRequest
 > = core.serialization.object({
     text: core.serialization.string().optional(),
-    role: core.serialization.lazy(async () => (await import("..")).ChatMessageRole),
-    content: core.serialization.lazy(async () => (await import("..")).ChatMessageContentRequest).optional(),
+    role: ChatMessageRole,
+    content: ChatMessageContentRequest.optional(),
     source: core.serialization.string().optional(),
 });
 
 export declare namespace ChatMessageRequest {
     interface Raw {
         text?: string | null;
-        role: serializers.ChatMessageRole.Raw;
-        content?: serializers.ChatMessageContentRequest.Raw | null;
+        role: ChatMessageRole.Raw;
+        content?: ChatMessageContentRequest.Raw | null;
         source?: string | null;
     }
 }

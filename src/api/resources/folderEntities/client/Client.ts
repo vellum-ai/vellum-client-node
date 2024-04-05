@@ -47,12 +47,12 @@ export class FolderEntities {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.AddEntityToFolderRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -83,5 +83,10 @@ export class FolderEntities {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { X_API_KEY: apiKeyValue };
     }
 }

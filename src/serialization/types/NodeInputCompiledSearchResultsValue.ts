@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SearchResult } from "./SearchResult";
 
 export const NodeInputCompiledSearchResultsValue: core.serialization.ObjectSchema<
     serializers.NodeInputCompiledSearchResultsValue.Raw,
@@ -12,15 +13,13 @@ export const NodeInputCompiledSearchResultsValue: core.serialization.ObjectSchem
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    value: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).SearchResult))
-        .optional(),
+    value: core.serialization.list(SearchResult).optional(),
 });
 
 export declare namespace NodeInputCompiledSearchResultsValue {
     interface Raw {
         node_input_id: string;
         key: string;
-        value?: serializers.SearchResult.Raw[] | null;
+        value?: SearchResult.Raw[] | null;
     }
 }

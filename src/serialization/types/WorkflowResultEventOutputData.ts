@@ -5,26 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowResultEventOutputDataString } from "./WorkflowResultEventOutputDataString";
+import { WorkflowResultEventOutputDataNumber } from "./WorkflowResultEventOutputDataNumber";
+import { WorkflowResultEventOutputDataJson } from "./WorkflowResultEventOutputDataJson";
+import { WorkflowResultEventOutputDataChatHistory } from "./WorkflowResultEventOutputDataChatHistory";
+import { WorkflowResultEventOutputDataSearchResults } from "./WorkflowResultEventOutputDataSearchResults";
+import { WorkflowResultEventOutputDataArray } from "./WorkflowResultEventOutputDataArray";
+import { WorkflowResultEventOutputDataFunctionCall } from "./WorkflowResultEventOutputDataFunctionCall";
+import { WorkflowResultEventOutputDataError } from "./WorkflowResultEventOutputDataError";
 
 export const WorkflowResultEventOutputData: core.serialization.Schema<
     serializers.WorkflowResultEventOutputData.Raw,
     Vellum.WorkflowResultEventOutputData
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataString),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataNumber),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataJson),
-        CHAT_HISTORY: core.serialization.lazyObject(
-            async () => (await import("..")).WorkflowResultEventOutputDataChatHistory
-        ),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).WorkflowResultEventOutputDataSearchResults
-        ),
-        ARRAY: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataArray),
-        FUNCTION_CALL: core.serialization.lazyObject(
-            async () => (await import("..")).WorkflowResultEventOutputDataFunctionCall
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).WorkflowResultEventOutputDataError),
+        STRING: WorkflowResultEventOutputDataString,
+        NUMBER: WorkflowResultEventOutputDataNumber,
+        JSON: WorkflowResultEventOutputDataJson,
+        CHAT_HISTORY: WorkflowResultEventOutputDataChatHistory,
+        SEARCH_RESULTS: WorkflowResultEventOutputDataSearchResults,
+        ARRAY: WorkflowResultEventOutputDataArray,
+        FUNCTION_CALL: WorkflowResultEventOutputDataFunctionCall,
+        ERROR: WorkflowResultEventOutputDataError,
     })
     .transform<Vellum.WorkflowResultEventOutputData>({
         transform: (value) => value,
@@ -42,35 +44,35 @@ export declare namespace WorkflowResultEventOutputData {
         | WorkflowResultEventOutputData.FunctionCall
         | WorkflowResultEventOutputData.Error;
 
-    interface String extends serializers.WorkflowResultEventOutputDataString.Raw {
+    interface String extends WorkflowResultEventOutputDataString.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.WorkflowResultEventOutputDataNumber.Raw {
+    interface Number extends WorkflowResultEventOutputDataNumber.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.WorkflowResultEventOutputDataJson.Raw {
+    interface Json extends WorkflowResultEventOutputDataJson.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.WorkflowResultEventOutputDataChatHistory.Raw {
+    interface ChatHistory extends WorkflowResultEventOutputDataChatHistory.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.WorkflowResultEventOutputDataSearchResults.Raw {
+    interface SearchResults extends WorkflowResultEventOutputDataSearchResults.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Array extends serializers.WorkflowResultEventOutputDataArray.Raw {
+    interface Array extends WorkflowResultEventOutputDataArray.Raw {
         type: "ARRAY";
     }
 
-    interface FunctionCall extends serializers.WorkflowResultEventOutputDataFunctionCall.Raw {
+    interface FunctionCall extends WorkflowResultEventOutputDataFunctionCall.Raw {
         type: "FUNCTION_CALL";
     }
 
-    interface Error extends serializers.WorkflowResultEventOutputDataError.Raw {
+    interface Error extends WorkflowResultEventOutputDataError.Raw {
         type: "ERROR";
     }
 }

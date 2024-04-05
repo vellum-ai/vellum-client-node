@@ -5,19 +5,20 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumError } from "./VellumError";
 
 export const RejectedFunctionCall: core.serialization.ObjectSchema<
     serializers.RejectedFunctionCall.Raw,
     Vellum.RejectedFunctionCall
 > = core.serialization.object({
-    error: core.serialization.lazyObject(async () => (await import("..")).VellumError),
+    error: VellumError,
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
 });
 
 export declare namespace RejectedFunctionCall {
     interface Raw {
-        error: serializers.VellumError.Raw;
+        error: VellumError.Raw;
         id?: string | null;
         name: string;
     }

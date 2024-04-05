@@ -30,14 +30,14 @@ export class Documents {
      * Used to list documents. Optionally filter on supported fields.
      *
      * @example
-     *     await vellum.documents.list({})
+     *     await vellum.documents.list()
      */
     public async list(
         request: Vellum.DocumentsListRequest = {},
         requestOptions?: Documents.RequestOptions
     ): Promise<Vellum.PaginatedSlimDocumentList> {
         const { documentIndexId, limit, offset, ordering } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (documentIndexId != null) {
             _queryParams["document_index_id"] = documentIndexId;
         }
@@ -62,12 +62,12 @@ export class Documents {
             ),
             method: "GET",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -114,12 +114,12 @@ export class Documents {
             ),
             method: "DELETE",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -155,7 +155,7 @@ export class Documents {
      * Update a Document, keying off of its Vellum-generated ID. Particularly useful for updating its metadata.
      *
      * @example
-     *     await vellum.documents.partialUpdate("id", {})
+     *     await vellum.documents.partialUpdate("id")
      */
     public async partialUpdate(
         id: string,
@@ -170,12 +170,12 @@ export class Documents {
             ),
             method: "PATCH",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.PatchedDocumentUpdateRequest.jsonOrThrow(request, {
@@ -267,12 +267,12 @@ export class Documents {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "multipart/form-data; boundary=" + _request.getBoundary(),
             body: _request,
@@ -317,5 +317,10 @@ export class Documents {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { X_API_KEY: apiKeyValue };
     }
 }

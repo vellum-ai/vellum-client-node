@@ -28,14 +28,14 @@ export class DocumentIndexes {
      * Used to retrieve a list of Document Indexes.
      *
      * @example
-     *     await vellum.documentIndexes.list({})
+     *     await vellum.documentIndexes.list()
      */
     public async list(
         request: Vellum.DocumentIndexesListRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions
     ): Promise<Vellum.PaginatedDocumentIndexReadList> {
         const { limit, offset, ordering, status } = request;
-        const _queryParams: Record<string, string | string[]> = {};
+        const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -60,12 +60,12 @@ export class DocumentIndexes {
             ),
             method: "GET",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -141,12 +141,12 @@ export class DocumentIndexes {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.DocumentIndexCreateRequest.jsonOrThrow(request, {
@@ -204,12 +204,12 @@ export class DocumentIndexes {
             ),
             method: "GET",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -267,12 +267,12 @@ export class DocumentIndexes {
             ),
             method: "PUT",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.DocumentIndexUpdateRequest.jsonOrThrow(request, {
@@ -327,12 +327,12 @@ export class DocumentIndexes {
             ),
             method: "DELETE",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -368,7 +368,7 @@ export class DocumentIndexes {
      * Used to partial update a Document Index given its ID.
      *
      * @example
-     *     await vellum.documentIndexes.partialUpdate("id", {})
+     *     await vellum.documentIndexes.partialUpdate("id")
      */
     public async partialUpdate(
         id: string,
@@ -383,12 +383,12 @@ export class DocumentIndexes {
             ),
             method: "PATCH",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.PatchedDocumentIndexUpdateRequest.jsonOrThrow(request, {
@@ -426,5 +426,10 @@ export class DocumentIndexes {
                     message: _response.error.errorMessage,
                 });
         }
+    }
+
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { X_API_KEY: apiKeyValue };
     }
 }

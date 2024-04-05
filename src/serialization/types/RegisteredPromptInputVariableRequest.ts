@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumVariableType } from "./VellumVariableType";
 
 export const RegisteredPromptInputVariableRequest: core.serialization.ObjectSchema<
     serializers.RegisteredPromptInputVariableRequest.Raw,
@@ -12,13 +13,13 @@ export const RegisteredPromptInputVariableRequest: core.serialization.ObjectSche
 > = core.serialization.object({
     key: core.serialization.string(),
     id: core.serialization.string().optional(),
-    type: core.serialization.lazy(async () => (await import("..")).VellumVariableType).optional(),
+    type: VellumVariableType.optional(),
 });
 
 export declare namespace RegisteredPromptInputVariableRequest {
     interface Raw {
         key: string;
         id?: string | null;
-        type?: serializers.VellumVariableType.Raw | null;
+        type?: VellumVariableType.Raw | null;
     }
 }

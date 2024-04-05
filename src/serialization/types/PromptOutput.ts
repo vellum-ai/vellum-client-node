@@ -5,14 +5,18 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { StringVariableValue } from "./StringVariableValue";
+import { JsonVariableValue } from "./JsonVariableValue";
+import { ErrorVariableValue } from "./ErrorVariableValue";
+import { FunctionCallVariableValue } from "./FunctionCallVariableValue";
 
 export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Raw, Vellum.PromptOutput> =
     core.serialization
         .union("type", {
-            STRING: core.serialization.lazyObject(async () => (await import("..")).StringVariableValue),
-            JSON: core.serialization.lazyObject(async () => (await import("..")).JsonVariableValue),
-            ERROR: core.serialization.lazyObject(async () => (await import("..")).ErrorVariableValue),
-            FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).FunctionCallVariableValue),
+            STRING: StringVariableValue,
+            JSON: JsonVariableValue,
+            ERROR: ErrorVariableValue,
+            FUNCTION_CALL: FunctionCallVariableValue,
         })
         .transform<Vellum.PromptOutput>({
             transform: (value) => value,
@@ -22,19 +26,19 @@ export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Ra
 export declare namespace PromptOutput {
     type Raw = PromptOutput.String | PromptOutput.Json | PromptOutput.Error | PromptOutput.FunctionCall;
 
-    interface String extends serializers.StringVariableValue.Raw {
+    interface String extends StringVariableValue.Raw {
         type: "STRING";
     }
 
-    interface Json extends serializers.JsonVariableValue.Raw {
+    interface Json extends JsonVariableValue.Raw {
         type: "JSON";
     }
 
-    interface Error extends serializers.ErrorVariableValue.Raw {
+    interface Error extends ErrorVariableValue.Raw {
         type: "ERROR";
     }
 
-    interface FunctionCall extends serializers.FunctionCallVariableValue.Raw {
+    interface FunctionCall extends FunctionCallVariableValue.Raw {
         type: "FUNCTION_CALL";
     }
 }

@@ -5,20 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ArrayVariableValueItem } from "./ArrayVariableValueItem";
 
 export const NodeOutputCompiledArrayValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledArrayValue.Raw,
     Vellum.NodeOutputCompiledArrayValue
 > = core.serialization.object({
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
-    value: core.serialization
-        .list(core.serialization.lazy(async () => (await import("..")).ArrayVariableValueItem))
-        .optional(),
+    value: core.serialization.list(ArrayVariableValueItem).optional(),
 });
 
 export declare namespace NodeOutputCompiledArrayValue {
     interface Raw {
         node_output_id: string;
-        value?: serializers.ArrayVariableValueItem.Raw[] | null;
+        value?: ArrayVariableValueItem.Raw[] | null;
     }
 }

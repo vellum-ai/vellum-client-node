@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumImage } from "./VellumImage";
 
 export const WorkflowOutputImage: core.serialization.ObjectSchema<
     serializers.WorkflowOutputImage.Raw,
@@ -12,13 +13,13 @@ export const WorkflowOutputImage: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumImage).optional(),
+    value: VellumImage.optional(),
 });
 
 export declare namespace WorkflowOutputImage {
     interface Raw {
         id: string;
         name: string;
-        value?: serializers.VellumImage.Raw | null;
+        value?: VellumImage.Raw | null;
     }
 }

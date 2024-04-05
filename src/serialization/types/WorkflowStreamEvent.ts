@@ -5,14 +5,16 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowExecutionWorkflowResultEvent } from "./WorkflowExecutionWorkflowResultEvent";
+import { WorkflowExecutionNodeResultEvent } from "./WorkflowExecutionNodeResultEvent";
 
 export const WorkflowStreamEvent: core.serialization.Schema<
     serializers.WorkflowStreamEvent.Raw,
     Vellum.WorkflowStreamEvent
 > = core.serialization
     .union("type", {
-        WORKFLOW: core.serialization.lazyObject(async () => (await import("..")).WorkflowExecutionWorkflowResultEvent),
-        NODE: core.serialization.lazyObject(async () => (await import("..")).WorkflowExecutionNodeResultEvent),
+        WORKFLOW: WorkflowExecutionWorkflowResultEvent,
+        NODE: WorkflowExecutionNodeResultEvent,
     })
     .transform<Vellum.WorkflowStreamEvent>({
         transform: (value) => value,
@@ -22,11 +24,11 @@ export const WorkflowStreamEvent: core.serialization.Schema<
 export declare namespace WorkflowStreamEvent {
     type Raw = WorkflowStreamEvent.Workflow | WorkflowStreamEvent.Node;
 
-    interface Workflow extends serializers.WorkflowExecutionWorkflowResultEvent.Raw {
+    interface Workflow extends WorkflowExecutionWorkflowResultEvent.Raw {
         type: "WORKFLOW";
     }
 
-    interface Node extends serializers.WorkflowExecutionNodeResultEvent.Raw {
+    interface Node extends WorkflowExecutionNodeResultEvent.Raw {
         type: "NODE";
     }
 }

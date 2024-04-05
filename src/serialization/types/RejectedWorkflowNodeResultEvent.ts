@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowNodeResultData } from "./WorkflowNodeResultData";
+import { WorkflowEventError } from "./WorkflowEventError";
 
 export const RejectedWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     serializers.RejectedWorkflowNodeResultEvent.Raw,
@@ -14,9 +16,9 @@ export const RejectedWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     ts: core.serialization.date().optional(),
-    data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
+    data: WorkflowNodeResultData.optional(),
     sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
-    error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError),
+    error: WorkflowEventError,
 });
 
 export declare namespace RejectedWorkflowNodeResultEvent {
@@ -25,8 +27,8 @@ export declare namespace RejectedWorkflowNodeResultEvent {
         node_id: string;
         node_result_id: string;
         ts?: string | null;
-        data?: serializers.WorkflowNodeResultData.Raw | null;
+        data?: WorkflowNodeResultData.Raw | null;
         source_execution_id?: string | null;
-        error: serializers.WorkflowEventError.Raw;
+        error: WorkflowEventError.Raw;
     }
 }

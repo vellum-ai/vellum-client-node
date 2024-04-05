@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SearchResult } from "./SearchResult";
 
 export const TerminalNodeSearchResultsResult: core.serialization.ObjectSchema<
     serializers.TerminalNodeSearchResultsResult.Raw,
@@ -12,15 +13,13 @@ export const TerminalNodeSearchResultsResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
-    value: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).SearchResult))
-        .optional(),
+    value: core.serialization.list(SearchResult).optional(),
 });
 
 export declare namespace TerminalNodeSearchResultsResult {
     interface Raw {
         id?: string | null;
         name: string;
-        value?: serializers.SearchResult.Raw[] | null;
+        value?: SearchResult.Raw[] | null;
     }
 }

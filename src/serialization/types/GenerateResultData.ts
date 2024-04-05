@@ -5,18 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { EnrichedNormalizedCompletion } from "./EnrichedNormalizedCompletion";
 
 export const GenerateResultData: core.serialization.ObjectSchema<
     serializers.GenerateResultData.Raw,
     Vellum.GenerateResultData
 > = core.serialization.object({
-    completions: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).EnrichedNormalizedCompletion)
-    ),
+    completions: core.serialization.list(EnrichedNormalizedCompletion),
 });
 
 export declare namespace GenerateResultData {
     interface Raw {
-        completions: serializers.EnrichedNormalizedCompletion.Raw[];
+        completions: EnrichedNormalizedCompletion.Raw[];
     }
 }

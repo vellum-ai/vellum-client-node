@@ -5,6 +5,7 @@
 import * as serializers from "../../../..";
 import * as Vellum from "../../../../../api";
 import * as core from "../../../../../core";
+import { NamedTestCaseVariableValueRequest } from "../../../../types/NamedTestCaseVariableValueRequest";
 
 export const UpsertTestSuiteTestCaseRequest: core.serialization.Schema<
     serializers.UpsertTestSuiteTestCaseRequest.Raw,
@@ -14,15 +15,11 @@ export const UpsertTestSuiteTestCaseRequest: core.serialization.Schema<
     label: core.serialization.string().optional(),
     inputValues: core.serialization.property(
         "input_values",
-        core.serialization.list(
-            core.serialization.lazy(async () => (await import("../../../..")).NamedTestCaseVariableValueRequest)
-        )
+        core.serialization.list(NamedTestCaseVariableValueRequest)
     ),
     evaluationValues: core.serialization.property(
         "evaluation_values",
-        core.serialization.list(
-            core.serialization.lazy(async () => (await import("../../../..")).NamedTestCaseVariableValueRequest)
-        )
+        core.serialization.list(NamedTestCaseVariableValueRequest)
     ),
 });
 
@@ -30,7 +27,7 @@ export declare namespace UpsertTestSuiteTestCaseRequest {
     interface Raw {
         id?: string | null;
         label?: string | null;
-        input_values: serializers.NamedTestCaseVariableValueRequest.Raw[];
-        evaluation_values: serializers.NamedTestCaseVariableValueRequest.Raw[];
+        input_values: NamedTestCaseVariableValueRequest.Raw[];
+        evaluation_values: NamedTestCaseVariableValueRequest.Raw[];
     }
 }

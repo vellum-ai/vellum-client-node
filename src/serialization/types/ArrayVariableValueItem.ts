@@ -5,20 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { StringVariableValue } from "./StringVariableValue";
+import { NumberVariableValue } from "./NumberVariableValue";
+import { JsonVariableValue } from "./JsonVariableValue";
+import { ChatHistoryVariableValue } from "./ChatHistoryVariableValue";
+import { SearchResultsVariableValue } from "./SearchResultsVariableValue";
+import { ErrorVariableValue } from "./ErrorVariableValue";
+import { FunctionCallVariableValue } from "./FunctionCallVariableValue";
+import { ImageVariableValue } from "./ImageVariableValue";
 
 export const ArrayVariableValueItem: core.serialization.Schema<
     serializers.ArrayVariableValueItem.Raw,
     Vellum.ArrayVariableValueItem
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).StringVariableValue),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).NumberVariableValue),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).JsonVariableValue),
-        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).ChatHistoryVariableValue),
-        SEARCH_RESULTS: core.serialization.lazyObject(async () => (await import("..")).SearchResultsVariableValue),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).ErrorVariableValue),
-        FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).FunctionCallVariableValue),
-        IMAGE: core.serialization.lazyObject(async () => (await import("..")).ImageVariableValue),
+        STRING: StringVariableValue,
+        NUMBER: NumberVariableValue,
+        JSON: JsonVariableValue,
+        CHAT_HISTORY: ChatHistoryVariableValue,
+        SEARCH_RESULTS: SearchResultsVariableValue,
+        ERROR: ErrorVariableValue,
+        FUNCTION_CALL: FunctionCallVariableValue,
+        IMAGE: ImageVariableValue,
     })
     .transform<Vellum.ArrayVariableValueItem>({
         transform: (value) => value,
@@ -36,35 +44,35 @@ export declare namespace ArrayVariableValueItem {
         | ArrayVariableValueItem.FunctionCall
         | ArrayVariableValueItem.Image;
 
-    interface String extends serializers.StringVariableValue.Raw {
+    interface String extends StringVariableValue.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.NumberVariableValue.Raw {
+    interface Number extends NumberVariableValue.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.JsonVariableValue.Raw {
+    interface Json extends JsonVariableValue.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.ChatHistoryVariableValue.Raw {
+    interface ChatHistory extends ChatHistoryVariableValue.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.SearchResultsVariableValue.Raw {
+    interface SearchResults extends SearchResultsVariableValue.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.ErrorVariableValue.Raw {
+    interface Error extends ErrorVariableValue.Raw {
         type: "ERROR";
     }
 
-    interface FunctionCall extends serializers.FunctionCallVariableValue.Raw {
+    interface FunctionCall extends FunctionCallVariableValue.Raw {
         type: "FUNCTION_CALL";
     }
 
-    interface Image extends serializers.ImageVariableValue.Raw {
+    interface Image extends ImageVariableValue.Raw {
         type: "IMAGE";
     }
 }

@@ -5,15 +5,18 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { StringChatMessageContent } from "./StringChatMessageContent";
+import { FunctionCallChatMessageContent } from "./FunctionCallChatMessageContent";
+import { ImageChatMessageContent } from "./ImageChatMessageContent";
 
 export const ArrayChatMessageContentItem: core.serialization.Schema<
     serializers.ArrayChatMessageContentItem.Raw,
     Vellum.ArrayChatMessageContentItem
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).StringChatMessageContent),
-        FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).FunctionCallChatMessageContent),
-        IMAGE: core.serialization.lazyObject(async () => (await import("..")).ImageChatMessageContent),
+        STRING: StringChatMessageContent,
+        FUNCTION_CALL: FunctionCallChatMessageContent,
+        IMAGE: ImageChatMessageContent,
     })
     .transform<Vellum.ArrayChatMessageContentItem>({
         transform: (value) => value,
@@ -26,15 +29,15 @@ export declare namespace ArrayChatMessageContentItem {
         | ArrayChatMessageContentItem.FunctionCall
         | ArrayChatMessageContentItem.Image;
 
-    interface String extends serializers.StringChatMessageContent.Raw {
+    interface String extends StringChatMessageContent.Raw {
         type: "STRING";
     }
 
-    interface FunctionCall extends serializers.FunctionCallChatMessageContent.Raw {
+    interface FunctionCall extends FunctionCallChatMessageContent.Raw {
         type: "FUNCTION_CALL";
     }
 
-    interface Image extends serializers.ImageChatMessageContent.Raw {
+    interface Image extends ImageChatMessageContent.Raw {
         type: "IMAGE";
     }
 }

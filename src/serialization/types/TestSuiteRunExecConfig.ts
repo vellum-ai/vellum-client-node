@@ -5,18 +5,16 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TestSuiteRunDeploymentReleaseTagExecConfig } from "./TestSuiteRunDeploymentReleaseTagExecConfig";
+import { TestSuiteRunWorkflowReleaseTagExecConfig } from "./TestSuiteRunWorkflowReleaseTagExecConfig";
 
 export const TestSuiteRunExecConfig: core.serialization.Schema<
     serializers.TestSuiteRunExecConfig.Raw,
     Vellum.TestSuiteRunExecConfig
 > = core.serialization
     .union("type", {
-        DEPLOYMENT_RELEASE_TAG: core.serialization.lazyObject(
-            async () => (await import("..")).TestSuiteRunDeploymentReleaseTagExecConfig
-        ),
-        WORKFLOW_RELEASE_TAG: core.serialization.lazyObject(
-            async () => (await import("..")).TestSuiteRunWorkflowReleaseTagExecConfig
-        ),
+        DEPLOYMENT_RELEASE_TAG: TestSuiteRunDeploymentReleaseTagExecConfig,
+        WORKFLOW_RELEASE_TAG: TestSuiteRunWorkflowReleaseTagExecConfig,
     })
     .transform<Vellum.TestSuiteRunExecConfig>({
         transform: (value) => value,
@@ -26,11 +24,11 @@ export const TestSuiteRunExecConfig: core.serialization.Schema<
 export declare namespace TestSuiteRunExecConfig {
     type Raw = TestSuiteRunExecConfig.DeploymentReleaseTag | TestSuiteRunExecConfig.WorkflowReleaseTag;
 
-    interface DeploymentReleaseTag extends serializers.TestSuiteRunDeploymentReleaseTagExecConfig.Raw {
+    interface DeploymentReleaseTag extends TestSuiteRunDeploymentReleaseTagExecConfig.Raw {
         type: "DEPLOYMENT_RELEASE_TAG";
     }
 
-    interface WorkflowReleaseTag extends serializers.TestSuiteRunWorkflowReleaseTagExecConfig.Raw {
+    interface WorkflowReleaseTag extends TestSuiteRunWorkflowReleaseTagExecConfig.Raw {
         type: "WORKFLOW_RELEASE_TAG";
     }
 }

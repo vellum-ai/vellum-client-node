@@ -10,7 +10,9 @@ export type TemplatingNodeResultOutput =
     | Vellum.TemplatingNodeResultOutput.Json
     | Vellum.TemplatingNodeResultOutput.ChatHistory
     | Vellum.TemplatingNodeResultOutput.SearchResults
-    | Vellum.TemplatingNodeResultOutput.Error_;
+    | Vellum.TemplatingNodeResultOutput.Error_
+    | Vellum.TemplatingNodeResultOutput.Array
+    | Vellum.TemplatingNodeResultOutput.FunctionCall;
 
 export declare namespace TemplatingNodeResultOutput {
     interface String extends Vellum.TemplatingNodeStringResult {
@@ -35,5 +37,13 @@ export declare namespace TemplatingNodeResultOutput {
 
     interface Error_ extends Vellum.TemplatingNodeErrorResult {
         type: "ERROR";
+    }
+
+    interface Array extends Vellum.TemplatingNodeArrayResult {
+        type: "ARRAY";
+    }
+
+    interface FunctionCall extends Vellum.TemplatingNodeFunctionCallResult {
+        type: "FUNCTION_CALL";
     }
 }

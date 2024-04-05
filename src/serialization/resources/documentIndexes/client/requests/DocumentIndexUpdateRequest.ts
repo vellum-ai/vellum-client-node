@@ -5,20 +5,22 @@
 import * as serializers from "../../../..";
 import * as Vellum from "../../../../../api";
 import * as core from "../../../../../core";
+import { EntityStatus } from "../../../../types/EntityStatus";
+import { EnvironmentEnum } from "../../../../types/EnvironmentEnum";
 
 export const DocumentIndexUpdateRequest: core.serialization.Schema<
     serializers.DocumentIndexUpdateRequest.Raw,
     Vellum.DocumentIndexUpdateRequest
 > = core.serialization.object({
     label: core.serialization.string(),
-    status: core.serialization.lazy(async () => (await import("../../../..")).EntityStatus).optional(),
-    environment: core.serialization.lazy(async () => (await import("../../../..")).EnvironmentEnum).optional(),
+    status: EntityStatus.optional(),
+    environment: EnvironmentEnum.optional(),
 });
 
 export declare namespace DocumentIndexUpdateRequest {
     interface Raw {
         label: string;
-        status?: serializers.EntityStatus.Raw | null;
-        environment?: serializers.EnvironmentEnum.Raw | null;
+        status?: EntityStatus.Raw | null;
+        environment?: EnvironmentEnum.Raw | null;
     }
 }

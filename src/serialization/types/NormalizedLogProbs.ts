@@ -5,20 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { NormalizedTokenLogProbs } from "./NormalizedTokenLogProbs";
 
 export const NormalizedLogProbs: core.serialization.ObjectSchema<
     serializers.NormalizedLogProbs.Raw,
     Vellum.NormalizedLogProbs
 > = core.serialization.object({
-    tokens: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).NormalizedTokenLogProbs)
-    ),
+    tokens: core.serialization.list(NormalizedTokenLogProbs),
     likelihood: core.serialization.number().optional(),
 });
 
 export declare namespace NormalizedLogProbs {
     interface Raw {
-        tokens: serializers.NormalizedTokenLogProbs.Raw[];
+        tokens: NormalizedTokenLogProbs.Raw[];
         likelihood?: number | null;
     }
 }

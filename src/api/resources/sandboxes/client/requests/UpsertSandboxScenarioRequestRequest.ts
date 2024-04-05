@@ -16,8 +16,6 @@ import * as Vellum from "../../../..";
  *                 key: "var_2",
  *                 type: Vellum.ScenarioInputTypeEnum.Text,
  *                 value: "Why hello, there!"
- *             }, {
- *                 key: "key"
  *             }]
  *     }
  */

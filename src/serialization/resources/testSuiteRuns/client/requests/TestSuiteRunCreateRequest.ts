@@ -5,21 +5,19 @@
 import * as serializers from "../../../..";
 import * as Vellum from "../../../../../api";
 import * as core from "../../../../../core";
+import { TestSuiteRunExecConfigRequest } from "../../../../types/TestSuiteRunExecConfigRequest";
 
 export const TestSuiteRunCreateRequest: core.serialization.Schema<
     serializers.TestSuiteRunCreateRequest.Raw,
     Vellum.TestSuiteRunCreateRequest
 > = core.serialization.object({
-    testSuiteId: core.serialization.property("test_suite_id", core.serialization.string().optional()),
-    execConfig: core.serialization.property(
-        "exec_config",
-        core.serialization.lazy(async () => (await import("../../../..")).TestSuiteRunExecConfigRequest)
-    ),
+    testSuiteId: core.serialization.property("test_suite_id", core.serialization.string()),
+    execConfig: core.serialization.property("exec_config", TestSuiteRunExecConfigRequest),
 });
 
 export declare namespace TestSuiteRunCreateRequest {
     interface Raw {
-        test_suite_id?: string | null;
-        exec_config: serializers.TestSuiteRunExecConfigRequest.Raw;
+        test_suite_id: string;
+        exec_config: TestSuiteRunExecConfigRequest.Raw;
     }
 }

@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumImage } from "./VellumImage";
 
 export const ImageVariableValue: core.serialization.ObjectSchema<
     serializers.ImageVariableValue.Raw,
     Vellum.ImageVariableValue
 > = core.serialization.object({
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumImage).optional(),
+    value: VellumImage.optional(),
 });
 
 export declare namespace ImageVariableValue {
     interface Raw {
-        value?: serializers.VellumImage.Raw | null;
+        value?: VellumImage.Raw | null;
     }
 }

@@ -5,16 +5,18 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { GenerateResultData } from "./GenerateResultData";
+import { GenerateResultError } from "./GenerateResultError";
 
 export const GenerateResult: core.serialization.ObjectSchema<serializers.GenerateResult.Raw, Vellum.GenerateResult> =
     core.serialization.object({
-        data: core.serialization.lazyObject(async () => (await import("..")).GenerateResultData).optional(),
-        error: core.serialization.lazyObject(async () => (await import("..")).GenerateResultError).optional(),
+        data: GenerateResultData.optional(),
+        error: GenerateResultError.optional(),
     });
 
 export declare namespace GenerateResult {
     interface Raw {
-        data?: serializers.GenerateResultData.Raw | null;
-        error?: serializers.GenerateResultError.Raw | null;
+        data?: GenerateResultData.Raw | null;
+        error?: GenerateResultError.Raw | null;
     }
 }

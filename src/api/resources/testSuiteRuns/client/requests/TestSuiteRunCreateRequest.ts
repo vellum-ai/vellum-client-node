@@ -6,7 +6,7 @@ import * as Vellum from "../../../..";
 
 export interface TestSuiteRunCreateRequest {
     /** The ID of the Test Suite to run */
-    testSuiteId?: string;
+    testSuiteId: string;
     /** Configuration that defines how the Test Suite should be run */
     execConfig: Vellum.TestSuiteRunExecConfigRequest;
 }

@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { EnrichedNormalizedCompletion } from "./EnrichedNormalizedCompletion";
 
 export const GenerateStreamResultData: core.serialization.ObjectSchema<
     serializers.GenerateStreamResultData.Raw,
     Vellum.GenerateStreamResultData
 > = core.serialization.object({
     completionIndex: core.serialization.property("completion_index", core.serialization.number()),
-    completion: core.serialization.lazyObject(async () => (await import("..")).EnrichedNormalizedCompletion),
+    completion: EnrichedNormalizedCompletion,
 });
 
 export declare namespace GenerateStreamResultData {
     interface Raw {
         completion_index: number;
-        completion: serializers.EnrichedNormalizedCompletion.Raw;
+        completion: EnrichedNormalizedCompletion.Raw;
     }
 }

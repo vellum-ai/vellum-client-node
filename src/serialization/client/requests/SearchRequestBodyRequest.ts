@@ -5,6 +5,7 @@
 import * as serializers from "../..";
 import * as Vellum from "../../../api";
 import * as core from "../../../core";
+import { SearchRequestOptionsRequest } from "../../types/SearchRequestOptionsRequest";
 
 export const SearchRequestBodyRequest: core.serialization.Schema<
     serializers.SearchRequestBodyRequest.Raw,
@@ -13,7 +14,7 @@ export const SearchRequestBodyRequest: core.serialization.Schema<
     indexId: core.serialization.property("index_id", core.serialization.string().optional()),
     indexName: core.serialization.property("index_name", core.serialization.string().optional()),
     query: core.serialization.string(),
-    options: core.serialization.lazyObject(async () => (await import("../..")).SearchRequestOptionsRequest).optional(),
+    options: SearchRequestOptionsRequest.optional(),
 });
 
 export declare namespace SearchRequestBodyRequest {
@@ -21,6 +22,6 @@ export declare namespace SearchRequestBodyRequest {
         index_id?: string | null;
         index_name?: string | null;
         query: string;
-        options?: serializers.SearchRequestOptionsRequest.Raw | null;
+        options?: SearchRequestOptionsRequest.Raw | null;
     }
 }

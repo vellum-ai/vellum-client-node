@@ -5,20 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TemplatingNodeStringResult } from "./TemplatingNodeStringResult";
+import { TemplatingNodeNumberResult } from "./TemplatingNodeNumberResult";
+import { TemplatingNodeJsonResult } from "./TemplatingNodeJsonResult";
+import { TemplatingNodeChatHistoryResult } from "./TemplatingNodeChatHistoryResult";
+import { TemplatingNodeSearchResultsResult } from "./TemplatingNodeSearchResultsResult";
+import { TemplatingNodeErrorResult } from "./TemplatingNodeErrorResult";
+import { TemplatingNodeArrayResult } from "./TemplatingNodeArrayResult";
+import { TemplatingNodeFunctionCallResult } from "./TemplatingNodeFunctionCallResult";
 
 export const TemplatingNodeResultOutput: core.serialization.Schema<
     serializers.TemplatingNodeResultOutput.Raw,
     Vellum.TemplatingNodeResultOutput
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeStringResult),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeNumberResult),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeJsonResult),
-        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeChatHistoryResult),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).TemplatingNodeSearchResultsResult
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).TemplatingNodeErrorResult),
+        STRING: TemplatingNodeStringResult,
+        NUMBER: TemplatingNodeNumberResult,
+        JSON: TemplatingNodeJsonResult,
+        CHAT_HISTORY: TemplatingNodeChatHistoryResult,
+        SEARCH_RESULTS: TemplatingNodeSearchResultsResult,
+        ERROR: TemplatingNodeErrorResult,
+        ARRAY: TemplatingNodeArrayResult,
+        FUNCTION_CALL: TemplatingNodeFunctionCallResult,
     })
     .transform<Vellum.TemplatingNodeResultOutput>({
         transform: (value) => value,
@@ -32,29 +40,39 @@ export declare namespace TemplatingNodeResultOutput {
         | TemplatingNodeResultOutput.Json
         | TemplatingNodeResultOutput.ChatHistory
         | TemplatingNodeResultOutput.SearchResults
-        | TemplatingNodeResultOutput.Error;
+        | TemplatingNodeResultOutput.Error
+        | TemplatingNodeResultOutput.Array
+        | TemplatingNodeResultOutput.FunctionCall;
 
-    interface String extends serializers.TemplatingNodeStringResult.Raw {
+    interface String extends TemplatingNodeStringResult.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.TemplatingNodeNumberResult.Raw {
+    interface Number extends TemplatingNodeNumberResult.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.TemplatingNodeJsonResult.Raw {
+    interface Json extends TemplatingNodeJsonResult.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.TemplatingNodeChatHistoryResult.Raw {
+    interface ChatHistory extends TemplatingNodeChatHistoryResult.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.TemplatingNodeSearchResultsResult.Raw {
+    interface SearchResults extends TemplatingNodeSearchResultsResult.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.TemplatingNodeErrorResult.Raw {
+    interface Error extends TemplatingNodeErrorResult.Raw {
         type: "ERROR";
+    }
+
+    interface Array extends TemplatingNodeArrayResult.Raw {
+        type: "ARRAY";
+    }
+
+    interface FunctionCall extends TemplatingNodeFunctionCallResult.Raw {
+        type: "FUNCTION_CALL";
     }
 }

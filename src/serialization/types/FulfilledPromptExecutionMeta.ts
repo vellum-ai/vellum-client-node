@@ -5,21 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FinishReasonEnum } from "./FinishReasonEnum";
 
 export const FulfilledPromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.FulfilledPromptExecutionMeta.Raw,
     Vellum.FulfilledPromptExecutionMeta
 > = core.serialization.object({
     latency: core.serialization.number().optional(),
-    finishReason: core.serialization.property(
-        "finish_reason",
-        core.serialization.lazy(async () => (await import("..")).FinishReasonEnum).optional()
-    ),
+    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
 });
 
 export declare namespace FulfilledPromptExecutionMeta {
     interface Raw {
         latency?: number | null;
-        finish_reason?: serializers.FinishReasonEnum.Raw | null;
+        finish_reason?: FinishReasonEnum.Raw | null;
     }
 }

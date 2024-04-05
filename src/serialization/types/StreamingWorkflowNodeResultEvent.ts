@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowNodeResultData } from "./WorkflowNodeResultData";
+import { NodeOutputCompiledValue } from "./NodeOutputCompiledValue";
 
 export const StreamingWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     serializers.StreamingWorkflowNodeResultEvent.Raw,
@@ -14,9 +16,9 @@ export const StreamingWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     ts: core.serialization.date().optional(),
-    data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
+    data: WorkflowNodeResultData.optional(),
     sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
-    output: core.serialization.lazy(async () => (await import("..")).NodeOutputCompiledValue).optional(),
+    output: NodeOutputCompiledValue.optional(),
     outputIndex: core.serialization.property("output_index", core.serialization.number().optional()),
 });
 
@@ -26,9 +28,9 @@ export declare namespace StreamingWorkflowNodeResultEvent {
         node_id: string;
         node_result_id: string;
         ts?: string | null;
-        data?: serializers.WorkflowNodeResultData.Raw | null;
+        data?: WorkflowNodeResultData.Raw | null;
         source_execution_id?: string | null;
-        output?: serializers.NodeOutputCompiledValue.Raw | null;
+        output?: NodeOutputCompiledValue.Raw | null;
         output_index?: number | null;
     }
 }

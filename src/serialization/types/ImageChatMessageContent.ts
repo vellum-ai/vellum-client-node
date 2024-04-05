@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumImage } from "./VellumImage";
 
 export const ImageChatMessageContent: core.serialization.ObjectSchema<
     serializers.ImageChatMessageContent.Raw,
     Vellum.ImageChatMessageContent
 > = core.serialization.object({
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumImage),
+    value: VellumImage,
 });
 
 export declare namespace ImageChatMessageContent {
     interface Raw {
-        value: serializers.VellumImage.Raw;
+        value: VellumImage.Raw;
     }
 }

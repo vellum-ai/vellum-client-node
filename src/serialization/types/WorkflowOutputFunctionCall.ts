@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FunctionCall } from "./FunctionCall";
 
 export const WorkflowOutputFunctionCall: core.serialization.ObjectSchema<
     serializers.WorkflowOutputFunctionCall.Raw,
@@ -12,13 +13,13 @@ export const WorkflowOutputFunctionCall: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.lazy(async () => (await import("..")).FunctionCall).optional(),
+    value: FunctionCall.optional(),
 });
 
 export declare namespace WorkflowOutputFunctionCall {
     interface Raw {
         id: string;
         name: string;
-        value?: serializers.FunctionCall.Raw | null;
+        value?: FunctionCall.Raw | null;
     }
 }

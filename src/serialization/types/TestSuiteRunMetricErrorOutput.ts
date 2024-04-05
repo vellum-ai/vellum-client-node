@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumError } from "./VellumError";
 
 export const TestSuiteRunMetricErrorOutput: core.serialization.ObjectSchema<
     serializers.TestSuiteRunMetricErrorOutput.Raw,
     Vellum.TestSuiteRunMetricErrorOutput
 > = core.serialization.object({
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumError),
+    value: VellumError,
     name: core.serialization.string(),
 });
 
 export declare namespace TestSuiteRunMetricErrorOutput {
     interface Raw {
-        value: serializers.VellumError.Raw;
+        value: VellumError.Raw;
         name: string;
     }
 }

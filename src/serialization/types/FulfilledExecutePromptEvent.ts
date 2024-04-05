@@ -5,20 +5,22 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { PromptOutput } from "./PromptOutput";
+import { FulfilledPromptExecutionMeta } from "./FulfilledPromptExecutionMeta";
 
 export const FulfilledExecutePromptEvent: core.serialization.ObjectSchema<
     serializers.FulfilledExecutePromptEvent.Raw,
     Vellum.FulfilledExecutePromptEvent
 > = core.serialization.object({
-    outputs: core.serialization.list(core.serialization.lazy(async () => (await import("..")).PromptOutput)),
+    outputs: core.serialization.list(PromptOutput),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
-    meta: core.serialization.lazyObject(async () => (await import("..")).FulfilledPromptExecutionMeta).optional(),
+    meta: FulfilledPromptExecutionMeta.optional(),
 });
 
 export declare namespace FulfilledExecutePromptEvent {
     interface Raw {
-        outputs: serializers.PromptOutput.Raw[];
+        outputs: PromptOutput.Raw[];
         execution_id: string;
-        meta?: serializers.FulfilledPromptExecutionMeta.Raw | null;
+        meta?: FulfilledPromptExecutionMeta.Raw | null;
     }
 }

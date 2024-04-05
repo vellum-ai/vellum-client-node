@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { PromptNodeResultData } from "./PromptNodeResultData";
 
 export const PromptNodeResult: core.serialization.ObjectSchema<
     serializers.PromptNodeResult.Raw,
     Vellum.PromptNodeResult
 > = core.serialization.object({
-    data: core.serialization.lazyObject(async () => (await import("..")).PromptNodeResultData),
+    data: PromptNodeResultData,
 });
 
 export declare namespace PromptNodeResult {
     interface Raw {
-        data: serializers.PromptNodeResultData.Raw;
+        data: PromptNodeResultData.Raw;
     }
 }

@@ -5,6 +5,9 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { EntityStatus } from "./EntityStatus";
+import { EnvironmentEnum } from "./EnvironmentEnum";
+import { VellumVariable } from "./VellumVariable";
 
 export const WorkflowDeploymentRead: core.serialization.ObjectSchema<
     serializers.WorkflowDeploymentRead.Raw,
@@ -13,18 +16,12 @@ export const WorkflowDeploymentRead: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     label: core.serialization.string(),
-    status: core.serialization.lazy(async () => (await import("..")).EntityStatus).optional(),
-    environment: core.serialization.lazy(async () => (await import("..")).EnvironmentEnum).optional(),
+    status: EntityStatus.optional(),
+    environment: EnvironmentEnum.optional(),
     created: core.serialization.date(),
     lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date()),
-    inputVariables: core.serialization.property(
-        "input_variables",
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).VellumVariable))
-    ),
-    outputVariables: core.serialization.property(
-        "output_variables",
-        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).VellumVariable))
-    ),
+    inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
+    outputVariables: core.serialization.property("output_variables", core.serialization.list(VellumVariable)),
 });
 
 export declare namespace WorkflowDeploymentRead {
@@ -32,11 +29,11 @@ export declare namespace WorkflowDeploymentRead {
         id: string;
         name: string;
         label: string;
-        status?: serializers.EntityStatus.Raw | null;
-        environment?: serializers.EnvironmentEnum.Raw | null;
+        status?: EntityStatus.Raw | null;
+        environment?: EnvironmentEnum.Raw | null;
         created: string;
         last_deployed_on: string;
-        input_variables: serializers.VellumVariable.Raw[];
-        output_variables: serializers.VellumVariable.Raw[];
+        input_variables: VellumVariable.Raw[];
+        output_variables: VellumVariable.Raw[];
     }
 }

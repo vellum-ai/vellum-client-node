@@ -5,22 +5,24 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { NamedTestCaseStringVariableValueRequest } from "./NamedTestCaseStringVariableValueRequest";
+import { NamedTestCaseNumberVariableValueRequest } from "./NamedTestCaseNumberVariableValueRequest";
+import { NamedTestCaseJsonVariableValueRequest } from "./NamedTestCaseJsonVariableValueRequest";
+import { NamedTestCaseChatHistoryVariableValueRequest } from "./NamedTestCaseChatHistoryVariableValueRequest";
+import { NamedTestCaseSearchResultsVariableValueRequest } from "./NamedTestCaseSearchResultsVariableValueRequest";
+import { NamedTestCaseErrorVariableValueRequest } from "./NamedTestCaseErrorVariableValueRequest";
 
 export const NamedTestCaseVariableValueRequest: core.serialization.Schema<
     serializers.NamedTestCaseVariableValueRequest.Raw,
     Vellum.NamedTestCaseVariableValueRequest
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).NamedTestCaseStringVariableValueRequest),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).NamedTestCaseNumberVariableValueRequest),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).NamedTestCaseJsonVariableValueRequest),
-        CHAT_HISTORY: core.serialization.lazyObject(
-            async () => (await import("..")).NamedTestCaseChatHistoryVariableValueRequest
-        ),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).NamedTestCaseSearchResultsVariableValueRequest
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).NamedTestCaseErrorVariableValueRequest),
+        STRING: NamedTestCaseStringVariableValueRequest,
+        NUMBER: NamedTestCaseNumberVariableValueRequest,
+        JSON: NamedTestCaseJsonVariableValueRequest,
+        CHAT_HISTORY: NamedTestCaseChatHistoryVariableValueRequest,
+        SEARCH_RESULTS: NamedTestCaseSearchResultsVariableValueRequest,
+        ERROR: NamedTestCaseErrorVariableValueRequest,
     })
     .transform<Vellum.NamedTestCaseVariableValueRequest>({
         transform: (value) => value,
@@ -36,27 +38,27 @@ export declare namespace NamedTestCaseVariableValueRequest {
         | NamedTestCaseVariableValueRequest.SearchResults
         | NamedTestCaseVariableValueRequest.Error;
 
-    interface String extends serializers.NamedTestCaseStringVariableValueRequest.Raw {
+    interface String extends NamedTestCaseStringVariableValueRequest.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.NamedTestCaseNumberVariableValueRequest.Raw {
+    interface Number extends NamedTestCaseNumberVariableValueRequest.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.NamedTestCaseJsonVariableValueRequest.Raw {
+    interface Json extends NamedTestCaseJsonVariableValueRequest.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.NamedTestCaseChatHistoryVariableValueRequest.Raw {
+    interface ChatHistory extends NamedTestCaseChatHistoryVariableValueRequest.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.NamedTestCaseSearchResultsVariableValueRequest.Raw {
+    interface SearchResults extends NamedTestCaseSearchResultsVariableValueRequest.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.NamedTestCaseErrorVariableValueRequest.Raw {
+    interface Error extends NamedTestCaseErrorVariableValueRequest.Raw {
         type: "ERROR";
     }
 }

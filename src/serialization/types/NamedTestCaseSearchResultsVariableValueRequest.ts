@@ -5,20 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SearchResultRequest } from "./SearchResultRequest";
 
 export const NamedTestCaseSearchResultsVariableValueRequest: core.serialization.ObjectSchema<
     serializers.NamedTestCaseSearchResultsVariableValueRequest.Raw,
     Vellum.NamedTestCaseSearchResultsVariableValueRequest
 > = core.serialization.object({
     name: core.serialization.string(),
-    value: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).SearchResultRequest))
-        .optional(),
+    value: core.serialization.list(SearchResultRequest).optional(),
 });
 
 export declare namespace NamedTestCaseSearchResultsVariableValueRequest {
     interface Raw {
         name: string;
-        value?: serializers.SearchResultRequest.Raw[] | null;
+        value?: SearchResultRequest.Raw[] | null;
     }
 }

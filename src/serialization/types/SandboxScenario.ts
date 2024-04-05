@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ScenarioInput } from "./ScenarioInput";
 
 export const SandboxScenario: core.serialization.ObjectSchema<serializers.SandboxScenario.Raw, Vellum.SandboxScenario> =
     core.serialization.object({
         label: core.serialization.string().optional(),
-        inputs: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ScenarioInput)),
+        inputs: core.serialization.list(ScenarioInput),
         id: core.serialization.string(),
     });
 
 export declare namespace SandboxScenario {
     interface Raw {
         label?: string | null;
-        inputs: serializers.ScenarioInput.Raw[];
+        inputs: ScenarioInput.Raw[];
         id: string;
     }
 }

@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ChatMessageRequest } from "./ChatMessageRequest";
 
 export const WorkflowRequestChatHistoryInputRequest: core.serialization.ObjectSchema<
     serializers.WorkflowRequestChatHistoryInputRequest.Raw,
     Vellum.WorkflowRequestChatHistoryInputRequest
 > = core.serialization.object({
     name: core.serialization.string(),
-    value: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).ChatMessageRequest)),
+    value: core.serialization.list(ChatMessageRequest),
 });
 
 export declare namespace WorkflowRequestChatHistoryInputRequest {
     interface Raw {
         name: string;
-        value: serializers.ChatMessageRequest.Raw[];
+        value: ChatMessageRequest.Raw[];
     }
 }

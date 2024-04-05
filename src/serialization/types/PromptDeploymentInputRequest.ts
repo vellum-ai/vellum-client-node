@@ -5,15 +5,18 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { StringInputRequest } from "./StringInputRequest";
+import { JsonInputRequest } from "./JsonInputRequest";
+import { ChatHistoryInputRequest } from "./ChatHistoryInputRequest";
 
 export const PromptDeploymentInputRequest: core.serialization.Schema<
     serializers.PromptDeploymentInputRequest.Raw,
     Vellum.PromptDeploymentInputRequest
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).StringInputRequest),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).JsonInputRequest),
-        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).ChatHistoryInputRequest),
+        STRING: StringInputRequest,
+        JSON: JsonInputRequest,
+        CHAT_HISTORY: ChatHistoryInputRequest,
     })
     .transform<Vellum.PromptDeploymentInputRequest>({
         transform: (value) => value,
@@ -26,15 +29,15 @@ export declare namespace PromptDeploymentInputRequest {
         | PromptDeploymentInputRequest.Json
         | PromptDeploymentInputRequest.ChatHistory;
 
-    interface String extends serializers.StringInputRequest.Raw {
+    interface String extends StringInputRequest.Raw {
         type: "STRING";
     }
 
-    interface Json extends serializers.JsonInputRequest.Raw {
+    interface Json extends JsonInputRequest.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.ChatHistoryInputRequest.Raw {
+    interface ChatHistory extends ChatHistoryInputRequest.Raw {
         type: "CHAT_HISTORY";
     }
 }

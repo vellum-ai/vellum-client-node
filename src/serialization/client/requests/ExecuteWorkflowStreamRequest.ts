@@ -5,14 +5,14 @@
 import * as serializers from "../..";
 import * as Vellum from "../../../api";
 import * as core from "../../../core";
+import { WorkflowRequestInputRequest } from "../../types/WorkflowRequestInputRequest";
+import { WorkflowExecutionEventType } from "../../types/WorkflowExecutionEventType";
 
 export const ExecuteWorkflowStreamRequest: core.serialization.Schema<
     serializers.ExecuteWorkflowStreamRequest.Raw,
     Vellum.ExecuteWorkflowStreamRequest
 > = core.serialization.object({
-    inputs: core.serialization.list(
-        core.serialization.lazy(async () => (await import("../..")).WorkflowRequestInputRequest)
-    ),
+    inputs: core.serialization.list(WorkflowRequestInputRequest),
     workflowDeploymentId: core.serialization.property("workflow_deployment_id", core.serialization.string().optional()),
     workflowDeploymentName: core.serialization.property(
         "workflow_deployment_name",
@@ -22,19 +22,17 @@ export const ExecuteWorkflowStreamRequest: core.serialization.Schema<
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     eventTypes: core.serialization.property(
         "event_types",
-        core.serialization
-            .list(core.serialization.lazy(async () => (await import("../..")).WorkflowExecutionEventType))
-            .optional()
+        core.serialization.list(WorkflowExecutionEventType).optional()
     ),
 });
 
 export declare namespace ExecuteWorkflowStreamRequest {
     interface Raw {
-        inputs: serializers.WorkflowRequestInputRequest.Raw[];
+        inputs: WorkflowRequestInputRequest.Raw[];
         workflow_deployment_id?: string | null;
         workflow_deployment_name?: string | null;
         release_tag?: string | null;
         external_id?: string | null;
-        event_types?: serializers.WorkflowExecutionEventType.Raw[] | null;
+        event_types?: WorkflowExecutionEventType.Raw[] | null;
     }
 }

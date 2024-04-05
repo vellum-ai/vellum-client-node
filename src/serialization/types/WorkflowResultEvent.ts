@@ -5,32 +5,33 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
+import { WorkflowResultEventOutputData } from "./WorkflowResultEventOutputData";
+import { WorkflowEventError } from "./WorkflowEventError";
+import { WorkflowOutput } from "./WorkflowOutput";
+import { ExecutionVellumValue } from "./ExecutionVellumValue";
 
 export const WorkflowResultEvent: core.serialization.ObjectSchema<
     serializers.WorkflowResultEvent.Raw,
     Vellum.WorkflowResultEvent
 > = core.serialization.object({
     id: core.serialization.string(),
-    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
+    state: WorkflowNodeResultEventState,
     ts: core.serialization.date(),
-    output: core.serialization.lazy(async () => (await import("..")).WorkflowResultEventOutputData).optional(),
-    error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError).optional(),
-    outputs: core.serialization
-        .list(core.serialization.lazy(async () => (await import("..")).WorkflowOutput))
-        .optional(),
-    inputs: core.serialization
-        .list(core.serialization.lazy(async () => (await import("..")).ExecutionVellumValue))
-        .optional(),
+    output: WorkflowResultEventOutputData.optional(),
+    error: WorkflowEventError.optional(),
+    outputs: core.serialization.list(WorkflowOutput).optional(),
+    inputs: core.serialization.list(ExecutionVellumValue).optional(),
 });
 
 export declare namespace WorkflowResultEvent {
     interface Raw {
         id: string;
-        state: serializers.WorkflowNodeResultEventState.Raw;
+        state: WorkflowNodeResultEventState.Raw;
         ts: string;
-        output?: serializers.WorkflowResultEventOutputData.Raw | null;
-        error?: serializers.WorkflowEventError.Raw | null;
-        outputs?: serializers.WorkflowOutput.Raw[] | null;
-        inputs?: serializers.ExecutionVellumValue.Raw[] | null;
+        output?: WorkflowResultEventOutputData.Raw | null;
+        error?: WorkflowEventError.Raw | null;
+        outputs?: WorkflowOutput.Raw[] | null;
+        inputs?: ExecutionVellumValue.Raw[] | null;
     }
 }

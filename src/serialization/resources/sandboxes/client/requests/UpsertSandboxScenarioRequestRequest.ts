@@ -5,22 +5,21 @@
 import * as serializers from "../../../..";
 import * as Vellum from "../../../../../api";
 import * as core from "../../../../../core";
+import { ScenarioInputRequest } from "../../../../types/ScenarioInputRequest";
 
 export const UpsertSandboxScenarioRequestRequest: core.serialization.Schema<
     serializers.UpsertSandboxScenarioRequestRequest.Raw,
     Vellum.UpsertSandboxScenarioRequestRequest
 > = core.serialization.object({
     label: core.serialization.string().optional(),
-    inputs: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../../../..")).ScenarioInputRequest)
-    ),
+    inputs: core.serialization.list(ScenarioInputRequest),
     scenarioId: core.serialization.property("scenario_id", core.serialization.string().optional()),
 });
 
 export declare namespace UpsertSandboxScenarioRequestRequest {
     interface Raw {
         label?: string | null;
-        inputs: serializers.ScenarioInputRequest.Raw[];
+        inputs: ScenarioInputRequest.Raw[];
         scenario_id?: string | null;
     }
 }

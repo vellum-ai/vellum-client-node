@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { DocumentIndexRead } from "./DocumentIndexRead";
 
 export const PaginatedDocumentIndexReadList: core.serialization.ObjectSchema<
     serializers.PaginatedDocumentIndexReadList.Raw,
@@ -13,9 +14,7 @@ export const PaginatedDocumentIndexReadList: core.serialization.ObjectSchema<
     count: core.serialization.number().optional(),
     next: core.serialization.string().optional(),
     previous: core.serialization.string().optional(),
-    results: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).DocumentIndexRead))
-        .optional(),
+    results: core.serialization.list(DocumentIndexRead).optional(),
 });
 
 export declare namespace PaginatedDocumentIndexReadList {
@@ -23,6 +22,6 @@ export declare namespace PaginatedDocumentIndexReadList {
         count?: number | null;
         next?: string | null;
         previous?: string | null;
-        results?: serializers.DocumentIndexRead.Raw[] | null;
+        results?: DocumentIndexRead.Raw[] | null;
     }
 }

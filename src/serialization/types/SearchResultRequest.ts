@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SearchResultDocumentRequest } from "./SearchResultDocumentRequest";
 
 export const SearchResultRequest: core.serialization.ObjectSchema<
     serializers.SearchResultRequest.Raw,
@@ -13,7 +14,7 @@ export const SearchResultRequest: core.serialization.ObjectSchema<
     text: core.serialization.string(),
     score: core.serialization.number(),
     keywords: core.serialization.list(core.serialization.string()),
-    document: core.serialization.lazyObject(async () => (await import("..")).SearchResultDocumentRequest),
+    document: SearchResultDocumentRequest,
 });
 
 export declare namespace SearchResultRequest {
@@ -21,6 +22,6 @@ export declare namespace SearchResultRequest {
         text: string;
         score: number;
         keywords: string[];
-        document: serializers.SearchResultDocumentRequest.Raw;
+        document: SearchResultDocumentRequest.Raw;
     }
 }

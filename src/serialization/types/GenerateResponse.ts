@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { GenerateResult } from "./GenerateResult";
 
 export const GenerateResponse: core.serialization.ObjectSchema<
     serializers.GenerateResponse.Raw,
     Vellum.GenerateResponse
 > = core.serialization.object({
-    results: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).GenerateResult)),
+    results: core.serialization.list(GenerateResult),
 });
 
 export declare namespace GenerateResponse {
     interface Raw {
-        results: serializers.GenerateResult.Raw[];
+        results: GenerateResult.Raw[];
     }
 }

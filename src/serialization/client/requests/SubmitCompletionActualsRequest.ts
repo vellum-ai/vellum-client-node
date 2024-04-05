@@ -5,6 +5,7 @@
 import * as serializers from "../..";
 import * as Vellum from "../../../api";
 import * as core from "../../../core";
+import { SubmitCompletionActualRequest } from "../../types/SubmitCompletionActualRequest";
 
 export const SubmitCompletionActualsRequest: core.serialization.Schema<
     serializers.SubmitCompletionActualsRequest.Raw,
@@ -12,15 +13,13 @@ export const SubmitCompletionActualsRequest: core.serialization.Schema<
 > = core.serialization.object({
     deploymentId: core.serialization.property("deployment_id", core.serialization.string().optional()),
     deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),
-    actuals: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../..")).SubmitCompletionActualRequest)
-    ),
+    actuals: core.serialization.list(SubmitCompletionActualRequest),
 });
 
 export declare namespace SubmitCompletionActualsRequest {
     interface Raw {
         deployment_id?: string | null;
         deployment_name?: string | null;
-        actuals: serializers.SubmitCompletionActualRequest.Raw[];
+        actuals: SubmitCompletionActualRequest.Raw[];
     }
 }

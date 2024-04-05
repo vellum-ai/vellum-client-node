@@ -5,6 +5,10 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ProviderEnum } from "./ProviderEnum";
+import { ModelVersionBuildConfig } from "./ModelVersionBuildConfig";
+import { ModelVersionExecConfig } from "./ModelVersionExecConfig";
+import { ModelVersionReadStatusEnum } from "./ModelVersionReadStatusEnum";
 
 export const ModelVersionRead: core.serialization.ObjectSchema<
     serializers.ModelVersionRead.Raw,
@@ -13,17 +17,11 @@ export const ModelVersionRead: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     created: core.serialization.date(),
     label: core.serialization.string(),
-    provider: core.serialization.lazy(async () => (await import("..")).ProviderEnum),
+    provider: ProviderEnum,
     externalId: core.serialization.property("external_id", core.serialization.string()),
-    buildConfig: core.serialization.property(
-        "build_config",
-        core.serialization.lazyObject(async () => (await import("..")).ModelVersionBuildConfig)
-    ),
-    execConfig: core.serialization.property(
-        "exec_config",
-        core.serialization.lazyObject(async () => (await import("..")).ModelVersionExecConfig)
-    ),
-    status: core.serialization.lazy(async () => (await import("..")).ModelVersionReadStatusEnum).optional(),
+    buildConfig: core.serialization.property("build_config", ModelVersionBuildConfig),
+    execConfig: core.serialization.property("exec_config", ModelVersionExecConfig),
+    status: ModelVersionReadStatusEnum.optional(),
 });
 
 export declare namespace ModelVersionRead {
@@ -31,10 +29,10 @@ export declare namespace ModelVersionRead {
         id: string;
         created: string;
         label: string;
-        provider: serializers.ProviderEnum.Raw;
+        provider: ProviderEnum.Raw;
         external_id: string;
-        build_config: serializers.ModelVersionBuildConfig.Raw;
-        exec_config: serializers.ModelVersionExecConfig.Raw;
-        status?: serializers.ModelVersionReadStatusEnum.Raw | null;
+        build_config: ModelVersionBuildConfig.Raw;
+        exec_config: ModelVersionExecConfig.Raw;
+        status?: ModelVersionReadStatusEnum.Raw | null;
     }
 }

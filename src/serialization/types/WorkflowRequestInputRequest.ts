@@ -5,18 +5,20 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowRequestStringInputRequest } from "./WorkflowRequestStringInputRequest";
+import { WorkflowRequestJsonInputRequest } from "./WorkflowRequestJsonInputRequest";
+import { WorkflowRequestChatHistoryInputRequest } from "./WorkflowRequestChatHistoryInputRequest";
+import { WorkflowRequestNumberInputRequest } from "./WorkflowRequestNumberInputRequest";
 
 export const WorkflowRequestInputRequest: core.serialization.Schema<
     serializers.WorkflowRequestInputRequest.Raw,
     Vellum.WorkflowRequestInputRequest
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).WorkflowRequestStringInputRequest),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).WorkflowRequestJsonInputRequest),
-        CHAT_HISTORY: core.serialization.lazyObject(
-            async () => (await import("..")).WorkflowRequestChatHistoryInputRequest
-        ),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).WorkflowRequestNumberInputRequest),
+        STRING: WorkflowRequestStringInputRequest,
+        JSON: WorkflowRequestJsonInputRequest,
+        CHAT_HISTORY: WorkflowRequestChatHistoryInputRequest,
+        NUMBER: WorkflowRequestNumberInputRequest,
     })
     .transform<Vellum.WorkflowRequestInputRequest>({
         transform: (value) => value,
@@ -30,19 +32,19 @@ export declare namespace WorkflowRequestInputRequest {
         | WorkflowRequestInputRequest.ChatHistory
         | WorkflowRequestInputRequest.Number;
 
-    interface String extends serializers.WorkflowRequestStringInputRequest.Raw {
+    interface String extends WorkflowRequestStringInputRequest.Raw {
         type: "STRING";
     }
 
-    interface Json extends serializers.WorkflowRequestJsonInputRequest.Raw {
+    interface Json extends WorkflowRequestJsonInputRequest.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.WorkflowRequestChatHistoryInputRequest.Raw {
+    interface ChatHistory extends WorkflowRequestChatHistoryInputRequest.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface Number extends serializers.WorkflowRequestNumberInputRequest.Raw {
+    interface Number extends WorkflowRequestNumberInputRequest.Raw {
         type: "NUMBER";
     }
 }

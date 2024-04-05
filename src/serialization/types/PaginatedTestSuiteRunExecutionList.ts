@@ -5,24 +5,23 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TestSuiteRunExecution } from "./TestSuiteRunExecution";
 
 export const PaginatedTestSuiteRunExecutionList: core.serialization.ObjectSchema<
     serializers.PaginatedTestSuiteRunExecutionList.Raw,
     Vellum.PaginatedTestSuiteRunExecutionList
 > = core.serialization.object({
-    count: core.serialization.number().optional(),
+    count: core.serialization.number(),
     next: core.serialization.string().optional(),
     previous: core.serialization.string().optional(),
-    results: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).TestSuiteRunExecution))
-        .optional(),
+    results: core.serialization.list(TestSuiteRunExecution),
 });
 
 export declare namespace PaginatedTestSuiteRunExecutionList {
     interface Raw {
-        count?: number | null;
+        count: number;
         next?: string | null;
         previous?: string | null;
-        results?: serializers.TestSuiteRunExecution.Raw[] | null;
+        results: TestSuiteRunExecution.Raw[];
     }
 }

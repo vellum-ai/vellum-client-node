@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowOutput } from "./WorkflowOutput";
 
 export const FulfilledExecuteWorkflowWorkflowResultEvent: core.serialization.ObjectSchema<
     serializers.FulfilledExecuteWorkflowWorkflowResultEvent.Raw,
@@ -12,13 +13,13 @@ export const FulfilledExecuteWorkflowWorkflowResultEvent: core.serialization.Obj
 > = core.serialization.object({
     id: core.serialization.string(),
     ts: core.serialization.date(),
-    outputs: core.serialization.list(core.serialization.lazy(async () => (await import("..")).WorkflowOutput)),
+    outputs: core.serialization.list(WorkflowOutput),
 });
 
 export declare namespace FulfilledExecuteWorkflowWorkflowResultEvent {
     interface Raw {
         id: string;
         ts: string;
-        outputs: serializers.WorkflowOutput.Raw[];
+        outputs: WorkflowOutput.Raw[];
     }
 }

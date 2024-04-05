@@ -5,24 +5,26 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { PromptOutput } from "./PromptOutput";
+import { StreamingPromptExecutionMeta } from "./StreamingPromptExecutionMeta";
 
 export const StreamingExecutePromptEvent: core.serialization.ObjectSchema<
     serializers.StreamingExecutePromptEvent.Raw,
     Vellum.StreamingExecutePromptEvent
 > = core.serialization.object({
-    output: core.serialization.lazy(async () => (await import("..")).PromptOutput),
+    output: PromptOutput,
     outputIndex: core.serialization.property("output_index", core.serialization.number()),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
-    meta: core.serialization.lazyObject(async () => (await import("..")).StreamingPromptExecutionMeta).optional(),
+    meta: StreamingPromptExecutionMeta.optional(),
     raw: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
 export declare namespace StreamingExecutePromptEvent {
     interface Raw {
-        output: serializers.PromptOutput.Raw;
+        output: PromptOutput.Raw;
         output_index: number;
         execution_id: string;
-        meta?: serializers.StreamingPromptExecutionMeta.Raw | null;
+        meta?: StreamingPromptExecutionMeta.Raw | null;
         raw?: Record<string, unknown> | null;
     }
 }

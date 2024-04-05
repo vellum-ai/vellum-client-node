@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumErrorRequest } from "./VellumErrorRequest";
 
 export const NamedTestCaseErrorVariableValueRequest: core.serialization.ObjectSchema<
     serializers.NamedTestCaseErrorVariableValueRequest.Raw,
     Vellum.NamedTestCaseErrorVariableValueRequest
 > = core.serialization.object({
     name: core.serialization.string(),
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumErrorRequest).optional(),
+    value: VellumErrorRequest.optional(),
 });
 
 export declare namespace NamedTestCaseErrorVariableValueRequest {
     interface Raw {
         name: string;
-        value?: serializers.VellumErrorRequest.Raw | null;
+        value?: VellumErrorRequest.Raw | null;
     }
 }

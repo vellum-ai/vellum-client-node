@@ -5,20 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ChatMessage } from "./ChatMessage";
 
 export const TestSuiteRunExecutionChatHistoryOutput: core.serialization.ObjectSchema<
     serializers.TestSuiteRunExecutionChatHistoryOutput.Raw,
     Vellum.TestSuiteRunExecutionChatHistoryOutput
 > = core.serialization.object({
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
-    value: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage))
-        .optional(),
+    value: core.serialization.list(ChatMessage).optional(),
 });
 
 export declare namespace TestSuiteRunExecutionChatHistoryOutput {
     interface Raw {
         output_variable_id: string;
-        value?: serializers.ChatMessage.Raw[] | null;
+        value?: ChatMessage.Raw[] | null;
     }
 }

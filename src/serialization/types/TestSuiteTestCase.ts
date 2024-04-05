@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TestCaseVariableValue } from "./TestCaseVariableValue";
 
 export const TestSuiteTestCase: core.serialization.ObjectSchema<
     serializers.TestSuiteTestCase.Raw,
@@ -12,21 +13,15 @@ export const TestSuiteTestCase: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     label: core.serialization.string().optional(),
-    inputValues: core.serialization.property(
-        "input_values",
-        core.serialization.list(core.serialization.lazy(async () => (await import("..")).TestCaseVariableValue))
-    ),
-    evaluationValues: core.serialization.property(
-        "evaluation_values",
-        core.serialization.list(core.serialization.lazy(async () => (await import("..")).TestCaseVariableValue))
-    ),
+    inputValues: core.serialization.property("input_values", core.serialization.list(TestCaseVariableValue)),
+    evaluationValues: core.serialization.property("evaluation_values", core.serialization.list(TestCaseVariableValue)),
 });
 
 export declare namespace TestSuiteTestCase {
     interface Raw {
         id?: string | null;
         label?: string | null;
-        input_values: serializers.TestCaseVariableValue.Raw[];
-        evaluation_values: serializers.TestCaseVariableValue.Raw[];
+        input_values: TestCaseVariableValue.Raw[];
+        evaluation_values: TestCaseVariableValue.Raw[];
     }
 }

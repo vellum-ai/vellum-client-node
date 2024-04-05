@@ -5,16 +5,20 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { InitiatedExecutePromptEvent } from "./InitiatedExecutePromptEvent";
+import { StreamingExecutePromptEvent } from "./StreamingExecutePromptEvent";
+import { FulfilledExecutePromptEvent } from "./FulfilledExecutePromptEvent";
+import { RejectedExecutePromptEvent } from "./RejectedExecutePromptEvent";
 
 export const ExecutePromptEvent: core.serialization.Schema<
     serializers.ExecutePromptEvent.Raw,
     Vellum.ExecutePromptEvent
 > = core.serialization
     .union("state", {
-        INITIATED: core.serialization.lazyObject(async () => (await import("..")).InitiatedExecutePromptEvent),
-        STREAMING: core.serialization.lazyObject(async () => (await import("..")).StreamingExecutePromptEvent),
-        FULFILLED: core.serialization.lazyObject(async () => (await import("..")).FulfilledExecutePromptEvent),
-        REJECTED: core.serialization.lazyObject(async () => (await import("..")).RejectedExecutePromptEvent),
+        INITIATED: InitiatedExecutePromptEvent,
+        STREAMING: StreamingExecutePromptEvent,
+        FULFILLED: FulfilledExecutePromptEvent,
+        REJECTED: RejectedExecutePromptEvent,
     })
     .transform<Vellum.ExecutePromptEvent>({
         transform: (value) => value,
@@ -28,19 +32,19 @@ export declare namespace ExecutePromptEvent {
         | ExecutePromptEvent.Fulfilled
         | ExecutePromptEvent.Rejected;
 
-    interface Initiated extends serializers.InitiatedExecutePromptEvent.Raw {
+    interface Initiated extends InitiatedExecutePromptEvent.Raw {
         state: "INITIATED";
     }
 
-    interface Streaming extends serializers.StreamingExecutePromptEvent.Raw {
+    interface Streaming extends StreamingExecutePromptEvent.Raw {
         state: "STREAMING";
     }
 
-    interface Fulfilled extends serializers.FulfilledExecutePromptEvent.Raw {
+    interface Fulfilled extends FulfilledExecutePromptEvent.Raw {
         state: "FULFILLED";
     }
 
-    interface Rejected extends serializers.RejectedExecutePromptEvent.Raw {
+    interface Rejected extends RejectedExecutePromptEvent.Raw {
         state: "REJECTED";
     }
 }

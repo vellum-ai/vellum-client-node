@@ -5,22 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ExecutionStringVellumValue } from "./ExecutionStringVellumValue";
+import { ExecutionNumberVellumValue } from "./ExecutionNumberVellumValue";
+import { ExecutionJsonVellumValue } from "./ExecutionJsonVellumValue";
+import { ExecutionChatHistoryVellumValue } from "./ExecutionChatHistoryVellumValue";
+import { ExecutionSearchResultsVellumValue } from "./ExecutionSearchResultsVellumValue";
+import { ExecutionErrorVellumValue } from "./ExecutionErrorVellumValue";
+import { ExecutionArrayVellumValue } from "./ExecutionArrayVellumValue";
+import { ExecutionFunctionCallVellumValue } from "./ExecutionFunctionCallVellumValue";
 
 export const ExecutionVellumValue: core.serialization.Schema<
     serializers.ExecutionVellumValue.Raw,
     Vellum.ExecutionVellumValue
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).ExecutionStringVellumValue),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).ExecutionNumberVellumValue),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).ExecutionJsonVellumValue),
-        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).ExecutionChatHistoryVellumValue),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).ExecutionSearchResultsVellumValue
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).ExecutionErrorVellumValue),
-        ARRAY: core.serialization.lazyObject(async () => (await import("..")).ExecutionArrayVellumValue),
-        FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).ExecutionFunctionCallVellumValue),
+        STRING: ExecutionStringVellumValue,
+        NUMBER: ExecutionNumberVellumValue,
+        JSON: ExecutionJsonVellumValue,
+        CHAT_HISTORY: ExecutionChatHistoryVellumValue,
+        SEARCH_RESULTS: ExecutionSearchResultsVellumValue,
+        ERROR: ExecutionErrorVellumValue,
+        ARRAY: ExecutionArrayVellumValue,
+        FUNCTION_CALL: ExecutionFunctionCallVellumValue,
     })
     .transform<Vellum.ExecutionVellumValue>({
         transform: (value) => value,
@@ -38,35 +44,35 @@ export declare namespace ExecutionVellumValue {
         | ExecutionVellumValue.Array
         | ExecutionVellumValue.FunctionCall;
 
-    interface String extends serializers.ExecutionStringVellumValue.Raw {
+    interface String extends ExecutionStringVellumValue.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.ExecutionNumberVellumValue.Raw {
+    interface Number extends ExecutionNumberVellumValue.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.ExecutionJsonVellumValue.Raw {
+    interface Json extends ExecutionJsonVellumValue.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.ExecutionChatHistoryVellumValue.Raw {
+    interface ChatHistory extends ExecutionChatHistoryVellumValue.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.ExecutionSearchResultsVellumValue.Raw {
+    interface SearchResults extends ExecutionSearchResultsVellumValue.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.ExecutionErrorVellumValue.Raw {
+    interface Error extends ExecutionErrorVellumValue.Raw {
         type: "ERROR";
     }
 
-    interface Array extends serializers.ExecutionArrayVellumValue.Raw {
+    interface Array extends ExecutionArrayVellumValue.Raw {
         type: "ARRAY";
     }
 
-    interface FunctionCall extends serializers.ExecutionFunctionCallVellumValue.Raw {
+    interface FunctionCall extends ExecutionFunctionCallVellumValue.Raw {
         type: "FUNCTION_CALL";
     }
 }

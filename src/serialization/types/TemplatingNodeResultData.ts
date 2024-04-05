@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TemplatingNodeResultOutput } from "./TemplatingNodeResultOutput";
 
 export const TemplatingNodeResultData: core.serialization.ObjectSchema<
     serializers.TemplatingNodeResultData.Raw,
     Vellum.TemplatingNodeResultData
 > = core.serialization.object({
-    output: core.serialization.lazy(async () => (await import("..")).TemplatingNodeResultOutput),
+    output: TemplatingNodeResultOutput,
 });
 
 export declare namespace TemplatingNodeResultData {
     interface Raw {
-        output: serializers.TemplatingNodeResultOutput.Raw;
+        output: TemplatingNodeResultOutput.Raw;
     }
 }

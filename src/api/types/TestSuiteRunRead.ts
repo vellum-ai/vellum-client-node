@@ -17,7 +17,7 @@ export interface TestSuiteRunRead {
      * - `FAILED` - Failed
      * - `CANCELLED` - Cancelled
      */
-    state?: Vellum.TestSuiteRunState;
+    state: Vellum.TestSuiteRunState;
     /** Configuration that defines how the Test Suite should be run */
     execConfig?: Vellum.TestSuiteRunExecConfig;
 }

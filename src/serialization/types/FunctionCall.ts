@@ -5,12 +5,14 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FulfilledFunctionCall } from "./FulfilledFunctionCall";
+import { RejectedFunctionCall } from "./RejectedFunctionCall";
 
 export const FunctionCall: core.serialization.Schema<serializers.FunctionCall.Raw, Vellum.FunctionCall> =
     core.serialization
         .union("state", {
-            FULFILLED: core.serialization.lazyObject(async () => (await import("..")).FulfilledFunctionCall),
-            REJECTED: core.serialization.lazyObject(async () => (await import("..")).RejectedFunctionCall),
+            FULFILLED: FulfilledFunctionCall,
+            REJECTED: RejectedFunctionCall,
         })
         .transform<Vellum.FunctionCall>({
             transform: (value) => value,
@@ -20,11 +22,11 @@ export const FunctionCall: core.serialization.Schema<serializers.FunctionCall.Ra
 export declare namespace FunctionCall {
     type Raw = FunctionCall.Fulfilled | FunctionCall.Rejected;
 
-    interface Fulfilled extends serializers.FulfilledFunctionCall.Raw {
+    interface Fulfilled extends FulfilledFunctionCall.Raw {
         state: "FULFILLED";
     }
 
-    interface Rejected extends serializers.RejectedFunctionCall.Raw {
+    interface Rejected extends RejectedFunctionCall.Raw {
         state: "REJECTED";
     }
 }

@@ -5,14 +5,15 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SearchResult } from "./SearchResult";
 
 export const SearchResponse: core.serialization.ObjectSchema<serializers.SearchResponse.Raw, Vellum.SearchResponse> =
     core.serialization.object({
-        results: core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).SearchResult)),
+        results: core.serialization.list(SearchResult),
     });
 
 export declare namespace SearchResponse {
     interface Raw {
-        results: serializers.SearchResult.Raw[];
+        results: SearchResult.Raw[];
     }
 }

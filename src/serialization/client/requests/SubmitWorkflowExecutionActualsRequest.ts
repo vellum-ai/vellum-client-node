@@ -5,21 +5,20 @@
 import * as serializers from "../..";
 import * as Vellum from "../../../api";
 import * as core from "../../../core";
+import { SubmitWorkflowExecutionActualRequest } from "../../types/SubmitWorkflowExecutionActualRequest";
 
 export const SubmitWorkflowExecutionActualsRequest: core.serialization.Schema<
     serializers.SubmitWorkflowExecutionActualsRequest.Raw,
     Vellum.SubmitWorkflowExecutionActualsRequest
 > = core.serialization.object({
-    actuals: core.serialization.list(
-        core.serialization.lazy(async () => (await import("../..")).SubmitWorkflowExecutionActualRequest)
-    ),
+    actuals: core.serialization.list(SubmitWorkflowExecutionActualRequest),
     executionId: core.serialization.property("execution_id", core.serialization.string().optional()),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
 });
 
 export declare namespace SubmitWorkflowExecutionActualsRequest {
     interface Raw {
-        actuals: serializers.SubmitWorkflowExecutionActualRequest.Raw[];
+        actuals: SubmitWorkflowExecutionActualRequest.Raw[];
         execution_id?: string | null;
         external_id?: string | null;
     }

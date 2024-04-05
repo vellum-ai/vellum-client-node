@@ -5,20 +5,24 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TestCaseStringVariableValue } from "./TestCaseStringVariableValue";
+import { TestCaseNumberVariableValue } from "./TestCaseNumberVariableValue";
+import { TestCaseJsonVariableValue } from "./TestCaseJsonVariableValue";
+import { TestCaseChatHistoryVariableValue } from "./TestCaseChatHistoryVariableValue";
+import { TestCaseSearchResultsVariableValue } from "./TestCaseSearchResultsVariableValue";
+import { TestCaseErrorVariableValue } from "./TestCaseErrorVariableValue";
 
 export const TestCaseVariableValue: core.serialization.Schema<
     serializers.TestCaseVariableValue.Raw,
     Vellum.TestCaseVariableValue
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).TestCaseStringVariableValue),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).TestCaseNumberVariableValue),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).TestCaseJsonVariableValue),
-        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).TestCaseChatHistoryVariableValue),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).TestCaseSearchResultsVariableValue
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).TestCaseErrorVariableValue),
+        STRING: TestCaseStringVariableValue,
+        NUMBER: TestCaseNumberVariableValue,
+        JSON: TestCaseJsonVariableValue,
+        CHAT_HISTORY: TestCaseChatHistoryVariableValue,
+        SEARCH_RESULTS: TestCaseSearchResultsVariableValue,
+        ERROR: TestCaseErrorVariableValue,
     })
     .transform<Vellum.TestCaseVariableValue>({
         transform: (value) => value,
@@ -34,27 +38,27 @@ export declare namespace TestCaseVariableValue {
         | TestCaseVariableValue.SearchResults
         | TestCaseVariableValue.Error;
 
-    interface String extends serializers.TestCaseStringVariableValue.Raw {
+    interface String extends TestCaseStringVariableValue.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.TestCaseNumberVariableValue.Raw {
+    interface Number extends TestCaseNumberVariableValue.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.TestCaseJsonVariableValue.Raw {
+    interface Json extends TestCaseJsonVariableValue.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.TestCaseChatHistoryVariableValue.Raw {
+    interface ChatHistory extends TestCaseChatHistoryVariableValue.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.TestCaseSearchResultsVariableValue.Raw {
+    interface SearchResults extends TestCaseSearchResultsVariableValue.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.TestCaseErrorVariableValue.Raw {
+    interface Error extends TestCaseErrorVariableValue.Raw {
         type: "ERROR";
     }
 }

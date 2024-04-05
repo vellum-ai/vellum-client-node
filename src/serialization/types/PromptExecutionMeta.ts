@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FinishReasonEnum } from "./FinishReasonEnum";
 
 export const PromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.PromptExecutionMeta.Raw,
@@ -14,10 +15,7 @@ export const PromptExecutionMeta: core.serialization.ObjectSchema<
     latency: core.serialization.number().optional(),
     deploymentReleaseTag: core.serialization.property("deployment_release_tag", core.serialization.string().optional()),
     promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optional()),
-    finishReason: core.serialization.property(
-        "finish_reason",
-        core.serialization.lazy(async () => (await import("..")).FinishReasonEnum).optional()
-    ),
+    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
 });
 
 export declare namespace PromptExecutionMeta {
@@ -26,6 +24,6 @@ export declare namespace PromptExecutionMeta {
         latency?: number | null;
         deployment_release_tag?: string | null;
         prompt_version_id?: string | null;
-        finish_reason?: serializers.FinishReasonEnum.Raw | null;
+        finish_reason?: FinishReasonEnum.Raw | null;
     }
 }

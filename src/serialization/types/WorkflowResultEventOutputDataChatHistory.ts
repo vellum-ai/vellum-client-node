@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
+import { ChatMessage } from "./ChatMessage";
 
 export const WorkflowResultEventOutputDataChatHistory: core.serialization.ObjectSchema<
     serializers.WorkflowResultEventOutputDataChatHistory.Raw,
@@ -12,21 +14,19 @@ export const WorkflowResultEventOutputDataChatHistory: core.serialization.Object
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
-    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
+    state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
-    value: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage))
-        .optional(),
+    value: core.serialization.list(ChatMessage).optional(),
 });
 
 export declare namespace WorkflowResultEventOutputDataChatHistory {
     interface Raw {
         id?: string | null;
         name: string;
-        state: serializers.WorkflowNodeResultEventState.Raw;
+        state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
-        value?: serializers.ChatMessage.Raw[] | null;
+        value?: ChatMessage.Raw[] | null;
     }
 }

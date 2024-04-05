@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SlimDocument } from "./SlimDocument";
 
 export const PaginatedSlimDocumentList: core.serialization.ObjectSchema<
     serializers.PaginatedSlimDocumentList.Raw,
@@ -13,9 +14,7 @@ export const PaginatedSlimDocumentList: core.serialization.ObjectSchema<
     count: core.serialization.number().optional(),
     next: core.serialization.string().optional(),
     previous: core.serialization.string().optional(),
-    results: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).SlimDocument))
-        .optional(),
+    results: core.serialization.list(SlimDocument).optional(),
 });
 
 export declare namespace PaginatedSlimDocumentList {
@@ -23,6 +22,6 @@ export declare namespace PaginatedSlimDocumentList {
         count?: number | null;
         next?: string | null;
         previous?: string | null;
-        results?: serializers.SlimDocument.Raw[] | null;
+        results?: SlimDocument.Raw[] | null;
     }
 }

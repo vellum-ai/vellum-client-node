@@ -5,6 +5,9 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FinishReasonEnum } from "./FinishReasonEnum";
+import { NormalizedLogProbs } from "./NormalizedLogProbs";
+import { VellumVariableType } from "./VellumVariableType";
 
 export const EnrichedNormalizedCompletion: core.serialization.ObjectSchema<
     serializers.EnrichedNormalizedCompletion.Raw,
@@ -13,14 +16,11 @@ export const EnrichedNormalizedCompletion: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     text: core.serialization.string(),
-    finishReason: core.serialization.property(
-        "finish_reason",
-        core.serialization.lazy(async () => (await import("..")).FinishReasonEnum).optional()
-    ),
-    logprobs: core.serialization.lazyObject(async () => (await import("..")).NormalizedLogProbs).optional(),
+    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
+    logprobs: NormalizedLogProbs.optional(),
     modelVersionId: core.serialization.property("model_version_id", core.serialization.string()),
     promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string()),
-    type: core.serialization.lazy(async () => (await import("..")).VellumVariableType).optional(),
+    type: VellumVariableType.optional(),
     deploymentReleaseTag: core.serialization.property("deployment_release_tag", core.serialization.string()),
     modelName: core.serialization.property("model_name", core.serialization.string()),
 });
@@ -30,11 +30,11 @@ export declare namespace EnrichedNormalizedCompletion {
         id: string;
         external_id?: string | null;
         text: string;
-        finish_reason?: serializers.FinishReasonEnum.Raw | null;
-        logprobs?: serializers.NormalizedLogProbs.Raw | null;
+        finish_reason?: FinishReasonEnum.Raw | null;
+        logprobs?: NormalizedLogProbs.Raw | null;
         model_version_id: string;
         prompt_version_id: string;
-        type?: serializers.VellumVariableType.Raw | null;
+        type?: VellumVariableType.Raw | null;
         deployment_release_tag: string;
         model_name: string;
     }

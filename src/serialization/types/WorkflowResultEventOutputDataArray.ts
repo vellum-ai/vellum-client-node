@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
+import { ArrayVariableValueItem } from "./ArrayVariableValueItem";
 
 export const WorkflowResultEventOutputDataArray: core.serialization.ObjectSchema<
     serializers.WorkflowResultEventOutputDataArray.Raw,
@@ -12,21 +14,19 @@ export const WorkflowResultEventOutputDataArray: core.serialization.ObjectSchema
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
-    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
+    state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
-    value: core.serialization
-        .list(core.serialization.lazy(async () => (await import("..")).ArrayVariableValueItem))
-        .optional(),
+    value: core.serialization.list(ArrayVariableValueItem).optional(),
 });
 
 export declare namespace WorkflowResultEventOutputDataArray {
     interface Raw {
         id?: string | null;
         name: string;
-        state: serializers.WorkflowNodeResultEventState.Raw;
+        state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
-        value?: serializers.ArrayVariableValueItem.Raw[] | null;
+        value?: ArrayVariableValueItem.Raw[] | null;
     }
 }

@@ -5,25 +5,25 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SearchWeightsRequest } from "./SearchWeightsRequest";
+import { SearchResultMergingRequest } from "./SearchResultMergingRequest";
+import { SearchFiltersRequest } from "./SearchFiltersRequest";
 
 export const SearchRequestOptionsRequest: core.serialization.ObjectSchema<
     serializers.SearchRequestOptionsRequest.Raw,
     Vellum.SearchRequestOptionsRequest
 > = core.serialization.object({
     limit: core.serialization.number().optional(),
-    weights: core.serialization.lazyObject(async () => (await import("..")).SearchWeightsRequest).optional(),
-    resultMerging: core.serialization.property(
-        "result_merging",
-        core.serialization.lazyObject(async () => (await import("..")).SearchResultMergingRequest).optional()
-    ),
-    filters: core.serialization.lazyObject(async () => (await import("..")).SearchFiltersRequest).optional(),
+    weights: SearchWeightsRequest.optional(),
+    resultMerging: core.serialization.property("result_merging", SearchResultMergingRequest.optional()),
+    filters: SearchFiltersRequest.optional(),
 });
 
 export declare namespace SearchRequestOptionsRequest {
     interface Raw {
         limit?: number | null;
-        weights?: serializers.SearchWeightsRequest.Raw | null;
-        result_merging?: serializers.SearchResultMergingRequest.Raw | null;
-        filters?: serializers.SearchFiltersRequest.Raw | null;
+        weights?: SearchWeightsRequest.Raw | null;
+        result_merging?: SearchResultMergingRequest.Raw | null;
+        filters?: SearchFiltersRequest.Raw | null;
     }
 }

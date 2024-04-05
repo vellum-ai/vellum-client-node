@@ -5,20 +5,22 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumError } from "./VellumError";
+import { RejectedPromptExecutionMeta } from "./RejectedPromptExecutionMeta";
 
 export const RejectedExecutePromptEvent: core.serialization.ObjectSchema<
     serializers.RejectedExecutePromptEvent.Raw,
     Vellum.RejectedExecutePromptEvent
 > = core.serialization.object({
-    error: core.serialization.lazyObject(async () => (await import("..")).VellumError),
+    error: VellumError,
     executionId: core.serialization.property("execution_id", core.serialization.string()),
-    meta: core.serialization.lazyObject(async () => (await import("..")).RejectedPromptExecutionMeta).optional(),
+    meta: RejectedPromptExecutionMeta.optional(),
 });
 
 export declare namespace RejectedExecutePromptEvent {
     interface Raw {
-        error: serializers.VellumError.Raw;
+        error: VellumError.Raw;
         execution_id: string;
-        meta?: serializers.RejectedPromptExecutionMeta.Raw | null;
+        meta?: RejectedPromptExecutionMeta.Raw | null;
     }
 }

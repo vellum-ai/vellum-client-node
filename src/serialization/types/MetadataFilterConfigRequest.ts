@@ -5,28 +5,30 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { MetadataFilterRuleCombinator } from "./MetadataFilterRuleCombinator";
+import { LogicalOperator } from "./LogicalOperator";
 
 export const MetadataFilterConfigRequest: core.serialization.ObjectSchema<
     serializers.MetadataFilterConfigRequest.Raw,
     Vellum.MetadataFilterConfigRequest
 > = core.serialization.object({
-    combinator: core.serialization.lazy(async () => (await import("..")).MetadataFilterRuleCombinator).optional(),
+    combinator: MetadataFilterRuleCombinator.optional(),
     negated: core.serialization.boolean().optional(),
     rules: core.serialization
         .list(core.serialization.lazyObject(async () => (await import("..")).MetadataFilterRuleRequest))
         .optional(),
     field: core.serialization.string().optional(),
-    operator: core.serialization.lazy(async () => (await import("..")).LogicalOperator).optional(),
+    operator: LogicalOperator.optional(),
     value: core.serialization.string().optional(),
 });
 
 export declare namespace MetadataFilterConfigRequest {
     interface Raw {
-        combinator?: serializers.MetadataFilterRuleCombinator.Raw | null;
+        combinator?: MetadataFilterRuleCombinator.Raw | null;
         negated?: boolean | null;
         rules?: serializers.MetadataFilterRuleRequest.Raw[] | null;
         field?: string | null;
-        operator?: serializers.LogicalOperator.Raw | null;
+        operator?: LogicalOperator.Raw | null;
         value?: string | null;
     }
 }

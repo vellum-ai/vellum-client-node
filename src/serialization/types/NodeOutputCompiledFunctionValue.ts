@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FunctionCall } from "./FunctionCall";
 
 export const NodeOutputCompiledFunctionValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledFunctionValue.Raw,
     Vellum.NodeOutputCompiledFunctionValue
 > = core.serialization.object({
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
-    value: core.serialization.lazy(async () => (await import("..")).FunctionCall).optional(),
+    value: FunctionCall.optional(),
 });
 
 export declare namespace NodeOutputCompiledFunctionValue {
     interface Raw {
         node_output_id: string;
-        value?: serializers.FunctionCall.Raw | null;
+        value?: FunctionCall.Raw | null;
     }
 }

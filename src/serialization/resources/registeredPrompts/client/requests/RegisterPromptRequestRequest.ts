@@ -5,6 +5,9 @@
 import * as serializers from "../../../..";
 import * as Vellum from "../../../../../api";
 import * as core from "../../../../../core";
+import { RegisterPromptPromptInfoRequest } from "../../../../types/RegisterPromptPromptInfoRequest";
+import { ProviderEnum } from "../../../../types/ProviderEnum";
+import { RegisterPromptModelParametersRequest } from "../../../../types/RegisterPromptModelParametersRequest";
 
 export const RegisterPromptRequestRequest: core.serialization.Schema<
     serializers.RegisterPromptRequestRequest.Raw,
@@ -12,12 +15,10 @@ export const RegisterPromptRequestRequest: core.serialization.Schema<
 > = core.serialization.object({
     label: core.serialization.string(),
     name: core.serialization.string(),
-    prompt: core.serialization.lazyObject(async () => (await import("../../../..")).RegisterPromptPromptInfoRequest),
-    provider: core.serialization.lazy(async () => (await import("../../../..")).ProviderEnum).optional(),
+    prompt: RegisterPromptPromptInfoRequest,
+    provider: ProviderEnum.optional(),
     model: core.serialization.string(),
-    parameters: core.serialization.lazyObject(
-        async () => (await import("../../../..")).RegisterPromptModelParametersRequest
-    ),
+    parameters: RegisterPromptModelParametersRequest,
     meta: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
@@ -25,10 +26,10 @@ export declare namespace RegisterPromptRequestRequest {
     interface Raw {
         label: string;
         name: string;
-        prompt: serializers.RegisterPromptPromptInfoRequest.Raw;
-        provider?: serializers.ProviderEnum.Raw | null;
+        prompt: RegisterPromptPromptInfoRequest.Raw;
+        provider?: ProviderEnum.Raw | null;
         model: string;
-        parameters: serializers.RegisterPromptModelParametersRequest.Raw;
+        parameters: RegisterPromptModelParametersRequest.Raw;
         meta?: Record<string, unknown> | null;
     }
 }

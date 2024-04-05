@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumError } from "./VellumError";
 
 export const CodeExecutionNodeErrorResult: core.serialization.ObjectSchema<
     serializers.CodeExecutionNodeErrorResult.Raw,
     Vellum.CodeExecutionNodeErrorResult
 > = core.serialization.object({
     id: core.serialization.string(),
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumError).optional(),
+    value: VellumError.optional(),
 });
 
 export declare namespace CodeExecutionNodeErrorResult {
     interface Raw {
         id: string;
-        value?: serializers.VellumError.Raw | null;
+        value?: VellumError.Raw | null;
     }
 }

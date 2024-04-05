@@ -54,12 +54,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.ExecutePromptRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -123,12 +123,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.ExecutePromptStreamRequest.jsonOrThrow(request, {
@@ -204,12 +204,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.ExecuteWorkflowRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -271,12 +271,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.ExecuteWorkflowStreamRequest.jsonOrThrow(request, {
@@ -360,12 +360,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.GenerateBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -431,12 +431,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.GenerateStreamBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -517,12 +517,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.SearchRequestBodyRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -594,12 +594,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.SubmitCompletionActualsRequest.jsonOrThrow(request, {
@@ -665,12 +665,12 @@ export class VellumClient {
             ),
             method: "POST",
             headers: {
-                X_API_KEY: await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.14",
+                "X-Fern-SDK-Version": "0.3.15",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             body: await serializers.SubmitWorkflowExecutionActualsRequest.jsonOrThrow(request, {
@@ -763,5 +763,10 @@ export class VellumClient {
 
     public get workflowDeployments(): WorkflowDeployments {
         return (this._workflowDeployments ??= new WorkflowDeployments(this._options));
+    }
+
+    protected async _getCustomAuthorizationHeaders() {
+        const apiKeyValue = await core.Supplier.get(this._options.apiKey);
+        return { X_API_KEY: apiKeyValue };
     }
 }

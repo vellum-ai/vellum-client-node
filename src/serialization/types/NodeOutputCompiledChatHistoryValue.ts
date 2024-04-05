@@ -5,20 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ChatMessage } from "./ChatMessage";
 
 export const NodeOutputCompiledChatHistoryValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledChatHistoryValue.Raw,
     Vellum.NodeOutputCompiledChatHistoryValue
 > = core.serialization.object({
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
-    value: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage))
-        .optional(),
+    value: core.serialization.list(ChatMessage).optional(),
 });
 
 export declare namespace NodeOutputCompiledChatHistoryValue {
     interface Raw {
         node_output_id: string;
-        value?: serializers.ChatMessage.Raw[] | null;
+        value?: ChatMessage.Raw[] | null;
     }
 }

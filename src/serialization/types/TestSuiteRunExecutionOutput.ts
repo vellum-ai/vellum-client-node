@@ -5,22 +5,24 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TestSuiteRunExecutionStringOutput } from "./TestSuiteRunExecutionStringOutput";
+import { TestSuiteRunExecutionNumberOutput } from "./TestSuiteRunExecutionNumberOutput";
+import { TestSuiteRunExecutionJsonOutput } from "./TestSuiteRunExecutionJsonOutput";
+import { TestSuiteRunExecutionChatHistoryOutput } from "./TestSuiteRunExecutionChatHistoryOutput";
+import { TestSuiteRunExecutionSearchResultsOutput } from "./TestSuiteRunExecutionSearchResultsOutput";
+import { TestSuiteRunExecutionErrorOutput } from "./TestSuiteRunExecutionErrorOutput";
 
 export const TestSuiteRunExecutionOutput: core.serialization.Schema<
     serializers.TestSuiteRunExecutionOutput.Raw,
     Vellum.TestSuiteRunExecutionOutput
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).TestSuiteRunExecutionStringOutput),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).TestSuiteRunExecutionNumberOutput),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).TestSuiteRunExecutionJsonOutput),
-        CHAT_HISTORY: core.serialization.lazyObject(
-            async () => (await import("..")).TestSuiteRunExecutionChatHistoryOutput
-        ),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).TestSuiteRunExecutionSearchResultsOutput
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).TestSuiteRunExecutionErrorOutput),
+        STRING: TestSuiteRunExecutionStringOutput,
+        NUMBER: TestSuiteRunExecutionNumberOutput,
+        JSON: TestSuiteRunExecutionJsonOutput,
+        CHAT_HISTORY: TestSuiteRunExecutionChatHistoryOutput,
+        SEARCH_RESULTS: TestSuiteRunExecutionSearchResultsOutput,
+        ERROR: TestSuiteRunExecutionErrorOutput,
     })
     .transform<Vellum.TestSuiteRunExecutionOutput>({
         transform: (value) => value,
@@ -36,27 +38,27 @@ export declare namespace TestSuiteRunExecutionOutput {
         | TestSuiteRunExecutionOutput.SearchResults
         | TestSuiteRunExecutionOutput.Error;
 
-    interface String extends serializers.TestSuiteRunExecutionStringOutput.Raw {
+    interface String extends TestSuiteRunExecutionStringOutput.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.TestSuiteRunExecutionNumberOutput.Raw {
+    interface Number extends TestSuiteRunExecutionNumberOutput.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.TestSuiteRunExecutionJsonOutput.Raw {
+    interface Json extends TestSuiteRunExecutionJsonOutput.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.TestSuiteRunExecutionChatHistoryOutput.Raw {
+    interface ChatHistory extends TestSuiteRunExecutionChatHistoryOutput.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.TestSuiteRunExecutionSearchResultsOutput.Raw {
+    interface SearchResults extends TestSuiteRunExecutionSearchResultsOutput.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.TestSuiteRunExecutionErrorOutput.Raw {
+    interface Error extends TestSuiteRunExecutionErrorOutput.Raw {
         type: "ERROR";
     }
 }

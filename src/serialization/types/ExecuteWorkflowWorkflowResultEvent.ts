@@ -5,18 +5,16 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FulfilledExecuteWorkflowWorkflowResultEvent } from "./FulfilledExecuteWorkflowWorkflowResultEvent";
+import { RejectedExecuteWorkflowWorkflowResultEvent } from "./RejectedExecuteWorkflowWorkflowResultEvent";
 
 export const ExecuteWorkflowWorkflowResultEvent: core.serialization.Schema<
     serializers.ExecuteWorkflowWorkflowResultEvent.Raw,
     Vellum.ExecuteWorkflowWorkflowResultEvent
 > = core.serialization
     .union("state", {
-        FULFILLED: core.serialization.lazyObject(
-            async () => (await import("..")).FulfilledExecuteWorkflowWorkflowResultEvent
-        ),
-        REJECTED: core.serialization.lazyObject(
-            async () => (await import("..")).RejectedExecuteWorkflowWorkflowResultEvent
-        ),
+        FULFILLED: FulfilledExecuteWorkflowWorkflowResultEvent,
+        REJECTED: RejectedExecuteWorkflowWorkflowResultEvent,
     })
     .transform<Vellum.ExecuteWorkflowWorkflowResultEvent>({
         transform: (value) => value,
@@ -26,11 +24,11 @@ export const ExecuteWorkflowWorkflowResultEvent: core.serialization.Schema<
 export declare namespace ExecuteWorkflowWorkflowResultEvent {
     type Raw = ExecuteWorkflowWorkflowResultEvent.Fulfilled | ExecuteWorkflowWorkflowResultEvent.Rejected;
 
-    interface Fulfilled extends serializers.FulfilledExecuteWorkflowWorkflowResultEvent.Raw {
+    interface Fulfilled extends FulfilledExecuteWorkflowWorkflowResultEvent.Raw {
         state: "FULFILLED";
     }
 
-    interface Rejected extends serializers.RejectedExecuteWorkflowWorkflowResultEvent.Raw {
+    interface Rejected extends RejectedExecuteWorkflowWorkflowResultEvent.Raw {
         state: "REJECTED";
     }
 }

@@ -5,16 +5,20 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { InitiatedWorkflowNodeResultEvent } from "./InitiatedWorkflowNodeResultEvent";
+import { StreamingWorkflowNodeResultEvent } from "./StreamingWorkflowNodeResultEvent";
+import { FulfilledWorkflowNodeResultEvent } from "./FulfilledWorkflowNodeResultEvent";
+import { RejectedWorkflowNodeResultEvent } from "./RejectedWorkflowNodeResultEvent";
 
 export const WorkflowNodeResultEvent: core.serialization.Schema<
     serializers.WorkflowNodeResultEvent.Raw,
     Vellum.WorkflowNodeResultEvent
 > = core.serialization
     .union("state", {
-        INITIATED: core.serialization.lazyObject(async () => (await import("..")).InitiatedWorkflowNodeResultEvent),
-        STREAMING: core.serialization.lazyObject(async () => (await import("..")).StreamingWorkflowNodeResultEvent),
-        FULFILLED: core.serialization.lazyObject(async () => (await import("..")).FulfilledWorkflowNodeResultEvent),
-        REJECTED: core.serialization.lazyObject(async () => (await import("..")).RejectedWorkflowNodeResultEvent),
+        INITIATED: InitiatedWorkflowNodeResultEvent,
+        STREAMING: StreamingWorkflowNodeResultEvent,
+        FULFILLED: FulfilledWorkflowNodeResultEvent,
+        REJECTED: RejectedWorkflowNodeResultEvent,
     })
     .transform<Vellum.WorkflowNodeResultEvent>({
         transform: (value) => value,
@@ -28,19 +32,19 @@ export declare namespace WorkflowNodeResultEvent {
         | WorkflowNodeResultEvent.Fulfilled
         | WorkflowNodeResultEvent.Rejected;
 
-    interface Initiated extends serializers.InitiatedWorkflowNodeResultEvent.Raw {
+    interface Initiated extends InitiatedWorkflowNodeResultEvent.Raw {
         state: "INITIATED";
     }
 
-    interface Streaming extends serializers.StreamingWorkflowNodeResultEvent.Raw {
+    interface Streaming extends StreamingWorkflowNodeResultEvent.Raw {
         state: "STREAMING";
     }
 
-    interface Fulfilled extends serializers.FulfilledWorkflowNodeResultEvent.Raw {
+    interface Fulfilled extends FulfilledWorkflowNodeResultEvent.Raw {
         state: "FULFILLED";
     }
 
-    interface Rejected extends serializers.RejectedWorkflowNodeResultEvent.Raw {
+    interface Rejected extends RejectedWorkflowNodeResultEvent.Raw {
         state: "REJECTED";
     }
 }

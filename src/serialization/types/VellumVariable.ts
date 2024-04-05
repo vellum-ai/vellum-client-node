@@ -5,18 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumVariableType } from "./VellumVariableType";
 
 export const VellumVariable: core.serialization.ObjectSchema<serializers.VellumVariable.Raw, Vellum.VellumVariable> =
     core.serialization.object({
         id: core.serialization.string(),
         key: core.serialization.string(),
-        type: core.serialization.lazy(async () => (await import("..")).VellumVariableType),
+        type: VellumVariableType,
     });
 
 export declare namespace VellumVariable {
     interface Raw {
         id: string;
         key: string;
-        type: serializers.VellumVariableType.Raw;
+        type: VellumVariableType.Raw;
     }
 }

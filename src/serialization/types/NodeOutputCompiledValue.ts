@@ -5,24 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { NodeOutputCompiledStringValue } from "./NodeOutputCompiledStringValue";
+import { NodeOutputCompiledNumberValue } from "./NodeOutputCompiledNumberValue";
+import { NodeOutputCompiledJsonValue } from "./NodeOutputCompiledJsonValue";
+import { NodeOutputCompiledChatHistoryValue } from "./NodeOutputCompiledChatHistoryValue";
+import { NodeOutputCompiledSearchResultsValue } from "./NodeOutputCompiledSearchResultsValue";
+import { NodeOutputCompiledErrorValue } from "./NodeOutputCompiledErrorValue";
+import { NodeOutputCompiledArrayValue } from "./NodeOutputCompiledArrayValue";
+import { NodeOutputCompiledFunctionValue } from "./NodeOutputCompiledFunctionValue";
 
 export const NodeOutputCompiledValue: core.serialization.Schema<
     serializers.NodeOutputCompiledValue.Raw,
     Vellum.NodeOutputCompiledValue
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledStringValue),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledNumberValue),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledJsonValue),
-        CHAT_HISTORY: core.serialization.lazyObject(
-            async () => (await import("..")).NodeOutputCompiledChatHistoryValue
-        ),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).NodeOutputCompiledSearchResultsValue
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledErrorValue),
-        ARRAY: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledArrayValue),
-        FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).NodeOutputCompiledFunctionValue),
+        STRING: NodeOutputCompiledStringValue,
+        NUMBER: NodeOutputCompiledNumberValue,
+        JSON: NodeOutputCompiledJsonValue,
+        CHAT_HISTORY: NodeOutputCompiledChatHistoryValue,
+        SEARCH_RESULTS: NodeOutputCompiledSearchResultsValue,
+        ERROR: NodeOutputCompiledErrorValue,
+        ARRAY: NodeOutputCompiledArrayValue,
+        FUNCTION_CALL: NodeOutputCompiledFunctionValue,
     })
     .transform<Vellum.NodeOutputCompiledValue>({
         transform: (value) => value,
@@ -40,35 +44,35 @@ export declare namespace NodeOutputCompiledValue {
         | NodeOutputCompiledValue.Array
         | NodeOutputCompiledValue.FunctionCall;
 
-    interface String extends serializers.NodeOutputCompiledStringValue.Raw {
+    interface String extends NodeOutputCompiledStringValue.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.NodeOutputCompiledNumberValue.Raw {
+    interface Number extends NodeOutputCompiledNumberValue.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.NodeOutputCompiledJsonValue.Raw {
+    interface Json extends NodeOutputCompiledJsonValue.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.NodeOutputCompiledChatHistoryValue.Raw {
+    interface ChatHistory extends NodeOutputCompiledChatHistoryValue.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.NodeOutputCompiledSearchResultsValue.Raw {
+    interface SearchResults extends NodeOutputCompiledSearchResultsValue.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.NodeOutputCompiledErrorValue.Raw {
+    interface Error extends NodeOutputCompiledErrorValue.Raw {
         type: "ERROR";
     }
 
-    interface Array extends serializers.NodeOutputCompiledArrayValue.Raw {
+    interface Array extends NodeOutputCompiledArrayValue.Raw {
         type: "ARRAY";
     }
 
-    interface FunctionCall extends serializers.NodeOutputCompiledFunctionValue.Raw {
+    interface FunctionCall extends NodeOutputCompiledFunctionValue.Raw {
         type: "FUNCTION_CALL";
     }
 }

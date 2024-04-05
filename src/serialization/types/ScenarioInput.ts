@@ -5,25 +5,22 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ScenarioInputTypeEnum } from "./ScenarioInputTypeEnum";
+import { ChatMessage } from "./ChatMessage";
 
 export const ScenarioInput: core.serialization.ObjectSchema<serializers.ScenarioInput.Raw, Vellum.ScenarioInput> =
     core.serialization.object({
         key: core.serialization.string(),
-        type: core.serialization.lazy(async () => (await import("..")).ScenarioInputTypeEnum).optional(),
+        type: ScenarioInputTypeEnum.optional(),
         value: core.serialization.string().optional(),
-        chatHistory: core.serialization.property(
-            "chat_history",
-            core.serialization
-                .list(core.serialization.lazyObject(async () => (await import("..")).ChatMessage))
-                .optional()
-        ),
+        chatHistory: core.serialization.property("chat_history", core.serialization.list(ChatMessage).optional()),
     });
 
 export declare namespace ScenarioInput {
     interface Raw {
         key: string;
-        type?: serializers.ScenarioInputTypeEnum.Raw | null;
+        type?: ScenarioInputTypeEnum.Raw | null;
         value?: string | null;
-        chat_history?: serializers.ChatMessage.Raw[] | null;
+        chat_history?: ChatMessage.Raw[] | null;
     }
 }

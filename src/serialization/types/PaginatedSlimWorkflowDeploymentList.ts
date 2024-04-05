@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SlimWorkflowDeployment } from "./SlimWorkflowDeployment";
 
 export const PaginatedSlimWorkflowDeploymentList: core.serialization.ObjectSchema<
     serializers.PaginatedSlimWorkflowDeploymentList.Raw,
@@ -13,9 +14,7 @@ export const PaginatedSlimWorkflowDeploymentList: core.serialization.ObjectSchem
     count: core.serialization.number().optional(),
     next: core.serialization.string().optional(),
     previous: core.serialization.string().optional(),
-    results: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).SlimWorkflowDeployment))
-        .optional(),
+    results: core.serialization.list(SlimWorkflowDeployment).optional(),
 });
 
 export declare namespace PaginatedSlimWorkflowDeploymentList {
@@ -23,6 +22,6 @@ export declare namespace PaginatedSlimWorkflowDeploymentList {
         count?: number | null;
         next?: string | null;
         previous?: string | null;
-        results?: serializers.SlimWorkflowDeployment.Raw[] | null;
+        results?: SlimWorkflowDeployment.Raw[] | null;
     }
 }

@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { VellumError } from "./VellumError";
 
 export const ExecutionErrorVellumValue: core.serialization.ObjectSchema<
     serializers.ExecutionErrorVellumValue.Raw,
@@ -12,13 +13,13 @@ export const ExecutionErrorVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.lazyObject(async () => (await import("..")).VellumError).optional(),
+    value: VellumError.optional(),
 });
 
 export declare namespace ExecutionErrorVellumValue {
     interface Raw {
         id: string;
         name: string;
-        value?: serializers.VellumError.Raw | null;
+        value?: VellumError.Raw | null;
     }
 }

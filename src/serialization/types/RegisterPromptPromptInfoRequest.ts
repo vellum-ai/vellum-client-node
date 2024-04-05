@@ -5,26 +5,23 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { PromptTemplateBlockDataRequest } from "./PromptTemplateBlockDataRequest";
+import { RegisteredPromptInputVariableRequest } from "./RegisteredPromptInputVariableRequest";
 
 export const RegisterPromptPromptInfoRequest: core.serialization.ObjectSchema<
     serializers.RegisterPromptPromptInfoRequest.Raw,
     Vellum.RegisterPromptPromptInfoRequest
 > = core.serialization.object({
-    promptBlockData: core.serialization.property(
-        "prompt_block_data",
-        core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlockDataRequest)
-    ),
+    promptBlockData: core.serialization.property("prompt_block_data", PromptTemplateBlockDataRequest),
     inputVariables: core.serialization.property(
         "input_variables",
-        core.serialization.list(
-            core.serialization.lazyObject(async () => (await import("..")).RegisteredPromptInputVariableRequest)
-        )
+        core.serialization.list(RegisteredPromptInputVariableRequest)
     ),
 });
 
 export declare namespace RegisterPromptPromptInfoRequest {
     interface Raw {
-        prompt_block_data: serializers.PromptTemplateBlockDataRequest.Raw;
-        input_variables: serializers.RegisteredPromptInputVariableRequest.Raw[];
+        prompt_block_data: PromptTemplateBlockDataRequest.Raw;
+        input_variables: RegisteredPromptInputVariableRequest.Raw[];
     }
 }

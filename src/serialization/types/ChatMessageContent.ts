@@ -5,16 +5,20 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { StringChatMessageContent } from "./StringChatMessageContent";
+import { FunctionCallChatMessageContent } from "./FunctionCallChatMessageContent";
+import { ArrayChatMessageContent } from "./ArrayChatMessageContent";
+import { ImageChatMessageContent } from "./ImageChatMessageContent";
 
 export const ChatMessageContent: core.serialization.Schema<
     serializers.ChatMessageContent.Raw,
     Vellum.ChatMessageContent
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).StringChatMessageContent),
-        FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).FunctionCallChatMessageContent),
-        ARRAY: core.serialization.lazyObject(async () => (await import("..")).ArrayChatMessageContent),
-        IMAGE: core.serialization.lazyObject(async () => (await import("..")).ImageChatMessageContent),
+        STRING: StringChatMessageContent,
+        FUNCTION_CALL: FunctionCallChatMessageContent,
+        ARRAY: ArrayChatMessageContent,
+        IMAGE: ImageChatMessageContent,
     })
     .transform<Vellum.ChatMessageContent>({
         transform: (value) => value,
@@ -28,19 +32,19 @@ export declare namespace ChatMessageContent {
         | ChatMessageContent.Array
         | ChatMessageContent.Image;
 
-    interface String extends serializers.StringChatMessageContent.Raw {
+    interface String extends StringChatMessageContent.Raw {
         type: "STRING";
     }
 
-    interface FunctionCall extends serializers.FunctionCallChatMessageContent.Raw {
+    interface FunctionCall extends FunctionCallChatMessageContent.Raw {
         type: "FUNCTION_CALL";
     }
 
-    interface Array extends serializers.ArrayChatMessageContent.Raw {
+    interface Array extends ArrayChatMessageContent.Raw {
         type: "ARRAY";
     }
 
-    interface Image extends serializers.ImageChatMessageContent.Raw {
+    interface Image extends ImageChatMessageContent.Raw {
         type: "IMAGE";
     }
 }

@@ -5,21 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { NodeInputCompiledStringValue } from "./NodeInputCompiledStringValue";
+import { NodeInputCompiledNumberValue } from "./NodeInputCompiledNumberValue";
+import { NodeInputCompiledJsonValue } from "./NodeInputCompiledJsonValue";
+import { NodeInputCompiledChatHistoryValue } from "./NodeInputCompiledChatHistoryValue";
+import { NodeInputCompiledSearchResultsValue } from "./NodeInputCompiledSearchResultsValue";
+import { NodeInputCompiledErrorValue } from "./NodeInputCompiledErrorValue";
+import { NodeInputCompiledArrayValue } from "./NodeInputCompiledArrayValue";
+import { NodeInputCompiledFunctionCall } from "./NodeInputCompiledFunctionCall";
 
 export const NodeInputVariableCompiledValue: core.serialization.Schema<
     serializers.NodeInputVariableCompiledValue.Raw,
     Vellum.NodeInputVariableCompiledValue
 > = core.serialization
     .union("type", {
-        STRING: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledStringValue),
-        NUMBER: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledNumberValue),
-        JSON: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledJsonValue),
-        CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledChatHistoryValue),
-        SEARCH_RESULTS: core.serialization.lazyObject(
-            async () => (await import("..")).NodeInputCompiledSearchResultsValue
-        ),
-        ERROR: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledErrorValue),
-        ARRAY: core.serialization.lazyObject(async () => (await import("..")).NodeInputCompiledArrayValue),
+        STRING: NodeInputCompiledStringValue,
+        NUMBER: NodeInputCompiledNumberValue,
+        JSON: NodeInputCompiledJsonValue,
+        CHAT_HISTORY: NodeInputCompiledChatHistoryValue,
+        SEARCH_RESULTS: NodeInputCompiledSearchResultsValue,
+        ERROR: NodeInputCompiledErrorValue,
+        ARRAY: NodeInputCompiledArrayValue,
+        FUNCTION_CALL: NodeInputCompiledFunctionCall,
     })
     .transform<Vellum.NodeInputVariableCompiledValue>({
         transform: (value) => value,
@@ -34,33 +41,38 @@ export declare namespace NodeInputVariableCompiledValue {
         | NodeInputVariableCompiledValue.ChatHistory
         | NodeInputVariableCompiledValue.SearchResults
         | NodeInputVariableCompiledValue.Error
-        | NodeInputVariableCompiledValue.Array;
+        | NodeInputVariableCompiledValue.Array
+        | NodeInputVariableCompiledValue.FunctionCall;
 
-    interface String extends serializers.NodeInputCompiledStringValue.Raw {
+    interface String extends NodeInputCompiledStringValue.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.NodeInputCompiledNumberValue.Raw {
+    interface Number extends NodeInputCompiledNumberValue.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.NodeInputCompiledJsonValue.Raw {
+    interface Json extends NodeInputCompiledJsonValue.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.NodeInputCompiledChatHistoryValue.Raw {
+    interface ChatHistory extends NodeInputCompiledChatHistoryValue.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.NodeInputCompiledSearchResultsValue.Raw {
+    interface SearchResults extends NodeInputCompiledSearchResultsValue.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Error extends serializers.NodeInputCompiledErrorValue.Raw {
+    interface Error extends NodeInputCompiledErrorValue.Raw {
         type: "ERROR";
     }
 
-    interface Array extends serializers.NodeInputCompiledArrayValue.Raw {
+    interface Array extends NodeInputCompiledArrayValue.Raw {
         type: "ARRAY";
+    }
+
+    interface FunctionCall extends NodeInputCompiledFunctionCall.Raw {
+        type: "FUNCTION_CALL";
     }
 }

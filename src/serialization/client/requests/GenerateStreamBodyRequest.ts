@@ -5,6 +5,8 @@
 import * as serializers from "../..";
 import * as Vellum from "../../../api";
 import * as core from "../../../core";
+import { GenerateRequest } from "../../types/GenerateRequest";
+import { GenerateOptionsRequest } from "../../types/GenerateOptionsRequest";
 
 export const GenerateStreamBodyRequest: core.serialization.Schema<
     serializers.GenerateStreamBodyRequest.Raw,
@@ -12,17 +14,15 @@ export const GenerateStreamBodyRequest: core.serialization.Schema<
 > = core.serialization.object({
     deploymentId: core.serialization.property("deployment_id", core.serialization.string().optional()),
     deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),
-    requests: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("../..")).GenerateRequest)
-    ),
-    options: core.serialization.lazyObject(async () => (await import("../..")).GenerateOptionsRequest).optional(),
+    requests: core.serialization.list(GenerateRequest),
+    options: GenerateOptionsRequest.optional(),
 });
 
 export declare namespace GenerateStreamBodyRequest {
     interface Raw {
         deployment_id?: string | null;
         deployment_name?: string | null;
-        requests: serializers.GenerateRequest.Raw[];
-        options?: serializers.GenerateOptionsRequest.Raw | null;
+        requests: GenerateRequest.Raw[];
+        options?: GenerateOptionsRequest.Raw | null;
     }
 }

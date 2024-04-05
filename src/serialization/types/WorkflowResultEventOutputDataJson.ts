@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
 
 export const WorkflowResultEventOutputDataJson: core.serialization.ObjectSchema<
     serializers.WorkflowResultEventOutputDataJson.Raw,
@@ -12,7 +13,7 @@ export const WorkflowResultEventOutputDataJson: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
-    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
+    state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
     value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
@@ -22,7 +23,7 @@ export declare namespace WorkflowResultEventOutputDataJson {
     interface Raw {
         id?: string | null;
         name: string;
-        state: serializers.WorkflowNodeResultEventState.Raw;
+        state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
         value?: Record<string, unknown> | null;

@@ -5,19 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowOutputString } from "./WorkflowOutputString";
+import { WorkflowOutputNumber } from "./WorkflowOutputNumber";
+import { WorkflowOutputJson } from "./WorkflowOutputJson";
+import { WorkflowOutputChatHistory } from "./WorkflowOutputChatHistory";
+import { WorkflowOutputSearchResults } from "./WorkflowOutputSearchResults";
+import { WorkflowOutputArray } from "./WorkflowOutputArray";
+import { WorkflowOutputError } from "./WorkflowOutputError";
+import { WorkflowOutputFunctionCall } from "./WorkflowOutputFunctionCall";
+import { WorkflowOutputImage } from "./WorkflowOutputImage";
 
 export const WorkflowOutput: core.serialization.Schema<serializers.WorkflowOutput.Raw, Vellum.WorkflowOutput> =
     core.serialization
         .union("type", {
-            STRING: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputString),
-            NUMBER: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputNumber),
-            JSON: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputJson),
-            CHAT_HISTORY: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputChatHistory),
-            SEARCH_RESULTS: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputSearchResults),
-            ARRAY: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputArray),
-            ERROR: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputError),
-            FUNCTION_CALL: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputFunctionCall),
-            IMAGE: core.serialization.lazyObject(async () => (await import("..")).WorkflowOutputImage),
+            STRING: WorkflowOutputString,
+            NUMBER: WorkflowOutputNumber,
+            JSON: WorkflowOutputJson,
+            CHAT_HISTORY: WorkflowOutputChatHistory,
+            SEARCH_RESULTS: WorkflowOutputSearchResults,
+            ARRAY: WorkflowOutputArray,
+            ERROR: WorkflowOutputError,
+            FUNCTION_CALL: WorkflowOutputFunctionCall,
+            IMAGE: WorkflowOutputImage,
         })
         .transform<Vellum.WorkflowOutput>({
             transform: (value) => value,
@@ -36,39 +45,39 @@ export declare namespace WorkflowOutput {
         | WorkflowOutput.FunctionCall
         | WorkflowOutput.Image;
 
-    interface String extends serializers.WorkflowOutputString.Raw {
+    interface String extends WorkflowOutputString.Raw {
         type: "STRING";
     }
 
-    interface Number extends serializers.WorkflowOutputNumber.Raw {
+    interface Number extends WorkflowOutputNumber.Raw {
         type: "NUMBER";
     }
 
-    interface Json extends serializers.WorkflowOutputJson.Raw {
+    interface Json extends WorkflowOutputJson.Raw {
         type: "JSON";
     }
 
-    interface ChatHistory extends serializers.WorkflowOutputChatHistory.Raw {
+    interface ChatHistory extends WorkflowOutputChatHistory.Raw {
         type: "CHAT_HISTORY";
     }
 
-    interface SearchResults extends serializers.WorkflowOutputSearchResults.Raw {
+    interface SearchResults extends WorkflowOutputSearchResults.Raw {
         type: "SEARCH_RESULTS";
     }
 
-    interface Array extends serializers.WorkflowOutputArray.Raw {
+    interface Array extends WorkflowOutputArray.Raw {
         type: "ARRAY";
     }
 
-    interface Error extends serializers.WorkflowOutputError.Raw {
+    interface Error extends WorkflowOutputError.Raw {
         type: "ERROR";
     }
 
-    interface FunctionCall extends serializers.WorkflowOutputFunctionCall.Raw {
+    interface FunctionCall extends WorkflowOutputFunctionCall.Raw {
         type: "FUNCTION_CALL";
     }
 
-    interface Image extends serializers.WorkflowOutputImage.Raw {
+    interface Image extends WorkflowOutputImage.Raw {
         type: "IMAGE";
     }
 }

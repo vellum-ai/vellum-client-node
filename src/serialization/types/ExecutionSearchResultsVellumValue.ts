@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SearchResult } from "./SearchResult";
 
 export const ExecutionSearchResultsVellumValue: core.serialization.ObjectSchema<
     serializers.ExecutionSearchResultsVellumValue.Raw,
@@ -12,15 +13,13 @@ export const ExecutionSearchResultsVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).SearchResult))
-        .optional(),
+    value: core.serialization.list(SearchResult).optional(),
 });
 
 export declare namespace ExecutionSearchResultsVellumValue {
     interface Raw {
         id: string;
         name: string;
-        value?: serializers.SearchResult.Raw[] | null;
+        value?: SearchResult.Raw[] | null;
     }
 }

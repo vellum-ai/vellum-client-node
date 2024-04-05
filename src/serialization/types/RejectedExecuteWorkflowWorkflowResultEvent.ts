@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowEventError } from "./WorkflowEventError";
 
 export const RejectedExecuteWorkflowWorkflowResultEvent: core.serialization.ObjectSchema<
     serializers.RejectedExecuteWorkflowWorkflowResultEvent.Raw,
@@ -12,13 +13,13 @@ export const RejectedExecuteWorkflowWorkflowResultEvent: core.serialization.Obje
 > = core.serialization.object({
     id: core.serialization.string(),
     ts: core.serialization.date(),
-    error: core.serialization.lazyObject(async () => (await import("..")).WorkflowEventError),
+    error: WorkflowEventError,
 });
 
 export declare namespace RejectedExecuteWorkflowWorkflowResultEvent {
     interface Raw {
         id: string;
         ts: string;
-        error: serializers.WorkflowEventError.Raw;
+        error: WorkflowEventError.Raw;
     }
 }

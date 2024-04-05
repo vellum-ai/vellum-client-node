@@ -5,16 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { FunctionCall } from "./FunctionCall";
 
 export const FunctionCallVariableValue: core.serialization.ObjectSchema<
     serializers.FunctionCallVariableValue.Raw,
     Vellum.FunctionCallVariableValue
 > = core.serialization.object({
-    value: core.serialization.lazy(async () => (await import("..")).FunctionCall),
+    value: FunctionCall,
 });
 
 export declare namespace FunctionCallVariableValue {
     interface Raw {
-        value: serializers.FunctionCall.Raw;
+        value: FunctionCall.Raw;
     }
 }

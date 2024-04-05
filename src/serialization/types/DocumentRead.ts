@@ -5,6 +5,9 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { ProcessingStateEnum } from "./ProcessingStateEnum";
+import { DocumentStatus } from "./DocumentStatus";
+import { DocumentDocumentToDocumentIndex } from "./DocumentDocumentToDocumentIndex";
 
 export const DocumentRead: core.serialization.ObjectSchema<serializers.DocumentRead.Raw, Vellum.DocumentRead> =
     core.serialization.object({
@@ -12,18 +15,13 @@ export const DocumentRead: core.serialization.ObjectSchema<serializers.DocumentR
         externalId: core.serialization.property("external_id", core.serialization.string().optional()),
         lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.date()),
         label: core.serialization.string(),
-        processingState: core.serialization.property(
-            "processing_state",
-            core.serialization.lazy(async () => (await import("..")).ProcessingStateEnum).optional()
-        ),
-        status: core.serialization.lazy(async () => (await import("..")).DocumentStatus).optional(),
+        processingState: core.serialization.property("processing_state", ProcessingStateEnum.optional()),
+        status: DocumentStatus.optional(),
         originalFileUrl: core.serialization.property("original_file_url", core.serialization.string().optional()),
         processedFileUrl: core.serialization.property("processed_file_url", core.serialization.string().optional()),
         documentToDocumentIndexes: core.serialization.property(
             "document_to_document_indexes",
-            core.serialization.list(
-                core.serialization.lazyObject(async () => (await import("..")).DocumentDocumentToDocumentIndex)
-            )
+            core.serialization.list(DocumentDocumentToDocumentIndex)
         ),
         metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
     });
@@ -34,11 +32,11 @@ export declare namespace DocumentRead {
         external_id?: string | null;
         last_uploaded_at: string;
         label: string;
-        processing_state?: serializers.ProcessingStateEnum.Raw | null;
-        status?: serializers.DocumentStatus.Raw | null;
+        processing_state?: ProcessingStateEnum.Raw | null;
+        status?: DocumentStatus.Raw | null;
         original_file_url?: string | null;
         processed_file_url?: string | null;
-        document_to_document_indexes: serializers.DocumentDocumentToDocumentIndex.Raw[];
+        document_to_document_indexes: DocumentDocumentToDocumentIndex.Raw[];
         metadata?: Record<string, unknown> | null;
     }
 }

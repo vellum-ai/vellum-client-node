@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowNodeResultData } from "./WorkflowNodeResultData";
+import { NodeInputVariableCompiledValue } from "./NodeInputVariableCompiledValue";
 
 export const InitiatedWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     serializers.InitiatedWorkflowNodeResultEvent.Raw,
@@ -14,13 +16,11 @@ export const InitiatedWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     ts: core.serialization.date().optional(),
-    data: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultData).optional(),
+    data: WorkflowNodeResultData.optional(),
     sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
     inputValues: core.serialization.property(
         "input_values",
-        core.serialization
-            .list(core.serialization.lazy(async () => (await import("..")).NodeInputVariableCompiledValue))
-            .optional()
+        core.serialization.list(NodeInputVariableCompiledValue).optional()
     ),
 });
 
@@ -30,8 +30,8 @@ export declare namespace InitiatedWorkflowNodeResultEvent {
         node_id: string;
         node_result_id: string;
         ts?: string | null;
-        data?: serializers.WorkflowNodeResultData.Raw | null;
+        data?: WorkflowNodeResultData.Raw | null;
         source_execution_id?: string | null;
-        input_values?: serializers.NodeInputVariableCompiledValue.Raw[] | null;
+        input_values?: NodeInputVariableCompiledValue.Raw[] | null;
     }
 }

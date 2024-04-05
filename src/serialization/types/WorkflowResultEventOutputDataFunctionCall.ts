@@ -5,6 +5,8 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
+import { FunctionCall } from "./FunctionCall";
 
 export const WorkflowResultEventOutputDataFunctionCall: core.serialization.ObjectSchema<
     serializers.WorkflowResultEventOutputDataFunctionCall.Raw,
@@ -12,19 +14,19 @@ export const WorkflowResultEventOutputDataFunctionCall: core.serialization.Objec
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
-    state: core.serialization.lazy(async () => (await import("..")).WorkflowNodeResultEventState),
+    state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
-    value: core.serialization.lazy(async () => (await import("..")).FunctionCall).optional(),
+    value: FunctionCall.optional(),
 });
 
 export declare namespace WorkflowResultEventOutputDataFunctionCall {
     interface Raw {
         id?: string | null;
         name: string;
-        state: serializers.WorkflowNodeResultEventState.Raw;
+        state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
-        value?: serializers.FunctionCall.Raw | null;
+        value?: FunctionCall.Raw | null;
     }
 }

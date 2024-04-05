@@ -10,7 +10,9 @@ export type CodeExecutionNodeResultOutput =
     | Vellum.CodeExecutionNodeResultOutput.Json
     | Vellum.CodeExecutionNodeResultOutput.ChatHistory
     | Vellum.CodeExecutionNodeResultOutput.SearchResults
-    | Vellum.CodeExecutionNodeResultOutput.Error_;
+    | Vellum.CodeExecutionNodeResultOutput.Error_
+    | Vellum.CodeExecutionNodeResultOutput.Array
+    | Vellum.CodeExecutionNodeResultOutput.FunctionCall;
 
 export declare namespace CodeExecutionNodeResultOutput {
     interface String extends Vellum.CodeExecutionNodeStringResult {
@@ -35,5 +37,13 @@ export declare namespace CodeExecutionNodeResultOutput {
 
     interface Error_ extends Vellum.CodeExecutionNodeErrorResult {
         type: "ERROR";
+    }
+
+    interface Array extends Vellum.CodeExecutionNodeArrayResult {
+        type: "ARRAY";
+    }
+
+    interface FunctionCall extends Vellum.CodeExecutionNodeFunctionCallResult {
+        type: "FUNCTION_CALL";
     }
 }

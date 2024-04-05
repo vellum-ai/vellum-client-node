@@ -5,28 +5,21 @@
 import * as serializers from "../..";
 import * as Vellum from "../../../api";
 import * as core from "../../../core";
+import { PromptDeploymentInputRequest } from "../../types/PromptDeploymentInputRequest";
+import { PromptDeploymentExpandMetaRequestRequest } from "../../types/PromptDeploymentExpandMetaRequestRequest";
+import { RawPromptExecutionOverridesRequest } from "../../types/RawPromptExecutionOverridesRequest";
 
 export const ExecutePromptStreamRequest: core.serialization.Schema<
     serializers.ExecutePromptStreamRequest.Raw,
     Vellum.ExecutePromptStreamRequest
 > = core.serialization.object({
-    inputs: core.serialization.list(
-        core.serialization.lazy(async () => (await import("../..")).PromptDeploymentInputRequest)
-    ),
+    inputs: core.serialization.list(PromptDeploymentInputRequest),
     promptDeploymentId: core.serialization.property("prompt_deployment_id", core.serialization.string().optional()),
     promptDeploymentName: core.serialization.property("prompt_deployment_name", core.serialization.string().optional()),
     releaseTag: core.serialization.property("release_tag", core.serialization.string().optional()),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    expandMeta: core.serialization.property(
-        "expand_meta",
-        core.serialization
-            .lazyObject(async () => (await import("../..")).PromptDeploymentExpandMetaRequestRequest)
-            .optional()
-    ),
-    rawOverrides: core.serialization.property(
-        "raw_overrides",
-        core.serialization.lazyObject(async () => (await import("../..")).RawPromptExecutionOverridesRequest).optional()
-    ),
+    expandMeta: core.serialization.property("expand_meta", PromptDeploymentExpandMetaRequestRequest.optional()),
+    rawOverrides: core.serialization.property("raw_overrides", RawPromptExecutionOverridesRequest.optional()),
     expandRaw: core.serialization.property(
         "expand_raw",
         core.serialization.list(core.serialization.string()).optional()
@@ -36,13 +29,13 @@ export const ExecutePromptStreamRequest: core.serialization.Schema<
 
 export declare namespace ExecutePromptStreamRequest {
     interface Raw {
-        inputs: serializers.PromptDeploymentInputRequest.Raw[];
+        inputs: PromptDeploymentInputRequest.Raw[];
         prompt_deployment_id?: string | null;
         prompt_deployment_name?: string | null;
         release_tag?: string | null;
         external_id?: string | null;
-        expand_meta?: serializers.PromptDeploymentExpandMetaRequestRequest.Raw | null;
-        raw_overrides?: serializers.RawPromptExecutionOverridesRequest.Raw | null;
+        expand_meta?: PromptDeploymentExpandMetaRequestRequest.Raw | null;
+        raw_overrides?: RawPromptExecutionOverridesRequest.Raw | null;
         expand_raw?: string[] | null;
         metadata?: Record<string, unknown> | null;
     }
