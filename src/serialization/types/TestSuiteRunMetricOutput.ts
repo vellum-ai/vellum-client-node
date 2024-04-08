@@ -5,6 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { TestSuiteRunMetricStringOutput } from "./TestSuiteRunMetricStringOutput";
 import { TestSuiteRunMetricNumberOutput } from "./TestSuiteRunMetricNumberOutput";
 import { TestSuiteRunMetricErrorOutput } from "./TestSuiteRunMetricErrorOutput";
 
@@ -13,6 +14,7 @@ export const TestSuiteRunMetricOutput: core.serialization.Schema<
     Vellum.TestSuiteRunMetricOutput
 > = core.serialization
     .union("type", {
+        STRING: TestSuiteRunMetricStringOutput,
         NUMBER: TestSuiteRunMetricNumberOutput,
         ERROR: TestSuiteRunMetricErrorOutput,
     })
@@ -22,7 +24,11 @@ export const TestSuiteRunMetricOutput: core.serialization.Schema<
     });
 
 export declare namespace TestSuiteRunMetricOutput {
-    type Raw = TestSuiteRunMetricOutput.Number | TestSuiteRunMetricOutput.Error;
+    type Raw = TestSuiteRunMetricOutput.String | TestSuiteRunMetricOutput.Number | TestSuiteRunMetricOutput.Error;
+
+    interface String extends TestSuiteRunMetricStringOutput.Raw {
+        type: "STRING";
+    }
 
     interface Number extends TestSuiteRunMetricNumberOutput.Raw {
         type: "NUMBER";

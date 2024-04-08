@@ -4,9 +4,16 @@
 
 import * as Vellum from "..";
 
-export type TestSuiteRunMetricOutput = Vellum.TestSuiteRunMetricOutput.Number | Vellum.TestSuiteRunMetricOutput.Error_;
+export type TestSuiteRunMetricOutput =
+    | Vellum.TestSuiteRunMetricOutput.String
+    | Vellum.TestSuiteRunMetricOutput.Number
+    | Vellum.TestSuiteRunMetricOutput.Error_;
 
 export declare namespace TestSuiteRunMetricOutput {
+    interface String extends Vellum.TestSuiteRunMetricStringOutput {
+        type: "STRING";
+    }
+
     interface Number extends Vellum.TestSuiteRunMetricNumberOutput {
         type: "NUMBER";
     }
