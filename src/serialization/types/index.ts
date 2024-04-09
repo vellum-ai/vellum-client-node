@@ -94,6 +94,7 @@ export * from "./JsonEnum";
 export * from "./JsonVariableValue";
 export * from "./LogicalOperator";
 export * from "./LogprobsEnum";
+export * from "./MlModelUsage";
 export * from "./MetadataFilterConfigRequest";
 export * from "./MetadataFilterRuleCombinator";
 export * from "./MetadataFilterRuleRequest";

@@ -10,4 +10,5 @@ import * as Vellum from "..";
 export interface FulfilledPromptExecutionMeta {
     latency?: number;
     finishReason?: Vellum.FinishReasonEnum;
+    usage?: Vellum.MlModelUsage;
 }

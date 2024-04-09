@@ -5,12 +5,14 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { MlModelUsage } from "./MlModelUsage";
 import { FinishReasonEnum } from "./FinishReasonEnum";
 
 export const PromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.PromptExecutionMeta.Raw,
     Vellum.PromptExecutionMeta
 > = core.serialization.object({
+    usage: MlModelUsage.optional(),
     modelName: core.serialization.property("model_name", core.serialization.string().optional()),
     latency: core.serialization.number().optional(),
     deploymentReleaseTag: core.serialization.property("deployment_release_tag", core.serialization.string().optional()),
@@ -20,6 +22,7 @@ export const PromptExecutionMeta: core.serialization.ObjectSchema<
 
 export declare namespace PromptExecutionMeta {
     interface Raw {
+        usage?: MlModelUsage.Raw | null;
         model_name?: string | null;
         latency?: number | null;
         deployment_release_tag?: string | null;

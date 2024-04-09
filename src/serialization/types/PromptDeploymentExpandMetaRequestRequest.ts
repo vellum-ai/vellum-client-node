@@ -18,6 +18,7 @@ export const PromptDeploymentExpandMetaRequestRequest: core.serialization.Object
     ),
     promptVersionId: core.serialization.property("prompt_version_id", core.serialization.boolean().optional()),
     finishReason: core.serialization.property("finish_reason", core.serialization.boolean().optional()),
+    usage: core.serialization.boolean().optional(),
 });
 
 export declare namespace PromptDeploymentExpandMetaRequestRequest {
@@ -27,5 +28,6 @@ export declare namespace PromptDeploymentExpandMetaRequestRequest {
         deployment_release_tag?: boolean | null;
         prompt_version_id?: boolean | null;
         finish_reason?: boolean | null;
+        usage?: boolean | null;
     }
 }

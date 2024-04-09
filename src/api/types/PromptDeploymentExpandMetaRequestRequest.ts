@@ -13,4 +13,6 @@ export interface PromptDeploymentExpandMetaRequestRequest {
     promptVersionId?: boolean;
     /** If enabled, the response will include the reason provided by the model for why the execution finished. */
     finishReason?: boolean;
+    /** If enabled, the response will include model host usage tracking. This may increase latency for some model hosts. */
+    usage?: boolean;
 }

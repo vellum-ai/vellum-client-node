@@ -6,6 +6,7 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 import { FinishReasonEnum } from "./FinishReasonEnum";
+import { MlModelUsage } from "./MlModelUsage";
 
 export const FulfilledPromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.FulfilledPromptExecutionMeta.Raw,
@@ -13,11 +14,13 @@ export const FulfilledPromptExecutionMeta: core.serialization.ObjectSchema<
 > = core.serialization.object({
     latency: core.serialization.number().optional(),
     finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
+    usage: MlModelUsage.optional(),
 });
 
 export declare namespace FulfilledPromptExecutionMeta {
     interface Raw {
         latency?: number | null;
         finish_reason?: FinishReasonEnum.Raw | null;
+        usage?: MlModelUsage.Raw | null;
     }
 }
