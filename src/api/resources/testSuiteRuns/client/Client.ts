@@ -41,7 +41,7 @@ export class TestSuiteRuns {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.21",
+                "X-Fern-SDK-Version": "0.3.22",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -99,7 +99,7 @@ export class TestSuiteRuns {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.21",
+                "X-Fern-SDK-Version": "0.3.22",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -144,8 +144,16 @@ export class TestSuiteRuns {
         request: Vellum.TestSuiteRunsListExecutionsRequest = {},
         requestOptions?: TestSuiteRuns.RequestOptions
     ): Promise<Vellum.PaginatedTestSuiteRunExecutionList> {
-        const { limit, offset } = request;
+        const { expand, limit, offset } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
+        if (expand != null) {
+            if (Array.isArray(expand)) {
+                _queryParams["expand"] = expand.map((item) => item);
+            } else {
+                _queryParams["expand"] = expand;
+            }
+        }
+
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
         }
@@ -164,7 +172,7 @@ export class TestSuiteRuns {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.21",
+                "X-Fern-SDK-Version": "0.3.22",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

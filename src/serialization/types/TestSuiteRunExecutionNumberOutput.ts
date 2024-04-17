@@ -10,13 +10,15 @@ export const TestSuiteRunExecutionNumberOutput: core.serialization.ObjectSchema<
     serializers.TestSuiteRunExecutionNumberOutput.Raw,
     Vellum.TestSuiteRunExecutionNumberOutput
 > = core.serialization.object({
-    outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
+    name: core.serialization.string(),
     value: core.serialization.number().optional(),
+    outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
 export declare namespace TestSuiteRunExecutionNumberOutput {
     interface Raw {
-        output_variable_id: string;
+        name: string;
         value?: number | null;
+        output_variable_id: string;
     }
 }

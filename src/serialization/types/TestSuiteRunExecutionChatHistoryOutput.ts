@@ -11,13 +11,15 @@ export const TestSuiteRunExecutionChatHistoryOutput: core.serialization.ObjectSc
     serializers.TestSuiteRunExecutionChatHistoryOutput.Raw,
     Vellum.TestSuiteRunExecutionChatHistoryOutput
 > = core.serialization.object({
-    outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
+    name: core.serialization.string(),
     value: core.serialization.list(ChatMessage).optional(),
+    outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
 export declare namespace TestSuiteRunExecutionChatHistoryOutput {
     interface Raw {
-        output_variable_id: string;
+        name: string;
         value?: ChatMessage.Raw[] | null;
+        output_variable_id: string;
     }
 }

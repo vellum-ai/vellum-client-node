@@ -4,7 +4,10 @@
 
 import * as Vellum from "..";
 
+/**
+ * Named Test Case value that is of type ERROR
+ */
 export interface NamedTestCaseErrorVariableValueRequest {
-    name: string;
     value?: Vellum.VellumErrorRequest;
+    name: string;
 }

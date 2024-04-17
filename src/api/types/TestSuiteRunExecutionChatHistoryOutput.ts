@@ -4,7 +4,11 @@
 
 import * as Vellum from "..";
 
+/**
+ * Execution output of an entity evaluated during a Test Suite Run that is of type CHAT_HISTORY
+ */
 export interface TestSuiteRunExecutionChatHistoryOutput {
-    outputVariableId: string;
+    name: string;
     value?: Vellum.ChatMessage[];
+    outputVariableId: string;
 }

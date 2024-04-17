@@ -4,7 +4,10 @@
 
 import * as Vellum from "..";
 
+/**
+ * Named Test Case value that is of type SEARCH_RESULTS
+ */
 export interface NamedTestCaseSearchResultsVariableValueRequest {
-    name: string;
     value?: Vellum.SearchResultRequest[];
+    name: string;
 }

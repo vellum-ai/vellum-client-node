@@ -8,4 +8,5 @@ export interface PromptTemplateBlockRequest {
     id: string;
     blockType: Vellum.BlockTypeEnum;
     properties: Vellum.PromptTemplateBlockPropertiesRequest;
+    state?: Vellum.PromptTemplateBlockState;
 }

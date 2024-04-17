@@ -11,13 +11,13 @@ export const NamedTestCaseSearchResultsVariableValueRequest: core.serialization.
     serializers.NamedTestCaseSearchResultsVariableValueRequest.Raw,
     Vellum.NamedTestCaseSearchResultsVariableValueRequest
 > = core.serialization.object({
-    name: core.serialization.string(),
     value: core.serialization.list(SearchResultRequest).optional(),
+    name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseSearchResultsVariableValueRequest {
     interface Raw {
-        name: string;
         value?: SearchResultRequest.Raw[] | null;
+        name: string;
     }
 }

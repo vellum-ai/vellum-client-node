@@ -18,10 +18,7 @@ export const FulfilledWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     ts: core.serialization.date().optional(),
     data: WorkflowNodeResultData.optional(),
     sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
-    outputValues: core.serialization.property(
-        "output_values",
-        core.serialization.list(NodeOutputCompiledValue).optional()
-    ),
+    outputValues: core.serialization.property("output_values", core.serialization.list(NodeOutputCompiledValue)),
     mocked: core.serialization.boolean().optional(),
 });
 
@@ -33,7 +30,7 @@ export declare namespace FulfilledWorkflowNodeResultEvent {
         ts?: string | null;
         data?: WorkflowNodeResultData.Raw | null;
         source_execution_id?: string | null;
-        output_values?: NodeOutputCompiledValue.Raw[] | null;
+        output_values: NodeOutputCompiledValue.Raw[];
         mocked?: boolean | null;
     }
 }

@@ -4,7 +4,11 @@
 
 import * as Vellum from "..";
 
+/**
+ * Execution output of an entity evaluated during a Test Suite Run that is of type SEARCH_RESULTS
+ */
 export interface TestSuiteRunExecutionSearchResultsOutput {
-    outputVariableId: string;
+    name: string;
     value?: Vellum.SearchResult[];
+    outputVariableId: string;
 }

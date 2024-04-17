@@ -7,4 +7,6 @@ import * as Vellum from "..";
 export interface TestSuiteRunExecutionMetricResult {
     metricId: string;
     outputs: Vellum.TestSuiteRunMetricOutput[];
+    metricLabel?: string;
+    metricDefinition?: Vellum.TestSuiteRunExecutionMetricDefinition;
 }

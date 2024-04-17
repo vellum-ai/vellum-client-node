@@ -11,13 +11,15 @@ export const TestSuiteRunExecutionSearchResultsOutput: core.serialization.Object
     serializers.TestSuiteRunExecutionSearchResultsOutput.Raw,
     Vellum.TestSuiteRunExecutionSearchResultsOutput
 > = core.serialization.object({
-    outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
+    name: core.serialization.string(),
     value: core.serialization.list(SearchResult).optional(),
+    outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
 export declare namespace TestSuiteRunExecutionSearchResultsOutput {
     interface Raw {
-        output_variable_id: string;
+        name: string;
         value?: SearchResult.Raw[] | null;
+        output_variable_id: string;
     }
 }

@@ -6,6 +6,7 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 import { BlockTypeEnum } from "./BlockTypeEnum";
+import { PromptTemplateBlockState } from "./PromptTemplateBlockState";
 
 export const PromptTemplateBlock: core.serialization.ObjectSchema<
     serializers.PromptTemplateBlock.Raw,
@@ -14,6 +15,7 @@ export const PromptTemplateBlock: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     blockType: core.serialization.property("block_type", BlockTypeEnum),
     properties: core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlockProperties),
+    state: PromptTemplateBlockState.optional(),
 });
 
 export declare namespace PromptTemplateBlock {
@@ -21,5 +23,6 @@ export declare namespace PromptTemplateBlock {
         id: string;
         block_type: BlockTypeEnum.Raw;
         properties: serializers.PromptTemplateBlockProperties.Raw;
+        state?: PromptTemplateBlockState.Raw | null;
     }
 }
