@@ -5,10 +5,9 @@
 import * as Vellum from "..";
 
 /**
- * An error value for a variable in a Test Case.
+ * Named Test Case value that is of type ERROR
  */
-export interface TestCaseErrorVariableValue {
-    variableId: string;
-    name: string;
+export interface NamedTestCaseErrorVariableValue {
     value?: Vellum.VellumError;
+    name: string;
 }

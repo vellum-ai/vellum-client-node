@@ -12,12 +12,14 @@ export const TestCaseSearchResultsVariableValue: core.serialization.ObjectSchema
     Vellum.TestCaseSearchResultsVariableValue
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
+    name: core.serialization.string(),
     value: core.serialization.list(SearchResult).optional(),
 });
 
 export declare namespace TestCaseSearchResultsVariableValue {
     interface Raw {
         variable_id: string;
+        name: string;
         value?: SearchResult.Raw[] | null;
     }
 }

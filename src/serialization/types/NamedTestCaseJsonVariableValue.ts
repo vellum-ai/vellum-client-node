@@ -6,19 +6,17 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 
-export const TestCaseJsonVariableValue: core.serialization.ObjectSchema<
-    serializers.TestCaseJsonVariableValue.Raw,
-    Vellum.TestCaseJsonVariableValue
+export const NamedTestCaseJsonVariableValue: core.serialization.ObjectSchema<
+    serializers.NamedTestCaseJsonVariableValue.Raw,
+    Vellum.NamedTestCaseJsonVariableValue
 > = core.serialization.object({
-    variableId: core.serialization.property("variable_id", core.serialization.string()),
-    name: core.serialization.string(),
     value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    name: core.serialization.string(),
 });
 
-export declare namespace TestCaseJsonVariableValue {
+export declare namespace NamedTestCaseJsonVariableValue {
     interface Raw {
-        variable_id: string;
-        name: string;
         value?: Record<string, unknown> | null;
+        name: string;
     }
 }

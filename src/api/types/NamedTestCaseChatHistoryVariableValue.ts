@@ -5,10 +5,9 @@
 import * as Vellum from "..";
 
 /**
- * A chat history value for a variable in a Test Case.
+ * Named Test Case value that is of type CHAT_HISTORY
  */
-export interface TestCaseChatHistoryVariableValue {
-    variableId: string;
-    name: string;
+export interface NamedTestCaseChatHistoryVariableValue {
     value?: Vellum.ChatMessage[];
+    name: string;
 }

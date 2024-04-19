@@ -4,6 +4,9 @@
 
 import * as Vellum from "..";
 
+/**
+ * Sandbox Scenario
+ */
 export interface SandboxScenario {
     label?: string;
     /** The inputs for the scenario */

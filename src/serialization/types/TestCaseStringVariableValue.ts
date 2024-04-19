@@ -11,12 +11,14 @@ export const TestCaseStringVariableValue: core.serialization.ObjectSchema<
     Vellum.TestCaseStringVariableValue
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
+    name: core.serialization.string(),
     value: core.serialization.string().optional(),
 });
 
 export declare namespace TestCaseStringVariableValue {
     interface Raw {
         variable_id: string;
+        name: string;
         value?: string | null;
     }
 }
