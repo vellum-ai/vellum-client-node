@@ -5,22 +5,28 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
-import { ScenarioInputTypeEnum } from "./ScenarioInputTypeEnum";
-import { ChatMessage } from "./ChatMessage";
+import { ScenarioInputStringVariableValue } from "./ScenarioInputStringVariableValue";
+import { ScenarioInputChatHistoryVariableValue } from "./ScenarioInputChatHistoryVariableValue";
 
-export const ScenarioInput: core.serialization.ObjectSchema<serializers.ScenarioInput.Raw, Vellum.ScenarioInput> =
-    core.serialization.object({
-        key: core.serialization.string(),
-        type: ScenarioInputTypeEnum.optional(),
-        value: core.serialization.string().optional(),
-        chatHistory: core.serialization.property("chat_history", core.serialization.list(ChatMessage).optional()),
-    });
+export const ScenarioInput: core.serialization.Schema<serializers.ScenarioInput.Raw, Vellum.ScenarioInput> =
+    core.serialization
+        .union("type", {
+            STRING: ScenarioInputStringVariableValue,
+            CHAT_HISTORY: ScenarioInputChatHistoryVariableValue,
+        })
+        .transform<Vellum.ScenarioInput>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace ScenarioInput {
-    interface Raw {
-        key: string;
-        type?: ScenarioInputTypeEnum.Raw | null;
-        value?: string | null;
-        chat_history?: ChatMessage.Raw[] | null;
+    type Raw = ScenarioInput.String | ScenarioInput.ChatHistory;
+
+    interface String extends ScenarioInputStringVariableValue.Raw {
+        type: "STRING";
+    }
+
+    interface ChatHistory extends ScenarioInputChatHistoryVariableValue.Raw {
+        type: "CHAT_HISTORY";
     }
 }

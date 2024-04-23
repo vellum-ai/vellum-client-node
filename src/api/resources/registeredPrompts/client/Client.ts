@@ -39,12 +39,8 @@ export class RegisteredPrompts {
      *         name: "name",
      *         prompt: {
      *             promptBlockData: {
-     *                 version: 1,
-     *                 blocks: [{
-     *                         id: "id",
-     *                         blockType: Vellum.BlockTypeEnum.ChatMessage,
-     *                         properties: {}
-     *                     }]
+     *                 blocks: [],
+     *                 version: 1
      *             },
      *             inputVariables: [{
      *                     key: "key"
@@ -74,7 +70,7 @@ export class RegisteredPrompts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.3.25",
+                "X-Fern-SDK-Version": "0.4.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

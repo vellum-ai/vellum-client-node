@@ -19,6 +19,7 @@ export const VellumVariableType: core.serialization.Schema<
     "ARRAY",
     "FUNCTION_CALL",
     "IMAGE",
+    "NULL",
 ]);
 
 export declare namespace VellumVariableType {
@@ -31,5 +32,6 @@ export declare namespace VellumVariableType {
         | "ERROR"
         | "ARRAY"
         | "FUNCTION_CALL"
-        | "IMAGE";
+        | "IMAGE"
+        | "NULL";
 }

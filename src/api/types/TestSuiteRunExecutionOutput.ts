@@ -10,7 +10,8 @@ export type TestSuiteRunExecutionOutput =
     | Vellum.TestSuiteRunExecutionOutput.Json
     | Vellum.TestSuiteRunExecutionOutput.ChatHistory
     | Vellum.TestSuiteRunExecutionOutput.SearchResults
-    | Vellum.TestSuiteRunExecutionOutput.Error_;
+    | Vellum.TestSuiteRunExecutionOutput.Error_
+    | Vellum.TestSuiteRunExecutionOutput.FunctionCall;
 
 export declare namespace TestSuiteRunExecutionOutput {
     interface String extends Vellum.TestSuiteRunExecutionStringOutput {
@@ -35,5 +36,9 @@ export declare namespace TestSuiteRunExecutionOutput {
 
     interface Error_ extends Vellum.TestSuiteRunExecutionErrorOutput {
         type: "ERROR";
+    }
+
+    interface FunctionCall extends Vellum.TestSuiteRunExecutionFunctionCallOutput {
+        type: "FUNCTION_CALL";
     }
 }

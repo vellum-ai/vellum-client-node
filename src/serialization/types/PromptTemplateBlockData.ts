@@ -10,15 +10,13 @@ export const PromptTemplateBlockData: core.serialization.ObjectSchema<
     serializers.PromptTemplateBlockData.Raw,
     Vellum.PromptTemplateBlockData
 > = core.serialization.object({
+    blocks: core.serialization.list(core.serialization.lazy(async () => (await import("..")).PromptTemplateBlock)),
     version: core.serialization.number(),
-    blocks: core.serialization.list(
-        core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlock)
-    ),
 });
 
 export declare namespace PromptTemplateBlockData {
     interface Raw {
-        version: number;
         blocks: serializers.PromptTemplateBlock.Raw[];
+        version: number;
     }
 }

@@ -5,24 +5,47 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
-import { BlockTypeEnum } from "./BlockTypeEnum";
-import { PromptTemplateBlockState } from "./PromptTemplateBlockState";
+import { JinjaPromptTemplateBlockRequest } from "./JinjaPromptTemplateBlockRequest";
+import { ChatHistoryPromptTemplateBlockRequest } from "./ChatHistoryPromptTemplateBlockRequest";
+import { FunctionDefinitionPromptTemplateBlockRequest } from "./FunctionDefinitionPromptTemplateBlockRequest";
 
-export const PromptTemplateBlockRequest: core.serialization.ObjectSchema<
+export const PromptTemplateBlockRequest: core.serialization.Schema<
     serializers.PromptTemplateBlockRequest.Raw,
     Vellum.PromptTemplateBlockRequest
-> = core.serialization.object({
-    id: core.serialization.string(),
-    blockType: core.serialization.property("block_type", BlockTypeEnum),
-    properties: core.serialization.lazyObject(async () => (await import("..")).PromptTemplateBlockPropertiesRequest),
-    state: PromptTemplateBlockState.optional(),
-});
+> = core.serialization
+    .union(core.serialization.discriminant("blockType", "block_type"), {
+        JINJA: JinjaPromptTemplateBlockRequest,
+        CHAT_HISTORY: ChatHistoryPromptTemplateBlockRequest,
+        CHAT_MESSAGE: core.serialization.lazyObject(
+            async () => (await import("..")).ChatMessagePromptTemplateBlockRequest
+        ),
+        FUNCTION_DEFINITION: FunctionDefinitionPromptTemplateBlockRequest,
+    })
+    .transform<Vellum.PromptTemplateBlockRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PromptTemplateBlockRequest {
-    interface Raw {
-        id: string;
-        block_type: BlockTypeEnum.Raw;
-        properties: serializers.PromptTemplateBlockPropertiesRequest.Raw;
-        state?: PromptTemplateBlockState.Raw | null;
+    type Raw =
+        | PromptTemplateBlockRequest.Jinja
+        | PromptTemplateBlockRequest.ChatHistory
+        | PromptTemplateBlockRequest.ChatMessage
+        | PromptTemplateBlockRequest.FunctionDefinition;
+
+    interface Jinja extends JinjaPromptTemplateBlockRequest.Raw {
+        block_type: "JINJA";
+    }
+
+    interface ChatHistory extends ChatHistoryPromptTemplateBlockRequest.Raw {
+        block_type: "CHAT_HISTORY";
+    }
+
+    interface ChatMessage extends serializers.ChatMessagePromptTemplateBlockRequest.Raw {
+        block_type: "CHAT_MESSAGE";
+    }
+
+    interface FunctionDefinition extends FunctionDefinitionPromptTemplateBlockRequest.Raw {
+        block_type: "FUNCTION_DEFINITION";
     }
 }

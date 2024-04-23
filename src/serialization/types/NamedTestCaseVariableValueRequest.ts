@@ -11,6 +11,7 @@ import { NamedTestCaseJsonVariableValueRequest } from "./NamedTestCaseJsonVariab
 import { NamedTestCaseChatHistoryVariableValueRequest } from "./NamedTestCaseChatHistoryVariableValueRequest";
 import { NamedTestCaseSearchResultsVariableValueRequest } from "./NamedTestCaseSearchResultsVariableValueRequest";
 import { NamedTestCaseErrorVariableValueRequest } from "./NamedTestCaseErrorVariableValueRequest";
+import { NamedTestCaseFunctionCallVariableValueRequest } from "./NamedTestCaseFunctionCallVariableValueRequest";
 
 export const NamedTestCaseVariableValueRequest: core.serialization.Schema<
     serializers.NamedTestCaseVariableValueRequest.Raw,
@@ -23,6 +24,7 @@ export const NamedTestCaseVariableValueRequest: core.serialization.Schema<
         CHAT_HISTORY: NamedTestCaseChatHistoryVariableValueRequest,
         SEARCH_RESULTS: NamedTestCaseSearchResultsVariableValueRequest,
         ERROR: NamedTestCaseErrorVariableValueRequest,
+        FUNCTION_CALL: NamedTestCaseFunctionCallVariableValueRequest,
     })
     .transform<Vellum.NamedTestCaseVariableValueRequest>({
         transform: (value) => value,
@@ -36,7 +38,8 @@ export declare namespace NamedTestCaseVariableValueRequest {
         | NamedTestCaseVariableValueRequest.Json
         | NamedTestCaseVariableValueRequest.ChatHistory
         | NamedTestCaseVariableValueRequest.SearchResults
-        | NamedTestCaseVariableValueRequest.Error;
+        | NamedTestCaseVariableValueRequest.Error
+        | NamedTestCaseVariableValueRequest.FunctionCall;
 
     interface String extends NamedTestCaseStringVariableValueRequest.Raw {
         type: "STRING";
@@ -60,5 +63,9 @@ export declare namespace NamedTestCaseVariableValueRequest {
 
     interface Error extends NamedTestCaseErrorVariableValueRequest.Raw {
         type: "ERROR";
+    }
+
+    interface FunctionCall extends NamedTestCaseFunctionCallVariableValueRequest.Raw {
+        type: "FUNCTION_CALL";
     }
 }

@@ -4,9 +4,26 @@
 
 import * as Vellum from "..";
 
-export interface PromptTemplateBlockRequest {
-    id: string;
-    blockType: Vellum.BlockTypeEnum;
-    properties: Vellum.PromptTemplateBlockPropertiesRequest;
-    state?: Vellum.PromptTemplateBlockState;
+export type PromptTemplateBlockRequest =
+    | Vellum.PromptTemplateBlockRequest.Jinja
+    | Vellum.PromptTemplateBlockRequest.ChatHistory
+    | Vellum.PromptTemplateBlockRequest.ChatMessage
+    | Vellum.PromptTemplateBlockRequest.FunctionDefinition;
+
+export declare namespace PromptTemplateBlockRequest {
+    interface Jinja extends Vellum.JinjaPromptTemplateBlockRequest {
+        blockType: "JINJA";
+    }
+
+    interface ChatHistory extends Vellum.ChatHistoryPromptTemplateBlockRequest {
+        blockType: "CHAT_HISTORY";
+    }
+
+    interface ChatMessage extends Vellum.ChatMessagePromptTemplateBlockRequest {
+        blockType: "CHAT_MESSAGE";
+    }
+
+    interface FunctionDefinition extends Vellum.FunctionDefinitionPromptTemplateBlockRequest {
+        blockType: "FUNCTION_DEFINITION";
+    }
 }

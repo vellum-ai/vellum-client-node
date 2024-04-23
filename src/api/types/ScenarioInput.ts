@@ -4,9 +4,14 @@
 
 import * as Vellum from "..";
 
-export interface ScenarioInput {
-    key: string;
-    type?: Vellum.ScenarioInputTypeEnum;
-    value?: string;
-    chatHistory?: Vellum.ChatMessage[];
+export type ScenarioInput = Vellum.ScenarioInput.String | Vellum.ScenarioInput.ChatHistory;
+
+export declare namespace ScenarioInput {
+    interface String extends Vellum.ScenarioInputStringVariableValue {
+        type: "STRING";
+    }
+
+    interface ChatHistory extends Vellum.ScenarioInputChatHistoryVariableValue {
+        type: "CHAT_HISTORY";
+    }
 }

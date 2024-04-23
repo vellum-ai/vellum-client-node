@@ -5,6 +5,6 @@
 import * as Vellum from "..";
 
 export interface PromptTemplateBlockDataRequest {
-    version: number;
     blocks: Vellum.PromptTemplateBlockRequest[];
+    version: number;
 }

@@ -11,12 +11,8 @@ import * as Vellum from "../../../..";
  *         name: "name",
  *         prompt: {
  *             promptBlockData: {
- *                 version: 1,
- *                 blocks: [{
- *                         id: "id",
- *                         blockType: Vellum.BlockTypeEnum.ChatMessage,
- *                         properties: {}
- *                     }]
+ *                 blocks: [],
+ *                 version: 1
  *             },
  *             inputVariables: [{
  *                     key: "key"
