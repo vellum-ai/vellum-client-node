@@ -6,7 +6,6 @@ export * as workflowDeployments from "./workflowDeployments";
 export * from "./workflowDeployments/types";
 export * as documents from "./documents";
 export * as folderEntities from "./folderEntities";
-export * as modelVersions from "./modelVersions";
 export * as sandboxes from "./sandboxes";
 export * as testSuiteRuns from "./testSuiteRuns";
 export * as testSuites from "./testSuites";
