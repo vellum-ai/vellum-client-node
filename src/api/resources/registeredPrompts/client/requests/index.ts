@@ -1,1 +1,0 @@
-export { RegisterPromptRequestRequest } from "./RegisterPromptRequestRequest";
