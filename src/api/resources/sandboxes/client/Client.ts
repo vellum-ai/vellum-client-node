@@ -38,6 +38,12 @@ export class Sandboxes {
      *         label: "Scenario 1",
      *         inputs: []
      *     })
+     *
+     * @example
+     *     await vellum.sandboxes.upsertSandboxScenario("id", {
+     *         label: "Scenario 2",
+     *         inputs: []
+     *     })
      */
     public async upsertSandboxScenario(
         id: string,
@@ -54,7 +60,7 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.4.2",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -118,7 +124,7 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.4.2",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

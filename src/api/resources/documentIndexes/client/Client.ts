@@ -62,7 +62,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.4.2",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -128,6 +128,46 @@ export class DocumentIndexes {
      *             }
      *         }
      *     })
+     *
+     * @example
+     *     await vellum.documentIndexes.create({
+     *         label: "My Document Index",
+     *         name: "my-document-index",
+     *         indexingConfig: {
+     *             "chunking": {
+     *                 "chunker_name": "sentence-chunker",
+     *                 "chunker_config": {
+     *                     "character_limit": 1000,
+     *                     "min_overlap_ratio": 0.5
+     *                 }
+     *             },
+     *             "vectorizer": {
+     *                 "model_name": "sentence-transformers/multi-qa-mpnet-base-dot-v1",
+     *                 "config": {}
+     *             }
+     *         }
+     *     })
+     *
+     * @example
+     *     await vellum.documentIndexes.create({
+     *         label: "My Document Index",
+     *         name: "my-document-index",
+     *         indexingConfig: {
+     *             "chunking": {
+     *                 "chunker_name": "sentence-chunker",
+     *                 "chunker_config": {
+     *                     "character_limit": 1000,
+     *                     "min_overlap_ratio": 0.5
+     *                 }
+     *             },
+     *             "vectorizer": {
+     *                 "model_name": "text-embedding-ada-002",
+     *                 "config": {
+     *                     "add_openai_api_key": true
+     *                 }
+     *             }
+     *         }
+     *     })
      */
     public async create(
         request: Vellum.DocumentIndexCreateRequest,
@@ -143,7 +183,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.4.2",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -206,7 +246,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.4.2",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -269,7 +309,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.4.2",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -329,7 +369,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.4.2",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -385,7 +425,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.4.2",
+                "X-Fern-SDK-Version": "0.4.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

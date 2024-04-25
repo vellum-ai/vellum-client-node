@@ -27,6 +27,46 @@ import * as Vellum from "../../../..";
  *             }
  *         }
  *     }
+ *
+ * @example
+ *     {
+ *         label: "My Document Index",
+ *         name: "my-document-index",
+ *         indexingConfig: {
+ *             "chunking": {
+ *                 "chunker_name": "sentence-chunker",
+ *                 "chunker_config": {
+ *                     "character_limit": 1000,
+ *                     "min_overlap_ratio": 0.5
+ *                 }
+ *             },
+ *             "vectorizer": {
+ *                 "model_name": "sentence-transformers/multi-qa-mpnet-base-dot-v1",
+ *                 "config": {}
+ *             }
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         label: "My Document Index",
+ *         name: "my-document-index",
+ *         indexingConfig: {
+ *             "chunking": {
+ *                 "chunker_name": "sentence-chunker",
+ *                 "chunker_config": {
+ *                     "character_limit": 1000,
+ *                     "min_overlap_ratio": 0.5
+ *                 }
+ *             },
+ *             "vectorizer": {
+ *                 "model_name": "text-embedding-ada-002",
+ *                 "config": {
+ *                     "add_openai_api_key": true
+ *                 }
+ *             }
+ *         }
+ *     }
  */
 export interface DocumentIndexCreateRequest {
     /** A human-readable label for the document index */

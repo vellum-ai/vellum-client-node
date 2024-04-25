@@ -10,6 +10,12 @@ import * as Vellum from "../../../..";
  *         label: "Scenario 1",
  *         inputs: []
  *     }
+ *
+ * @example
+ *     {
+ *         label: "Scenario 2",
+ *         inputs: []
+ *     }
  */
 export interface UpsertSandboxScenarioRequestRequest {
     label?: string;
