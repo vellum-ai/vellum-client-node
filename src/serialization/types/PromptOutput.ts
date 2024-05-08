@@ -5,18 +5,18 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
-import { StringVariableValue } from "./StringVariableValue";
-import { JsonVariableValue } from "./JsonVariableValue";
-import { ErrorVariableValue } from "./ErrorVariableValue";
-import { FunctionCallVariableValue } from "./FunctionCallVariableValue";
+import { StringVellumValue } from "./StringVellumValue";
+import { JsonVellumValue } from "./JsonVellumValue";
+import { ErrorVellumValue } from "./ErrorVellumValue";
+import { FunctionCallVellumValue } from "./FunctionCallVellumValue";
 
 export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Raw, Vellum.PromptOutput> =
     core.serialization
         .union("type", {
-            STRING: StringVariableValue,
-            JSON: JsonVariableValue,
-            ERROR: ErrorVariableValue,
-            FUNCTION_CALL: FunctionCallVariableValue,
+            STRING: StringVellumValue,
+            JSON: JsonVellumValue,
+            ERROR: ErrorVellumValue,
+            FUNCTION_CALL: FunctionCallVellumValue,
         })
         .transform<Vellum.PromptOutput>({
             transform: (value) => value,
@@ -26,19 +26,19 @@ export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Ra
 export declare namespace PromptOutput {
     type Raw = PromptOutput.String | PromptOutput.Json | PromptOutput.Error | PromptOutput.FunctionCall;
 
-    interface String extends StringVariableValue.Raw {
+    interface String extends StringVellumValue.Raw {
         type: "STRING";
     }
 
-    interface Json extends JsonVariableValue.Raw {
+    interface Json extends JsonVellumValue.Raw {
         type: "JSON";
     }
 
-    interface Error extends ErrorVariableValue.Raw {
+    interface Error extends ErrorVellumValue.Raw {
         type: "ERROR";
     }
 
-    interface FunctionCall extends FunctionCallVariableValue.Raw {
+    interface FunctionCall extends FunctionCallVellumValue.Raw {
         type: "FUNCTION_CALL";
     }
 }

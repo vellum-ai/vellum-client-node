@@ -43,7 +43,7 @@ export declare namespace NodeOutputCompiledValue {
         type: "ARRAY";
     }
 
-    interface FunctionCall extends Vellum.NodeOutputCompiledFunctionValue {
+    interface FunctionCall extends Vellum.NodeOutputCompiledFunctionCallValue {
         type: "FUNCTION_CALL";
     }
 }

@@ -11,19 +11,19 @@ export type PromptOutput =
     | Vellum.PromptOutput.FunctionCall;
 
 export declare namespace PromptOutput {
-    interface String extends Vellum.StringVariableValue {
+    interface String extends Vellum.StringVellumValue {
         type: "STRING";
     }
 
-    interface Json extends Vellum.JsonVariableValue {
+    interface Json extends Vellum.JsonVellumValue {
         type: "JSON";
     }
 
-    interface Error_ extends Vellum.ErrorVariableValue {
+    interface Error_ extends Vellum.ErrorVellumValue {
         type: "ERROR";
     }
 
-    interface FunctionCall extends Vellum.FunctionCallVariableValue {
+    interface FunctionCall extends Vellum.FunctionCallVellumValue {
         type: "FUNCTION_CALL";
     }
 }

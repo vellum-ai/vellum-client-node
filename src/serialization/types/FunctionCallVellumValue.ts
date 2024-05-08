@@ -7,15 +7,15 @@ import * as Vellum from "../../api";
 import * as core from "../../core";
 import { FunctionCall } from "./FunctionCall";
 
-export const FunctionCallVariableValue: core.serialization.ObjectSchema<
-    serializers.FunctionCallVariableValue.Raw,
-    Vellum.FunctionCallVariableValue
+export const FunctionCallVellumValue: core.serialization.ObjectSchema<
+    serializers.FunctionCallVellumValue.Raw,
+    Vellum.FunctionCallVellumValue
 > = core.serialization.object({
-    value: FunctionCall.optional(),
+    value: FunctionCall,
 });
 
-export declare namespace FunctionCallVariableValue {
+export declare namespace FunctionCallVellumValue {
     interface Raw {
-        value?: FunctionCall.Raw | null;
+        value: FunctionCall.Raw;
     }
 }

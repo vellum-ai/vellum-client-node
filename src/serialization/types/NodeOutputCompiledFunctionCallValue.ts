@@ -5,21 +5,21 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
-import { ChatMessage } from "./ChatMessage";
+import { FunctionCall } from "./FunctionCall";
 import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
 
-export const NodeOutputCompiledChatHistoryValue: core.serialization.ObjectSchema<
-    serializers.NodeOutputCompiledChatHistoryValue.Raw,
-    Vellum.NodeOutputCompiledChatHistoryValue
+export const NodeOutputCompiledFunctionCallValue: core.serialization.ObjectSchema<
+    serializers.NodeOutputCompiledFunctionCallValue.Raw,
+    Vellum.NodeOutputCompiledFunctionCallValue
 > = core.serialization.object({
-    value: core.serialization.list(ChatMessage).optional(),
+    value: FunctionCall.optional(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
-export declare namespace NodeOutputCompiledChatHistoryValue {
+export declare namespace NodeOutputCompiledFunctionCallValue {
     interface Raw {
-        value?: ChatMessage.Raw[] | null;
+        value?: FunctionCall.Raw | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

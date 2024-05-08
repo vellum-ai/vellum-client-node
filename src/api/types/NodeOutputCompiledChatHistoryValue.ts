@@ -4,7 +4,11 @@
 
 import * as Vellum from "..";
 
+/**
+ * An output returned by a node that is of type CHAT_HISTORY.
+ */
 export interface NodeOutputCompiledChatHistoryValue {
-    nodeOutputId: string;
     value?: Vellum.ChatMessage[];
+    nodeOutputId: string;
+    state?: Vellum.WorkflowNodeResultEventState;
 }

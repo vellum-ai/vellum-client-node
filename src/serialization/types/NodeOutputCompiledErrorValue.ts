@@ -6,18 +6,21 @@ import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
 import { VellumError } from "./VellumError";
+import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
 
 export const NodeOutputCompiledErrorValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledErrorValue.Raw,
     Vellum.NodeOutputCompiledErrorValue
 > = core.serialization.object({
-    nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     value: VellumError.optional(),
+    nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
+    state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledErrorValue {
     interface Raw {
-        node_output_id: string;
         value?: VellumError.Raw | null;
+        node_output_id: string;
+        state?: WorkflowNodeResultEventState.Raw | null;
     }
 }

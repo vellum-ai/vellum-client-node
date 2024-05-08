@@ -12,7 +12,7 @@ import { NodeOutputCompiledChatHistoryValue } from "./NodeOutputCompiledChatHist
 import { NodeOutputCompiledSearchResultsValue } from "./NodeOutputCompiledSearchResultsValue";
 import { NodeOutputCompiledErrorValue } from "./NodeOutputCompiledErrorValue";
 import { NodeOutputCompiledArrayValue } from "./NodeOutputCompiledArrayValue";
-import { NodeOutputCompiledFunctionValue } from "./NodeOutputCompiledFunctionValue";
+import { NodeOutputCompiledFunctionCallValue } from "./NodeOutputCompiledFunctionCallValue";
 
 export const NodeOutputCompiledValue: core.serialization.Schema<
     serializers.NodeOutputCompiledValue.Raw,
@@ -26,7 +26,7 @@ export const NodeOutputCompiledValue: core.serialization.Schema<
         SEARCH_RESULTS: NodeOutputCompiledSearchResultsValue,
         ERROR: NodeOutputCompiledErrorValue,
         ARRAY: NodeOutputCompiledArrayValue,
-        FUNCTION_CALL: NodeOutputCompiledFunctionValue,
+        FUNCTION_CALL: NodeOutputCompiledFunctionCallValue,
     })
     .transform<Vellum.NodeOutputCompiledValue>({
         transform: (value) => value,
@@ -72,7 +72,7 @@ export declare namespace NodeOutputCompiledValue {
         type: "ARRAY";
     }
 
-    interface FunctionCall extends NodeOutputCompiledFunctionValue.Raw {
+    interface FunctionCall extends NodeOutputCompiledFunctionCallValue.Raw {
         type: "FUNCTION_CALL";
     }
 }

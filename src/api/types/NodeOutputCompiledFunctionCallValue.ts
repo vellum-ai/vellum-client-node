@@ -5,10 +5,10 @@
 import * as Vellum from "..";
 
 /**
- * An output returned by a node that is of type SEARCH_RESULTS.
+ * An output returned by a node that is of type FUNCTION_CALL.
  */
-export interface NodeOutputCompiledSearchResultsValue {
-    value?: Vellum.SearchResult[];
+export interface NodeOutputCompiledFunctionCallValue {
+    value?: Vellum.FunctionCall;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }
