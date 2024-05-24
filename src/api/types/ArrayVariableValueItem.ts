@@ -8,8 +8,6 @@ export type ArrayVariableValueItem =
     | Vellum.ArrayVariableValueItem.String
     | Vellum.ArrayVariableValueItem.Number
     | Vellum.ArrayVariableValueItem.Json
-    | Vellum.ArrayVariableValueItem.ChatHistory
-    | Vellum.ArrayVariableValueItem.SearchResults
     | Vellum.ArrayVariableValueItem.Error_
     | Vellum.ArrayVariableValueItem.FunctionCall
     | Vellum.ArrayVariableValueItem.Image;
@@ -25,14 +23,6 @@ export declare namespace ArrayVariableValueItem {
 
     interface Json extends Vellum.JsonVariableValue {
         type: "JSON";
-    }
-
-    interface ChatHistory extends Vellum.ChatHistoryVariableValue {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends Vellum.SearchResultsVariableValue {
-        type: "SEARCH_RESULTS";
     }
 
     interface Error_ extends Vellum.ErrorVariableValue {

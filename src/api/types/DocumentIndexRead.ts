@@ -26,6 +26,5 @@ export interface DocumentIndexRead {
      * - `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
-    /** Configuration representing how documents should be indexed */
-    indexingConfig: Record<string, unknown>;
+    indexingConfig: Vellum.DocumentIndexIndexingConfig;
 }

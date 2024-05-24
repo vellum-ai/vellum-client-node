@@ -64,7 +64,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -106,7 +106,7 @@ export class Documents {
     }
 
     /**
-     * Retrieve a Document via its Vellum-generated ID.
+     * Retrieve a Document, keying off of either its Vellum-generated ID or its external ID.
      *
      * @example
      *     await vellum.documents.retrieve("id")
@@ -122,7 +122,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -162,6 +162,12 @@ export class Documents {
         }
     }
 
+    /**
+     * Delete a Document, keying off of either its Vellum-generated ID or its external ID.
+     *
+     * @example
+     *     await vellum.documents.destroy("id")
+     */
     public async destroy(id: string, requestOptions?: Documents.RequestOptions): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -173,7 +179,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -209,7 +215,7 @@ export class Documents {
     }
 
     /**
-     * Update a Document, keying off of its Vellum-generated ID. Particularly useful for updating its metadata.
+     * Update a Document, keying off of either its Vellum-generated ID or its external ID. Particularly useful for updating its metadata.
      *
      * @example
      *     await vellum.documents.partialUpdate("id")
@@ -229,7 +235,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -326,7 +332,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

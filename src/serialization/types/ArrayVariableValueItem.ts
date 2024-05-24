@@ -8,8 +8,6 @@ import * as core from "../../core";
 import { StringVariableValue } from "./StringVariableValue";
 import { NumberVariableValue } from "./NumberVariableValue";
 import { JsonVariableValue } from "./JsonVariableValue";
-import { ChatHistoryVariableValue } from "./ChatHistoryVariableValue";
-import { SearchResultsVariableValue } from "./SearchResultsVariableValue";
 import { ErrorVariableValue } from "./ErrorVariableValue";
 import { FunctionCallVariableValue } from "./FunctionCallVariableValue";
 import { ImageVariableValue } from "./ImageVariableValue";
@@ -22,8 +20,6 @@ export const ArrayVariableValueItem: core.serialization.Schema<
         STRING: StringVariableValue,
         NUMBER: NumberVariableValue,
         JSON: JsonVariableValue,
-        CHAT_HISTORY: ChatHistoryVariableValue,
-        SEARCH_RESULTS: SearchResultsVariableValue,
         ERROR: ErrorVariableValue,
         FUNCTION_CALL: FunctionCallVariableValue,
         IMAGE: ImageVariableValue,
@@ -38,8 +34,6 @@ export declare namespace ArrayVariableValueItem {
         | ArrayVariableValueItem.String
         | ArrayVariableValueItem.Number
         | ArrayVariableValueItem.Json
-        | ArrayVariableValueItem.ChatHistory
-        | ArrayVariableValueItem.SearchResults
         | ArrayVariableValueItem.Error
         | ArrayVariableValueItem.FunctionCall
         | ArrayVariableValueItem.Image;
@@ -54,14 +48,6 @@ export declare namespace ArrayVariableValueItem {
 
     interface Json extends JsonVariableValue.Raw {
         type: "JSON";
-    }
-
-    interface ChatHistory extends ChatHistoryVariableValue.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends SearchResultsVariableValue.Raw {
-        type: "SEARCH_RESULTS";
     }
 
     interface Error extends ErrorVariableValue.Raw {

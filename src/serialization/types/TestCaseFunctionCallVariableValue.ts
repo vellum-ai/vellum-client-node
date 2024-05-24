@@ -5,7 +5,7 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
-import { FulfilledFunctionCall } from "./FulfilledFunctionCall";
+import { FunctionCall } from "./FunctionCall";
 
 export const TestCaseFunctionCallVariableValue: core.serialization.ObjectSchema<
     serializers.TestCaseFunctionCallVariableValue.Raw,
@@ -13,13 +13,13 @@ export const TestCaseFunctionCallVariableValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
-    value: FulfilledFunctionCall.optional(),
+    value: FunctionCall.optional(),
 });
 
 export declare namespace TestCaseFunctionCallVariableValue {
     interface Raw {
         variable_id: string;
         name: string;
-        value?: FulfilledFunctionCall.Raw | null;
+        value?: FunctionCall.Raw | null;
     }
 }

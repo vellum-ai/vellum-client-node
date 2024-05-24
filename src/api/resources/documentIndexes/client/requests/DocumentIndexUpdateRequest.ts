@@ -4,12 +4,6 @@
 
 import * as Vellum from "../../../..";
 
-/**
- * @example
- *     {
- *         label: "label"
- *     }
- */
 export interface DocumentIndexUpdateRequest {
     /** A human-readable label for the document index */
     label: string;

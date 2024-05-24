@@ -34,7 +34,7 @@ export class DocumentIndexes {
         request: Vellum.DocumentIndexesListRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions
     ): Promise<Vellum.PaginatedDocumentIndexReadList> {
-        const { limit, offset, ordering, status } = request;
+        const { limit, offset, ordering, search, status } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
@@ -46,6 +46,10 @@ export class DocumentIndexes {
 
         if (ordering != null) {
             _queryParams["ordering"] = ordering;
+        }
+
+        if (search != null) {
+            _queryParams["search"] = search;
         }
 
         if (status != null) {
@@ -62,7 +66,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -105,69 +109,6 @@ export class DocumentIndexes {
 
     /**
      * Creates a new document index.
-     *
-     * @example
-     *     await vellum.documentIndexes.create({
-     *         label: "My Document Index",
-     *         name: "my-document-index",
-     *         indexingConfig: {
-     *             "chunking": {
-     *                 "chunker_name": "sentence-chunker",
-     *                 "chunker_config": {
-     *                     "character_limit": 1000,
-     *                     "min_overlap_ratio": 0.5
-     *                 }
-     *             },
-     *             "vectorizer": {
-     *                 "model_name": "hkunlp/instructor-xl",
-     *                 "config": {
-     *                     "instruction_domain": "",
-     *                     "instruction_document_text_type": "plain_text",
-     *                     "instruction_query_text_type": "plain_text"
-     *                 }
-     *             }
-     *         }
-     *     })
-     *
-     * @example
-     *     await vellum.documentIndexes.create({
-     *         label: "My Document Index",
-     *         name: "my-document-index",
-     *         indexingConfig: {
-     *             "chunking": {
-     *                 "chunker_name": "sentence-chunker",
-     *                 "chunker_config": {
-     *                     "character_limit": 1000,
-     *                     "min_overlap_ratio": 0.5
-     *                 }
-     *             },
-     *             "vectorizer": {
-     *                 "model_name": "sentence-transformers/multi-qa-mpnet-base-dot-v1",
-     *                 "config": {}
-     *             }
-     *         }
-     *     })
-     *
-     * @example
-     *     await vellum.documentIndexes.create({
-     *         label: "My Document Index",
-     *         name: "my-document-index",
-     *         indexingConfig: {
-     *             "chunking": {
-     *                 "chunker_name": "sentence-chunker",
-     *                 "chunker_config": {
-     *                     "character_limit": 1000,
-     *                     "min_overlap_ratio": 0.5
-     *                 }
-     *             },
-     *             "vectorizer": {
-     *                 "model_name": "text-embedding-ada-002",
-     *                 "config": {
-     *                     "add_openai_api_key": true
-     *                 }
-     *             }
-     *         }
-     *     })
      */
     public async create(
         request: Vellum.DocumentIndexCreateRequest,
@@ -183,7 +124,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -228,9 +169,6 @@ export class DocumentIndexes {
 
     /**
      * Used to retrieve a Document Index given its ID or name.
-     *
-     * @example
-     *     await vellum.documentIndexes.retrieve("id")
      */
     public async retrieve(
         id: string,
@@ -246,7 +184,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -288,11 +226,6 @@ export class DocumentIndexes {
 
     /**
      * Used to fully update a Document Index given its ID.
-     *
-     * @example
-     *     await vellum.documentIndexes.update("id", {
-     *         label: "label"
-     *     })
      */
     public async update(
         id: string,
@@ -309,7 +242,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -369,7 +302,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -406,9 +339,6 @@ export class DocumentIndexes {
 
     /**
      * Used to partial update a Document Index given its ID.
-     *
-     * @example
-     *     await vellum.documentIndexes.partialUpdate("id")
      */
     public async partialUpdate(
         id: string,
@@ -425,7 +355,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.5.2",
+                "X-Fern-SDK-Version": "0.6.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

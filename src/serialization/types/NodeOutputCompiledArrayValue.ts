@@ -5,21 +5,21 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
-import { ArrayVariableValueItem } from "./ArrayVariableValueItem";
+import { ArrayVellumValueItem } from "./ArrayVellumValueItem";
 import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
 
 export const NodeOutputCompiledArrayValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledArrayValue.Raw,
     Vellum.NodeOutputCompiledArrayValue
 > = core.serialization.object({
-    value: core.serialization.list(ArrayVariableValueItem).optional(),
+    value: core.serialization.list(ArrayVellumValueItem).optional(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledArrayValue {
     interface Raw {
-        value?: ArrayVariableValueItem.Raw[] | null;
+        value?: ArrayVellumValueItem.Raw[] | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

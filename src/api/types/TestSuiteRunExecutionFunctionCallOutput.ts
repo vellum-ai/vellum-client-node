@@ -9,6 +9,6 @@ import * as Vellum from "..";
  */
 export interface TestSuiteRunExecutionFunctionCallOutput {
     name: string;
-    value?: Vellum.FulfilledFunctionCall;
+    value?: Vellum.FunctionCall;
     outputVariableId: string;
 }

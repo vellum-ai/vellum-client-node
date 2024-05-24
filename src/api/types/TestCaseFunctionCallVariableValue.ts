@@ -10,5 +10,5 @@ import * as Vellum from "..";
 export interface TestCaseFunctionCallVariableValue {
     variableId: string;
     name: string;
-    value?: Vellum.FulfilledFunctionCall;
+    value?: Vellum.FunctionCall;
 }

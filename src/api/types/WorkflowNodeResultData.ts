@@ -12,7 +12,8 @@ export type WorkflowNodeResultData =
     | Vellum.WorkflowNodeResultData.Conditional
     | Vellum.WorkflowNodeResultData.Api
     | Vellum.WorkflowNodeResultData.Terminal
-    | Vellum.WorkflowNodeResultData.Subworkflow;
+    | Vellum.WorkflowNodeResultData.Subworkflow
+    | Vellum.WorkflowNodeResultData.Metric;
 
 export declare namespace WorkflowNodeResultData {
     interface Prompt extends Vellum.PromptNodeResult {
@@ -45,5 +46,9 @@ export declare namespace WorkflowNodeResultData {
 
     interface Subworkflow extends Vellum.SubworkflowNodeResult {
         type: "SUBWORKFLOW";
+    }
+
+    interface Metric extends Vellum.MetricNodeResult {
+        type: "METRIC";
     }
 }

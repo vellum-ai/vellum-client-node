@@ -9,6 +9,8 @@ export interface WorkflowExecutionActualStringRequest {
     outputKey?: string;
     /** Optionally provide a decimal number between 0.0 and 1.0 (inclusive) representing the quality of the output. 0 is the worst, 1 is the best. */
     quality?: number;
+    /** Optionally provide additional metadata about the feedback submission. */
+    metadata?: Record<string, unknown>;
     /** Optionally provide the timestamp representing when this feedback was collected. Used for reporting purposes. */
     timestamp?: number;
     /** Optionally provide the value that the output ideally should have been. */

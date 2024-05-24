@@ -22,7 +22,11 @@ export interface DocumentIndexesListRequest {
      */
     ordering?: string;
     /**
-     * The current status of the document index
+     * Search for document indices by name or label
+     */
+    search?: string;
+    /**
+     * Filter down to only document indices that have a status matching the status specified
      *
      * - `ACTIVE` - Active
      * - `ARCHIVED` - Archived

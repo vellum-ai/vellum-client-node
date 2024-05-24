@@ -4,14 +4,12 @@
 
 import * as Vellum from "..";
 
-export type FunctionCall = Vellum.FunctionCall.Fulfilled | Vellum.FunctionCall.Rejected;
-
-export declare namespace FunctionCall {
-    interface Fulfilled extends Vellum.FulfilledFunctionCall {
-        state: "FULFILLED";
-    }
-
-    interface Rejected extends Vellum.RejectedFunctionCall {
-        state: "REJECTED";
-    }
+/**
+ * The final resolved function call value.
+ */
+export interface FunctionCall {
+    arguments: Record<string, unknown>;
+    id?: string;
+    name: string;
+    state?: Vellum.FulfilledEnum;
 }

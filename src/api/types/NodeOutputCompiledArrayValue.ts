@@ -8,7 +8,7 @@ import * as Vellum from "..";
  * An output returned by a node that is of type ARRAY.
  */
 export interface NodeOutputCompiledArrayValue {
-    value?: Vellum.ArrayVariableValueItem[];
+    value?: Vellum.ArrayVellumValueItem[];
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

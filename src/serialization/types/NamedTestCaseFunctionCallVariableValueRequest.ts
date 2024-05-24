@@ -5,19 +5,19 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
-import { FulfilledFunctionCallRequest } from "./FulfilledFunctionCallRequest";
+import { FunctionCallRequest } from "./FunctionCallRequest";
 
 export const NamedTestCaseFunctionCallVariableValueRequest: core.serialization.ObjectSchema<
     serializers.NamedTestCaseFunctionCallVariableValueRequest.Raw,
     Vellum.NamedTestCaseFunctionCallVariableValueRequest
 > = core.serialization.object({
-    value: FulfilledFunctionCallRequest.optional(),
+    value: FunctionCallRequest.optional(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseFunctionCallVariableValueRequest {
     interface Raw {
-        value?: FulfilledFunctionCallRequest.Raw | null;
+        value?: FunctionCallRequest.Raw | null;
         name: string;
     }
 }

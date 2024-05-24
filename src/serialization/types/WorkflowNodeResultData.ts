@@ -13,6 +13,7 @@ import { ConditionalNodeResult } from "./ConditionalNodeResult";
 import { ApiNodeResult } from "./ApiNodeResult";
 import { TerminalNodeResult } from "./TerminalNodeResult";
 import { SubworkflowNodeResult } from "./SubworkflowNodeResult";
+import { MetricNodeResult } from "./MetricNodeResult";
 
 export const WorkflowNodeResultData: core.serialization.Schema<
     serializers.WorkflowNodeResultData.Raw,
@@ -27,6 +28,7 @@ export const WorkflowNodeResultData: core.serialization.Schema<
         API: ApiNodeResult,
         TERMINAL: TerminalNodeResult,
         SUBWORKFLOW: SubworkflowNodeResult,
+        METRIC: MetricNodeResult,
     })
     .transform<Vellum.WorkflowNodeResultData>({
         transform: (value) => value,
@@ -42,7 +44,8 @@ export declare namespace WorkflowNodeResultData {
         | WorkflowNodeResultData.Conditional
         | WorkflowNodeResultData.Api
         | WorkflowNodeResultData.Terminal
-        | WorkflowNodeResultData.Subworkflow;
+        | WorkflowNodeResultData.Subworkflow
+        | WorkflowNodeResultData.Metric;
 
     interface Prompt extends PromptNodeResult.Raw {
         type: "PROMPT";
@@ -74,5 +77,9 @@ export declare namespace WorkflowNodeResultData {
 
     interface Subworkflow extends SubworkflowNodeResult.Raw {
         type: "SUBWORKFLOW";
+    }
+
+    interface Metric extends MetricNodeResult.Raw {
+        type: "METRIC";
     }
 }
