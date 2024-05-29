@@ -15,6 +15,7 @@ export const SubmitCompletionActualRequest: core.serialization.ObjectSchema<
     text: core.serialization.string().optional(),
     quality: core.serialization.number().optional(),
     timestamp: core.serialization.date().optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
 export declare namespace SubmitCompletionActualRequest {
@@ -24,5 +25,6 @@ export declare namespace SubmitCompletionActualRequest {
         text?: string | null;
         quality?: number | null;
         timestamp?: string | null;
+        metadata?: Record<string, unknown> | null;
     }
 }

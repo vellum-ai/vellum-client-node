@@ -117,6 +117,8 @@ export * from "./JsonVellumValue";
 export * from "./LogicalOperator";
 export * from "./LogprobsEnum";
 export * from "./MlModelUsage";
+export * from "./MergeEnum";
+export * from "./MergeNodeResult";
 export * from "./MetadataFilterConfigRequest";
 export * from "./MetadataFilterRuleCombinator";
 export * from "./MetadataFilterRuleRequest";

@@ -12,6 +12,7 @@ export type WorkflowNodeResultData =
     | Vellum.WorkflowNodeResultData.Conditional
     | Vellum.WorkflowNodeResultData.Api
     | Vellum.WorkflowNodeResultData.Terminal
+    | Vellum.WorkflowNodeResultData.Merge
     | Vellum.WorkflowNodeResultData.Subworkflow
     | Vellum.WorkflowNodeResultData.Metric;
 
@@ -42,6 +43,10 @@ export declare namespace WorkflowNodeResultData {
 
     interface Terminal extends Vellum.TerminalNodeResult {
         type: "TERMINAL";
+    }
+
+    interface Merge extends Vellum.MergeNodeResult {
+        type: "MERGE";
     }
 
     interface Subworkflow extends Vellum.SubworkflowNodeResult {

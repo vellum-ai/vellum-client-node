@@ -10,6 +10,7 @@ export const SearchResultDocumentRequest: core.serialization.ObjectSchema<
     serializers.SearchResultDocumentRequest.Raw,
     Vellum.SearchResultDocumentRequest
 > = core.serialization.object({
+    id: core.serialization.string().optional(),
     label: core.serialization.string(),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
@@ -17,6 +18,7 @@ export const SearchResultDocumentRequest: core.serialization.ObjectSchema<
 
 export declare namespace SearchResultDocumentRequest {
     interface Raw {
+        id?: string | null;
         label: string;
         external_id?: string | null;
         metadata?: Record<string, unknown> | null;

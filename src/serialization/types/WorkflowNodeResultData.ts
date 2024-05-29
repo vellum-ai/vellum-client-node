@@ -12,6 +12,7 @@ import { CodeExecutionNodeResult } from "./CodeExecutionNodeResult";
 import { ConditionalNodeResult } from "./ConditionalNodeResult";
 import { ApiNodeResult } from "./ApiNodeResult";
 import { TerminalNodeResult } from "./TerminalNodeResult";
+import { MergeNodeResult } from "./MergeNodeResult";
 import { SubworkflowNodeResult } from "./SubworkflowNodeResult";
 import { MetricNodeResult } from "./MetricNodeResult";
 
@@ -27,6 +28,7 @@ export const WorkflowNodeResultData: core.serialization.Schema<
         CONDITIONAL: ConditionalNodeResult,
         API: ApiNodeResult,
         TERMINAL: TerminalNodeResult,
+        MERGE: MergeNodeResult,
         SUBWORKFLOW: SubworkflowNodeResult,
         METRIC: MetricNodeResult,
     })
@@ -44,6 +46,7 @@ export declare namespace WorkflowNodeResultData {
         | WorkflowNodeResultData.Conditional
         | WorkflowNodeResultData.Api
         | WorkflowNodeResultData.Terminal
+        | WorkflowNodeResultData.Merge
         | WorkflowNodeResultData.Subworkflow
         | WorkflowNodeResultData.Metric;
 
@@ -73,6 +76,10 @@ export declare namespace WorkflowNodeResultData {
 
     interface Terminal extends TerminalNodeResult.Raw {
         type: "TERMINAL";
+    }
+
+    interface Merge extends MergeNodeResult.Raw {
+        type: "MERGE";
     }
 
     interface Subworkflow extends SubworkflowNodeResult.Raw {

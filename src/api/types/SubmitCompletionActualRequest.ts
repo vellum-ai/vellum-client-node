@@ -13,4 +13,6 @@ export interface SubmitCompletionActualRequest {
     quality?: number;
     /** Optionally provide the timestamp representing when this feedback was collected. Used for reporting purposes. */
     timestamp?: Date;
+    /** Optionally provide additional metadata about the feedback submission. */
+    metadata?: Record<string, unknown>;
 }
