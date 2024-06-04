@@ -5,12 +5,17 @@
 import * as serializers from "..";
 import * as Vellum from "../../api";
 import * as core from "../../core";
+import { SubworkflowNodeResultData } from "./SubworkflowNodeResultData";
 
 export const SubworkflowNodeResult: core.serialization.ObjectSchema<
     serializers.SubworkflowNodeResult.Raw,
     Vellum.SubworkflowNodeResult
-> = core.serialization.object({});
+> = core.serialization.object({
+    data: SubworkflowNodeResultData.optional(),
+});
 
 export declare namespace SubworkflowNodeResult {
-    interface Raw {}
+    interface Raw {
+        data?: SubworkflowNodeResultData.Raw | null;
+    }
 }

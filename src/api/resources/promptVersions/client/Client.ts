@@ -9,7 +9,7 @@ import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
-export declare namespace FolderEntities {
+export declare namespace PromptVersions {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey: core.Supplier<string>;
@@ -21,29 +21,20 @@ export declare namespace FolderEntities {
     }
 }
 
-export class FolderEntities {
-    constructor(protected readonly _options: FolderEntities.Options) {}
+export class PromptVersions {
+    constructor(protected readonly _options: PromptVersions.Options) {}
 
-    /**
-     * Add an entity to a specific folder or root directory.
-     *
-     * Adding an entity to a folder will remove it from any other folders it might have been a member of.
-     *
-     * @example
-     *     await vellum.folderEntities.addEntityToFolder("folder_id", {
-     *         entityId: "entity_id"
-     *     })
-     */
-    public async addEntityToFolder(
-        folderId: string,
-        request: Vellum.AddEntityToFolderRequest,
-        requestOptions?: FolderEntities.RequestOptions
-    ): Promise<void> {
+    public async deployPrompt(
+        id: string,
+        promptId: string,
+        request: Vellum.DeploySandboxPromptRequest = {},
+        requestOptions?: PromptVersions.RequestOptions
+    ): Promise<Vellum.DeploymentRead> {
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/folders/${folderId}/add-entity`
+                `v1/sandboxes/${id}/prompts/${promptId}/deploy`
             ),
             method: "POST",
             headers: {
@@ -55,12 +46,19 @@ export class FolderEntities {
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.AddEntityToFolderRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: await serializers.DeploySandboxPromptRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
         });
         if (_response.ok) {
-            return;
+            return await serializers.DeploymentRead.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
         }
 
         if (_response.error.reason === "status-code") {
