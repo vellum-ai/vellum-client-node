@@ -12,8 +12,11 @@ import * as Vellum from "../../../..";
  *     }
  */
 export interface UpsertTestSuiteTestCaseRequest {
+    /** The ID of the Test Case to upsert. If specified and a match is found, the existing Test Case will be updated. If specified and no match is found, a Test Case will be created with the provided ID. If not provided, a new Test Case will be created with an auto-generated ID. */
     upsertTestSuiteTestCaseRequestId?: string;
     label?: string;
+    /** Values for each of the Test Case's input variables */
     inputValues: Vellum.NamedTestCaseVariableValueRequest[];
+    /** Values for each of the Test Case's evaluation variables */
     evaluationValues: Vellum.NamedTestCaseVariableValueRequest[];
 }

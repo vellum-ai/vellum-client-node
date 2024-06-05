@@ -8,6 +8,7 @@ import * as Vellum from "../../..";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
+import * as stream from "stream";
 
 export declare namespace TestSuites {
     interface Options {
@@ -55,7 +56,7 @@ export class TestSuites {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -126,7 +127,7 @@ export class TestSuites {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -144,6 +145,74 @@ export class TestSuites {
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
                 breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * Created, replace, and delete Test Cases within the specified Test Suite in bulk
+     */
+    public async testSuiteTestCasesBulk(
+        id: string,
+        request: Vellum.TestSuiteTestCaseBulkOperationRequest[],
+        requestOptions?: TestSuites.RequestOptions
+    ): Promise<core.Stream<Vellum.TestSuiteTestCaseBulkResult[]>> {
+        const _response = await core.fetcher<stream.Readable>({
+            url: urlJoin(
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
+                `v1/test-suites/${id}/test-cases-bulk`
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            body: await serializers.testSuites.testSuiteTestCasesBulk.Request.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            responseType: "streaming",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+        });
+        if (_response.ok) {
+            return new core.Stream({
+                stream: _response.body,
+                terminator: "\n",
+                parse: async (data) => {
+                    return await serializers.testSuites.testSuiteTestCasesBulk.StreamData.parseOrThrow(data, {
+                        unrecognizedObjectKeys: "passthrough",
+                        allowUnrecognizedUnionMembers: true,
+                        allowUnrecognizedEnumValues: true,
+                        breadcrumbsPrefix: ["response"],
+                    });
+                },
             });
         }
 
@@ -190,7 +259,7 @@ export class TestSuites {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

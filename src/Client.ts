@@ -55,7 +55,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -124,7 +124,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -205,7 +205,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -272,7 +272,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -334,7 +334,8 @@ export class VellumClient {
     /**
      * Generate a completion using a previously defined deployment.
      *
-     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     * Important: This endpoint is DEPRECATED and has been superseded by
+     * [execute-prompt](/api-reference/api-reference/execute-prompt).
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.ForbiddenError}
      * @throws {@link Vellum.NotFoundError}
@@ -361,7 +362,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -416,7 +417,8 @@ export class VellumClient {
     /**
      * Generate a stream of completions using a previously defined deployment.
      *
-     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     * Important: This endpoint is DEPRECATED and has been superseded by
+     * [execute-prompt-stream](/api-reference/api-reference/execute-prompt-stream).
      */
     public async generateStream(
         request: Vellum.GenerateStreamBodyRequest,
@@ -432,7 +434,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -493,8 +495,6 @@ export class VellumClient {
 
     /**
      * Perform a search against a document index.
-     *
-     * **Note:** Uses a base url of `https://predict.vellum.ai`.
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.NotFoundError}
      * @throws {@link Vellum.InternalServerError}
@@ -518,7 +518,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -570,8 +570,6 @@ export class VellumClient {
 
     /**
      * Used to submit feedback regarding the quality of previously generated completions.
-     *
-     * **Note:** Uses a base url of `https://predict.vellum.ai`.
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.NotFoundError}
      * @throws {@link Vellum.InternalServerError}
@@ -595,7 +593,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -666,7 +664,7 @@ export class VellumClient {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.3",
+                "X-Fern-SDK-Version": "0.6.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
