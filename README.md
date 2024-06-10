@@ -54,7 +54,7 @@ async function main() {
 
 > [!TIP]
 > You can set a system environment variable `VELLUM_API_KEY` to avoid writing your api key within your code. To do so, add `export VELLUM_API_KEY=<your-api-token>`
-> to your ~/.zshrc or ~/.bashrc, open a new terminal, and then any code calling `vellum.Vellum()` will read this key.
+> to your ~/.zshrc or ~/.bashrc, open a new terminal, and then any code calling `VellumClient()` will read this key.
 
 ## Contributing
 
