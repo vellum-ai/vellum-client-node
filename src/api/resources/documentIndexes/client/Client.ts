@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
+import * as Vellum from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 
 export declare namespace DocumentIndexes {
     interface Options {
@@ -18,6 +18,7 @@ export declare namespace DocumentIndexes {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -26,6 +27,9 @@ export class DocumentIndexes {
 
     /**
      * Used to retrieve a list of Document Indexes.
+     *
+     * @param {Vellum.DocumentIndexesListRequest} request
+     * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await vellum.documentIndexes.list()
@@ -66,7 +70,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -75,6 +79,7 @@ export class DocumentIndexes {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.PaginatedDocumentIndexReadList.parseOrThrow(_response.body, {
@@ -109,6 +114,26 @@ export class DocumentIndexes {
 
     /**
      * Creates a new document index.
+     *
+     * @param {Vellum.DocumentIndexCreateRequest} request
+     * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.documentIndexes.create({
+     *         label: "string",
+     *         name: "string",
+     *         status: Vellum.EntityStatus.Active,
+     *         environment: Vellum.EnvironmentEnum.Development,
+     *         indexingConfig: {
+     *             vectorizer: {
+     *                 modelName: "text-embedding-3-small"
+     *             },
+     *             chunking: {
+     *                 chunkerName: "reducto-chunker"
+     *             }
+     *         },
+     *         copyDocumentsFromIndexId: "string"
+     *     })
      */
     public async create(
         request: Vellum.DocumentIndexCreateRequest,
@@ -124,7 +149,7 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -135,6 +160,7 @@ export class DocumentIndexes {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DocumentIndexRead.parseOrThrow(_response.body, {
@@ -169,6 +195,12 @@ export class DocumentIndexes {
 
     /**
      * Used to retrieve a Document Index given its ID or name.
+     *
+     * @param {string} id - Either the Document Index's ID or its unique name
+     * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.documentIndexes.retrieve("string")
      */
     public async retrieve(
         id: string,
@@ -178,13 +210,13 @@ export class DocumentIndexes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/document-indexes/${id}`
+                `v1/document-indexes/${encodeURIComponent(id)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -192,6 +224,7 @@ export class DocumentIndexes {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DocumentIndexRead.parseOrThrow(_response.body, {
@@ -226,6 +259,17 @@ export class DocumentIndexes {
 
     /**
      * Used to fully update a Document Index given its ID.
+     *
+     * @param {string} id - A UUID string identifying this document index.
+     * @param {Vellum.DocumentIndexUpdateRequest} request
+     * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.documentIndexes.update("string", {
+     *         label: "string",
+     *         status: Vellum.EntityStatus.Active,
+     *         environment: Vellum.EnvironmentEnum.Development
+     *     })
      */
     public async update(
         id: string,
@@ -236,13 +280,13 @@ export class DocumentIndexes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/document-indexes/${id}`
+                `v1/document-indexes/${encodeURIComponent(id)}`
             ),
             method: "PUT",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -253,6 +297,7 @@ export class DocumentIndexes {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DocumentIndexRead.parseOrThrow(_response.body, {
@@ -288,6 +333,9 @@ export class DocumentIndexes {
     /**
      * Used to delete a Document Index given its ID.
      *
+     * @param {string} id - A UUID string identifying this document index.
+     * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.documentIndexes.destroy("id")
      */
@@ -296,13 +344,13 @@ export class DocumentIndexes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/document-indexes/${id}`
+                `v1/document-indexes/${encodeURIComponent(id)}`
             ),
             method: "DELETE",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -310,6 +358,7 @@ export class DocumentIndexes {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;
@@ -339,6 +388,17 @@ export class DocumentIndexes {
 
     /**
      * Used to partial update a Document Index given its ID.
+     *
+     * @param {string} id - A UUID string identifying this document index.
+     * @param {Vellum.PatchedDocumentIndexUpdateRequest} request
+     * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.documentIndexes.partialUpdate("string", {
+     *         label: "string",
+     *         status: Vellum.EntityStatus.Active,
+     *         environment: Vellum.EnvironmentEnum.Development
+     *     })
      */
     public async partialUpdate(
         id: string,
@@ -349,13 +409,13 @@ export class DocumentIndexes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/document-indexes/${id}`
+                `v1/document-indexes/${encodeURIComponent(id)}`
             ),
             method: "PATCH",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -366,6 +426,7 @@ export class DocumentIndexes {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DocumentIndexRead.parseOrThrow(_response.body, {

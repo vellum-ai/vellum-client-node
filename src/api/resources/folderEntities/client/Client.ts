@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
-import * as serializers from "../../../../serialization";
+import * as Vellum from "../../../index";
+import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
+import * as errors from "../../../../errors/index";
 
 export declare namespace FolderEntities {
     interface Options {
@@ -18,6 +18,7 @@ export declare namespace FolderEntities {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -28,6 +29,10 @@ export class FolderEntities {
      * Add an entity to a specific folder or root directory.
      *
      * Adding an entity to a folder will remove it from any other folders it might have been a member of.
+     *
+     * @param {string} folderId - The ID of the folder to which the entity should be added. This can be a UUID of a folder, or the name of a root directory (e.g. "PROMPT_SANDBOX").
+     * @param {Vellum.AddEntityToFolderRequest} request
+     * @param {FolderEntities.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await vellum.folderEntities.addEntityToFolder("folder_id", {
@@ -43,13 +48,13 @@ export class FolderEntities {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/folders/${folderId}/add-entity`
+                `v1/folders/${encodeURIComponent(folderId)}/add-entity`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -58,6 +63,7 @@ export class FolderEntities {
             body: await serializers.AddEntityToFolderRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;

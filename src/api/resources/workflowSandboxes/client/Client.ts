@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
-import * as serializers from "../../../../serialization";
+import * as Vellum from "../../../index";
+import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
+import * as errors from "../../../../errors/index";
 
 export declare namespace WorkflowSandboxes {
     interface Options {
@@ -18,12 +18,22 @@ export declare namespace WorkflowSandboxes {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class WorkflowSandboxes {
     constructor(protected readonly _options: WorkflowSandboxes.Options) {}
 
+    /**
+     * @param {string} id - A UUID string identifying this workflow sandbox.
+     * @param {string} workflowId - An ID identifying the Workflow you'd like to deploy.
+     * @param {Vellum.DeploySandboxWorkflowRequest} request
+     * @param {WorkflowSandboxes.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.workflowSandboxes.deployWorkflow("id", "workflow_id")
+     */
     public async deployWorkflow(
         id: string,
         workflowId: string,
@@ -34,13 +44,13 @@ export class WorkflowSandboxes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/workflow-sandboxes/${id}/workflows/${workflowId}/deploy`
+                `v1/workflow-sandboxes/${encodeURIComponent(id)}/workflows/${encodeURIComponent(workflowId)}/deploy`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -51,6 +61,7 @@ export class WorkflowSandboxes {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.WorkflowDeploymentRead.parseOrThrow(_response.body, {

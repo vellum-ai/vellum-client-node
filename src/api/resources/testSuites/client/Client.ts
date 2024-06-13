@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
+import * as Vellum from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 import * as stream from "stream";
 
 export declare namespace TestSuites {
@@ -19,6 +19,7 @@ export declare namespace TestSuites {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -27,6 +28,10 @@ export class TestSuites {
 
     /**
      * List the Test Cases associated with a Test Suite
+     *
+     * @param {string} id - A UUID string identifying this test suite.
+     * @param {Vellum.ListTestSuiteTestCasesRequest} request
+     * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await vellum.testSuites.listTestSuiteTestCases("id")
@@ -50,13 +55,13 @@ export class TestSuites {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/test-suites/${id}/test-cases`
+                `v1/test-suites/${encodeURIComponent(id)}/test-cases`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -65,6 +70,7 @@ export class TestSuites {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.PaginatedTestSuiteTestCaseList.parseOrThrow(_response.body, {
@@ -106,6 +112,10 @@ export class TestSuites {
      * Note that a full replacement of the test case is performed, so any fields not provided will be removed
      * or overwritten with default values.
      *
+     * @param {string} id - A UUID string identifying this test suite.
+     * @param {Vellum.UpsertTestSuiteTestCaseRequest} request
+     * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.testSuites.upsertTestSuiteTestCase("id", {
      *         inputValues: [],
@@ -121,13 +131,13 @@ export class TestSuites {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/test-suites/${id}/test-cases`
+                `v1/test-suites/${encodeURIComponent(id)}/test-cases`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -138,6 +148,7 @@ export class TestSuites {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.TestSuiteTestCase.parseOrThrow(_response.body, {
@@ -182,13 +193,13 @@ export class TestSuites {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/test-suites/${id}/test-cases-bulk`
+                `v1/test-suites/${encodeURIComponent(id)}/test-cases-bulk`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -200,11 +211,11 @@ export class TestSuites {
             responseType: "streaming",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return new core.Stream({
                 stream: _response.body,
-                terminator: "\n",
                 parse: async (data) => {
                     return await serializers.testSuites.testSuiteTestCasesBulk.StreamData.parseOrThrow(data, {
                         unrecognizedObjectKeys: "passthrough",
@@ -212,6 +223,11 @@ export class TestSuites {
                         allowUnrecognizedEnumValues: true,
                         breadcrumbsPrefix: ["response"],
                     });
+                },
+                signal: requestOptions?.abortSignal,
+                eventShape: {
+                    type: "json",
+                    messageTerminator: "\n",
                 },
             });
         }
@@ -241,6 +257,10 @@ export class TestSuites {
     /**
      * Deletes an existing test case for a test suite, keying off of the test case id.
      *
+     * @param {string} id - A UUID string identifying this test suite.
+     * @param {string} testCaseId - An id identifying the test case that you'd like to delete
+     * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.testSuites.deleteTestSuiteTestCase("id", "test_case_id")
      */
@@ -253,13 +273,13 @@ export class TestSuites {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/test-suites/${id}/test-cases/${testCaseId}`
+                `v1/test-suites/${encodeURIComponent(id)}/test-cases/${encodeURIComponent(testCaseId)}`
             ),
             method: "DELETE",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -267,6 +287,7 @@ export class TestSuites {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;

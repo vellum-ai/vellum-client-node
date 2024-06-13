@@ -1,3 +1,3 @@
-export { DeploymentsListRequest } from "./DeploymentsListRequest";
-export { PatchedDeploymentReleaseTagUpdateRequest } from "./PatchedDeploymentReleaseTagUpdateRequest";
-export { DeploymentProviderPayloadRequest } from "./DeploymentProviderPayloadRequest";
+export { type DeploymentsListRequest } from "./DeploymentsListRequest";
+export { type PatchedDeploymentReleaseTagUpdateRequest } from "./PatchedDeploymentReleaseTagUpdateRequest";
+export { type DeploymentProviderPayloadRequest } from "./DeploymentProviderPayloadRequest";

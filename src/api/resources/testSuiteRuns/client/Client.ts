@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
-import * as serializers from "../../../../serialization";
+import * as Vellum from "../../../index";
+import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
+import * as errors from "../../../../errors/index";
 
 export declare namespace TestSuiteRuns {
     interface Options {
@@ -18,6 +18,7 @@ export declare namespace TestSuiteRuns {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -26,6 +27,22 @@ export class TestSuiteRuns {
 
     /**
      * Trigger a Test Suite and create a new Test Suite Run
+     *
+     * @param {Vellum.TestSuiteRunCreateRequest} request
+     * @param {TestSuiteRuns.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.testSuiteRuns.create({
+     *         testSuiteId: "string",
+     *         execConfig: {
+     *             type: "DEPLOYMENT_RELEASE_TAG",
+     *             data: {
+     *                 deploymentId: "string",
+     *                 tag: "string"
+     *             },
+     *             testCaseIds: ["string"]
+     *         }
+     *     })
      */
     public async create(
         request: Vellum.TestSuiteRunCreateRequest,
@@ -41,7 +58,7 @@ export class TestSuiteRuns {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -50,6 +67,7 @@ export class TestSuiteRuns {
             body: await serializers.TestSuiteRunCreateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.TestSuiteRunRead.parseOrThrow(_response.body, {
@@ -85,6 +103,9 @@ export class TestSuiteRuns {
     /**
      * Retrieve a specific Test Suite Run by ID
      *
+     * @param {string} id - A UUID string identifying this test suite run.
+     * @param {TestSuiteRuns.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.testSuiteRuns.retrieve("id")
      */
@@ -93,13 +114,13 @@ export class TestSuiteRuns {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/test-suite-runs/${id}`
+                `v1/test-suite-runs/${encodeURIComponent(id)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -107,6 +128,7 @@ export class TestSuiteRuns {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.TestSuiteRunRead.parseOrThrow(_response.body, {
@@ -139,6 +161,14 @@ export class TestSuiteRuns {
         }
     }
 
+    /**
+     * @param {string} id - A UUID string identifying this test suite run.
+     * @param {Vellum.TestSuiteRunsListExecutionsRequest} request
+     * @param {TestSuiteRuns.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.testSuiteRuns.listExecutions("id")
+     */
     public async listExecutions(
         id: string,
         request: Vellum.TestSuiteRunsListExecutionsRequest = {},
@@ -166,13 +196,13 @@ export class TestSuiteRuns {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/test-suite-runs/${id}/executions`
+                `v1/test-suite-runs/${encodeURIComponent(id)}/executions`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -181,6 +211,7 @@ export class TestSuiteRuns {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.PaginatedTestSuiteRunExecutionList.parseOrThrow(_response.body, {

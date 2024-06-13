@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
-import * as serializers from "../../../../serialization";
+import * as Vellum from "../../../index";
+import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
-import * as errors from "../../../../errors";
+import * as errors from "../../../../errors/index";
 
 export declare namespace Sandboxes {
     interface Options {
@@ -18,12 +18,22 @@ export declare namespace Sandboxes {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class Sandboxes {
     constructor(protected readonly _options: Sandboxes.Options) {}
 
+    /**
+     * @param {string} id - A UUID string identifying this sandbox.
+     * @param {string} promptId - An ID identifying the Prompt you'd like to deploy.
+     * @param {Vellum.DeploySandboxPromptRequest} request
+     * @param {Sandboxes.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.sandboxes.deployPrompt("id", "prompt_id")
+     */
     public async deployPrompt(
         id: string,
         promptId: string,
@@ -34,13 +44,13 @@ export class Sandboxes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/sandboxes/${id}/prompts/${promptId}/deploy`
+                `v1/sandboxes/${encodeURIComponent(id)}/prompts/${encodeURIComponent(promptId)}/deploy`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -51,6 +61,7 @@ export class Sandboxes {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DeploymentRead.parseOrThrow(_response.body, {
@@ -92,6 +103,10 @@ export class Sandboxes {
      * Note that a full replacement of the scenario is performed, so any fields not provided will be removed
      * or overwritten with default values.
      *
+     * @param {string} id - A UUID string identifying this sandbox.
+     * @param {Vellum.UpsertSandboxScenarioRequestRequest} request
+     * @param {Sandboxes.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.sandboxes.upsertSandboxScenario("id", {
      *         label: "Scenario 1",
@@ -113,13 +128,13 @@ export class Sandboxes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/sandboxes/${id}/scenarios`
+                `v1/sandboxes/${encodeURIComponent(id)}/scenarios`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -130,6 +145,7 @@ export class Sandboxes {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.SandboxScenario.parseOrThrow(_response.body, {
@@ -165,6 +181,10 @@ export class Sandboxes {
     /**
      * Deletes an existing scenario from a sandbox, keying off of the provided scenario id.
      *
+     * @param {string} id - A UUID string identifying this sandbox.
+     * @param {string} scenarioId - An id identifying the scenario that you'd like to delete
+     * @param {Sandboxes.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.sandboxes.deleteSandboxScenario("id", "scenario_id")
      */
@@ -177,13 +197,13 @@ export class Sandboxes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/sandboxes/${id}/scenarios/${scenarioId}`
+                `v1/sandboxes/${encodeURIComponent(id)}/scenarios/${encodeURIComponent(scenarioId)}`
             ),
             method: "DELETE",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -191,6 +211,7 @@ export class Sandboxes {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;

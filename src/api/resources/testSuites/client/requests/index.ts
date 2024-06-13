@@ -1,2 +1,2 @@
-export { ListTestSuiteTestCasesRequest } from "./ListTestSuiteTestCasesRequest";
-export { UpsertTestSuiteTestCaseRequest } from "./UpsertTestSuiteTestCaseRequest";
+export { type ListTestSuiteTestCasesRequest } from "./ListTestSuiteTestCasesRequest";
+export { type UpsertTestSuiteTestCaseRequest } from "./UpsertTestSuiteTestCaseRequest";

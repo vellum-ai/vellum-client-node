@@ -1,1 +1,1 @@
-export { DeploySandboxWorkflowRequest } from "./DeploySandboxWorkflowRequest";
+export { type DeploySandboxWorkflowRequest } from "./DeploySandboxWorkflowRequest";

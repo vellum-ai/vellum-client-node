@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
+import * as Vellum from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 
 export declare namespace Deployments {
     interface Options {
@@ -18,12 +18,20 @@ export declare namespace Deployments {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class Deployments {
     constructor(protected readonly _options: Deployments.Options) {}
 
+    /**
+     * @param {Vellum.DeploymentsListRequest} request
+     * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.deployments.list()
+     */
     public async list(
         request: Vellum.DeploymentsListRequest = {},
         requestOptions?: Deployments.RequestOptions
@@ -56,7 +64,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -65,6 +73,7 @@ export class Deployments {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.PaginatedSlimDeploymentReadList.parseOrThrow(_response.body, {
@@ -100,6 +109,9 @@ export class Deployments {
     /**
      * Used to retrieve a deployment given its ID or name.
      *
+     * @param {string} id - Either the Deployment's ID or its unique name
+     * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.deployments.retrieve("id")
      */
@@ -108,13 +120,13 @@ export class Deployments {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/deployments/${id}`
+                `v1/deployments/${encodeURIComponent(id)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -122,6 +134,7 @@ export class Deployments {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DeploymentRead.parseOrThrow(_response.body, {
@@ -157,6 +170,10 @@ export class Deployments {
     /**
      * Retrieve a Deployment Release Tag by tag name, associated with a specified Deployment.
      *
+     * @param {string} id - A UUID string identifying this deployment.
+     * @param {string} name - The name of the Release Tag associated with this Deployment that you'd like to retrieve.
+     * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.deployments.retrieveDeploymentReleaseTag("id", "name")
      */
@@ -169,13 +186,13 @@ export class Deployments {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/deployments/${id}/release-tags/${name}`
+                `v1/deployments/${encodeURIComponent(id)}/release-tags/${encodeURIComponent(name)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -183,6 +200,7 @@ export class Deployments {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
@@ -218,6 +236,11 @@ export class Deployments {
     /**
      * Updates an existing Release Tag associated with the specified Deployment.
      *
+     * @param {string} id - A UUID string identifying this deployment.
+     * @param {string} name - The name of the Release Tag associated with this Deployment that you'd like to update.
+     * @param {Vellum.PatchedDeploymentReleaseTagUpdateRequest} request
+     * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.deployments.updateDeploymentReleaseTag("id", "name")
      */
@@ -231,13 +254,13 @@ export class Deployments {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/deployments/${id}/release-tags/${name}`
+                `v1/deployments/${encodeURIComponent(id)}/release-tags/${encodeURIComponent(name)}`
             ),
             method: "PATCH",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -248,6 +271,7 @@ export class Deployments {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
@@ -281,6 +305,9 @@ export class Deployments {
     }
 
     /**
+     * @param {Vellum.DeploymentProviderPayloadRequest} request
+     * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.ForbiddenError}
      * @throws {@link Vellum.NotFoundError}
@@ -305,7 +332,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -316,6 +343,7 @@ export class Deployments {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DeploymentProviderPayloadResponse.parseOrThrow(_response.body, {

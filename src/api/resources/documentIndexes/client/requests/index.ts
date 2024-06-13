@@ -1,4 +1,4 @@
-export { DocumentIndexesListRequest } from "./DocumentIndexesListRequest";
-export { DocumentIndexCreateRequest } from "./DocumentIndexCreateRequest";
-export { DocumentIndexUpdateRequest } from "./DocumentIndexUpdateRequest";
-export { PatchedDocumentIndexUpdateRequest } from "./PatchedDocumentIndexUpdateRequest";
+export { type DocumentIndexesListRequest } from "./DocumentIndexesListRequest";
+export { type DocumentIndexCreateRequest } from "./DocumentIndexCreateRequest";
+export { type DocumentIndexUpdateRequest } from "./DocumentIndexUpdateRequest";
+export { type PatchedDocumentIndexUpdateRequest } from "./PatchedDocumentIndexUpdateRequest";

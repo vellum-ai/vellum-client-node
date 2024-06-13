@@ -4,10 +4,10 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
+import * as Vellum from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 
 export declare namespace WorkflowDeployments {
     interface Options {
@@ -18,12 +18,20 @@ export declare namespace WorkflowDeployments {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
 export class WorkflowDeployments {
     constructor(protected readonly _options: WorkflowDeployments.Options) {}
 
+    /**
+     * @param {Vellum.WorkflowDeploymentsListRequest} request
+     * @param {WorkflowDeployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await vellum.workflowDeployments.list()
+     */
     public async list(
         request: Vellum.WorkflowDeploymentsListRequest = {},
         requestOptions?: WorkflowDeployments.RequestOptions
@@ -56,7 +64,7 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -65,6 +73,7 @@ export class WorkflowDeployments {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.PaginatedSlimWorkflowDeploymentList.parseOrThrow(_response.body, {
@@ -100,6 +109,9 @@ export class WorkflowDeployments {
     /**
      * Used to retrieve a workflow deployment given its ID or name.
      *
+     * @param {string} id - Either the Workflow Deployment's ID or its unique name
+     * @param {WorkflowDeployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.workflowDeployments.retrieve("id")
      */
@@ -111,13 +123,13 @@ export class WorkflowDeployments {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/workflow-deployments/${id}`
+                `v1/workflow-deployments/${encodeURIComponent(id)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -125,6 +137,7 @@ export class WorkflowDeployments {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.WorkflowDeploymentRead.parseOrThrow(_response.body, {
@@ -160,6 +173,10 @@ export class WorkflowDeployments {
     /**
      * Retrieve a Workflow Release Tag by tag name, associated with a specified Workflow Deployment.
      *
+     * @param {string} id - A UUID string identifying this workflow deployment.
+     * @param {string} name - The name of the Release Tag associated with this Workflow Deployment that you'd like to retrieve.
+     * @param {WorkflowDeployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.workflowDeployments.retrieveWorkflowReleaseTag("id", "name")
      */
@@ -172,13 +189,13 @@ export class WorkflowDeployments {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/workflow-deployments/${id}/release-tags/${name}`
+                `v1/workflow-deployments/${encodeURIComponent(id)}/release-tags/${encodeURIComponent(name)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -186,6 +203,7 @@ export class WorkflowDeployments {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.WorkflowReleaseTagRead.parseOrThrow(_response.body, {
@@ -221,6 +239,11 @@ export class WorkflowDeployments {
     /**
      * Updates an existing Release Tag associated with the specified Workflow Deployment.
      *
+     * @param {string} id - A UUID string identifying this workflow deployment.
+     * @param {string} name - The name of the Release Tag associated with this Workflow Deployment that you'd like to update.
+     * @param {Vellum.PatchedWorkflowReleaseTagUpdateRequest} request
+     * @param {WorkflowDeployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.workflowDeployments.updateWorkflowReleaseTag("id", "name")
      */
@@ -234,13 +257,13 @@ export class WorkflowDeployments {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/workflow-deployments/${id}/release-tags/${name}`
+                `v1/workflow-deployments/${encodeURIComponent(id)}/release-tags/${encodeURIComponent(name)}`
             ),
             method: "PATCH",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -251,6 +274,7 @@ export class WorkflowDeployments {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.WorkflowReleaseTagRead.parseOrThrow(_response.body, {

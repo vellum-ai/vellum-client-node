@@ -1,1 +1,1 @@
-export { AddEntityToFolderRequest } from "./AddEntityToFolderRequest";
+export { type AddEntityToFolderRequest } from "./AddEntityToFolderRequest";

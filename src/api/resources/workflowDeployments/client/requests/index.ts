@@ -1,2 +1,2 @@
-export { WorkflowDeploymentsListRequest } from "./WorkflowDeploymentsListRequest";
-export { PatchedWorkflowReleaseTagUpdateRequest } from "./PatchedWorkflowReleaseTagUpdateRequest";
+export { type WorkflowDeploymentsListRequest } from "./WorkflowDeploymentsListRequest";
+export { type PatchedWorkflowReleaseTagUpdateRequest } from "./PatchedWorkflowReleaseTagUpdateRequest";

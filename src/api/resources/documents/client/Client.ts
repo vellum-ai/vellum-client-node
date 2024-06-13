@@ -4,12 +4,11 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as Vellum from "../../..";
+import * as Vellum from "../../../index";
 import urlJoin from "url-join";
-import * as serializers from "../../../../serialization";
-import * as errors from "../../../../errors";
+import * as serializers from "../../../../serialization/index";
+import * as errors from "../../../../errors/index";
 import * as fs from "fs";
-import { default as FormData } from "form-data";
 
 export declare namespace Documents {
     interface Options {
@@ -20,6 +19,7 @@ export declare namespace Documents {
     interface RequestOptions {
         timeoutInSeconds?: number;
         maxRetries?: number;
+        abortSignal?: AbortSignal;
     }
 }
 
@@ -28,6 +28,9 @@ export class Documents {
 
     /**
      * Used to list documents. Optionally filter on supported fields.
+     *
+     * @param {Vellum.DocumentsListRequest} request
+     * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await vellum.documents.list()
@@ -64,7 +67,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -73,6 +76,7 @@ export class Documents {
             queryParameters: _queryParams,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.PaginatedSlimDocumentList.parseOrThrow(_response.body, {
@@ -108,6 +112,9 @@ export class Documents {
     /**
      * Retrieve a Document, keying off of either its Vellum-generated ID or its external ID.
      *
+     * @param {string} id - A UUID string identifying this document.
+     * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.documents.retrieve("id")
      */
@@ -116,13 +123,13 @@ export class Documents {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/documents/${id}`
+                `v1/documents/${encodeURIComponent(id)}`
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -130,6 +137,7 @@ export class Documents {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DocumentRead.parseOrThrow(_response.body, {
@@ -165,6 +173,9 @@ export class Documents {
     /**
      * Delete a Document, keying off of either its Vellum-generated ID or its external ID.
      *
+     * @param {string} id - A UUID string identifying this document.
+     * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.documents.destroy("id")
      */
@@ -173,13 +184,13 @@ export class Documents {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/documents/${id}`
+                `v1/documents/${encodeURIComponent(id)}`
             ),
             method: "DELETE",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -187,6 +198,7 @@ export class Documents {
             contentType: "application/json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return;
@@ -217,6 +229,10 @@ export class Documents {
     /**
      * Update a Document, keying off of either its Vellum-generated ID or its external ID. Particularly useful for updating its metadata.
      *
+     * @param {string} id - A UUID string identifying this document.
+     * @param {Vellum.PatchedDocumentUpdateRequest} request
+     * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @example
      *     await vellum.documents.partialUpdate("id")
      */
@@ -229,13 +245,13 @@ export class Documents {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/documents/${id}`
+                `v1/documents/${encodeURIComponent(id)}`
             ),
             method: "PATCH",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -246,6 +262,7 @@ export class Documents {
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.DocumentRead.parseOrThrow(_response.body, {
@@ -290,38 +307,49 @@ export class Documents {
      * - `label: str` - A human-friendly name for this document. Typically the filename.
      * - `keywords: list[str] | None` - Optionally include a list of keywords that'll be associated with this document. Used when performing keyword searches.
      * - `metadata: dict[str, Any]` - A stringified JSON object containing any metadata associated with the document that you'd like to filter upon later.
+     *
+     * @param {File | fs.ReadStream} contents
+     * @param {Vellum.UploadDocumentBodyRequest} request
+     * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
+     *
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.NotFoundError}
      * @throws {@link Vellum.InternalServerError}
+     *
+     * @example
+     *     await vellum.documents.upload(fs.createReadStream("/path/to/your/file"), {
+     *         label: "label"
+     *     })
      */
     public async upload(
         contents: File | fs.ReadStream,
         request: Vellum.UploadDocumentBodyRequest,
         requestOptions?: Documents.RequestOptions
     ): Promise<Vellum.UploadDocumentResponse> {
-        const _request = new FormData();
+        const _request = new core.FormDataWrapper();
         if (request.addToIndexNames != null) {
             for (const _item of request.addToIndexNames) {
-                _request.append("add_to_index_names", _item);
+                await _request.append("add_to_index_names", _item);
             }
         }
 
         if (request.externalId != null) {
-            _request.append("external_id", request.externalId);
+            await _request.append("external_id", request.externalId);
         }
 
-        _request.append("label", request.label);
-        _request.append("contents", contents);
+        await _request.append("label", request.label);
+        await _request.append("contents", contents);
         if (request.keywords != null) {
             for (const _item of request.keywords) {
-                _request.append("keywords", _item);
+                await _request.append("keywords", _item);
             }
         }
 
         if (request.metadata != null) {
-            _request.append("metadata", request.metadata);
+            await _request.append("metadata", request.metadata);
         }
 
+        const _maybeEncodedRequest = _request.getRequest();
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
@@ -332,15 +360,16 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.4",
+                "X-Fern-SDK-Version": "0.6.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
+                ...(await _maybeEncodedRequest.getHeaders()),
             },
-            contentType: "multipart/form-data; boundary=" + _request.getBoundary(),
-            body: _request,
+            body: await _maybeEncodedRequest.getBody(),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return await serializers.UploadDocumentResponse.parseOrThrow(_response.body, {
