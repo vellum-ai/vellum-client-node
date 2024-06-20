@@ -14,7 +14,8 @@ export type WorkflowNodeResultData =
     | Vellum.WorkflowNodeResultData.Terminal
     | Vellum.WorkflowNodeResultData.Merge
     | Vellum.WorkflowNodeResultData.Subworkflow
-    | Vellum.WorkflowNodeResultData.Metric;
+    | Vellum.WorkflowNodeResultData.Metric
+    | Vellum.WorkflowNodeResultData.Map;
 
 export declare namespace WorkflowNodeResultData {
     interface Prompt extends Vellum.PromptNodeResult {
@@ -55,5 +56,9 @@ export declare namespace WorkflowNodeResultData {
 
     interface Metric extends Vellum.MetricNodeResult {
         type: "METRIC";
+    }
+
+    interface Map extends Vellum.MapNodeResult {
+        type: "MAP";
     }
 }

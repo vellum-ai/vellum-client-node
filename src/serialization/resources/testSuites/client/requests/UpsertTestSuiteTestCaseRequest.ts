@@ -12,6 +12,7 @@ export const UpsertTestSuiteTestCaseRequest: core.serialization.Schema<
     Vellum.UpsertTestSuiteTestCaseRequest
 > = core.serialization.object({
     upsertTestSuiteTestCaseRequestId: core.serialization.property("id", core.serialization.string().optional()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
     label: core.serialization.string().optional(),
     inputValues: core.serialization.property(
         "input_values",
@@ -26,6 +27,7 @@ export const UpsertTestSuiteTestCaseRequest: core.serialization.Schema<
 export declare namespace UpsertTestSuiteTestCaseRequest {
     interface Raw {
         id?: string | null;
+        external_id?: string | null;
         label?: string | null;
         input_values: NamedTestCaseVariableValueRequest.Raw[];
         evaluation_values: NamedTestCaseVariableValueRequest.Raw[];

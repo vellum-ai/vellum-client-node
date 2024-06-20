@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { ArrayVariableValueItem } from "./ArrayVariableValueItem";
+import { ArrayVellumValueItem } from "./ArrayVellumValueItem";
 
 export const ExecutionArrayVellumValue: core.serialization.ObjectSchema<
     serializers.ExecutionArrayVellumValue.Raw,
@@ -13,13 +13,13 @@ export const ExecutionArrayVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.list(ArrayVariableValueItem).optional(),
+    value: core.serialization.list(ArrayVellumValueItem).optional(),
 });
 
 export declare namespace ExecutionArrayVellumValue {
     interface Raw {
         id: string;
         name: string;
-        value?: ArrayVariableValueItem.Raw[] | null;
+        value?: ArrayVellumValueItem.Raw[] | null;
     }
 }

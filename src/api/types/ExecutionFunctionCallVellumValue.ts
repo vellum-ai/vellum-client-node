@@ -4,6 +4,9 @@
 
 import * as Vellum from "../index";
 
+/**
+ * A value representing a Function Call.
+ */
 export interface ExecutionFunctionCallVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;

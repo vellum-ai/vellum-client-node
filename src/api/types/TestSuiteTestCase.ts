@@ -6,6 +6,7 @@ import * as Vellum from "../index";
 
 export interface TestSuiteTestCase {
     id?: string;
+    externalId?: string;
     label?: string;
     inputValues: Vellum.TestCaseVariableValue[];
     evaluationValues: Vellum.TestCaseVariableValue[];

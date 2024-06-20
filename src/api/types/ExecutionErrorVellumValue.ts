@@ -4,6 +4,9 @@
 
 import * as Vellum from "../index";
 
+/**
+ * A value representing an Error.
+ */
 export interface ExecutionErrorVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;

@@ -5,16 +5,17 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { DeploymentProviderPayloadResponsePayload } from "./DeploymentProviderPayloadResponsePayload";
 
 export const DeploymentProviderPayloadResponse: core.serialization.ObjectSchema<
     serializers.DeploymentProviderPayloadResponse.Raw,
     Vellum.DeploymentProviderPayloadResponse
 > = core.serialization.object({
-    payload: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    payload: DeploymentProviderPayloadResponsePayload,
 });
 
 export declare namespace DeploymentProviderPayloadResponse {
     interface Raw {
-        payload: Record<string, unknown>;
+        payload: DeploymentProviderPayloadResponsePayload.Raw;
     }
 }

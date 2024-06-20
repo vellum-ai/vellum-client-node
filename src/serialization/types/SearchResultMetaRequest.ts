@@ -11,11 +11,11 @@ export const SearchResultMetaRequest: core.serialization.ObjectSchema<
     serializers.SearchResultMetaRequest.Raw,
     Vellum.SearchResultMetaRequest
 > = core.serialization.object({
-    source: SearchResultMetaSourceRequest,
+    source: SearchResultMetaSourceRequest.optional(),
 });
 
 export declare namespace SearchResultMetaRequest {
     interface Raw {
-        source: SearchResultMetaSourceRequest.Raw;
+        source?: SearchResultMetaSourceRequest.Raw | null;
     }
 }

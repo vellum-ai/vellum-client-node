@@ -4,6 +4,9 @@
 
 import * as Vellum from "../index";
 
+/**
+ * A value representing Search Results.
+ */
 export interface ExecutionSearchResultsVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;

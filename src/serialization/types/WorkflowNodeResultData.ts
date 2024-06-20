@@ -15,6 +15,7 @@ import { TerminalNodeResult } from "./TerminalNodeResult";
 import { MergeNodeResult } from "./MergeNodeResult";
 import { SubworkflowNodeResult } from "./SubworkflowNodeResult";
 import { MetricNodeResult } from "./MetricNodeResult";
+import { MapNodeResult } from "./MapNodeResult";
 
 export const WorkflowNodeResultData: core.serialization.Schema<
     serializers.WorkflowNodeResultData.Raw,
@@ -31,6 +32,7 @@ export const WorkflowNodeResultData: core.serialization.Schema<
         MERGE: MergeNodeResult,
         SUBWORKFLOW: SubworkflowNodeResult,
         METRIC: MetricNodeResult,
+        MAP: MapNodeResult,
     })
     .transform<Vellum.WorkflowNodeResultData>({
         transform: (value) => value,
@@ -48,7 +50,8 @@ export declare namespace WorkflowNodeResultData {
         | WorkflowNodeResultData.Terminal
         | WorkflowNodeResultData.Merge
         | WorkflowNodeResultData.Subworkflow
-        | WorkflowNodeResultData.Metric;
+        | WorkflowNodeResultData.Metric
+        | WorkflowNodeResultData.Map;
 
     interface Prompt extends PromptNodeResult.Raw {
         type: "PROMPT";
@@ -88,5 +91,9 @@ export declare namespace WorkflowNodeResultData {
 
     interface Metric extends MetricNodeResult.Raw {
         type: "METRIC";
+    }
+
+    interface Map extends MapNodeResult.Raw {
+        type: "MAP";
     }
 }

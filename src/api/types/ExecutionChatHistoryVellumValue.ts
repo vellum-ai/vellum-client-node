@@ -4,6 +4,9 @@
 
 import * as Vellum from "../index";
 
+/**
+ * A value representing Chat History.
+ */
 export interface ExecutionChatHistoryVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;

@@ -7,11 +7,10 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { NamedTestCaseVariableValueRequest } from "./NamedTestCaseVariableValueRequest";
 
-export const BulkReplaceTestSuiteTestCaseDataRequest: core.serialization.ObjectSchema<
-    serializers.BulkReplaceTestSuiteTestCaseDataRequest.Raw,
-    Vellum.BulkReplaceTestSuiteTestCaseDataRequest
+export const CreateTestSuiteTestCaseRequest: core.serialization.ObjectSchema<
+    serializers.CreateTestSuiteTestCaseRequest.Raw,
+    Vellum.CreateTestSuiteTestCaseRequest
 > = core.serialization.object({
-    id: core.serialization.string(),
     label: core.serialization.string().optional(),
     inputValues: core.serialization.property(
         "input_values",
@@ -21,13 +20,14 @@ export const BulkReplaceTestSuiteTestCaseDataRequest: core.serialization.ObjectS
         "evaluation_values",
         core.serialization.list(NamedTestCaseVariableValueRequest)
     ),
+    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
 });
 
-export declare namespace BulkReplaceTestSuiteTestCaseDataRequest {
+export declare namespace CreateTestSuiteTestCaseRequest {
     interface Raw {
-        id: string;
         label?: string | null;
         input_values: NamedTestCaseVariableValueRequest.Raw[];
         evaluation_values: NamedTestCaseVariableValueRequest.Raw[];
+        external_id?: string | null;
     }
 }

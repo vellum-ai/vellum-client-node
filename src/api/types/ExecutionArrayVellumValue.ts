@@ -4,9 +4,12 @@
 
 import * as Vellum from "../index";
 
+/**
+ * A value representing an array of Vellum variable values.
+ */
 export interface ExecutionArrayVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    value?: Vellum.ArrayVariableValueItem[];
+    value?: Vellum.ArrayVellumValueItem[];
 }
