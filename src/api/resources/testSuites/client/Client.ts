@@ -17,8 +17,11 @@ export declare namespace TestSuites {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -34,7 +37,7 @@ export class TestSuites {
      * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.testSuites.listTestSuiteTestCases("id")
+     *     await client.testSuites.listTestSuiteTestCases("id")
      */
     public async listTestSuiteTestCases(
         id: string,
@@ -61,7 +64,7 @@ export class TestSuites {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -73,7 +76,7 @@ export class TestSuites {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PaginatedTestSuiteTestCaseList.parseOrThrow(_response.body, {
+            return serializers.PaginatedTestSuiteTestCaseList.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -117,7 +120,7 @@ export class TestSuites {
      * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.testSuites.upsertTestSuiteTestCase("id", {
+     *     await client.testSuites.upsertTestSuiteTestCase("id", {
      *         inputValues: [],
      *         evaluationValues: []
      *     })
@@ -137,21 +140,19 @@ export class TestSuites {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.UpsertTestSuiteTestCaseRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            body: serializers.UpsertTestSuiteTestCaseRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.TestSuiteTestCase.parseOrThrow(_response.body, {
+            return serializers.TestSuiteTestCase.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -199,13 +200,13 @@ export class TestSuites {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.testSuites.testSuiteTestCasesBulk.Request.jsonOrThrow(request, {
+            body: serializers.testSuites.testSuiteTestCasesBulk.Request.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             responseType: "streaming",
@@ -217,7 +218,7 @@ export class TestSuites {
             return new core.Stream({
                 stream: _response.body,
                 parse: async (data) => {
-                    return await serializers.testSuites.testSuiteTestCasesBulk.StreamData.parseOrThrow(data, {
+                    return serializers.testSuites.testSuiteTestCasesBulk.StreamData.parseOrThrow(data, {
                         unrecognizedObjectKeys: "passthrough",
                         allowUnrecognizedUnionMembers: true,
                         allowUnrecognizedEnumValues: true,
@@ -262,7 +263,7 @@ export class TestSuites {
      * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.testSuites.deleteTestSuiteTestCase("id", "test_case_id")
+     *     await client.testSuites.deleteTestSuiteTestCase("id", "test_case_id")
      */
     public async deleteTestSuiteTestCase(
         id: string,
@@ -279,7 +280,7 @@ export class TestSuites {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -118,6 +118,7 @@ export * from "./InitiatedPromptExecutionMeta";
 export * from "./InitiatedWorkflowNodeResultEvent";
 export * from "./InstructorVectorizerConfig";
 export * from "./InstructorVectorizerConfigRequest";
+export * from "./IterationStateEnum";
 export * from "./JsonInputRequest";
 export * from "./JsonEnum";
 export * from "./JsonVariableValue";

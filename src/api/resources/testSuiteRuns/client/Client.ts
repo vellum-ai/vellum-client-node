@@ -16,8 +16,11 @@ export declare namespace TestSuiteRuns {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -32,7 +35,7 @@ export class TestSuiteRuns {
      * @param {TestSuiteRuns.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.testSuiteRuns.create({
+     *     await client.testSuiteRuns.create({
      *         testSuiteId: "string",
      *         execConfig: {
      *             type: "DEPLOYMENT_RELEASE_TAG",
@@ -58,19 +61,19 @@ export class TestSuiteRuns {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.TestSuiteRunCreateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.TestSuiteRunCreateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.TestSuiteRunRead.parseOrThrow(_response.body, {
+            return serializers.TestSuiteRunRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -107,7 +110,7 @@ export class TestSuiteRuns {
      * @param {TestSuiteRuns.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.testSuiteRuns.retrieve("id")
+     *     await client.testSuiteRuns.retrieve("id")
      */
     public async retrieve(id: string, requestOptions?: TestSuiteRuns.RequestOptions): Promise<Vellum.TestSuiteRunRead> {
         const _response = await core.fetcher({
@@ -120,7 +123,7 @@ export class TestSuiteRuns {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -131,7 +134,7 @@ export class TestSuiteRuns {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.TestSuiteRunRead.parseOrThrow(_response.body, {
+            return serializers.TestSuiteRunRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -167,7 +170,7 @@ export class TestSuiteRuns {
      * @param {TestSuiteRuns.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.testSuiteRuns.listExecutions("id")
+     *     await client.testSuiteRuns.listExecutions("id")
      */
     public async listExecutions(
         id: string,
@@ -202,7 +205,7 @@ export class TestSuiteRuns {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -214,7 +217,7 @@ export class TestSuiteRuns {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PaginatedTestSuiteRunExecutionList.parseOrThrow(_response.body, {
+            return serializers.PaginatedTestSuiteRunExecutionList.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

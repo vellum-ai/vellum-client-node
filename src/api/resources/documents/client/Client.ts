@@ -17,8 +17,11 @@ export declare namespace Documents {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -33,7 +36,7 @@ export class Documents {
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.documents.list()
+     *     await client.documents.list()
      */
     public async list(
         request: Vellum.DocumentsListRequest = {},
@@ -67,7 +70,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -79,7 +82,7 @@ export class Documents {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PaginatedSlimDocumentList.parseOrThrow(_response.body, {
+            return serializers.PaginatedSlimDocumentList.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -116,7 +119,7 @@ export class Documents {
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.documents.retrieve("id")
+     *     await client.documents.retrieve("id")
      */
     public async retrieve(id: string, requestOptions?: Documents.RequestOptions): Promise<Vellum.DocumentRead> {
         const _response = await core.fetcher({
@@ -129,7 +132,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -140,7 +143,7 @@ export class Documents {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.DocumentRead.parseOrThrow(_response.body, {
+            return serializers.DocumentRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -177,7 +180,7 @@ export class Documents {
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.documents.destroy("id")
+     *     await client.documents.destroy("id")
      */
     public async destroy(id: string, requestOptions?: Documents.RequestOptions): Promise<void> {
         const _response = await core.fetcher({
@@ -190,7 +193,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -234,7 +237,7 @@ export class Documents {
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.documents.partialUpdate("id")
+     *     await client.documents.partialUpdate("id")
      */
     public async partialUpdate(
         id: string,
@@ -251,21 +254,19 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.PatchedDocumentUpdateRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            body: serializers.PatchedDocumentUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.DocumentRead.parseOrThrow(_response.body, {
+            return serializers.DocumentRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -317,7 +318,7 @@ export class Documents {
      * @throws {@link Vellum.InternalServerError}
      *
      * @example
-     *     await vellum.documents.upload(fs.createReadStream("/path/to/your/file"), {
+     *     await client.documents.upload(fs.createReadStream("/path/to/your/file"), {
      *         label: "label"
      *     })
      */
@@ -360,7 +361,7 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -372,7 +373,7 @@ export class Documents {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.UploadDocumentResponse.parseOrThrow(_response.body, {
+            return serializers.UploadDocumentResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

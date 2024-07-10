@@ -16,8 +16,11 @@ export declare namespace Deployments {
     }
 
     interface RequestOptions {
+        /** The maximum time to wait for a response in seconds. */
         timeoutInSeconds?: number;
+        /** The number of times to retry the request. Defaults to 2. */
         maxRetries?: number;
+        /** A hook to abort the request. */
         abortSignal?: AbortSignal;
     }
 }
@@ -30,7 +33,7 @@ export class Deployments {
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.deployments.list()
+     *     await client.deployments.list()
      */
     public async list(
         request: Vellum.DeploymentsListRequest = {},
@@ -64,7 +67,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -76,7 +79,7 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.PaginatedSlimDeploymentReadList.parseOrThrow(_response.body, {
+            return serializers.PaginatedSlimDeploymentReadList.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -113,7 +116,7 @@ export class Deployments {
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.deployments.retrieve("id")
+     *     await client.deployments.retrieve("id")
      */
     public async retrieve(id: string, requestOptions?: Deployments.RequestOptions): Promise<Vellum.DeploymentRead> {
         const _response = await core.fetcher({
@@ -126,7 +129,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -137,7 +140,7 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.DeploymentRead.parseOrThrow(_response.body, {
+            return serializers.DeploymentRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -175,7 +178,7 @@ export class Deployments {
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.deployments.retrieveDeploymentReleaseTag("id", "name")
+     *     await client.deployments.retrieveDeploymentReleaseTag("id", "name")
      */
     public async retrieveDeploymentReleaseTag(
         id: string,
@@ -192,7 +195,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -203,7 +206,7 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
+            return serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -242,7 +245,7 @@ export class Deployments {
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await vellum.deployments.updateDeploymentReleaseTag("id", "name")
+     *     await client.deployments.updateDeploymentReleaseTag("id", "name")
      */
     public async updateDeploymentReleaseTag(
         id: string,
@@ -260,13 +263,13 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.PatchedDeploymentReleaseTagUpdateRequest.jsonOrThrow(request, {
+            body: serializers.PatchedDeploymentReleaseTagUpdateRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -274,7 +277,7 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
+            return serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -314,7 +317,7 @@ export class Deployments {
      * @throws {@link Vellum.InternalServerError}
      *
      * @example
-     *     await vellum.deployments.retrieveProviderPayload({
+     *     await client.deployments.retrieveProviderPayload({
      *         inputs: []
      *     })
      */
@@ -332,13 +335,13 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.8",
+                "X-Fern-SDK-Version": "0.6.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
-            body: await serializers.DeploymentProviderPayloadRequest.jsonOrThrow(request, {
+            body: serializers.DeploymentProviderPayloadRequest.jsonOrThrow(request, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -346,7 +349,7 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return await serializers.DeploymentProviderPayloadResponse.parseOrThrow(_response.body, {
+            return serializers.DeploymentProviderPayloadResponse.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
