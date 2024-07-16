@@ -46,20 +46,22 @@ import * as Vellum from "../../index";
  *     }
  */
 export interface ExecutePromptRequest {
-    /** The list of inputs defined in the Prompt's deployment with their corresponding values. */
+    /** A list consisting of the Prompt Deployment's input variables and their values. */
     inputs: Vellum.PromptDeploymentInputRequest[];
     /** The ID of the Prompt Deployment. Must provide either this or prompt_deployment_name. */
     promptDeploymentId?: string;
-    /** The name of the Prompt Deployment. Must provide either this or prompt_deployment_id. */
+    /** The unique name of the Prompt Deployment. Must provide either this or prompt_deployment_id. */
     promptDeploymentName?: string;
     /** Optionally specify a release tag if you want to pin to a specific release of the Prompt Deployment */
     releaseTag?: string;
-    /** "Optionally include a unique identifier for tracking purposes. Must be unique for a given prompt deployment. */
+    /** Optionally include a unique identifier for tracking purposes. Must be unique within a given Prompt Deployment. */
     externalId?: string;
-    /** The name of the Prompt Deployment. Must provide either this or prompt_deployment_id. */
+    /** An optionally specified configuration used to opt in to including additional metadata about this prompt execution in the API response. Corresponding values will be returned under the `meta` key of the API response. */
     expandMeta?: Vellum.PromptDeploymentExpandMetaRequestRequest;
+    /** Overrides for the raw API request sent to the model host. Combined with `expand_raw`, it can be used to access new features from models. */
     rawOverrides?: Vellum.RawPromptExecutionOverridesRequest;
-    /** Returns the raw API response data sent from the model host. Combined with `raw_overrides`, it can be used to access new features from models. */
+    /** A list of keys whose values you'd like to directly return from the JSON response of the model provider. Useful if you need lower-level info returned by model providers that Vellum would otherwise omit. Corresponding key/value pairs will be returned under the `raw` key of the API response. */
     expandRaw?: string[];
+    /** Arbitrary JSON metadata associated with this request. Can be used to capture additional monitoring data such as user id, session id, etc. for future analysis. */
     metadata?: Record<string, unknown>;
 }

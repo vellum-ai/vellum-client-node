@@ -10,13 +10,13 @@ export const TestSuiteTestCaseRejectedBulkResult: core.serialization.ObjectSchem
     serializers.TestSuiteTestCaseRejectedBulkResult.Raw,
     Vellum.TestSuiteTestCaseRejectedBulkResult
 > = core.serialization.object({
-    id: core.serialization.string(),
+    id: core.serialization.string().optional(),
     data: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
 });
 
 export declare namespace TestSuiteTestCaseRejectedBulkResult {
     interface Raw {
-        id: string;
+        id?: string | null;
         data: Record<string, unknown>;
     }
 }

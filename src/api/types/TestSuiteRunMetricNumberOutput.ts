@@ -6,6 +6,6 @@
  * Output for a test suite run metric that is of type NUMBER
  */
 export interface TestSuiteRunMetricNumberOutput {
-    value: number;
+    value?: number;
     name: string;
 }
