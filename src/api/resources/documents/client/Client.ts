@@ -9,6 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 import * as fs from "fs";
+import { Blob } from "buffer";
 
 export declare namespace Documents {
     interface Options {
@@ -70,13 +71,14 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.10",
+                "X-Fern-SDK-Version": "0.6.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             queryParameters: _queryParams,
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -132,12 +134,13 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.10",
+                "X-Fern-SDK-Version": "0.6.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -193,12 +196,13 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.10",
+                "X-Fern-SDK-Version": "0.6.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -254,12 +258,13 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.10",
+                "X-Fern-SDK-Version": "0.6.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
+            requestType: "json",
             body: serializers.PatchedDocumentUpdateRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
@@ -309,7 +314,7 @@ export class Documents {
      * - `keywords: list[str] | None` - Optionally include a list of keywords that'll be associated with this document. Used when performing keyword searches.
      * - `metadata: dict[str, Any]` - A stringified JSON object containing any metadata associated with the document that you'd like to filter upon later.
      *
-     * @param {File | fs.ReadStream} contents
+     * @param {File | fs.ReadStream | Blob} contents
      * @param {Vellum.UploadDocumentBodyRequest} request
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -323,11 +328,11 @@ export class Documents {
      *     })
      */
     public async upload(
-        contents: File | fs.ReadStream,
+        contents: File | fs.ReadStream | Blob,
         request: Vellum.UploadDocumentBodyRequest,
         requestOptions?: Documents.RequestOptions
     ): Promise<Vellum.UploadDocumentResponse> {
-        const _request = new core.FormDataWrapper();
+        const _request = await core.newFormData();
         if (request.addToIndexNames != null) {
             for (const _item of request.addToIndexNames) {
                 await _request.append("add_to_index_names", _item);
@@ -339,7 +344,7 @@ export class Documents {
         }
 
         await _request.append("label", request.label);
-        await _request.append("contents", contents);
+        await _request.appendFile("contents", contents);
         if (request.keywords != null) {
             for (const _item of request.keywords) {
                 await _request.append("keywords", _item);
@@ -350,7 +355,7 @@ export class Documents {
             await _request.append("metadata", request.metadata);
         }
 
-        const _maybeEncodedRequest = _request.getRequest();
+        const _maybeEncodedRequest = await _request.getRequest();
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
@@ -361,13 +366,14 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.6.10",
+                "X-Fern-SDK-Version": "0.6.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
-                ...(await _maybeEncodedRequest.getHeaders()),
+                ...(await _maybeEncodedRequest.headers),
             },
-            body: await _maybeEncodedRequest.getBody(),
+            requestType: "file",
+            body: await _maybeEncodedRequest.body,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

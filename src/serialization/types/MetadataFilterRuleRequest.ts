@@ -15,7 +15,7 @@ export const MetadataFilterRuleRequest: core.serialization.ObjectSchema<
     combinator: MetadataFilterRuleCombinator.optional(),
     negated: core.serialization.boolean().optional(),
     rules: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).MetadataFilterRuleRequest))
+        .list(core.serialization.lazyObject(() => serializers.MetadataFilterRuleRequest))
         .optional(),
     field: core.serialization.string().optional(),
     operator: LogicalOperator.optional(),
