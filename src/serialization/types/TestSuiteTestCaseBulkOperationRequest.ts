@@ -7,6 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { TestSuiteTestCaseCreateBulkOperationRequest } from "./TestSuiteTestCaseCreateBulkOperationRequest";
 import { TestSuiteTestCaseReplaceBulkOperationRequest } from "./TestSuiteTestCaseReplaceBulkOperationRequest";
+import { TestSuiteTestCaseUpsertBulkOperationRequest } from "./TestSuiteTestCaseUpsertBulkOperationRequest";
 import { TestSuiteTestCaseDeleteBulkOperationRequest } from "./TestSuiteTestCaseDeleteBulkOperationRequest";
 
 export const TestSuiteTestCaseBulkOperationRequest: core.serialization.Schema<
@@ -16,6 +17,7 @@ export const TestSuiteTestCaseBulkOperationRequest: core.serialization.Schema<
     .union("type", {
         CREATE: TestSuiteTestCaseCreateBulkOperationRequest,
         REPLACE: TestSuiteTestCaseReplaceBulkOperationRequest,
+        UPSERT: TestSuiteTestCaseUpsertBulkOperationRequest,
         DELETE: TestSuiteTestCaseDeleteBulkOperationRequest,
     })
     .transform<Vellum.TestSuiteTestCaseBulkOperationRequest>({
@@ -27,6 +29,7 @@ export declare namespace TestSuiteTestCaseBulkOperationRequest {
     type Raw =
         | TestSuiteTestCaseBulkOperationRequest.Create
         | TestSuiteTestCaseBulkOperationRequest.Replace
+        | TestSuiteTestCaseBulkOperationRequest.Upsert
         | TestSuiteTestCaseBulkOperationRequest.Delete;
 
     interface Create extends TestSuiteTestCaseCreateBulkOperationRequest.Raw {
@@ -35,6 +38,10 @@ export declare namespace TestSuiteTestCaseBulkOperationRequest {
 
     interface Replace extends TestSuiteTestCaseReplaceBulkOperationRequest.Raw {
         type: "REPLACE";
+    }
+
+    interface Upsert extends TestSuiteTestCaseUpsertBulkOperationRequest.Raw {
+        type: "UPSERT";
     }
 
     interface Delete extends TestSuiteTestCaseDeleteBulkOperationRequest.Raw {

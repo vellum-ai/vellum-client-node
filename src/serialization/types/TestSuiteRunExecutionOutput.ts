@@ -12,6 +12,7 @@ import { TestSuiteRunExecutionChatHistoryOutput } from "./TestSuiteRunExecutionC
 import { TestSuiteRunExecutionSearchResultsOutput } from "./TestSuiteRunExecutionSearchResultsOutput";
 import { TestSuiteRunExecutionErrorOutput } from "./TestSuiteRunExecutionErrorOutput";
 import { TestSuiteRunExecutionFunctionCallOutput } from "./TestSuiteRunExecutionFunctionCallOutput";
+import { TestSuiteRunExecutionArrayOutput } from "./TestSuiteRunExecutionArrayOutput";
 
 export const TestSuiteRunExecutionOutput: core.serialization.Schema<
     serializers.TestSuiteRunExecutionOutput.Raw,
@@ -25,6 +26,7 @@ export const TestSuiteRunExecutionOutput: core.serialization.Schema<
         SEARCH_RESULTS: TestSuiteRunExecutionSearchResultsOutput,
         ERROR: TestSuiteRunExecutionErrorOutput,
         FUNCTION_CALL: TestSuiteRunExecutionFunctionCallOutput,
+        ARRAY: TestSuiteRunExecutionArrayOutput,
     })
     .transform<Vellum.TestSuiteRunExecutionOutput>({
         transform: (value) => value,
@@ -39,7 +41,8 @@ export declare namespace TestSuiteRunExecutionOutput {
         | TestSuiteRunExecutionOutput.ChatHistory
         | TestSuiteRunExecutionOutput.SearchResults
         | TestSuiteRunExecutionOutput.Error
-        | TestSuiteRunExecutionOutput.FunctionCall;
+        | TestSuiteRunExecutionOutput.FunctionCall
+        | TestSuiteRunExecutionOutput.Array;
 
     interface String extends TestSuiteRunExecutionStringOutput.Raw {
         type: "STRING";
@@ -67,5 +70,9 @@ export declare namespace TestSuiteRunExecutionOutput {
 
     interface FunctionCall extends TestSuiteRunExecutionFunctionCallOutput.Raw {
         type: "FUNCTION_CALL";
+    }
+
+    interface Array extends TestSuiteRunExecutionArrayOutput.Raw {
+        type: "ARRAY";
     }
 }

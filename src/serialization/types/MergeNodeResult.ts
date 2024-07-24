@@ -5,10 +5,15 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { MergeNodeResultData } from "./MergeNodeResultData";
 
 export const MergeNodeResult: core.serialization.ObjectSchema<serializers.MergeNodeResult.Raw, Vellum.MergeNodeResult> =
-    core.serialization.object({});
+    core.serialization.object({
+        data: MergeNodeResultData,
+    });
 
 export declare namespace MergeNodeResult {
-    interface Raw {}
+    interface Raw {
+        data: MergeNodeResultData.Raw;
+    }
 }
