@@ -8,5 +8,5 @@
 export interface WorkflowRequestJsonInputRequest {
     /** The variable's name, as defined in the Workflow. */
     name: string;
-    value: Record<string, unknown>;
+    value?: unknown;
 }

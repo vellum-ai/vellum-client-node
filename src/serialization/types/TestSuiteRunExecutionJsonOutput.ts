@@ -11,14 +11,14 @@ export const TestSuiteRunExecutionJsonOutput: core.serialization.ObjectSchema<
     Vellum.TestSuiteRunExecutionJsonOutput
 > = core.serialization.object({
     name: core.serialization.string(),
-    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    value: core.serialization.unknown(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
 export declare namespace TestSuiteRunExecutionJsonOutput {
     interface Raw {
         name: string;
-        value?: Record<string, unknown> | null;
+        value?: unknown;
         output_variable_id: string;
     }
 }

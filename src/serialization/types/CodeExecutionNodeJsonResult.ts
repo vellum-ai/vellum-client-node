@@ -11,12 +11,12 @@ export const CodeExecutionNodeJsonResult: core.serialization.ObjectSchema<
     Vellum.CodeExecutionNodeJsonResult
 > = core.serialization.object({
     id: core.serialization.string(),
-    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    value: core.serialization.unknown(),
 });
 
 export declare namespace CodeExecutionNodeJsonResult {
     interface Raw {
         id: string;
-        value?: Record<string, unknown> | null;
+        value?: unknown;
     }
 }

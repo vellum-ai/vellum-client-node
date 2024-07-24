@@ -12,13 +12,13 @@ export const TerminalNodeJsonResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
-    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    value: core.serialization.unknown(),
 });
 
 export declare namespace TerminalNodeJsonResult {
     interface Raw {
         id?: string | null;
         name: string;
-        value?: Record<string, unknown> | null;
+        value?: unknown;
     }
 }

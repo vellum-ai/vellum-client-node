@@ -8,11 +8,11 @@ import * as core from "../../core";
 
 export const JsonVellumValue: core.serialization.ObjectSchema<serializers.JsonVellumValue.Raw, Vellum.JsonVellumValue> =
     core.serialization.object({
-        value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+        value: core.serialization.unknown(),
     });
 
 export declare namespace JsonVellumValue {
     interface Raw {
-        value?: Record<string, unknown> | null;
+        value?: unknown;
     }
 }

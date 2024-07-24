@@ -12,13 +12,13 @@ export const ExecutionJsonVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    value: core.serialization.unknown(),
 });
 
 export declare namespace ExecutionJsonVellumValue {
     interface Raw {
         id: string;
         name: string;
-        value?: Record<string, unknown> | null;
+        value?: unknown;
     }
 }

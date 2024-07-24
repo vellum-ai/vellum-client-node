@@ -3,5 +3,5 @@
  */
 
 export interface JsonVariableValue {
-    value?: Record<string, unknown>;
+    value?: unknown;
 }

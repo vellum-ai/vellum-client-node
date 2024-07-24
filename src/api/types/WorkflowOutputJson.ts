@@ -9,5 +9,5 @@ export interface WorkflowOutputJson {
     id: string;
     /** The output's name, as defined in the workflow */
     name: string;
-    value?: Record<string, unknown>;
+    value?: unknown;
 }

@@ -4,5 +4,5 @@
 
 export interface CodeExecutionNodeJsonResult {
     id: string;
-    value?: Record<string, unknown>;
+    value?: unknown;
 }

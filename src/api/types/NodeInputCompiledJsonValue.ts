@@ -5,5 +5,5 @@
 export interface NodeInputCompiledJsonValue {
     nodeInputId: string;
     key: string;
-    value?: Record<string, unknown>;
+    value?: unknown;
 }

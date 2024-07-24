@@ -11,14 +11,14 @@ export const NodeOutputCompiledJsonValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledJsonValue.Raw,
     Vellum.NodeOutputCompiledJsonValue
 > = core.serialization.object({
-    value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    value: core.serialization.unknown(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledJsonValue {
     interface Raw {
-        value?: Record<string, unknown> | null;
+        value?: unknown;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

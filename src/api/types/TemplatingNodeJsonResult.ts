@@ -4,5 +4,5 @@
 
 export interface TemplatingNodeJsonResult {
     id: string;
-    value?: Record<string, unknown>;
+    value?: unknown;
 }
