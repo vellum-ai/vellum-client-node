@@ -6,6 +6,7 @@ import * as serializers from "../../index";
 import * as Vellum from "../../../api/index";
 import * as core from "../../../core";
 import { WorkflowRequestInputRequest } from "../../types/WorkflowRequestInputRequest";
+import { WorkflowExpandMetaRequest } from "../../types/WorkflowExpandMetaRequest";
 import { WorkflowExecutionEventType } from "../../types/WorkflowExecutionEventType";
 
 export const ExecuteWorkflowStreamRequest: core.serialization.Schema<
@@ -13,6 +14,7 @@ export const ExecuteWorkflowStreamRequest: core.serialization.Schema<
     Vellum.ExecuteWorkflowStreamRequest
 > = core.serialization.object({
     inputs: core.serialization.list(WorkflowRequestInputRequest),
+    expandMeta: core.serialization.property("expand_meta", WorkflowExpandMetaRequest.optional()),
     workflowDeploymentId: core.serialization.property("workflow_deployment_id", core.serialization.string().optional()),
     workflowDeploymentName: core.serialization.property(
         "workflow_deployment_name",
@@ -29,6 +31,7 @@ export const ExecuteWorkflowStreamRequest: core.serialization.Schema<
 export declare namespace ExecuteWorkflowStreamRequest {
     interface Raw {
         inputs: WorkflowRequestInputRequest.Raw[];
+        expand_meta?: WorkflowExpandMetaRequest.Raw | null;
         workflow_deployment_id?: string | null;
         workflow_deployment_name?: string | null;
         release_tag?: string | null;

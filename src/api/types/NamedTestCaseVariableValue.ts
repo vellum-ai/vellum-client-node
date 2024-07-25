@@ -11,7 +11,8 @@ export type NamedTestCaseVariableValue =
     | Vellum.NamedTestCaseVariableValue.ChatHistory
     | Vellum.NamedTestCaseVariableValue.SearchResults
     | Vellum.NamedTestCaseVariableValue.Error_
-    | Vellum.NamedTestCaseVariableValue.FunctionCall;
+    | Vellum.NamedTestCaseVariableValue.FunctionCall
+    | Vellum.NamedTestCaseVariableValue.Array;
 
 export declare namespace NamedTestCaseVariableValue {
     interface String extends Vellum.NamedTestCaseStringVariableValue {
@@ -40,5 +41,9 @@ export declare namespace NamedTestCaseVariableValue {
 
     interface FunctionCall extends Vellum.NamedTestCaseFunctionCallVariableValue {
         type: "FUNCTION_CALL";
+    }
+
+    interface Array extends Vellum.NamedTestCaseArrayVariableValue {
+        type: "ARRAY";
     }
 }

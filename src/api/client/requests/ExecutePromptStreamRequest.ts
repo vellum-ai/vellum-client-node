@@ -18,11 +18,11 @@ import * as Vellum from "../../index";
  *         externalId: "string",
  *         expandMeta: {
  *             modelName: true,
+ *             usage: true,
+ *             finishReason: true,
  *             latency: true,
  *             deploymentReleaseTag: true,
- *             promptVersionId: true,
- *             finishReason: true,
- *             usage: true
+ *             promptVersionId: true
  *         },
  *         rawOverrides: {
  *             body: {

@@ -5,11 +5,13 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { PromptNodeExecutionMeta } from "./PromptNodeExecutionMeta";
 
 export const PromptNodeResultData: core.serialization.ObjectSchema<
     serializers.PromptNodeResultData.Raw,
     Vellum.PromptNodeResultData
 > = core.serialization.object({
+    executionMeta: core.serialization.property("execution_meta", PromptNodeExecutionMeta.optional()),
     outputId: core.serialization.property("output_id", core.serialization.string()),
     arrayOutputId: core.serialization.property("array_output_id", core.serialization.string().optional()),
     executionId: core.serialization.property("execution_id", core.serialization.string().optional()),
@@ -19,6 +21,7 @@ export const PromptNodeResultData: core.serialization.ObjectSchema<
 
 export declare namespace PromptNodeResultData {
     interface Raw {
+        execution_meta?: PromptNodeExecutionMeta.Raw | null;
         output_id: string;
         array_output_id?: string | null;
         execution_id?: string | null;

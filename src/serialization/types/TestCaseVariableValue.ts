@@ -12,6 +12,7 @@ import { TestCaseChatHistoryVariableValue } from "./TestCaseChatHistoryVariableV
 import { TestCaseSearchResultsVariableValue } from "./TestCaseSearchResultsVariableValue";
 import { TestCaseErrorVariableValue } from "./TestCaseErrorVariableValue";
 import { TestCaseFunctionCallVariableValue } from "./TestCaseFunctionCallVariableValue";
+import { TestCaseArrayVariableValue } from "./TestCaseArrayVariableValue";
 
 export const TestCaseVariableValue: core.serialization.Schema<
     serializers.TestCaseVariableValue.Raw,
@@ -25,6 +26,7 @@ export const TestCaseVariableValue: core.serialization.Schema<
         SEARCH_RESULTS: TestCaseSearchResultsVariableValue,
         ERROR: TestCaseErrorVariableValue,
         FUNCTION_CALL: TestCaseFunctionCallVariableValue,
+        ARRAY: TestCaseArrayVariableValue,
     })
     .transform<Vellum.TestCaseVariableValue>({
         transform: (value) => value,
@@ -39,7 +41,8 @@ export declare namespace TestCaseVariableValue {
         | TestCaseVariableValue.ChatHistory
         | TestCaseVariableValue.SearchResults
         | TestCaseVariableValue.Error
-        | TestCaseVariableValue.FunctionCall;
+        | TestCaseVariableValue.FunctionCall
+        | TestCaseVariableValue.Array;
 
     interface String extends TestCaseStringVariableValue.Raw {
         type: "STRING";
@@ -67,5 +70,9 @@ export declare namespace TestCaseVariableValue {
 
     interface FunctionCall extends TestCaseFunctionCallVariableValue.Raw {
         type: "FUNCTION_CALL";
+    }
+
+    interface Array extends TestCaseArrayVariableValue.Raw {
+        type: "ARRAY";
     }
 }

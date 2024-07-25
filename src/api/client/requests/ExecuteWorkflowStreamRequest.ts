@@ -12,6 +12,9 @@ import * as Vellum from "../../index";
  *                 name: "string",
  *                 value: "string"
  *             }],
+ *         expandMeta: {
+ *             usage: true
+ *         },
  *         workflowDeploymentId: "string",
  *         workflowDeploymentName: "string",
  *         releaseTag: "string",
@@ -22,6 +25,8 @@ import * as Vellum from "../../index";
 export interface ExecuteWorkflowStreamRequest {
     /** The list of inputs defined in the Workflow's Deployment with their corresponding values. */
     inputs: Vellum.WorkflowRequestInputRequest[];
+    /** An optionally specified configuration used to opt in to including additional metadata about this workflow execution in the API response. Corresponding values will be returned under the `execution_meta` key within NODE events in the response stream. */
+    expandMeta?: Vellum.WorkflowExpandMetaRequest;
     /** The ID of the Workflow Deployment. Must provide either this or workflow_deployment_name. */
     workflowDeploymentId?: string;
     /** The name of the Workflow Deployment. Must provide either this or workflow_deployment_id. */
