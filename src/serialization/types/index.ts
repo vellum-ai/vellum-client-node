@@ -33,6 +33,8 @@ export * from "./CodeExecutionNodeResultData";
 export * from "./CodeExecutionNodeResultOutput";
 export * from "./CodeExecutionNodeSearchResultsResult";
 export * from "./CodeExecutionNodeStringResult";
+export * from "./CompilePromptDeploymentExpandMetaRequest";
+export * from "./CompilePromptMeta";
 export * from "./ConditionalNodeResult";
 export * from "./ConditionalNodeResultData";
 export * from "./CreateEnum";

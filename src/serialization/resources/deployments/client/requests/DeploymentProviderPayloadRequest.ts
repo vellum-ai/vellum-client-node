@@ -6,6 +6,7 @@ import * as serializers from "../../../../index";
 import * as Vellum from "../../../../../api/index";
 import * as core from "../../../../../core";
 import { PromptDeploymentInputRequest } from "../../../../types/PromptDeploymentInputRequest";
+import { CompilePromptDeploymentExpandMetaRequest } from "../../../../types/CompilePromptDeploymentExpandMetaRequest";
 
 export const DeploymentProviderPayloadRequest: core.serialization.Schema<
     serializers.DeploymentProviderPayloadRequest.Raw,
@@ -15,6 +16,7 @@ export const DeploymentProviderPayloadRequest: core.serialization.Schema<
     deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),
     inputs: core.serialization.list(PromptDeploymentInputRequest),
     releaseTag: core.serialization.property("release_tag", core.serialization.string().optional()),
+    expandMeta: core.serialization.property("expand_meta", CompilePromptDeploymentExpandMetaRequest.optional()),
 });
 
 export declare namespace DeploymentProviderPayloadRequest {
@@ -23,5 +25,6 @@ export declare namespace DeploymentProviderPayloadRequest {
         deployment_name?: string | null;
         inputs: PromptDeploymentInputRequest.Raw[];
         release_tag?: string | null;
+        expand_meta?: CompilePromptDeploymentExpandMetaRequest.Raw | null;
     }
 }

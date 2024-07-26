@@ -6,16 +6,19 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { DeploymentProviderPayloadResponsePayload } from "./DeploymentProviderPayloadResponsePayload";
+import { CompilePromptMeta } from "./CompilePromptMeta";
 
 export const DeploymentProviderPayloadResponse: core.serialization.ObjectSchema<
     serializers.DeploymentProviderPayloadResponse.Raw,
     Vellum.DeploymentProviderPayloadResponse
 > = core.serialization.object({
     payload: DeploymentProviderPayloadResponsePayload,
+    meta: CompilePromptMeta.optional(),
 });
 
 export declare namespace DeploymentProviderPayloadResponse {
     interface Raw {
         payload: DeploymentProviderPayloadResponsePayload.Raw;
+        meta?: CompilePromptMeta.Raw | null;
     }
 }
