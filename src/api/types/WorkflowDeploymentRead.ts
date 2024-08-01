@@ -33,4 +33,6 @@ export interface WorkflowDeploymentRead {
     inputVariables: Vellum.VellumVariable[];
     /** The output variables this Workflow Deployment produces values for when it's executed. */
     outputVariables: Vellum.VellumVariable[];
+    /** A human-readable description of the workflow deployment */
+    description?: string;
 }

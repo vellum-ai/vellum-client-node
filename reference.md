@@ -75,6 +75,21 @@ await client.submitWorkflowExecutionActuals({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Used to list all Prompt Deployments.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -131,7 +146,7 @@ await client.deployments.list();
 <dl>
 <dd>
 
-Used to retrieve a deployment given its ID or name.
+Used to retrieve a Prompt Deployment given its ID or name.
 
 </dd>
 </dl>
@@ -335,6 +350,30 @@ await client.deployments.updateDeploymentReleaseTag("id", "name");
 <details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrieveProviderPayload</a>({ ...params }) -> Vellum.DeploymentProviderPayloadResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Given a set of input variable values, compile the exact payload that Vellum would send to the configured model provider
+for execution if the execute-prompt endpoint had been invoked. Note that this endpoint does not actually execute the
+prompt or make an API call to the model provider.
+
+This endpoint is useful if you don't want to proxy LLM provider requests through Vellum and prefer to send them directly
+to the provider yourself. Note that no guarantees are made on the format of this API's response schema, other than
+that it will be a valid payload for the configured model provider. It's not recommended that you try to parse or
+derive meaning from the response body and instead, should simply pass it directly to the model provider as is.
+
+We encourage you to seek advise from Vellum Support before integrating with this API for production use.
+
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -1363,9 +1402,353 @@ await client.folderEntities.addEntityToFolder("folder_id", {
 </dl>
 </details>
 
+## MlModels
+
+<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">list</a>({ ...params }) -> Vellum.PaginatedMlModelReadList</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all ML Models that your Workspace has access to.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.mlModels.list();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.MlModelsListRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `MlModels.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">create</a>({ ...params }) -> Vellum.MlModelRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new ML Model.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.mlModels.create({
+    name: "name",
+    family: Vellum.MlModelFamily.Capybara,
+    execConfig: {
+        modelIdentifier: "model_identifier",
+        baseUrl: "base_url",
+        metadata: {
+            key: "value",
+        },
+        features: [Vellum.MlModelFeature.Text],
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.MlModelCreateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `MlModels.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">retrieve</a>(id) -> Vellum.MlModelRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve an ML Model by its UUID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.mlModels.retrieve("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this ml model.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `MlModels.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">update</a>(id, { ...params }) -> Vellum.MlModelRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Replace an ML Model with a new representation, keying off of its UUID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.mlModels.update("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this ml model.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.MlModelUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `MlModels.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">partialUpdate</a>(id, { ...params }) -> Vellum.MlModelRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Partially update an ML Model, keying off of its UUID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.mlModels.partialUpdate("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this ml model.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.PatchedMlModelUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `MlModels.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Sandboxes
 
-<details><summary><code>client.sandboxes.<a href="/src/api/resources/sandboxes/client/Client.ts">deployPrompt</a>(id, promptId, { ...params }) -> Vellum.DeploymentRead</code></summary>
+<details><summary><code>client.sandboxes.<a href="/src/api/resources/sandboxes/client/Client.ts">deployPrompt</a>(id, promptVariantId, { ...params }) -> Vellum.DeploymentRead</code></summary>
 <dl>
 <dd>
 
@@ -1378,7 +1761,7 @@ await client.folderEntities.addEntityToFolder("folder_id", {
 <dd>
 
 ```typescript
-await client.sandboxes.deployPrompt("id", "prompt_id");
+await client.sandboxes.deployPrompt("id", "prompt_variant_id");
 ```
 
 </dd>
@@ -1402,7 +1785,7 @@ await client.sandboxes.deployPrompt("id", "prompt_id");
 <dl>
 <dd>
 
-**promptId:** `string` — An ID identifying the Prompt you'd like to deploy.
+**promptVariantId:** `string` — An ID identifying the Prompt you'd like to deploy.
 
 </dd>
 </dl>
@@ -2093,6 +2476,21 @@ await client.testSuites.deleteTestSuiteTestCase("id", "test_case_id");
 <details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">list</a>({ ...params }) -> Vellum.PaginatedSlimWorkflowDeploymentList</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Used to list all Workflow Deployments.
+
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 

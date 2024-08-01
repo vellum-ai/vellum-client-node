@@ -8,7 +8,9 @@ import * as Vellum from "../../index";
  * @example
  *     {
  *         requests: [{
- *                 inputValues: {}
+ *                 inputValues: {
+ *                     "key": "value"
+ *                 }
  *             }]
  *     }
  */

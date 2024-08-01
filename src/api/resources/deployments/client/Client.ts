@@ -29,6 +29,8 @@ export class Deployments {
     constructor(protected readonly _options: Deployments.Options) {}
 
     /**
+     * Used to list all Prompt Deployments.
+     *
      * @param {Vellum.DeploymentsListRequest} request
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -67,7 +69,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.3",
+                "X-Fern-SDK-Version": "0.7.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -111,7 +113,7 @@ export class Deployments {
     }
 
     /**
-     * Used to retrieve a deployment given its ID or name.
+     * Used to retrieve a Prompt Deployment given its ID or name.
      *
      * @param {string} id - Either the Deployment's ID or its unique name
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
@@ -130,7 +132,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.3",
+                "X-Fern-SDK-Version": "0.7.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -197,7 +199,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.3",
+                "X-Fern-SDK-Version": "0.7.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -266,7 +268,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.3",
+                "X-Fern-SDK-Version": "0.7.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -312,6 +314,17 @@ export class Deployments {
     }
 
     /**
+     * Given a set of input variable values, compile the exact payload that Vellum would send to the configured model provider
+     * for execution if the execute-prompt endpoint had been invoked. Note that this endpoint does not actually execute the
+     * prompt or make an API call to the model provider.
+     *
+     * This endpoint is useful if you don't want to proxy LLM provider requests through Vellum and prefer to send them directly
+     * to the provider yourself. Note that no guarantees are made on the format of this API's response schema, other than
+     * that it will be a valid payload for the configured model provider. It's not recommended that you try to parse or
+     * derive meaning from the response body and instead, should simply pass it directly to the model provider as is.
+     *
+     * We encourage you to seek advise from Vellum Support before integrating with this API for production use.
+     *
      * @param {Vellum.DeploymentProviderPayloadRequest} request
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -339,7 +352,7 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.3",
+                "X-Fern-SDK-Version": "0.7.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

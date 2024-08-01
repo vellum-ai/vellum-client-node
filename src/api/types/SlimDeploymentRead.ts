@@ -28,4 +28,6 @@ export interface SlimDeploymentRead {
     environment?: Vellum.EnvironmentEnum;
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
+    /** A human-readable description of the deployment */
+    description?: string;
 }

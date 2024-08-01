@@ -28,6 +28,8 @@ export interface DeploymentRead {
     environment?: Vellum.EnvironmentEnum;
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
+    /** A human-readable description of the deployment */
+    description?: string;
     /** Deprecated. The Prompt execution endpoints return a `prompt_version_id` that could be used instead. */
     activeModelVersionIds: string[];
     /** The ID of the history item associated with this Deployment's LATEST Release Tag */

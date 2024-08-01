@@ -30,16 +30,16 @@ export class Sandboxes {
 
     /**
      * @param {string} id - A UUID string identifying this sandbox.
-     * @param {string} promptId - An ID identifying the Prompt you'd like to deploy.
+     * @param {string} promptVariantId - An ID identifying the Prompt you'd like to deploy.
      * @param {Vellum.DeploySandboxPromptRequest} request
      * @param {Sandboxes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.sandboxes.deployPrompt("id", "prompt_id")
+     *     await client.sandboxes.deployPrompt("id", "prompt_variant_id")
      */
     public async deployPrompt(
         id: string,
-        promptId: string,
+        promptVariantId: string,
         request: Vellum.DeploySandboxPromptRequest = {},
         requestOptions?: Sandboxes.RequestOptions
     ): Promise<Vellum.DeploymentRead> {
@@ -47,13 +47,13 @@ export class Sandboxes {
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/sandboxes/${encodeURIComponent(id)}/prompts/${encodeURIComponent(promptId)}/deploy`
+                `v1/sandboxes/${encodeURIComponent(id)}/prompts/${encodeURIComponent(promptVariantId)}/deploy`
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.3",
+                "X-Fern-SDK-Version": "0.7.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -136,7 +136,7 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.3",
+                "X-Fern-SDK-Version": "0.7.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -206,7 +206,7 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.3",
+                "X-Fern-SDK-Version": "0.7.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

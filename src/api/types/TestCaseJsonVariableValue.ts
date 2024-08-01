@@ -8,5 +8,5 @@
 export interface TestCaseJsonVariableValue {
     variableId: string;
     name: string;
-    value?: Record<string, unknown>;
+    value?: unknown;
 }
