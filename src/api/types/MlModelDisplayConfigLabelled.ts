@@ -8,5 +8,4 @@ export interface MlModelDisplayConfigLabelled {
     label: string;
     description: string;
     tags: Vellum.MlModelDisplayTagEnumValueLabel[];
-    defaultDisplayPriority: number;
 }

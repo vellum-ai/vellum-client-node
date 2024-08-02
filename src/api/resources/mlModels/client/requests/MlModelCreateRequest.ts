@@ -92,8 +92,6 @@ export interface MlModelCreateRequest {
      * * `WIZARDLM` - WIZARDLM
      */
     developedBy?: Vellum.MlModelDeveloper;
-    /** Configuration for how the ML Model was built. */
-    buildConfig?: Vellum.MlModelBuildConfigRequest;
     /** Configuration for how to execute the ML Model. */
     execConfig: Vellum.MlModelExecConfigRequest;
     /** Configuration for the ML Model's parameters. */

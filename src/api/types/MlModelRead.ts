@@ -46,8 +46,6 @@ export interface MlModelRead {
      * - `DISABLED` - Disabled
      */
     visibility?: Vellum.VisibilityEnum;
-    /** Configuration for how the ML Model was built. */
-    buildConfig: Vellum.MlModelBuildConfig;
     /** Configuration for how to execute the ML Model. */
     execConfig: Vellum.MlModelExecConfig;
     /** Configuration for the ML Model's parameters. */

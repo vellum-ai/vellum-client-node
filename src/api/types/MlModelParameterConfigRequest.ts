@@ -5,13 +5,13 @@
 import * as Vellum from "../index";
 
 export interface MlModelParameterConfigRequest {
-    temperature?: Vellum.NumberParameterConfigRequest;
-    maxTokens?: Vellum.IntegerParameterConfigRequest;
-    stop?: Vellum.ArrayParameterConfigRequest;
-    topP?: Vellum.NumberParameterConfigRequest;
-    topK?: Vellum.IntegerParameterConfigRequest;
-    frequencyPenalty?: Vellum.NumberParameterConfigRequest;
-    presencePenalty?: Vellum.NumberParameterConfigRequest;
-    logitBias?: Vellum.ObjectParameterConfigRequest;
-    customParameters?: Record<string, Vellum.ParameterConfigRequest | undefined>;
+    temperature?: Vellum.OpenApiNumberPropertyRequest;
+    maxTokens?: Vellum.OpenApiIntegerPropertyRequest;
+    stop?: Vellum.OpenApiArrayPropertyRequest;
+    topP?: Vellum.OpenApiNumberPropertyRequest;
+    topK?: Vellum.OpenApiIntegerPropertyRequest;
+    frequencyPenalty?: Vellum.OpenApiNumberPropertyRequest;
+    presencePenalty?: Vellum.OpenApiNumberPropertyRequest;
+    logitBias?: Vellum.OpenApiObjectPropertyRequest;
+    customParameters?: Record<string, Vellum.OpenApiPropertyRequest | undefined>;
 }

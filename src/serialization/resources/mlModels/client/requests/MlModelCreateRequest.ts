@@ -8,7 +8,6 @@ import * as core from "../../../../../core";
 import { MlModelFamily } from "../../../../types/MlModelFamily";
 import { HostedByEnum } from "../../../../types/HostedByEnum";
 import { MlModelDeveloper } from "../../../../types/MlModelDeveloper";
-import { MlModelBuildConfigRequest } from "../../../../types/MlModelBuildConfigRequest";
 import { MlModelExecConfigRequest } from "../../../../types/MlModelExecConfigRequest";
 import { MlModelParameterConfigRequest } from "../../../../types/MlModelParameterConfigRequest";
 import { MlModelDisplayConfigRequest } from "../../../../types/MlModelDisplayConfigRequest";
@@ -22,7 +21,6 @@ export const MlModelCreateRequest: core.serialization.Schema<
     family: MlModelFamily,
     hostedBy: core.serialization.property("hosted_by", HostedByEnum.optional()),
     developedBy: core.serialization.property("developed_by", MlModelDeveloper.optional()),
-    buildConfig: core.serialization.property("build_config", MlModelBuildConfigRequest.optional()),
     execConfig: core.serialization.property("exec_config", MlModelExecConfigRequest),
     parameterConfig: core.serialization.property("parameter_config", MlModelParameterConfigRequest.optional()),
     displayConfig: core.serialization.property("display_config", MlModelDisplayConfigRequest.optional()),
@@ -35,7 +33,6 @@ export declare namespace MlModelCreateRequest {
         family: MlModelFamily.Raw;
         hosted_by?: HostedByEnum.Raw | null;
         developed_by?: MlModelDeveloper.Raw | null;
-        build_config?: MlModelBuildConfigRequest.Raw | null;
         exec_config: MlModelExecConfigRequest.Raw;
         parameter_config?: MlModelParameterConfigRequest.Raw | null;
         display_config?: MlModelDisplayConfigRequest.Raw | null;

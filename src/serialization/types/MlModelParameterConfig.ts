@@ -5,42 +5,42 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { NumberParameterConfig } from "./NumberParameterConfig";
-import { IntegerParameterConfig } from "./IntegerParameterConfig";
+import { OpenApiNumberProperty } from "./OpenApiNumberProperty";
+import { OpenApiIntegerProperty } from "./OpenApiIntegerProperty";
 
 export const MlModelParameterConfig: core.serialization.ObjectSchema<
     serializers.MlModelParameterConfig.Raw,
     Vellum.MlModelParameterConfig
 > = core.serialization.object({
-    temperature: NumberParameterConfig.optional(),
-    maxTokens: core.serialization.property("max_tokens", IntegerParameterConfig.optional()),
-    stop: core.serialization.lazyObject(() => serializers.ArrayParameterConfig).optional(),
-    topP: core.serialization.property("top_p", NumberParameterConfig.optional()),
-    topK: core.serialization.property("top_k", IntegerParameterConfig.optional()),
-    frequencyPenalty: core.serialization.property("frequency_penalty", NumberParameterConfig.optional()),
-    presencePenalty: core.serialization.property("presence_penalty", NumberParameterConfig.optional()),
+    temperature: OpenApiNumberProperty.optional(),
+    maxTokens: core.serialization.property("max_tokens", OpenApiIntegerProperty.optional()),
+    stop: core.serialization.lazyObject(() => serializers.OpenApiArrayProperty).optional(),
+    topP: core.serialization.property("top_p", OpenApiNumberProperty.optional()),
+    topK: core.serialization.property("top_k", OpenApiIntegerProperty.optional()),
+    frequencyPenalty: core.serialization.property("frequency_penalty", OpenApiNumberProperty.optional()),
+    presencePenalty: core.serialization.property("presence_penalty", OpenApiNumberProperty.optional()),
     logitBias: core.serialization.property(
         "logit_bias",
-        core.serialization.lazyObject(() => serializers.ObjectParameterConfig).optional()
+        core.serialization.lazyObject(() => serializers.OpenApiObjectProperty).optional()
     ),
     customParameters: core.serialization.property(
         "custom_parameters",
         core.serialization
-            .record(core.serialization.string(), core.serialization.lazy(() => serializers.ParameterConfig).optional())
+            .record(core.serialization.string(), core.serialization.lazy(() => serializers.OpenApiProperty).optional())
             .optional()
     ),
 });
 
 export declare namespace MlModelParameterConfig {
     interface Raw {
-        temperature?: NumberParameterConfig.Raw | null;
-        max_tokens?: IntegerParameterConfig.Raw | null;
-        stop?: serializers.ArrayParameterConfig.Raw | null;
-        top_p?: NumberParameterConfig.Raw | null;
-        top_k?: IntegerParameterConfig.Raw | null;
-        frequency_penalty?: NumberParameterConfig.Raw | null;
-        presence_penalty?: NumberParameterConfig.Raw | null;
-        logit_bias?: serializers.ObjectParameterConfig.Raw | null;
-        custom_parameters?: Record<string, serializers.ParameterConfig.Raw | null | undefined> | null;
+        temperature?: OpenApiNumberProperty.Raw | null;
+        max_tokens?: OpenApiIntegerProperty.Raw | null;
+        stop?: serializers.OpenApiArrayProperty.Raw | null;
+        top_p?: OpenApiNumberProperty.Raw | null;
+        top_k?: OpenApiIntegerProperty.Raw | null;
+        frequency_penalty?: OpenApiNumberProperty.Raw | null;
+        presence_penalty?: OpenApiNumberProperty.Raw | null;
+        logit_bias?: serializers.OpenApiObjectProperty.Raw | null;
+        custom_parameters?: Record<string, serializers.OpenApiProperty.Raw | null | undefined> | null;
     }
 }

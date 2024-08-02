@@ -5,30 +5,30 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { NumberParameterConfigRequest } from "./NumberParameterConfigRequest";
-import { IntegerParameterConfigRequest } from "./IntegerParameterConfigRequest";
+import { OpenApiNumberPropertyRequest } from "./OpenApiNumberPropertyRequest";
+import { OpenApiIntegerPropertyRequest } from "./OpenApiIntegerPropertyRequest";
 
 export const MlModelParameterConfigRequest: core.serialization.ObjectSchema<
     serializers.MlModelParameterConfigRequest.Raw,
     Vellum.MlModelParameterConfigRequest
 > = core.serialization.object({
-    temperature: NumberParameterConfigRequest.optional(),
-    maxTokens: core.serialization.property("max_tokens", IntegerParameterConfigRequest.optional()),
-    stop: core.serialization.lazyObject(() => serializers.ArrayParameterConfigRequest).optional(),
-    topP: core.serialization.property("top_p", NumberParameterConfigRequest.optional()),
-    topK: core.serialization.property("top_k", IntegerParameterConfigRequest.optional()),
-    frequencyPenalty: core.serialization.property("frequency_penalty", NumberParameterConfigRequest.optional()),
-    presencePenalty: core.serialization.property("presence_penalty", NumberParameterConfigRequest.optional()),
+    temperature: OpenApiNumberPropertyRequest.optional(),
+    maxTokens: core.serialization.property("max_tokens", OpenApiIntegerPropertyRequest.optional()),
+    stop: core.serialization.lazyObject(() => serializers.OpenApiArrayPropertyRequest).optional(),
+    topP: core.serialization.property("top_p", OpenApiNumberPropertyRequest.optional()),
+    topK: core.serialization.property("top_k", OpenApiIntegerPropertyRequest.optional()),
+    frequencyPenalty: core.serialization.property("frequency_penalty", OpenApiNumberPropertyRequest.optional()),
+    presencePenalty: core.serialization.property("presence_penalty", OpenApiNumberPropertyRequest.optional()),
     logitBias: core.serialization.property(
         "logit_bias",
-        core.serialization.lazyObject(() => serializers.ObjectParameterConfigRequest).optional()
+        core.serialization.lazyObject(() => serializers.OpenApiObjectPropertyRequest).optional()
     ),
     customParameters: core.serialization.property(
         "custom_parameters",
         core.serialization
             .record(
                 core.serialization.string(),
-                core.serialization.lazy(() => serializers.ParameterConfigRequest).optional()
+                core.serialization.lazy(() => serializers.OpenApiPropertyRequest).optional()
             )
             .optional()
     ),
@@ -36,14 +36,14 @@ export const MlModelParameterConfigRequest: core.serialization.ObjectSchema<
 
 export declare namespace MlModelParameterConfigRequest {
     interface Raw {
-        temperature?: NumberParameterConfigRequest.Raw | null;
-        max_tokens?: IntegerParameterConfigRequest.Raw | null;
-        stop?: serializers.ArrayParameterConfigRequest.Raw | null;
-        top_p?: NumberParameterConfigRequest.Raw | null;
-        top_k?: IntegerParameterConfigRequest.Raw | null;
-        frequency_penalty?: NumberParameterConfigRequest.Raw | null;
-        presence_penalty?: NumberParameterConfigRequest.Raw | null;
-        logit_bias?: serializers.ObjectParameterConfigRequest.Raw | null;
-        custom_parameters?: Record<string, serializers.ParameterConfigRequest.Raw | null | undefined> | null;
+        temperature?: OpenApiNumberPropertyRequest.Raw | null;
+        max_tokens?: OpenApiIntegerPropertyRequest.Raw | null;
+        stop?: serializers.OpenApiArrayPropertyRequest.Raw | null;
+        top_p?: OpenApiNumberPropertyRequest.Raw | null;
+        top_k?: OpenApiIntegerPropertyRequest.Raw | null;
+        frequency_penalty?: OpenApiNumberPropertyRequest.Raw | null;
+        presence_penalty?: OpenApiNumberPropertyRequest.Raw | null;
+        logit_bias?: serializers.OpenApiObjectPropertyRequest.Raw | null;
+        custom_parameters?: Record<string, serializers.OpenApiPropertyRequest.Raw | null | undefined> | null;
     }
 }

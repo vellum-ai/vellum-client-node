@@ -9,7 +9,6 @@ import { MlModelFamilyEnumValueLabel } from "./MlModelFamilyEnumValueLabel";
 import { HostedByEnum } from "./HostedByEnum";
 import { MlModelDeveloperEnumValueLabel } from "./MlModelDeveloperEnumValueLabel";
 import { VisibilityEnum } from "./VisibilityEnum";
-import { MlModelBuildConfig } from "./MlModelBuildConfig";
 import { MlModelExecConfig } from "./MlModelExecConfig";
 import { MlModelParameterConfig } from "./MlModelParameterConfig";
 import { MlModelDisplayConfigLabelled } from "./MlModelDisplayConfigLabelled";
@@ -22,7 +21,6 @@ export const MlModelRead: core.serialization.ObjectSchema<serializers.MlModelRea
         hostedBy: core.serialization.property("hosted_by", HostedByEnum),
         developedBy: core.serialization.property("developed_by", MlModelDeveloperEnumValueLabel),
         visibility: VisibilityEnum.optional(),
-        buildConfig: core.serialization.property("build_config", MlModelBuildConfig),
         execConfig: core.serialization.property("exec_config", MlModelExecConfig),
         parameterConfig: core.serialization.property("parameter_config", MlModelParameterConfig),
         displayConfig: core.serialization.property("display_config", MlModelDisplayConfigLabelled),
@@ -36,7 +34,6 @@ export declare namespace MlModelRead {
         hosted_by: HostedByEnum.Raw;
         developed_by: MlModelDeveloperEnumValueLabel.Raw;
         visibility?: VisibilityEnum.Raw | null;
-        build_config: MlModelBuildConfig.Raw;
         exec_config: MlModelExecConfig.Raw;
         parameter_config: MlModelParameterConfig.Raw;
         display_config: MlModelDisplayConfigLabelled.Raw;
