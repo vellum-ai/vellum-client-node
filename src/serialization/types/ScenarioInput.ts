@@ -6,12 +6,14 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { ScenarioInputStringVariableValue } from "./ScenarioInputStringVariableValue";
+import { ScenarioInputJsonVariableValue } from "./ScenarioInputJsonVariableValue";
 import { ScenarioInputChatHistoryVariableValue } from "./ScenarioInputChatHistoryVariableValue";
 
 export const ScenarioInput: core.serialization.Schema<serializers.ScenarioInput.Raw, Vellum.ScenarioInput> =
     core.serialization
         .union("type", {
             STRING: ScenarioInputStringVariableValue,
+            JSON: ScenarioInputJsonVariableValue,
             CHAT_HISTORY: ScenarioInputChatHistoryVariableValue,
         })
         .transform<Vellum.ScenarioInput>({
@@ -20,10 +22,14 @@ export const ScenarioInput: core.serialization.Schema<serializers.ScenarioInput.
         });
 
 export declare namespace ScenarioInput {
-    type Raw = ScenarioInput.String | ScenarioInput.ChatHistory;
+    type Raw = ScenarioInput.String | ScenarioInput.Json | ScenarioInput.ChatHistory;
 
     interface String extends ScenarioInputStringVariableValue.Raw {
         type: "STRING";
+    }
+
+    interface Json extends ScenarioInputJsonVariableValue.Raw {
+        type: "JSON";
     }
 
     interface ChatHistory extends ScenarioInputChatHistoryVariableValue.Raw {

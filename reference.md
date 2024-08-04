@@ -1585,7 +1585,7 @@ await client.mlModels.retrieve("id");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this ml model.
+**id:** `string` — Either the ML Model's ID or its unique name
 
 </dd>
 </dl>
@@ -1648,7 +1648,7 @@ await client.mlModels.update("id");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this ml model.
+**id:** `string` — Either the ML Model's ID or its unique name
 
 </dd>
 </dl>
@@ -1719,7 +1719,7 @@ await client.mlModels.partialUpdate("id");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this ml model.
+**id:** `string` — Either the ML Model's ID or its unique name
 
 </dd>
 </dl>

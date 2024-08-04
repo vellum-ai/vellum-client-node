@@ -6,11 +6,16 @@ import * as Vellum from "../index";
 
 export type NamedScenarioInputRequest =
     | Vellum.NamedScenarioInputRequest.String
+    | Vellum.NamedScenarioInputRequest.Json
     | Vellum.NamedScenarioInputRequest.ChatHistory;
 
 export declare namespace NamedScenarioInputRequest {
     interface String extends Vellum.NamedScenarioInputStringVariableValueRequest {
         type: "STRING";
+    }
+
+    interface Json extends Vellum.NamedScenarioInputJsonVariableValueRequest {
+        type: "JSON";
     }
 
     interface ChatHistory extends Vellum.NamedScenarioInputChatHistoryVariableValueRequest {

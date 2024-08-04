@@ -65,7 +65,7 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.6",
+                "X-Fern-SDK-Version": "0.7.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -142,7 +142,7 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.6",
+                "X-Fern-SDK-Version": "0.7.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -188,7 +188,7 @@ export class MlModels {
     /**
      * Retrieve an ML Model by its UUID.
      *
-     * @param {string} id - A UUID string identifying this ml model.
+     * @param {string} id - Either the ML Model's ID or its unique name
      * @param {MlModels.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -205,7 +205,7 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.6",
+                "X-Fern-SDK-Version": "0.7.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -250,7 +250,7 @@ export class MlModels {
     /**
      * Replace an ML Model with a new representation, keying off of its UUID.
      *
-     * @param {string} id - A UUID string identifying this ml model.
+     * @param {string} id - Either the ML Model's ID or its unique name
      * @param {Vellum.MlModelUpdateRequest} request
      * @param {MlModels.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -272,7 +272,7 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.6",
+                "X-Fern-SDK-Version": "0.7.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -318,7 +318,7 @@ export class MlModels {
     /**
      * Partially update an ML Model, keying off of its UUID.
      *
-     * @param {string} id - A UUID string identifying this ml model.
+     * @param {string} id - Either the ML Model's ID or its unique name
      * @param {Vellum.PatchedMlModelUpdateRequest} request
      * @param {MlModels.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -340,7 +340,7 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.6",
+                "X-Fern-SDK-Version": "0.7.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
