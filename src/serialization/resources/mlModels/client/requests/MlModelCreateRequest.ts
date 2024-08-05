@@ -19,8 +19,8 @@ export const MlModelCreateRequest: core.serialization.Schema<
 > = core.serialization.object({
     name: core.serialization.string(),
     family: MlModelFamily,
-    hostedBy: core.serialization.property("hosted_by", HostedByEnum.optional()),
-    developedBy: core.serialization.property("developed_by", MlModelDeveloper.optional()),
+    hostedBy: core.serialization.property("hosted_by", HostedByEnum),
+    developedBy: core.serialization.property("developed_by", MlModelDeveloper),
     execConfig: core.serialization.property("exec_config", MlModelExecConfigRequest),
     parameterConfig: core.serialization.property("parameter_config", MlModelParameterConfigRequest.optional()),
     displayConfig: core.serialization.property("display_config", MlModelDisplayConfigRequest.optional()),
@@ -31,8 +31,8 @@ export declare namespace MlModelCreateRequest {
     interface Raw {
         name: string;
         family: MlModelFamily.Raw;
-        hosted_by?: HostedByEnum.Raw | null;
-        developed_by?: MlModelDeveloper.Raw | null;
+        hosted_by: HostedByEnum.Raw;
+        developed_by: MlModelDeveloper.Raw;
         exec_config: MlModelExecConfigRequest.Raw;
         parameter_config?: MlModelParameterConfigRequest.Raw | null;
         display_config?: MlModelDisplayConfigRequest.Raw | null;

@@ -9,6 +9,8 @@ import * as Vellum from "../../../../index";
  *     {
  *         name: "name",
  *         family: Vellum.MlModelFamily.Capybara,
+ *         hostedBy: Vellum.HostedByEnum.Anthropic,
+ *         developedBy: Vellum.MlModelDeveloper.OneAi,
  *         execConfig: {
  *             modelIdentifier: "model_identifier",
  *             baseUrl: "base_url",
@@ -68,7 +70,7 @@ export interface MlModelCreateRequest {
      * * `PYQ` - PYQ
      * * `REPLICATE` - REPLICATE
      */
-    hostedBy?: Vellum.HostedByEnum;
+    hostedBy: Vellum.HostedByEnum;
     /**
      * The organization that developed the ML Model.
      *
@@ -91,7 +93,7 @@ export interface MlModelCreateRequest {
      * * `TII` - TII
      * * `WIZARDLM` - WIZARDLM
      */
-    developedBy?: Vellum.MlModelDeveloper;
+    developedBy: Vellum.MlModelDeveloper;
     /** Configuration for how to execute the ML Model. */
     execConfig: Vellum.MlModelExecConfigRequest;
     /** Configuration for the ML Model's parameters. */

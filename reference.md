@@ -1498,6 +1498,8 @@ Creates a new ML Model.
 await client.mlModels.create({
     name: "name",
     family: Vellum.MlModelFamily.Capybara,
+    hostedBy: Vellum.HostedByEnum.Anthropic,
+    developedBy: Vellum.MlModelDeveloper.OneAi,
     execConfig: {
         modelIdentifier: "model_identifier",
         baseUrl: "base_url",
