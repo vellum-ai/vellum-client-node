@@ -1,4 +1,4 @@
-// https://registry.terraform.io/providers/vellum-ai/vellum/0.0.2/docs/resources/document_index
+// https://registry.terraform.io/providers/vellum-ai/vellum/0.0.7/docs/resources/document_index
 // generated from terraform resource schema
 
 import { Construct } from 'constructs';
@@ -14,19 +14,19 @@ export interface DocumentIndexConfig extends cdktf.TerraformMetaArguments {
   * * `STAGING` - Staging
   * * `PRODUCTION` - Production
   *
-  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.2/docs/resources/document_index#environment DocumentIndex#environment}
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.7/docs/resources/document_index#environment DocumentIndex#environment}
   */
   readonly environment?: string;
   /**
-  * A human-readable label for the document index
+  * A human-readable label for the Document Index
   *
-  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.2/docs/resources/document_index#label DocumentIndex#label}
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.7/docs/resources/document_index#label DocumentIndex#label}
   */
   readonly label: string;
   /**
   * A name that uniquely identifies this index within its workspace
   *
-  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.2/docs/resources/document_index#name DocumentIndex#name}
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.7/docs/resources/document_index#name DocumentIndex#name}
   */
   readonly name: string;
   /**
@@ -35,13 +35,13 @@ export interface DocumentIndexConfig extends cdktf.TerraformMetaArguments {
   * * `ACTIVE` - Active
   * * `ARCHIVED` - Archived
   *
-  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.2/docs/resources/document_index#status DocumentIndex#status}
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.7/docs/resources/document_index#status DocumentIndex#status}
   */
   readonly status?: string;
 }
 
 /**
-* Represents a {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.2/docs/resources/document_index vellum_document_index}
+* Represents a {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.7/docs/resources/document_index vellum_document_index}
 */
 export class DocumentIndex extends cdktf.TerraformResource {
 
@@ -57,7 +57,7 @@ export class DocumentIndex extends cdktf.TerraformResource {
   * Generates CDKTF code for importing a DocumentIndex resource upon running "cdktf plan <stack-name>"
   * @param scope The scope in which to define this construct
   * @param importToId The construct id used in the generated config for the DocumentIndex to import
-  * @param importFromId The id of the existing DocumentIndex that should be imported. Refer to the {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.2/docs/resources/document_index#import import section} in the documentation of this resource for the id to use
+  * @param importFromId The id of the existing DocumentIndex that should be imported. Refer to the {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.7/docs/resources/document_index#import import section} in the documentation of this resource for the id to use
   * @param provider? Optional instance of the provider where the DocumentIndex to import is found
   */
   public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
@@ -69,7 +69,7 @@ export class DocumentIndex extends cdktf.TerraformResource {
   // ===========
 
   /**
-  * Create a new {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.2/docs/resources/document_index vellum_document_index} Resource
+  * Create a new {@link https://registry.terraform.io/providers/vellum-ai/vellum/0.0.7/docs/resources/document_index vellum_document_index} Resource
   *
   * @param scope The scope in which to define this construct
   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
@@ -80,7 +80,7 @@ export class DocumentIndex extends cdktf.TerraformResource {
       terraformResourceType: 'vellum_document_index',
       terraformGeneratorMetadata: {
         providerName: 'vellum',
-        providerVersion: '0.0.2'
+        providerVersion: '0.0.7'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
