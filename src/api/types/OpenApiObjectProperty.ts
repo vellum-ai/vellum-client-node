@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 /**
- * An OpenAPI specification of a parameter with type 'object'
+ * An OpenAPI specification of a property with type 'object'
  */
 export interface OpenApiObjectProperty {
     properties?: Record<string, Vellum.OpenApiProperty | undefined>;

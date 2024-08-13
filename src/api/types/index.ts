@@ -221,6 +221,8 @@ export * from "./OpenApiOneOfProperty";
 export * from "./OpenApiOneOfPropertyRequest";
 export * from "./OpenApiProperty";
 export * from "./OpenApiPropertyRequest";
+export * from "./OpenApiRefProperty";
+export * from "./OpenApiRefPropertyRequest";
 export * from "./OpenApiStringProperty";
 export * from "./OpenApiStringPropertyRequest";
 export * from "./PaginatedDocumentIndexReadList";

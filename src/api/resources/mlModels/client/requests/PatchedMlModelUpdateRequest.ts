@@ -9,6 +9,10 @@ import * as Vellum from "../../../../index";
  *     {}
  */
 export interface PatchedMlModelUpdateRequest {
+    /** Configuration for how to execute the ML Model. */
+    execConfig?: Vellum.MlModelExecConfigRequest;
+    /** Configuration for the ML Model's parameters. */
+    parameterConfig?: Vellum.MlModelParameterConfigRequest;
     /** Configuration for how to display the ML Model. */
     displayConfig?: Vellum.MlModelDisplayConfigRequest;
     /**

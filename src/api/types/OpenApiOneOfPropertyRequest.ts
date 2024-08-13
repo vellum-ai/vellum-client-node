@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 /**
- * An OpenAPI specification of a parameter with type 'oneOf'
+ * An OpenAPI specification of a property with type 'oneOf'
  */
 export interface OpenApiOneOfPropertyRequest {
     oneOf: Vellum.OpenApiPropertyRequest[];

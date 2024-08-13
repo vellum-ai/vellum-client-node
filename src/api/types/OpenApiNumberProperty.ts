@@ -3,7 +3,7 @@
  */
 
 /**
- * An OpenAPI specification of a parameter with type 'number'
+ * An OpenAPI specification of a property with type 'number'
  */
 export interface OpenApiNumberProperty {
     minimum?: number;

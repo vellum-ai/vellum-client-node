@@ -10,6 +10,7 @@ import { OpenApiNumberProperty } from "./OpenApiNumberProperty";
 import { OpenApiStringProperty } from "./OpenApiStringProperty";
 import { OpenApiBooleanProperty } from "./OpenApiBooleanProperty";
 import { OpenApiConstProperty } from "./OpenApiConstProperty";
+import { OpenApiRefProperty } from "./OpenApiRefProperty";
 
 export const OpenApiProperty: core.serialization.Schema<serializers.OpenApiProperty.Raw, Vellum.OpenApiProperty> =
     core.serialization
@@ -22,6 +23,7 @@ export const OpenApiProperty: core.serialization.Schema<serializers.OpenApiPrope
             boolean: OpenApiBooleanProperty,
             oneOf: core.serialization.lazyObject(() => serializers.OpenApiOneOfProperty),
             const: OpenApiConstProperty,
+            ref: OpenApiRefProperty,
         })
         .transform<Vellum.OpenApiProperty>({
             transform: (value) => value,
@@ -37,7 +39,8 @@ export declare namespace OpenApiProperty {
         | OpenApiProperty.String
         | OpenApiProperty.Boolean
         | OpenApiProperty.OneOf
-        | OpenApiProperty.Const;
+        | OpenApiProperty.Const
+        | OpenApiProperty.Ref;
 
     interface Array extends serializers.OpenApiArrayProperty.Raw {
         type: "array";
@@ -69,5 +72,9 @@ export declare namespace OpenApiProperty {
 
     interface Const extends OpenApiConstProperty.Raw {
         type: "const";
+    }
+
+    interface Ref extends OpenApiRefProperty.Raw {
+        type: "ref";
     }
 }

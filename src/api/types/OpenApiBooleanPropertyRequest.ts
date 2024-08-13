@@ -3,7 +3,7 @@
  */
 
 /**
- * An OpenAPI specification of a parameter with type 'boolean'
+ * An OpenAPI specification of a property with type 'boolean'
  */
 export interface OpenApiBooleanPropertyRequest {
     default?: boolean;

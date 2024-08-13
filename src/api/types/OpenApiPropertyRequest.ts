@@ -12,7 +12,8 @@ export type OpenApiPropertyRequest =
     | Vellum.OpenApiPropertyRequest.String
     | Vellum.OpenApiPropertyRequest.Boolean
     | Vellum.OpenApiPropertyRequest.OneOf
-    | Vellum.OpenApiPropertyRequest.Const;
+    | Vellum.OpenApiPropertyRequest.Const
+    | Vellum.OpenApiPropertyRequest.Ref;
 
 export declare namespace OpenApiPropertyRequest {
     interface Array extends Vellum.OpenApiArrayPropertyRequest {
@@ -45,5 +46,9 @@ export declare namespace OpenApiPropertyRequest {
 
     interface Const extends Vellum.OpenApiConstPropertyRequest {
         type: "const";
+    }
+
+    interface Ref extends Vellum.OpenApiRefPropertyRequest {
+        type: "ref";
     }
 }

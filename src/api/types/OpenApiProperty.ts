@@ -12,7 +12,8 @@ export type OpenApiProperty =
     | Vellum.OpenApiProperty.String
     | Vellum.OpenApiProperty.Boolean
     | Vellum.OpenApiProperty.OneOf
-    | Vellum.OpenApiProperty.Const;
+    | Vellum.OpenApiProperty.Const
+    | Vellum.OpenApiProperty.Ref;
 
 export declare namespace OpenApiProperty {
     interface Array extends Vellum.OpenApiArrayProperty {
@@ -45,5 +46,9 @@ export declare namespace OpenApiProperty {
 
     interface Const extends Vellum.OpenApiConstProperty {
         type: "const";
+    }
+
+    interface Ref extends Vellum.OpenApiRefProperty {
+        type: "ref";
     }
 }

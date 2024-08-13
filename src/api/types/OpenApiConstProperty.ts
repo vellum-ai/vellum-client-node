@@ -3,7 +3,7 @@
  */
 
 /**
- * An OpenAPI specification of a parameter with type 'const'
+ * An OpenAPI specification of a property with type 'const'
  */
 export interface OpenApiConstProperty {
     title?: string;

@@ -14,6 +14,10 @@ export const MlModelDisplayConfigLabelled: core.serialization.ObjectSchema<
     label: core.serialization.string(),
     description: core.serialization.string(),
     tags: core.serialization.list(MlModelDisplayTagEnumValueLabel),
+    defaultDisplayPriority: core.serialization.property(
+        "default_display_priority",
+        core.serialization.number().optional()
+    ),
 });
 
 export declare namespace MlModelDisplayConfigLabelled {
@@ -21,5 +25,6 @@ export declare namespace MlModelDisplayConfigLabelled {
         label: string;
         description: string;
         tags: MlModelDisplayTagEnumValueLabel.Raw[];
+        default_display_priority?: number | null;
     }
 }

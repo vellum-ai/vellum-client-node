@@ -5,6 +5,8 @@
 import * as serializers from "../../../../index";
 import * as Vellum from "../../../../../api/index";
 import * as core from "../../../../../core";
+import { MlModelExecConfigRequest } from "../../../../types/MlModelExecConfigRequest";
+import { MlModelParameterConfigRequest } from "../../../../types/MlModelParameterConfigRequest";
 import { MlModelDisplayConfigRequest } from "../../../../types/MlModelDisplayConfigRequest";
 import { VisibilityEnum } from "../../../../types/VisibilityEnum";
 
@@ -12,12 +14,16 @@ export const PatchedMlModelUpdateRequest: core.serialization.Schema<
     serializers.PatchedMlModelUpdateRequest.Raw,
     Vellum.PatchedMlModelUpdateRequest
 > = core.serialization.object({
+    execConfig: core.serialization.property("exec_config", MlModelExecConfigRequest.optional()),
+    parameterConfig: core.serialization.property("parameter_config", MlModelParameterConfigRequest.optional()),
     displayConfig: core.serialization.property("display_config", MlModelDisplayConfigRequest.optional()),
     visibility: VisibilityEnum.optional(),
 });
 
 export declare namespace PatchedMlModelUpdateRequest {
     interface Raw {
+        exec_config?: MlModelExecConfigRequest.Raw | null;
+        parameter_config?: MlModelParameterConfigRequest.Raw | null;
         display_config?: MlModelDisplayConfigRequest.Raw | null;
         visibility?: VisibilityEnum.Raw | null;
     }

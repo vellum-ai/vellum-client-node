@@ -3,7 +3,7 @@
  */
 
 /**
- * An OpenAPI specification of a parameter with type 'string'
+ * An OpenAPI specification of a property with type 'string'
  */
 export interface OpenApiStringPropertyRequest {
     minLength?: number;

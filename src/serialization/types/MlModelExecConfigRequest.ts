@@ -18,6 +18,10 @@ export const MlModelExecConfigRequest: core.serialization.ObjectSchema<
     baseUrl: core.serialization.property("base_url", core.serialization.string()),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     features: core.serialization.list(MlModelFeature),
+    forceSystemCredentials: core.serialization.property(
+        "force_system_credentials",
+        core.serialization.boolean().optional()
+    ),
     tokenizerConfig: core.serialization.property("tokenizer_config", MlModelTokenizerConfigRequest.optional()),
     requestConfig: core.serialization.property("request_config", MlModelRequestConfigRequest.optional()),
     responseConfig: core.serialization.property("response_config", MlModelResponseConfigRequest.optional()),
@@ -29,6 +33,7 @@ export declare namespace MlModelExecConfigRequest {
         base_url: string;
         metadata: Record<string, unknown>;
         features: MlModelFeature.Raw[];
+        force_system_credentials?: boolean | null;
         tokenizer_config?: MlModelTokenizerConfigRequest.Raw | null;
         request_config?: MlModelRequestConfigRequest.Raw | null;
         response_config?: MlModelResponseConfigRequest.Raw | null;

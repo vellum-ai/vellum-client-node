@@ -10,6 +10,7 @@ import { OpenApiNumberPropertyRequest } from "./OpenApiNumberPropertyRequest";
 import { OpenApiStringPropertyRequest } from "./OpenApiStringPropertyRequest";
 import { OpenApiBooleanPropertyRequest } from "./OpenApiBooleanPropertyRequest";
 import { OpenApiConstPropertyRequest } from "./OpenApiConstPropertyRequest";
+import { OpenApiRefPropertyRequest } from "./OpenApiRefPropertyRequest";
 
 export const OpenApiPropertyRequest: core.serialization.Schema<
     serializers.OpenApiPropertyRequest.Raw,
@@ -24,6 +25,7 @@ export const OpenApiPropertyRequest: core.serialization.Schema<
         boolean: OpenApiBooleanPropertyRequest,
         oneOf: core.serialization.lazyObject(() => serializers.OpenApiOneOfPropertyRequest),
         const: OpenApiConstPropertyRequest,
+        ref: OpenApiRefPropertyRequest,
     })
     .transform<Vellum.OpenApiPropertyRequest>({
         transform: (value) => value,
@@ -39,7 +41,8 @@ export declare namespace OpenApiPropertyRequest {
         | OpenApiPropertyRequest.String
         | OpenApiPropertyRequest.Boolean
         | OpenApiPropertyRequest.OneOf
-        | OpenApiPropertyRequest.Const;
+        | OpenApiPropertyRequest.Const
+        | OpenApiPropertyRequest.Ref;
 
     interface Array extends serializers.OpenApiArrayPropertyRequest.Raw {
         type: "array";
@@ -71,5 +74,9 @@ export declare namespace OpenApiPropertyRequest {
 
     interface Const extends OpenApiConstPropertyRequest.Raw {
         type: "const";
+    }
+
+    interface Ref extends OpenApiRefPropertyRequest.Raw {
+        type: "ref";
     }
 }

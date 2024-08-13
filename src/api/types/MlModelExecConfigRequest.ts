@@ -9,6 +9,8 @@ export interface MlModelExecConfigRequest {
     baseUrl: string;
     metadata: Record<string, unknown>;
     features: Vellum.MlModelFeature[];
+    /** Can only be set when using an internal service token. */
+    forceSystemCredentials?: boolean;
     tokenizerConfig?: Vellum.MlModelTokenizerConfigRequest;
     requestConfig?: Vellum.MlModelRequestConfigRequest;
     responseConfig?: Vellum.MlModelResponseConfigRequest;

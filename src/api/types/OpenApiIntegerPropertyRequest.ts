@@ -3,7 +3,7 @@
  */
 
 /**
- * An OpenAPI specification of a parameter with type 'integer'
+ * An OpenAPI specification of a property with type 'integer'
  */
 export interface OpenApiIntegerPropertyRequest {
     minimum?: number;

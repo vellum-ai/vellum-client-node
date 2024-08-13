@@ -14,6 +14,10 @@ export const MlModelDisplayConfigRequest: core.serialization.ObjectSchema<
     label: core.serialization.string(),
     description: core.serialization.string(),
     tags: core.serialization.list(MlModelDisplayTag),
+    defaultDisplayPriority: core.serialization.property(
+        "default_display_priority",
+        core.serialization.number().optional()
+    ),
 });
 
 export declare namespace MlModelDisplayConfigRequest {
@@ -21,5 +25,6 @@ export declare namespace MlModelDisplayConfigRequest {
         label: string;
         description: string;
         tags: MlModelDisplayTag.Raw[];
+        default_display_priority?: number | null;
     }
 }
