@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * Sentence chunking
  */
 export interface SentenceChunking {
+    chunkerName: "sentence-chunker";
     chunkerConfig?: Vellum.SentenceChunkerConfig;
 }

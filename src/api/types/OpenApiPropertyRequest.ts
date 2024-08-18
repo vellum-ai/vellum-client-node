@@ -5,50 +5,12 @@
 import * as Vellum from "../index";
 
 export type OpenApiPropertyRequest =
-    | Vellum.OpenApiPropertyRequest.Array
-    | Vellum.OpenApiPropertyRequest.Object_
-    | Vellum.OpenApiPropertyRequest.Integer
-    | Vellum.OpenApiPropertyRequest.Number
-    | Vellum.OpenApiPropertyRequest.String
-    | Vellum.OpenApiPropertyRequest.Boolean
-    | Vellum.OpenApiPropertyRequest.OneOf
-    | Vellum.OpenApiPropertyRequest.Const
-    | Vellum.OpenApiPropertyRequest.Ref;
-
-export declare namespace OpenApiPropertyRequest {
-    interface Array extends Vellum.OpenApiArrayPropertyRequest {
-        type: "array";
-    }
-
-    interface Object_ extends Vellum.OpenApiObjectPropertyRequest {
-        type: "object";
-    }
-
-    interface Integer extends Vellum.OpenApiIntegerPropertyRequest {
-        type: "integer";
-    }
-
-    interface Number extends Vellum.OpenApiNumberPropertyRequest {
-        type: "number";
-    }
-
-    interface String extends Vellum.OpenApiStringPropertyRequest {
-        type: "string";
-    }
-
-    interface Boolean extends Vellum.OpenApiBooleanPropertyRequest {
-        type: "boolean";
-    }
-
-    interface OneOf extends Vellum.OpenApiOneOfPropertyRequest {
-        type: "oneOf";
-    }
-
-    interface Const extends Vellum.OpenApiConstPropertyRequest {
-        type: "const";
-    }
-
-    interface Ref extends Vellum.OpenApiRefPropertyRequest {
-        type: "ref";
-    }
-}
+    | Vellum.OpenApiArrayPropertyRequest
+    | Vellum.OpenApiObjectPropertyRequest
+    | Vellum.OpenApiIntegerPropertyRequest
+    | Vellum.OpenApiNumberPropertyRequest
+    | Vellum.OpenApiStringPropertyRequest
+    | Vellum.OpenApiBooleanPropertyRequest
+    | Vellum.OpenApiOneOfPropertyRequest
+    | Vellum.OpenApiConstPropertyRequest
+    | Vellum.OpenApiRefPropertyRequest;

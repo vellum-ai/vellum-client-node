@@ -11,12 +11,14 @@ export const NamedTestCaseErrorVariableValueRequest: core.serialization.ObjectSc
     serializers.NamedTestCaseErrorVariableValueRequest.Raw,
     Vellum.NamedTestCaseErrorVariableValueRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("ERROR"),
     value: VellumErrorRequest.optional(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseErrorVariableValueRequest {
     interface Raw {
+        type: "ERROR";
         value?: VellumErrorRequest.Raw | null;
         name: string;
     }

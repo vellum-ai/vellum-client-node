@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * A base Vellum primitive value representing an image.
  */
 export interface ImageVellumValueRequest {
+    type: "IMAGE";
     value?: Vellum.VellumImageRequest;
 }

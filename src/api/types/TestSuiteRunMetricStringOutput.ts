@@ -7,5 +7,6 @@
  */
 export interface TestSuiteRunMetricStringOutput {
     value?: string;
+    type: "STRING";
     name: string;
 }

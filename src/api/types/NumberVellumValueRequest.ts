@@ -6,5 +6,6 @@
  * A value representing a number.
  */
 export interface NumberVellumValueRequest {
+    type: "NUMBER";
     value?: number;
 }

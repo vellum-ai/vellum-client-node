@@ -11,5 +11,6 @@ export interface ExecutionErrorVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
+    type: "ERROR";
     value?: Vellum.VellumError;
 }

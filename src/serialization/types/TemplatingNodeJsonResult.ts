@@ -11,12 +11,14 @@ export const TemplatingNodeJsonResult: core.serialization.ObjectSchema<
     Vellum.TemplatingNodeJsonResult
 > = core.serialization.object({
     id: core.serialization.string(),
+    type: core.serialization.stringLiteral("JSON"),
     value: core.serialization.unknown(),
 });
 
 export declare namespace TemplatingNodeJsonResult {
     interface Raw {
         id: string;
+        type: "JSON";
         value?: unknown;
     }
 }

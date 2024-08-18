@@ -6,5 +6,6 @@
  * Tokenizer config for OpenAI's TikToken type tokenizers.
  */
 export interface TikTokenTokenizerConfigRequest {
+    type: "TIKTOKEN";
     name: string;
 }

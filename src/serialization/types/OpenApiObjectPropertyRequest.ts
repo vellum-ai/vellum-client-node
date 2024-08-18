@@ -10,6 +10,7 @@ export const OpenApiObjectPropertyRequest: core.serialization.ObjectSchema<
     serializers.OpenApiObjectPropertyRequest.Raw,
     Vellum.OpenApiObjectPropertyRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("object"),
     properties: core.serialization
         .record(
             core.serialization.string(),
@@ -43,6 +44,7 @@ export const OpenApiObjectPropertyRequest: core.serialization.ObjectSchema<
 
 export declare namespace OpenApiObjectPropertyRequest {
     interface Raw {
+        type: "object";
         properties?: Record<string, serializers.OpenApiPropertyRequest.Raw | null | undefined> | null;
         required?: string[] | null;
         min_properties?: number | null;

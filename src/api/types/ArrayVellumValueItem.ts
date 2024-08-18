@@ -5,35 +5,9 @@
 import * as Vellum from "../index";
 
 export type ArrayVellumValueItem =
-    | Vellum.ArrayVellumValueItem.String
-    | Vellum.ArrayVellumValueItem.Number
-    | Vellum.ArrayVellumValueItem.Json
-    | Vellum.ArrayVellumValueItem.Image
-    | Vellum.ArrayVellumValueItem.FunctionCall
-    | Vellum.ArrayVellumValueItem.Error_;
-
-export declare namespace ArrayVellumValueItem {
-    interface String extends Vellum.StringVellumValue {
-        type: "STRING";
-    }
-
-    interface Number extends Vellum.NumberVellumValue {
-        type: "NUMBER";
-    }
-
-    interface Json extends Vellum.JsonVellumValue {
-        type: "JSON";
-    }
-
-    interface Image extends Vellum.ImageVellumValue {
-        type: "IMAGE";
-    }
-
-    interface FunctionCall extends Vellum.FunctionCallVellumValue {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Error_ extends Vellum.ErrorVellumValue {
-        type: "ERROR";
-    }
-}
+    | Vellum.StringVellumValue
+    | Vellum.NumberVellumValue
+    | Vellum.JsonVellumValue
+    | Vellum.ImageVellumValue
+    | Vellum.FunctionCallVellumValue
+    | Vellum.ErrorVellumValue;

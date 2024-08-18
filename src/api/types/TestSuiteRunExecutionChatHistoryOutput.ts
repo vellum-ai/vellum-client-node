@@ -9,6 +9,7 @@ import * as Vellum from "../index";
  */
 export interface TestSuiteRunExecutionChatHistoryOutput {
     name: string;
+    type: "CHAT_HISTORY";
     value?: Vellum.ChatMessage[];
     outputVariableId: string;
 }

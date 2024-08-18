@@ -10,6 +10,7 @@ export const OpenApiBooleanPropertyRequest: core.serialization.ObjectSchema<
     serializers.OpenApiBooleanPropertyRequest.Raw,
     Vellum.OpenApiBooleanPropertyRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("boolean"),
     default: core.serialization.boolean().optional(),
     title: core.serialization.string().optional(),
     description: core.serialization.string().optional(),
@@ -17,6 +18,7 @@ export const OpenApiBooleanPropertyRequest: core.serialization.ObjectSchema<
 
 export declare namespace OpenApiBooleanPropertyRequest {
     interface Raw {
+        type: "boolean";
         default?: boolean | null;
         title?: string | null;
         description?: string | null;

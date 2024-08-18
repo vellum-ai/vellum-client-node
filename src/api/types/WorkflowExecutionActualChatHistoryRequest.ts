@@ -15,6 +15,7 @@ export interface WorkflowExecutionActualChatHistoryRequest {
     metadata?: Record<string, unknown>;
     /** Optionally provide the timestamp representing when this feedback was collected. Used for reporting purposes. */
     timestamp?: number;
+    outputType: "CHAT_HISTORY";
     /** Optionally provide the value that the output ideally should have been. */
     desiredOutputValue?: Vellum.ChatMessageRequest[];
 }

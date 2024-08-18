@@ -11,11 +11,13 @@ export const SentenceChunking: core.serialization.ObjectSchema<
     serializers.SentenceChunking.Raw,
     Vellum.SentenceChunking
 > = core.serialization.object({
+    chunkerName: core.serialization.property("chunker_name", core.serialization.stringLiteral("sentence-chunker")),
     chunkerConfig: core.serialization.property("chunker_config", SentenceChunkerConfig.optional()),
 });
 
 export declare namespace SentenceChunking {
     interface Raw {
+        chunker_name: "sentence-chunker";
         chunker_config?: SentenceChunkerConfig.Raw | null;
     }
 }

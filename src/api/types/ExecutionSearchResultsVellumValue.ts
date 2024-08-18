@@ -11,5 +11,6 @@ export interface ExecutionSearchResultsVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
+    type: "SEARCH_RESULTS";
     value?: Vellum.SearchResult[];
 }

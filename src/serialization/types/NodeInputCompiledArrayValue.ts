@@ -13,6 +13,7 @@ export const NodeInputCompiledArrayValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
+    type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(ArrayVariableValueItem).optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace NodeInputCompiledArrayValue {
     interface Raw {
         node_input_id: string;
         key: string;
+        type: "ARRAY";
         value?: ArrayVariableValueItem.Raw[] | null;
     }
 }

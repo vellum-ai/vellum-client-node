@@ -6,6 +6,7 @@
  * Named Test Case value that is of type JSON
  */
 export interface NamedTestCaseJsonVariableValueRequest {
+    type: "JSON";
     value?: unknown;
     name: string;
 }

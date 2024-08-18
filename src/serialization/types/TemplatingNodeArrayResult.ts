@@ -12,12 +12,14 @@ export const TemplatingNodeArrayResult: core.serialization.ObjectSchema<
     Vellum.TemplatingNodeArrayResult
 > = core.serialization.object({
     id: core.serialization.string(),
+    type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(ArrayVariableValueItem).optional(),
 });
 
 export declare namespace TemplatingNodeArrayResult {
     interface Raw {
         id: string;
+        type: "ARRAY";
         value?: ArrayVariableValueItem.Raw[] | null;
     }
 }

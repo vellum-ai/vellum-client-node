@@ -12,12 +12,14 @@ export const CodeExecutionNodeArrayResult: core.serialization.ObjectSchema<
     Vellum.CodeExecutionNodeArrayResult
 > = core.serialization.object({
     id: core.serialization.string(),
+    type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(ArrayVariableValueItem).optional(),
 });
 
 export declare namespace CodeExecutionNodeArrayResult {
     interface Raw {
         id: string;
+        type: "ARRAY";
         value?: ArrayVariableValueItem.Raw[] | null;
     }
 }

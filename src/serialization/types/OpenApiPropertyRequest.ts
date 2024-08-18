@@ -15,68 +15,27 @@ import { OpenApiRefPropertyRequest } from "./OpenApiRefPropertyRequest";
 export const OpenApiPropertyRequest: core.serialization.Schema<
     serializers.OpenApiPropertyRequest.Raw,
     Vellum.OpenApiPropertyRequest
-> = core.serialization
-    .union("type", {
-        array: core.serialization.lazyObject(() => serializers.OpenApiArrayPropertyRequest),
-        object: core.serialization.lazyObject(() => serializers.OpenApiObjectPropertyRequest),
-        integer: OpenApiIntegerPropertyRequest,
-        number: OpenApiNumberPropertyRequest,
-        string: OpenApiStringPropertyRequest,
-        boolean: OpenApiBooleanPropertyRequest,
-        oneOf: core.serialization.lazyObject(() => serializers.OpenApiOneOfPropertyRequest),
-        const: OpenApiConstPropertyRequest,
-        ref: OpenApiRefPropertyRequest,
-    })
-    .transform<Vellum.OpenApiPropertyRequest>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    core.serialization.lazyObject(() => serializers.OpenApiArrayPropertyRequest),
+    core.serialization.lazyObject(() => serializers.OpenApiObjectPropertyRequest),
+    OpenApiIntegerPropertyRequest,
+    OpenApiNumberPropertyRequest,
+    OpenApiStringPropertyRequest,
+    OpenApiBooleanPropertyRequest,
+    core.serialization.lazyObject(() => serializers.OpenApiOneOfPropertyRequest),
+    OpenApiConstPropertyRequest,
+    OpenApiRefPropertyRequest,
+]);
 
 export declare namespace OpenApiPropertyRequest {
     type Raw =
-        | OpenApiPropertyRequest.Array
-        | OpenApiPropertyRequest.Object
-        | OpenApiPropertyRequest.Integer
-        | OpenApiPropertyRequest.Number
-        | OpenApiPropertyRequest.String
-        | OpenApiPropertyRequest.Boolean
-        | OpenApiPropertyRequest.OneOf
-        | OpenApiPropertyRequest.Const
-        | OpenApiPropertyRequest.Ref;
-
-    interface Array extends serializers.OpenApiArrayPropertyRequest.Raw {
-        type: "array";
-    }
-
-    interface Object extends serializers.OpenApiObjectPropertyRequest.Raw {
-        type: "object";
-    }
-
-    interface Integer extends OpenApiIntegerPropertyRequest.Raw {
-        type: "integer";
-    }
-
-    interface Number extends OpenApiNumberPropertyRequest.Raw {
-        type: "number";
-    }
-
-    interface String extends OpenApiStringPropertyRequest.Raw {
-        type: "string";
-    }
-
-    interface Boolean extends OpenApiBooleanPropertyRequest.Raw {
-        type: "boolean";
-    }
-
-    interface OneOf extends serializers.OpenApiOneOfPropertyRequest.Raw {
-        type: "oneOf";
-    }
-
-    interface Const extends OpenApiConstPropertyRequest.Raw {
-        type: "const";
-    }
-
-    interface Ref extends OpenApiRefPropertyRequest.Raw {
-        type: "ref";
-    }
+        | serializers.OpenApiArrayPropertyRequest.Raw
+        | serializers.OpenApiObjectPropertyRequest.Raw
+        | OpenApiIntegerPropertyRequest.Raw
+        | OpenApiNumberPropertyRequest.Raw
+        | OpenApiStringPropertyRequest.Raw
+        | OpenApiBooleanPropertyRequest.Raw
+        | serializers.OpenApiOneOfPropertyRequest.Raw
+        | OpenApiConstPropertyRequest.Raw
+        | OpenApiRefPropertyRequest.Raw;
 }

@@ -11,6 +11,7 @@ export interface FulfilledWorkflowNodeResultEvent {
     id: string;
     nodeId: string;
     nodeResultId: string;
+    state: "FULFILLED";
     ts?: Date;
     data?: Vellum.WorkflowNodeResultData;
     sourceExecutionId?: string;

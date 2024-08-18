@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * Prompt Sandbox Scenario input value that is of type CHAT_HISTORY
  */
 export interface ScenarioInputChatHistoryVariableValue {
+    type: "CHAT_HISTORY";
     value?: Vellum.ChatMessage[];
     inputVariableId: string;
 }

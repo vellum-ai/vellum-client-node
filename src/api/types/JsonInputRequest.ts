@@ -8,5 +8,6 @@
 export interface JsonInputRequest {
     /** The variable's name, as defined in the deployment. */
     name: string;
+    type: "JSON";
     value: Record<string, unknown>;
 }

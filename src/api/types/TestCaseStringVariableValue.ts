@@ -8,5 +8,6 @@
 export interface TestCaseStringVariableValue {
     variableId: string;
     name: string;
+    type: "STRING";
     value?: string;
 }

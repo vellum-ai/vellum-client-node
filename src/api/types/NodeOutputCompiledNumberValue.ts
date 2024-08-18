@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * An output returned by a node that is of type NUMBER.
  */
 export interface NodeOutputCompiledNumberValue {
+    type: "NUMBER";
     value?: number;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;

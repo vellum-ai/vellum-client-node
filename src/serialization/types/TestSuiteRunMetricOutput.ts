@@ -12,29 +12,15 @@ import { TestSuiteRunMetricErrorOutput } from "./TestSuiteRunMetricErrorOutput";
 export const TestSuiteRunMetricOutput: core.serialization.Schema<
     serializers.TestSuiteRunMetricOutput.Raw,
     Vellum.TestSuiteRunMetricOutput
-> = core.serialization
-    .union("type", {
-        STRING: TestSuiteRunMetricStringOutput,
-        NUMBER: TestSuiteRunMetricNumberOutput,
-        ERROR: TestSuiteRunMetricErrorOutput,
-    })
-    .transform<Vellum.TestSuiteRunMetricOutput>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    TestSuiteRunMetricStringOutput,
+    TestSuiteRunMetricNumberOutput,
+    TestSuiteRunMetricErrorOutput,
+]);
 
 export declare namespace TestSuiteRunMetricOutput {
-    type Raw = TestSuiteRunMetricOutput.String | TestSuiteRunMetricOutput.Number | TestSuiteRunMetricOutput.Error;
-
-    interface String extends TestSuiteRunMetricStringOutput.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends TestSuiteRunMetricNumberOutput.Raw {
-        type: "NUMBER";
-    }
-
-    interface Error extends TestSuiteRunMetricErrorOutput.Raw {
-        type: "ERROR";
-    }
+    type Raw =
+        | TestSuiteRunMetricStringOutput.Raw
+        | TestSuiteRunMetricNumberOutput.Raw
+        | TestSuiteRunMetricErrorOutput.Raw;
 }

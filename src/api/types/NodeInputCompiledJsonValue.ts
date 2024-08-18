@@ -5,5 +5,6 @@
 export interface NodeInputCompiledJsonValue {
     nodeInputId: string;
     key: string;
+    type: "JSON";
     value?: unknown;
 }

@@ -8,5 +8,6 @@ export interface TerminalNodeFunctionCallResult {
     id?: string;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
+    type: "FUNCTION_CALL";
     value?: Vellum.FunctionCall;
 }

@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * Execution configuration for running a Test Suite against a Workflow Deployment
  */
 export interface TestSuiteRunWorkflowReleaseTagExecConfig {
+    type: "WORKFLOW_RELEASE_TAG";
     data: Vellum.TestSuiteRunWorkflowReleaseTagExecConfigData;
     /** Optionally specify a subset of test case ids to run. If not provided, all test cases within the test suite will be run by default. */
     testCaseIds?: string[];

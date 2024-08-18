@@ -4,5 +4,6 @@
 
 export interface TemplatingNodeJsonResult {
     id: string;
+    type: "JSON";
     value?: unknown;
 }

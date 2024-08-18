@@ -10,6 +10,7 @@ export const OpenApiNumberProperty: core.serialization.ObjectSchema<
     serializers.OpenApiNumberProperty.Raw,
     Vellum.OpenApiNumberProperty
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("number"),
     minimum: core.serialization.number().optional(),
     maximum: core.serialization.number().optional(),
     format: core.serialization.string().optional(),
@@ -22,6 +23,7 @@ export const OpenApiNumberProperty: core.serialization.ObjectSchema<
 
 export declare namespace OpenApiNumberProperty {
     interface Raw {
+        type: "number";
         minimum?: number | null;
         maximum?: number | null;
         format?: string | null;

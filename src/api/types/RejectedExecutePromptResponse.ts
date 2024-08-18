@@ -13,5 +13,6 @@ export interface RejectedExecutePromptResponse {
     raw?: Record<string, unknown>;
     /** The ID of the execution. */
     executionId: string;
+    state: "REJECTED";
     error: Vellum.VellumError;
 }

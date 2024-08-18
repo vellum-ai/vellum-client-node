@@ -9,11 +9,13 @@ import { MergeNodeResultData } from "./MergeNodeResultData";
 
 export const MergeNodeResult: core.serialization.ObjectSchema<serializers.MergeNodeResult.Raw, Vellum.MergeNodeResult> =
     core.serialization.object({
+        type: core.serialization.stringLiteral("MERGE"),
         data: MergeNodeResultData,
     });
 
 export declare namespace MergeNodeResult {
     interface Raw {
+        type: "MERGE";
         data: MergeNodeResultData.Raw;
     }
 }

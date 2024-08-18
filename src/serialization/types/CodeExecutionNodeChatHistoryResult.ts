@@ -12,12 +12,14 @@ export const CodeExecutionNodeChatHistoryResult: core.serialization.ObjectSchema
     Vellum.CodeExecutionNodeChatHistoryResult
 > = core.serialization.object({
     id: core.serialization.string(),
+    type: core.serialization.stringLiteral("CHAT_HISTORY"),
     value: core.serialization.list(ChatMessage).optional(),
 });
 
 export declare namespace CodeExecutionNodeChatHistoryResult {
     interface Raw {
         id: string;
+        type: "CHAT_HISTORY";
         value?: ChatMessage.Raw[] | null;
     }
 }

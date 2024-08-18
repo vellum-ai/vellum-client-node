@@ -17,62 +17,25 @@ import { TestCaseArrayVariableValue } from "./TestCaseArrayVariableValue";
 export const TestCaseVariableValue: core.serialization.Schema<
     serializers.TestCaseVariableValue.Raw,
     Vellum.TestCaseVariableValue
-> = core.serialization
-    .union("type", {
-        STRING: TestCaseStringVariableValue,
-        NUMBER: TestCaseNumberVariableValue,
-        JSON: TestCaseJsonVariableValue,
-        CHAT_HISTORY: TestCaseChatHistoryVariableValue,
-        SEARCH_RESULTS: TestCaseSearchResultsVariableValue,
-        ERROR: TestCaseErrorVariableValue,
-        FUNCTION_CALL: TestCaseFunctionCallVariableValue,
-        ARRAY: TestCaseArrayVariableValue,
-    })
-    .transform<Vellum.TestCaseVariableValue>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    TestCaseStringVariableValue,
+    TestCaseNumberVariableValue,
+    TestCaseJsonVariableValue,
+    TestCaseChatHistoryVariableValue,
+    TestCaseSearchResultsVariableValue,
+    TestCaseErrorVariableValue,
+    TestCaseFunctionCallVariableValue,
+    TestCaseArrayVariableValue,
+]);
 
 export declare namespace TestCaseVariableValue {
     type Raw =
-        | TestCaseVariableValue.String
-        | TestCaseVariableValue.Number
-        | TestCaseVariableValue.Json
-        | TestCaseVariableValue.ChatHistory
-        | TestCaseVariableValue.SearchResults
-        | TestCaseVariableValue.Error
-        | TestCaseVariableValue.FunctionCall
-        | TestCaseVariableValue.Array;
-
-    interface String extends TestCaseStringVariableValue.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends TestCaseNumberVariableValue.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends TestCaseJsonVariableValue.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends TestCaseChatHistoryVariableValue.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends TestCaseSearchResultsVariableValue.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error extends TestCaseErrorVariableValue.Raw {
-        type: "ERROR";
-    }
-
-    interface FunctionCall extends TestCaseFunctionCallVariableValue.Raw {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Array extends TestCaseArrayVariableValue.Raw {
-        type: "ARRAY";
-    }
+        | TestCaseStringVariableValue.Raw
+        | TestCaseNumberVariableValue.Raw
+        | TestCaseJsonVariableValue.Raw
+        | TestCaseChatHistoryVariableValue.Raw
+        | TestCaseSearchResultsVariableValue.Raw
+        | TestCaseErrorVariableValue.Raw
+        | TestCaseFunctionCallVariableValue.Raw
+        | TestCaseArrayVariableValue.Raw;
 }

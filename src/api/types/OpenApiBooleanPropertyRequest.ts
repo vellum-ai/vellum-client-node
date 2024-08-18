@@ -6,6 +6,7 @@
  * An OpenAPI specification of a property with type 'boolean'
  */
 export interface OpenApiBooleanPropertyRequest {
+    type: "boolean";
     default?: boolean;
     title?: string;
     description?: string;

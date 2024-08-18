@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * An OpenAPI specification of a property with type 'object'
  */
 export interface OpenApiObjectPropertyRequest {
+    type: "object";
     properties?: Record<string, Vellum.OpenApiPropertyRequest | undefined>;
     required?: string[];
     minProperties?: number;

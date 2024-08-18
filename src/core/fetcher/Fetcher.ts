@@ -21,7 +21,8 @@ export declare namespace Fetcher {
         withCredentials?: boolean;
         abortSignal?: AbortSignal;
         requestType?: "json" | "file" | "bytes";
-        responseType?: "json" | "blob" | "streaming" | "text";
+        responseType?: "json" | "blob" | "sse" | "streaming" | "text";
+        duplex?: "half";
     }
 
     export type Error = FailedStatusCodeError | NonJsonError | TimeoutError | UnknownError;
@@ -80,7 +81,8 @@ export async function fetcherImpl<R = unknown>(args: Fetcher.Args): Promise<APIR
                     requestBody,
                     args.timeoutMs,
                     args.abortSignal,
-                    args.withCredentials
+                    args.withCredentials,
+                    args.duplex
                 ),
             args.maxRetries
         );

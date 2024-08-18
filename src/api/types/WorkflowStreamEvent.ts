@@ -4,14 +4,4 @@
 
 import * as Vellum from "../index";
 
-export type WorkflowStreamEvent = Vellum.WorkflowStreamEvent.Workflow | Vellum.WorkflowStreamEvent.Node;
-
-export declare namespace WorkflowStreamEvent {
-    interface Workflow extends Vellum.WorkflowExecutionWorkflowResultEvent {
-        type: "WORKFLOW";
-    }
-
-    interface Node extends Vellum.WorkflowExecutionNodeResultEvent {
-        type: "NODE";
-    }
-}
+export type WorkflowStreamEvent = Vellum.WorkflowExecutionWorkflowResultEvent | Vellum.WorkflowExecutionNodeResultEvent;

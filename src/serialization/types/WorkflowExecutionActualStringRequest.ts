@@ -15,6 +15,7 @@ export const WorkflowExecutionActualStringRequest: core.serialization.ObjectSche
     quality: core.serialization.number().optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
     timestamp: core.serialization.number().optional(),
+    outputType: core.serialization.property("output_type", core.serialization.stringLiteral("STRING")),
     desiredOutputValue: core.serialization.property("desired_output_value", core.serialization.string().optional()),
 });
 
@@ -25,6 +26,7 @@ export declare namespace WorkflowExecutionActualStringRequest {
         quality?: number | null;
         metadata?: Record<string, unknown> | null;
         timestamp?: number | null;
+        output_type: "STRING";
         desired_output_value?: string | null;
     }
 }

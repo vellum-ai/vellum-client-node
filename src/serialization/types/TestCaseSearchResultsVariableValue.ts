@@ -13,6 +13,7 @@ export const TestCaseSearchResultsVariableValue: core.serialization.ObjectSchema
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
     value: core.serialization.list(SearchResult).optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace TestCaseSearchResultsVariableValue {
     interface Raw {
         variable_id: string;
         name: string;
+        type: "SEARCH_RESULTS";
         value?: SearchResult.Raw[] | null;
     }
 }

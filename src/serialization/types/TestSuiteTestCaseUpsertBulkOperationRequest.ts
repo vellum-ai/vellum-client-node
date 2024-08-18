@@ -12,12 +12,14 @@ export const TestSuiteTestCaseUpsertBulkOperationRequest: core.serialization.Obj
     Vellum.TestSuiteTestCaseUpsertBulkOperationRequest
 > = core.serialization.object({
     id: core.serialization.string(),
+    type: core.serialization.stringLiteral("UPSERT"),
     data: UpsertTestSuiteTestCaseRequest,
 });
 
 export declare namespace TestSuiteTestCaseUpsertBulkOperationRequest {
     interface Raw {
         id: string;
+        type: "UPSERT";
         data: UpsertTestSuiteTestCaseRequest.Raw;
     }
 }

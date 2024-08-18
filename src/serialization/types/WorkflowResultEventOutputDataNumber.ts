@@ -16,6 +16,7 @@ export const WorkflowResultEventOutputDataNumber: core.serialization.ObjectSchem
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
+    type: core.serialization.stringLiteral("NUMBER"),
     value: core.serialization.number().optional(),
 });
 
@@ -26,6 +27,7 @@ export declare namespace WorkflowResultEventOutputDataNumber {
         state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
+        type: "NUMBER";
         value?: number | null;
     }
 }

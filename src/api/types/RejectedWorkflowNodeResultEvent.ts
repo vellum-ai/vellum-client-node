@@ -11,6 +11,7 @@ export interface RejectedWorkflowNodeResultEvent {
     id: string;
     nodeId: string;
     nodeResultId: string;
+    state: "REJECTED";
     ts?: Date;
     data?: Vellum.WorkflowNodeResultData;
     sourceExecutionId?: string;

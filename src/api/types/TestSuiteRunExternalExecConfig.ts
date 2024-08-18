@@ -11,4 +11,5 @@ export interface TestSuiteRunExternalExecConfig {
     data: Vellum.TestSuiteRunExternalExecConfigData;
     /** Optionally specify a subset of test case ids to run. If not provided, all test cases within the test suite will be run by default. */
     testCaseIds?: string[];
+    type: "EXTERNAL";
 }

@@ -12,6 +12,7 @@ export const TestSuiteRunExecutionSearchResultsOutput: core.serialization.Object
     Vellum.TestSuiteRunExecutionSearchResultsOutput
 > = core.serialization.object({
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
     value: core.serialization.list(SearchResult).optional(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
@@ -19,6 +20,7 @@ export const TestSuiteRunExecutionSearchResultsOutput: core.serialization.Object
 export declare namespace TestSuiteRunExecutionSearchResultsOutput {
     interface Raw {
         name: string;
+        type: "SEARCH_RESULTS";
         value?: SearchResult.Raw[] | null;
         output_variable_id: string;
     }

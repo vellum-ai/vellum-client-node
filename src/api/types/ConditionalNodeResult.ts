@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Conditional Node.
  */
 export interface ConditionalNodeResult {
+    type: "CONDITIONAL";
     data: Vellum.ConditionalNodeResultData;
 }

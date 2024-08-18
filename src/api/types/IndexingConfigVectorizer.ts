@@ -5,42 +5,10 @@
 import * as Vellum from "../index";
 
 export type IndexingConfigVectorizer =
-    | Vellum.IndexingConfigVectorizer.TextEmbedding3Small
-    | Vellum.IndexingConfigVectorizer.TextEmbedding3Large
-    | Vellum.IndexingConfigVectorizer.TextEmbeddingAda002
-    | Vellum.IndexingConfigVectorizer.IntfloatMultilingualE5Large
-    | Vellum.IndexingConfigVectorizer.SentenceTransformersMultiQaMpnetBaseCosV1
-    | Vellum.IndexingConfigVectorizer.SentenceTransformersMultiQaMpnetBaseDotV1
-    | Vellum.IndexingConfigVectorizer.HkunlpInstructorXl;
-
-export declare namespace IndexingConfigVectorizer {
-    interface TextEmbedding3Small extends Vellum.OpenAiVectorizerTextEmbedding3Small {
-        modelName: "text-embedding-3-small";
-    }
-
-    interface TextEmbedding3Large extends Vellum.OpenAiVectorizerTextEmbedding3Large {
-        modelName: "text-embedding-3-large";
-    }
-
-    interface TextEmbeddingAda002 extends Vellum.OpenAiVectorizerTextEmbeddingAda002 {
-        modelName: "text-embedding-ada-002";
-    }
-
-    interface IntfloatMultilingualE5Large extends Vellum.BasicVectorizerIntfloatMultilingualE5Large {
-        modelName: "intfloat/multilingual-e5-large";
-    }
-
-    interface SentenceTransformersMultiQaMpnetBaseCosV1
-        extends Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1 {
-        modelName: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
-    }
-
-    interface SentenceTransformersMultiQaMpnetBaseDotV1
-        extends Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1 {
-        modelName: "sentence-transformers/multi-qa-mpnet-base-dot-v1";
-    }
-
-    interface HkunlpInstructorXl extends Vellum.HkunlpInstructorXlVectorizer {
-        modelName: "hkunlp/instructor-xl";
-    }
-}
+    | Vellum.OpenAiVectorizerTextEmbedding3Small
+    | Vellum.OpenAiVectorizerTextEmbedding3Large
+    | Vellum.OpenAiVectorizerTextEmbeddingAda002
+    | Vellum.BasicVectorizerIntfloatMultilingualE5Large
+    | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1
+    | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1
+    | Vellum.HkunlpInstructorXlVectorizer;

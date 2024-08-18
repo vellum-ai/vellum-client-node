@@ -18,9 +18,7 @@ import * as Vellum from "../../index";
  *                 chatHistory: [{
  *                         text: "string",
  *                         role: Vellum.ChatMessageRole.System,
- *                         content: {
- *                             type: "STRING"
- *                         },
+ *                         content: {},
  *                         source: "string"
  *                     }],
  *                 externalIds: ["string"]

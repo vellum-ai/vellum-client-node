@@ -53,7 +53,8 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.11",
+                "X-Fern-SDK-Version": "0.8.0",
+                "User-Agent": "vellum-ai/0.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -112,13 +113,31 @@ export class Sandboxes {
      * @example
      *     await client.sandboxes.upsertSandboxScenario("id", {
      *         label: "Scenario 1",
-     *         inputs: []
+     *         inputs: [{
+     *                 type: "STRING",
+     *                 value: "Hello, world!",
+     *                 name: "var_1"
+     *             }, {
+     *                 type: "STRING",
+     *                 value: "Why hello, there!",
+     *                 name: "var_2"
+     *             }]
      *     })
      *
      * @example
      *     await client.sandboxes.upsertSandboxScenario("id", {
      *         label: "Scenario 2",
-     *         inputs: []
+     *         inputs: [{
+     *                 type: "CHAT_HISTORY",
+     *                 value: [{
+     *                         text: "What's your favorite color?",
+     *                         role: Vellum.ChatMessageRole.User
+     *                     }, {
+     *                         text: "AI's don't have a favorite color.... Yet.",
+     *                         role: Vellum.ChatMessageRole.Assistant
+     *                     }],
+     *                 name: "chat_history"
+     *             }]
      *     })
      */
     public async upsertSandboxScenario(
@@ -136,7 +155,8 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.11",
+                "X-Fern-SDK-Version": "0.8.0",
+                "User-Agent": "vellum-ai/0.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -206,7 +226,8 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.11",
+                "X-Fern-SDK-Version": "0.8.0",
+                "User-Agent": "vellum-ai/0.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

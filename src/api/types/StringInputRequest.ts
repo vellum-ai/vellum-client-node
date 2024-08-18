@@ -8,5 +8,6 @@
 export interface StringInputRequest {
     /** The variable's name, as defined in the deployment. */
     name: string;
+    type: "STRING";
     value: string;
 }

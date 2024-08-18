@@ -16,6 +16,7 @@ export const WorkflowExecutionActualChatHistoryRequest: core.serialization.Objec
     quality: core.serialization.number().optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
     timestamp: core.serialization.number().optional(),
+    outputType: core.serialization.property("output_type", core.serialization.stringLiteral("CHAT_HISTORY")),
     desiredOutputValue: core.serialization.property(
         "desired_output_value",
         core.serialization.list(ChatMessageRequest).optional()
@@ -29,6 +30,7 @@ export declare namespace WorkflowExecutionActualChatHistoryRequest {
         quality?: number | null;
         metadata?: Record<string, unknown> | null;
         timestamp?: number | null;
+        output_type: "CHAT_HISTORY";
         desired_output_value?: ChatMessageRequest.Raw[] | null;
     }
 }

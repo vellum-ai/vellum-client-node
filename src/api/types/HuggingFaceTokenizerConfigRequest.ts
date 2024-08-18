@@ -6,6 +6,7 @@
  * Tokenizer config for Hugging Face type tokenizers.
  */
 export interface HuggingFaceTokenizerConfigRequest {
+    type: "HUGGING_FACE";
     name: string;
     path?: string;
 }

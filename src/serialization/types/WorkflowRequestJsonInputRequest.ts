@@ -11,12 +11,14 @@ export const WorkflowRequestJsonInputRequest: core.serialization.ObjectSchema<
     Vellum.WorkflowRequestJsonInputRequest
 > = core.serialization.object({
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("JSON"),
     value: core.serialization.unknown(),
 });
 
 export declare namespace WorkflowRequestJsonInputRequest {
     interface Raw {
         name: string;
+        type: "JSON";
         value?: unknown;
     }
 }

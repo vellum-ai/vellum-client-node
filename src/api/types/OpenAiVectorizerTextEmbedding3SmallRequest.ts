@@ -9,4 +9,5 @@ import * as Vellum from "../index";
  */
 export interface OpenAiVectorizerTextEmbedding3SmallRequest {
     config: Vellum.OpenAiVectorizerConfigRequest;
+    modelName: "text-embedding-3-small";
 }

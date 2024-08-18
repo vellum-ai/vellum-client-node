@@ -12,10 +12,12 @@ export const OpenAiVectorizerTextEmbeddingAda002: core.serialization.ObjectSchem
     Vellum.OpenAiVectorizerTextEmbeddingAda002
 > = core.serialization.object({
     config: OpenAiVectorizerConfig,
+    modelName: core.serialization.property("model_name", core.serialization.stringLiteral("text-embedding-ada-002")),
 });
 
 export declare namespace OpenAiVectorizerTextEmbeddingAda002 {
     interface Raw {
         config: OpenAiVectorizerConfig.Raw;
+        model_name: "text-embedding-ada-002";
     }
 }

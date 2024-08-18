@@ -11,11 +11,13 @@ export const HkunlpInstructorXlVectorizer: core.serialization.ObjectSchema<
     serializers.HkunlpInstructorXlVectorizer.Raw,
     Vellum.HkunlpInstructorXlVectorizer
 > = core.serialization.object({
+    modelName: core.serialization.property("model_name", core.serialization.stringLiteral("hkunlp/instructor-xl")),
     config: InstructorVectorizerConfig,
 });
 
 export declare namespace HkunlpInstructorXlVectorizer {
     interface Raw {
+        model_name: "hkunlp/instructor-xl";
         config: InstructorVectorizerConfig.Raw;
     }
 }

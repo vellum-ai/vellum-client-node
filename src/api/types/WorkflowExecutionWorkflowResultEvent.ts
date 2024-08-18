@@ -11,5 +11,6 @@ export interface WorkflowExecutionWorkflowResultEvent {
     executionId: string;
     runId?: string;
     externalId?: string;
+    type: "WORKFLOW";
     data: Vellum.WorkflowResultEvent;
 }

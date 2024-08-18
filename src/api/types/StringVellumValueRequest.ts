@@ -6,5 +6,6 @@
  * A value representing a string.
  */
 export interface StringVellumValueRequest {
+    type: "STRING";
     value?: string;
 }

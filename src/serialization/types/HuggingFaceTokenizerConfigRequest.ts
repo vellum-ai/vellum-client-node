@@ -10,12 +10,14 @@ export const HuggingFaceTokenizerConfigRequest: core.serialization.ObjectSchema<
     serializers.HuggingFaceTokenizerConfigRequest.Raw,
     Vellum.HuggingFaceTokenizerConfigRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("HUGGING_FACE"),
     name: core.serialization.string(),
     path: core.serialization.string().optional(),
 });
 
 export declare namespace HuggingFaceTokenizerConfigRequest {
     interface Raw {
+        type: "HUGGING_FACE";
         name: string;
         path?: string | null;
     }

@@ -69,7 +69,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.11",
+                "X-Fern-SDK-Version": "0.8.0",
+                "User-Agent": "vellum-ai/0.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -132,7 +133,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.11",
+                "X-Fern-SDK-Version": "0.8.0",
+                "User-Agent": "vellum-ai/0.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -199,7 +201,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.11",
+                "X-Fern-SDK-Version": "0.8.0",
+                "User-Agent": "vellum-ai/0.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -268,7 +271,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.11",
+                "X-Fern-SDK-Version": "0.8.0",
+                "User-Agent": "vellum-ai/0.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -335,7 +339,11 @@ export class Deployments {
      *
      * @example
      *     await client.deployments.retrieveProviderPayload({
-     *         inputs: []
+     *         inputs: [{
+     *                 name: "name",
+     *                 type: "STRING",
+     *                 value: "value"
+     *             }]
      *     })
      */
     public async retrieveProviderPayload(
@@ -352,7 +360,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.7.11",
+                "X-Fern-SDK-Version": "0.8.0",
+                "User-Agent": "vellum-ai/0.8.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

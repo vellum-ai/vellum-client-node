@@ -16,58 +16,23 @@ import { HkunlpInstructorXlVectorizer } from "./HkunlpInstructorXlVectorizer";
 export const IndexingConfigVectorizer: core.serialization.Schema<
     serializers.IndexingConfigVectorizer.Raw,
     Vellum.IndexingConfigVectorizer
-> = core.serialization
-    .union(core.serialization.discriminant("modelName", "model_name"), {
-        "text-embedding-3-small": OpenAiVectorizerTextEmbedding3Small,
-        "text-embedding-3-large": OpenAiVectorizerTextEmbedding3Large,
-        "text-embedding-ada-002": OpenAiVectorizerTextEmbeddingAda002,
-        "intfloat/multilingual-e5-large": BasicVectorizerIntfloatMultilingualE5Large,
-        "sentence-transformers/multi-qa-mpnet-base-cos-v1": BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1,
-        "sentence-transformers/multi-qa-mpnet-base-dot-v1": BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1,
-        "hkunlp/instructor-xl": HkunlpInstructorXlVectorizer,
-    })
-    .transform<Vellum.IndexingConfigVectorizer>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    OpenAiVectorizerTextEmbedding3Small,
+    OpenAiVectorizerTextEmbedding3Large,
+    OpenAiVectorizerTextEmbeddingAda002,
+    BasicVectorizerIntfloatMultilingualE5Large,
+    BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1,
+    BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1,
+    HkunlpInstructorXlVectorizer,
+]);
 
 export declare namespace IndexingConfigVectorizer {
     type Raw =
-        | IndexingConfigVectorizer.TextEmbedding3Small
-        | IndexingConfigVectorizer.TextEmbedding3Large
-        | IndexingConfigVectorizer.TextEmbeddingAda002
-        | IndexingConfigVectorizer.IntfloatMultilingualE5Large
-        | IndexingConfigVectorizer.SentenceTransformersMultiQaMpnetBaseCosV1
-        | IndexingConfigVectorizer.SentenceTransformersMultiQaMpnetBaseDotV1
-        | IndexingConfigVectorizer.HkunlpInstructorXl;
-
-    interface TextEmbedding3Small extends OpenAiVectorizerTextEmbedding3Small.Raw {
-        model_name: "text-embedding-3-small";
-    }
-
-    interface TextEmbedding3Large extends OpenAiVectorizerTextEmbedding3Large.Raw {
-        model_name: "text-embedding-3-large";
-    }
-
-    interface TextEmbeddingAda002 extends OpenAiVectorizerTextEmbeddingAda002.Raw {
-        model_name: "text-embedding-ada-002";
-    }
-
-    interface IntfloatMultilingualE5Large extends BasicVectorizerIntfloatMultilingualE5Large.Raw {
-        model_name: "intfloat/multilingual-e5-large";
-    }
-
-    interface SentenceTransformersMultiQaMpnetBaseCosV1
-        extends BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1.Raw {
-        model_name: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
-    }
-
-    interface SentenceTransformersMultiQaMpnetBaseDotV1
-        extends BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1.Raw {
-        model_name: "sentence-transformers/multi-qa-mpnet-base-dot-v1";
-    }
-
-    interface HkunlpInstructorXl extends HkunlpInstructorXlVectorizer.Raw {
-        model_name: "hkunlp/instructor-xl";
-    }
+        | OpenAiVectorizerTextEmbedding3Small.Raw
+        | OpenAiVectorizerTextEmbedding3Large.Raw
+        | OpenAiVectorizerTextEmbeddingAda002.Raw
+        | BasicVectorizerIntfloatMultilingualE5Large.Raw
+        | BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1.Raw
+        | BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1.Raw
+        | HkunlpInstructorXlVectorizer.Raw;
 }

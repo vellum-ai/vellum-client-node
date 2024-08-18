@@ -13,6 +13,7 @@ export const ExecutionSearchResultsVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
     value: core.serialization.list(SearchResult).optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace ExecutionSearchResultsVellumValue {
     interface Raw {
         id: string;
         name: string;
+        type: "SEARCH_RESULTS";
         value?: SearchResult.Raw[] | null;
     }
 }

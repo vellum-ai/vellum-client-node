@@ -9,5 +9,6 @@ export interface WorkflowOutputNumber {
     id: string;
     /** The output's name, as defined in the workflow */
     name: string;
+    type: "NUMBER";
     value?: number;
 }

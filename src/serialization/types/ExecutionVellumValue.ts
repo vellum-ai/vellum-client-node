@@ -17,62 +17,25 @@ import { ExecutionFunctionCallVellumValue } from "./ExecutionFunctionCallVellumV
 export const ExecutionVellumValue: core.serialization.Schema<
     serializers.ExecutionVellumValue.Raw,
     Vellum.ExecutionVellumValue
-> = core.serialization
-    .union("type", {
-        STRING: ExecutionStringVellumValue,
-        NUMBER: ExecutionNumberVellumValue,
-        JSON: ExecutionJsonVellumValue,
-        CHAT_HISTORY: ExecutionChatHistoryVellumValue,
-        SEARCH_RESULTS: ExecutionSearchResultsVellumValue,
-        ERROR: ExecutionErrorVellumValue,
-        ARRAY: ExecutionArrayVellumValue,
-        FUNCTION_CALL: ExecutionFunctionCallVellumValue,
-    })
-    .transform<Vellum.ExecutionVellumValue>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    ExecutionStringVellumValue,
+    ExecutionNumberVellumValue,
+    ExecutionJsonVellumValue,
+    ExecutionChatHistoryVellumValue,
+    ExecutionSearchResultsVellumValue,
+    ExecutionErrorVellumValue,
+    ExecutionArrayVellumValue,
+    ExecutionFunctionCallVellumValue,
+]);
 
 export declare namespace ExecutionVellumValue {
     type Raw =
-        | ExecutionVellumValue.String
-        | ExecutionVellumValue.Number
-        | ExecutionVellumValue.Json
-        | ExecutionVellumValue.ChatHistory
-        | ExecutionVellumValue.SearchResults
-        | ExecutionVellumValue.Error
-        | ExecutionVellumValue.Array
-        | ExecutionVellumValue.FunctionCall;
-
-    interface String extends ExecutionStringVellumValue.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends ExecutionNumberVellumValue.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends ExecutionJsonVellumValue.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends ExecutionChatHistoryVellumValue.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends ExecutionSearchResultsVellumValue.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error extends ExecutionErrorVellumValue.Raw {
-        type: "ERROR";
-    }
-
-    interface Array extends ExecutionArrayVellumValue.Raw {
-        type: "ARRAY";
-    }
-
-    interface FunctionCall extends ExecutionFunctionCallVellumValue.Raw {
-        type: "FUNCTION_CALL";
-    }
+        | ExecutionStringVellumValue.Raw
+        | ExecutionNumberVellumValue.Raw
+        | ExecutionJsonVellumValue.Raw
+        | ExecutionChatHistoryVellumValue.Raw
+        | ExecutionSearchResultsVellumValue.Raw
+        | ExecutionErrorVellumValue.Raw
+        | ExecutionArrayVellumValue.Raw
+        | ExecutionFunctionCallVellumValue.Raw;
 }

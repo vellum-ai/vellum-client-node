@@ -12,12 +12,14 @@ export const TemplatingNodeFunctionCallResult: core.serialization.ObjectSchema<
     Vellum.TemplatingNodeFunctionCallResult
 > = core.serialization.object({
     id: core.serialization.string(),
+    type: core.serialization.stringLiteral("FUNCTION_CALL"),
     value: FunctionCall.optional(),
 });
 
 export declare namespace TemplatingNodeFunctionCallResult {
     interface Raw {
         id: string;
+        type: "FUNCTION_CALL";
         value?: FunctionCall.Raw | null;
     }
 }

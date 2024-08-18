@@ -12,6 +12,7 @@ export const TestSuiteRunExecutionChatHistoryOutput: core.serialization.ObjectSc
     Vellum.TestSuiteRunExecutionChatHistoryOutput
 > = core.serialization.object({
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("CHAT_HISTORY"),
     value: core.serialization.list(ChatMessage).optional(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
@@ -19,6 +20,7 @@ export const TestSuiteRunExecutionChatHistoryOutput: core.serialization.ObjectSc
 export declare namespace TestSuiteRunExecutionChatHistoryOutput {
     interface Raw {
         name: string;
+        type: "CHAT_HISTORY";
         value?: ChatMessage.Raw[] | null;
         output_variable_id: string;
     }

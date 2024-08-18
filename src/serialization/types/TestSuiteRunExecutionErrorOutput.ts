@@ -12,6 +12,7 @@ export const TestSuiteRunExecutionErrorOutput: core.serialization.ObjectSchema<
     Vellum.TestSuiteRunExecutionErrorOutput
 > = core.serialization.object({
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("ERROR"),
     value: VellumError.optional(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
@@ -19,6 +20,7 @@ export const TestSuiteRunExecutionErrorOutput: core.serialization.ObjectSchema<
 export declare namespace TestSuiteRunExecutionErrorOutput {
     interface Raw {
         name: string;
+        type: "ERROR";
         value?: VellumError.Raw | null;
         output_variable_id: string;
     }

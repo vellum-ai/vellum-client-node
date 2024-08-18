@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Subworkflow Node.
  */
 export interface SubworkflowNodeResult {
+    type: "SUBWORKFLOW";
     data?: Vellum.SubworkflowNodeResultData;
 }

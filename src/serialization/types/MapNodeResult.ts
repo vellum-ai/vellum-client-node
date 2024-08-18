@@ -9,11 +9,13 @@ import { MapNodeResultData } from "./MapNodeResultData";
 
 export const MapNodeResult: core.serialization.ObjectSchema<serializers.MapNodeResult.Raw, Vellum.MapNodeResult> =
     core.serialization.object({
+        type: core.serialization.stringLiteral("MAP"),
         data: MapNodeResultData.optional(),
     });
 
 export declare namespace MapNodeResult {
     interface Raw {
+        type: "MAP";
         data?: MapNodeResultData.Raw | null;
     }
 }

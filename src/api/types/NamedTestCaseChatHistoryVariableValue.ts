@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * Named Test Case value that is of type CHAT_HISTORY
  */
 export interface NamedTestCaseChatHistoryVariableValue {
+    type: "CHAT_HISTORY";
     value?: Vellum.ChatMessage[];
     name: string;
 }

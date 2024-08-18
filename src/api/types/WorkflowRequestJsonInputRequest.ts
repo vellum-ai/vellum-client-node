@@ -8,5 +8,6 @@
 export interface WorkflowRequestJsonInputRequest {
     /** The variable's name, as defined in the Workflow. */
     name: string;
+    type: "JSON";
     value?: unknown;
 }

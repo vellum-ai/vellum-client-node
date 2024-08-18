@@ -5,45 +5,11 @@
 import * as Vellum from "../index";
 
 export type NodeInputVariableCompiledValue =
-    | Vellum.NodeInputVariableCompiledValue.String
-    | Vellum.NodeInputVariableCompiledValue.Number
-    | Vellum.NodeInputVariableCompiledValue.Json
-    | Vellum.NodeInputVariableCompiledValue.ChatHistory
-    | Vellum.NodeInputVariableCompiledValue.SearchResults
-    | Vellum.NodeInputVariableCompiledValue.Error_
-    | Vellum.NodeInputVariableCompiledValue.Array
-    | Vellum.NodeInputVariableCompiledValue.FunctionCall;
-
-export declare namespace NodeInputVariableCompiledValue {
-    interface String extends Vellum.NodeInputCompiledStringValue {
-        type: "STRING";
-    }
-
-    interface Number extends Vellum.NodeInputCompiledNumberValue {
-        type: "NUMBER";
-    }
-
-    interface Json extends Vellum.NodeInputCompiledJsonValue {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends Vellum.NodeInputCompiledChatHistoryValue {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends Vellum.NodeInputCompiledSearchResultsValue {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error_ extends Vellum.NodeInputCompiledErrorValue {
-        type: "ERROR";
-    }
-
-    interface Array extends Vellum.NodeInputCompiledArrayValue {
-        type: "ARRAY";
-    }
-
-    interface FunctionCall extends Vellum.NodeInputCompiledFunctionCall {
-        type: "FUNCTION_CALL";
-    }
-}
+    | Vellum.NodeInputCompiledStringValue
+    | Vellum.NodeInputCompiledNumberValue
+    | Vellum.NodeInputCompiledJsonValue
+    | Vellum.NodeInputCompiledChatHistoryValue
+    | Vellum.NodeInputCompiledSearchResultsValue
+    | Vellum.NodeInputCompiledErrorValue
+    | Vellum.NodeInputCompiledArrayValue
+    | Vellum.NodeInputCompiledFunctionCall;

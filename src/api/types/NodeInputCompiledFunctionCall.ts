@@ -7,5 +7,6 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledFunctionCall {
     nodeInputId: string;
     key: string;
+    type: "FUNCTION_CALL";
     value?: Vellum.FunctionCall;
 }

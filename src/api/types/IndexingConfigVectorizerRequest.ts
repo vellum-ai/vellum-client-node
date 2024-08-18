@@ -5,42 +5,10 @@
 import * as Vellum from "../index";
 
 export type IndexingConfigVectorizerRequest =
-    | Vellum.IndexingConfigVectorizerRequest.TextEmbedding3Small
-    | Vellum.IndexingConfigVectorizerRequest.TextEmbedding3Large
-    | Vellum.IndexingConfigVectorizerRequest.TextEmbeddingAda002
-    | Vellum.IndexingConfigVectorizerRequest.IntfloatMultilingualE5Large
-    | Vellum.IndexingConfigVectorizerRequest.SentenceTransformersMultiQaMpnetBaseCosV1
-    | Vellum.IndexingConfigVectorizerRequest.SentenceTransformersMultiQaMpnetBaseDotV1
-    | Vellum.IndexingConfigVectorizerRequest.HkunlpInstructorXl;
-
-export declare namespace IndexingConfigVectorizerRequest {
-    interface TextEmbedding3Small extends Vellum.OpenAiVectorizerTextEmbedding3SmallRequest {
-        modelName: "text-embedding-3-small";
-    }
-
-    interface TextEmbedding3Large extends Vellum.OpenAiVectorizerTextEmbedding3LargeRequest {
-        modelName: "text-embedding-3-large";
-    }
-
-    interface TextEmbeddingAda002 extends Vellum.OpenAiVectorizerTextEmbeddingAda002Request {
-        modelName: "text-embedding-ada-002";
-    }
-
-    interface IntfloatMultilingualE5Large extends Vellum.BasicVectorizerIntfloatMultilingualE5LargeRequest {
-        modelName: "intfloat/multilingual-e5-large";
-    }
-
-    interface SentenceTransformersMultiQaMpnetBaseCosV1
-        extends Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1Request {
-        modelName: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
-    }
-
-    interface SentenceTransformersMultiQaMpnetBaseDotV1
-        extends Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1Request {
-        modelName: "sentence-transformers/multi-qa-mpnet-base-dot-v1";
-    }
-
-    interface HkunlpInstructorXl extends Vellum.HkunlpInstructorXlVectorizerRequest {
-        modelName: "hkunlp/instructor-xl";
-    }
-}
+    | Vellum.OpenAiVectorizerTextEmbedding3SmallRequest
+    | Vellum.OpenAiVectorizerTextEmbedding3LargeRequest
+    | Vellum.OpenAiVectorizerTextEmbeddingAda002Request
+    | Vellum.BasicVectorizerIntfloatMultilingualE5LargeRequest
+    | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1Request
+    | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1Request
+    | Vellum.HkunlpInstructorXlVectorizerRequest;

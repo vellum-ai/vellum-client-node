@@ -7,7 +7,11 @@ import * as Vellum from "../../../../index";
 /**
  * @example
  *     {
- *         inputs: []
+ *         inputs: [{
+ *                 name: "name",
+ *                 type: "STRING",
+ *                 value: "value"
+ *             }]
  *     }
  */
 export interface DeploymentProviderPayloadRequest {

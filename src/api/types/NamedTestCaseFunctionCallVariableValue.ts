@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * Named Test Case value that is of type FUNCTION_CALL
  */
 export interface NamedTestCaseFunctionCallVariableValue {
+    type: "FUNCTION_CALL";
     value?: Vellum.FunctionCall;
     name: string;
 }

@@ -6,5 +6,6 @@ import * as Vellum from "../index";
 
 export interface TemplatingNodeErrorResult {
     id: string;
+    type: "ERROR";
     value?: Vellum.VellumError;
 }

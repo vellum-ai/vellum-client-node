@@ -10,11 +10,13 @@ export const JsonVariableValue: core.serialization.ObjectSchema<
     serializers.JsonVariableValue.Raw,
     Vellum.JsonVariableValue
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("JSON"),
     value: core.serialization.unknown(),
 });
 
 export declare namespace JsonVariableValue {
     interface Raw {
+        type: "JSON";
         value?: unknown;
     }
 }

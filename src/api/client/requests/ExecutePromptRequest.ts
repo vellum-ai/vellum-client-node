@@ -8,41 +8,10 @@ import * as Vellum from "../../index";
  * @example
  *     {
  *         inputs: [{
+ *                 name: "name",
  *                 type: "STRING",
- *                 name: "string",
- *                 value: "string"
- *             }],
- *         promptDeploymentId: "string",
- *         promptDeploymentName: "string",
- *         releaseTag: "string",
- *         externalId: "string",
- *         expandMeta: {
- *             modelName: true,
- *             usage: true,
- *             finishReason: true,
- *             latency: true,
- *             deploymentReleaseTag: true,
- *             promptVersionId: true
- *         },
- *         rawOverrides: {
- *             body: {
- *                 "string": {
- *                     "key": "value"
- *                 }
- *             },
- *             headers: {
- *                 "string": {
- *                     "key": "value"
- *                 }
- *             },
- *             url: "string"
- *         },
- *         expandRaw: ["string"],
- *         metadata: {
- *             "string": {
- *                 "key": "value"
- *             }
- *         }
+ *                 value: "value"
+ *             }]
  *     }
  */
 export interface ExecutePromptRequest {

@@ -13,68 +13,27 @@ import { OpenApiConstProperty } from "./OpenApiConstProperty";
 import { OpenApiRefProperty } from "./OpenApiRefProperty";
 
 export const OpenApiProperty: core.serialization.Schema<serializers.OpenApiProperty.Raw, Vellum.OpenApiProperty> =
-    core.serialization
-        .union("type", {
-            array: core.serialization.lazyObject(() => serializers.OpenApiArrayProperty),
-            object: core.serialization.lazyObject(() => serializers.OpenApiObjectProperty),
-            integer: OpenApiIntegerProperty,
-            number: OpenApiNumberProperty,
-            string: OpenApiStringProperty,
-            boolean: OpenApiBooleanProperty,
-            oneOf: core.serialization.lazyObject(() => serializers.OpenApiOneOfProperty),
-            const: OpenApiConstProperty,
-            ref: OpenApiRefProperty,
-        })
-        .transform<Vellum.OpenApiProperty>({
-            transform: (value) => value,
-            untransform: (value) => value,
-        });
+    core.serialization.undiscriminatedUnion([
+        core.serialization.lazyObject(() => serializers.OpenApiArrayProperty),
+        core.serialization.lazyObject(() => serializers.OpenApiObjectProperty),
+        OpenApiIntegerProperty,
+        OpenApiNumberProperty,
+        OpenApiStringProperty,
+        OpenApiBooleanProperty,
+        core.serialization.lazyObject(() => serializers.OpenApiOneOfProperty),
+        OpenApiConstProperty,
+        OpenApiRefProperty,
+    ]);
 
 export declare namespace OpenApiProperty {
     type Raw =
-        | OpenApiProperty.Array
-        | OpenApiProperty.Object
-        | OpenApiProperty.Integer
-        | OpenApiProperty.Number
-        | OpenApiProperty.String
-        | OpenApiProperty.Boolean
-        | OpenApiProperty.OneOf
-        | OpenApiProperty.Const
-        | OpenApiProperty.Ref;
-
-    interface Array extends serializers.OpenApiArrayProperty.Raw {
-        type: "array";
-    }
-
-    interface Object extends serializers.OpenApiObjectProperty.Raw {
-        type: "object";
-    }
-
-    interface Integer extends OpenApiIntegerProperty.Raw {
-        type: "integer";
-    }
-
-    interface Number extends OpenApiNumberProperty.Raw {
-        type: "number";
-    }
-
-    interface String extends OpenApiStringProperty.Raw {
-        type: "string";
-    }
-
-    interface Boolean extends OpenApiBooleanProperty.Raw {
-        type: "boolean";
-    }
-
-    interface OneOf extends serializers.OpenApiOneOfProperty.Raw {
-        type: "oneOf";
-    }
-
-    interface Const extends OpenApiConstProperty.Raw {
-        type: "const";
-    }
-
-    interface Ref extends OpenApiRefProperty.Raw {
-        type: "ref";
-    }
+        | serializers.OpenApiArrayProperty.Raw
+        | serializers.OpenApiObjectProperty.Raw
+        | OpenApiIntegerProperty.Raw
+        | OpenApiNumberProperty.Raw
+        | OpenApiStringProperty.Raw
+        | OpenApiBooleanProperty.Raw
+        | serializers.OpenApiOneOfProperty.Raw
+        | OpenApiConstProperty.Raw
+        | OpenApiRefProperty.Raw;
 }

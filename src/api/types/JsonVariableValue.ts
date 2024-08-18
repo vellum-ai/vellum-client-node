@@ -3,5 +3,6 @@
  */
 
 export interface JsonVariableValue {
+    type: "JSON";
     value?: unknown;
 }

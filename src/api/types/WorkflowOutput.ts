@@ -5,50 +5,12 @@
 import * as Vellum from "../index";
 
 export type WorkflowOutput =
-    | Vellum.WorkflowOutput.String
-    | Vellum.WorkflowOutput.Number
-    | Vellum.WorkflowOutput.Json
-    | Vellum.WorkflowOutput.ChatHistory
-    | Vellum.WorkflowOutput.SearchResults
-    | Vellum.WorkflowOutput.Array
-    | Vellum.WorkflowOutput.Error_
-    | Vellum.WorkflowOutput.FunctionCall
-    | Vellum.WorkflowOutput.Image;
-
-export declare namespace WorkflowOutput {
-    interface String extends Vellum.WorkflowOutputString {
-        type: "STRING";
-    }
-
-    interface Number extends Vellum.WorkflowOutputNumber {
-        type: "NUMBER";
-    }
-
-    interface Json extends Vellum.WorkflowOutputJson {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends Vellum.WorkflowOutputChatHistory {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends Vellum.WorkflowOutputSearchResults {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Array extends Vellum.WorkflowOutputArray {
-        type: "ARRAY";
-    }
-
-    interface Error_ extends Vellum.WorkflowOutputError {
-        type: "ERROR";
-    }
-
-    interface FunctionCall extends Vellum.WorkflowOutputFunctionCall {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Image extends Vellum.WorkflowOutputImage {
-        type: "IMAGE";
-    }
-}
+    | Vellum.WorkflowOutputString
+    | Vellum.WorkflowOutputNumber
+    | Vellum.WorkflowOutputJson
+    | Vellum.WorkflowOutputChatHistory
+    | Vellum.WorkflowOutputSearchResults
+    | Vellum.WorkflowOutputArray
+    | Vellum.WorkflowOutputError
+    | Vellum.WorkflowOutputFunctionCall
+    | Vellum.WorkflowOutputImage;

@@ -12,6 +12,7 @@ export const ExecutionStringVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("STRING"),
     value: core.serialization.string().optional(),
 });
 
@@ -19,6 +20,7 @@ export declare namespace ExecutionStringVellumValue {
     interface Raw {
         id: string;
         name: string;
+        type: "STRING";
         value?: string | null;
     }
 }

@@ -3,5 +3,6 @@
  */
 
 export interface StringVariableValue {
+    type: "STRING";
     value?: string;
 }

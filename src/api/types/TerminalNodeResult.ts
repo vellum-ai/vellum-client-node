@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Terminal Node.
  */
 export interface TerminalNodeResult {
+    type: "TERMINAL";
     data: Vellum.TerminalNodeResultData;
 }

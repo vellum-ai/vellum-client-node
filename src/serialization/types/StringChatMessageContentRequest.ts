@@ -10,11 +10,13 @@ export const StringChatMessageContentRequest: core.serialization.ObjectSchema<
     serializers.StringChatMessageContentRequest.Raw,
     Vellum.StringChatMessageContentRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("STRING"),
     value: core.serialization.string(),
 });
 
 export declare namespace StringChatMessageContentRequest {
     interface Raw {
+        type: "STRING";
         value: string;
     }
 }

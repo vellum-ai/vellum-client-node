@@ -4,5 +4,6 @@
 
 export interface TemplatingNodeNumberResult {
     id: string;
+    type: "NUMBER";
     value?: number;
 }

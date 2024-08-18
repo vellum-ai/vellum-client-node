@@ -8,5 +8,6 @@ export interface TerminalNodeErrorResult {
     id?: string;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
+    type: "ERROR";
     value?: Vellum.VellumError;
 }

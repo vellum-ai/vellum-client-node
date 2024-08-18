@@ -5,25 +5,7 @@
 import * as Vellum from "../index";
 
 export type TestSuiteTestCaseBulkResult =
-    | Vellum.TestSuiteTestCaseBulkResult.Created
-    | Vellum.TestSuiteTestCaseBulkResult.Replaced
-    | Vellum.TestSuiteTestCaseBulkResult.Deleted
-    | Vellum.TestSuiteTestCaseBulkResult.Rejected;
-
-export declare namespace TestSuiteTestCaseBulkResult {
-    interface Created extends Vellum.TestSuiteTestCaseCreatedBulkResult {
-        type: "CREATED";
-    }
-
-    interface Replaced extends Vellum.TestSuiteTestCaseReplacedBulkResult {
-        type: "REPLACED";
-    }
-
-    interface Deleted extends Vellum.TestSuiteTestCaseDeletedBulkResult {
-        type: "DELETED";
-    }
-
-    interface Rejected extends Vellum.TestSuiteTestCaseRejectedBulkResult {
-        type: "REJECTED";
-    }
-}
+    | Vellum.TestSuiteTestCaseCreatedBulkResult
+    | Vellum.TestSuiteTestCaseReplacedBulkResult
+    | Vellum.TestSuiteTestCaseDeletedBulkResult
+    | Vellum.TestSuiteTestCaseRejectedBulkResult;

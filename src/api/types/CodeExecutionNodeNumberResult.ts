@@ -4,5 +4,6 @@
 
 export interface CodeExecutionNodeNumberResult {
     id: string;
+    type: "NUMBER";
     value?: number;
 }

@@ -6,6 +6,7 @@
  * An OpenAPI specification of a property with type 'const'
  */
 export interface OpenApiConstPropertyRequest {
+    type: "const";
     title?: string;
     description?: string;
     const: string;

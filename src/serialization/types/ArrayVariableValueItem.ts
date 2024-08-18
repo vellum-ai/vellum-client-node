@@ -15,50 +15,21 @@ import { ImageVariableValue } from "./ImageVariableValue";
 export const ArrayVariableValueItem: core.serialization.Schema<
     serializers.ArrayVariableValueItem.Raw,
     Vellum.ArrayVariableValueItem
-> = core.serialization
-    .union("type", {
-        STRING: StringVariableValue,
-        NUMBER: NumberVariableValue,
-        JSON: JsonVariableValue,
-        ERROR: ErrorVariableValue,
-        FUNCTION_CALL: FunctionCallVariableValue,
-        IMAGE: ImageVariableValue,
-    })
-    .transform<Vellum.ArrayVariableValueItem>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    StringVariableValue,
+    NumberVariableValue,
+    JsonVariableValue,
+    ErrorVariableValue,
+    FunctionCallVariableValue,
+    ImageVariableValue,
+]);
 
 export declare namespace ArrayVariableValueItem {
     type Raw =
-        | ArrayVariableValueItem.String
-        | ArrayVariableValueItem.Number
-        | ArrayVariableValueItem.Json
-        | ArrayVariableValueItem.Error
-        | ArrayVariableValueItem.FunctionCall
-        | ArrayVariableValueItem.Image;
-
-    interface String extends StringVariableValue.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends NumberVariableValue.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends JsonVariableValue.Raw {
-        type: "JSON";
-    }
-
-    interface Error extends ErrorVariableValue.Raw {
-        type: "ERROR";
-    }
-
-    interface FunctionCall extends FunctionCallVariableValue.Raw {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Image extends ImageVariableValue.Raw {
-        type: "IMAGE";
-    }
+        | StringVariableValue.Raw
+        | NumberVariableValue.Raw
+        | JsonVariableValue.Raw
+        | ErrorVariableValue.Raw
+        | FunctionCallVariableValue.Raw
+        | ImageVariableValue.Raw;
 }

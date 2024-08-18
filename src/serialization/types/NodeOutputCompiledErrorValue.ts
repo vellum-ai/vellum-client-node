@@ -12,6 +12,7 @@ export const NodeOutputCompiledErrorValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledErrorValue.Raw,
     Vellum.NodeOutputCompiledErrorValue
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("ERROR"),
     value: VellumError.optional(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
@@ -19,6 +20,7 @@ export const NodeOutputCompiledErrorValue: core.serialization.ObjectSchema<
 
 export declare namespace NodeOutputCompiledErrorValue {
     interface Raw {
+        type: "ERROR";
         value?: VellumError.Raw | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;

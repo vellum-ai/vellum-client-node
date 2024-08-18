@@ -11,6 +11,7 @@ export const TestSuiteRunWorkflowReleaseTagExecConfigRequest: core.serialization
     serializers.TestSuiteRunWorkflowReleaseTagExecConfigRequest.Raw,
     Vellum.TestSuiteRunWorkflowReleaseTagExecConfigRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("WORKFLOW_RELEASE_TAG"),
     data: TestSuiteRunWorkflowReleaseTagExecConfigDataRequest,
     testCaseIds: core.serialization.property(
         "test_case_ids",
@@ -20,6 +21,7 @@ export const TestSuiteRunWorkflowReleaseTagExecConfigRequest: core.serialization
 
 export declare namespace TestSuiteRunWorkflowReleaseTagExecConfigRequest {
     interface Raw {
+        type: "WORKFLOW_RELEASE_TAG";
         data: TestSuiteRunWorkflowReleaseTagExecConfigDataRequest.Raw;
         test_case_ids?: string[] | null;
     }

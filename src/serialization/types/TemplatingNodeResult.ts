@@ -11,11 +11,13 @@ export const TemplatingNodeResult: core.serialization.ObjectSchema<
     serializers.TemplatingNodeResult.Raw,
     Vellum.TemplatingNodeResult
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("TEMPLATING"),
     data: TemplatingNodeResultData,
 });
 
 export declare namespace TemplatingNodeResult {
     interface Raw {
+        type: "TEMPLATING";
         data: TemplatingNodeResultData.Raw;
     }
 }

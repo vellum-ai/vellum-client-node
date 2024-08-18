@@ -9,6 +9,7 @@ import * as Vellum from "../index";
  */
 export interface TestSuiteRunExecutionErrorOutput {
     name: string;
+    type: "ERROR";
     value?: Vellum.VellumError;
     outputVariableId: string;
 }

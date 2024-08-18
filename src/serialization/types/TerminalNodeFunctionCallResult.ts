@@ -13,6 +13,7 @@ export const TerminalNodeFunctionCallResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("FUNCTION_CALL"),
     value: FunctionCall.optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace TerminalNodeFunctionCallResult {
     interface Raw {
         id?: string | null;
         name: string;
+        type: "FUNCTION_CALL";
         value?: FunctionCall.Raw | null;
     }
 }

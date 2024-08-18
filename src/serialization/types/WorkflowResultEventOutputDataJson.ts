@@ -16,6 +16,7 @@ export const WorkflowResultEventOutputDataJson: core.serialization.ObjectSchema<
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
+    type: core.serialization.stringLiteral("JSON"),
     value: core.serialization.unknown(),
 });
 
@@ -26,6 +27,7 @@ export declare namespace WorkflowResultEventOutputDataJson {
         state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
+        type: "JSON";
         value?: unknown;
     }
 }

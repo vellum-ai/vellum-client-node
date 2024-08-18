@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * The initial data returned indicating that the response from the model has returned and begun streaming.
  */
 export interface InitiatedExecutePromptEvent {
+    state: "INITIATED";
     meta?: Vellum.InitiatedPromptExecutionMeta;
     executionId: string;
 }

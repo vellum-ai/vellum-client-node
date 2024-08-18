@@ -5,20 +5,6 @@
 import * as Vellum from "../index";
 
 export type PromptDeploymentInputRequest =
-    | Vellum.PromptDeploymentInputRequest.String
-    | Vellum.PromptDeploymentInputRequest.Json
-    | Vellum.PromptDeploymentInputRequest.ChatHistory;
-
-export declare namespace PromptDeploymentInputRequest {
-    interface String extends Vellum.StringInputRequest {
-        type: "STRING";
-    }
-
-    interface Json extends Vellum.JsonInputRequest {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends Vellum.ChatHistoryInputRequest {
-        type: "CHAT_HISTORY";
-    }
-}
+    | Vellum.StringInputRequest
+    | Vellum.JsonInputRequest
+    | Vellum.ChatHistoryInputRequest;

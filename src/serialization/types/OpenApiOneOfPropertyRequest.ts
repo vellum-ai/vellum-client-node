@@ -10,6 +10,7 @@ export const OpenApiOneOfPropertyRequest: core.serialization.ObjectSchema<
     serializers.OpenApiOneOfPropertyRequest.Raw,
     Vellum.OpenApiOneOfPropertyRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("oneOf"),
     oneOf: core.serialization.list(core.serialization.lazy(() => serializers.OpenApiPropertyRequest)),
     title: core.serialization.string().optional(),
     description: core.serialization.string().optional(),
@@ -17,6 +18,7 @@ export const OpenApiOneOfPropertyRequest: core.serialization.ObjectSchema<
 
 export declare namespace OpenApiOneOfPropertyRequest {
     interface Raw {
+        type: "oneOf";
         oneOf: serializers.OpenApiPropertyRequest.Raw[];
         title?: string | null;
         description?: string | null;

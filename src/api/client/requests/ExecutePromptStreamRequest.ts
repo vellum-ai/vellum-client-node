@@ -8,8 +8,8 @@ import * as Vellum from "../../index";
  * @example
  *     {
  *         inputs: [{
- *                 type: "STRING",
  *                 name: "string",
+ *                 type: "STRING",
  *                 value: "string"
  *             }],
  *         promptDeploymentId: "string",

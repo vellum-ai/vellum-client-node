@@ -12,12 +12,14 @@ export const TestSuiteRunMetricErrorOutput: core.serialization.ObjectSchema<
     Vellum.TestSuiteRunMetricErrorOutput
 > = core.serialization.object({
     value: VellumError,
+    type: core.serialization.stringLiteral("ERROR"),
     name: core.serialization.string(),
 });
 
 export declare namespace TestSuiteRunMetricErrorOutput {
     interface Raw {
         value: VellumError.Raw;
+        type: "ERROR";
         name: string;
     }
 }

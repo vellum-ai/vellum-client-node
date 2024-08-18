@@ -6,5 +6,6 @@ import * as Vellum from "../index";
 
 export interface TemplatingNodeArrayResult {
     id: string;
+    type: "ARRAY";
     value?: Vellum.ArrayVariableValueItem[];
 }

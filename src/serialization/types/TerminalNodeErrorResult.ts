@@ -13,6 +13,7 @@ export const TerminalNodeErrorResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("ERROR"),
     value: VellumError.optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace TerminalNodeErrorResult {
     interface Raw {
         id?: string | null;
         name: string;
+        type: "ERROR";
         value?: VellumError.Raw | null;
     }
 }

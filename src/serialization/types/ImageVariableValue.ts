@@ -11,11 +11,13 @@ export const ImageVariableValue: core.serialization.ObjectSchema<
     serializers.ImageVariableValue.Raw,
     Vellum.ImageVariableValue
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("IMAGE"),
     value: VellumImage.optional(),
 });
 
 export declare namespace ImageVariableValue {
     interface Raw {
+        type: "IMAGE";
         value?: VellumImage.Raw | null;
     }
 }

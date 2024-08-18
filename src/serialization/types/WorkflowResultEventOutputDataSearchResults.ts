@@ -17,6 +17,7 @@ export const WorkflowResultEventOutputDataSearchResults: core.serialization.Obje
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
+    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
     value: core.serialization.list(SearchResult).optional(),
 });
 
@@ -27,6 +28,7 @@ export declare namespace WorkflowResultEventOutputDataSearchResults {
         state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
+        type: "SEARCH_RESULTS";
         value?: SearchResult.Raw[] | null;
     }
 }

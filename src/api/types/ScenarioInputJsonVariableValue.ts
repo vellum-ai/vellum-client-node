@@ -6,6 +6,7 @@
  * Prompt Sandbox Scenario input value that is of type JSON
  */
 export interface ScenarioInputJsonVariableValue {
+    type: "JSON";
     value?: unknown;
     inputVariableId: string;
 }

@@ -9,11 +9,13 @@ import { ReductoChunkerConfig } from "./ReductoChunkerConfig";
 
 export const ReductoChunking: core.serialization.ObjectSchema<serializers.ReductoChunking.Raw, Vellum.ReductoChunking> =
     core.serialization.object({
+        chunkerName: core.serialization.property("chunker_name", core.serialization.stringLiteral("reducto-chunker")),
         chunkerConfig: core.serialization.property("chunker_config", ReductoChunkerConfig.optional()),
     });
 
 export declare namespace ReductoChunking {
     interface Raw {
+        chunker_name: "reducto-chunker";
         chunker_config?: ReductoChunkerConfig.Raw | null;
     }
 }

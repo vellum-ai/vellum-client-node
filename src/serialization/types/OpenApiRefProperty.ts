@@ -10,6 +10,7 @@ export const OpenApiRefProperty: core.serialization.ObjectSchema<
     serializers.OpenApiRefProperty.Raw,
     Vellum.OpenApiRefProperty
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("ref"),
     title: core.serialization.string().optional(),
     description: core.serialization.string().optional(),
     ref: core.serialization.string(),
@@ -17,6 +18,7 @@ export const OpenApiRefProperty: core.serialization.ObjectSchema<
 
 export declare namespace OpenApiRefProperty {
     interface Raw {
+        type: "ref";
         title?: string | null;
         description?: string | null;
         ref: string;

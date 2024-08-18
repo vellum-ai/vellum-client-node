@@ -11,24 +11,8 @@ import { TikTokenTokenizerConfig } from "./TikTokenTokenizerConfig";
 export const MlModelTokenizerConfig: core.serialization.Schema<
     serializers.MlModelTokenizerConfig.Raw,
     Vellum.MlModelTokenizerConfig
-> = core.serialization
-    .union("type", {
-        HUGGING_FACE: HuggingFaceTokenizerConfig,
-        TIKTOKEN: TikTokenTokenizerConfig,
-    })
-    .transform<Vellum.MlModelTokenizerConfig>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([HuggingFaceTokenizerConfig, TikTokenTokenizerConfig]);
 
 export declare namespace MlModelTokenizerConfig {
-    type Raw = MlModelTokenizerConfig.HuggingFace | MlModelTokenizerConfig.Tiktoken;
-
-    interface HuggingFace extends HuggingFaceTokenizerConfig.Raw {
-        type: "HUGGING_FACE";
-    }
-
-    interface Tiktoken extends TikTokenTokenizerConfig.Raw {
-        type: "TIKTOKEN";
-    }
+    type Raw = HuggingFaceTokenizerConfig.Raw | TikTokenTokenizerConfig.Raw;
 }

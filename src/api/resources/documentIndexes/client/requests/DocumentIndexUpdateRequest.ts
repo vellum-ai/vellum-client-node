@@ -7,9 +7,7 @@ import * as Vellum from "../../../../index";
 /**
  * @example
  *     {
- *         label: "string",
- *         status: Vellum.EntityStatus.Active,
- *         environment: Vellum.EnvironmentEnum.Development
+ *         label: "label"
  *     }
  */
 export interface DocumentIndexUpdateRequest {

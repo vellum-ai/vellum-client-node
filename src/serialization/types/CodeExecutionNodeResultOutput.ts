@@ -17,62 +17,25 @@ import { CodeExecutionNodeFunctionCallResult } from "./CodeExecutionNodeFunction
 export const CodeExecutionNodeResultOutput: core.serialization.Schema<
     serializers.CodeExecutionNodeResultOutput.Raw,
     Vellum.CodeExecutionNodeResultOutput
-> = core.serialization
-    .union("type", {
-        STRING: CodeExecutionNodeStringResult,
-        NUMBER: CodeExecutionNodeNumberResult,
-        JSON: CodeExecutionNodeJsonResult,
-        CHAT_HISTORY: CodeExecutionNodeChatHistoryResult,
-        SEARCH_RESULTS: CodeExecutionNodeSearchResultsResult,
-        ERROR: CodeExecutionNodeErrorResult,
-        ARRAY: CodeExecutionNodeArrayResult,
-        FUNCTION_CALL: CodeExecutionNodeFunctionCallResult,
-    })
-    .transform<Vellum.CodeExecutionNodeResultOutput>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    CodeExecutionNodeStringResult,
+    CodeExecutionNodeNumberResult,
+    CodeExecutionNodeJsonResult,
+    CodeExecutionNodeChatHistoryResult,
+    CodeExecutionNodeSearchResultsResult,
+    CodeExecutionNodeErrorResult,
+    CodeExecutionNodeArrayResult,
+    CodeExecutionNodeFunctionCallResult,
+]);
 
 export declare namespace CodeExecutionNodeResultOutput {
     type Raw =
-        | CodeExecutionNodeResultOutput.String
-        | CodeExecutionNodeResultOutput.Number
-        | CodeExecutionNodeResultOutput.Json
-        | CodeExecutionNodeResultOutput.ChatHistory
-        | CodeExecutionNodeResultOutput.SearchResults
-        | CodeExecutionNodeResultOutput.Error
-        | CodeExecutionNodeResultOutput.Array
-        | CodeExecutionNodeResultOutput.FunctionCall;
-
-    interface String extends CodeExecutionNodeStringResult.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends CodeExecutionNodeNumberResult.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends CodeExecutionNodeJsonResult.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends CodeExecutionNodeChatHistoryResult.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends CodeExecutionNodeSearchResultsResult.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error extends CodeExecutionNodeErrorResult.Raw {
-        type: "ERROR";
-    }
-
-    interface Array extends CodeExecutionNodeArrayResult.Raw {
-        type: "ARRAY";
-    }
-
-    interface FunctionCall extends CodeExecutionNodeFunctionCallResult.Raw {
-        type: "FUNCTION_CALL";
-    }
+        | CodeExecutionNodeStringResult.Raw
+        | CodeExecutionNodeNumberResult.Raw
+        | CodeExecutionNodeJsonResult.Raw
+        | CodeExecutionNodeChatHistoryResult.Raw
+        | CodeExecutionNodeSearchResultsResult.Raw
+        | CodeExecutionNodeErrorResult.Raw
+        | CodeExecutionNodeArrayResult.Raw
+        | CodeExecutionNodeFunctionCallResult.Raw;
 }

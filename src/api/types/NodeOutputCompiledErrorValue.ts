@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * An output returned by a node that is of type ERROR.
  */
 export interface NodeOutputCompiledErrorValue {
+    type: "ERROR";
     value?: Vellum.VellumError;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;

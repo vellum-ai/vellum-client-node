@@ -11,6 +11,7 @@ export const TestSuiteRunDeploymentReleaseTagExecConfig: core.serialization.Obje
     serializers.TestSuiteRunDeploymentReleaseTagExecConfig.Raw,
     Vellum.TestSuiteRunDeploymentReleaseTagExecConfig
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("DEPLOYMENT_RELEASE_TAG"),
     data: TestSuiteRunDeploymentReleaseTagExecConfigData,
     testCaseIds: core.serialization.property(
         "test_case_ids",
@@ -20,6 +21,7 @@ export const TestSuiteRunDeploymentReleaseTagExecConfig: core.serialization.Obje
 
 export declare namespace TestSuiteRunDeploymentReleaseTagExecConfig {
     interface Raw {
+        type: "DEPLOYMENT_RELEASE_TAG";
         data: TestSuiteRunDeploymentReleaseTagExecConfigData.Raw;
         test_case_ids?: string[] | null;
     }

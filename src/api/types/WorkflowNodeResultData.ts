@@ -5,60 +5,14 @@
 import * as Vellum from "../index";
 
 export type WorkflowNodeResultData =
-    | Vellum.WorkflowNodeResultData.Prompt
-    | Vellum.WorkflowNodeResultData.Search
-    | Vellum.WorkflowNodeResultData.Templating
-    | Vellum.WorkflowNodeResultData.CodeExecution
-    | Vellum.WorkflowNodeResultData.Conditional
-    | Vellum.WorkflowNodeResultData.Api
-    | Vellum.WorkflowNodeResultData.Terminal
-    | Vellum.WorkflowNodeResultData.Merge
-    | Vellum.WorkflowNodeResultData.Subworkflow
-    | Vellum.WorkflowNodeResultData.Metric
-    | Vellum.WorkflowNodeResultData.Map;
-
-export declare namespace WorkflowNodeResultData {
-    interface Prompt extends Vellum.PromptNodeResult {
-        type: "PROMPT";
-    }
-
-    interface Search extends Vellum.SearchNodeResult {
-        type: "SEARCH";
-    }
-
-    interface Templating extends Vellum.TemplatingNodeResult {
-        type: "TEMPLATING";
-    }
-
-    interface CodeExecution extends Vellum.CodeExecutionNodeResult {
-        type: "CODE_EXECUTION";
-    }
-
-    interface Conditional extends Vellum.ConditionalNodeResult {
-        type: "CONDITIONAL";
-    }
-
-    interface Api extends Vellum.ApiNodeResult {
-        type: "API";
-    }
-
-    interface Terminal extends Vellum.TerminalNodeResult {
-        type: "TERMINAL";
-    }
-
-    interface Merge extends Vellum.MergeNodeResult {
-        type: "MERGE";
-    }
-
-    interface Subworkflow extends Vellum.SubworkflowNodeResult {
-        type: "SUBWORKFLOW";
-    }
-
-    interface Metric extends Vellum.MetricNodeResult {
-        type: "METRIC";
-    }
-
-    interface Map extends Vellum.MapNodeResult {
-        type: "MAP";
-    }
-}
+    | Vellum.PromptNodeResult
+    | Vellum.SearchNodeResult
+    | Vellum.TemplatingNodeResult
+    | Vellum.CodeExecutionNodeResult
+    | Vellum.ConditionalNodeResult
+    | Vellum.ApiNodeResult
+    | Vellum.TerminalNodeResult
+    | Vellum.MergeNodeResult
+    | Vellum.SubworkflowNodeResult
+    | Vellum.MetricNodeResult
+    | Vellum.MapNodeResult;

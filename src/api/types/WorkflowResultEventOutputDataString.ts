@@ -14,6 +14,7 @@ export interface WorkflowResultEventOutputDataString {
     nodeId: string;
     /** The newly output string value, meant to be concatenated with all previous. Will be non-null for events of state STREAMING. */
     delta?: string;
+    type: "STRING";
     /** The entire string value. Will be non-null for events of state FULFILLED. */
     value?: string;
 }

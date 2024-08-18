@@ -7,5 +7,6 @@
  */
 export interface TestSuiteRunMetricNumberOutput {
     value?: number;
+    type: "NUMBER";
     name: string;
 }

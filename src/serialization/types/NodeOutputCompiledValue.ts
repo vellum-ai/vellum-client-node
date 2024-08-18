@@ -17,62 +17,25 @@ import { NodeOutputCompiledFunctionCallValue } from "./NodeOutputCompiledFunctio
 export const NodeOutputCompiledValue: core.serialization.Schema<
     serializers.NodeOutputCompiledValue.Raw,
     Vellum.NodeOutputCompiledValue
-> = core.serialization
-    .union("type", {
-        STRING: NodeOutputCompiledStringValue,
-        NUMBER: NodeOutputCompiledNumberValue,
-        JSON: NodeOutputCompiledJsonValue,
-        CHAT_HISTORY: NodeOutputCompiledChatHistoryValue,
-        SEARCH_RESULTS: NodeOutputCompiledSearchResultsValue,
-        ERROR: NodeOutputCompiledErrorValue,
-        ARRAY: NodeOutputCompiledArrayValue,
-        FUNCTION_CALL: NodeOutputCompiledFunctionCallValue,
-    })
-    .transform<Vellum.NodeOutputCompiledValue>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    NodeOutputCompiledStringValue,
+    NodeOutputCompiledNumberValue,
+    NodeOutputCompiledJsonValue,
+    NodeOutputCompiledChatHistoryValue,
+    NodeOutputCompiledSearchResultsValue,
+    NodeOutputCompiledErrorValue,
+    NodeOutputCompiledArrayValue,
+    NodeOutputCompiledFunctionCallValue,
+]);
 
 export declare namespace NodeOutputCompiledValue {
     type Raw =
-        | NodeOutputCompiledValue.String
-        | NodeOutputCompiledValue.Number
-        | NodeOutputCompiledValue.Json
-        | NodeOutputCompiledValue.ChatHistory
-        | NodeOutputCompiledValue.SearchResults
-        | NodeOutputCompiledValue.Error
-        | NodeOutputCompiledValue.Array
-        | NodeOutputCompiledValue.FunctionCall;
-
-    interface String extends NodeOutputCompiledStringValue.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends NodeOutputCompiledNumberValue.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends NodeOutputCompiledJsonValue.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends NodeOutputCompiledChatHistoryValue.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends NodeOutputCompiledSearchResultsValue.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error extends NodeOutputCompiledErrorValue.Raw {
-        type: "ERROR";
-    }
-
-    interface Array extends NodeOutputCompiledArrayValue.Raw {
-        type: "ARRAY";
-    }
-
-    interface FunctionCall extends NodeOutputCompiledFunctionCallValue.Raw {
-        type: "FUNCTION_CALL";
-    }
+        | NodeOutputCompiledStringValue.Raw
+        | NodeOutputCompiledNumberValue.Raw
+        | NodeOutputCompiledJsonValue.Raw
+        | NodeOutputCompiledChatHistoryValue.Raw
+        | NodeOutputCompiledSearchResultsValue.Raw
+        | NodeOutputCompiledErrorValue.Raw
+        | NodeOutputCompiledArrayValue.Raw
+        | NodeOutputCompiledFunctionCallValue.Raw;
 }

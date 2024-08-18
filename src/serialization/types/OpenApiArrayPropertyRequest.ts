@@ -10,6 +10,7 @@ export const OpenApiArrayPropertyRequest: core.serialization.ObjectSchema<
     serializers.OpenApiArrayPropertyRequest.Raw,
     Vellum.OpenApiArrayPropertyRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("array"),
     minItems: core.serialization.property("min_items", core.serialization.number().optional()),
     maxItems: core.serialization.property("max_items", core.serialization.number().optional()),
     uniqueItems: core.serialization.property("unique_items", core.serialization.boolean().optional()),
@@ -28,6 +29,7 @@ export const OpenApiArrayPropertyRequest: core.serialization.ObjectSchema<
 
 export declare namespace OpenApiArrayPropertyRequest {
     interface Raw {
+        type: "array";
         min_items?: number | null;
         max_items?: number | null;
         unique_items?: boolean | null;

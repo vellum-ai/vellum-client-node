@@ -11,11 +11,13 @@ export const PromptNodeResult: core.serialization.ObjectSchema<
     serializers.PromptNodeResult.Raw,
     Vellum.PromptNodeResult
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("PROMPT"),
     data: PromptNodeResultData,
 });
 
 export declare namespace PromptNodeResult {
     interface Raw {
+        type: "PROMPT";
         data: PromptNodeResultData.Raw;
     }
 }

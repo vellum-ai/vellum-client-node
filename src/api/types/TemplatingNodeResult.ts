@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Templating Node.
  */
 export interface TemplatingNodeResult {
+    type: "TEMPLATING";
     data: Vellum.TemplatingNodeResultData;
 }

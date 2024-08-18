@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * Vectorizer for hkunlp/instructor-xl.
  */
 export interface HkunlpInstructorXlVectorizerRequest {
+    modelName: "hkunlp/instructor-xl";
     config: Vellum.InstructorVectorizerConfigRequest;
 }

@@ -4,14 +4,4 @@
 
 import * as Vellum from "../index";
 
-export type MlModelTokenizerConfig = Vellum.MlModelTokenizerConfig.HuggingFace | Vellum.MlModelTokenizerConfig.Tiktoken;
-
-export declare namespace MlModelTokenizerConfig {
-    interface HuggingFace extends Vellum.HuggingFaceTokenizerConfig {
-        type: "HUGGING_FACE";
-    }
-
-    interface Tiktoken extends Vellum.TikTokenTokenizerConfig {
-        type: "TIKTOKEN";
-    }
-}
+export type MlModelTokenizerConfig = Vellum.HuggingFaceTokenizerConfig | Vellum.TikTokenTokenizerConfig;

@@ -12,6 +12,7 @@ export const FulfilledExecuteWorkflowWorkflowResultEvent: core.serialization.Obj
     Vellum.FulfilledExecuteWorkflowWorkflowResultEvent
 > = core.serialization.object({
     id: core.serialization.string(),
+    state: core.serialization.stringLiteral("FULFILLED"),
     ts: core.serialization.date(),
     outputs: core.serialization.list(WorkflowOutput),
 });
@@ -19,6 +20,7 @@ export const FulfilledExecuteWorkflowWorkflowResultEvent: core.serialization.Obj
 export declare namespace FulfilledExecuteWorkflowWorkflowResultEvent {
     interface Raw {
         id: string;
+        state: "FULFILLED";
         ts: string;
         outputs: WorkflowOutput.Raw[];
     }

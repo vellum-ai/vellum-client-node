@@ -8,13 +8,31 @@ import * as Vellum from "../../../../index";
  * @example
  *     {
  *         label: "Scenario 1",
- *         inputs: []
+ *         inputs: [{
+ *                 type: "STRING",
+ *                 value: "Hello, world!",
+ *                 name: "var_1"
+ *             }, {
+ *                 type: "STRING",
+ *                 value: "Why hello, there!",
+ *                 name: "var_2"
+ *             }]
  *     }
  *
  * @example
  *     {
  *         label: "Scenario 2",
- *         inputs: []
+ *         inputs: [{
+ *                 type: "CHAT_HISTORY",
+ *                 value: [{
+ *                         text: "What's your favorite color?",
+ *                         role: Vellum.ChatMessageRole.User
+ *                     }, {
+ *                         text: "AI's don't have a favorite color.... Yet.",
+ *                         role: Vellum.ChatMessageRole.Assistant
+ *                     }],
+ *                 name: "chat_history"
+ *             }]
  *     }
  */
 export interface UpsertSandboxScenarioRequestRequest {

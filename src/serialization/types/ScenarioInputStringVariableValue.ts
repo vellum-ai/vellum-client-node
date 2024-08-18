@@ -10,12 +10,14 @@ export const ScenarioInputStringVariableValue: core.serialization.ObjectSchema<
     serializers.ScenarioInputStringVariableValue.Raw,
     Vellum.ScenarioInputStringVariableValue
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("STRING"),
     value: core.serialization.string().optional(),
     inputVariableId: core.serialization.property("input_variable_id", core.serialization.string()),
 });
 
 export declare namespace ScenarioInputStringVariableValue {
     interface Raw {
+        type: "STRING";
         value?: string | null;
         input_variable_id: string;
     }

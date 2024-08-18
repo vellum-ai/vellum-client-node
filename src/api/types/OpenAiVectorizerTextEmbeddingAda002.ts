@@ -9,4 +9,5 @@ import * as Vellum from "../index";
  */
 export interface OpenAiVectorizerTextEmbeddingAda002 {
     config: Vellum.OpenAiVectorizerConfig;
+    modelName: "text-embedding-ada-002";
 }

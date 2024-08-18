@@ -9,5 +9,6 @@ import * as Vellum from "../index";
  */
 export interface TestSuiteTestCaseCreatedBulkResult {
     id: string;
+    type: "CREATED";
     data: Vellum.TestSuiteTestCaseCreatedBulkResultData;
 }

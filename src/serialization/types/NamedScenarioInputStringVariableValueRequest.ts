@@ -10,12 +10,14 @@ export const NamedScenarioInputStringVariableValueRequest: core.serialization.Ob
     serializers.NamedScenarioInputStringVariableValueRequest.Raw,
     Vellum.NamedScenarioInputStringVariableValueRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("STRING"),
     value: core.serialization.string().optional(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedScenarioInputStringVariableValueRequest {
     interface Raw {
+        type: "STRING";
         value?: string | null;
         name: string;
     }

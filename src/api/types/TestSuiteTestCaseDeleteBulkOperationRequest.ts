@@ -10,6 +10,7 @@ import * as Vellum from "../index";
 export interface TestSuiteTestCaseDeleteBulkOperationRequest {
     /** An ID representing this specific operation. Can later be used to look up information about the operation's success in the response. */
     id: string;
+    type: "DELETE";
     /** Information about the Test Case to delete */
     data: Vellum.TestSuiteTestCaseDeleteBulkOperationDataRequest;
 }

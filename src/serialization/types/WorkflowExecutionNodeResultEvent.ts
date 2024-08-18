@@ -14,6 +14,7 @@ export const WorkflowExecutionNodeResultEvent: core.serialization.ObjectSchema<
     executionId: core.serialization.property("execution_id", core.serialization.string()),
     runId: core.serialization.property("run_id", core.serialization.string().optional()),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+    type: core.serialization.stringLiteral("NODE"),
     data: WorkflowNodeResultEvent,
 });
 
@@ -22,6 +23,7 @@ export declare namespace WorkflowExecutionNodeResultEvent {
         execution_id: string;
         run_id?: string | null;
         external_id?: string | null;
+        type: "NODE";
         data: WorkflowNodeResultEvent.Raw;
     }
 }

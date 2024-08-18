@@ -7,14 +7,12 @@ import * as Vellum from "../../../../index";
 /**
  * @example
  *     {
- *         testSuiteId: "string",
+ *         testSuiteId: "test_suite_id",
  *         execConfig: {
  *             type: "DEPLOYMENT_RELEASE_TAG",
  *             data: {
- *                 deploymentId: "string",
- *                 tag: "string"
- *             },
- *             testCaseIds: ["string"]
+ *                 deploymentId: "deployment_id"
+ *             }
  *         }
  *     }
  */

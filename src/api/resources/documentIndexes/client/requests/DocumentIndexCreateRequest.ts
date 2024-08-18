@@ -7,19 +7,67 @@ import * as Vellum from "../../../../index";
 /**
  * @example
  *     {
- *         label: "string",
- *         name: "string",
- *         status: Vellum.EntityStatus.Active,
- *         environment: Vellum.EnvironmentEnum.Development,
+ *         label: "My Document Index",
+ *         name: "my-document-index",
  *         indexingConfig: {
  *             vectorizer: {
- *                 modelName: "text-embedding-3-small"
+ *                 modelName: "hkunlp/instructor-xl",
+ *                 config: {
+ *                     instructionDomain: "",
+ *                     instructionQueryTextType: "plain_text",
+ *                     instructionDocumentTextType: "plain_text"
+ *                 }
  *             },
  *             chunking: {
- *                 chunkerName: "reducto-chunker"
+ *                 chunkerName: "sentence-chunker",
+ *                 chunkerConfig: {
+ *                     characterLimit: 1000,
+ *                     minOverlapRatio: 0.5
+ *                 }
  *             }
- *         },
- *         copyDocumentsFromIndexId: "string"
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         label: "My Document Index",
+ *         name: "my-document-index",
+ *         indexingConfig: {
+ *             vectorizer: {
+ *                 modelName: "sentence-transformers/multi-qa-mpnet-base-dot-v1",
+ *                 config: {
+ *                     "key": "value"
+ *                 }
+ *             },
+ *             chunking: {
+ *                 chunkerName: "sentence-chunker",
+ *                 chunkerConfig: {
+ *                     characterLimit: 1000,
+ *                     minOverlapRatio: 0.5
+ *                 }
+ *             }
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         label: "My Document Index",
+ *         name: "my-document-index",
+ *         indexingConfig: {
+ *             vectorizer: {
+ *                 config: {
+ *                     addOpenaiApiKey: true
+ *                 },
+ *                 modelName: "text-embedding-ada-002"
+ *             },
+ *             chunking: {
+ *                 chunkerName: "sentence-chunker",
+ *                 chunkerConfig: {
+ *                     characterLimit: 1000,
+ *                     minOverlapRatio: 0.5
+ *                 }
+ *             }
+ *         }
  *     }
  */
 export interface DocumentIndexCreateRequest {

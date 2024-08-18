@@ -7,4 +7,5 @@
  */
 export interface BasicVectorizerIntfloatMultilingualE5LargeRequest {
     config?: Record<string, unknown>;
+    modelName: "intfloat/multilingual-e5-large";
 }

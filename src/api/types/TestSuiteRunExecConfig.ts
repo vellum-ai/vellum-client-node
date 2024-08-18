@@ -5,20 +5,6 @@
 import * as Vellum from "../index";
 
 export type TestSuiteRunExecConfig =
-    | Vellum.TestSuiteRunExecConfig.DeploymentReleaseTag
-    | Vellum.TestSuiteRunExecConfig.WorkflowReleaseTag
-    | Vellum.TestSuiteRunExecConfig.External;
-
-export declare namespace TestSuiteRunExecConfig {
-    interface DeploymentReleaseTag extends Vellum.TestSuiteRunDeploymentReleaseTagExecConfig {
-        type: "DEPLOYMENT_RELEASE_TAG";
-    }
-
-    interface WorkflowReleaseTag extends Vellum.TestSuiteRunWorkflowReleaseTagExecConfig {
-        type: "WORKFLOW_RELEASE_TAG";
-    }
-
-    interface External extends Vellum.TestSuiteRunExternalExecConfig {
-        type: "EXTERNAL";
-    }
-}
+    | Vellum.TestSuiteRunDeploymentReleaseTagExecConfig
+    | Vellum.TestSuiteRunWorkflowReleaseTagExecConfig
+    | Vellum.TestSuiteRunExternalExecConfig;

@@ -31,7 +31,11 @@
 
 ```typescript
 await client.submitWorkflowExecutionActuals({
-    actuals: [],
+    actuals: [
+        {
+            outputType: "STRING",
+        },
+    ],
 });
 ```
 
@@ -385,7 +389,13 @@ We encourage you to seek advise from Vellum Support before integrating with this
 
 ```typescript
 await client.deployments.retrieveProviderPayload({
-    inputs: [],
+    inputs: [
+        {
+            name: "name",
+            type: "STRING",
+            value: "value",
+        },
+    ],
 });
 ```
 
@@ -515,19 +525,25 @@ Creates a new document index.
 
 ```typescript
 await client.documentIndexes.create({
-    label: "string",
-    name: "string",
-    status: Vellum.EntityStatus.Active,
-    environment: Vellum.EnvironmentEnum.Development,
+    label: "My Document Index",
+    name: "my-document-index",
     indexingConfig: {
         vectorizer: {
-            modelName: "text-embedding-3-small",
+            modelName: "hkunlp/instructor-xl",
+            config: {
+                instructionDomain: "",
+                instructionQueryTextType: "plain_text",
+                instructionDocumentTextType: "plain_text",
+            },
         },
         chunking: {
-            chunkerName: "reducto-chunker",
+            chunkerName: "sentence-chunker",
+            chunkerConfig: {
+                characterLimit: 1000,
+                minOverlapRatio: 0.5,
+            },
         },
     },
-    copyDocumentsFromIndexId: "string",
 });
 ```
 
@@ -591,7 +607,7 @@ Used to retrieve a Document Index given its ID or name.
 <dd>
 
 ```typescript
-await client.documentIndexes.retrieve("string");
+await client.documentIndexes.retrieve("id");
 ```
 
 </dd>
@@ -654,10 +670,8 @@ Used to fully update a Document Index given its ID or name.
 <dd>
 
 ```typescript
-await client.documentIndexes.update("string", {
-    label: "string",
-    status: Vellum.EntityStatus.Active,
-    environment: Vellum.EnvironmentEnum.Development,
+await client.documentIndexes.update("id", {
+    label: "label",
 });
 ```
 
@@ -792,11 +806,7 @@ Used to partial update a Document Index given its ID or name.
 <dd>
 
 ```typescript
-await client.documentIndexes.partialUpdate("string", {
-    label: "string",
-    status: Vellum.EntityStatus.Active,
-    environment: Vellum.EnvironmentEnum.Development,
-});
+await client.documentIndexes.partialUpdate("id");
 ```
 
 </dd>
@@ -1850,7 +1860,18 @@ or overwritten with default values.
 ```typescript
 await client.sandboxes.upsertSandboxScenario("id", {
     label: "Scenario 1",
-    inputs: [],
+    inputs: [
+        {
+            type: "STRING",
+            value: "Hello, world!",
+            name: "var_1",
+        },
+        {
+            type: "STRING",
+            value: "Why hello, there!",
+            name: "var_2",
+        },
+    ],
 });
 ```
 
@@ -1996,14 +2017,12 @@ Trigger a Test Suite and create a new Test Suite Run
 
 ```typescript
 await client.testSuiteRuns.create({
-    testSuiteId: "string",
+    testSuiteId: "test_suite_id",
     execConfig: {
         type: "DEPLOYMENT_RELEASE_TAG",
         data: {
-            deploymentId: "string",
-            tag: "string",
+            deploymentId: "deployment_id",
         },
-        testCaseIds: ["string"],
     },
 });
 ```
@@ -2267,8 +2286,18 @@ or overwritten with default values.
 
 ```typescript
 await client.testSuites.upsertTestSuiteTestCase("id", {
-    inputValues: [],
-    evaluationValues: [],
+    inputValues: [
+        {
+            type: "STRING",
+            name: "name",
+        },
+    ],
+    evaluationValues: [
+        {
+            type: "STRING",
+            name: "name",
+        },
+    ],
 });
 ```
 
@@ -2342,20 +2371,12 @@ Created, replace, and delete Test Cases within the specified Test Suite in bulk
 ```typescript
 await client.testSuites.testSuiteTestCasesBulk("string", [
     {
-        type: "CREATE",
         id: "string",
+        type: "CREATE",
         data: {
             label: "string",
-            inputValues: [
-                {
-                    type: "STRING",
-                },
-            ],
-            evaluationValues: [
-                {
-                    type: "STRING",
-                },
-            ],
+            inputValues: [{}],
+            evaluationValues: [{}],
             externalId: "string",
         },
     },

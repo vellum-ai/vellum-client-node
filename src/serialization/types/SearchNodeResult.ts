@@ -11,11 +11,13 @@ export const SearchNodeResult: core.serialization.ObjectSchema<
     serializers.SearchNodeResult.Raw,
     Vellum.SearchNodeResult
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("SEARCH"),
     data: SearchNodeResultData,
 });
 
 export declare namespace SearchNodeResult {
     interface Raw {
+        type: "SEARCH";
         data: SearchNodeResultData.Raw;
     }
 }

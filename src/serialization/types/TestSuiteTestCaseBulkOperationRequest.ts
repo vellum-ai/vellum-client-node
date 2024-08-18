@@ -13,38 +13,17 @@ import { TestSuiteTestCaseDeleteBulkOperationRequest } from "./TestSuiteTestCase
 export const TestSuiteTestCaseBulkOperationRequest: core.serialization.Schema<
     serializers.TestSuiteTestCaseBulkOperationRequest.Raw,
     Vellum.TestSuiteTestCaseBulkOperationRequest
-> = core.serialization
-    .union("type", {
-        CREATE: TestSuiteTestCaseCreateBulkOperationRequest,
-        REPLACE: TestSuiteTestCaseReplaceBulkOperationRequest,
-        UPSERT: TestSuiteTestCaseUpsertBulkOperationRequest,
-        DELETE: TestSuiteTestCaseDeleteBulkOperationRequest,
-    })
-    .transform<Vellum.TestSuiteTestCaseBulkOperationRequest>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    TestSuiteTestCaseCreateBulkOperationRequest,
+    TestSuiteTestCaseReplaceBulkOperationRequest,
+    TestSuiteTestCaseUpsertBulkOperationRequest,
+    TestSuiteTestCaseDeleteBulkOperationRequest,
+]);
 
 export declare namespace TestSuiteTestCaseBulkOperationRequest {
     type Raw =
-        | TestSuiteTestCaseBulkOperationRequest.Create
-        | TestSuiteTestCaseBulkOperationRequest.Replace
-        | TestSuiteTestCaseBulkOperationRequest.Upsert
-        | TestSuiteTestCaseBulkOperationRequest.Delete;
-
-    interface Create extends TestSuiteTestCaseCreateBulkOperationRequest.Raw {
-        type: "CREATE";
-    }
-
-    interface Replace extends TestSuiteTestCaseReplaceBulkOperationRequest.Raw {
-        type: "REPLACE";
-    }
-
-    interface Upsert extends TestSuiteTestCaseUpsertBulkOperationRequest.Raw {
-        type: "UPSERT";
-    }
-
-    interface Delete extends TestSuiteTestCaseDeleteBulkOperationRequest.Raw {
-        type: "DELETE";
-    }
+        | TestSuiteTestCaseCreateBulkOperationRequest.Raw
+        | TestSuiteTestCaseReplaceBulkOperationRequest.Raw
+        | TestSuiteTestCaseUpsertBulkOperationRequest.Raw
+        | TestSuiteTestCaseDeleteBulkOperationRequest.Raw;
 }

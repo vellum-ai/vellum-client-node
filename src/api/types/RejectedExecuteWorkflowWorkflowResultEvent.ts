@@ -9,6 +9,7 @@ import * as Vellum from "../index";
  */
 export interface RejectedExecuteWorkflowWorkflowResultEvent {
     id: string;
+    state: "REJECTED";
     ts: Date;
     error: Vellum.WorkflowEventError;
 }

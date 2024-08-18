@@ -11,11 +11,13 @@ export const FunctionCallVellumValue: core.serialization.ObjectSchema<
     serializers.FunctionCallVellumValue.Raw,
     Vellum.FunctionCallVellumValue
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("FUNCTION_CALL"),
     value: FunctionCall.optional(),
 });
 
 export declare namespace FunctionCallVellumValue {
     interface Raw {
+        type: "FUNCTION_CALL";
         value?: FunctionCall.Raw | null;
     }
 }

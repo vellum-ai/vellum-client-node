@@ -6,11 +6,7 @@ import * as Vellum from "../../../../index";
 
 /**
  * @example
- *     {
- *         label: "string",
- *         status: Vellum.EntityStatus.Active,
- *         environment: Vellum.EnvironmentEnum.Development
- *     }
+ *     {}
  */
 export interface PatchedDocumentIndexUpdateRequest {
     /** A human-readable label for the document index */

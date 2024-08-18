@@ -5,25 +5,7 @@
 import * as Vellum from "../index";
 
 export type ExecutePromptEvent =
-    | Vellum.ExecutePromptEvent.Initiated
-    | Vellum.ExecutePromptEvent.Streaming
-    | Vellum.ExecutePromptEvent.Fulfilled
-    | Vellum.ExecutePromptEvent.Rejected;
-
-export declare namespace ExecutePromptEvent {
-    interface Initiated extends Vellum.InitiatedExecutePromptEvent {
-        state: "INITIATED";
-    }
-
-    interface Streaming extends Vellum.StreamingExecutePromptEvent {
-        state: "STREAMING";
-    }
-
-    interface Fulfilled extends Vellum.FulfilledExecutePromptEvent {
-        state: "FULFILLED";
-    }
-
-    interface Rejected extends Vellum.RejectedExecutePromptEvent {
-        state: "REJECTED";
-    }
-}
+    | Vellum.InitiatedExecutePromptEvent
+    | Vellum.StreamingExecutePromptEvent
+    | Vellum.FulfilledExecutePromptEvent
+    | Vellum.RejectedExecutePromptEvent;

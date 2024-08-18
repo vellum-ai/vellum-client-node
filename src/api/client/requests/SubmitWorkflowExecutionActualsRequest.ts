@@ -7,7 +7,9 @@ import * as Vellum from "../../index";
 /**
  * @example
  *     {
- *         actuals: []
+ *         actuals: [{
+ *                 outputType: "STRING"
+ *             }]
  *     }
  */
 export interface SubmitWorkflowExecutionActualsRequest {

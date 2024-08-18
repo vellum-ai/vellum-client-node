@@ -11,24 +11,11 @@ import { RejectedExecuteWorkflowWorkflowResultEvent } from "./RejectedExecuteWor
 export const ExecuteWorkflowWorkflowResultEvent: core.serialization.Schema<
     serializers.ExecuteWorkflowWorkflowResultEvent.Raw,
     Vellum.ExecuteWorkflowWorkflowResultEvent
-> = core.serialization
-    .union("state", {
-        FULFILLED: FulfilledExecuteWorkflowWorkflowResultEvent,
-        REJECTED: RejectedExecuteWorkflowWorkflowResultEvent,
-    })
-    .transform<Vellum.ExecuteWorkflowWorkflowResultEvent>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    FulfilledExecuteWorkflowWorkflowResultEvent,
+    RejectedExecuteWorkflowWorkflowResultEvent,
+]);
 
 export declare namespace ExecuteWorkflowWorkflowResultEvent {
-    type Raw = ExecuteWorkflowWorkflowResultEvent.Fulfilled | ExecuteWorkflowWorkflowResultEvent.Rejected;
-
-    interface Fulfilled extends FulfilledExecuteWorkflowWorkflowResultEvent.Raw {
-        state: "FULFILLED";
-    }
-
-    interface Rejected extends RejectedExecuteWorkflowWorkflowResultEvent.Raw {
-        state: "REJECTED";
-    }
+    type Raw = FulfilledExecuteWorkflowWorkflowResultEvent.Raw | RejectedExecuteWorkflowWorkflowResultEvent.Raw;
 }

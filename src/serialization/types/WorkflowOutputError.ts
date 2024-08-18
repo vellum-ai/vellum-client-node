@@ -13,6 +13,7 @@ export const WorkflowOutputError: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("ERROR"),
     value: VellumError.optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace WorkflowOutputError {
     interface Raw {
         id: string;
         name: string;
+        type: "ERROR";
         value?: VellumError.Raw | null;
     }
 }

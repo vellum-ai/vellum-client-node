@@ -11,34 +11,13 @@ import { ErrorVellumValue } from "./ErrorVellumValue";
 import { FunctionCallVellumValue } from "./FunctionCallVellumValue";
 
 export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Raw, Vellum.PromptOutput> =
-    core.serialization
-        .union("type", {
-            STRING: StringVellumValue,
-            JSON: JsonVellumValue,
-            ERROR: ErrorVellumValue,
-            FUNCTION_CALL: FunctionCallVellumValue,
-        })
-        .transform<Vellum.PromptOutput>({
-            transform: (value) => value,
-            untransform: (value) => value,
-        });
+    core.serialization.undiscriminatedUnion([
+        StringVellumValue,
+        JsonVellumValue,
+        ErrorVellumValue,
+        FunctionCallVellumValue,
+    ]);
 
 export declare namespace PromptOutput {
-    type Raw = PromptOutput.String | PromptOutput.Json | PromptOutput.Error | PromptOutput.FunctionCall;
-
-    interface String extends StringVellumValue.Raw {
-        type: "STRING";
-    }
-
-    interface Json extends JsonVellumValue.Raw {
-        type: "JSON";
-    }
-
-    interface Error extends ErrorVellumValue.Raw {
-        type: "ERROR";
-    }
-
-    interface FunctionCall extends FunctionCallVellumValue.Raw {
-        type: "FUNCTION_CALL";
-    }
+    type Raw = StringVellumValue.Raw | JsonVellumValue.Raw | ErrorVellumValue.Raw | FunctionCallVellumValue.Raw;
 }

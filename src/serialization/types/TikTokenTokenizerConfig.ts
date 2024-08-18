@@ -10,11 +10,13 @@ export const TikTokenTokenizerConfig: core.serialization.ObjectSchema<
     serializers.TikTokenTokenizerConfig.Raw,
     Vellum.TikTokenTokenizerConfig
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("TIKTOKEN"),
     name: core.serialization.string(),
 });
 
 export declare namespace TikTokenTokenizerConfig {
     interface Raw {
+        type: "TIKTOKEN";
         name: string;
     }
 }

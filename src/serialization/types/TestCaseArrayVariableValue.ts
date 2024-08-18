@@ -13,6 +13,7 @@ export const TestCaseArrayVariableValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(ArrayVellumValueItem).optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace TestCaseArrayVariableValue {
     interface Raw {
         variable_id: string;
         name: string;
+        type: "ARRAY";
         value?: ArrayVellumValueItem.Raw[] | null;
     }
 }

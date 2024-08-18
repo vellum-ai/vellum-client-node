@@ -6,5 +6,6 @@
  * A value representing a JSON object.
  */
 export interface JsonVellumValueRequest {
+    type: "JSON";
     value?: unknown;
 }

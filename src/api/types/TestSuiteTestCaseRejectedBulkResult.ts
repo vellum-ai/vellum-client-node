@@ -8,6 +8,7 @@
 export interface TestSuiteTestCaseRejectedBulkResult {
     /** An ID that maps back to one of the initially supplied operations. Can be used to determine the result of a given operation. */
     id?: string;
+    type: "REJECTED";
     /** Details about the error that occurred */
     data: Record<string, unknown>;
 }

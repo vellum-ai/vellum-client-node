@@ -5,45 +5,11 @@
 import * as Vellum from "../index";
 
 export type NamedTestCaseVariableValue =
-    | Vellum.NamedTestCaseVariableValue.String
-    | Vellum.NamedTestCaseVariableValue.Number
-    | Vellum.NamedTestCaseVariableValue.Json
-    | Vellum.NamedTestCaseVariableValue.ChatHistory
-    | Vellum.NamedTestCaseVariableValue.SearchResults
-    | Vellum.NamedTestCaseVariableValue.Error_
-    | Vellum.NamedTestCaseVariableValue.FunctionCall
-    | Vellum.NamedTestCaseVariableValue.Array;
-
-export declare namespace NamedTestCaseVariableValue {
-    interface String extends Vellum.NamedTestCaseStringVariableValue {
-        type: "STRING";
-    }
-
-    interface Number extends Vellum.NamedTestCaseNumberVariableValue {
-        type: "NUMBER";
-    }
-
-    interface Json extends Vellum.NamedTestCaseJsonVariableValue {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends Vellum.NamedTestCaseChatHistoryVariableValue {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends Vellum.NamedTestCaseSearchResultsVariableValue {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error_ extends Vellum.NamedTestCaseErrorVariableValue {
-        type: "ERROR";
-    }
-
-    interface FunctionCall extends Vellum.NamedTestCaseFunctionCallVariableValue {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Array extends Vellum.NamedTestCaseArrayVariableValue {
-        type: "ARRAY";
-    }
-}
+    | Vellum.NamedTestCaseStringVariableValue
+    | Vellum.NamedTestCaseNumberVariableValue
+    | Vellum.NamedTestCaseJsonVariableValue
+    | Vellum.NamedTestCaseChatHistoryVariableValue
+    | Vellum.NamedTestCaseSearchResultsVariableValue
+    | Vellum.NamedTestCaseErrorVariableValue
+    | Vellum.NamedTestCaseFunctionCallVariableValue
+    | Vellum.NamedTestCaseArrayVariableValue;

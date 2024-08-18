@@ -17,62 +17,25 @@ import { TerminalNodeErrorResult } from "./TerminalNodeErrorResult";
 export const TerminalNodeResultOutput: core.serialization.Schema<
     serializers.TerminalNodeResultOutput.Raw,
     Vellum.TerminalNodeResultOutput
-> = core.serialization
-    .union("type", {
-        STRING: TerminalNodeStringResult,
-        NUMBER: TerminalNodeNumberResult,
-        JSON: TerminalNodeJsonResult,
-        CHAT_HISTORY: TerminalNodeChatHistoryResult,
-        SEARCH_RESULTS: TerminalNodeSearchResultsResult,
-        ARRAY: TerminalNodeArrayResult,
-        FUNCTION_CALL: TerminalNodeFunctionCallResult,
-        ERROR: TerminalNodeErrorResult,
-    })
-    .transform<Vellum.TerminalNodeResultOutput>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    TerminalNodeStringResult,
+    TerminalNodeNumberResult,
+    TerminalNodeJsonResult,
+    TerminalNodeChatHistoryResult,
+    TerminalNodeSearchResultsResult,
+    TerminalNodeArrayResult,
+    TerminalNodeFunctionCallResult,
+    TerminalNodeErrorResult,
+]);
 
 export declare namespace TerminalNodeResultOutput {
     type Raw =
-        | TerminalNodeResultOutput.String
-        | TerminalNodeResultOutput.Number
-        | TerminalNodeResultOutput.Json
-        | TerminalNodeResultOutput.ChatHistory
-        | TerminalNodeResultOutput.SearchResults
-        | TerminalNodeResultOutput.Array
-        | TerminalNodeResultOutput.FunctionCall
-        | TerminalNodeResultOutput.Error;
-
-    interface String extends TerminalNodeStringResult.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends TerminalNodeNumberResult.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends TerminalNodeJsonResult.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends TerminalNodeChatHistoryResult.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends TerminalNodeSearchResultsResult.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Array extends TerminalNodeArrayResult.Raw {
-        type: "ARRAY";
-    }
-
-    interface FunctionCall extends TerminalNodeFunctionCallResult.Raw {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Error extends TerminalNodeErrorResult.Raw {
-        type: "ERROR";
-    }
+        | TerminalNodeStringResult.Raw
+        | TerminalNodeNumberResult.Raw
+        | TerminalNodeJsonResult.Raw
+        | TerminalNodeChatHistoryResult.Raw
+        | TerminalNodeSearchResultsResult.Raw
+        | TerminalNodeArrayResult.Raw
+        | TerminalNodeFunctionCallResult.Raw
+        | TerminalNodeErrorResult.Raw;
 }

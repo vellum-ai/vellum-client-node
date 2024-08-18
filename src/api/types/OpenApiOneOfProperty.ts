@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * An OpenAPI specification of a property with type 'oneOf'
  */
 export interface OpenApiOneOfProperty {
+    type: "oneOf";
     oneOf: Vellum.OpenApiProperty[];
     title?: string;
     description?: string;

@@ -13,38 +13,17 @@ import { WorkflowRequestNumberInputRequest } from "./WorkflowRequestNumberInputR
 export const WorkflowRequestInputRequest: core.serialization.Schema<
     serializers.WorkflowRequestInputRequest.Raw,
     Vellum.WorkflowRequestInputRequest
-> = core.serialization
-    .union("type", {
-        STRING: WorkflowRequestStringInputRequest,
-        JSON: WorkflowRequestJsonInputRequest,
-        CHAT_HISTORY: WorkflowRequestChatHistoryInputRequest,
-        NUMBER: WorkflowRequestNumberInputRequest,
-    })
-    .transform<Vellum.WorkflowRequestInputRequest>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    WorkflowRequestStringInputRequest,
+    WorkflowRequestJsonInputRequest,
+    WorkflowRequestChatHistoryInputRequest,
+    WorkflowRequestNumberInputRequest,
+]);
 
 export declare namespace WorkflowRequestInputRequest {
     type Raw =
-        | WorkflowRequestInputRequest.String
-        | WorkflowRequestInputRequest.Json
-        | WorkflowRequestInputRequest.ChatHistory
-        | WorkflowRequestInputRequest.Number;
-
-    interface String extends WorkflowRequestStringInputRequest.Raw {
-        type: "STRING";
-    }
-
-    interface Json extends WorkflowRequestJsonInputRequest.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends WorkflowRequestChatHistoryInputRequest.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface Number extends WorkflowRequestNumberInputRequest.Raw {
-        type: "NUMBER";
-    }
+        | WorkflowRequestStringInputRequest.Raw
+        | WorkflowRequestJsonInputRequest.Raw
+        | WorkflowRequestChatHistoryInputRequest.Raw
+        | WorkflowRequestNumberInputRequest.Raw;
 }

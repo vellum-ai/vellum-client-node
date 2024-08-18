@@ -6,6 +6,7 @@
  * An OpenAPI specification of a property that is a URI-reference to another schema
  */
 export interface OpenApiRefPropertyRequest {
+    type: "ref";
     title?: string;
     description?: string;
     ref: string;

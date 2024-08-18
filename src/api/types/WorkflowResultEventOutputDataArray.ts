@@ -14,5 +14,6 @@ export interface WorkflowResultEventOutputDataArray {
     nodeId: string;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string;
+    type: "ARRAY";
     value?: Vellum.ArrayVariableValueItem[];
 }

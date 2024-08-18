@@ -12,6 +12,7 @@ export const TestSuiteRunExecutionFunctionCallOutput: core.serialization.ObjectS
     Vellum.TestSuiteRunExecutionFunctionCallOutput
 > = core.serialization.object({
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("FUNCTION_CALL"),
     value: FunctionCall.optional(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
@@ -19,6 +20,7 @@ export const TestSuiteRunExecutionFunctionCallOutput: core.serialization.ObjectS
 export declare namespace TestSuiteRunExecutionFunctionCallOutput {
     interface Raw {
         name: string;
+        type: "FUNCTION_CALL";
         value?: FunctionCall.Raw | null;
         output_variable_id: string;
     }

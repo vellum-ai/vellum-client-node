@@ -12,6 +12,7 @@ export const WorkflowOutputNumber: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("NUMBER"),
     value: core.serialization.number().optional(),
 });
 
@@ -19,6 +20,7 @@ export declare namespace WorkflowOutputNumber {
     interface Raw {
         id: string;
         name: string;
+        type: "NUMBER";
         value?: number | null;
     }
 }

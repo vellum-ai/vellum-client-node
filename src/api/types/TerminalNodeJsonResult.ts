@@ -6,5 +6,6 @@ export interface TerminalNodeJsonResult {
     id?: string;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
+    type: "JSON";
     value?: unknown;
 }

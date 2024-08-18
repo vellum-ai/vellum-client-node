@@ -16,68 +16,27 @@ import { WorkflowOutputFunctionCall } from "./WorkflowOutputFunctionCall";
 import { WorkflowOutputImage } from "./WorkflowOutputImage";
 
 export const WorkflowOutput: core.serialization.Schema<serializers.WorkflowOutput.Raw, Vellum.WorkflowOutput> =
-    core.serialization
-        .union("type", {
-            STRING: WorkflowOutputString,
-            NUMBER: WorkflowOutputNumber,
-            JSON: WorkflowOutputJson,
-            CHAT_HISTORY: WorkflowOutputChatHistory,
-            SEARCH_RESULTS: WorkflowOutputSearchResults,
-            ARRAY: WorkflowOutputArray,
-            ERROR: WorkflowOutputError,
-            FUNCTION_CALL: WorkflowOutputFunctionCall,
-            IMAGE: WorkflowOutputImage,
-        })
-        .transform<Vellum.WorkflowOutput>({
-            transform: (value) => value,
-            untransform: (value) => value,
-        });
+    core.serialization.undiscriminatedUnion([
+        WorkflowOutputString,
+        WorkflowOutputNumber,
+        WorkflowOutputJson,
+        WorkflowOutputChatHistory,
+        WorkflowOutputSearchResults,
+        WorkflowOutputArray,
+        WorkflowOutputError,
+        WorkflowOutputFunctionCall,
+        WorkflowOutputImage,
+    ]);
 
 export declare namespace WorkflowOutput {
     type Raw =
-        | WorkflowOutput.String
-        | WorkflowOutput.Number
-        | WorkflowOutput.Json
-        | WorkflowOutput.ChatHistory
-        | WorkflowOutput.SearchResults
-        | WorkflowOutput.Array
-        | WorkflowOutput.Error
-        | WorkflowOutput.FunctionCall
-        | WorkflowOutput.Image;
-
-    interface String extends WorkflowOutputString.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends WorkflowOutputNumber.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends WorkflowOutputJson.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends WorkflowOutputChatHistory.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends WorkflowOutputSearchResults.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Array extends WorkflowOutputArray.Raw {
-        type: "ARRAY";
-    }
-
-    interface Error extends WorkflowOutputError.Raw {
-        type: "ERROR";
-    }
-
-    interface FunctionCall extends WorkflowOutputFunctionCall.Raw {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Image extends WorkflowOutputImage.Raw {
-        type: "IMAGE";
-    }
+        | WorkflowOutputString.Raw
+        | WorkflowOutputNumber.Raw
+        | WorkflowOutputJson.Raw
+        | WorkflowOutputChatHistory.Raw
+        | WorkflowOutputSearchResults.Raw
+        | WorkflowOutputArray.Raw
+        | WorkflowOutputError.Raw
+        | WorkflowOutputFunctionCall.Raw
+        | WorkflowOutputImage.Raw;
 }

@@ -10,5 +10,6 @@ import * as Vellum from "../index";
 export interface WorkflowRequestChatHistoryInputRequest {
     /** The variable's name, as defined in the Workflow. */
     name: string;
+    type: "CHAT_HISTORY";
     value: Vellum.ChatMessageRequest[];
 }

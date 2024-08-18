@@ -6,6 +6,7 @@
  * An OpenAPI specification of a property with type 'number'
  */
 export interface OpenApiNumberProperty {
+    type: "number";
     minimum?: number;
     maximum?: number;
     format?: string;

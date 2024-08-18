@@ -13,6 +13,7 @@ export const TerminalNodeArrayResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(ArrayVariableValueItem).optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace TerminalNodeArrayResult {
     interface Raw {
         id?: string | null;
         name: string;
+        type: "ARRAY";
         value?: ArrayVariableValueItem.Raw[] | null;
     }
 }

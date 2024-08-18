@@ -5,50 +5,12 @@
 import * as Vellum from "../index";
 
 export type OpenApiProperty =
-    | Vellum.OpenApiProperty.Array
-    | Vellum.OpenApiProperty.Object_
-    | Vellum.OpenApiProperty.Integer
-    | Vellum.OpenApiProperty.Number
-    | Vellum.OpenApiProperty.String
-    | Vellum.OpenApiProperty.Boolean
-    | Vellum.OpenApiProperty.OneOf
-    | Vellum.OpenApiProperty.Const
-    | Vellum.OpenApiProperty.Ref;
-
-export declare namespace OpenApiProperty {
-    interface Array extends Vellum.OpenApiArrayProperty {
-        type: "array";
-    }
-
-    interface Object_ extends Vellum.OpenApiObjectProperty {
-        type: "object";
-    }
-
-    interface Integer extends Vellum.OpenApiIntegerProperty {
-        type: "integer";
-    }
-
-    interface Number extends Vellum.OpenApiNumberProperty {
-        type: "number";
-    }
-
-    interface String extends Vellum.OpenApiStringProperty {
-        type: "string";
-    }
-
-    interface Boolean extends Vellum.OpenApiBooleanProperty {
-        type: "boolean";
-    }
-
-    interface OneOf extends Vellum.OpenApiOneOfProperty {
-        type: "oneOf";
-    }
-
-    interface Const extends Vellum.OpenApiConstProperty {
-        type: "const";
-    }
-
-    interface Ref extends Vellum.OpenApiRefProperty {
-        type: "ref";
-    }
-}
+    | Vellum.OpenApiArrayProperty
+    | Vellum.OpenApiObjectProperty
+    | Vellum.OpenApiIntegerProperty
+    | Vellum.OpenApiNumberProperty
+    | Vellum.OpenApiStringProperty
+    | Vellum.OpenApiBooleanProperty
+    | Vellum.OpenApiOneOfProperty
+    | Vellum.OpenApiConstProperty
+    | Vellum.OpenApiRefProperty;

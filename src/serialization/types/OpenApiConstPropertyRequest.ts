@@ -10,6 +10,7 @@ export const OpenApiConstPropertyRequest: core.serialization.ObjectSchema<
     serializers.OpenApiConstPropertyRequest.Raw,
     Vellum.OpenApiConstPropertyRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("const"),
     title: core.serialization.string().optional(),
     description: core.serialization.string().optional(),
     const: core.serialization.string(),
@@ -17,6 +18,7 @@ export const OpenApiConstPropertyRequest: core.serialization.ObjectSchema<
 
 export declare namespace OpenApiConstPropertyRequest {
     interface Raw {
+        type: "const";
         title?: string | null;
         description?: string | null;
         const: string;

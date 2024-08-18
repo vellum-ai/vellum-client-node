@@ -11,11 +11,13 @@ export const ReductoChunkingRequest: core.serialization.ObjectSchema<
     serializers.ReductoChunkingRequest.Raw,
     Vellum.ReductoChunkingRequest
 > = core.serialization.object({
+    chunkerName: core.serialization.property("chunker_name", core.serialization.stringLiteral("reducto-chunker")),
     chunkerConfig: core.serialization.property("chunker_config", ReductoChunkerConfigRequest.optional()),
 });
 
 export declare namespace ReductoChunkingRequest {
     interface Raw {
+        chunker_name: "reducto-chunker";
         chunker_config?: ReductoChunkerConfigRequest.Raw | null;
     }
 }

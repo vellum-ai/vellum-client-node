@@ -11,11 +11,13 @@ export const ArrayChatMessageContentRequest: core.serialization.ObjectSchema<
     serializers.ArrayChatMessageContentRequest.Raw,
     Vellum.ArrayChatMessageContentRequest
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(ArrayChatMessageContentItemRequest),
 });
 
 export declare namespace ArrayChatMessageContentRequest {
     interface Raw {
+        type: "ARRAY";
         value: ArrayChatMessageContentItemRequest.Raw[];
     }
 }

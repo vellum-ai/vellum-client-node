@@ -11,5 +11,6 @@ export interface ExecutionChatHistoryVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
+    type: "CHAT_HISTORY";
     value?: Vellum.ChatMessage[];
 }

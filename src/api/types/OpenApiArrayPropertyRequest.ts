@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * An OpenAPI specification of a property with type 'array'
  */
 export interface OpenApiArrayPropertyRequest {
+    type: "array";
     minItems?: number;
     maxItems?: number;
     uniqueItems?: boolean;

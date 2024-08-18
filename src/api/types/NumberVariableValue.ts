@@ -3,5 +3,6 @@
  */
 
 export interface NumberVariableValue {
+    type: "NUMBER";
     value?: number;
 }

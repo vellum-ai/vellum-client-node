@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * Reducto chunking
  */
 export interface ReductoChunkingRequest {
+    chunkerName: "reducto-chunker";
     chunkerConfig?: Vellum.ReductoChunkerConfigRequest;
 }

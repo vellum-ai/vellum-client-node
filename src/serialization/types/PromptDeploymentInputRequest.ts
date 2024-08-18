@@ -12,32 +12,8 @@ import { ChatHistoryInputRequest } from "./ChatHistoryInputRequest";
 export const PromptDeploymentInputRequest: core.serialization.Schema<
     serializers.PromptDeploymentInputRequest.Raw,
     Vellum.PromptDeploymentInputRequest
-> = core.serialization
-    .union("type", {
-        STRING: StringInputRequest,
-        JSON: JsonInputRequest,
-        CHAT_HISTORY: ChatHistoryInputRequest,
-    })
-    .transform<Vellum.PromptDeploymentInputRequest>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([StringInputRequest, JsonInputRequest, ChatHistoryInputRequest]);
 
 export declare namespace PromptDeploymentInputRequest {
-    type Raw =
-        | PromptDeploymentInputRequest.String
-        | PromptDeploymentInputRequest.Json
-        | PromptDeploymentInputRequest.ChatHistory;
-
-    interface String extends StringInputRequest.Raw {
-        type: "STRING";
-    }
-
-    interface Json extends JsonInputRequest.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends ChatHistoryInputRequest.Raw {
-        type: "CHAT_HISTORY";
-    }
+    type Raw = StringInputRequest.Raw | JsonInputRequest.Raw | ChatHistoryInputRequest.Raw;
 }

@@ -8,6 +8,7 @@ import * as Vellum from "../index";
  * Named Test Case value that is of type ARRAY
  */
 export interface NamedTestCaseArrayVariableValue {
+    type: "ARRAY";
     value?: Vellum.ArrayVellumValueItem[];
     name: string;
 }

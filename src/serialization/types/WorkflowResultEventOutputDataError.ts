@@ -17,6 +17,7 @@ export const WorkflowResultEventOutputDataError: core.serialization.ObjectSchema
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
+    type: core.serialization.stringLiteral("ERROR"),
     value: VellumError.optional(),
 });
 
@@ -27,6 +28,7 @@ export declare namespace WorkflowResultEventOutputDataError {
         state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
+        type: "ERROR";
         value?: VellumError.Raw | null;
     }
 }

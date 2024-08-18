@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * A function call value that is used in a chat message.
  */
 export interface FunctionCallChatMessageContent {
+    type: "FUNCTION_CALL";
     value: Vellum.FunctionCallChatMessageContentValue;
 }

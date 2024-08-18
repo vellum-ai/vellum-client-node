@@ -10,5 +10,6 @@ import * as Vellum from "../index";
 export interface TestSuiteTestCaseReplacedBulkResult {
     /** An ID that maps back to one of the initially supplied operations. Can be used to determine the result of a given operation. */
     id: string;
+    type: "REPLACED";
     data: Vellum.TestSuiteTestCaseReplacedBulkResultData;
 }

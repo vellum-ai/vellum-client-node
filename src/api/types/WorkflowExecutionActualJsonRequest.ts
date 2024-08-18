@@ -13,6 +13,7 @@ export interface WorkflowExecutionActualJsonRequest {
     metadata?: Record<string, unknown>;
     /** Optionally provide the timestamp representing when this feedback was collected. Used for reporting purposes. */
     timestamp?: number;
+    outputType: "JSON";
     /** Optionally provide the value that the output ideally should have been. */
     desiredOutputValue?: Record<string, unknown>;
 }

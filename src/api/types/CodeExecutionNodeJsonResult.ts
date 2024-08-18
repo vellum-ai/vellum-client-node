@@ -4,5 +4,6 @@
 
 export interface CodeExecutionNodeJsonResult {
     id: string;
+    type: "JSON";
     value?: unknown;
 }

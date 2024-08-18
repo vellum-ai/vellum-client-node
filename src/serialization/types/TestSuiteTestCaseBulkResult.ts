@@ -13,38 +13,17 @@ import { TestSuiteTestCaseRejectedBulkResult } from "./TestSuiteTestCaseRejected
 export const TestSuiteTestCaseBulkResult: core.serialization.Schema<
     serializers.TestSuiteTestCaseBulkResult.Raw,
     Vellum.TestSuiteTestCaseBulkResult
-> = core.serialization
-    .union("type", {
-        CREATED: TestSuiteTestCaseCreatedBulkResult,
-        REPLACED: TestSuiteTestCaseReplacedBulkResult,
-        DELETED: TestSuiteTestCaseDeletedBulkResult,
-        REJECTED: TestSuiteTestCaseRejectedBulkResult,
-    })
-    .transform<Vellum.TestSuiteTestCaseBulkResult>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    TestSuiteTestCaseCreatedBulkResult,
+    TestSuiteTestCaseReplacedBulkResult,
+    TestSuiteTestCaseDeletedBulkResult,
+    TestSuiteTestCaseRejectedBulkResult,
+]);
 
 export declare namespace TestSuiteTestCaseBulkResult {
     type Raw =
-        | TestSuiteTestCaseBulkResult.Created
-        | TestSuiteTestCaseBulkResult.Replaced
-        | TestSuiteTestCaseBulkResult.Deleted
-        | TestSuiteTestCaseBulkResult.Rejected;
-
-    interface Created extends TestSuiteTestCaseCreatedBulkResult.Raw {
-        type: "CREATED";
-    }
-
-    interface Replaced extends TestSuiteTestCaseReplacedBulkResult.Raw {
-        type: "REPLACED";
-    }
-
-    interface Deleted extends TestSuiteTestCaseDeletedBulkResult.Raw {
-        type: "DELETED";
-    }
-
-    interface Rejected extends TestSuiteTestCaseRejectedBulkResult.Raw {
-        type: "REJECTED";
-    }
+        | TestSuiteTestCaseCreatedBulkResult.Raw
+        | TestSuiteTestCaseReplacedBulkResult.Raw
+        | TestSuiteTestCaseDeletedBulkResult.Raw
+        | TestSuiteTestCaseRejectedBulkResult.Raw;
 }

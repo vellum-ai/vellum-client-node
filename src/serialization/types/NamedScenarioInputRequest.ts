@@ -12,32 +12,15 @@ import { NamedScenarioInputChatHistoryVariableValueRequest } from "./NamedScenar
 export const NamedScenarioInputRequest: core.serialization.Schema<
     serializers.NamedScenarioInputRequest.Raw,
     Vellum.NamedScenarioInputRequest
-> = core.serialization
-    .union("type", {
-        STRING: NamedScenarioInputStringVariableValueRequest,
-        JSON: NamedScenarioInputJsonVariableValueRequest,
-        CHAT_HISTORY: NamedScenarioInputChatHistoryVariableValueRequest,
-    })
-    .transform<Vellum.NamedScenarioInputRequest>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    NamedScenarioInputStringVariableValueRequest,
+    NamedScenarioInputJsonVariableValueRequest,
+    NamedScenarioInputChatHistoryVariableValueRequest,
+]);
 
 export declare namespace NamedScenarioInputRequest {
     type Raw =
-        | NamedScenarioInputRequest.String
-        | NamedScenarioInputRequest.Json
-        | NamedScenarioInputRequest.ChatHistory;
-
-    interface String extends NamedScenarioInputStringVariableValueRequest.Raw {
-        type: "STRING";
-    }
-
-    interface Json extends NamedScenarioInputJsonVariableValueRequest.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends NamedScenarioInputChatHistoryVariableValueRequest.Raw {
-        type: "CHAT_HISTORY";
-    }
+        | NamedScenarioInputStringVariableValueRequest.Raw
+        | NamedScenarioInputJsonVariableValueRequest.Raw
+        | NamedScenarioInputChatHistoryVariableValueRequest.Raw;
 }

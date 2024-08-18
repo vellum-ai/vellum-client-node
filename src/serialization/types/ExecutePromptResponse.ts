@@ -11,24 +11,8 @@ import { RejectedExecutePromptResponse } from "./RejectedExecutePromptResponse";
 export const ExecutePromptResponse: core.serialization.Schema<
     serializers.ExecutePromptResponse.Raw,
     Vellum.ExecutePromptResponse
-> = core.serialization
-    .union("state", {
-        FULFILLED: FulfilledExecutePromptResponse,
-        REJECTED: RejectedExecutePromptResponse,
-    })
-    .transform<Vellum.ExecutePromptResponse>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([FulfilledExecutePromptResponse, RejectedExecutePromptResponse]);
 
 export declare namespace ExecutePromptResponse {
-    type Raw = ExecutePromptResponse.Fulfilled | ExecutePromptResponse.Rejected;
-
-    interface Fulfilled extends FulfilledExecutePromptResponse.Raw {
-        state: "FULFILLED";
-    }
-
-    interface Rejected extends RejectedExecutePromptResponse.Raw {
-        state: "REJECTED";
-    }
+    type Raw = FulfilledExecutePromptResponse.Raw | RejectedExecutePromptResponse.Raw;
 }

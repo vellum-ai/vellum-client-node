@@ -11,5 +11,6 @@ export interface WorkflowExecutionNodeResultEvent {
     executionId: string;
     runId?: string;
     externalId?: string;
+    type: "NODE";
     data: Vellum.WorkflowNodeResultEvent;
 }

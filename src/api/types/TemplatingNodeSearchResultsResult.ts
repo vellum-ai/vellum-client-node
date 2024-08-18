@@ -6,5 +6,6 @@ import * as Vellum from "../index";
 
 export interface TemplatingNodeSearchResultsResult {
     id: string;
+    type: "SEARCH_RESULTS";
     value?: Vellum.SearchResult[];
 }

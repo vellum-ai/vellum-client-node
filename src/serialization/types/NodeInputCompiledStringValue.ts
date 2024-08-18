@@ -12,6 +12,7 @@ export const NodeInputCompiledStringValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
+    type: core.serialization.stringLiteral("STRING"),
     value: core.serialization.string().optional(),
 });
 
@@ -19,6 +20,7 @@ export declare namespace NodeInputCompiledStringValue {
     interface Raw {
         node_input_id: string;
         key: string;
+        type: "STRING";
         value?: string | null;
     }
 }

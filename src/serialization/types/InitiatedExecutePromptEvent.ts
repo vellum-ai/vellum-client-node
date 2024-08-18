@@ -11,12 +11,14 @@ export const InitiatedExecutePromptEvent: core.serialization.ObjectSchema<
     serializers.InitiatedExecutePromptEvent.Raw,
     Vellum.InitiatedExecutePromptEvent
 > = core.serialization.object({
+    state: core.serialization.stringLiteral("INITIATED"),
     meta: InitiatedPromptExecutionMeta.optional(),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
 });
 
 export declare namespace InitiatedExecutePromptEvent {
     interface Raw {
+        state: "INITIATED";
         meta?: InitiatedPromptExecutionMeta.Raw | null;
         execution_id: string;
     }

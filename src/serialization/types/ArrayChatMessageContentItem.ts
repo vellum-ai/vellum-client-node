@@ -12,32 +12,12 @@ import { ImageChatMessageContent } from "./ImageChatMessageContent";
 export const ArrayChatMessageContentItem: core.serialization.Schema<
     serializers.ArrayChatMessageContentItem.Raw,
     Vellum.ArrayChatMessageContentItem
-> = core.serialization
-    .union("type", {
-        STRING: StringChatMessageContent,
-        FUNCTION_CALL: FunctionCallChatMessageContent,
-        IMAGE: ImageChatMessageContent,
-    })
-    .transform<Vellum.ArrayChatMessageContentItem>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    StringChatMessageContent,
+    FunctionCallChatMessageContent,
+    ImageChatMessageContent,
+]);
 
 export declare namespace ArrayChatMessageContentItem {
-    type Raw =
-        | ArrayChatMessageContentItem.String
-        | ArrayChatMessageContentItem.FunctionCall
-        | ArrayChatMessageContentItem.Image;
-
-    interface String extends StringChatMessageContent.Raw {
-        type: "STRING";
-    }
-
-    interface FunctionCall extends FunctionCallChatMessageContent.Raw {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Image extends ImageChatMessageContent.Raw {
-        type: "IMAGE";
-    }
+    type Raw = StringChatMessageContent.Raw | FunctionCallChatMessageContent.Raw | ImageChatMessageContent.Raw;
 }

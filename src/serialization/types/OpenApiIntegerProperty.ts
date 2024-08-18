@@ -10,6 +10,7 @@ export const OpenApiIntegerProperty: core.serialization.ObjectSchema<
     serializers.OpenApiIntegerProperty.Raw,
     Vellum.OpenApiIntegerProperty
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("integer"),
     minimum: core.serialization.number().optional(),
     maximum: core.serialization.number().optional(),
     exclusiveMinimum: core.serialization.property("exclusive_minimum", core.serialization.boolean().optional()),
@@ -21,6 +22,7 @@ export const OpenApiIntegerProperty: core.serialization.ObjectSchema<
 
 export declare namespace OpenApiIntegerProperty {
     interface Raw {
+        type: "integer";
         minimum?: number | null;
         maximum?: number | null;
         exclusive_minimum?: boolean | null;

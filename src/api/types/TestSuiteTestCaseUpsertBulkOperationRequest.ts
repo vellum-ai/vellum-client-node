@@ -10,5 +10,6 @@ import * as Vellum from "../index";
 export interface TestSuiteTestCaseUpsertBulkOperationRequest {
     /** An ID representing this specific operation. Can later be used to look up information about the operation's success in the response. */
     id: string;
+    type: "UPSERT";
     data: Vellum.UpsertTestSuiteTestCaseRequest;
 }

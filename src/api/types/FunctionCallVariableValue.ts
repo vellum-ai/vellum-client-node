@@ -5,5 +5,6 @@
 import * as Vellum from "../index";
 
 export interface FunctionCallVariableValue {
+    type: "FUNCTION_CALL";
     value?: Vellum.FunctionCall;
 }

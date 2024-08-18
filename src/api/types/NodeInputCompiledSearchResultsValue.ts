@@ -7,5 +7,6 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledSearchResultsValue {
     nodeInputId: string;
     key: string;
+    type: "SEARCH_RESULTS";
     value?: Vellum.SearchResult[];
 }

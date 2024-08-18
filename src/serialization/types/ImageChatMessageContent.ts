@@ -11,11 +11,13 @@ export const ImageChatMessageContent: core.serialization.ObjectSchema<
     serializers.ImageChatMessageContent.Raw,
     Vellum.ImageChatMessageContent
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("IMAGE"),
     value: VellumImage,
 });
 
 export declare namespace ImageChatMessageContent {
     interface Raw {
+        type: "IMAGE";
         value: VellumImage.Raw;
     }
 }

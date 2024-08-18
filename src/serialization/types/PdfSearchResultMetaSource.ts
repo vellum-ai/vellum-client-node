@@ -10,12 +10,14 @@ export const PdfSearchResultMetaSource: core.serialization.ObjectSchema<
     serializers.PdfSearchResultMetaSource.Raw,
     Vellum.PdfSearchResultMetaSource
 > = core.serialization.object({
+    documentType: core.serialization.property("document_type", core.serialization.stringLiteral("PDF")),
     startPageNum: core.serialization.property("start_page_num", core.serialization.number().optional()),
     endPageNum: core.serialization.property("end_page_num", core.serialization.number().optional()),
 });
 
 export declare namespace PdfSearchResultMetaSource {
     interface Raw {
+        document_type: "PDF";
         start_page_num?: number | null;
         end_page_num?: number | null;
     }

@@ -11,24 +11,8 @@ import { WorkflowExecutionNodeResultEvent } from "./WorkflowExecutionNodeResultE
 export const WorkflowStreamEvent: core.serialization.Schema<
     serializers.WorkflowStreamEvent.Raw,
     Vellum.WorkflowStreamEvent
-> = core.serialization
-    .union("type", {
-        WORKFLOW: WorkflowExecutionWorkflowResultEvent,
-        NODE: WorkflowExecutionNodeResultEvent,
-    })
-    .transform<Vellum.WorkflowStreamEvent>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([WorkflowExecutionWorkflowResultEvent, WorkflowExecutionNodeResultEvent]);
 
 export declare namespace WorkflowStreamEvent {
-    type Raw = WorkflowStreamEvent.Workflow | WorkflowStreamEvent.Node;
-
-    interface Workflow extends WorkflowExecutionWorkflowResultEvent.Raw {
-        type: "WORKFLOW";
-    }
-
-    interface Node extends WorkflowExecutionNodeResultEvent.Raw {
-        type: "NODE";
-    }
+    type Raw = WorkflowExecutionWorkflowResultEvent.Raw | WorkflowExecutionNodeResultEvent.Raw;
 }

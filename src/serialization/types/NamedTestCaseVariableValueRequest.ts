@@ -17,62 +17,25 @@ import { NamedTestCaseArrayVariableValueRequest } from "./NamedTestCaseArrayVari
 export const NamedTestCaseVariableValueRequest: core.serialization.Schema<
     serializers.NamedTestCaseVariableValueRequest.Raw,
     Vellum.NamedTestCaseVariableValueRequest
-> = core.serialization
-    .union("type", {
-        STRING: NamedTestCaseStringVariableValueRequest,
-        NUMBER: NamedTestCaseNumberVariableValueRequest,
-        JSON: NamedTestCaseJsonVariableValueRequest,
-        CHAT_HISTORY: NamedTestCaseChatHistoryVariableValueRequest,
-        SEARCH_RESULTS: NamedTestCaseSearchResultsVariableValueRequest,
-        ERROR: NamedTestCaseErrorVariableValueRequest,
-        FUNCTION_CALL: NamedTestCaseFunctionCallVariableValueRequest,
-        ARRAY: NamedTestCaseArrayVariableValueRequest,
-    })
-    .transform<Vellum.NamedTestCaseVariableValueRequest>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    NamedTestCaseStringVariableValueRequest,
+    NamedTestCaseNumberVariableValueRequest,
+    NamedTestCaseJsonVariableValueRequest,
+    NamedTestCaseChatHistoryVariableValueRequest,
+    NamedTestCaseSearchResultsVariableValueRequest,
+    NamedTestCaseErrorVariableValueRequest,
+    NamedTestCaseFunctionCallVariableValueRequest,
+    NamedTestCaseArrayVariableValueRequest,
+]);
 
 export declare namespace NamedTestCaseVariableValueRequest {
     type Raw =
-        | NamedTestCaseVariableValueRequest.String
-        | NamedTestCaseVariableValueRequest.Number
-        | NamedTestCaseVariableValueRequest.Json
-        | NamedTestCaseVariableValueRequest.ChatHistory
-        | NamedTestCaseVariableValueRequest.SearchResults
-        | NamedTestCaseVariableValueRequest.Error
-        | NamedTestCaseVariableValueRequest.FunctionCall
-        | NamedTestCaseVariableValueRequest.Array;
-
-    interface String extends NamedTestCaseStringVariableValueRequest.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends NamedTestCaseNumberVariableValueRequest.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends NamedTestCaseJsonVariableValueRequest.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends NamedTestCaseChatHistoryVariableValueRequest.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends NamedTestCaseSearchResultsVariableValueRequest.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error extends NamedTestCaseErrorVariableValueRequest.Raw {
-        type: "ERROR";
-    }
-
-    interface FunctionCall extends NamedTestCaseFunctionCallVariableValueRequest.Raw {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Array extends NamedTestCaseArrayVariableValueRequest.Raw {
-        type: "ARRAY";
-    }
+        | NamedTestCaseStringVariableValueRequest.Raw
+        | NamedTestCaseNumberVariableValueRequest.Raw
+        | NamedTestCaseJsonVariableValueRequest.Raw
+        | NamedTestCaseChatHistoryVariableValueRequest.Raw
+        | NamedTestCaseSearchResultsVariableValueRequest.Raw
+        | NamedTestCaseErrorVariableValueRequest.Raw
+        | NamedTestCaseFunctionCallVariableValueRequest.Raw
+        | NamedTestCaseArrayVariableValueRequest.Raw;
 }

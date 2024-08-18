@@ -13,6 +13,7 @@ export const WorkflowOutputFunctionCall: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
+    type: core.serialization.stringLiteral("FUNCTION_CALL"),
     value: FunctionCall.optional(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace WorkflowOutputFunctionCall {
     interface Raw {
         id: string;
         name: string;
+        type: "FUNCTION_CALL";
         value?: FunctionCall.Raw | null;
     }
 }

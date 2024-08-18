@@ -15,6 +15,7 @@ export const StreamingWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
+    state: core.serialization.stringLiteral("STREAMING"),
     ts: core.serialization.date().optional(),
     data: WorkflowNodeResultData.optional(),
     sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
@@ -27,6 +28,7 @@ export declare namespace StreamingWorkflowNodeResultEvent {
         id: string;
         node_id: string;
         node_result_id: string;
+        state: "STREAMING";
         ts?: string | null;
         data?: WorkflowNodeResultData.Raw | null;
         source_execution_id?: string | null;

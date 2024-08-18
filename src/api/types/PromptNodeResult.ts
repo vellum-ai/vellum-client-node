@@ -8,5 +8,6 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Prompt Node.
  */
 export interface PromptNodeResult {
+    type: "PROMPT";
     data: Vellum.PromptNodeResultData;
 }

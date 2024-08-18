@@ -6,6 +6,7 @@
  * An OpenAPI specification of a property with type 'integer'
  */
 export interface OpenApiIntegerProperty {
+    type: "integer";
     minimum?: number;
     maximum?: number;
     exclusiveMinimum?: boolean;

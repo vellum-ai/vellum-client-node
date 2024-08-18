@@ -17,62 +17,25 @@ import { TemplatingNodeFunctionCallResult } from "./TemplatingNodeFunctionCallRe
 export const TemplatingNodeResultOutput: core.serialization.Schema<
     serializers.TemplatingNodeResultOutput.Raw,
     Vellum.TemplatingNodeResultOutput
-> = core.serialization
-    .union("type", {
-        STRING: TemplatingNodeStringResult,
-        NUMBER: TemplatingNodeNumberResult,
-        JSON: TemplatingNodeJsonResult,
-        CHAT_HISTORY: TemplatingNodeChatHistoryResult,
-        SEARCH_RESULTS: TemplatingNodeSearchResultsResult,
-        ERROR: TemplatingNodeErrorResult,
-        ARRAY: TemplatingNodeArrayResult,
-        FUNCTION_CALL: TemplatingNodeFunctionCallResult,
-    })
-    .transform<Vellum.TemplatingNodeResultOutput>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    TemplatingNodeStringResult,
+    TemplatingNodeNumberResult,
+    TemplatingNodeJsonResult,
+    TemplatingNodeChatHistoryResult,
+    TemplatingNodeSearchResultsResult,
+    TemplatingNodeErrorResult,
+    TemplatingNodeArrayResult,
+    TemplatingNodeFunctionCallResult,
+]);
 
 export declare namespace TemplatingNodeResultOutput {
     type Raw =
-        | TemplatingNodeResultOutput.String
-        | TemplatingNodeResultOutput.Number
-        | TemplatingNodeResultOutput.Json
-        | TemplatingNodeResultOutput.ChatHistory
-        | TemplatingNodeResultOutput.SearchResults
-        | TemplatingNodeResultOutput.Error
-        | TemplatingNodeResultOutput.Array
-        | TemplatingNodeResultOutput.FunctionCall;
-
-    interface String extends TemplatingNodeStringResult.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends TemplatingNodeNumberResult.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends TemplatingNodeJsonResult.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends TemplatingNodeChatHistoryResult.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends TemplatingNodeSearchResultsResult.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error extends TemplatingNodeErrorResult.Raw {
-        type: "ERROR";
-    }
-
-    interface Array extends TemplatingNodeArrayResult.Raw {
-        type: "ARRAY";
-    }
-
-    interface FunctionCall extends TemplatingNodeFunctionCallResult.Raw {
-        type: "FUNCTION_CALL";
-    }
+        | TemplatingNodeStringResult.Raw
+        | TemplatingNodeNumberResult.Raw
+        | TemplatingNodeJsonResult.Raw
+        | TemplatingNodeChatHistoryResult.Raw
+        | TemplatingNodeSearchResultsResult.Raw
+        | TemplatingNodeErrorResult.Raw
+        | TemplatingNodeArrayResult.Raw
+        | TemplatingNodeFunctionCallResult.Raw;
 }

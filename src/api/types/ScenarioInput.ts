@@ -4,18 +4,7 @@
 
 import * as Vellum from "../index";
 
-export type ScenarioInput = Vellum.ScenarioInput.String | Vellum.ScenarioInput.Json | Vellum.ScenarioInput.ChatHistory;
-
-export declare namespace ScenarioInput {
-    interface String extends Vellum.ScenarioInputStringVariableValue {
-        type: "STRING";
-    }
-
-    interface Json extends Vellum.ScenarioInputJsonVariableValue {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends Vellum.ScenarioInputChatHistoryVariableValue {
-        type: "CHAT_HISTORY";
-    }
-}
+export type ScenarioInput =
+    | Vellum.ScenarioInputStringVariableValue
+    | Vellum.ScenarioInputJsonVariableValue
+    | Vellum.ScenarioInputChatHistoryVariableValue;

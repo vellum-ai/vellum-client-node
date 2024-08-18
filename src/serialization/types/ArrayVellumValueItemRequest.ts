@@ -15,50 +15,21 @@ import { ErrorVellumValueRequest } from "./ErrorVellumValueRequest";
 export const ArrayVellumValueItemRequest: core.serialization.Schema<
     serializers.ArrayVellumValueItemRequest.Raw,
     Vellum.ArrayVellumValueItemRequest
-> = core.serialization
-    .union("type", {
-        STRING: StringVellumValueRequest,
-        NUMBER: NumberVellumValueRequest,
-        JSON: JsonVellumValueRequest,
-        IMAGE: ImageVellumValueRequest,
-        FUNCTION_CALL: FunctionCallVellumValueRequest,
-        ERROR: ErrorVellumValueRequest,
-    })
-    .transform<Vellum.ArrayVellumValueItemRequest>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    StringVellumValueRequest,
+    NumberVellumValueRequest,
+    JsonVellumValueRequest,
+    ImageVellumValueRequest,
+    FunctionCallVellumValueRequest,
+    ErrorVellumValueRequest,
+]);
 
 export declare namespace ArrayVellumValueItemRequest {
     type Raw =
-        | ArrayVellumValueItemRequest.String
-        | ArrayVellumValueItemRequest.Number
-        | ArrayVellumValueItemRequest.Json
-        | ArrayVellumValueItemRequest.Image
-        | ArrayVellumValueItemRequest.FunctionCall
-        | ArrayVellumValueItemRequest.Error;
-
-    interface String extends StringVellumValueRequest.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends NumberVellumValueRequest.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends JsonVellumValueRequest.Raw {
-        type: "JSON";
-    }
-
-    interface Image extends ImageVellumValueRequest.Raw {
-        type: "IMAGE";
-    }
-
-    interface FunctionCall extends FunctionCallVellumValueRequest.Raw {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Error extends ErrorVellumValueRequest.Raw {
-        type: "ERROR";
-    }
+        | StringVellumValueRequest.Raw
+        | NumberVellumValueRequest.Raw
+        | JsonVellumValueRequest.Raw
+        | ImageVellumValueRequest.Raw
+        | FunctionCallVellumValueRequest.Raw
+        | ErrorVellumValueRequest.Raw;
 }

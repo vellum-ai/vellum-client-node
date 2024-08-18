@@ -17,62 +17,25 @@ import { TestSuiteRunExecutionArrayOutput } from "./TestSuiteRunExecutionArrayOu
 export const TestSuiteRunExecutionOutput: core.serialization.Schema<
     serializers.TestSuiteRunExecutionOutput.Raw,
     Vellum.TestSuiteRunExecutionOutput
-> = core.serialization
-    .union("type", {
-        STRING: TestSuiteRunExecutionStringOutput,
-        NUMBER: TestSuiteRunExecutionNumberOutput,
-        JSON: TestSuiteRunExecutionJsonOutput,
-        CHAT_HISTORY: TestSuiteRunExecutionChatHistoryOutput,
-        SEARCH_RESULTS: TestSuiteRunExecutionSearchResultsOutput,
-        ERROR: TestSuiteRunExecutionErrorOutput,
-        FUNCTION_CALL: TestSuiteRunExecutionFunctionCallOutput,
-        ARRAY: TestSuiteRunExecutionArrayOutput,
-    })
-    .transform<Vellum.TestSuiteRunExecutionOutput>({
-        transform: (value) => value,
-        untransform: (value) => value,
-    });
+> = core.serialization.undiscriminatedUnion([
+    TestSuiteRunExecutionStringOutput,
+    TestSuiteRunExecutionNumberOutput,
+    TestSuiteRunExecutionJsonOutput,
+    TestSuiteRunExecutionChatHistoryOutput,
+    TestSuiteRunExecutionSearchResultsOutput,
+    TestSuiteRunExecutionErrorOutput,
+    TestSuiteRunExecutionFunctionCallOutput,
+    TestSuiteRunExecutionArrayOutput,
+]);
 
 export declare namespace TestSuiteRunExecutionOutput {
     type Raw =
-        | TestSuiteRunExecutionOutput.String
-        | TestSuiteRunExecutionOutput.Number
-        | TestSuiteRunExecutionOutput.Json
-        | TestSuiteRunExecutionOutput.ChatHistory
-        | TestSuiteRunExecutionOutput.SearchResults
-        | TestSuiteRunExecutionOutput.Error
-        | TestSuiteRunExecutionOutput.FunctionCall
-        | TestSuiteRunExecutionOutput.Array;
-
-    interface String extends TestSuiteRunExecutionStringOutput.Raw {
-        type: "STRING";
-    }
-
-    interface Number extends TestSuiteRunExecutionNumberOutput.Raw {
-        type: "NUMBER";
-    }
-
-    interface Json extends TestSuiteRunExecutionJsonOutput.Raw {
-        type: "JSON";
-    }
-
-    interface ChatHistory extends TestSuiteRunExecutionChatHistoryOutput.Raw {
-        type: "CHAT_HISTORY";
-    }
-
-    interface SearchResults extends TestSuiteRunExecutionSearchResultsOutput.Raw {
-        type: "SEARCH_RESULTS";
-    }
-
-    interface Error extends TestSuiteRunExecutionErrorOutput.Raw {
-        type: "ERROR";
-    }
-
-    interface FunctionCall extends TestSuiteRunExecutionFunctionCallOutput.Raw {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Array extends TestSuiteRunExecutionArrayOutput.Raw {
-        type: "ARRAY";
-    }
+        | TestSuiteRunExecutionStringOutput.Raw
+        | TestSuiteRunExecutionNumberOutput.Raw
+        | TestSuiteRunExecutionJsonOutput.Raw
+        | TestSuiteRunExecutionChatHistoryOutput.Raw
+        | TestSuiteRunExecutionSearchResultsOutput.Raw
+        | TestSuiteRunExecutionErrorOutput.Raw
+        | TestSuiteRunExecutionFunctionCallOutput.Raw
+        | TestSuiteRunExecutionArrayOutput.Raw;
 }

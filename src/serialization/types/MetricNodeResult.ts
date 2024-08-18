@@ -9,8 +9,12 @@ import * as core from "../../core";
 export const MetricNodeResult: core.serialization.ObjectSchema<
     serializers.MetricNodeResult.Raw,
     Vellum.MetricNodeResult
-> = core.serialization.object({});
+> = core.serialization.object({
+    type: core.serialization.stringLiteral("METRIC"),
+});
 
 export declare namespace MetricNodeResult {
-    interface Raw {}
+    interface Raw {
+        type: "METRIC";
+    }
 }

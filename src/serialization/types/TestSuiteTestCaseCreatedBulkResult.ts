@@ -12,12 +12,14 @@ export const TestSuiteTestCaseCreatedBulkResult: core.serialization.ObjectSchema
     Vellum.TestSuiteTestCaseCreatedBulkResult
 > = core.serialization.object({
     id: core.serialization.string(),
+    type: core.serialization.stringLiteral("CREATED"),
     data: TestSuiteTestCaseCreatedBulkResultData,
 });
 
 export declare namespace TestSuiteTestCaseCreatedBulkResult {
     interface Raw {
         id: string;
+        type: "CREATED";
         data: TestSuiteTestCaseCreatedBulkResultData.Raw;
     }
 }

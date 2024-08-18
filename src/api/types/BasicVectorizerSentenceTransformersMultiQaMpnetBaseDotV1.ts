@@ -6,5 +6,6 @@
  * Basic vectorizer for sentence-transformers/multi-qa-mpnet-base-dot-v1.
  */
 export interface BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1 {
+    modelName: "sentence-transformers/multi-qa-mpnet-base-dot-v1";
     config?: Record<string, unknown>;
 }

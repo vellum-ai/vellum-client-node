@@ -4,5 +4,6 @@
 
 export interface CodeExecutionNodeStringResult {
     id: string;
+    type: "STRING";
     value?: string;
 }

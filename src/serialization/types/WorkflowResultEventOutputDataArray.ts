@@ -17,6 +17,7 @@ export const WorkflowResultEventOutputDataArray: core.serialization.ObjectSchema
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     delta: core.serialization.string().optional(),
+    type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(ArrayVariableValueItem).optional(),
 });
 
@@ -27,6 +28,7 @@ export declare namespace WorkflowResultEventOutputDataArray {
         state: WorkflowNodeResultEventState.Raw;
         node_id: string;
         delta?: string | null;
+        type: "ARRAY";
         value?: ArrayVariableValueItem.Raw[] | null;
     }
 }

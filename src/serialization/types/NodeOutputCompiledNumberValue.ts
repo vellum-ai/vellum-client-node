@@ -11,6 +11,7 @@ export const NodeOutputCompiledNumberValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledNumberValue.Raw,
     Vellum.NodeOutputCompiledNumberValue
 > = core.serialization.object({
+    type: core.serialization.stringLiteral("NUMBER"),
     value: core.serialization.number().optional(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
@@ -18,6 +19,7 @@ export const NodeOutputCompiledNumberValue: core.serialization.ObjectSchema<
 
 export declare namespace NodeOutputCompiledNumberValue {
     interface Raw {
+        type: "NUMBER";
         value?: number | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;

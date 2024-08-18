@@ -5,25 +5,7 @@
 import * as Vellum from "../index";
 
 export type ChatMessageContentRequest =
-    | Vellum.ChatMessageContentRequest.String
-    | Vellum.ChatMessageContentRequest.FunctionCall
-    | Vellum.ChatMessageContentRequest.Array
-    | Vellum.ChatMessageContentRequest.Image;
-
-export declare namespace ChatMessageContentRequest {
-    interface String extends Vellum.StringChatMessageContentRequest {
-        type: "STRING";
-    }
-
-    interface FunctionCall extends Vellum.FunctionCallChatMessageContentRequest {
-        type: "FUNCTION_CALL";
-    }
-
-    interface Array extends Vellum.ArrayChatMessageContentRequest {
-        type: "ARRAY";
-    }
-
-    interface Image extends Vellum.ImageChatMessageContentRequest {
-        type: "IMAGE";
-    }
-}
+    | Vellum.StringChatMessageContentRequest
+    | Vellum.FunctionCallChatMessageContentRequest
+    | Vellum.ArrayChatMessageContentRequest
+    | Vellum.ImageChatMessageContentRequest;

@@ -12,10 +12,12 @@ export const OpenAiVectorizerTextEmbedding3Large: core.serialization.ObjectSchem
     Vellum.OpenAiVectorizerTextEmbedding3Large
 > = core.serialization.object({
     config: OpenAiVectorizerConfig,
+    modelName: core.serialization.property("model_name", core.serialization.stringLiteral("text-embedding-3-large")),
 });
 
 export declare namespace OpenAiVectorizerTextEmbedding3Large {
     interface Raw {
         config: OpenAiVectorizerConfig.Raw;
+        model_name: "text-embedding-3-large";
     }
 }
