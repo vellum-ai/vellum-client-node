@@ -12,7 +12,7 @@ import * as errors from "../../../../errors/index";
 export declare namespace MlModels {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
@@ -26,7 +26,7 @@ export declare namespace MlModels {
 }
 
 export class MlModels {
-    constructor(protected readonly _options: MlModels.Options) {}
+    constructor(protected readonly _options: MlModels.Options = {}) {}
 
     /**
      * List all ML Models that your Workspace has access to.
@@ -65,8 +65,8 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -145,8 +145,8 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -209,8 +209,8 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -277,8 +277,8 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -346,8 +346,8 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
