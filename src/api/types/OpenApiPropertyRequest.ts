@@ -13,4 +13,5 @@ export type OpenApiPropertyRequest =
     | Vellum.OpenApiBooleanPropertyRequest
     | Vellum.OpenApiOneOfPropertyRequest
     | Vellum.OpenApiConstPropertyRequest
-    | Vellum.OpenApiRefPropertyRequest;
+    | Vellum.OpenApiRefPropertyRequest
+    | Vellum.OpenApiEnumPropertyRequest;

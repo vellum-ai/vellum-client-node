@@ -17,6 +17,7 @@ export const MlModelFeature: core.serialization.Schema<serializers.MlModelFeatur
         "CHAT_MESSAGE_IMAGE",
         "FUNCTION_DEFINITION",
         "STREAMING_SUPPORT",
+        "PROMPT_CACHING_SUPPORT",
     ]);
 
 export declare namespace MlModelFeature {
@@ -29,5 +30,6 @@ export declare namespace MlModelFeature {
         | "CHAT_MESSAGE_FUNCTION_CALL"
         | "CHAT_MESSAGE_IMAGE"
         | "FUNCTION_DEFINITION"
-        | "STREAMING_SUPPORT";
+        | "STREAMING_SUPPORT"
+        | "PROMPT_CACHING_SUPPORT";
 }

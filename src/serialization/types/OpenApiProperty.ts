@@ -11,6 +11,7 @@ import { OpenApiStringProperty } from "./OpenApiStringProperty";
 import { OpenApiBooleanProperty } from "./OpenApiBooleanProperty";
 import { OpenApiConstProperty } from "./OpenApiConstProperty";
 import { OpenApiRefProperty } from "./OpenApiRefProperty";
+import { OpenApiEnumProperty } from "./OpenApiEnumProperty";
 
 export const OpenApiProperty: core.serialization.Schema<serializers.OpenApiProperty.Raw, Vellum.OpenApiProperty> =
     core.serialization.undiscriminatedUnion([
@@ -23,6 +24,7 @@ export const OpenApiProperty: core.serialization.Schema<serializers.OpenApiPrope
         core.serialization.lazyObject(() => serializers.OpenApiOneOfProperty),
         OpenApiConstProperty,
         OpenApiRefProperty,
+        OpenApiEnumProperty,
     ]);
 
 export declare namespace OpenApiProperty {
@@ -35,5 +37,6 @@ export declare namespace OpenApiProperty {
         | OpenApiBooleanProperty.Raw
         | serializers.OpenApiOneOfProperty.Raw
         | OpenApiConstProperty.Raw
-        | OpenApiRefProperty.Raw;
+        | OpenApiRefProperty.Raw
+        | OpenApiEnumProperty.Raw;
 }

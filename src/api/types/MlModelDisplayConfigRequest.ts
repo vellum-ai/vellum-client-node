@@ -8,6 +8,6 @@ export interface MlModelDisplayConfigRequest {
     label: string;
     description: string;
     tags: Vellum.MlModelDisplayTag[];
-    /** Can only be set when using an internal service token. */
+    /** For internal use only. */
     defaultDisplayPriority?: number;
 }

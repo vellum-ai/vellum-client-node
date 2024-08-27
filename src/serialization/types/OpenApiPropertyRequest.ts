@@ -11,6 +11,7 @@ import { OpenApiStringPropertyRequest } from "./OpenApiStringPropertyRequest";
 import { OpenApiBooleanPropertyRequest } from "./OpenApiBooleanPropertyRequest";
 import { OpenApiConstPropertyRequest } from "./OpenApiConstPropertyRequest";
 import { OpenApiRefPropertyRequest } from "./OpenApiRefPropertyRequest";
+import { OpenApiEnumPropertyRequest } from "./OpenApiEnumPropertyRequest";
 
 export const OpenApiPropertyRequest: core.serialization.Schema<
     serializers.OpenApiPropertyRequest.Raw,
@@ -25,6 +26,7 @@ export const OpenApiPropertyRequest: core.serialization.Schema<
     core.serialization.lazyObject(() => serializers.OpenApiOneOfPropertyRequest),
     OpenApiConstPropertyRequest,
     OpenApiRefPropertyRequest,
+    OpenApiEnumPropertyRequest,
 ]);
 
 export declare namespace OpenApiPropertyRequest {
@@ -37,5 +39,6 @@ export declare namespace OpenApiPropertyRequest {
         | OpenApiBooleanPropertyRequest.Raw
         | serializers.OpenApiOneOfPropertyRequest.Raw
         | OpenApiConstPropertyRequest.Raw
-        | OpenApiRefPropertyRequest.Raw;
+        | OpenApiRefPropertyRequest.Raw
+        | OpenApiEnumPropertyRequest.Raw;
 }
