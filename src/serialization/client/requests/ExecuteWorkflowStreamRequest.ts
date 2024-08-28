@@ -26,6 +26,7 @@ export const ExecuteWorkflowStreamRequest: core.serialization.Schema<
         "event_types",
         core.serialization.list(WorkflowExecutionEventType).optional()
     ),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
 });
 
 export declare namespace ExecuteWorkflowStreamRequest {
@@ -37,5 +38,6 @@ export declare namespace ExecuteWorkflowStreamRequest {
         release_tag?: string | null;
         external_id?: string | null;
         event_types?: WorkflowExecutionEventType.Raw[] | null;
+        metadata?: Record<string, unknown> | null;
     }
 }
