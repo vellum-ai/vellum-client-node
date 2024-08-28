@@ -13,6 +13,14 @@ export const MlModelUsage: core.serialization.ObjectSchema<serializers.MlModelUs
         inputCharCount: core.serialization.property("input_char_count", core.serialization.number().optional()),
         outputCharCount: core.serialization.property("output_char_count", core.serialization.number().optional()),
         computeNanos: core.serialization.property("compute_nanos", core.serialization.number().optional()),
+        cacheCreationInputTokens: core.serialization.property(
+            "cache_creation_input_tokens",
+            core.serialization.number().optional()
+        ),
+        cacheReadInputTokens: core.serialization.property(
+            "cache_read_input_tokens",
+            core.serialization.number().optional()
+        ),
     });
 
 export declare namespace MlModelUsage {
@@ -22,5 +30,7 @@ export declare namespace MlModelUsage {
         input_char_count?: number | null;
         output_char_count?: number | null;
         compute_nanos?: number | null;
+        cache_creation_input_tokens?: number | null;
+        cache_read_input_tokens?: number | null;
     }
 }

@@ -12,6 +12,7 @@
  * - `CHAT_MESSAGE_IMAGE` - Chat Message Image
  * - `FUNCTION_DEFINITION` - Function Definition
  * - `STREAMING_SUPPORT` - Streaming Support
+ * - `PROMPT_CACHING_SUPPORT` - Prompt Caching Support
  */
 export type MlModelFeature =
     | "TEXT"
@@ -22,7 +23,8 @@ export type MlModelFeature =
     | "CHAT_MESSAGE_FUNCTION_CALL"
     | "CHAT_MESSAGE_IMAGE"
     | "FUNCTION_DEFINITION"
-    | "STREAMING_SUPPORT";
+    | "STREAMING_SUPPORT"
+    | "PROMPT_CACHING_SUPPORT";
 
 export const MlModelFeature = {
     Text: "TEXT",
@@ -34,4 +36,5 @@ export const MlModelFeature = {
     ChatMessageImage: "CHAT_MESSAGE_IMAGE",
     FunctionDefinition: "FUNCTION_DEFINITION",
     StreamingSupport: "STREAMING_SUPPORT",
+    PromptCachingSupport: "PROMPT_CACHING_SUPPORT",
 } as const;
