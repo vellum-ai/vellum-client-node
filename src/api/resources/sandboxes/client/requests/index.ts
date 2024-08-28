@@ -1,2 +1,2 @@
 export { type DeploySandboxPromptRequest } from "./DeploySandboxPromptRequest";
-export { type UpsertSandboxScenarioRequestRequest } from "./UpsertSandboxScenarioRequestRequest";
+export { type UpsertSandboxScenarioRequest } from "./UpsertSandboxScenarioRequest";

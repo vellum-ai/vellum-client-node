@@ -12,7 +12,7 @@ import * as errors from "../../../../errors/index";
 export declare namespace Sandboxes {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
@@ -26,7 +26,7 @@ export declare namespace Sandboxes {
 }
 
 export class Sandboxes {
-    constructor(protected readonly _options: Sandboxes.Options) {}
+    constructor(protected readonly _options: Sandboxes.Options = {}) {}
 
     /**
      * @param {string} id - A UUID string identifying this sandbox.
@@ -53,8 +53,8 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -107,7 +107,7 @@ export class Sandboxes {
      * or overwritten with default values.
      *
      * @param {string} id - A UUID string identifying this sandbox.
-     * @param {Vellum.UpsertSandboxScenarioRequestRequest} request
+     * @param {Vellum.UpsertSandboxScenarioRequest} request
      * @param {Sandboxes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -142,7 +142,7 @@ export class Sandboxes {
      */
     public async upsertSandboxScenario(
         id: string,
-        request: Vellum.UpsertSandboxScenarioRequestRequest,
+        request: Vellum.UpsertSandboxScenarioRequest,
         requestOptions?: Sandboxes.RequestOptions
     ): Promise<Vellum.SandboxScenario> {
         const _response = await core.fetcher({
@@ -155,17 +155,15 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.UpsertSandboxScenarioRequestRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            body: serializers.UpsertSandboxScenarioRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -226,8 +224,8 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
