@@ -6,7 +6,7 @@ import * as serializers from "../../index";
 import * as Vellum from "../../../api/index";
 import * as core from "../../../core";
 import { PromptDeploymentInputRequest } from "../../types/PromptDeploymentInputRequest";
-import { PromptDeploymentExpandMetaRequestRequest } from "../../types/PromptDeploymentExpandMetaRequestRequest";
+import { PromptDeploymentExpandMetaRequest } from "../../types/PromptDeploymentExpandMetaRequest";
 import { RawPromptExecutionOverridesRequest } from "../../types/RawPromptExecutionOverridesRequest";
 
 export const ExecutePromptRequest: core.serialization.Schema<
@@ -18,7 +18,7 @@ export const ExecutePromptRequest: core.serialization.Schema<
     promptDeploymentName: core.serialization.property("prompt_deployment_name", core.serialization.string().optional()),
     releaseTag: core.serialization.property("release_tag", core.serialization.string().optional()),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    expandMeta: core.serialization.property("expand_meta", PromptDeploymentExpandMetaRequestRequest.optional()),
+    expandMeta: core.serialization.property("expand_meta", PromptDeploymentExpandMetaRequest.optional()),
     rawOverrides: core.serialization.property("raw_overrides", RawPromptExecutionOverridesRequest.optional()),
     expandRaw: core.serialization.property(
         "expand_raw",
@@ -34,7 +34,7 @@ export declare namespace ExecutePromptRequest {
         prompt_deployment_name?: string | null;
         release_tag?: string | null;
         external_id?: string | null;
-        expand_meta?: PromptDeploymentExpandMetaRequestRequest.Raw | null;
+        expand_meta?: PromptDeploymentExpandMetaRequest.Raw | null;
         raw_overrides?: RawPromptExecutionOverridesRequest.Raw | null;
         expand_raw?: string[] | null;
         metadata?: Record<string, unknown> | null;

@@ -73,6 +73,126 @@ await client.submitWorkflowExecutionActuals({
 
 ##
 
+## AdHoc
+
+<details><summary><code>client.adHoc.<a href="/src/api/resources/adHoc/client/Client.ts">adhocExecutePromptStream</a>({ ...params }) -> core.Stream<Vellum.AdHocExecutePromptEvent></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+An internal-only endpoint that's subject to breaking changes without notice. Not intended for public use.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.adHoc.adhocExecutePromptStream({
+    mlModel: "string",
+    inputValues: [
+        {
+            key: "string",
+            type: "STRING",
+            value: "string",
+        },
+    ],
+    inputVariables: [
+        {
+            id: "string",
+            key: "string",
+            type: Vellum.VellumVariableType.String,
+        },
+    ],
+    parameters: {
+        stop: ["string"],
+        temperature: 1.1,
+        maxTokens: 1,
+        topP: 1.1,
+        topK: 1,
+        frequencyPenalty: 1.1,
+        presencePenalty: 1.1,
+        logitBias: {
+            string: {
+                key: "value",
+            },
+        },
+        customParameters: {
+            string: {
+                key: "value",
+            },
+        },
+    },
+    blocks: [
+        {
+            blockType: "JINJA",
+            properties: {
+                template: "string",
+                templateType: Vellum.VellumVariableType.String,
+            },
+            id: "string",
+            state: Vellum.PromptBlockState.Enabled,
+            cacheConfig: {
+                type: "EPHEMERAL",
+            },
+        },
+    ],
+    expandMeta: {
+        cost: true,
+        modelName: true,
+        usage: true,
+        finishReason: true,
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.AdHocExecutePromptStreamRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `AdHoc.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Deployments
 
 <details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">list</a>({ ...params }) -> Vellum.PaginatedSlimDeploymentReadList</code></summary>
@@ -1412,352 +1532,6 @@ await client.folderEntities.addEntityToFolder("folder_id", {
 </dl>
 </details>
 
-## MlModels
-
-<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">list</a>({ ...params }) -> Vellum.PaginatedMlModelReadList</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-List all ML Models that your Workspace has access to.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.mlModels.list();
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Vellum.MlModelsListRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `MlModels.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">create</a>({ ...params }) -> Vellum.MlModelRead</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a new ML Model.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.mlModels.create({
-    name: "name",
-    family: Vellum.MlModelFamily.Capybara,
-    hostedBy: Vellum.HostedByEnum.Anthropic,
-    developedBy: Vellum.MlModelDeveloper.OneAi,
-    execConfig: {
-        modelIdentifier: "model_identifier",
-        baseUrl: "base_url",
-        metadata: {
-            key: "value",
-        },
-        features: [Vellum.MlModelFeature.Text],
-    },
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Vellum.MlModelCreateRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `MlModels.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">retrieve</a>(id) -> Vellum.MlModelRead</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve an ML Model by its UUID.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.mlModels.retrieve("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Either the ML Model's ID or its unique name
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `MlModels.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">update</a>(id, { ...params }) -> Vellum.MlModelRead</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Replace an ML Model with a new representation, keying off of its UUID.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.mlModels.update("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Either the ML Model's ID or its unique name
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vellum.MlModelUpdateRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `MlModels.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">partialUpdate</a>(id, { ...params }) -> Vellum.MlModelRead</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Partially update an ML Model, keying off of its UUID.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.mlModels.partialUpdate("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Either the ML Model's ID or its unique name
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vellum.PatchedMlModelUpdateRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `MlModels.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 ## Sandboxes
 
 <details><summary><code>client.sandboxes.<a href="/src/api/resources/sandboxes/client/Client.ts">deployPrompt</a>(id, promptVariantId, { ...params }) -> Vellum.DeploymentRead</code></summary>
@@ -1896,7 +1670,7 @@ await client.sandboxes.upsertSandboxScenario("id", {
 <dl>
 <dd>
 
-**request:** `Vellum.UpsertSandboxScenarioRequestRequest`
+**request:** `Vellum.UpsertSandboxScenarioRequest`
 
 </dd>
 </dl>

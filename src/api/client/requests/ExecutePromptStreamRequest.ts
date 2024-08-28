@@ -57,7 +57,7 @@ export interface ExecutePromptStreamRequest {
     /** Optionally include a unique identifier for tracking purposes. Must be unique within a given Prompt Deployment. */
     externalId?: string;
     /** An optionally specified configuration used to opt in to including additional metadata about this prompt execution in the API response. Corresponding values will be returned under the `meta` key of the API response. */
-    expandMeta?: Vellum.PromptDeploymentExpandMetaRequestRequest;
+    expandMeta?: Vellum.PromptDeploymentExpandMetaRequest;
     /** Overrides for the raw API request sent to the model host. Combined with `expand_raw`, it can be used to access new features from models. */
     rawOverrides?: Vellum.RawPromptExecutionOverridesRequest;
     /** A list of keys whose values you'd like to directly return from the JSON response of the model provider. Useful if you need lower-level info returned by model providers that Vellum would otherwise omit. Corresponding key/value pairs will be returned under the `raw` key of the API response. */

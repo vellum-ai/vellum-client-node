@@ -8,4 +8,6 @@ export interface MlModelUsage {
     inputCharCount?: number;
     outputCharCount?: number;
     computeNanos?: number;
+    cacheCreationInputTokens?: number;
+    cacheReadInputTokens?: number;
 }
