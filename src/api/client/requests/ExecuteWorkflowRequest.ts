@@ -27,4 +27,6 @@ export interface ExecuteWorkflowRequest {
     releaseTag?: string;
     /** Optionally include a unique identifier for tracking purposes. Must be unique for a given workflow deployment. */
     externalId?: string;
+    /** Arbitrary JSON metadata associated with this request. Can be used to capture additional monitoring data such as user id, session id, etc. for future analysis. */
+    metadata?: Record<string, unknown>;
 }

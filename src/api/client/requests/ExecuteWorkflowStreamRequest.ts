@@ -19,7 +19,12 @@ import * as Vellum from "../../index";
  *         workflowDeploymentName: "string",
  *         releaseTag: "string",
  *         externalId: "string",
- *         eventTypes: [Vellum.WorkflowExecutionEventType.Node]
+ *         eventTypes: [Vellum.WorkflowExecutionEventType.Node],
+ *         metadata: {
+ *             "string": {
+ *                 "key": "value"
+ *             }
+ *         }
  *     }
  */
 export interface ExecuteWorkflowStreamRequest {
@@ -37,4 +42,6 @@ export interface ExecuteWorkflowStreamRequest {
     externalId?: string;
     /** Optionally specify which events you want to receive. Defaults to only WORKFLOW events. Note that the schema of non-WORKFLOW events is unstable and should be used with caution. */
     eventTypes?: Vellum.WorkflowExecutionEventType[];
+    /** Arbitrary JSON metadata associated with this request. Can be used to capture additional monitoring data such as user id, session id, etc. for future analysis. */
+    metadata?: Record<string, unknown>;
 }
