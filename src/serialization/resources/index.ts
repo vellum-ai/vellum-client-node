@@ -5,6 +5,8 @@ export * from "./documentIndexes/types";
 export * as workflowDeployments from "./workflowDeployments";
 export * from "./workflowDeployments/types";
 export * as testSuites from "./testSuites";
+export * as adHoc from "./adHoc";
+export * from "./adHoc/client/requests";
 export * from "./deployments/client/requests";
 export * from "./documentIndexes/client/requests";
 export * as documents from "./documents";

@@ -6,9 +6,9 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
-export const PromptDeploymentExpandMetaRequestRequest: core.serialization.ObjectSchema<
-    serializers.PromptDeploymentExpandMetaRequestRequest.Raw,
-    Vellum.PromptDeploymentExpandMetaRequestRequest
+export const PromptDeploymentExpandMetaRequest: core.serialization.ObjectSchema<
+    serializers.PromptDeploymentExpandMetaRequest.Raw,
+    Vellum.PromptDeploymentExpandMetaRequest
 > = core.serialization.object({
     modelName: core.serialization.property("model_name", core.serialization.boolean().optional()),
     usage: core.serialization.boolean().optional(),
@@ -21,7 +21,7 @@ export const PromptDeploymentExpandMetaRequestRequest: core.serialization.Object
     promptVersionId: core.serialization.property("prompt_version_id", core.serialization.boolean().optional()),
 });
 
-export declare namespace PromptDeploymentExpandMetaRequestRequest {
+export declare namespace PromptDeploymentExpandMetaRequest {
     interface Raw {
         model_name?: boolean | null;
         usage?: boolean | null;

@@ -35,7 +35,7 @@ import * as Vellum from "../../../../index";
  *             }]
  *     }
  */
-export interface UpsertSandboxScenarioRequestRequest {
+export interface UpsertSandboxScenarioRequest {
     label?: string;
     /** The inputs for the scenario */
     inputs: Vellum.NamedScenarioInputRequest[];

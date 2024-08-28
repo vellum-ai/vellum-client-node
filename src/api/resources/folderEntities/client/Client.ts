@@ -12,7 +12,7 @@ import * as errors from "../../../../errors/index";
 export declare namespace FolderEntities {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     interface RequestOptions {
@@ -26,7 +26,7 @@ export declare namespace FolderEntities {
 }
 
 export class FolderEntities {
-    constructor(protected readonly _options: FolderEntities.Options) {}
+    constructor(protected readonly _options: FolderEntities.Options = {}) {}
 
     /**
      * Add an entity to a specific folder or root directory.
@@ -57,8 +57,8 @@ export class FolderEntities {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.8.5",
-                "User-Agent": "vellum-ai/0.8.5",
+                "X-Fern-SDK-Version": "0.8.6",
+                "User-Agent": "vellum-ai/0.8.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
