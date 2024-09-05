@@ -12,6 +12,7 @@ export const PromptDeploymentExpandMetaRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     modelName: core.serialization.property("model_name", core.serialization.boolean().optional()),
     usage: core.serialization.boolean().optional(),
+    cost: core.serialization.boolean().optional(),
     finishReason: core.serialization.property("finish_reason", core.serialization.boolean().optional()),
     latency: core.serialization.boolean().optional(),
     deploymentReleaseTag: core.serialization.property(
@@ -25,6 +26,7 @@ export declare namespace PromptDeploymentExpandMetaRequest {
     interface Raw {
         model_name?: boolean | null;
         usage?: boolean | null;
+        cost?: boolean | null;
         finish_reason?: boolean | null;
         latency?: boolean | null;
         deployment_release_tag?: boolean | null;

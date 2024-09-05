@@ -7,6 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { TestSuiteRunMetricStringOutput } from "./TestSuiteRunMetricStringOutput";
 import { TestSuiteRunMetricNumberOutput } from "./TestSuiteRunMetricNumberOutput";
+import { TestSuiteRunMetricJsonOutput } from "./TestSuiteRunMetricJsonOutput";
 import { TestSuiteRunMetricErrorOutput } from "./TestSuiteRunMetricErrorOutput";
 
 export const TestSuiteRunMetricOutput: core.serialization.Schema<
@@ -15,6 +16,7 @@ export const TestSuiteRunMetricOutput: core.serialization.Schema<
 > = core.serialization.undiscriminatedUnion([
     TestSuiteRunMetricStringOutput,
     TestSuiteRunMetricNumberOutput,
+    TestSuiteRunMetricJsonOutput,
     TestSuiteRunMetricErrorOutput,
 ]);
 
@@ -22,5 +24,6 @@ export declare namespace TestSuiteRunMetricOutput {
     type Raw =
         | TestSuiteRunMetricStringOutput.Raw
         | TestSuiteRunMetricNumberOutput.Raw
+        | TestSuiteRunMetricJsonOutput.Raw
         | TestSuiteRunMetricErrorOutput.Raw;
 }

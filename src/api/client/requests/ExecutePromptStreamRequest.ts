@@ -19,6 +19,7 @@ import * as Vellum from "../../index";
  *         expandMeta: {
  *             modelName: true,
  *             usage: true,
+ *             cost: true,
  *             finishReason: true,
  *             latency: true,
  *             deploymentReleaseTag: true,
