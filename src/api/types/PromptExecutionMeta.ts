@@ -14,4 +14,5 @@ export interface PromptExecutionMeta {
     promptVersionId?: string;
     finishReason?: Vellum.FinishReasonEnum;
     usage?: Vellum.MlModelUsage;
+    cost?: Vellum.Price;
 }

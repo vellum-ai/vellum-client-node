@@ -7,6 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { FinishReasonEnum } from "./FinishReasonEnum";
 import { MlModelUsage } from "./MlModelUsage";
+import { Price } from "./Price";
 
 export const PromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.PromptExecutionMeta.Raw,
@@ -18,6 +19,7 @@ export const PromptExecutionMeta: core.serialization.ObjectSchema<
     promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optional()),
     finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
     usage: MlModelUsage.optional(),
+    cost: Price.optional(),
 });
 
 export declare namespace PromptExecutionMeta {
@@ -28,5 +30,6 @@ export declare namespace PromptExecutionMeta {
         prompt_version_id?: string | null;
         finish_reason?: FinishReasonEnum.Raw | null;
         usage?: MlModelUsage.Raw | null;
+        cost?: Price.Raw | null;
     }
 }
