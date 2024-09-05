@@ -3,6 +3,7 @@
  */
 
 export interface AdHocExpandMetaRequest {
+    /** If enabled, the response will include model host cost tracking. This may increase latency for some model hosts. */
     cost?: boolean;
     /** If enabled, the response will include the model identifier representing the ML Model invoked by the Prompt. */
     modelName?: boolean;
