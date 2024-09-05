@@ -7,4 +7,5 @@ import * as Vellum from "../index";
 export type TestSuiteRunMetricOutput =
     | Vellum.TestSuiteRunMetricStringOutput
     | Vellum.TestSuiteRunMetricNumberOutput
+    | Vellum.TestSuiteRunMetricJsonOutput
     | Vellum.TestSuiteRunMetricErrorOutput;
