@@ -46,7 +46,9 @@ import * as Vellum from "../../../../index";
  *                 id: "string",
  *                 state: Vellum.PromptBlockState.Enabled,
  *                 cacheConfig: {
- *                     type: "EPHEMERAL"
+ *                     type: {
+ *                         "key": "value"
+ *                     }
  *                 }
  *             }],
  *         expandMeta: {
