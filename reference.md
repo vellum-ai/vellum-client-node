@@ -148,7 +148,9 @@ await client.adHoc.adhocExecutePromptStream({
             id: "string",
             state: Vellum.PromptBlockState.Enabled,
             cacheConfig: {
-                type: "EPHEMERAL",
+                type: {
+                    key: "value",
+                },
             },
         },
     ],
@@ -2149,8 +2151,20 @@ await client.testSuites.testSuiteTestCasesBulk("string", [
         type: "CREATE",
         data: {
             label: "string",
-            inputValues: [{}],
-            evaluationValues: [{}],
+            inputValues: [
+                {
+                    type: "STRING",
+                    value: "string",
+                    name: "string",
+                },
+            ],
+            evaluationValues: [
+                {
+                    type: "STRING",
+                    value: "string",
+                    name: "string",
+                },
+            ],
             externalId: "string",
         },
     },
