@@ -50,6 +50,7 @@ export * from "./CodeExecutionPackageRequest";
 export * from "./CodeExecutionRuntime";
 export * from "./CodeExecutorInputRequest";
 export * from "./CodeExecutorResponse";
+export * from "./CodeExecutorSecretInputRequest";
 export * from "./CompilePromptDeploymentExpandMetaRequest";
 export * from "./CompilePromptMeta";
 export * from "./ConditionCombinator";

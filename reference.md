@@ -2924,3 +2924,74 @@ await client.workspaceSecrets.retrieve("id");
 </dd>
 </dl>
 </details>
+
+<details><summary><code>client.workspaceSecrets.<a href="/src/api/resources/workspaceSecrets/client/Client.ts">partialUpdate</a>(id, { ...params }) -> Vellum.WorkspaceSecretRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Used to update a Workspace Secret given its ID or name.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workspaceSecrets.partialUpdate("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Either the Workspace Secret's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.PatchedWorkspaceSecretUpdateRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WorkspaceSecrets.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>

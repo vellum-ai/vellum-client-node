@@ -25,3 +25,5 @@ export * as workflowSandboxes from "./workflowSandboxes";
 export * from "./workflowSandboxes/client/requests";
 export * as workflows from "./workflows";
 export * from "./workflows/client/requests";
+export * as workspaceSecrets from "./workspaceSecrets";
+export * from "./workspaceSecrets/client/requests";

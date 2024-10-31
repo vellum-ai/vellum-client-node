@@ -12,4 +12,5 @@ export type CodeExecutorInputRequest =
     | Vellum.SearchResultsInputRequest
     | Vellum.ErrorInputRequest
     | Vellum.ArrayInputRequest
-    | Vellum.FunctionCallInputRequest;
+    | Vellum.FunctionCallInputRequest
+    | Vellum.CodeExecutorSecretInputRequest;

@@ -13,6 +13,7 @@ import { SearchResultsInputRequest } from "./SearchResultsInputRequest";
 import { ErrorInputRequest } from "./ErrorInputRequest";
 import { ArrayInputRequest } from "./ArrayInputRequest";
 import { FunctionCallInputRequest } from "./FunctionCallInputRequest";
+import { CodeExecutorSecretInputRequest } from "./CodeExecutorSecretInputRequest";
 
 export const CodeExecutorInputRequest: core.serialization.Schema<
     serializers.CodeExecutorInputRequest.Raw,
@@ -26,6 +27,7 @@ export const CodeExecutorInputRequest: core.serialization.Schema<
     ErrorInputRequest,
     ArrayInputRequest,
     FunctionCallInputRequest,
+    CodeExecutorSecretInputRequest,
 ]);
 
 export declare namespace CodeExecutorInputRequest {
@@ -37,5 +39,6 @@ export declare namespace CodeExecutorInputRequest {
         | SearchResultsInputRequest.Raw
         | ErrorInputRequest.Raw
         | ArrayInputRequest.Raw
-        | FunctionCallInputRequest.Raw;
+        | FunctionCallInputRequest.Raw
+        | CodeExecutorSecretInputRequest.Raw;
 }

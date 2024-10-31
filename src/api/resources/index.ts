@@ -27,3 +27,4 @@ export * from "./testSuites/client/requests";
 export * from "./workflowDeployments/client/requests";
 export * from "./workflowSandboxes/client/requests";
 export * from "./workflows/client/requests";
+export * from "./workspaceSecrets/client/requests";
