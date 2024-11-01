@@ -8,9 +8,8 @@ import * as Vellum from "../../../index";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
-import * as stream from "stream";
 
-export declare namespace TestSuites {
+export declare namespace ContainerImages {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey?: core.Supplier<string | undefined>;
@@ -26,25 +25,23 @@ export declare namespace TestSuites {
     }
 }
 
-export class TestSuites {
-    constructor(protected readonly _options: TestSuites.Options = {}) {}
+export class ContainerImages {
+    constructor(protected readonly _options: ContainerImages.Options = {}) {}
 
     /**
-     * List the Test Cases associated with a Test Suite
+     * Retrieve a list of container images for the organization.
      *
-     * @param {string} id - Either the Test Suites' ID or its unique name
-     * @param {Vellum.ListTestSuiteTestCasesRequest} request
-     * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Vellum.ContainerImagesListRequest} request
+     * @param {ContainerImages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.testSuites.listTestSuiteTestCases("id")
+     *     await client.containerImages.list()
      */
-    public async listTestSuiteTestCases(
-        id: string,
-        request: Vellum.ListTestSuiteTestCasesRequest = {},
-        requestOptions?: TestSuites.RequestOptions
-    ): Promise<Vellum.PaginatedTestSuiteTestCaseList> {
-        const { limit, offset } = request;
+    public async list(
+        request: Vellum.ContainerImagesListRequest = {},
+        requestOptions?: ContainerImages.RequestOptions
+    ): Promise<Vellum.PaginatedContainerImageReadList> {
+        const { limit, offset, ordering } = request;
         const _queryParams: Record<string, string | string[] | object | object[]> = {};
         if (limit != null) {
             _queryParams["limit"] = limit.toString();
@@ -54,11 +51,15 @@ export class TestSuites {
             _queryParams["offset"] = offset.toString();
         }
 
+        if (ordering != null) {
+            _queryParams["ordering"] = ordering;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/test-suites/${encodeURIComponent(id)}/test-cases`
+                "v1/container-images"
             ),
             method: "GET",
             headers: {
@@ -78,7 +79,7 @@ export class TestSuites {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PaginatedTestSuiteTestCaseList.parseOrThrow(_response.body, {
+            return serializers.PaginatedContainerImageReadList.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -109,40 +110,93 @@ export class TestSuites {
     }
 
     /**
-     * Upserts a new test case for a test suite, keying off of the optionally provided test case id.
+     * Retrieve a Container Image by its ID or name.
      *
-     * If an id is provided and has a match, the test case will be updated. If no id is provided or no match
-     * is found, a new test case will be appended to the end.
-     *
-     * Note that a full replacement of the test case is performed, so any fields not provided will be removed
-     * or overwritten with default values.
-     *
-     * @param {string} id - Either the Test Suites' ID or its unique name
-     * @param {Vellum.UpsertTestSuiteTestCaseRequest} request
-     * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {string} id - Either the Container Image's ID or its unique name
+     * @param {ContainerImages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.testSuites.upsertTestSuiteTestCase("id", {
-     *         inputValues: [{
-     *                 type: "STRING",
-     *                 name: "name"
-     *             }],
-     *         evaluationValues: [{
-     *                 type: "STRING",
-     *                 name: "name"
-     *             }]
+     *     await client.containerImages.retrieve("id")
+     */
+    public async retrieve(
+        id: string,
+        requestOptions?: ContainerImages.RequestOptions
+    ): Promise<Vellum.ContainerImageRead> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                    .default,
+                `v1/container-images/${encodeURIComponent(id)}`
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "v0.9.1",
+                "User-Agent": "vellum-ai/v0.9.1",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.ContainerImageRead.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError();
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * An internal-only endpoint that's subject to breaking changes without notice. Not intended for public use.
+     *
+     * @param {Vellum.PushContainerImageRequest} request
+     * @param {ContainerImages.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.containerImages.pushContainerImage({
+     *         name: "name",
+     *         sha: "sha",
+     *         tags: ["tags"]
      *     })
      */
-    public async upsertTestSuiteTestCase(
-        id: string,
-        request: Vellum.UpsertTestSuiteTestCaseRequest,
-        requestOptions?: TestSuites.RequestOptions
-    ): Promise<Vellum.TestSuiteTestCase> {
+    public async pushContainerImage(
+        request: Vellum.PushContainerImageRequest,
+        requestOptions?: ContainerImages.RequestOptions
+    ): Promise<Vellum.ContainerImageRead> {
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/test-suites/${encodeURIComponent(id)}/test-cases`
+                "v1/container-images/push"
             ),
             method: "POST",
             headers: {
@@ -156,156 +210,18 @@ export class TestSuites {
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.UpsertTestSuiteTestCaseRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.PushContainerImageRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.TestSuiteTestCase.parseOrThrow(_response.body, {
+            return serializers.ContainerImageRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
                 breadcrumbsPrefix: ["response"],
             });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VellumError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VellumTimeoutError();
-            case "unknown":
-                throw new errors.VellumError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Created, replace, and delete Test Cases within the specified Test Suite in bulk
-     */
-    public async testSuiteTestCasesBulk(
-        id: string,
-        request: Vellum.TestSuiteTestCaseBulkOperationRequest[],
-        requestOptions?: TestSuites.RequestOptions
-    ): Promise<core.Stream<Vellum.TestSuiteTestCaseBulkResult[]>> {
-        const _response = await core.fetcher<stream.Readable>({
-            url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                    .default,
-                `v1/test-suites/${encodeURIComponent(id)}/test-cases-bulk`
-            ),
-            method: "POST",
-            headers: {
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.9.1",
-                "User-Agent": "vellum-ai/v0.9.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...(await this._getCustomAuthorizationHeaders()),
-            },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.testSuites.testSuiteTestCasesBulk.Request.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
-            responseType: "sse",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return new core.Stream({
-                stream: _response.body,
-                parse: async (data) => {
-                    return serializers.testSuites.testSuiteTestCasesBulk.StreamData.parseOrThrow(data, {
-                        unrecognizedObjectKeys: "passthrough",
-                        allowUnrecognizedUnionMembers: true,
-                        allowUnrecognizedEnumValues: true,
-                        breadcrumbsPrefix: ["response"],
-                    });
-                },
-                signal: requestOptions?.abortSignal,
-                eventShape: {
-                    type: "json",
-                    messageTerminator: "\n",
-                },
-            });
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VellumError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                });
-            case "timeout":
-                throw new errors.VellumTimeoutError();
-            case "unknown":
-                throw new errors.VellumError({
-                    message: _response.error.errorMessage,
-                });
-        }
-    }
-
-    /**
-     * Deletes an existing test case for a test suite, keying off of the test case id.
-     *
-     * @param {string} id - Either the Test Suites' ID or its unique name
-     * @param {string} testCaseId - An id identifying the test case that you'd like to delete
-     * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.testSuites.deleteTestSuiteTestCase("id", "test_case_id")
-     */
-    public async deleteTestSuiteTestCase(
-        id: string,
-        testCaseId: string,
-        requestOptions?: TestSuites.RequestOptions
-    ): Promise<void> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                    .default,
-                `v1/test-suites/${encodeURIComponent(id)}/test-cases/${encodeURIComponent(testCaseId)}`
-            ),
-            method: "DELETE",
-            headers: {
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "v0.9.1",
-                "User-Agent": "vellum-ai/v0.9.1",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...(await this._getCustomAuthorizationHeaders()),
-            },
-            contentType: "application/json",
-            requestType: "json",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return;
         }
 
         if (_response.error.reason === "status-code") {
