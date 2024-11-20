@@ -11,15 +11,7 @@ export interface DocumentRead {
     lastUploadedAt: Date;
     /** A human-readable label for the document. Defaults to the originally uploaded file's file name. */
     label: string;
-    /**
-     * The current processing state of the document
-     *
-     * - `QUEUED` - Queued
-     * - `PROCESSING` - Processing
-     * - `PROCESSED` - Processed
-     * - `FAILED` - Failed
-     */
-    processingState?: Vellum.ProcessingStateEnum;
+    processingState: Vellum.DocumentProcessingState;
     /**
      * The current status of the document
      *

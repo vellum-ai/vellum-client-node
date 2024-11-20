@@ -6,15 +6,15 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
-export const CodeExecutionPackageRequest: core.serialization.ObjectSchema<
-    serializers.CodeExecutionPackageRequest.Raw,
-    Vellum.CodeExecutionPackageRequest
+export const CodeExecutionPackage: core.serialization.ObjectSchema<
+    serializers.CodeExecutionPackage.Raw,
+    Vellum.CodeExecutionPackage
 > = core.serialization.object({
     version: core.serialization.string(),
     name: core.serialization.string(),
 });
 
-export declare namespace CodeExecutionPackageRequest {
+export declare namespace CodeExecutionPackage {
     interface Raw {
         version: string;
         name: string;

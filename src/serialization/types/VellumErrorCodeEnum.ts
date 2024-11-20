@@ -11,6 +11,7 @@ export const VellumErrorCodeEnum: core.serialization.Schema<
     Vellum.VellumErrorCodeEnum
 > = core.serialization.enum_([
     "INVALID_REQUEST",
+    "INVALID_INPUTS",
     "PROVIDER_ERROR",
     "REQUEST_TIMEOUT",
     "INTERNAL_SERVER_ERROR",
@@ -20,6 +21,7 @@ export const VellumErrorCodeEnum: core.serialization.Schema<
 export declare namespace VellumErrorCodeEnum {
     type Raw =
         | "INVALID_REQUEST"
+        | "INVALID_INPUTS"
         | "PROVIDER_ERROR"
         | "REQUEST_TIMEOUT"
         | "INTERNAL_SERVER_ERROR"

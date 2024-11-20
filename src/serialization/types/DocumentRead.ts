@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { ProcessingStateEnum } from "./ProcessingStateEnum";
+import { DocumentProcessingState } from "./DocumentProcessingState";
 import { DocumentStatus } from "./DocumentStatus";
 import { DocumentDocumentToDocumentIndex } from "./DocumentDocumentToDocumentIndex";
 
@@ -15,7 +15,7 @@ export const DocumentRead: core.serialization.ObjectSchema<serializers.DocumentR
         externalId: core.serialization.property("external_id", core.serialization.string().optional()),
         lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.date()),
         label: core.serialization.string(),
-        processingState: core.serialization.property("processing_state", ProcessingStateEnum.optional()),
+        processingState: core.serialization.property("processing_state", DocumentProcessingState),
         status: DocumentStatus.optional(),
         originalFileUrl: core.serialization.property("original_file_url", core.serialization.string().optional()),
         processedFileUrl: core.serialization.property("processed_file_url", core.serialization.string().optional()),
@@ -32,7 +32,7 @@ export declare namespace DocumentRead {
         external_id?: string | null;
         last_uploaded_at: string;
         label: string;
-        processing_state?: ProcessingStateEnum.Raw | null;
+        processing_state: DocumentProcessingState.Raw;
         status?: DocumentStatus.Raw | null;
         original_file_url?: string | null;
         processed_file_url?: string | null;

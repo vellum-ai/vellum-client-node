@@ -5,21 +5,21 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { FunctionCallRequest } from "./FunctionCallRequest";
+import { FunctionCall } from "./FunctionCall";
 
-export const FunctionCallInputRequest: core.serialization.ObjectSchema<
-    serializers.FunctionCallInputRequest.Raw,
-    Vellum.FunctionCallInputRequest
+export const FunctionCallInput: core.serialization.ObjectSchema<
+    serializers.FunctionCallInput.Raw,
+    Vellum.FunctionCallInput
 > = core.serialization.object({
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCallRequest,
+    value: FunctionCall,
 });
 
-export declare namespace FunctionCallInputRequest {
+export declare namespace FunctionCallInput {
     interface Raw {
         name: string;
         type: "FUNCTION_CALL";
-        value: FunctionCallRequest.Raw;
+        value: FunctionCall.Raw;
     }
 }

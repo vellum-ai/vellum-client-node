@@ -7,9 +7,9 @@ import * as Vellum from "../index";
 /**
  * A user input representing a Vellum Function Call value
  */
-export interface FunctionCallInputRequest {
+export interface FunctionCallInput {
     /** The variable's name */
     name: string;
     type: "FUNCTION_CALL";
-    value: Vellum.FunctionCallRequest;
+    value: Vellum.FunctionCall;
 }

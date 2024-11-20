@@ -3,11 +3,11 @@
  */
 
 /**
- * A user input representing a number value
+ * A user input representing a JSON object
  */
-export interface NumberInputRequest {
+export interface JsonInput {
     /** The variable's name */
     name: string;
-    type: "NUMBER";
-    value: number;
+    type: "JSON";
+    value?: unknown;
 }

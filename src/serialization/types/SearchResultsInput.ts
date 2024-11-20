@@ -5,21 +5,21 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { SearchResultRequest } from "./SearchResultRequest";
+import { SearchResult } from "./SearchResult";
 
-export const SearchResultsInputRequest: core.serialization.ObjectSchema<
-    serializers.SearchResultsInputRequest.Raw,
-    Vellum.SearchResultsInputRequest
+export const SearchResultsInput: core.serialization.ObjectSchema<
+    serializers.SearchResultsInput.Raw,
+    Vellum.SearchResultsInput
 > = core.serialization.object({
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResultRequest),
+    value: core.serialization.list(SearchResult),
 });
 
-export declare namespace SearchResultsInputRequest {
+export declare namespace SearchResultsInput {
     interface Raw {
         name: string;
         type: "SEARCH_RESULTS";
-        value: SearchResultRequest.Raw[];
+        value: SearchResult.Raw[];
     }
 }

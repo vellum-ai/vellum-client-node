@@ -120,9 +120,7 @@ await client.adHoc.adhocExecutePromptStream({
             required: true,
             default: {
                 type: "STRING",
-                value: {
-                    key: "value",
-                },
+                value: "string",
             },
             extensions: {
                 color: {
@@ -1999,7 +1997,7 @@ await client.metricDefinitions.executeMetricDefinition("id", {
 <dl>
 <dd>
 
-**request:** `Vellum.ExecuteMetricDefinitionRequest`
+**request:** `Vellum.ExecuteMetricDefinition`
 
 </dd>
 </dl>
