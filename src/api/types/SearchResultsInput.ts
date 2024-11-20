@@ -5,11 +5,11 @@
 import * as Vellum from "../index";
 
 /**
- * A user input representing a Vellum Array value
+ * A user input representing a search results value
  */
-export interface ArrayInputRequest {
+export interface SearchResultsInput {
     /** The variable's name */
     name: string;
-    type: "ARRAY";
-    value: Vellum.VellumValueRequest[];
+    type: "SEARCH_RESULTS";
+    value: Vellum.SearchResult[];
 }

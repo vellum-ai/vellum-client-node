@@ -32,7 +32,7 @@ export class MetricDefinitions {
      * An internal-only endpoint that's subject to breaking changes without notice. Not intended for public use.
      *
      * @param {string} id - Either the Metric Definition's ID or its unique name
-     * @param {Vellum.ExecuteMetricDefinitionRequest} request
+     * @param {Vellum.ExecuteMetricDefinition} request
      * @param {MetricDefinitions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -46,7 +46,7 @@ export class MetricDefinitions {
      */
     public async executeMetricDefinition(
         id: string,
-        request: Vellum.ExecuteMetricDefinitionRequest,
+        request: Vellum.ExecuteMetricDefinition,
         requestOptions?: MetricDefinitions.RequestOptions
     ): Promise<Vellum.MetricDefinitionExecution> {
         const _response = await core.fetcher({
@@ -59,15 +59,15 @@ export class MetricDefinitions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.9.11",
-                "User-Agent": "vellum-ai/0.9.11",
+                "X-Fern-SDK-Version": "0.9.12",
+                "User-Agent": "vellum-ai/0.9.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.ExecuteMetricDefinitionRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.ExecuteMetricDefinition.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

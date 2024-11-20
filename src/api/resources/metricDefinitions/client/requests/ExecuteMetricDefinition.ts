@@ -14,7 +14,7 @@ import * as Vellum from "../../../../index";
  *             }]
  *     }
  */
-export interface ExecuteMetricDefinitionRequest {
-    inputs: Vellum.MetricDefinitionInputRequest[];
+export interface ExecuteMetricDefinition {
+    inputs: Vellum.MetricDefinitionInput[];
     releaseTag?: string;
 }

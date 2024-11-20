@@ -13,15 +13,7 @@ export interface SlimDocument {
     lastUploadedAt: Date;
     /** Human-friendly name for this document. */
     label: string;
-    /**
-     * An enum value representing where this document is along its processing lifecycle. Note that this is different than its indexing lifecycle.
-     *
-     * - `QUEUED` - Queued
-     * - `PROCESSING` - Processing
-     * - `PROCESSED` - Processed
-     * - `FAILED` - Failed
-     */
-    processingState?: Vellum.ProcessingStateEnum;
+    processingState: Vellum.DocumentProcessingState;
     /**
      * An enum value representing why the document could not be processed. Is null unless processing_state is FAILED.
      *

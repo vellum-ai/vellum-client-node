@@ -5,11 +5,11 @@
 import * as Vellum from "../index";
 
 /**
- * A user input representing a Vellum Error value
+ * A user input representing a Vellum Array value
  */
-export interface ErrorInputRequest {
+export interface ArrayInput {
     /** The variable's name */
     name: string;
-    type: "ERROR";
-    value: Vellum.VellumErrorRequest;
+    type: "ARRAY";
+    value: Vellum.VellumValue[];
 }

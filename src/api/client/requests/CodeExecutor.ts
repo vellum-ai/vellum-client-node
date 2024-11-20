@@ -21,10 +21,10 @@ import * as Vellum from "../../index";
  *         outputType: "STRING"
  *     }
  */
-export interface CodeExecutorRequest {
+export interface CodeExecutor {
     code: string;
     runtime: Vellum.CodeExecutionRuntime;
-    inputValues: Vellum.CodeExecutorInputRequest[];
-    packages: Vellum.CodeExecutionPackageRequest[];
+    inputValues: Vellum.CodeExecutorInput[];
+    packages: Vellum.CodeExecutionPackage[];
     outputType: Vellum.VellumVariableType;
 }

@@ -3,11 +3,11 @@
  */
 
 /**
- * A user input representing a Vellum Workspace Secret value
+ * A user input representing a string value
  */
-export interface CodeExecutorSecretInputRequest {
+export interface StringInput {
     /** The variable's name */
     name: string;
-    type: "SECRET";
+    type: "STRING";
     value: string;
 }

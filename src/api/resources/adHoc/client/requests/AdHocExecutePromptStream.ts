@@ -20,9 +20,7 @@ import * as Vellum from "../../../../index";
  *                 required: true,
  *                 default: {
  *                     type: "STRING",
- *                     value: {
- *                         "key": "value"
- *                     }
+ *                     value: "string"
  *                 },
  *                 extensions: {
  *                     color: {

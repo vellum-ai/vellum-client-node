@@ -5,11 +5,11 @@
 import * as Vellum from "../index";
 
 /**
- * A user input representing a search results value
+ * A user input representing a Vellum Error value
  */
-export interface SearchResultsInputRequest {
+export interface ErrorInput {
     /** The variable's name */
     name: string;
-    type: "SEARCH_RESULTS";
-    value: Vellum.SearchResultRequest[];
+    type: "ERROR";
+    value: Vellum.VellumError;
 }

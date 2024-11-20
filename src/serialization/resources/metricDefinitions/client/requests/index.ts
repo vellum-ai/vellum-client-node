@@ -1,1 +1,1 @@
-export { ExecuteMetricDefinitionRequest } from "./ExecuteMetricDefinitionRequest";
+export { ExecuteMetricDefinition } from "./ExecuteMetricDefinition";

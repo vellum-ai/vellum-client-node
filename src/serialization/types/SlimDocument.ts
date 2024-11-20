@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { ProcessingStateEnum } from "./ProcessingStateEnum";
+import { DocumentProcessingState } from "./DocumentProcessingState";
 import { ProcessingFailureReasonEnum } from "./ProcessingFailureReasonEnum";
 import { DocumentStatus } from "./DocumentStatus";
 import { DocumentDocumentToDocumentIndex } from "./DocumentDocumentToDocumentIndex";
@@ -16,7 +16,7 @@ export const SlimDocument: core.serialization.ObjectSchema<serializers.SlimDocum
         externalId: core.serialization.property("external_id", core.serialization.string().optional()),
         lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.date()),
         label: core.serialization.string(),
-        processingState: core.serialization.property("processing_state", ProcessingStateEnum.optional()),
+        processingState: core.serialization.property("processing_state", DocumentProcessingState),
         processingFailureReason: core.serialization.property(
             "processing_failure_reason",
             ProcessingFailureReasonEnum.optional()
@@ -36,7 +36,7 @@ export declare namespace SlimDocument {
         external_id?: string | null;
         last_uploaded_at: string;
         label: string;
-        processing_state?: ProcessingStateEnum.Raw | null;
+        processing_state: DocumentProcessingState.Raw;
         processing_failure_reason?: ProcessingFailureReasonEnum.Raw | null;
         status?: DocumentStatus.Raw | null;
         keywords?: string[] | null;

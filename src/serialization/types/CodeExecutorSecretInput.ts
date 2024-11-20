@@ -6,16 +6,16 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
-export const CodeExecutorSecretInputRequest: core.serialization.ObjectSchema<
-    serializers.CodeExecutorSecretInputRequest.Raw,
-    Vellum.CodeExecutorSecretInputRequest
+export const CodeExecutorSecretInput: core.serialization.ObjectSchema<
+    serializers.CodeExecutorSecretInput.Raw,
+    Vellum.CodeExecutorSecretInput
 > = core.serialization.object({
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("SECRET"),
     value: core.serialization.string(),
 });
 
-export declare namespace CodeExecutorSecretInputRequest {
+export declare namespace CodeExecutorSecretInput {
     interface Raw {
         name: string;
         type: "SECRET";

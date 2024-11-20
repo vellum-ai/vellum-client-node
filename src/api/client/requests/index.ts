@@ -1,4 +1,4 @@
-export { type CodeExecutorRequest } from "./CodeExecutorRequest";
+export { type CodeExecutor } from "./CodeExecutor";
 export { type ExecutePromptRequest } from "./ExecutePromptRequest";
 export { type ExecutePromptStreamRequest } from "./ExecutePromptStreamRequest";
 export { type ExecuteWorkflowRequest } from "./ExecuteWorkflowRequest";

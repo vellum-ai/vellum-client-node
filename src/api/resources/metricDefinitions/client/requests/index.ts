@@ -1,1 +1,1 @@
-export { type ExecuteMetricDefinitionRequest } from "./ExecuteMetricDefinitionRequest";
+export { type ExecuteMetricDefinition } from "./ExecuteMetricDefinition";
