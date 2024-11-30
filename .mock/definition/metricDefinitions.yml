@@ -63,6 +63,7 @@ service:
         docs: ''
         type: root.MetricDefinitionHistoryItem
       url: Default
+      availability: pre-release
       examples:
         - path-parameters:
             history_id_or_release_tag: history_id_or_release_tag
@@ -87,5 +88,7 @@ service:
                   required: true
                   default:
                     type: STRING
+      audiences:
+        - internal
   source:
     openapi: openapi/openapi.yml

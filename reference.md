@@ -2104,6 +2104,62 @@ await client.metricDefinitions.executeMetricDefinition("id", {
 </dl>
 </details>
 
+<details><summary><code>client.metricDefinitions.<a href="/src/api/resources/metricDefinitions/client/Client.ts">metricDefinitionHistoryItemRetrieve</a>(historyIdOrReleaseTag, id) -> Vellum.MetricDefinitionHistoryItem</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_or_release_tag", "id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**historyIdOrReleaseTag:** `string` — Either the UUID of Metric Definition History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Metric Definition History Item you'd like to retrieve.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this metric definition.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `MetricDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## MlModels
 
 <details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">retrieve</a>(id) -> Vellum.MlModelRead</code></summary>

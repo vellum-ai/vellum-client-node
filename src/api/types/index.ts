@@ -183,6 +183,7 @@ export * from "./MetadataFilterRuleCombinator";
 export * from "./MetadataFilterRuleRequest";
 export * from "./MetadataFiltersRequest";
 export * from "./MetricDefinitionExecution";
+export * from "./MetricDefinitionHistoryItem";
 export * from "./MetricDefinitionInput";
 export * from "./MetricNodeResult";
 export * from "./NamedScenarioInputChatHistoryVariableValueRequest";
