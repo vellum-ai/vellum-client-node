@@ -8,23 +8,10 @@ import * as Vellum from "../../index";
  * @example
  *     {
  *         inputs: [{
- *                 name: "string",
+ *                 name: "name",
  *                 type: "STRING",
- *                 value: "string"
- *             }],
- *         expandMeta: {
- *             usage: true
- *         },
- *         workflowDeploymentId: "string",
- *         workflowDeploymentName: "string",
- *         releaseTag: "string",
- *         externalId: "string",
- *         eventTypes: ["NODE"],
- *         metadata: {
- *             "string": {
- *                 "key": "value"
- *             }
- *         }
+ *                 value: "value"
+ *             }]
  *     }
  */
 export interface ExecuteWorkflowStreamRequest {

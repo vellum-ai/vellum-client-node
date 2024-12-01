@@ -104,86 +104,28 @@ An internal-only endpoint that's subject to breaking changes without notice. Not
 
 ```typescript
 await client.adHoc.adhocExecutePromptStream({
-    mlModel: "string",
+    mlModel: "ml_model",
     inputValues: [
         {
-            key: "string",
+            key: "key",
             type: "STRING",
-            value: "string",
+            value: "value",
         },
     ],
     inputVariables: [
         {
-            id: "string",
-            key: "string",
+            id: "id",
+            key: "key",
             type: "STRING",
-            required: true,
-            default: {
-                type: "STRING",
-                value: "string",
-            },
-            extensions: {
-                color: {
-                    key: "value",
-                },
-            },
         },
     ],
-    parameters: {
-        stop: ["string"],
-        temperature: 1.1,
-        maxTokens: 1,
-        topP: 1.1,
-        topK: 1,
-        frequencyPenalty: 1.1,
-        presencePenalty: 1.1,
-        logitBias: {
-            string: {
-                key: "value",
-            },
-        },
-        customParameters: {
-            string: {
-                key: "value",
-            },
-        },
-    },
-    settings: {
-        timeout: 1.1,
-    },
+    parameters: {},
     blocks: [
         {
-            state: "ENABLED",
-            cacheConfig: {
-                type: "EPHEMERAL",
-            },
             blockType: "JINJA",
-            template: "string",
+            template: "template",
         },
     ],
-    functions: [
-        {
-            state: "ENABLED",
-            cacheConfig: {
-                type: "EPHEMERAL",
-            },
-            name: "string",
-            description: "string",
-            parameters: {
-                string: {
-                    key: "value",
-                },
-            },
-            forced: true,
-            strict: true,
-        },
-    ],
-    expandMeta: {
-        cost: true,
-        modelName: true,
-        usage: true,
-        finishReason: true,
-    },
 });
 ```
 
@@ -2104,6 +2046,62 @@ await client.metricDefinitions.executeMetricDefinition("id", {
 </dl>
 </details>
 
+<details><summary><code>client.metricDefinitions.<a href="/src/api/resources/metricDefinitions/client/Client.ts">metricDefinitionHistoryItemRetrieve</a>(historyIdOrReleaseTag, id) -> Vellum.MetricDefinitionHistoryItem</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_or_release_tag", "id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**historyIdOrReleaseTag:** `string` — Either the UUID of Metric Definition History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Metric Definition History Item you'd like to retrieve.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this metric definition.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `MetricDefinitions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## MlModels
 
 <details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">retrieve</a>(id) -> Vellum.MlModelRead</code></summary>
@@ -2779,27 +2777,23 @@ Created, replace, and delete Test Cases within the specified Test Suite in bulk
 <dd>
 
 ```typescript
-await client.testSuites.testSuiteTestCasesBulk("string", [
+await client.testSuites.testSuiteTestCasesBulk("id", [
     {
-        id: "string",
+        id: "id",
         type: "CREATE",
         data: {
-            label: "string",
             inputValues: [
                 {
                     type: "STRING",
-                    value: "string",
-                    name: "string",
+                    name: "name",
                 },
             ],
             evaluationValues: [
                 {
                     type: "STRING",
-                    value: "string",
-                    name: "string",
+                    name: "name",
                 },
             ],
-            externalId: "string",
         },
     },
 ]);
@@ -3403,79 +3397,6 @@ await client.workflowSandboxes.deployWorkflow("id", "workflow_id");
 </details>
 
 ## Workflows
-
-<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">pull</a>(id, { ...params }) -> stream.Readable</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-An internal-only endpoint that's subject to breaking changes without notice. Not intended for public use.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.workflows.pull("string", {
-    format: "json",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The ID of the Workflow to pull from
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vellum.WorkflowsPullRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Workflows.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
 
 <details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">push</a>(artifact, { ...params }) -> Vellum.WorkflowPushResponse</code></summary>
 <dl>

@@ -4,12 +4,6 @@
 
 import * as Vellum from "../../../../index";
 
-/**
- * @example
- *     {
- *         format: "json"
- *     }
- */
 export interface WorkflowsPullRequest {
     format?: Vellum.WorkflowsPullRequestFormat;
 }

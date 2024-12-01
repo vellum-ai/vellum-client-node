@@ -7,78 +7,22 @@ import * as Vellum from "../../../../index";
 /**
  * @example
  *     {
- *         mlModel: "string",
+ *         mlModel: "ml_model",
  *         inputValues: [{
- *                 key: "string",
+ *                 key: "key",
  *                 type: "STRING",
- *                 value: "string"
+ *                 value: "value"
  *             }],
  *         inputVariables: [{
- *                 id: "string",
- *                 key: "string",
- *                 type: "STRING",
- *                 required: true,
- *                 default: {
- *                     type: "STRING",
- *                     value: "string"
- *                 },
- *                 extensions: {
- *                     color: {
- *                         "key": "value"
- *                     }
- *                 }
+ *                 id: "id",
+ *                 key: "key",
+ *                 type: "STRING"
  *             }],
- *         parameters: {
- *             stop: ["string"],
- *             temperature: 1.1,
- *             maxTokens: 1,
- *             topP: 1.1,
- *             topK: 1,
- *             frequencyPenalty: 1.1,
- *             presencePenalty: 1.1,
- *             logitBias: {
- *                 "string": {
- *                     "key": "value"
- *                 }
- *             },
- *             customParameters: {
- *                 "string": {
- *                     "key": "value"
- *                 }
- *             }
- *         },
- *         settings: {
- *             timeout: 1.1
- *         },
+ *         parameters: {},
  *         blocks: [{
- *                 state: "ENABLED",
- *                 cacheConfig: {
- *                     type: "EPHEMERAL"
- *                 },
  *                 blockType: "JINJA",
- *                 template: "string"
- *             }],
- *         functions: [{
- *                 state: "ENABLED",
- *                 cacheConfig: {
- *                     type: "EPHEMERAL"
- *                 },
- *                 name: "string",
- *                 description: "string",
- *                 parameters: {
- *                     "string": {
- *                         "key": "value"
- *                     }
- *                 },
- *                 forced: true,
- *                 strict: true
- *             }],
- *         expandMeta: {
- *             cost: true,
- *             modelName: true,
- *             usage: true,
- *             finishReason: true
- *         }
+ *                 template: "template"
+ *             }]
  *     }
  */
 export interface AdHocExecutePromptStream {

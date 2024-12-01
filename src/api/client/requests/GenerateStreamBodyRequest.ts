@@ -7,28 +7,11 @@ import * as Vellum from "../../index";
 /**
  * @example
  *     {
- *         deploymentId: "string",
- *         deploymentName: "string",
  *         requests: [{
  *                 inputValues: {
- *                     "string": {
- *                         "key": "value"
- *                     }
- *                 },
- *                 chatHistory: [{
- *                         text: "string",
- *                         role: "SYSTEM",
- *                         content: {
- *                             type: "STRING",
- *                             value: "string"
- *                         },
- *                         source: "string"
- *                     }],
- *                 externalIds: ["string"]
- *             }],
- *         options: {
- *             logprobs: "ALL"
- *         }
+ *                     "key": "value"
+ *                 }
+ *             }]
  *     }
  */
 export interface GenerateStreamBodyRequest {
