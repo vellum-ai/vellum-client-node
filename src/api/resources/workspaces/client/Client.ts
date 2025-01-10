@@ -9,7 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 
-export declare namespace MlModels {
+export declare namespace Workspaces {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey?: core.Supplier<string | undefined>;
@@ -25,24 +25,23 @@ export declare namespace MlModels {
     }
 }
 
-export class MlModels {
-    constructor(protected readonly _options: MlModels.Options = {}) {}
+export class Workspaces {
+    constructor(protected readonly _options: Workspaces.Options = {}) {}
 
     /**
-     * Retrieve details about an ML Model
+     * Retrieves information about the active Workspace
      *
-     * @param {string} id - Either the ML Model's ID, its unique name, or its ID in the workspace.
-     * @param {MlModels.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Workspaces.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.mlModels.retrieve("id")
+     *     await client.workspaces.workspaceIdentity()
      */
-    public async retrieve(id: string, requestOptions?: MlModels.RequestOptions): Promise<Vellum.MlModelRead> {
+    public async workspaceIdentity(requestOptions?: Workspaces.RequestOptions): Promise<Vellum.WorkspaceRead> {
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/ml-models/${encodeURIComponent(id)}`
+                "v1/workspaces/identity"
             ),
             method: "GET",
             headers: {
@@ -61,7 +60,7 @@ export class MlModels {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.MlModelRead.parseOrThrow(_response.body, {
+            return serializers.WorkspaceRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,

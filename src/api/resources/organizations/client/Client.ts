@@ -9,7 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 
-export declare namespace MlModels {
+export declare namespace Organizations {
     interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         apiKey?: core.Supplier<string | undefined>;
@@ -25,24 +25,23 @@ export declare namespace MlModels {
     }
 }
 
-export class MlModels {
-    constructor(protected readonly _options: MlModels.Options = {}) {}
+export class Organizations {
+    constructor(protected readonly _options: Organizations.Options = {}) {}
 
     /**
-     * Retrieve details about an ML Model
+     * Retrieves information about the active Organization
      *
-     * @param {string} id - Either the ML Model's ID, its unique name, or its ID in the workspace.
-     * @param {MlModels.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Organizations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.mlModels.retrieve("id")
+     *     await client.organizations.organizationIdentity()
      */
-    public async retrieve(id: string, requestOptions?: MlModels.RequestOptions): Promise<Vellum.MlModelRead> {
+    public async organizationIdentity(requestOptions?: Organizations.RequestOptions): Promise<Vellum.OrganizationRead> {
         const _response = await core.fetcher({
             url: urlJoin(
                 ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                     .default,
-                `v1/ml-models/${encodeURIComponent(id)}`
+                "v1/organizations/identity"
             ),
             method: "GET",
             headers: {
@@ -61,7 +60,7 @@ export class MlModels {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.MlModelRead.parseOrThrow(_response.body, {
+            return serializers.OrganizationRead.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
