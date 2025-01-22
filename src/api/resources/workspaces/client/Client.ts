@@ -14,7 +14,7 @@ export declare namespace Workspaces {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
-        apiKey?: core.Supplier<string | undefined>;
+        apiKey: core.Supplier<string>;
     }
 
     export interface RequestOptions {
@@ -30,7 +30,7 @@ export declare namespace Workspaces {
 }
 
 export class Workspaces {
-    constructor(protected readonly _options: Workspaces.Options = {}) {}
+    constructor(protected readonly _options: Workspaces.Options) {}
 
     /**
      * Retrieves information about the active Workspace
@@ -52,8 +52,8 @@ export class Workspaces {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.13.6",
-                "User-Agent": "vellum-ai/0.13.6",
+                "X-Fern-SDK-Version": "0.13.7",
+                "User-Agent": "vellum-ai/0.13.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
