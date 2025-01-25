@@ -53,8 +53,8 @@ export class MlModels {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.13.10",
-                "User-Agent": "vellum-ai/0.13.10",
+                "X-Fern-SDK-Version": "0.13.11",
+                "User-Agent": "vellum-ai/0.13.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
