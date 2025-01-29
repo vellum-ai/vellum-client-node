@@ -78,8 +78,8 @@ export class Workflows {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.13.16",
-                "User-Agent": "vellum-ai/0.13.16",
+                "X-Fern-SDK-Version": "0.13.17",
+                "User-Agent": "vellum-ai/0.13.17",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -131,8 +131,7 @@ export class Workflows {
      *
      * @example
      *     await client.workflows.push(fs.createReadStream("/path/to/your/file"), {
-     *         execConfig: "exec_config",
-     *         label: "label"
+     *         execConfig: "exec_config"
      *     })
      */
     public async push(
@@ -145,7 +144,6 @@ export class Workflows {
             "exec_config",
             serializers.WorkflowPushExecConfig.jsonOrThrow(request.execConfig, { unrecognizedObjectKeys: "strip" }),
         );
-        _request.append("label", request.label);
         if (request.workflowSandboxId != null) {
             _request.append("workflow_sandbox_id", request.workflowSandboxId);
         }
@@ -185,8 +183,8 @@ export class Workflows {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.13.16",
-                "User-Agent": "vellum-ai/0.13.16",
+                "X-Fern-SDK-Version": "0.13.17",
+                "User-Agent": "vellum-ai/0.13.17",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
