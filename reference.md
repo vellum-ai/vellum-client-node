@@ -3416,7 +3416,6 @@ await client.workflowSandboxes.deployWorkflow("id", "workflow_id");
 ```typescript
 await client.workflows.push(fs.createReadStream("/path/to/your/file"), {
     execConfig: "exec_config",
-    label: "label",
 });
 ```
 
