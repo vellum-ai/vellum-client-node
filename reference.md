@@ -2694,10 +2694,12 @@ or overwritten with default values.
 
 ```typescript
 await client.testSuites.upsertTestSuiteTestCase("id", {
+    label: "Test Case 1",
     inputValues: [
         {
             type: "STRING",
-            name: "name",
+            value: "Hello, world!",
+            name: "var_1",
         },
     ],
     evaluationValues: [
