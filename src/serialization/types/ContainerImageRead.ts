@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { EntityVisibility } from "./EntityVisibility";
+import { ContainerImageContainerImageTag } from "./ContainerImageContainerImageTag";
 
 export const ContainerImageRead: core.serialization.ObjectSchema<
     serializers.ContainerImageRead.Raw,
@@ -18,7 +19,7 @@ export const ContainerImageRead: core.serialization.ObjectSchema<
     modified: core.serialization.date(),
     repository: core.serialization.string(),
     sha: core.serialization.string(),
-    tags: core.serialization.list(core.serialization.string()),
+    tags: core.serialization.list(ContainerImageContainerImageTag),
 });
 
 export declare namespace ContainerImageRead {
@@ -30,6 +31,6 @@ export declare namespace ContainerImageRead {
         modified: string;
         repository: string;
         sha: string;
-        tags: string[];
+        tags: ContainerImageContainerImageTag.Raw[];
     }
 }
