@@ -56,6 +56,7 @@ export * from "./CompilePromptMeta";
 export * from "./ConditionCombinator";
 export * from "./ConditionalNodeResult";
 export * from "./ConditionalNodeResultData";
+export * from "./ContainerImageContainerImageTag";
 export * from "./ContainerImageRead";
 export * from "./CreateTestSuiteTestCaseRequest";
 export * from "./DeploymentHistoryItem";
