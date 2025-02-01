@@ -12,5 +12,5 @@ export interface ContainerImageRead {
     modified: Date;
     repository: string;
     sha: string;
-    tags: string[];
+    tags: Vellum.ContainerImageContainerImageTag[];
 }
