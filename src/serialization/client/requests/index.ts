@@ -1,3 +1,4 @@
+export { ExecuteApiRequest } from "./ExecuteApiRequest";
 export { CodeExecutor } from "./CodeExecutor";
 export { ExecutePromptRequest } from "./ExecutePromptRequest";
 export { ExecutePromptStreamRequest } from "./ExecutePromptStreamRequest";
