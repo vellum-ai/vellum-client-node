@@ -5,6 +5,6 @@
 export interface ExecuteApiResponse {
     statusCode: number;
     text: string;
-    json: Record<string, unknown>;
+    json?: Record<string, unknown>;
     headers: Record<string, string>;
 }
