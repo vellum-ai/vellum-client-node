@@ -3,9 +3,9 @@
  */
 
 /**
- * - `AUTO_ACCEPT_FROM_SHARED_DOMAIN` - Auto-Accept from Shared Domain
- * - `ALLOW_REQUESTS_FROM_SHARED_DOMAIN` - Allows Requests from Shared Domains
- * - `REQUIRE_EXPLICIT_INVITE` - Require Explicit Invite
+ * * `AUTO_ACCEPT_FROM_SHARED_DOMAIN` - Auto-Accept from Shared Domain
+ * * `ALLOW_REQUESTS_FROM_SHARED_DOMAIN` - Allows Requests from Shared Domains
+ * * `REQUIRE_EXPLICIT_INVITE` - Require Explicit Invite
  */
 export type NewMemberJoinBehaviorEnum =
     | "AUTO_ACCEPT_FROM_SHARED_DOMAIN"

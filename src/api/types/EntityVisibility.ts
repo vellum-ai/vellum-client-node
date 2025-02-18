@@ -3,10 +3,10 @@
  */
 
 /**
- * - `DEFAULT` - Default
- * - `PUBLIC` - Public
- * - `PRIVATE` - Private
- * - `DISABLED` - Disabled
+ * * `DEFAULT` - Default
+ * * `PUBLIC` - Public
+ * * `PRIVATE` - Private
+ * * `DISABLED` - Disabled
  */
 export type EntityVisibility = "DEFAULT" | "PUBLIC" | "PRIVATE" | "DISABLED";
 export const EntityVisibility = {

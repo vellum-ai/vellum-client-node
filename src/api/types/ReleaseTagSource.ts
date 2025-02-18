@@ -3,8 +3,8 @@
  */
 
 /**
- * - `SYSTEM` - System
- * - `USER` - User
+ * * `SYSTEM` - System
+ * * `USER` - User
  */
 export type ReleaseTagSource = "SYSTEM" | "USER";
 export const ReleaseTagSource = {

@@ -3,8 +3,8 @@
  */
 
 /**
- * - `PYTHON_3_11_6` - PYTHON_3_11_6
- * - `TYPESCRIPT_5_3_3` - TYPESCRIPT_5_3_3
+ * * `PYTHON_3_11_6` - PYTHON_3_11_6
+ * * `TYPESCRIPT_5_3_3` - TYPESCRIPT_5_3_3
  */
 export type CodeExecutionRuntime = "PYTHON_3_11_6" | "TYPESCRIPT_5_3_3";
 export const CodeExecutionRuntime = {

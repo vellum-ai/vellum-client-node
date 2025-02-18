@@ -3,8 +3,8 @@
  */
 
 /**
- * - `ENABLED` - Enabled
- * - `DISABLED` - Disabled
+ * * `ENABLED` - Enabled
+ * * `DISABLED` - Disabled
  */
 export type PromptBlockState = "ENABLED" | "DISABLED";
 export const PromptBlockState = {

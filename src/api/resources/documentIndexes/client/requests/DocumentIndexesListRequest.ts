@@ -28,8 +28,8 @@ export interface DocumentIndexesListRequest {
     /**
      * Filter down to only document indices that have a status matching the status specified
      *
-     * - `ACTIVE` - Active
-     * - `ARCHIVED` - Archived
+     * * `ACTIVE` - Active
+     * * `ARCHIVED` - Archived
      */
     status?: Vellum.DocumentIndexesListRequestStatus;
 }

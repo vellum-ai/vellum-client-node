@@ -3,8 +3,8 @@
  */
 
 /**
- * - `OR` - OR
- * - `AND` - AND
+ * * `OR` - OR
+ * * `AND` - AND
  */
 export type ConditionCombinator = "OR" | "AND";
 export const ConditionCombinator = {

@@ -3,9 +3,9 @@
  */
 
 /**
- * - `LENGTH` - LENGTH
- * - `STOP` - STOP
- * - `UNKNOWN` - UNKNOWN
+ * * `LENGTH` - LENGTH
+ * * `STOP` - STOP
+ * * `UNKNOWN` - UNKNOWN
  */
 export type FinishReasonEnum = "LENGTH" | "STOP" | "UNKNOWN";
 export const FinishReasonEnum = {

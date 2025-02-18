@@ -3,11 +3,11 @@
  */
 
 /**
- * - `POST` - POST
- * - `GET` - GET
- * - `PATCH` - PATCH
- * - `PUT` - PUT
- * - `DELETE` - DELETE
+ * * `POST` - POST
+ * * `GET` - GET
+ * * `PATCH` - PATCH
+ * * `PUT` - PUT
+ * * `DELETE` - DELETE
  */
 export type MethodEnum = "POST" | "GET" | "PATCH" | "PUT" | "DELETE";
 export const MethodEnum = {
