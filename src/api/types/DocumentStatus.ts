@@ -3,6 +3,6 @@
  */
 
 /**
- * - `ACTIVE` - Active
+ * * `ACTIVE` - Active
  */
 export type DocumentStatus = "ACTIVE";

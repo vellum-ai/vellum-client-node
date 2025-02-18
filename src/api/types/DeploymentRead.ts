@@ -14,16 +14,16 @@ export interface DeploymentRead {
     /**
      * The current status of the deployment
      *
-     * - `ACTIVE` - Active
-     * - `ARCHIVED` - Archived
+     * * `ACTIVE` - Active
+     * * `ARCHIVED` - Archived
      */
     status?: Vellum.EntityStatus;
     /**
      * The environment this deployment is used in
      *
-     * - `DEVELOPMENT` - Development
-     * - `STAGING` - Staging
-     * - `PRODUCTION` - Production
+     * * `DEVELOPMENT` - Development
+     * * `STAGING` - Staging
+     * * `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
     lastDeployedOn: Date;

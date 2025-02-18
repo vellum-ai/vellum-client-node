@@ -14,9 +14,9 @@ export interface EnrichedNormalizedCompletion {
     /**
      * The reason the generation finished.
      *
-     * - `LENGTH` - LENGTH
-     * - `STOP` - STOP
-     * - `UNKNOWN` - UNKNOWN
+     * * `LENGTH` - LENGTH
+     * * `STOP` - STOP
+     * * `UNKNOWN` - UNKNOWN
      */
     finishReason?: Vellum.FinishReasonEnum;
     /** The logprobs of the completion. Only present if specified in the original request options. */

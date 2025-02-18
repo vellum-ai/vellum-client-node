@@ -11,11 +11,11 @@ export interface TestSuiteRunRead {
     /**
      * The current state of this run
      *
-     * - `QUEUED` - Queued
-     * - `RUNNING` - Running
-     * - `COMPLETE` - Complete
-     * - `FAILED` - Failed
-     * - `CANCELLED` - Cancelled
+     * * `QUEUED` - Queued
+     * * `RUNNING` - Running
+     * * `COMPLETE` - Complete
+     * * `FAILED` - Failed
+     * * `CANCELLED` - Cancelled
      */
     state: Vellum.TestSuiteRunState;
     /** Configuration that defines how the Test Suite should be run */

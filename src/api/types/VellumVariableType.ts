@@ -3,17 +3,17 @@
  */
 
 /**
- * - `STRING` - STRING
- * - `NUMBER` - NUMBER
- * - `JSON` - JSON
- * - `CHAT_HISTORY` - CHAT_HISTORY
- * - `SEARCH_RESULTS` - SEARCH_RESULTS
- * - `ERROR` - ERROR
- * - `ARRAY` - ARRAY
- * - `FUNCTION_CALL` - FUNCTION_CALL
- * - `IMAGE` - IMAGE
- * - `AUDIO` - AUDIO
- * - `NULL` - NULL
+ * * `STRING` - STRING
+ * * `NUMBER` - NUMBER
+ * * `JSON` - JSON
+ * * `CHAT_HISTORY` - CHAT_HISTORY
+ * * `SEARCH_RESULTS` - SEARCH_RESULTS
+ * * `ERROR` - ERROR
+ * * `ARRAY` - ARRAY
+ * * `FUNCTION_CALL` - FUNCTION_CALL
+ * * `IMAGE` - IMAGE
+ * * `AUDIO` - AUDIO
+ * * `NULL` - NULL
  */
 export type VellumVariableType =
     | "STRING"

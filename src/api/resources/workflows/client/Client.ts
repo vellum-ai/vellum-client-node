@@ -11,6 +11,7 @@ import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 import * as fs from "fs";
 import { Blob } from "buffer";
+import { toJson } from "../../../../core/json";
 
 export declare namespace Workflows {
     export interface Options {
@@ -78,8 +79,8 @@ export class Workflows {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.3",
-                "User-Agent": "vellum-ai/0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
+                "User-Agent": "vellum-ai/0.14.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -151,7 +152,7 @@ export class Workflows {
         if (request.deploymentConfig != null) {
             _request.append(
                 "deployment_config",
-                JSON.stringify(
+                toJson(
                     serializers.WorkflowPushDeploymentConfigRequest.jsonOrThrow(request.deploymentConfig, {
                         unrecognizedObjectKeys: "strip",
                     }),
@@ -183,8 +184,8 @@ export class Workflows {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.3",
-                "User-Agent": "vellum-ai/0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
+                "User-Agent": "vellum-ai/0.14.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
