@@ -17,14 +17,14 @@ export interface SlimDocument {
     /**
      * An enum value representing why the document could not be processed. Is null unless processing_state is FAILED.
      *
-     * - `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
-     * - `INVALID_FILE` - Invalid File
+     * * `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
+     * * `INVALID_FILE` - Invalid File
      */
     processingFailureReason?: Vellum.ProcessingFailureReasonEnum;
     /**
      * The document's current status.
      *
-     * - `ACTIVE` - Active
+     * * `ACTIVE` - Active
      */
     status?: Vellum.DocumentStatus;
     /** A list of keywords associated with this document. Originally provided when uploading the document. */

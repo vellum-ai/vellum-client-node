@@ -13,16 +13,16 @@ export interface SlimWorkflowDeployment {
     /**
      * The current status of the workflow deployment
      *
-     * - `ACTIVE` - Active
-     * - `ARCHIVED` - Archived
+     * * `ACTIVE` - Active
+     * * `ARCHIVED` - Archived
      */
     status?: Vellum.EntityStatus;
     /**
      * The environment this workflow deployment is used in
      *
-     * - `DEVELOPMENT` - Development
-     * - `STAGING` - Staging
-     * - `PRODUCTION` - Production
+     * * `DEVELOPMENT` - Development
+     * * `STAGING` - Staging
+     * * `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
     created: Date;

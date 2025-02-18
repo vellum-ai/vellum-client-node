@@ -3,11 +3,11 @@
  */
 
 /**
- * - `QUEUED` - Queued
- * - `PROCESSING` - Processing
- * - `PROCESSED` - Processed
- * - `FAILED` - Failed
- * - `UNKNOWN` - Unknown
+ * * `QUEUED` - Queued
+ * * `PROCESSING` - Processing
+ * * `PROCESSED` - Processed
+ * * `FAILED` - Failed
+ * * `UNKNOWN` - Unknown
  */
 export type DocumentProcessingState = "QUEUED" | "PROCESSING" | "PROCESSED" | "FAILED" | "UNKNOWN";
 export const DocumentProcessingState = {

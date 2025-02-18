@@ -3,9 +3,9 @@
  */
 
 /**
- * - `INITIATED` - INITIATED
- * - `FULFILLED` - FULFILLED
- * - `REJECTED` - REJECTED
+ * * `INITIATED` - INITIATED
+ * * `FULFILLED` - FULFILLED
+ * * `REJECTED` - REJECTED
  */
 export type IterationStateEnum = "INITIATED" | "FULFILLED" | "REJECTED";
 export const IterationStateEnum = {

@@ -14,8 +14,8 @@ export interface FolderEntitiesListRequest {
     /**
      * Filter down to only those objects whose entities have a status matching the status specified.
      *
-     * - `ACTIVE` - Active
-     * - `ARCHIVED` - Archived
+     * * `ACTIVE` - Active
+     * * `ARCHIVED` - Archived
      */
     entityStatus?: Vellum.FolderEntitiesListRequestEntityStatus;
     /**
@@ -35,7 +35,6 @@ export interface FolderEntitiesListRequest {
      *
      * To filter by an entity's parent folder, provide the ID of the parent folder. To filter by the root directory, provide
      * a string representing the entity type of the root directory. Supported root directories include:
-     *
      * - PROMPT_SANDBOX
      * - WORKFLOW_SANDBOX
      * - DOCUMENT_INDEX

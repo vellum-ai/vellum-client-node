@@ -3,11 +3,11 @@
  */
 
 /**
- * - `AWAITING_PROCESSING` - Awaiting Processing
- * - `QUEUED` - Queued
- * - `INDEXING` - Indexing
- * - `INDEXED` - Indexed
- * - `FAILED` - Failed
+ * * `AWAITING_PROCESSING` - Awaiting Processing
+ * * `QUEUED` - Queued
+ * * `INDEXING` - Indexing
+ * * `INDEXED` - Indexed
+ * * `FAILED` - Failed
  */
 export type IndexingStateEnum = "AWAITING_PROCESSING" | "QUEUED" | "INDEXING" | "INDEXED" | "FAILED";
 export const IndexingStateEnum = {

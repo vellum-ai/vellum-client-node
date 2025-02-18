@@ -15,11 +15,11 @@ export interface SlimDocumentDocumentToDocumentIndex {
     /**
      * An enum value representing where this document is along its indexing lifecycle for this index.
      *
-     * - `AWAITING_PROCESSING` - Awaiting Processing
-     * - `QUEUED` - Queued
-     * - `INDEXING` - Indexing
-     * - `INDEXED` - Indexed
-     * - `FAILED` - Failed
+     * * `AWAITING_PROCESSING` - Awaiting Processing
+     * * `QUEUED` - Queued
+     * * `INDEXING` - Indexing
+     * * `INDEXED` - Indexed
+     * * `FAILED` - Failed
      */
     indexingState?: Vellum.IndexingStateEnum;
 }

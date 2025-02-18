@@ -10,8 +10,8 @@ export interface DeploymentReleaseTagRead {
     /**
      * The source of how the Release Tag was originally created
      *
-     * - `SYSTEM` - System
-     * - `USER` - User
+     * * `SYSTEM` - System
+     * * `USER` - User
      */
     source: Vellum.ReleaseTagSource;
     /** The Deployment History Item that this Release Tag is associated with */

@@ -3,11 +3,11 @@
  */
 
 /**
- * - `QUEUED` - Queued
- * - `RUNNING` - Running
- * - `COMPLETE` - Complete
- * - `FAILED` - Failed
- * - `CANCELLED` - Cancelled
+ * * `QUEUED` - Queued
+ * * `RUNNING` - Running
+ * * `COMPLETE` - Complete
+ * * `FAILED` - Failed
+ * * `CANCELLED` - Cancelled
  */
 export type TestSuiteRunState = "QUEUED" | "RUNNING" | "COMPLETE" | "FAILED" | "CANCELLED";
 export const TestSuiteRunState = {

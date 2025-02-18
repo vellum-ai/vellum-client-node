@@ -80,8 +80,8 @@ export class FolderEntities {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.3",
-                "User-Agent": "vellum-ai/0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
+                "User-Agent": "vellum-ai/0.14.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -132,7 +132,6 @@ export class FolderEntities {
      *
      * @param {string} folderId - The ID of the folder to which the entity should be added. This can be a UUID of a folder, or the name of a root
      *                            directory. Supported root directories include:
-     *
      *                            - PROMPT_SANDBOX
      *                            - WORKFLOW_SANDBOX
      *                            - DOCUMENT_INDEX
@@ -161,8 +160,8 @@ export class FolderEntities {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.3",
-                "User-Agent": "vellum-ai/0.14.3",
+                "X-Fern-SDK-Version": "0.14.4",
+                "User-Agent": "vellum-ai/0.14.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

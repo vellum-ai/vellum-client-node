@@ -3,6 +3,6 @@
  */
 
 /**
- * - `USD` - USD
+ * * `USD` - USD
  */
 export type UnitEnum = "USD";

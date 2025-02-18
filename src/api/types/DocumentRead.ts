@@ -15,7 +15,7 @@ export interface DocumentRead {
     /**
      * The current status of the document
      *
-     * - `ACTIVE` - Active
+     * * `ACTIVE` - Active
      */
     status?: Vellum.DocumentStatus;
     originalFileUrl?: string;

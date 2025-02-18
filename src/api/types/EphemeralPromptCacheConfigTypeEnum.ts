@@ -3,6 +3,6 @@
  */
 
 /**
- * - `EPHEMERAL` - EPHEMERAL
+ * * `EPHEMERAL` - EPHEMERAL
  */
 export type EphemeralPromptCacheConfigTypeEnum = "EPHEMERAL";

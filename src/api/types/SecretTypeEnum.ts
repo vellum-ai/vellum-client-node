@@ -3,9 +3,9 @@
  */
 
 /**
- * - `USER_DEFINED` - User Defined
- * - `HMAC` - Hmac
- * - `INTERNAL_API_KEY` - Internal Api Key
+ * * `USER_DEFINED` - User Defined
+ * * `HMAC` - Hmac
+ * * `INTERNAL_API_KEY` - Internal Api Key
  */
 export type SecretTypeEnum = "USER_DEFINED" | "HMAC" | "INTERNAL_API_KEY";
 export const SecretTypeEnum = {
