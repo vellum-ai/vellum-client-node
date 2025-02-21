@@ -3415,6 +3415,69 @@ await client.workflowSandboxes.deployWorkflow("id", "workflow_id");
 </dl>
 </details>
 
+<details><summary><code>client.workflowSandboxes.<a href="/src/api/resources/workflowSandboxes/client/Client.ts">listWorkflowSandboxExamples</a>({ ...params }) -> Vellum.PaginatedWorkflowSandboxExampleList</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List Workflow Sandbox examples that were previously cloned into the User's Workspace
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workflowSandboxes.listWorkflowSandboxExamples();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.ListWorkflowSandboxExamplesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WorkflowSandboxes.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Workflows
 
 <details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">push</a>(artifact, { ...params }) -> Vellum.WorkflowPushResponse</code></summary>

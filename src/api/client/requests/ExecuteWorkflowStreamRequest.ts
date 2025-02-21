@@ -25,7 +25,7 @@ export interface ExecuteWorkflowStreamRequest {
     workflowDeploymentName?: string;
     /** Optionally specify a release tag if you want to pin to a specific release of the Workflow Deployment */
     releaseTag?: string;
-    /** Optionally include a unique identifier for tracking purposes. Must be unique for a given workflow deployment. */
+    /** Optionally include a unique identifier for tracking purposes. Must be unique within a given Workspace. */
     externalId?: string;
     /** Optionally specify which events you want to receive. Defaults to only WORKFLOW events. Note that the schema of non-WORKFLOW events is unstable and should be used with caution. */
     eventTypes?: Vellum.WorkflowExecutionEventType[];
