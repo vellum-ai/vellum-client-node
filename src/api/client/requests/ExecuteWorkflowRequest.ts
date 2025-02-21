@@ -25,7 +25,7 @@ export interface ExecuteWorkflowRequest {
     workflowDeploymentName?: string;
     /** Optionally specify a release tag if you want to pin to a specific release of the Workflow Deployment */
     releaseTag?: string;
-    /** Optionally include a unique identifier for tracking purposes. Must be unique for a given workflow deployment. */
+    /** Optionally include a unique identifier for tracking purposes. Must be unique within a given Workspace. */
     externalId?: string;
     /** Arbitrary JSON metadata associated with this request. Can be used to capture additional monitoring data such as user id, session id, etc. for future analysis. */
     metadata?: Record<string, unknown>;
