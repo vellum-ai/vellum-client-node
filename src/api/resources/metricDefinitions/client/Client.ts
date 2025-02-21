@@ -14,7 +14,7 @@ export declare namespace MetricDefinitions {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     export interface RequestOptions {
@@ -30,7 +30,7 @@ export declare namespace MetricDefinitions {
 }
 
 export class MetricDefinitions {
-    constructor(protected readonly _options: MetricDefinitions.Options) {}
+    constructor(protected readonly _options: MetricDefinitions.Options = {}) {}
 
     /**
      * @param {string} id - Either the Metric Definition's ID or its unique name
@@ -62,8 +62,8 @@ export class MetricDefinitions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -133,8 +133,8 @@ export class MetricDefinitions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

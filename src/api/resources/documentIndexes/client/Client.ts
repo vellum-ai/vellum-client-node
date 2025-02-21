@@ -14,7 +14,7 @@ export declare namespace DocumentIndexes {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     export interface RequestOptions {
@@ -30,7 +30,7 @@ export declare namespace DocumentIndexes {
 }
 
 export class DocumentIndexes {
-    constructor(protected readonly _options: DocumentIndexes.Options) {}
+    constructor(protected readonly _options: DocumentIndexes.Options = {}) {}
 
     /**
      * Used to retrieve a list of Document Indexes.
@@ -80,8 +80,8 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -211,8 +211,8 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -280,8 +280,8 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -352,8 +352,8 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -418,8 +418,8 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -483,8 +483,8 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -556,8 +556,8 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -623,8 +623,8 @@ export class DocumentIndexes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

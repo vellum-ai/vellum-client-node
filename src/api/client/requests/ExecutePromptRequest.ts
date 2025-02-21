@@ -23,7 +23,7 @@ export interface ExecutePromptRequest {
     promptDeploymentName?: string;
     /** Optionally specify a release tag if you want to pin to a specific release of the Prompt Deployment */
     releaseTag?: string;
-    /** Optionally include a unique identifier for tracking purposes. Must be unique within a given Prompt Deployment. */
+    /** Optionally include a unique identifier for tracking purposes. Must be unique within a given Workspace. */
     externalId?: string;
     /** An optionally specified configuration used to opt in to including additional metadata about this prompt execution in the API response. Corresponding values will be returned under the `meta` key of the API response. */
     expandMeta?: Vellum.PromptDeploymentExpandMetaRequest;

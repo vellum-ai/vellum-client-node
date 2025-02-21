@@ -15,7 +15,7 @@ export declare namespace AdHoc {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
     }
 
     export interface RequestOptions {
@@ -31,7 +31,7 @@ export declare namespace AdHoc {
 }
 
 export class AdHoc {
-    constructor(protected readonly _options: AdHoc.Options) {}
+    constructor(protected readonly _options: AdHoc.Options = {}) {}
 
     public async adhocExecutePromptStream(
         request: Vellum.AdHocExecutePromptStream,
@@ -48,8 +48,8 @@ export class AdHoc {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.5",
-                "User-Agent": "vellum-ai/0.14.5",
+                "X-Fern-SDK-Version": "0.14.6",
+                "User-Agent": "vellum-ai/0.14.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
