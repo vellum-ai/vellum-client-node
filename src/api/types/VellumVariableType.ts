@@ -13,6 +13,7 @@
  * * `FUNCTION_CALL` - FUNCTION_CALL
  * * `IMAGE` - IMAGE
  * * `AUDIO` - AUDIO
+ * * `DOCUMENT` - DOCUMENT
  * * `NULL` - NULL
  */
 export type VellumVariableType =
@@ -26,6 +27,7 @@ export type VellumVariableType =
     | "FUNCTION_CALL"
     | "IMAGE"
     | "AUDIO"
+    | "DOCUMENT"
     | "NULL";
 export const VellumVariableType = {
     String: "STRING",
@@ -38,5 +40,6 @@ export const VellumVariableType = {
     FunctionCall: "FUNCTION_CALL",
     Image: "IMAGE",
     Audio: "AUDIO",
+    Document: "DOCUMENT",
     Null: "NULL",
 } as const;
