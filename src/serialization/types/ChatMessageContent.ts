@@ -10,6 +10,7 @@ import { FunctionCallChatMessageContent } from "./FunctionCallChatMessageContent
 import { ArrayChatMessageContent } from "./ArrayChatMessageContent";
 import { ImageChatMessageContent } from "./ImageChatMessageContent";
 import { AudioChatMessageContent } from "./AudioChatMessageContent";
+import { DocumentChatMessageContent } from "./DocumentChatMessageContent";
 
 export const ChatMessageContent: core.serialization.Schema<
     serializers.ChatMessageContent.Raw,
@@ -20,6 +21,7 @@ export const ChatMessageContent: core.serialization.Schema<
     ArrayChatMessageContent,
     ImageChatMessageContent,
     AudioChatMessageContent,
+    DocumentChatMessageContent,
 ]);
 
 export declare namespace ChatMessageContent {
@@ -28,5 +30,6 @@ export declare namespace ChatMessageContent {
         | FunctionCallChatMessageContent.Raw
         | ArrayChatMessageContent.Raw
         | ImageChatMessageContent.Raw
-        | AudioChatMessageContent.Raw;
+        | AudioChatMessageContent.Raw
+        | DocumentChatMessageContent.Raw;
 }
