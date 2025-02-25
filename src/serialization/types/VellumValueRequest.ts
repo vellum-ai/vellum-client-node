@@ -10,6 +10,7 @@ import { NumberVellumValueRequest } from "./NumberVellumValueRequest";
 import { JsonVellumValueRequest } from "./JsonVellumValueRequest";
 import { ImageVellumValueRequest } from "./ImageVellumValueRequest";
 import { AudioVellumValueRequest } from "./AudioVellumValueRequest";
+import { DocumentVellumValueRequest } from "./DocumentVellumValueRequest";
 import { FunctionCallVellumValueRequest } from "./FunctionCallVellumValueRequest";
 import { ErrorVellumValueRequest } from "./ErrorVellumValueRequest";
 import { ChatHistoryVellumValueRequest } from "./ChatHistoryVellumValueRequest";
@@ -24,6 +25,7 @@ export const VellumValueRequest: core.serialization.Schema<
     JsonVellumValueRequest,
     ImageVellumValueRequest,
     AudioVellumValueRequest,
+    DocumentVellumValueRequest,
     FunctionCallVellumValueRequest,
     ErrorVellumValueRequest,
     core.serialization.lazyObject(() => serializers.ArrayVellumValueRequest),
@@ -38,6 +40,7 @@ export declare namespace VellumValueRequest {
         | JsonVellumValueRequest.Raw
         | ImageVellumValueRequest.Raw
         | AudioVellumValueRequest.Raw
+        | DocumentVellumValueRequest.Raw
         | FunctionCallVellumValueRequest.Raw
         | ErrorVellumValueRequest.Raw
         | serializers.ArrayVellumValueRequest.Raw
