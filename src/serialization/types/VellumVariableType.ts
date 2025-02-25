@@ -20,6 +20,7 @@ export const VellumVariableType: core.serialization.Schema<
     "FUNCTION_CALL",
     "IMAGE",
     "AUDIO",
+    "DOCUMENT",
     "NULL",
 ]);
 
@@ -35,5 +36,6 @@ export declare namespace VellumVariableType {
         | "FUNCTION_CALL"
         | "IMAGE"
         | "AUDIO"
+        | "DOCUMENT"
         | "NULL";
 }
