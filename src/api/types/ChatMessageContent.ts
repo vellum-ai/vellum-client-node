@@ -9,4 +9,5 @@ export type ChatMessageContent =
     | Vellum.FunctionCallChatMessageContent
     | Vellum.ArrayChatMessageContent
     | Vellum.ImageChatMessageContent
-    | Vellum.AudioChatMessageContent;
+    | Vellum.AudioChatMessageContent
+    | Vellum.DocumentChatMessageContent;
