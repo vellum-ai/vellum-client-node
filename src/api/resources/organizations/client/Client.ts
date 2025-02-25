@@ -14,7 +14,7 @@ export declare namespace Organizations {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
-        apiKey?: core.Supplier<string | undefined>;
+        apiKey: core.Supplier<string>;
     }
 
     export interface RequestOptions {
@@ -30,7 +30,7 @@ export declare namespace Organizations {
 }
 
 export class Organizations {
-    constructor(protected readonly _options: Organizations.Options = {}) {}
+    constructor(protected readonly _options: Organizations.Options) {}
 
     /**
      * Retrieves information about the active Organization
@@ -52,8 +52,8 @@ export class Organizations {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.6",
-                "User-Agent": "vellum-ai/0.14.6",
+                "X-Fern-SDK-Version": "0.14.7",
+                "User-Agent": "vellum-ai/0.14.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
