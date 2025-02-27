@@ -11,4 +11,5 @@ export type PromptBlock =
     | Vellum.RichTextPromptBlock
     | Vellum.AudioPromptBlock
     | Vellum.FunctionCallPromptBlock
-    | Vellum.ImagePromptBlock;
+    | Vellum.ImagePromptBlock
+    | Vellum.DocumentPromptBlock;
