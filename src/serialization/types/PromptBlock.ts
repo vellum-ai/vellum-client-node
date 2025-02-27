@@ -11,6 +11,7 @@ import { RichTextPromptBlock } from "./RichTextPromptBlock";
 import { AudioPromptBlock } from "./AudioPromptBlock";
 import { FunctionCallPromptBlock } from "./FunctionCallPromptBlock";
 import { ImagePromptBlock } from "./ImagePromptBlock";
+import { DocumentPromptBlock } from "./DocumentPromptBlock";
 
 export const PromptBlock: core.serialization.Schema<serializers.PromptBlock.Raw, Vellum.PromptBlock> =
     core.serialization.undiscriminatedUnion([
@@ -21,6 +22,7 @@ export const PromptBlock: core.serialization.Schema<serializers.PromptBlock.Raw,
         AudioPromptBlock,
         FunctionCallPromptBlock,
         ImagePromptBlock,
+        DocumentPromptBlock,
     ]);
 
 export declare namespace PromptBlock {
@@ -31,5 +33,6 @@ export declare namespace PromptBlock {
         | RichTextPromptBlock.Raw
         | AudioPromptBlock.Raw
         | FunctionCallPromptBlock.Raw
-        | ImagePromptBlock.Raw;
+        | ImagePromptBlock.Raw
+        | DocumentPromptBlock.Raw;
 }

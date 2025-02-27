@@ -78,6 +78,7 @@ export * from "./DocumentIndexIndexingConfig";
 export * from "./DocumentIndexIndexingConfigRequest";
 export * from "./DocumentIndexRead";
 export * from "./DocumentProcessingState";
+export * from "./DocumentPromptBlock";
 export * from "./DocumentRead";
 export * from "./DocumentStatus";
 export * from "./DocumentVellumValue";
