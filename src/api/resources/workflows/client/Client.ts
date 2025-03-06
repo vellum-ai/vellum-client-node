@@ -19,6 +19,8 @@ export declare namespace Workflows {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey: core.Supplier<string>;
+        /** Override the X_API_KEY header */
+        xApiKey: core.Supplier<string>;
     }
 
     export interface RequestOptions {
@@ -28,6 +30,8 @@ export declare namespace Workflows {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Override the X_API_KEY header */
+        xApiKey?: string;
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -77,10 +81,11 @@ export class Workflows {
             ),
             method: "GET",
             headers: {
+                X_API_KEY: await core.Supplier.get(this._options.xApiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.10",
-                "User-Agent": "vellum-ai/0.14.10",
+                "X-Fern-SDK-Version": "0.14.11",
+                "User-Agent": "vellum-ai/0.14.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -182,10 +187,11 @@ export class Workflows {
             ),
             method: "POST",
             headers: {
+                X_API_KEY: await core.Supplier.get(this._options.xApiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.10",
-                "User-Agent": "vellum-ai/0.14.10",
+                "X-Fern-SDK-Version": "0.14.11",
+                "User-Agent": "vellum-ai/0.14.11",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
