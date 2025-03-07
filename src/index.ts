@@ -7,7 +7,7 @@ import { setGlobalDispatcher, Agent } from "undici";
 
 setGlobalDispatcher(
     new Agent({
-        connect: { timeout: 10_000 },
+        connect: { timeout: 60_000 },
         bodyTimeout: 0,
         headersTimeout: 600_000,
     })
