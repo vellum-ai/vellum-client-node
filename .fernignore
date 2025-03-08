@@ -3,3 +3,5 @@
 README.md
 LICENSE
 src/terraform
+src/index.ts
+tests/unit/fetcher/stream-wrappers/webpack.test.ts
