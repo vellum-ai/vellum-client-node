@@ -6,6 +6,16 @@ import { RUNTIME } from "../runtime";
 export async function getFetchFn(): Promise<any> {
     // In Node.js 18+ environments, use native fetch
     if (RUNTIME.type === "node" && RUNTIME.parsedVersion != null && RUNTIME.parsedVersion >= 18) {
+        const { setGlobalDispatcher, Agent } = await import("undici");
+
+        setGlobalDispatcher(
+            new Agent({
+                connect: { timeout: 60_000 },
+                bodyTimeout: 0,
+                headersTimeout: 600_000,
+            }),
+        );
+
         return fetch;
     }
 
