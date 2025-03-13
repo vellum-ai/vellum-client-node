@@ -6,7 +6,6 @@ import * as serializers from "../../../../index";
 import * as Vellum from "../../../../../api/index";
 import * as core from "../../../../../core";
 import { EntityStatus } from "../../../../types/EntityStatus";
-import { EnvironmentEnum } from "../../../../types/EnvironmentEnum";
 import { DocumentIndexIndexingConfigRequest } from "../../../../types/DocumentIndexIndexingConfigRequest";
 
 export const DocumentIndexCreateRequest: core.serialization.Schema<
@@ -16,7 +15,6 @@ export const DocumentIndexCreateRequest: core.serialization.Schema<
     label: core.serialization.string(),
     name: core.serialization.string(),
     status: EntityStatus.optional(),
-    environment: EnvironmentEnum.optional(),
     indexingConfig: core.serialization.property("indexing_config", DocumentIndexIndexingConfigRequest),
     copyDocumentsFromIndexId: core.serialization.property(
         "copy_documents_from_index_id",
@@ -29,7 +27,6 @@ export declare namespace DocumentIndexCreateRequest {
         label: string;
         name: string;
         status?: EntityStatus.Raw | null;
-        environment?: EnvironmentEnum.Raw | null;
         indexing_config: DocumentIndexIndexingConfigRequest.Raw;
         copy_documents_from_index_id?: string | null;
     }

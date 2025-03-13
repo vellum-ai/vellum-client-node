@@ -88,6 +88,8 @@ export type LogicalOperator =
     | "notBlank"
     | "coalesce"
     | "accessField"
+    /**
+     * Parse JSON */
     | "parseJson"
     | "and"
     | "or";
