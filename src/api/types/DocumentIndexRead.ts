@@ -18,13 +18,5 @@ export interface DocumentIndexRead {
      * * `ARCHIVED` - Archived
      */
     status?: Vellum.EntityStatus;
-    /**
-     * The environment this document index is used in
-     *
-     * * `DEVELOPMENT` - Development
-     * * `STAGING` - Staging
-     * * `PRODUCTION` - Production
-     */
-    environment?: Vellum.EnvironmentEnum;
     indexingConfig: Vellum.DocumentIndexIndexingConfig;
 }

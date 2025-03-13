@@ -6,7 +6,6 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { EntityStatus } from "./EntityStatus";
-import { EnvironmentEnum } from "./EnvironmentEnum";
 import { DocumentIndexIndexingConfig } from "./DocumentIndexIndexingConfig";
 
 export const DocumentIndexRead: core.serialization.ObjectSchema<
@@ -18,7 +17,6 @@ export const DocumentIndexRead: core.serialization.ObjectSchema<
     label: core.serialization.string(),
     name: core.serialization.string(),
     status: EntityStatus.optional(),
-    environment: EnvironmentEnum.optional(),
     indexingConfig: core.serialization.property("indexing_config", DocumentIndexIndexingConfig),
 });
 
@@ -29,7 +27,6 @@ export declare namespace DocumentIndexRead {
         label: string;
         name: string;
         status?: EntityStatus.Raw | null;
-        environment?: EnvironmentEnum.Raw | null;
         indexing_config: DocumentIndexIndexingConfig.Raw;
     }
 }

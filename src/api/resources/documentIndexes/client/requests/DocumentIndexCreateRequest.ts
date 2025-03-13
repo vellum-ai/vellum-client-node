@@ -82,14 +82,6 @@ export interface DocumentIndexCreateRequest {
      * * `ARCHIVED` - Archived
      */
     status?: Vellum.EntityStatus;
-    /**
-     * The environment this document index is used in
-     *
-     * * `DEVELOPMENT` - Development
-     * * `STAGING` - Staging
-     * * `PRODUCTION` - Production
-     */
-    environment?: Vellum.EnvironmentEnum;
     indexingConfig: Vellum.DocumentIndexIndexingConfigRequest;
     /** Optionally specify the id of a document index from which you'd like to copy and re-index its documents into this newly created index */
     copyDocumentsFromIndexId?: string;
