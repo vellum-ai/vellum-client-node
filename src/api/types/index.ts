@@ -288,6 +288,7 @@ export * from "./RejectedExecutePromptResponse";
 export * from "./RejectedExecuteWorkflowWorkflowResultEvent";
 export * from "./RejectedPromptExecutionMeta";
 export * from "./RejectedWorkflowNodeResultEvent";
+export * from "./Release";
 export * from "./ReleaseTagSource";
 export * from "./ReplaceTestSuiteTestCaseRequest";
 export * from "./RichTextChildBlock";
