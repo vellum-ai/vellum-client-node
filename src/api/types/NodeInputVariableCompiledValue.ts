@@ -12,4 +12,5 @@ export type NodeInputVariableCompiledValue =
     | Vellum.NodeInputCompiledSearchResultsValue
     | Vellum.NodeInputCompiledErrorValue
     | Vellum.NodeInputCompiledArrayValue
-    | Vellum.NodeInputCompiledFunctionCallValue;
+    | Vellum.NodeInputCompiledFunctionCallValue
+    | Vellum.NodeInputCompiledSecretValue;
