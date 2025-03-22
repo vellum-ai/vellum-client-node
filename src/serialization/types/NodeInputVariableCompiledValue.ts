@@ -13,6 +13,7 @@ import { NodeInputCompiledSearchResultsValue } from "./NodeInputCompiledSearchRe
 import { NodeInputCompiledErrorValue } from "./NodeInputCompiledErrorValue";
 import { NodeInputCompiledArrayValue } from "./NodeInputCompiledArrayValue";
 import { NodeInputCompiledFunctionCallValue } from "./NodeInputCompiledFunctionCallValue";
+import { NodeInputCompiledSecretValue } from "./NodeInputCompiledSecretValue";
 
 export const NodeInputVariableCompiledValue: core.serialization.Schema<
     serializers.NodeInputVariableCompiledValue.Raw,
@@ -26,6 +27,7 @@ export const NodeInputVariableCompiledValue: core.serialization.Schema<
     NodeInputCompiledErrorValue,
     NodeInputCompiledArrayValue,
     NodeInputCompiledFunctionCallValue,
+    NodeInputCompiledSecretValue,
 ]);
 
 export declare namespace NodeInputVariableCompiledValue {
@@ -37,5 +39,6 @@ export declare namespace NodeInputVariableCompiledValue {
         | NodeInputCompiledSearchResultsValue.Raw
         | NodeInputCompiledErrorValue.Raw
         | NodeInputCompiledArrayValue.Raw
-        | NodeInputCompiledFunctionCallValue.Raw;
+        | NodeInputCompiledFunctionCallValue.Raw
+        | NodeInputCompiledSecretValue.Raw;
 }
