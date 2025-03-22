@@ -221,6 +221,7 @@ export * from "./NodeInputCompiledFunctionCallValue";
 export * from "./NodeInputCompiledJsonValue";
 export * from "./NodeInputCompiledNumberValue";
 export * from "./NodeInputCompiledSearchResultsValue";
+export * from "./NodeInputCompiledSecretValue";
 export * from "./NodeInputCompiledStringValue";
 export * from "./NodeInputVariableCompiledValue";
 export * from "./NodeOutputCompiledArrayValue";
