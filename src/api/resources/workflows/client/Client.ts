@@ -79,8 +79,8 @@ export class Workflows {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.22",
-                "User-Agent": "vellum-ai/0.14.22",
+                "X-Fern-SDK-Version": "0.14.23",
+                "User-Agent": "vellum-ai/0.14.23",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -184,8 +184,8 @@ export class Workflows {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.22",
-                "User-Agent": "vellum-ai/0.14.22",
+                "X-Fern-SDK-Version": "0.14.23",
+                "User-Agent": "vellum-ai/0.14.23",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
