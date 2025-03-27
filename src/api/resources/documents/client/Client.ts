@@ -80,8 +80,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.23",
-                "User-Agent": "vellum-ai/0.14.23",
+                "X-Fern-SDK-Version": "0.14.24",
+                "User-Agent": "vellum-ai/0.14.24",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -146,8 +146,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.23",
-                "User-Agent": "vellum-ai/0.14.23",
+                "X-Fern-SDK-Version": "0.14.24",
+                "User-Agent": "vellum-ai/0.14.24",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -211,8 +211,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.23",
-                "User-Agent": "vellum-ai/0.14.23",
+                "X-Fern-SDK-Version": "0.14.24",
+                "User-Agent": "vellum-ai/0.14.24",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -276,8 +276,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.23",
-                "User-Agent": "vellum-ai/0.14.23",
+                "X-Fern-SDK-Version": "0.14.24",
+                "User-Agent": "vellum-ai/0.14.24",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -325,13 +325,6 @@ export class Documents {
      * Upload a document to be indexed and used for search.
      *
      * **Note:** Uses a base url of `https://documents.vellum.ai`.
-     *
-     * This is a multipart/form-data request. The `contents` field should be a file upload. It also expects a JSON body with the following fields:
-     * - `add_to_index_names: list[str]` - Optionally include the names of all indexes that you'd like this document to be included in
-     * - `external_id: str | None` - Optionally include an external ID for this document. This is useful if you want to re-upload the same document later when its contents change and would like it to be re-indexed.
-     * - `label: str` - A human-friendly name for this document. Typically the filename.
-     * - `keywords: list[str] | None` - Optionally include a list of keywords that'll be associated with this document. Used when performing keyword searches.
-     * - `metadata: dict[str, Any]` - A stringified JSON object containing any metadata associated with the document that you'd like to filter upon later.
      *
      * @param {File | fs.ReadStream | Blob} contents
      * @param {Vellum.UploadDocumentBodyRequest} request
@@ -386,8 +379,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.23",
-                "User-Agent": "vellum-ai/0.14.23",
+                "X-Fern-SDK-Version": "0.14.24",
+                "User-Agent": "vellum-ai/0.14.24",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
