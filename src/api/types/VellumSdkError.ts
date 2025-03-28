@@ -5,6 +5,6 @@
 import * as Vellum from "../index";
 
 export interface VellumSdkError {
-    code: Vellum.VellumSdkErrorCodeEnum;
     message: string;
+    code: Vellum.VellumSdkErrorCodeEnum;
 }
