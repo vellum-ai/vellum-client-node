@@ -17,6 +17,7 @@ export const WorkflowExecutionEventErrorCode: core.serialization.Schema<
     "NODE_EXECUTION",
     "LLM_PROVIDER",
     "INVALID_TEMPLATE",
+    "INVALID_INPUTS",
     "USER_DEFINED_ERROR",
 ]);
 
@@ -29,5 +30,6 @@ export declare namespace WorkflowExecutionEventErrorCode {
         | "NODE_EXECUTION"
         | "LLM_PROVIDER"
         | "INVALID_TEMPLATE"
+        | "INVALID_INPUTS"
         | "USER_DEFINED_ERROR";
 }

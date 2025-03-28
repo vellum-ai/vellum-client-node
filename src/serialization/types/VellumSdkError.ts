@@ -9,13 +9,13 @@ import { VellumSdkErrorCodeEnum } from "./VellumSdkErrorCodeEnum";
 
 export const VellumSdkError: core.serialization.ObjectSchema<serializers.VellumSdkError.Raw, Vellum.VellumSdkError> =
     core.serialization.object({
-        code: VellumSdkErrorCodeEnum,
         message: core.serialization.string(),
+        code: VellumSdkErrorCodeEnum,
     });
 
 export declare namespace VellumSdkError {
     export interface Raw {
-        code: VellumSdkErrorCodeEnum.Raw;
         message: string;
+        code: VellumSdkErrorCodeEnum.Raw;
     }
 }
