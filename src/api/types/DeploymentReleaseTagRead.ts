@@ -14,6 +14,8 @@ export interface DeploymentReleaseTagRead {
      * * `USER` - User
      */
     source: Vellum.ReleaseTagSource;
-    /** The Deployment History Item that this Release Tag is associated with */
+    /** Deprecated. Reference the `release` field instead. */
     historyItem: Vellum.DeploymentReleaseTagDeploymentHistoryItem;
+    /** The Release that this Release Tag points to. */
+    release: Vellum.ReleaseTagRelease;
 }
