@@ -7,7 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { ReleaseTagSource } from "./ReleaseTagSource";
 import { WorkflowReleaseTagWorkflowDeploymentHistoryItem } from "./WorkflowReleaseTagWorkflowDeploymentHistoryItem";
-import { Release } from "./Release";
+import { ReleaseTagRelease } from "./ReleaseTagRelease";
 
 export const WorkflowReleaseTagRead: core.serialization.ObjectSchema<
     serializers.WorkflowReleaseTagRead.Raw,
@@ -16,7 +16,7 @@ export const WorkflowReleaseTagRead: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     source: ReleaseTagSource,
     historyItem: core.serialization.property("history_item", WorkflowReleaseTagWorkflowDeploymentHistoryItem),
-    release: Release,
+    release: ReleaseTagRelease,
 });
 
 export declare namespace WorkflowReleaseTagRead {
@@ -24,6 +24,6 @@ export declare namespace WorkflowReleaseTagRead {
         name: string;
         source: ReleaseTagSource.Raw;
         history_item: WorkflowReleaseTagWorkflowDeploymentHistoryItem.Raw;
-        release: Release.Raw;
+        release: ReleaseTagRelease.Raw;
     }
 }

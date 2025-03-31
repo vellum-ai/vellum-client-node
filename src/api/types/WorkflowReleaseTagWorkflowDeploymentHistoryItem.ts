@@ -3,8 +3,6 @@
  */
 
 export interface WorkflowReleaseTagWorkflowDeploymentHistoryItem {
-    /** The ID of the Workflow Deployment History Item */
     id: string;
-    /** The timestamp representing when this History Item was created */
     timestamp: Date;
 }

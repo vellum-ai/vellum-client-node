@@ -8,8 +8,6 @@ export * as workflowDeployments from "./workflowDeployments";
 export * from "./workflowDeployments/types";
 export * as workflowSandboxes from "./workflowSandboxes";
 export * from "./workflowSandboxes/types";
-export * as workflows from "./workflows";
-export * from "./workflows/types";
 export * as testSuites from "./testSuites";
 export * as adHoc from "./adHoc";
 export * from "./adHoc/client/requests";
