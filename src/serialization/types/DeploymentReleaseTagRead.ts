@@ -7,6 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { ReleaseTagSource } from "./ReleaseTagSource";
 import { DeploymentReleaseTagDeploymentHistoryItem } from "./DeploymentReleaseTagDeploymentHistoryItem";
+import { ReleaseTagRelease } from "./ReleaseTagRelease";
 
 export const DeploymentReleaseTagRead: core.serialization.ObjectSchema<
     serializers.DeploymentReleaseTagRead.Raw,
@@ -15,6 +16,7 @@ export const DeploymentReleaseTagRead: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     source: ReleaseTagSource,
     historyItem: core.serialization.property("history_item", DeploymentReleaseTagDeploymentHistoryItem),
+    release: ReleaseTagRelease,
 });
 
 export declare namespace DeploymentReleaseTagRead {
@@ -22,5 +24,6 @@ export declare namespace DeploymentReleaseTagRead {
         name: string;
         source: ReleaseTagSource.Raw;
         history_item: DeploymentReleaseTagDeploymentHistoryItem.Raw;
+        release: ReleaseTagRelease.Raw;
     }
 }
