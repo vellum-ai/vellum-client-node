@@ -17,5 +17,5 @@ export interface WorkflowReleaseTagRead {
     /** Deprecated. Reference the `release` field instead. */
     historyItem: Vellum.WorkflowReleaseTagWorkflowDeploymentHistoryItem;
     /** The Release that this Release Tag points to. */
-    release: Vellum.Release;
+    release: Vellum.ReleaseTagRelease;
 }
