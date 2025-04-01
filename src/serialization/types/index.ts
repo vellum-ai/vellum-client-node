@@ -292,6 +292,7 @@ export * from "./PromptBlockState";
 export * from "./PromptDeploymentExpandMetaRequest";
 export * from "./PromptDeploymentInputRequest";
 export * from "./PromptDeploymentParentContext";
+export * from "./PromptExecConfig";
 export * from "./PromptExecutionMeta";
 export * from "./PromptNodeExecutionMeta";
 export * from "./PromptNodeResult";
