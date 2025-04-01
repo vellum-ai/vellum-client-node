@@ -2167,6 +2167,79 @@ await client.organizations.organizationIdentity();
 </dl>
 </details>
 
+## Prompts
+
+<details><summary><code>client.prompts.<a href="/src/api/resources/prompts/client/Client.ts">pull</a>(id, { ...params }) -> Vellum.PromptExecConfig</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Used to pull the definition of a Prompt from Vellum.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.prompts.pull("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the Prompt to pull from. Prompt Sandbox IDs are currently supported.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.PromptsPullRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Prompts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Sandboxes
 
 <details><summary><code>client.sandboxes.<a href="/src/api/resources/sandboxes/client/Client.ts">deployPrompt</a>(id, promptVariantId, { ...params }) -> Vellum.DeploymentRead</code></summary>

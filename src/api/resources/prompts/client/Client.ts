@@ -9,7 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Workspaces {
+export declare namespace Prompts {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -29,24 +29,39 @@ export declare namespace Workspaces {
     }
 }
 
-export class Workspaces {
-    constructor(protected readonly _options: Workspaces.Options) {}
+export class Prompts {
+    constructor(protected readonly _options: Prompts.Options) {}
 
     /**
-     * Retrieves information about the active Workspace
+     * Used to pull the definition of a Prompt from Vellum.
      *
-     * @param {Workspaces.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {string} id - The ID of the Prompt to pull from. Prompt Sandbox IDs are currently supported.
+     * @param {Vellum.PromptsPullRequest} request
+     * @param {Prompts.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.NotFoundError}
      *
      * @example
-     *     await client.workspaces.workspaceIdentity()
+     *     await client.prompts.pull("id")
      */
-    public async workspaceIdentity(requestOptions?: Workspaces.RequestOptions): Promise<Vellum.WorkspaceRead> {
+    public async pull(
+        id: string,
+        request: Vellum.PromptsPullRequest = {},
+        requestOptions?: Prompts.RequestOptions,
+    ): Promise<Vellum.PromptExecConfig> {
+        const { promptVariantId } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (promptVariantId != null) {
+            _queryParams["prompt_variant_id"] = promptVariantId;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                "v1/workspaces/identity",
+                `v1/prompts/${encodeURIComponent(id)}/pull`,
             ),
             method: "GET",
             headers: {
@@ -56,17 +71,19 @@ export class Workspaces {
                 "User-Agent": "vellum-ai/0.14.27",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
+                Accept: "application/json",
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkspaceRead.parseOrThrow(_response.body, {
+            return serializers.PromptExecConfig.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -75,10 +92,17 @@ export class Workspaces {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -88,7 +112,7 @@ export class Workspaces {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/workspaces/identity.");
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/prompts/{id}/pull.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
