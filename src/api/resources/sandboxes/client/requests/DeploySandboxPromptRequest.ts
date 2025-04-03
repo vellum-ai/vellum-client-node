@@ -15,4 +15,6 @@ export interface DeploySandboxPromptRequest {
     label?: string;
     /** Optionally provide the release tags that you'd like to be associated with the latest release of the created/updated Prompt Deployment. */
     releaseTags?: string[];
+    /** Optionally provide a description that details what's new in this Release. */
+    releaseDescription?: string;
 }
