@@ -17,6 +17,7 @@ export const DeploySandboxPromptRequest: core.serialization.Schema<
         "release_tags",
         core.serialization.list(core.serialization.string()).optional(),
     ),
+    releaseDescription: core.serialization.property("release_description", core.serialization.string().optional()),
 });
 
 export declare namespace DeploySandboxPromptRequest {
@@ -25,5 +26,6 @@ export declare namespace DeploySandboxPromptRequest {
         prompt_deployment_name?: string | null;
         label?: string | null;
         release_tags?: string[] | null;
+        release_description?: string | null;
     }
 }
