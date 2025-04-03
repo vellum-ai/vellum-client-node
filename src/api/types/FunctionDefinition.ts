@@ -9,7 +9,7 @@ import * as Vellum from "../index";
  */
 export interface FunctionDefinition {
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.ComponentsSchemasEphemeralPromptCacheConfig;
     /** The name identifying the function. */
     name?: string;
     /** A description to help guide the model when to invoke this function. */

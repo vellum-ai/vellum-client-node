@@ -6,7 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { PromptBlockState } from "./PromptBlockState";
-import { EphemeralPromptCacheConfig } from "./EphemeralPromptCacheConfig";
+import { ComponentsSchemasEphemeralPromptCacheConfig } from "./ComponentsSchemasEphemeralPromptCacheConfig";
 
 export const JinjaPromptBlock: core.serialization.ObjectSchema<
     serializers.JinjaPromptBlock.Raw,
@@ -14,7 +14,7 @@ export const JinjaPromptBlock: core.serialization.ObjectSchema<
 > = core.serialization.object({
     blockType: core.serialization.property("block_type", core.serialization.stringLiteral("JINJA")),
     state: PromptBlockState.optional(),
-    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optional()),
+    cacheConfig: core.serialization.property("cache_config", ComponentsSchemasEphemeralPromptCacheConfig.optional()),
     template: core.serialization.string(),
 });
 
@@ -22,7 +22,7 @@ export declare namespace JinjaPromptBlock {
     export interface Raw {
         block_type: "JINJA";
         state?: PromptBlockState.Raw | null;
-        cache_config?: EphemeralPromptCacheConfig.Raw | null;
+        cache_config?: ComponentsSchemasEphemeralPromptCacheConfig.Raw | null;
         template: string;
     }
 }

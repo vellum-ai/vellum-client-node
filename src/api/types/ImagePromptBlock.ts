@@ -10,7 +10,7 @@ import * as Vellum from "../index";
 export interface ImagePromptBlock {
     blockType: "IMAGE";
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.ComponentsSchemasEphemeralPromptCacheConfig;
     src: string;
     metadata?: Record<string, unknown>;
 }

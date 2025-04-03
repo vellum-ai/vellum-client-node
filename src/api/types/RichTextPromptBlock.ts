@@ -10,6 +10,6 @@ import * as Vellum from "../index";
 export interface RichTextPromptBlock {
     blockType: "RICH_TEXT";
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.ComponentsSchemasEphemeralPromptCacheConfig;
     blocks: Vellum.RichTextChildBlock[];
 }
