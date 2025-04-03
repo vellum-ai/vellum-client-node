@@ -10,7 +10,7 @@ import * as Vellum from "../index";
 export interface ChatMessagePromptBlock {
     blockType: "CHAT_MESSAGE";
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.ComponentsSchemasEphemeralPromptCacheConfig;
     chatRole: Vellum.ChatMessageRole;
     chatSource?: string;
     chatMessageUnterminated?: boolean;

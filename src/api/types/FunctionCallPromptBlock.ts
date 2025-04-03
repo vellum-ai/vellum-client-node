@@ -10,7 +10,7 @@ import * as Vellum from "../index";
 export interface FunctionCallPromptBlock {
     blockType: "FUNCTION_CALL";
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.ComponentsSchemasEphemeralPromptCacheConfig;
     id?: string;
     name: string;
     arguments: Record<string, unknown>;

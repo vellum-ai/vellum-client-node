@@ -5,17 +5,16 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { EphemeralPromptCacheConfigTypeEnum } from "./EphemeralPromptCacheConfigTypeEnum";
 
 export const EphemeralPromptCacheConfig: core.serialization.ObjectSchema<
     serializers.EphemeralPromptCacheConfig.Raw,
     Vellum.EphemeralPromptCacheConfig
 > = core.serialization.object({
-    type: EphemeralPromptCacheConfigTypeEnum.optional(),
+    type: core.serialization.stringLiteral("EPHEMERAL"),
 });
 
 export declare namespace EphemeralPromptCacheConfig {
     export interface Raw {
-        type?: EphemeralPromptCacheConfigTypeEnum.Raw | null;
+        type: "EPHEMERAL";
     }
 }
