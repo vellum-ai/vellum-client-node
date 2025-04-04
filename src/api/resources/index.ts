@@ -18,6 +18,7 @@ export * as prompts from "./prompts";
 export * as sandboxes from "./sandboxes";
 export * as testSuiteRuns from "./testSuiteRuns";
 export * as testSuites from "./testSuites";
+export * as releaseReviews from "./releaseReviews";
 export * as workflows from "./workflows";
 export * as workspaceSecrets from "./workspaceSecrets";
 export * as workspaces from "./workspaces";

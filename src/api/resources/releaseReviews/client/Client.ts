@@ -9,7 +9,7 @@ import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Prompts {
+export declare namespace ReleaseReviews {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -29,39 +29,30 @@ export declare namespace Prompts {
     }
 }
 
-export class Prompts {
-    constructor(protected readonly _options: Prompts.Options) {}
+export class ReleaseReviews {
+    constructor(protected readonly _options: ReleaseReviews.Options) {}
 
     /**
-     * Used to pull the definition of a Prompt from Vellum.
+     * Retrieve a specific Workflow Deployment Release by either its UUID or the name of a Release Tag that points to it.
      *
-     * @param {string} id - The ID of the Prompt to pull from. Prompt Sandbox IDs are currently supported.
-     * @param {Vellum.PromptsPullRequest} request
-     * @param {Prompts.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vellum.BadRequestError}
-     * @throws {@link Vellum.NotFoundError}
+     * @param {string} id - A UUID string identifying this workflow deployment.
+     * @param {string} releaseIdOrReleaseTag - Either the UUID of Workflow Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment Release you'd like to retrieve.
+     * @param {ReleaseReviews.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.prompts.pull("id")
+     *     await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_or_release_tag")
      */
-    public async pull(
+    public async retrieveWorkflowDeploymentRelease(
         id: string,
-        request: Vellum.PromptsPullRequest = {},
-        requestOptions?: Prompts.RequestOptions,
-    ): Promise<Vellum.PromptExecConfig> {
-        const { promptVariantId } = request;
-        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (promptVariantId != null) {
-            _queryParams["prompt_variant_id"] = promptVariantId;
-        }
-
+        releaseIdOrReleaseTag: string,
+        requestOptions?: ReleaseReviews.RequestOptions,
+    ): Promise<Vellum.WorkflowDeploymentRelease> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                `v1/prompts/${encodeURIComponent(id)}/pull`,
+                `v1/workflow-deployments/${encodeURIComponent(id)}/releases/${encodeURIComponent(releaseIdOrReleaseTag)}`,
             ),
             method: "GET",
             headers: {
@@ -71,19 +62,17 @@ export class Prompts {
                 "User-Agent": "vellum-ai/0.14.32",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
-                Accept: "application/json",
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
-            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PromptExecConfig.parseOrThrow(_response.body, {
+            return serializers.WorkflowDeploymentRelease.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -92,17 +81,10 @@ export class Prompts {
         }
 
         if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 400:
-                    throw new Vellum.BadRequestError(_response.error.body);
-                case 404:
-                    throw new Vellum.NotFoundError(_response.error.body);
-                default:
-                    throw new errors.VellumError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                    });
-            }
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
         }
 
         switch (_response.error.reason) {
@@ -112,7 +94,9 @@ export class Prompts {
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/prompts/{id}/pull.");
+                throw new errors.VellumTimeoutError(
+                    "Timeout exceeded when calling GET /v1/workflow-deployments/{id}/releases/{release_id_or_release_tag}.",
+                );
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
