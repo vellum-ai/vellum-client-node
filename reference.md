@@ -3527,6 +3527,79 @@ await client.workflowDeployments.updateWorkflowReleaseTag("id", "name");
 </dl>
 </details>
 
+## ReleaseReviews
+
+<details><summary><code>client.releaseReviews.<a href="/src/api/resources/releaseReviews/client/Client.ts">retrieveWorkflowDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.WorkflowDeploymentRelease</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a specific Workflow Deployment Release by either its UUID or the name of a Release Tag that points to it.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_or_release_tag");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this workflow deployment.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**releaseIdOrReleaseTag:** `string` — Either the UUID of Workflow Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment Release you'd like to retrieve.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ReleaseReviews.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## WorkflowSandboxes
 
 <details><summary><code>client.workflowSandboxes.<a href="/src/api/resources/workflowSandboxes/client/Client.ts">deployWorkflow</a>(id, workflowId, { ...params }) -> Vellum.WorkflowDeploymentRead</code></summary>
