@@ -10,6 +10,7 @@ export interface WorkflowDeploymentRelease {
     environment: Vellum.ReleaseEnvironment;
     createdBy?: Vellum.ReleaseCreatedBy;
     workflowVersion: Vellum.WorkflowDeploymentReleaseWorkflowVersion;
+    deployment: Vellum.WorkflowDeploymentReleaseWorkflowDeployment;
     description?: string;
     releaseTags: Vellum.ReleaseReleaseTag[];
     reviews: Vellum.SlimReleaseReview[];
