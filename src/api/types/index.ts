@@ -501,6 +501,7 @@ export * from "./WorkflowDeploymentHistoryItem";
 export * from "./WorkflowDeploymentParentContext";
 export * from "./WorkflowDeploymentRead";
 export * from "./WorkflowDeploymentRelease";
+export * from "./WorkflowDeploymentReleaseWorkflowDeployment";
 export * from "./WorkflowDeploymentReleaseWorkflowVersion";
 export * from "./WorkflowError";
 export * from "./WorkflowEventDisplayContext";
