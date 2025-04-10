@@ -33,6 +33,78 @@ export class ReleaseReviews {
     constructor(protected readonly _options: ReleaseReviews.Options) {}
 
     /**
+     * Retrieve a specific Prompt Deployment Release by either its UUID or the name of a Release Tag that points to it.
+     *
+     * @param {string} id - A UUID string identifying this deployment.
+     * @param {string} releaseIdOrReleaseTag - Either the UUID of Prompt Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Prompt Deployment Release you'd like to retrieve.
+     * @param {ReleaseReviews.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.releaseReviews.retrievePromptDeploymentRelease("id", "release_id_or_release_tag")
+     */
+    public async retrievePromptDeploymentRelease(
+        id: string,
+        releaseIdOrReleaseTag: string,
+        requestOptions?: ReleaseReviews.RequestOptions,
+    ): Promise<Vellum.PromptDeploymentRelease> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                `v1/deployments/${encodeURIComponent(id)}/releases/${encodeURIComponent(releaseIdOrReleaseTag)}`,
+            ),
+            method: "GET",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "0.14.36",
+                "User-Agent": "vellum-ai/0.14.36",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.PromptDeploymentRelease.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError(
+                    "Timeout exceeded when calling GET /v1/deployments/{id}/releases/{release_id_or_release_tag}.",
+                );
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
      * Retrieve a specific Workflow Deployment Release by either its UUID or the name of a Release Tag that points to it.
      *
      * @param {string} id - A UUID string identifying this workflow deployment.
@@ -58,8 +130,8 @@ export class ReleaseReviews {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.35",
-                "User-Agent": "vellum-ai/0.14.35",
+                "X-Fern-SDK-Version": "0.14.36",
+                "User-Agent": "vellum-ai/0.14.36",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
