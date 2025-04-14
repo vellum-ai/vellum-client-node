@@ -28,6 +28,7 @@
  * * `parseJson` - PARSE_JSON
  * * `and` - AND
  * * `or` - OR
+ * * `isError` - IS_ERROR
  */
 export type LogicalOperator =
     /**
@@ -92,7 +93,8 @@ export type LogicalOperator =
      * Parse JSON */
     | "parseJson"
     | "and"
-    | "or";
+    | "or"
+    | "isError";
 export const LogicalOperator = {
     Equals: "=",
     DoesNotEqual: "!=",
@@ -119,4 +121,5 @@ export const LogicalOperator = {
     ParseJson: "parseJson",
     And: "and",
     Or: "or",
+    IsError: "isError",
 } as const;
