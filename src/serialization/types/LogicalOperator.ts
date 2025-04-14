@@ -33,6 +33,7 @@ export const LogicalOperator: core.serialization.Schema<serializers.LogicalOpera
         "parseJson",
         "and",
         "or",
+        "isError",
     ]);
 
 export declare namespace LogicalOperator {
@@ -61,5 +62,6 @@ export declare namespace LogicalOperator {
         | "accessField"
         | "parseJson"
         | "and"
-        | "or";
+        | "or"
+        | "isError";
 }
