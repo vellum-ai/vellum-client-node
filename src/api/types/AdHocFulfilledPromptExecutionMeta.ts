@@ -11,4 +11,5 @@ export interface AdHocFulfilledPromptExecutionMeta {
     latency?: number;
     finishReason?: Vellum.FinishReasonEnum;
     usage?: Vellum.MlModelUsage;
+    cost?: Vellum.Price;
 }
