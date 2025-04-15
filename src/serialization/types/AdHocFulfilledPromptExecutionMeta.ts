@@ -7,6 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { FinishReasonEnum } from "./FinishReasonEnum";
 import { MlModelUsage } from "./MlModelUsage";
+import { Price } from "./Price";
 
 export const AdHocFulfilledPromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.AdHocFulfilledPromptExecutionMeta.Raw,
@@ -15,6 +16,7 @@ export const AdHocFulfilledPromptExecutionMeta: core.serialization.ObjectSchema<
     latency: core.serialization.number().optional(),
     finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
     usage: MlModelUsage.optional(),
+    cost: Price.optional(),
 });
 
 export declare namespace AdHocFulfilledPromptExecutionMeta {
@@ -22,5 +24,6 @@ export declare namespace AdHocFulfilledPromptExecutionMeta {
         latency?: number | null;
         finish_reason?: FinishReasonEnum.Raw | null;
         usage?: MlModelUsage.Raw | null;
+        cost?: Price.Raw | null;
     }
 }

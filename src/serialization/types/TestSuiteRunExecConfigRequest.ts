@@ -6,8 +6,10 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { TestSuiteRunDeploymentReleaseTagExecConfigRequest } from "./TestSuiteRunDeploymentReleaseTagExecConfigRequest";
+import { TestSuiteRunPromptSandboxExecConfigRequest } from "./TestSuiteRunPromptSandboxExecConfigRequest";
 import { TestSuiteRunPromptSandboxHistoryItemExecConfigRequest } from "./TestSuiteRunPromptSandboxHistoryItemExecConfigRequest";
 import { TestSuiteRunWorkflowReleaseTagExecConfigRequest } from "./TestSuiteRunWorkflowReleaseTagExecConfigRequest";
+import { TestSuiteRunWorkflowSandboxExecConfigRequest } from "./TestSuiteRunWorkflowSandboxExecConfigRequest";
 import { TestSuiteRunWorkflowSandboxHistoryItemExecConfigRequest } from "./TestSuiteRunWorkflowSandboxHistoryItemExecConfigRequest";
 import { TestSuiteRunExternalExecConfigRequest } from "./TestSuiteRunExternalExecConfigRequest";
 
@@ -16,8 +18,10 @@ export const TestSuiteRunExecConfigRequest: core.serialization.Schema<
     Vellum.TestSuiteRunExecConfigRequest
 > = core.serialization.undiscriminatedUnion([
     TestSuiteRunDeploymentReleaseTagExecConfigRequest,
+    TestSuiteRunPromptSandboxExecConfigRequest,
     TestSuiteRunPromptSandboxHistoryItemExecConfigRequest,
     TestSuiteRunWorkflowReleaseTagExecConfigRequest,
+    TestSuiteRunWorkflowSandboxExecConfigRequest,
     TestSuiteRunWorkflowSandboxHistoryItemExecConfigRequest,
     TestSuiteRunExternalExecConfigRequest,
 ]);
@@ -25,8 +29,10 @@ export const TestSuiteRunExecConfigRequest: core.serialization.Schema<
 export declare namespace TestSuiteRunExecConfigRequest {
     export type Raw =
         | TestSuiteRunDeploymentReleaseTagExecConfigRequest.Raw
+        | TestSuiteRunPromptSandboxExecConfigRequest.Raw
         | TestSuiteRunPromptSandboxHistoryItemExecConfigRequest.Raw
         | TestSuiteRunWorkflowReleaseTagExecConfigRequest.Raw
+        | TestSuiteRunWorkflowSandboxExecConfigRequest.Raw
         | TestSuiteRunWorkflowSandboxHistoryItemExecConfigRequest.Raw
         | TestSuiteRunExternalExecConfigRequest.Raw;
 }
