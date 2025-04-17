@@ -437,6 +437,7 @@ export * from "./TestSuiteRunMetricJsonOutput";
 export * from "./TestSuiteRunMetricNumberOutput";
 export * from "./TestSuiteRunMetricOutput";
 export * from "./TestSuiteRunMetricStringOutput";
+export * from "./TestSuiteRunProgress";
 export * from "./TestSuiteRunPromptSandboxExecConfigDataRequest";
 export * from "./TestSuiteRunPromptSandboxExecConfigRequest";
 export * from "./TestSuiteRunPromptSandboxHistoryItemExecConfig";

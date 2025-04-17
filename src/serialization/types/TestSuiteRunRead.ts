@@ -8,6 +8,7 @@ import * as core from "../../core";
 import { TestSuiteRunTestSuite } from "./TestSuiteRunTestSuite";
 import { TestSuiteRunState } from "./TestSuiteRunState";
 import { TestSuiteRunExecConfig } from "./TestSuiteRunExecConfig";
+import { TestSuiteRunProgress } from "./TestSuiteRunProgress";
 
 export const TestSuiteRunRead: core.serialization.ObjectSchema<
     serializers.TestSuiteRunRead.Raw,
@@ -18,6 +19,7 @@ export const TestSuiteRunRead: core.serialization.ObjectSchema<
     testSuite: core.serialization.property("test_suite", TestSuiteRunTestSuite),
     state: TestSuiteRunState,
     execConfig: core.serialization.property("exec_config", TestSuiteRunExecConfig.optional()),
+    progress: TestSuiteRunProgress.optional(),
 });
 
 export declare namespace TestSuiteRunRead {
@@ -27,5 +29,6 @@ export declare namespace TestSuiteRunRead {
         test_suite: TestSuiteRunTestSuite.Raw;
         state: TestSuiteRunState.Raw;
         exec_config?: TestSuiteRunExecConfig.Raw | null;
+        progress?: TestSuiteRunProgress.Raw | null;
     }
 }
