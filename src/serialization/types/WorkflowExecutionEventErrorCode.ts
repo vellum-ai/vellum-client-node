@@ -12,6 +12,7 @@ export const WorkflowExecutionEventErrorCode: core.serialization.Schema<
 > = core.serialization.enum_([
     "WORKFLOW_INITIALIZATION",
     "WORKFLOW_CANCELLED",
+    "PROVIDER_CREDENTIALS_UNAVAILABLE",
     "NODE_EXECUTION_COUNT_LIMIT_REACHED",
     "INTERNAL_SERVER_ERROR",
     "NODE_EXECUTION",
@@ -25,6 +26,7 @@ export declare namespace WorkflowExecutionEventErrorCode {
     export type Raw =
         | "WORKFLOW_INITIALIZATION"
         | "WORKFLOW_CANCELLED"
+        | "PROVIDER_CREDENTIALS_UNAVAILABLE"
         | "NODE_EXECUTION_COUNT_LIMIT_REACHED"
         | "INTERNAL_SERVER_ERROR"
         | "NODE_EXECUTION"

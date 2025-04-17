@@ -20,4 +20,5 @@ export interface TestSuiteRunRead {
     state: Vellum.TestSuiteRunState;
     /** Configuration that defines how the Test Suite should be run */
     execConfig?: Vellum.TestSuiteRunExecConfig;
+    progress?: Vellum.TestSuiteRunProgress;
 }

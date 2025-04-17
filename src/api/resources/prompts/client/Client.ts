@@ -67,8 +67,8 @@ export class Prompts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.38",
-                "User-Agent": "vellum-ai/0.14.38",
+                "X-Fern-SDK-Version": "0.14.39",
+                "User-Agent": "vellum-ai/0.14.39",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 Accept: "application/json",
