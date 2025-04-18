@@ -7,8 +7,8 @@ import * as core from "../../../../core";
 import * as Vellum from "../../../index";
 import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
-import * as stream from "stream";
 import * as errors from "../../../../errors/index";
+import * as stream from "stream";
 
 export declare namespace AdHoc {
     export interface Options {
@@ -33,6 +33,103 @@ export declare namespace AdHoc {
 export class AdHoc {
     constructor(protected readonly _options: AdHoc.Options) {}
 
+    /**
+     * @param {Vellum.AdHocExecutePrompt} request
+     * @param {AdHoc.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.ForbiddenError}
+     * @throws {@link Vellum.InternalServerError}
+     *
+     * @example
+     *     await client.adHoc.adhocExecutePrompt({
+     *         mlModel: "ml_model",
+     *         inputValues: [{
+     *                 key: "key",
+     *                 type: "STRING",
+     *                 value: "value"
+     *             }],
+     *         inputVariables: [{
+     *                 id: "id",
+     *                 key: "key",
+     *                 type: "STRING"
+     *             }],
+     *         parameters: {},
+     *         blocks: [{
+     *                 blockType: "JINJA",
+     *                 template: "template"
+     *             }]
+     *     })
+     */
+    public async adhocExecutePrompt(
+        request: Vellum.AdHocExecutePrompt,
+        requestOptions?: AdHoc.RequestOptions,
+    ): Promise<Vellum.AdHocExecutePromptEvent> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                "v1/ad-hoc/execute-prompt",
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "0.14.41",
+                "User-Agent": "vellum-ai/0.14.41",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.AdHocExecutePrompt.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.AdHocExecutePromptEvent.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 403:
+                    throw new Vellum.ForbiddenError(_response.error.body);
+                case 500:
+                    throw new Vellum.InternalServerError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/ad-hoc/execute-prompt.");
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
     public async adhocExecutePromptStream(
         request: Vellum.AdHocExecutePromptStream,
         requestOptions?: AdHoc.RequestOptions,
@@ -48,8 +145,8 @@ export class AdHoc {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.40",
-                "User-Agent": "vellum-ai/0.14.40",
+                "X-Fern-SDK-Version": "0.14.41",
+                "User-Agent": "vellum-ai/0.14.41",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

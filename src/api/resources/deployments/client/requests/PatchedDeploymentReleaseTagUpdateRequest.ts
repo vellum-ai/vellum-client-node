@@ -7,6 +7,6 @@
  *     {}
  */
 export interface PatchedDeploymentReleaseTagUpdateRequest {
-    /** The ID of the Deployment History Item to tag */
+    /** The ID of the Release to tag */
     historyItemId?: string;
 }
