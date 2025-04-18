@@ -75,6 +75,77 @@ await client.submitWorkflowExecutionActuals({
 
 ## AdHoc
 
+<details><summary><code>client.adHoc.<a href="/src/api/resources/adHoc/client/Client.ts">adhocExecutePrompt</a>({ ...params }) -> Vellum.AdHocExecutePromptEvent</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.adHoc.adhocExecutePrompt({
+    mlModel: "ml_model",
+    inputValues: [
+        {
+            key: "key",
+            type: "STRING",
+            value: "value",
+        },
+    ],
+    inputVariables: [
+        {
+            id: "id",
+            key: "key",
+            type: "STRING",
+        },
+    ],
+    parameters: {},
+    blocks: [
+        {
+            blockType: "JINJA",
+            template: "template",
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.AdHocExecutePrompt`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `AdHoc.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.adHoc.<a href="/src/api/resources/adHoc/client/Client.ts">adhocExecutePromptStream</a>({ ...params }) -> core.Stream<Vellum.AdHocExecutePromptEvent></code></summary>
 <dl>
 <dd>
