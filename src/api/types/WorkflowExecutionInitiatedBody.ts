@@ -8,4 +8,5 @@ export interface WorkflowExecutionInitiatedBody {
     workflowDefinition: Vellum.VellumCodeResourceDefinition;
     displayContext?: Vellum.WorkflowEventDisplayContext;
     inputs: Record<string, unknown>;
+    initialState?: Vellum.WorkflowState;
 }

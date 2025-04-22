@@ -1753,7 +1753,7 @@ await client.documents.retrieve("id");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this document.
+**id:** `string`
 
 </dd>
 </dl>
@@ -1816,7 +1816,7 @@ await client.documents.destroy("id");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this document.
+**id:** `string`
 
 </dd>
 </dl>
@@ -1879,7 +1879,7 @@ await client.documents.partialUpdate("id");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this document.
+**id:** `string`
 
 </dd>
 </dl>
