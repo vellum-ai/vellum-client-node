@@ -96,6 +96,7 @@ export * from "./EphemeralPromptCacheConfigTypeEnum";
 export * from "./ErrorInput";
 export * from "./ErrorVellumValue";
 export * from "./ErrorVellumValueRequest";
+export * from "./ExecuteApiResponseJson";
 export * from "./ExecuteApiResponse";
 export * from "./ExecutePromptEvent";
 export * from "./ExecutePromptResponse";
