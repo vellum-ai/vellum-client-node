@@ -80,8 +80,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.41",
-                "User-Agent": "vellum-ai/0.14.41",
+                "X-Fern-SDK-Version": "0.14.42",
+                "User-Agent": "vellum-ai/0.14.42",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -128,7 +128,7 @@ export class Documents {
     /**
      * Retrieve a Document, keying off of either its Vellum-generated ID or its external ID.
      *
-     * @param {string} id - A UUID string identifying this document.
+     * @param {string} id
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -146,8 +146,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.41",
-                "User-Agent": "vellum-ai/0.14.41",
+                "X-Fern-SDK-Version": "0.14.42",
+                "User-Agent": "vellum-ai/0.14.42",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -193,7 +193,7 @@ export class Documents {
     /**
      * Delete a Document, keying off of either its Vellum-generated ID or its external ID.
      *
-     * @param {string} id - A UUID string identifying this document.
+     * @param {string} id
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -211,8 +211,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.41",
-                "User-Agent": "vellum-ai/0.14.41",
+                "X-Fern-SDK-Version": "0.14.42",
+                "User-Agent": "vellum-ai/0.14.42",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -253,7 +253,7 @@ export class Documents {
     /**
      * Update a Document, keying off of either its Vellum-generated ID or its external ID. Particularly useful for updating its metadata.
      *
-     * @param {string} id - A UUID string identifying this document.
+     * @param {string} id
      * @param {Vellum.PatchedDocumentUpdateRequest} request
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -276,8 +276,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.41",
-                "User-Agent": "vellum-ai/0.14.41",
+                "X-Fern-SDK-Version": "0.14.42",
+                "User-Agent": "vellum-ai/0.14.42",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -379,8 +379,8 @@ export class Documents {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.41",
-                "User-Agent": "vellum-ai/0.14.41",
+                "X-Fern-SDK-Version": "0.14.42",
+                "User-Agent": "vellum-ai/0.14.42",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
