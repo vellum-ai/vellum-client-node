@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { VellumCodeResourceDefinition } from "./VellumCodeResourceDefinition";
+import { WorkflowState } from "./WorkflowState";
 
 export const WorkflowExecutionInitiatedBody: core.serialization.ObjectSchema<
     serializers.WorkflowExecutionInitiatedBody.Raw,
@@ -17,6 +18,7 @@ export const WorkflowExecutionInitiatedBody: core.serialization.ObjectSchema<
         core.serialization.lazyObject(() => serializers.WorkflowEventDisplayContext).optional(),
     ),
     inputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    initialState: core.serialization.property("initial_state", WorkflowState.optional()),
 });
 
 export declare namespace WorkflowExecutionInitiatedBody {
@@ -24,5 +26,6 @@ export declare namespace WorkflowExecutionInitiatedBody {
         workflow_definition: VellumCodeResourceDefinition.Raw;
         display_context?: serializers.WorkflowEventDisplayContext.Raw | null;
         inputs: Record<string, unknown>;
+        initial_state?: WorkflowState.Raw | null;
     }
 }
