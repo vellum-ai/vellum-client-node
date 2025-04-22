@@ -4,4 +4,5 @@
 
 export interface PromptSettings {
     timeout?: number;
+    streamEnabled?: boolean;
 }
