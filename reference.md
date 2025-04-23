@@ -2448,6 +2448,87 @@ await client.prompts.pull("id");
 </dl>
 </details>
 
+<details><summary><code>client.prompts.<a href="/src/api/resources/prompts/client/Client.ts">push</a>({ ...params }) -> Vellum.PromptPushResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Used to push updates to a Prompt in Vellum.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.prompts.push({
+    execConfig: {
+        mlModel: "ml_model",
+        inputVariables: [
+            {
+                id: "id",
+                key: "key",
+                type: "STRING",
+            },
+        ],
+        parameters: {},
+        blocks: [
+            {
+                blockType: "JINJA",
+                template: "template",
+            },
+        ],
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.PromptPush`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Prompts.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Sandboxes
 
 <details><summary><code>client.sandboxes.<a href="/src/api/resources/sandboxes/client/Client.ts">deployPrompt</a>(id, promptVariantId, { ...params }) -> Vellum.DeploymentRead</code></summary>
