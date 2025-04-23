@@ -30,8 +30,8 @@ export interface DeploymentRead {
     inputVariables: Vellum.VellumVariable[];
     /** A human-readable description of the deployment */
     description?: string;
-    /** Deprecated. The Prompt execution endpoints return a `prompt_version_id` that could be used instead. */
-    activeModelVersionIds: string[];
+    /** Deprecated. This now always returns a null value. */
+    activeModelVersionIds?: string[];
     /** The ID of the history item associated with this Deployment's LATEST Release Tag */
     lastDeployedHistoryItemId: string;
 }
