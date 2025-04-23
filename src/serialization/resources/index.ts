@@ -20,6 +20,8 @@ export * from "./documents/client/requests";
 export * from "./folderEntities/client/requests";
 export * as metricDefinitions from "./metricDefinitions";
 export * from "./metricDefinitions/client/requests";
+export * as prompts from "./prompts";
+export * from "./prompts/client/requests";
 export * as sandboxes from "./sandboxes";
 export * from "./sandboxes/client/requests";
 export * as testSuiteRuns from "./testSuiteRuns";

@@ -22,7 +22,7 @@ export const DeploymentRead: core.serialization.ObjectSchema<serializers.Deploym
         description: core.serialization.string().optional(),
         activeModelVersionIds: core.serialization.property(
             "active_model_version_ids",
-            core.serialization.list(core.serialization.string()),
+            core.serialization.list(core.serialization.string()).optional(),
         ),
         lastDeployedHistoryItemId: core.serialization.property(
             "last_deployed_history_item_id",
@@ -41,7 +41,7 @@ export declare namespace DeploymentRead {
         last_deployed_on: string;
         input_variables: VellumVariable.Raw[];
         description?: string | null;
-        active_model_version_ids: string[];
+        active_model_version_ids?: string[] | null;
         last_deployed_history_item_id: string;
     }
 }

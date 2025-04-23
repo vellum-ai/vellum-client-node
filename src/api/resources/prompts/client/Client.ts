@@ -67,8 +67,8 @@ export class Prompts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.42",
-                "User-Agent": "vellum-ai/0.14.42",
+                "X-Fern-SDK-Version": "0.14.43",
+                "User-Agent": "vellum-ai/0.14.43",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 Accept: "application/json",
@@ -120,8 +120,101 @@ export class Prompts {
         }
     }
 
+    /**
+     * Used to push updates to a Prompt in Vellum.
+     *
+     * @param {Vellum.PromptPush} request
+     * @param {Prompts.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.NotFoundError}
+     *
+     * @example
+     *     await client.prompts.push({
+     *         execConfig: {
+     *             mlModel: "ml_model",
+     *             inputVariables: [{
+     *                     id: "id",
+     *                     key: "key",
+     *                     type: "STRING"
+     *                 }],
+     *             parameters: {},
+     *             blocks: [{
+     *                     blockType: "JINJA",
+     *                     template: "template"
+     *                 }]
+     *         }
+     *     })
+     */
+    public async push(
+        request: Vellum.PromptPush,
+        requestOptions?: Prompts.RequestOptions,
+    ): Promise<Vellum.PromptPushResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                "v1/prompts/push",
+            ),
+            method: "POST",
+            headers: {
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "0.14.43",
+                "User-Agent": "vellum-ai/0.14.43",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.PromptPush.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return serializers.PromptPushResponse.parseOrThrow(_response.body, {
+                unrecognizedObjectKeys: "passthrough",
+                allowUnrecognizedUnionMembers: true,
+                allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
+            });
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/prompts/push.");
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
     protected async _getCustomAuthorizationHeaders() {
         const apiKeyValue = await core.Supplier.get(this._options.apiKey);
-        return { X_API_KEY: apiKeyValue };
+        return { "X-API-KEY": apiKeyValue };
     }
 }

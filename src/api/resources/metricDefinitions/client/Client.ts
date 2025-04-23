@@ -62,8 +62,8 @@ export class MetricDefinitions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.42",
-                "User-Agent": "vellum-ai/0.14.42",
+                "X-Fern-SDK-Version": "0.14.43",
+                "User-Agent": "vellum-ai/0.14.43",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -133,8 +133,8 @@ export class MetricDefinitions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.42",
-                "User-Agent": "vellum-ai/0.14.42",
+                "X-Fern-SDK-Version": "0.14.43",
+                "User-Agent": "vellum-ai/0.14.43",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -181,6 +181,6 @@ export class MetricDefinitions {
 
     protected async _getCustomAuthorizationHeaders() {
         const apiKeyValue = await core.Supplier.get(this._options.apiKey);
-        return { X_API_KEY: apiKeyValue };
+        return { "X-API-KEY": apiKeyValue };
     }
 }
