@@ -56,8 +56,8 @@ export class WorkspaceSecrets {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.49",
-                "User-Agent": "vellum-ai/0.14.49",
+                "X-Fern-SDK-Version": "0.14.50",
+                "User-Agent": "vellum-ai/0.14.50",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -126,8 +126,8 @@ export class WorkspaceSecrets {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.49",
-                "User-Agent": "vellum-ai/0.14.49",
+                "X-Fern-SDK-Version": "0.14.50",
+                "User-Agent": "vellum-ai/0.14.50",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

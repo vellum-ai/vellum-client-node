@@ -14,6 +14,6 @@ export interface WorkflowEventExecutionRead {
     error?: Vellum.WorkflowError;
     latestActual?: Vellum.WorkflowExecutionActual;
     metricResults: Vellum.WorkflowExecutionViewOnlineEvalMetricResult[];
-    usageResults: Vellum.WorkflowExecutionUsageCalculationFulfilledBody[];
+    usageResults?: Vellum.WorkflowExecutionUsageResult[];
     spans: Vellum.VellumSpan[];
 }
