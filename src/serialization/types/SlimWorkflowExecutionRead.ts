@@ -9,7 +9,7 @@ import { ExecutionVellumValue } from "./ExecutionVellumValue";
 import { WorkflowError } from "./WorkflowError";
 import { WorkflowExecutionActual } from "./WorkflowExecutionActual";
 import { WorkflowExecutionViewOnlineEvalMetricResult } from "./WorkflowExecutionViewOnlineEvalMetricResult";
-import { WorkflowExecutionUsageCalculationFulfilledBody } from "./WorkflowExecutionUsageCalculationFulfilledBody";
+import { WorkflowExecutionUsageResult } from "./WorkflowExecutionUsageResult";
 
 export const SlimWorkflowExecutionRead: core.serialization.ObjectSchema<
     serializers.SlimWorkflowExecutionRead.Raw,
@@ -32,7 +32,7 @@ export const SlimWorkflowExecutionRead: core.serialization.ObjectSchema<
     ),
     usageResults: core.serialization.property(
         "usage_results",
-        core.serialization.list(WorkflowExecutionUsageCalculationFulfilledBody),
+        core.serialization.list(WorkflowExecutionUsageResult).optional(),
     ),
 });
 
@@ -47,6 +47,6 @@ export declare namespace SlimWorkflowExecutionRead {
         error?: WorkflowError.Raw | null;
         latest_actual?: WorkflowExecutionActual.Raw | null;
         metric_results: WorkflowExecutionViewOnlineEvalMetricResult.Raw[];
-        usage_results: WorkflowExecutionUsageCalculationFulfilledBody.Raw[];
+        usage_results?: WorkflowExecutionUsageResult.Raw[] | null;
     }
 }
