@@ -58,8 +58,8 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.50",
-                "User-Agent": "vellum-ai/0.14.50",
+                "X-Fern-SDK-Version": "0.14.51",
+                "User-Agent": "vellum-ai/0.14.51",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -164,8 +164,8 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.50",
-                "User-Agent": "vellum-ai/0.14.50",
+                "X-Fern-SDK-Version": "0.14.51",
+                "User-Agent": "vellum-ai/0.14.51",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -235,8 +235,8 @@ export class Sandboxes {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.50",
-                "User-Agent": "vellum-ai/0.14.50",
+                "X-Fern-SDK-Version": "0.14.51",
+                "User-Agent": "vellum-ai/0.14.51",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
