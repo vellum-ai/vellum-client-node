@@ -7,6 +7,6 @@
  */
 export interface ScenarioInputStringVariableValue {
     type: "STRING";
-    value?: string;
+    value?: string | null;
     inputVariableId: string;
 }

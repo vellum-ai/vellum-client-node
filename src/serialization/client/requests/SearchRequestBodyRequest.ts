@@ -11,19 +11,19 @@ export const SearchRequestBodyRequest: core.serialization.Schema<
     serializers.SearchRequestBodyRequest.Raw,
     Vellum.SearchRequestBodyRequest
 > = core.serialization.object({
-    indexId: core.serialization.property("index_id", core.serialization.string().optional()),
-    indexName: core.serialization.property("index_name", core.serialization.string().optional()),
+    indexId: core.serialization.property("index_id", core.serialization.string().optionalNullable()),
+    indexName: core.serialization.property("index_name", core.serialization.string().optionalNullable()),
     query: core.serialization.string(),
-    options: SearchRequestOptionsRequest.optional(),
-    documentIndex: core.serialization.property("document_index", core.serialization.string().optional()),
+    options: SearchRequestOptionsRequest.optionalNullable(),
+    documentIndex: core.serialization.property("document_index", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace SearchRequestBodyRequest {
     export interface Raw {
-        index_id?: string | null;
-        index_name?: string | null;
+        index_id?: (string | null) | null;
+        index_name?: (string | null) | null;
         query: string;
-        options?: SearchRequestOptionsRequest.Raw | null;
-        document_index?: string | null;
+        options?: (SearchRequestOptionsRequest.Raw | null) | null;
+        document_index?: (string | null) | null;
     }
 }

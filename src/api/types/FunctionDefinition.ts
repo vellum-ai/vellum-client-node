@@ -9,15 +9,15 @@ import * as Vellum from "../index";
  */
 export interface FunctionDefinition {
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     /** The name identifying the function. */
-    name?: string;
+    name?: string | null;
     /** A description to help guide the model when to invoke this function. */
-    description?: string;
+    description?: string | null;
     /** An OpenAPI specification of parameters that are supported by this function. */
-    parameters?: Record<string, unknown>;
+    parameters?: Record<string, unknown> | null;
     /** Set this option to true to force the model to return a function call of this function. */
-    forced?: boolean;
+    forced?: boolean | null;
     /** Set this option to use strict schema decoding when available. */
-    strict?: boolean;
+    strict?: boolean | null;
 }

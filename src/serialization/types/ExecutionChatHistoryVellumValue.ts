@@ -14,7 +14,7 @@ export const ExecutionChatHistoryVellumValue: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optional(),
+    value: core.serialization.list(ChatMessage).optionalNullable(),
 });
 
 export declare namespace ExecutionChatHistoryVellumValue {
@@ -22,6 +22,6 @@ export declare namespace ExecutionChatHistoryVellumValue {
         id: string;
         name: string;
         type: "CHAT_HISTORY";
-        value?: ChatMessage.Raw[] | null;
+        value?: (ChatMessage.Raw[] | null) | null;
     }
 }

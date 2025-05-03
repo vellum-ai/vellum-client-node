@@ -3,7 +3,7 @@
  */
 
 export interface BaseOutput {
-    value?: Record<string, unknown>;
-    delta?: Record<string, unknown>;
+    value?: Record<string, unknown> | null;
+    delta?: Record<string, unknown> | null;
     name: string;
 }

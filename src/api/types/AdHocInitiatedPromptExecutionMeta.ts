@@ -6,6 +6,6 @@
  * The subset of the metadata tracked by Vellum during prompt execution that the request opted into with `expand_meta`.
  */
 export interface AdHocInitiatedPromptExecutionMeta {
-    modelName?: string;
-    latency?: number;
+    modelName?: string | null;
+    latency?: number | null;
 }

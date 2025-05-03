@@ -32,5 +32,5 @@ export interface SlimWorkflowDeployment {
     /** The output variables this Workflow Deployment will produce when it is executed. */
     outputVariables: Vellum.VellumVariable[];
     /** A human-readable description of the workflow deployment */
-    description?: string;
+    description?: string | null;
 }

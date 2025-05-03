@@ -11,23 +11,23 @@ export const WorkflowResultEventOutputDataNumber: core.serialization.ObjectSchem
     serializers.WorkflowResultEventOutputDataNumber.Raw,
     Vellum.WorkflowResultEventOutputDataNumber
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
-    delta: core.serialization.string().optional(),
+    delta: core.serialization.string().optionalNullable(),
     type: core.serialization.stringLiteral("NUMBER"),
-    value: core.serialization.number().optional(),
+    value: core.serialization.number().optionalNullable(),
 });
 
 export declare namespace WorkflowResultEventOutputDataNumber {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         state: WorkflowNodeResultEventState.Raw;
         node_id: string;
-        delta?: string | null;
+        delta?: (string | null) | null;
         type: "NUMBER";
-        value?: number | null;
+        value?: (number | null) | null;
     }
 }

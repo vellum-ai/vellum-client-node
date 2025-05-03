@@ -13,22 +13,22 @@ export const FunctionDefinition: core.serialization.ObjectSchema<
     Vellum.FunctionDefinition
 > = core.serialization.object({
     state: PromptBlockState.optional(),
-    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optional()),
-    name: core.serialization.string().optional(),
-    description: core.serialization.string().optional(),
-    parameters: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
-    forced: core.serialization.boolean().optional(),
-    strict: core.serialization.boolean().optional(),
+    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
+    name: core.serialization.string().optionalNullable(),
+    description: core.serialization.string().optionalNullable(),
+    parameters: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    forced: core.serialization.boolean().optionalNullable(),
+    strict: core.serialization.boolean().optionalNullable(),
 });
 
 export declare namespace FunctionDefinition {
     export interface Raw {
         state?: PromptBlockState.Raw | null;
-        cache_config?: EphemeralPromptCacheConfig.Raw | null;
-        name?: string | null;
-        description?: string | null;
-        parameters?: Record<string, unknown> | null;
-        forced?: boolean | null;
-        strict?: boolean | null;
+        cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
+        name?: (string | null) | null;
+        description?: (string | null) | null;
+        parameters?: (Record<string, unknown> | null) | null;
+        forced?: (boolean | null) | null;
+        strict?: (boolean | null) | null;
     }
 }

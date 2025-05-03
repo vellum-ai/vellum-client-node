@@ -11,17 +11,17 @@ export const TerminalNodeSearchResultsResult: core.serialization.ObjectSchema<
     serializers.TerminalNodeSearchResultsResult.Raw,
     Vellum.TerminalNodeSearchResultsResult
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optional(),
+    value: core.serialization.list(SearchResult).optionalNullable(),
 });
 
 export declare namespace TerminalNodeSearchResultsResult {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         type: "SEARCH_RESULTS";
-        value?: SearchResult.Raw[] | null;
+        value?: (SearchResult.Raw[] | null) | null;
     }
 }

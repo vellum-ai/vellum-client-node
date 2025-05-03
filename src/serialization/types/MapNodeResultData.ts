@@ -12,12 +12,12 @@ export const MapNodeResultData: core.serialization.ObjectSchema<
     Vellum.MapNodeResultData
 > = core.serialization.object({
     executionIds: core.serialization.property("execution_ids", core.serialization.list(core.serialization.string())),
-    iterationState: core.serialization.property("iteration_state", IterationStateEnum.optional()),
+    iterationState: core.serialization.property("iteration_state", IterationStateEnum.optionalNullable()),
 });
 
 export declare namespace MapNodeResultData {
     export interface Raw {
         execution_ids: string[];
-        iteration_state?: IterationStateEnum.Raw | null;
+        iteration_state?: (IterationStateEnum.Raw | null) | null;
     }
 }

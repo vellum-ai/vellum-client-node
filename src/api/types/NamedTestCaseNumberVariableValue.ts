@@ -7,6 +7,6 @@
  */
 export interface NamedTestCaseNumberVariableValue {
     type: "NUMBER";
-    value?: number;
+    value?: number | null;
     name: string;
 }

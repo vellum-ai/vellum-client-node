@@ -46,15 +46,23 @@ export class MetricDefinitions {
      *             }]
      *     })
      */
-    public async executeMetricDefinition(
+    public executeMetricDefinition(
         id: string,
         request: Vellum.ExecuteMetricDefinition,
         requestOptions?: MetricDefinitions.RequestOptions,
-    ): Promise<Vellum.MetricDefinitionExecution> {
+    ): core.HttpResponsePromise<Vellum.MetricDefinitionExecution> {
+        return core.HttpResponsePromise.fromPromise(this.__executeMetricDefinition(id, request, requestOptions));
+    }
+
+    private async __executeMetricDefinition(
+        id: string,
+        request: Vellum.ExecuteMetricDefinition,
+        requestOptions?: MetricDefinitions.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.MetricDefinitionExecution>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .predict,
                 `v1/metric-definitions/${encodeURIComponent(id)}/execute`,
             ),
@@ -62,8 +70,8 @@ export class MetricDefinitions {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -77,18 +85,22 @@ export class MetricDefinitions {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.MetricDefinitionExecution.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.MetricDefinitionExecution.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -97,6 +109,7 @@ export class MetricDefinitions {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -105,6 +118,7 @@ export class MetricDefinitions {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -117,24 +131,34 @@ export class MetricDefinitions {
      * @example
      *     await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_or_release_tag", "id")
      */
-    public async metricDefinitionHistoryItemRetrieve(
+    public metricDefinitionHistoryItemRetrieve(
         historyIdOrReleaseTag: string,
         id: string,
         requestOptions?: MetricDefinitions.RequestOptions,
-    ): Promise<Vellum.MetricDefinitionHistoryItem> {
+    ): core.HttpResponsePromise<Vellum.MetricDefinitionHistoryItem> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__metricDefinitionHistoryItemRetrieve(historyIdOrReleaseTag, id, requestOptions),
+        );
+    }
+
+    private async __metricDefinitionHistoryItemRetrieve(
+        historyIdOrReleaseTag: string,
+        id: string,
+        requestOptions?: MetricDefinitions.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.MetricDefinitionHistoryItem>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/metric-definitions/${encodeURIComponent(id)}/history/${encodeURIComponent(historyIdOrReleaseTag)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -147,18 +171,22 @@ export class MetricDefinitions {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.MetricDefinitionHistoryItem.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.MetricDefinitionHistoryItem.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -167,6 +195,7 @@ export class MetricDefinitions {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -175,6 +204,7 @@ export class MetricDefinitions {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

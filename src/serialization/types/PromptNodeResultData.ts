@@ -11,21 +11,21 @@ export const PromptNodeResultData: core.serialization.ObjectSchema<
     serializers.PromptNodeResultData.Raw,
     Vellum.PromptNodeResultData
 > = core.serialization.object({
-    executionMeta: core.serialization.property("execution_meta", PromptNodeExecutionMeta.optional()),
+    executionMeta: core.serialization.property("execution_meta", PromptNodeExecutionMeta.optionalNullable()),
     outputId: core.serialization.property("output_id", core.serialization.string()),
-    arrayOutputId: core.serialization.property("array_output_id", core.serialization.string().optional()),
-    executionId: core.serialization.property("execution_id", core.serialization.string().optional()),
-    text: core.serialization.string().optional(),
-    delta: core.serialization.string().optional(),
+    arrayOutputId: core.serialization.property("array_output_id", core.serialization.string().optionalNullable()),
+    executionId: core.serialization.property("execution_id", core.serialization.string().optionalNullable()),
+    text: core.serialization.string().optionalNullable(),
+    delta: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace PromptNodeResultData {
     export interface Raw {
-        execution_meta?: PromptNodeExecutionMeta.Raw | null;
+        execution_meta?: (PromptNodeExecutionMeta.Raw | null) | null;
         output_id: string;
-        array_output_id?: string | null;
-        execution_id?: string | null;
-        text?: string | null;
-        delta?: string | null;
+        array_output_id?: (string | null) | null;
+        execution_id?: (string | null) | null;
+        text?: (string | null) | null;
+        delta?: (string | null) | null;
     }
 }

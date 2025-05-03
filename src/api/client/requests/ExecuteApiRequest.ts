@@ -13,7 +13,7 @@ import * as Vellum from "../../index";
 export interface ExecuteApiRequest {
     url: string;
     method?: Vellum.MethodEnum;
-    body?: Vellum.ExecuteApiRequestBody;
+    body?: Vellum.ExecuteApiRequestBody | null;
     headers?: Record<string, Vellum.ExecuteApiRequestHeadersValue>;
-    bearerToken?: Vellum.ExecuteApiRequestBearerToken;
+    bearerToken?: Vellum.ExecuteApiRequestBearerToken | null;
 }

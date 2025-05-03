@@ -4,5 +4,5 @@
 
 export interface VellumDocument {
     src: string;
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

@@ -12,7 +12,7 @@ export const TestSuiteRunExecutionStringOutput: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optional(),
+    value: core.serialization.string().optionalNullable(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
@@ -20,7 +20,7 @@ export declare namespace TestSuiteRunExecutionStringOutput {
     export interface Raw {
         name: string;
         type: "STRING";
-        value?: string | null;
+        value?: (string | null) | null;
         output_variable_id: string;
     }
 }

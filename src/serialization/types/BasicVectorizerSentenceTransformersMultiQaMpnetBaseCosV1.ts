@@ -10,7 +10,7 @@ export const BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1: core.seri
     serializers.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1.Raw,
     Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1
 > = core.serialization.object({
-    config: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    config: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     modelName: core.serialization.property(
         "model_name",
         core.serialization.stringLiteral("sentence-transformers/multi-qa-mpnet-base-cos-v1"),
@@ -19,7 +19,7 @@ export const BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1: core.seri
 
 export declare namespace BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1 {
     export interface Raw {
-        config?: Record<string, unknown> | null;
+        config?: (Record<string, unknown> | null) | null;
         model_name: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
     }
 }

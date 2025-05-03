@@ -10,14 +10,20 @@ import { PromptExecConfig } from "../../../../types/PromptExecConfig";
 export const PromptPush: core.serialization.Schema<serializers.PromptPush.Raw, Vellum.PromptPush> =
     core.serialization.object({
         execConfig: core.serialization.property("exec_config", PromptExecConfig),
-        promptVariantId: core.serialization.property("prompt_variant_id", core.serialization.string().optional()),
-        promptSandboxId: core.serialization.property("prompt_sandbox_id", core.serialization.string().optional()),
+        promptVariantId: core.serialization.property(
+            "prompt_variant_id",
+            core.serialization.string().optionalNullable(),
+        ),
+        promptSandboxId: core.serialization.property(
+            "prompt_sandbox_id",
+            core.serialization.string().optionalNullable(),
+        ),
     });
 
 export declare namespace PromptPush {
     export interface Raw {
         exec_config: PromptExecConfig.Raw;
-        prompt_variant_id?: string | null;
-        prompt_sandbox_id?: string | null;
+        prompt_variant_id?: (string | null) | null;
+        prompt_sandbox_id?: (string | null) | null;
     }
 }

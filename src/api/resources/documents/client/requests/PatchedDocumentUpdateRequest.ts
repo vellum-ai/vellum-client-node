@@ -18,5 +18,5 @@ export interface PatchedDocumentUpdateRequest {
      */
     status?: Vellum.DocumentStatus;
     /** A JSON object containing any metadata associated with the document that you'd like to filter upon later. */
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

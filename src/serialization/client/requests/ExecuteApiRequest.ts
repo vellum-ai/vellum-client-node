@@ -14,17 +14,17 @@ export const ExecuteApiRequest: core.serialization.Schema<serializers.ExecuteApi
     core.serialization.object({
         url: core.serialization.string(),
         method: MethodEnum.optional(),
-        body: ExecuteApiRequestBody.optional(),
+        body: ExecuteApiRequestBody.optionalNullable(),
         headers: core.serialization.record(core.serialization.string(), ExecuteApiRequestHeadersValue).optional(),
-        bearerToken: core.serialization.property("bearer_token", ExecuteApiRequestBearerToken.optional()),
+        bearerToken: core.serialization.property("bearer_token", ExecuteApiRequestBearerToken.optionalNullable()),
     });
 
 export declare namespace ExecuteApiRequest {
     export interface Raw {
         url: string;
         method?: MethodEnum.Raw | null;
-        body?: ExecuteApiRequestBody.Raw | null;
+        body?: (ExecuteApiRequestBody.Raw | null) | null;
         headers?: Record<string, ExecuteApiRequestHeadersValue.Raw> | null;
-        bearer_token?: ExecuteApiRequestBearerToken.Raw | null;
+        bearer_token?: (ExecuteApiRequestBearerToken.Raw | null) | null;
     }
 }

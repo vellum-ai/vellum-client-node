@@ -9,5 +9,5 @@ export interface SearchNodeResultData {
     /** The results of the search. Each result represents a chunk that matches the search query. */
     results: Vellum.SearchResult[];
     textOutputId: string;
-    text?: string;
+    text?: string | null;
 }

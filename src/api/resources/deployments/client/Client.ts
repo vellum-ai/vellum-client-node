@@ -41,25 +41,32 @@ export class Deployments {
      * @example
      *     await client.deployments.list()
      */
-    public async list(
+    public list(
         request: Vellum.DeploymentsListRequest = {},
         requestOptions?: Deployments.RequestOptions,
-    ): Promise<Vellum.PaginatedSlimDeploymentReadList> {
+    ): core.HttpResponsePromise<Vellum.PaginatedSlimDeploymentReadList> {
+        return core.HttpResponsePromise.fromPromise(this.__list(request, requestOptions));
+    }
+
+    private async __list(
+        request: Vellum.DeploymentsListRequest = {},
+        requestOptions?: Deployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PaginatedSlimDeploymentReadList>> {
         const { limit, offset, ordering, status } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+        if (limit !== undefined) {
+            _queryParams["limit"] = limit?.toString() ?? null;
         }
 
-        if (offset != null) {
-            _queryParams["offset"] = offset.toString();
+        if (offset !== undefined) {
+            _queryParams["offset"] = offset?.toString() ?? null;
         }
 
-        if (ordering != null) {
+        if (ordering !== undefined) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (status != null) {
+        if (status !== undefined) {
             _queryParams["status"] = serializers.DeploymentsListRequestStatus.jsonOrThrow(status, {
                 unrecognizedObjectKeys: "strip",
             });
@@ -68,16 +75,16 @@ export class Deployments {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/deployments",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -91,18 +98,22 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PaginatedSlimDeploymentReadList.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PaginatedSlimDeploymentReadList.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -111,12 +122,14 @@ export class Deployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/deployments.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -130,20 +143,30 @@ export class Deployments {
      * @example
      *     await client.deployments.retrieve("id")
      */
-    public async retrieve(id: string, requestOptions?: Deployments.RequestOptions): Promise<Vellum.DeploymentRead> {
+    public retrieve(
+        id: string,
+        requestOptions?: Deployments.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.DeploymentRead> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+    }
+
+    private async __retrieve(
+        id: string,
+        requestOptions?: Deployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.DeploymentRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/deployments/${encodeURIComponent(id)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -156,18 +179,22 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeploymentRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeploymentRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -176,12 +203,14 @@ export class Deployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/deployments/{id}.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -196,24 +225,34 @@ export class Deployments {
      * @example
      *     await client.deployments.deploymentHistoryItemRetrieve("history_id_or_release_tag", "id")
      */
-    public async deploymentHistoryItemRetrieve(
+    public deploymentHistoryItemRetrieve(
         historyIdOrReleaseTag: string,
         id: string,
         requestOptions?: Deployments.RequestOptions,
-    ): Promise<Vellum.DeploymentHistoryItem> {
+    ): core.HttpResponsePromise<Vellum.DeploymentHistoryItem> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__deploymentHistoryItemRetrieve(historyIdOrReleaseTag, id, requestOptions),
+        );
+    }
+
+    private async __deploymentHistoryItemRetrieve(
+        historyIdOrReleaseTag: string,
+        id: string,
+        requestOptions?: Deployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.DeploymentHistoryItem>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/deployments/${encodeURIComponent(id)}/history/${encodeURIComponent(historyIdOrReleaseTag)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -226,18 +265,22 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeploymentHistoryItem.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeploymentHistoryItem.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -246,6 +289,7 @@ export class Deployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -254,6 +298,7 @@ export class Deployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -268,26 +313,34 @@ export class Deployments {
      * @example
      *     await client.deployments.listDeploymentReleaseTags("id")
      */
-    public async listDeploymentReleaseTags(
+    public listDeploymentReleaseTags(
         id: string,
         request: Vellum.ListDeploymentReleaseTagsRequest = {},
         requestOptions?: Deployments.RequestOptions,
-    ): Promise<Vellum.PaginatedDeploymentReleaseTagReadList> {
+    ): core.HttpResponsePromise<Vellum.PaginatedDeploymentReleaseTagReadList> {
+        return core.HttpResponsePromise.fromPromise(this.__listDeploymentReleaseTags(id, request, requestOptions));
+    }
+
+    private async __listDeploymentReleaseTags(
+        id: string,
+        request: Vellum.ListDeploymentReleaseTagsRequest = {},
+        requestOptions?: Deployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PaginatedDeploymentReleaseTagReadList>> {
         const { limit, offset, ordering, source } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+        if (limit !== undefined) {
+            _queryParams["limit"] = limit?.toString() ?? null;
         }
 
-        if (offset != null) {
-            _queryParams["offset"] = offset.toString();
+        if (offset !== undefined) {
+            _queryParams["offset"] = offset?.toString() ?? null;
         }
 
-        if (ordering != null) {
+        if (ordering !== undefined) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (source != null) {
+        if (source !== undefined) {
             _queryParams["source"] = serializers.ListDeploymentReleaseTagsRequestSource.jsonOrThrow(source, {
                 unrecognizedObjectKeys: "strip",
             });
@@ -296,16 +349,16 @@ export class Deployments {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/deployments/${encodeURIComponent(id)}/release-tags`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -319,18 +372,22 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PaginatedDeploymentReleaseTagReadList.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PaginatedDeploymentReleaseTagReadList.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -339,6 +396,7 @@ export class Deployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -347,6 +405,7 @@ export class Deployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -361,24 +420,32 @@ export class Deployments {
      * @example
      *     await client.deployments.retrieveDeploymentReleaseTag("id", "name")
      */
-    public async retrieveDeploymentReleaseTag(
+    public retrieveDeploymentReleaseTag(
         id: string,
         name: string,
         requestOptions?: Deployments.RequestOptions,
-    ): Promise<Vellum.DeploymentReleaseTagRead> {
+    ): core.HttpResponsePromise<Vellum.DeploymentReleaseTagRead> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieveDeploymentReleaseTag(id, name, requestOptions));
+    }
+
+    private async __retrieveDeploymentReleaseTag(
+        id: string,
+        name: string,
+        requestOptions?: Deployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.DeploymentReleaseTagRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/deployments/${encodeURIComponent(id)}/release-tags/${encodeURIComponent(name)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -391,18 +458,22 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -411,6 +482,7 @@ export class Deployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -419,6 +491,7 @@ export class Deployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -434,25 +507,36 @@ export class Deployments {
      * @example
      *     await client.deployments.updateDeploymentReleaseTag("id", "name")
      */
-    public async updateDeploymentReleaseTag(
+    public updateDeploymentReleaseTag(
         id: string,
         name: string,
         request: Vellum.PatchedDeploymentReleaseTagUpdateRequest = {},
         requestOptions?: Deployments.RequestOptions,
-    ): Promise<Vellum.DeploymentReleaseTagRead> {
+    ): core.HttpResponsePromise<Vellum.DeploymentReleaseTagRead> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__updateDeploymentReleaseTag(id, name, request, requestOptions),
+        );
+    }
+
+    private async __updateDeploymentReleaseTag(
+        id: string,
+        name: string,
+        request: Vellum.PatchedDeploymentReleaseTagUpdateRequest = {},
+        requestOptions?: Deployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.DeploymentReleaseTagRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/deployments/${encodeURIComponent(id)}/release-tags/${encodeURIComponent(name)}`,
             ),
             method: "PATCH",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -468,18 +552,22 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeploymentReleaseTagRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -488,6 +576,7 @@ export class Deployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -496,6 +585,7 @@ export class Deployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -529,23 +619,30 @@ export class Deployments {
      *             }]
      *     })
      */
-    public async retrieveProviderPayload(
+    public retrieveProviderPayload(
         request: Vellum.DeploymentProviderPayloadRequest,
         requestOptions?: Deployments.RequestOptions,
-    ): Promise<Vellum.DeploymentProviderPayloadResponse> {
+    ): core.HttpResponsePromise<Vellum.DeploymentProviderPayloadResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieveProviderPayload(request, requestOptions));
+    }
+
+    private async __retrieveProviderPayload(
+        request: Vellum.DeploymentProviderPayloadRequest,
+        requestOptions?: Deployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.DeploymentProviderPayloadResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/deployments/provider-payload",
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -561,28 +658,32 @@ export class Deployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeploymentProviderPayloadResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeploymentProviderPayloadResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new Vellum.BadRequestError(_response.error.body);
+                    throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
                 case 403:
-                    throw new Vellum.ForbiddenError(_response.error.body);
+                    throw new Vellum.ForbiddenError(_response.error.body, _response.rawResponse);
                 case 404:
-                    throw new Vellum.NotFoundError(_response.error.body);
+                    throw new Vellum.NotFoundError(_response.error.body, _response.rawResponse);
                 case 500:
-                    throw new Vellum.InternalServerError(_response.error.body);
+                    throw new Vellum.InternalServerError(_response.error.body, _response.rawResponse);
                 default:
                     throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
+                        rawResponse: _response.rawResponse,
                     });
             }
         }
@@ -592,6 +693,7 @@ export class Deployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -600,6 +702,7 @@ export class Deployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

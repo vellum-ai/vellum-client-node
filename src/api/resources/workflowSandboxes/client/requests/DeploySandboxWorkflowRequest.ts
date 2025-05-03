@@ -8,13 +8,13 @@
  */
 export interface DeploySandboxWorkflowRequest {
     /** The Vellum-generated ID of the Workflow Deployment you'd like to update. Cannot specify both this and workflow_deployment_name. Leave null to create a new Workflow Deployment. */
-    workflowDeploymentId?: string;
+    workflowDeploymentId?: string | null;
     /** The unique name of the Workflow Deployment you'd like to either create or update. Cannot specify both this and workflow_deployment_id. If provided and matches an existing Workflow Deployment, that Workflow Deployment will be updated. Otherwise, a new Prompt Deployment will be created. */
-    workflowDeploymentName?: string;
+    workflowDeploymentName?: string | null;
     /** In the event that a new Workflow Deployment is created, this will be the label it's given. */
-    label?: string;
+    label?: string | null;
     /** Optionally provide the release tags that you'd like to be associated with the latest release of the created/updated Prompt Deployment. */
-    releaseTags?: string[];
+    releaseTags?: string[] | null;
     /** Optionally provide a description that details what's new in this Release. */
-    releaseDescription?: string;
+    releaseDescription?: string | null;
 }

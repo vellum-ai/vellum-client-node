@@ -11,12 +11,12 @@ export const VellumImageRequest: core.serialization.ObjectSchema<
     Vellum.VellumImageRequest
 > = core.serialization.object({
     src: core.serialization.string(),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace VellumImageRequest {
     export interface Raw {
         src: string;
-        metadata?: Record<string, unknown> | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

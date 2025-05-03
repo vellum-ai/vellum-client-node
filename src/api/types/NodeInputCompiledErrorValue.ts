@@ -8,5 +8,5 @@ export interface NodeInputCompiledErrorValue {
     nodeInputId: string;
     key: string;
     type: "ERROR";
-    value?: Vellum.VellumError;
+    value?: Vellum.VellumError | null;
 }

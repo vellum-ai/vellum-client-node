@@ -9,8 +9,8 @@ import * as Vellum from "../index";
  */
 export interface WorkflowExecutionWorkflowResultEvent {
     executionId: string;
-    runId?: string;
-    externalId?: string;
+    runId?: string | null;
+    externalId?: string | null;
     type: "WORKFLOW";
     data: Vellum.WorkflowResultEvent;
 }

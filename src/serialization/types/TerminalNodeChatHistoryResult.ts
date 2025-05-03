@@ -11,17 +11,17 @@ export const TerminalNodeChatHistoryResult: core.serialization.ObjectSchema<
     serializers.TerminalNodeChatHistoryResult.Raw,
     Vellum.TerminalNodeChatHistoryResult
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optional(),
+    value: core.serialization.list(ChatMessage).optionalNullable(),
 });
 
 export declare namespace TerminalNodeChatHistoryResult {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         type: "CHAT_HISTORY";
-        value?: ChatMessage.Raw[] | null;
+        value?: (ChatMessage.Raw[] | null) | null;
     }
 }

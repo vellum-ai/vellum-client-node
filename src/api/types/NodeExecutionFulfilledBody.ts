@@ -6,7 +6,7 @@ import * as Vellum from "../index";
 
 export interface NodeExecutionFulfilledBody {
     nodeDefinition: Vellum.VellumCodeResourceDefinition;
-    invokedPorts?: Vellum.InvokedPort[];
+    invokedPorts?: Vellum.InvokedPort[] | null;
     outputs: Record<string, unknown>;
-    mocked?: boolean;
+    mocked?: boolean | null;
 }

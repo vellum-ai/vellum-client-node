@@ -8,12 +8,12 @@ import * as Vellum from "../index";
  * An Array output returned from a Workflow execution.
  */
 export interface WorkflowResultEventOutputDataArray {
-    id?: string;
+    id?: string | null;
     name: string;
     state: Vellum.WorkflowNodeResultEventState;
     nodeId: string;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
-    delta?: string;
+    delta?: string | null;
     type: "ARRAY";
-    value?: Vellum.VellumValue[];
+    value?: Vellum.VellumValue[] | null;
 }

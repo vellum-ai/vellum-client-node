@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface WorkflowExecutionResumedEvent {
-    parent?: Vellum.ParentContext;
-    links?: Vellum.SpanLink[];
+    parent?: Vellum.ParentContext | null;
+    links?: Vellum.SpanLink[] | null;
     name: "workflow.execution.resumed";
     body: Vellum.WorkflowExecutionResumedBody;
     id: string;

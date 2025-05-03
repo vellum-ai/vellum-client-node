@@ -6,7 +6,7 @@ import * as Vellum from "../index";
 
 export interface PaginatedFolderEntityList {
     count?: number;
-    next?: string;
-    previous?: string;
+    next?: string | null;
+    previous?: string | null;
     results?: Vellum.FolderEntity[];
 }

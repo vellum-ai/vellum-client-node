@@ -10,26 +10,26 @@ export const PromptDeploymentExpandMetaRequest: core.serialization.ObjectSchema<
     serializers.PromptDeploymentExpandMetaRequest.Raw,
     Vellum.PromptDeploymentExpandMetaRequest
 > = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.boolean().optional()),
-    usage: core.serialization.boolean().optional(),
-    cost: core.serialization.boolean().optional(),
-    finishReason: core.serialization.property("finish_reason", core.serialization.boolean().optional()),
-    latency: core.serialization.boolean().optional(),
+    modelName: core.serialization.property("model_name", core.serialization.boolean().optionalNullable()),
+    usage: core.serialization.boolean().optionalNullable(),
+    cost: core.serialization.boolean().optionalNullable(),
+    finishReason: core.serialization.property("finish_reason", core.serialization.boolean().optionalNullable()),
+    latency: core.serialization.boolean().optionalNullable(),
     deploymentReleaseTag: core.serialization.property(
         "deployment_release_tag",
-        core.serialization.boolean().optional(),
+        core.serialization.boolean().optionalNullable(),
     ),
-    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.boolean().optional()),
+    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.boolean().optionalNullable()),
 });
 
 export declare namespace PromptDeploymentExpandMetaRequest {
     export interface Raw {
-        model_name?: boolean | null;
-        usage?: boolean | null;
-        cost?: boolean | null;
-        finish_reason?: boolean | null;
-        latency?: boolean | null;
-        deployment_release_tag?: boolean | null;
-        prompt_version_id?: boolean | null;
+        model_name?: (boolean | null) | null;
+        usage?: (boolean | null) | null;
+        cost?: (boolean | null) | null;
+        finish_reason?: (boolean | null) | null;
+        latency?: (boolean | null) | null;
+        deployment_release_tag?: (boolean | null) | null;
+        prompt_version_id?: (boolean | null) | null;
     }
 }

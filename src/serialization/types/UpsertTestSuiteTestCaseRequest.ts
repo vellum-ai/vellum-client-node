@@ -13,7 +13,7 @@ export const UpsertTestSuiteTestCaseRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    label: core.serialization.string().optional(),
+    label: core.serialization.string().optionalNullable(),
     inputValues: core.serialization.property(
         "input_values",
         core.serialization.list(NamedTestCaseVariableValueRequest),
@@ -28,7 +28,7 @@ export declare namespace UpsertTestSuiteTestCaseRequest {
     export interface Raw {
         id?: string | null;
         external_id?: string | null;
-        label?: string | null;
+        label?: (string | null) | null;
         input_values: NamedTestCaseVariableValueRequest.Raw[];
         evaluation_values: NamedTestCaseVariableValueRequest.Raw[];
     }

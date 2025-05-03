@@ -11,5 +11,5 @@ export interface TestCaseErrorVariableValue {
     variableId: string;
     name: string;
     type: "ERROR";
-    value?: Vellum.VellumError;
+    value?: Vellum.VellumError | null;
 }

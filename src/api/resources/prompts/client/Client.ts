@@ -45,30 +45,38 @@ export class Prompts {
      * @example
      *     await client.prompts.pull("id")
      */
-    public async pull(
+    public pull(
         id: string,
         request: Vellum.PromptsPullRequest = {},
         requestOptions?: Prompts.RequestOptions,
-    ): Promise<Vellum.PromptExecConfig> {
+    ): core.HttpResponsePromise<Vellum.PromptExecConfig> {
+        return core.HttpResponsePromise.fromPromise(this.__pull(id, request, requestOptions));
+    }
+
+    private async __pull(
+        id: string,
+        request: Vellum.PromptsPullRequest = {},
+        requestOptions?: Prompts.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PromptExecConfig>> {
         const { promptVariantId } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (promptVariantId != null) {
+        if (promptVariantId !== undefined) {
             _queryParams["prompt_variant_id"] = promptVariantId;
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/prompts/${encodeURIComponent(id)}/pull`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 Accept: "application/json",
@@ -83,24 +91,28 @@ export class Prompts {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PromptExecConfig.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PromptExecConfig.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new Vellum.BadRequestError(_response.error.body);
+                    throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
                 case 404:
-                    throw new Vellum.NotFoundError(_response.error.body);
+                    throw new Vellum.NotFoundError(_response.error.body, _response.rawResponse);
                 default:
                     throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
+                        rawResponse: _response.rawResponse,
                     });
             }
         }
@@ -110,12 +122,14 @@ export class Prompts {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/prompts/{id}/pull.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -146,23 +160,30 @@ export class Prompts {
      *         }
      *     })
      */
-    public async push(
+    public push(
         request: Vellum.PromptPush,
         requestOptions?: Prompts.RequestOptions,
-    ): Promise<Vellum.PromptPushResponse> {
+    ): core.HttpResponsePromise<Vellum.PromptPushResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__push(request, requestOptions));
+    }
+
+    private async __push(
+        request: Vellum.PromptPush,
+        requestOptions?: Prompts.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PromptPushResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/prompts/push",
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -176,24 +197,28 @@ export class Prompts {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PromptPushResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PromptPushResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new Vellum.BadRequestError(_response.error.body);
+                    throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
                 case 404:
-                    throw new Vellum.NotFoundError(_response.error.body);
+                    throw new Vellum.NotFoundError(_response.error.body, _response.rawResponse);
                 default:
                     throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
+                        rawResponse: _response.rawResponse,
                     });
             }
         }
@@ -203,12 +228,14 @@ export class Prompts {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/prompts/push.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

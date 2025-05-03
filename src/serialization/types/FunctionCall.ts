@@ -9,14 +9,14 @@ import * as core from "../../core";
 export const FunctionCall: core.serialization.ObjectSchema<serializers.FunctionCall.Raw, Vellum.FunctionCall> =
     core.serialization.object({
         arguments: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-        id: core.serialization.string().optional(),
+        id: core.serialization.string().optionalNullable(),
         name: core.serialization.string(),
     });
 
 export declare namespace FunctionCall {
     export interface Raw {
         arguments: Record<string, unknown>;
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
     }
 }

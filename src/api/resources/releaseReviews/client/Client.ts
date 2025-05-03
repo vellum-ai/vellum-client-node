@@ -42,24 +42,34 @@ export class ReleaseReviews {
      * @example
      *     await client.releaseReviews.retrievePromptDeploymentRelease("id", "release_id_or_release_tag")
      */
-    public async retrievePromptDeploymentRelease(
+    public retrievePromptDeploymentRelease(
         id: string,
         releaseIdOrReleaseTag: string,
         requestOptions?: ReleaseReviews.RequestOptions,
-    ): Promise<Vellum.PromptDeploymentRelease> {
+    ): core.HttpResponsePromise<Vellum.PromptDeploymentRelease> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__retrievePromptDeploymentRelease(id, releaseIdOrReleaseTag, requestOptions),
+        );
+    }
+
+    private async __retrievePromptDeploymentRelease(
+        id: string,
+        releaseIdOrReleaseTag: string,
+        requestOptions?: ReleaseReviews.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PromptDeploymentRelease>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/deployments/${encodeURIComponent(id)}/releases/${encodeURIComponent(releaseIdOrReleaseTag)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -72,18 +82,22 @@ export class ReleaseReviews {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PromptDeploymentRelease.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PromptDeploymentRelease.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -92,6 +106,7 @@ export class ReleaseReviews {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -100,6 +115,7 @@ export class ReleaseReviews {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -114,24 +130,34 @@ export class ReleaseReviews {
      * @example
      *     await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_or_release_tag")
      */
-    public async retrieveWorkflowDeploymentRelease(
+    public retrieveWorkflowDeploymentRelease(
         id: string,
         releaseIdOrReleaseTag: string,
         requestOptions?: ReleaseReviews.RequestOptions,
-    ): Promise<Vellum.WorkflowDeploymentRelease> {
+    ): core.HttpResponsePromise<Vellum.WorkflowDeploymentRelease> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__retrieveWorkflowDeploymentRelease(id, releaseIdOrReleaseTag, requestOptions),
+        );
+    }
+
+    private async __retrieveWorkflowDeploymentRelease(
+        id: string,
+        releaseIdOrReleaseTag: string,
+        requestOptions?: ReleaseReviews.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowDeploymentRelease>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-deployments/${encodeURIComponent(id)}/releases/${encodeURIComponent(releaseIdOrReleaseTag)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -144,18 +170,22 @@ export class ReleaseReviews {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkflowDeploymentRelease.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.WorkflowDeploymentRelease.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -164,6 +194,7 @@ export class ReleaseReviews {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -172,6 +203,7 @@ export class ReleaseReviews {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

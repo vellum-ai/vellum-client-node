@@ -41,25 +41,34 @@ export class WorkflowSandboxes {
      * @example
      *     await client.workflowSandboxes.deployWorkflow("id", "workflow_id")
      */
-    public async deployWorkflow(
+    public deployWorkflow(
         id: string,
         workflowId: string,
         request: Vellum.DeploySandboxWorkflowRequest = {},
         requestOptions?: WorkflowSandboxes.RequestOptions,
-    ): Promise<Vellum.WorkflowDeploymentRead> {
+    ): core.HttpResponsePromise<Vellum.WorkflowDeploymentRead> {
+        return core.HttpResponsePromise.fromPromise(this.__deployWorkflow(id, workflowId, request, requestOptions));
+    }
+
+    private async __deployWorkflow(
+        id: string,
+        workflowId: string,
+        request: Vellum.DeploySandboxWorkflowRequest = {},
+        requestOptions?: WorkflowSandboxes.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowDeploymentRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-sandboxes/${encodeURIComponent(id)}/workflows/${encodeURIComponent(workflowId)}/deploy`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -73,18 +82,22 @@ export class WorkflowSandboxes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkflowDeploymentRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.WorkflowDeploymentRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -93,6 +106,7 @@ export class WorkflowSandboxes {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -101,6 +115,7 @@ export class WorkflowSandboxes {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -114,25 +129,32 @@ export class WorkflowSandboxes {
      * @example
      *     await client.workflowSandboxes.listWorkflowSandboxExamples()
      */
-    public async listWorkflowSandboxExamples(
+    public listWorkflowSandboxExamples(
         request: Vellum.ListWorkflowSandboxExamplesRequest = {},
         requestOptions?: WorkflowSandboxes.RequestOptions,
-    ): Promise<Vellum.PaginatedWorkflowSandboxExampleList> {
+    ): core.HttpResponsePromise<Vellum.PaginatedWorkflowSandboxExampleList> {
+        return core.HttpResponsePromise.fromPromise(this.__listWorkflowSandboxExamples(request, requestOptions));
+    }
+
+    private async __listWorkflowSandboxExamples(
+        request: Vellum.ListWorkflowSandboxExamplesRequest = {},
+        requestOptions?: WorkflowSandboxes.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PaginatedWorkflowSandboxExampleList>> {
         const { limit, offset, ordering, tag } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+        if (limit !== undefined) {
+            _queryParams["limit"] = limit?.toString() ?? null;
         }
 
-        if (offset != null) {
-            _queryParams["offset"] = offset.toString();
+        if (offset !== undefined) {
+            _queryParams["offset"] = offset?.toString() ?? null;
         }
 
-        if (ordering != null) {
+        if (ordering !== undefined) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (tag != null) {
+        if (tag !== undefined) {
             _queryParams["tag"] = serializers.ListWorkflowSandboxExamplesRequestTag.jsonOrThrow(tag, {
                 unrecognizedObjectKeys: "strip",
             });
@@ -141,16 +163,16 @@ export class WorkflowSandboxes {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/workflow-sandboxes/examples",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -164,18 +186,22 @@ export class WorkflowSandboxes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PaginatedWorkflowSandboxExampleList.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PaginatedWorkflowSandboxExampleList.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -184,6 +210,7 @@ export class WorkflowSandboxes {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -192,6 +219,7 @@ export class WorkflowSandboxes {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
