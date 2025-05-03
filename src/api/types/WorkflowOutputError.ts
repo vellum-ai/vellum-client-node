@@ -12,5 +12,5 @@ export interface WorkflowOutputError {
     /** The output's name, as defined in the workflow */
     name: string;
     type: "ERROR";
-    value?: Vellum.VellumError;
+    value?: Vellum.VellumError | null;
 }

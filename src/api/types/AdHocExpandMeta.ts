@@ -4,11 +4,11 @@
 
 export interface AdHocExpandMeta {
     /** If enabled, the response will include model host cost tracking. This may increase latency for some model hosts. */
-    cost?: boolean;
+    cost?: boolean | null;
     /** If enabled, the response will include the model identifier representing the ML Model invoked by the Prompt. */
-    modelName?: boolean;
+    modelName?: boolean | null;
     /** If enabled, the response will include model host usage tracking. This may increase latency for some model hosts. */
-    usage?: boolean;
+    usage?: boolean | null;
     /** If enabled, the response will include the reason provided by the model for why the execution finished. */
-    finishReason?: boolean;
+    finishReason?: boolean | null;
 }

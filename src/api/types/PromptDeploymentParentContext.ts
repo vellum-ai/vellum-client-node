@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface PromptDeploymentParentContext {
-    parent?: Vellum.ParentContext;
-    links?: Vellum.SpanLink[];
+    parent?: Vellum.ParentContext | null;
+    links?: Vellum.SpanLink[] | null;
     type: "PROMPT_RELEASE_TAG";
     spanId: string;
     deploymentId: string;
@@ -14,7 +14,7 @@ export interface PromptDeploymentParentContext {
     deploymentHistoryItemId: string;
     releaseTagId: string;
     releaseTagName: string;
-    externalId?: string;
-    metadata?: Record<string, unknown>;
+    externalId?: string | null;
+    metadata?: Record<string, unknown> | null;
     promptVersionId: string;
 }

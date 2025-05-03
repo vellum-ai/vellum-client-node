@@ -29,5 +29,5 @@ export interface SlimDeploymentRead {
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
     /** A human-readable description of the deployment */
-    description?: string;
+    description?: string | null;
 }

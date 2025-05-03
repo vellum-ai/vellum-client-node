@@ -3,5 +3,5 @@
  */
 
 export interface SubworkflowNodeResultData {
-    executionId?: string;
+    executionId?: string | null;
 }

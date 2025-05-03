@@ -18,19 +18,19 @@ export interface ExecutePromptRequest {
     /** A list consisting of the Prompt Deployment's input variables and their values. */
     inputs: Vellum.PromptDeploymentInputRequest[];
     /** The ID of the Prompt Deployment. Must provide either this or prompt_deployment_name. */
-    promptDeploymentId?: string;
+    promptDeploymentId?: string | null;
     /** The unique name of the Prompt Deployment. Must provide either this or prompt_deployment_id. */
-    promptDeploymentName?: string;
+    promptDeploymentName?: string | null;
     /** Optionally specify a release tag if you want to pin to a specific release of the Prompt Deployment */
-    releaseTag?: string;
+    releaseTag?: string | null;
     /** Optionally include a unique identifier for tracking purposes. Must be unique within a given Workspace. */
-    externalId?: string;
+    externalId?: string | null;
     /** An optionally specified configuration used to opt in to including additional metadata about this prompt execution in the API response. Corresponding values will be returned under the `meta` key of the API response. */
-    expandMeta?: Vellum.PromptDeploymentExpandMetaRequest;
+    expandMeta?: Vellum.PromptDeploymentExpandMetaRequest | null;
     /** Overrides for the raw API request sent to the model host. Combined with `expand_raw`, it can be used to access new features from models. */
-    rawOverrides?: Vellum.RawPromptExecutionOverridesRequest;
+    rawOverrides?: Vellum.RawPromptExecutionOverridesRequest | null;
     /** A list of keys whose values you'd like to directly return from the JSON response of the model provider. Useful if you need lower-level info returned by model providers that Vellum would otherwise omit. Corresponding key/value pairs will be returned under the `raw` key of the API response. */
-    expandRaw?: string[];
+    expandRaw?: string[] | null;
     /** Arbitrary JSON metadata associated with this request. Can be used to capture additional monitoring data such as user id, session id, etc. for future analysis. */
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

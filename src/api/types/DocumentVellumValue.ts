@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface DocumentVellumValue {
     type: "DOCUMENT";
-    value?: Vellum.VellumDocument;
+    value?: Vellum.VellumDocument | null;
 }

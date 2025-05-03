@@ -13,5 +13,5 @@ export interface SearchResult {
     /** The document that contains the chunk that matched the search query. */
     document: Vellum.SearchResultDocument;
     /** Additional information about the search result. */
-    meta?: Vellum.SearchResultMeta;
+    meta?: Vellum.SearchResultMeta | null;
 }

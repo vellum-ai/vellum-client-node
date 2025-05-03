@@ -14,17 +14,17 @@ export const ImagePromptBlock: core.serialization.ObjectSchema<
 > = core.serialization.object({
     blockType: core.serialization.property("block_type", core.serialization.stringLiteral("IMAGE")),
     state: PromptBlockState.optional(),
-    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optional()),
+    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     src: core.serialization.string(),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace ImagePromptBlock {
     export interface Raw {
         block_type: "IMAGE";
         state?: PromptBlockState.Raw | null;
-        cache_config?: EphemeralPromptCacheConfig.Raw | null;
+        cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         src: string;
-        metadata?: Record<string, unknown> | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

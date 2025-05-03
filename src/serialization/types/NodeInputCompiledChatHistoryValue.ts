@@ -14,7 +14,7 @@ export const NodeInputCompiledChatHistoryValue: core.serialization.ObjectSchema<
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
     type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optional(),
+    value: core.serialization.list(ChatMessage).optionalNullable(),
 });
 
 export declare namespace NodeInputCompiledChatHistoryValue {
@@ -22,6 +22,6 @@ export declare namespace NodeInputCompiledChatHistoryValue {
         node_input_id: string;
         key: string;
         type: "CHAT_HISTORY";
-        value?: ChatMessage.Raw[] | null;
+        value?: (ChatMessage.Raw[] | null) | null;
     }
 }

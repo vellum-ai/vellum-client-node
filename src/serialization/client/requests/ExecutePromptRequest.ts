@@ -14,29 +14,35 @@ export const ExecutePromptRequest: core.serialization.Schema<
     Vellum.ExecutePromptRequest
 > = core.serialization.object({
     inputs: core.serialization.list(PromptDeploymentInputRequest),
-    promptDeploymentId: core.serialization.property("prompt_deployment_id", core.serialization.string().optional()),
-    promptDeploymentName: core.serialization.property("prompt_deployment_name", core.serialization.string().optional()),
-    releaseTag: core.serialization.property("release_tag", core.serialization.string().optional()),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    expandMeta: core.serialization.property("expand_meta", PromptDeploymentExpandMetaRequest.optional()),
-    rawOverrides: core.serialization.property("raw_overrides", RawPromptExecutionOverridesRequest.optional()),
+    promptDeploymentId: core.serialization.property(
+        "prompt_deployment_id",
+        core.serialization.string().optionalNullable(),
+    ),
+    promptDeploymentName: core.serialization.property(
+        "prompt_deployment_name",
+        core.serialization.string().optionalNullable(),
+    ),
+    releaseTag: core.serialization.property("release_tag", core.serialization.string().optionalNullable()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
+    expandMeta: core.serialization.property("expand_meta", PromptDeploymentExpandMetaRequest.optionalNullable()),
+    rawOverrides: core.serialization.property("raw_overrides", RawPromptExecutionOverridesRequest.optionalNullable()),
     expandRaw: core.serialization.property(
         "expand_raw",
-        core.serialization.list(core.serialization.string()).optional(),
+        core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace ExecutePromptRequest {
     export interface Raw {
         inputs: PromptDeploymentInputRequest.Raw[];
-        prompt_deployment_id?: string | null;
-        prompt_deployment_name?: string | null;
-        release_tag?: string | null;
-        external_id?: string | null;
-        expand_meta?: PromptDeploymentExpandMetaRequest.Raw | null;
-        raw_overrides?: RawPromptExecutionOverridesRequest.Raw | null;
-        expand_raw?: string[] | null;
-        metadata?: Record<string, unknown> | null;
+        prompt_deployment_id?: (string | null) | null;
+        prompt_deployment_name?: (string | null) | null;
+        release_tag?: (string | null) | null;
+        external_id?: (string | null) | null;
+        expand_meta?: (PromptDeploymentExpandMetaRequest.Raw | null) | null;
+        raw_overrides?: (RawPromptExecutionOverridesRequest.Raw | null) | null;
+        expand_raw?: (string[] | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

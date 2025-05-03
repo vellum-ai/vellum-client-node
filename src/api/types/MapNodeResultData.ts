@@ -6,5 +6,5 @@ import * as Vellum from "../index";
 
 export interface MapNodeResultData {
     executionIds: string[];
-    iterationState?: Vellum.IterationStateEnum;
+    iterationState?: Vellum.IterationStateEnum | null;
 }

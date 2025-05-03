@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface AudioVellumValueRequest {
     type: "AUDIO";
-    value?: Vellum.VellumAudioRequest;
+    value?: Vellum.VellumAudioRequest | null;
 }

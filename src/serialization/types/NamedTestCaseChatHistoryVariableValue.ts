@@ -12,14 +12,14 @@ export const NamedTestCaseChatHistoryVariableValue: core.serialization.ObjectSch
     Vellum.NamedTestCaseChatHistoryVariableValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optional(),
+    value: core.serialization.list(ChatMessage).optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseChatHistoryVariableValue {
     export interface Raw {
         type: "CHAT_HISTORY";
-        value?: ChatMessage.Raw[] | null;
+        value?: (ChatMessage.Raw[] | null) | null;
         name: string;
     }
 }

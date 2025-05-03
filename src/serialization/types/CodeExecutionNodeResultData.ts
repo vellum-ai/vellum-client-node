@@ -12,12 +12,12 @@ export const CodeExecutionNodeResultData: core.serialization.ObjectSchema<
     Vellum.CodeExecutionNodeResultData
 > = core.serialization.object({
     output: CodeExecutionNodeResultOutput,
-    logOutputId: core.serialization.property("log_output_id", core.serialization.string().optional()),
+    logOutputId: core.serialization.property("log_output_id", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace CodeExecutionNodeResultData {
     export interface Raw {
         output: CodeExecutionNodeResultOutput.Raw;
-        log_output_id?: string | null;
+        log_output_id?: (string | null) | null;
     }
 }

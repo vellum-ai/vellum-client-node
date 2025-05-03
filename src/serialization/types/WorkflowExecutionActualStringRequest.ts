@@ -10,23 +10,26 @@ export const WorkflowExecutionActualStringRequest: core.serialization.ObjectSche
     serializers.WorkflowExecutionActualStringRequest.Raw,
     Vellum.WorkflowExecutionActualStringRequest
 > = core.serialization.object({
-    outputId: core.serialization.property("output_id", core.serialization.string().optional()),
-    outputKey: core.serialization.property("output_key", core.serialization.string().optional()),
-    quality: core.serialization.number().optional(),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
-    timestamp: core.serialization.number().optional(),
+    outputId: core.serialization.property("output_id", core.serialization.string().optionalNullable()),
+    outputKey: core.serialization.property("output_key", core.serialization.string().optionalNullable()),
+    quality: core.serialization.number().optionalNullable(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    timestamp: core.serialization.number().optionalNullable(),
     outputType: core.serialization.property("output_type", core.serialization.stringLiteral("STRING")),
-    desiredOutputValue: core.serialization.property("desired_output_value", core.serialization.string().optional()),
+    desiredOutputValue: core.serialization.property(
+        "desired_output_value",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace WorkflowExecutionActualStringRequest {
     export interface Raw {
-        output_id?: string | null;
-        output_key?: string | null;
-        quality?: number | null;
-        metadata?: Record<string, unknown> | null;
-        timestamp?: number | null;
+        output_id?: (string | null) | null;
+        output_key?: (string | null) | null;
+        quality?: (number | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
+        timestamp?: (number | null) | null;
         output_type: "STRING";
-        desired_output_value?: string | null;
+        desired_output_value?: (string | null) | null;
     }
 }

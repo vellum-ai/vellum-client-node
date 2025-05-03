@@ -13,17 +13,17 @@ export const SearchRequestOptionsRequest: core.serialization.ObjectSchema<
     serializers.SearchRequestOptionsRequest.Raw,
     Vellum.SearchRequestOptionsRequest
 > = core.serialization.object({
-    limit: core.serialization.number().optional(),
-    weights: SearchWeightsRequest.optional(),
-    resultMerging: core.serialization.property("result_merging", SearchResultMergingRequest.optional()),
-    filters: SearchFiltersRequest.optional(),
+    limit: core.serialization.number().optionalNullable(),
+    weights: SearchWeightsRequest.optionalNullable(),
+    resultMerging: core.serialization.property("result_merging", SearchResultMergingRequest.optionalNullable()),
+    filters: SearchFiltersRequest.optionalNullable(),
 });
 
 export declare namespace SearchRequestOptionsRequest {
     export interface Raw {
-        limit?: number | null;
-        weights?: SearchWeightsRequest.Raw | null;
-        result_merging?: SearchResultMergingRequest.Raw | null;
-        filters?: SearchFiltersRequest.Raw | null;
+        limit?: (number | null) | null;
+        weights?: (SearchWeightsRequest.Raw | null) | null;
+        result_merging?: (SearchResultMergingRequest.Raw | null) | null;
+        filters?: (SearchFiltersRequest.Raw | null) | null;
     }
 }

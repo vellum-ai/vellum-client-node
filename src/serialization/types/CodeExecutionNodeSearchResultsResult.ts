@@ -13,13 +13,13 @@ export const CodeExecutionNodeSearchResultsResult: core.serialization.ObjectSche
 > = core.serialization.object({
     id: core.serialization.string(),
     type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optional(),
+    value: core.serialization.list(SearchResult).optionalNullable(),
 });
 
 export declare namespace CodeExecutionNodeSearchResultsResult {
     export interface Raw {
         id: string;
         type: "SEARCH_RESULTS";
-        value?: SearchResult.Raw[] | null;
+        value?: (SearchResult.Raw[] | null) | null;
     }
 }

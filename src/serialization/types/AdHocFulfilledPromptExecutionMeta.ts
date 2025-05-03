@@ -13,17 +13,17 @@ export const AdHocFulfilledPromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.AdHocFulfilledPromptExecutionMeta.Raw,
     Vellum.AdHocFulfilledPromptExecutionMeta
 > = core.serialization.object({
-    latency: core.serialization.number().optional(),
-    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
-    usage: MlModelUsage.optional(),
-    cost: Price.optional(),
+    latency: core.serialization.number().optionalNullable(),
+    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optionalNullable()),
+    usage: MlModelUsage.optionalNullable(),
+    cost: Price.optionalNullable(),
 });
 
 export declare namespace AdHocFulfilledPromptExecutionMeta {
     export interface Raw {
-        latency?: number | null;
-        finish_reason?: FinishReasonEnum.Raw | null;
-        usage?: MlModelUsage.Raw | null;
-        cost?: Price.Raw | null;
+        latency?: (number | null) | null;
+        finish_reason?: (FinishReasonEnum.Raw | null) | null;
+        usage?: (MlModelUsage.Raw | null) | null;
+        cost?: (Price.Raw | null) | null;
     }
 }

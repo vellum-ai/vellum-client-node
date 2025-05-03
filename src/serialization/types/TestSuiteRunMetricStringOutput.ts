@@ -10,14 +10,14 @@ export const TestSuiteRunMetricStringOutput: core.serialization.ObjectSchema<
     serializers.TestSuiteRunMetricStringOutput.Raw,
     Vellum.TestSuiteRunMetricStringOutput
 > = core.serialization.object({
-    value: core.serialization.string().optional(),
+    value: core.serialization.string().optionalNullable(),
     type: core.serialization.stringLiteral("STRING"),
     name: core.serialization.string(),
 });
 
 export declare namespace TestSuiteRunMetricStringOutput {
     export interface Raw {
-        value?: string | null;
+        value?: (string | null) | null;
         type: "STRING";
         name: string;
     }

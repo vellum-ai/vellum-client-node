@@ -14,7 +14,7 @@ export const ExecutionFunctionCallVellumValue: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optional(),
+    value: FunctionCall.optionalNullable(),
 });
 
 export declare namespace ExecutionFunctionCallVellumValue {
@@ -22,6 +22,6 @@ export declare namespace ExecutionFunctionCallVellumValue {
         id: string;
         name: string;
         type: "FUNCTION_CALL";
-        value?: FunctionCall.Raw | null;
+        value?: (FunctionCall.Raw | null) | null;
     }
 }

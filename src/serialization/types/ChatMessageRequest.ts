@@ -14,15 +14,15 @@ export const ChatMessageRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     text: core.serialization.string().optional(),
     role: ChatMessageRole,
-    content: ChatMessageContentRequest.optional(),
-    source: core.serialization.string().optional(),
+    content: ChatMessageContentRequest.optionalNullable(),
+    source: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace ChatMessageRequest {
     export interface Raw {
         text?: string | null;
         role: ChatMessageRole.Raw;
-        content?: ChatMessageContentRequest.Raw | null;
-        source?: string | null;
+        content?: (ChatMessageContentRequest.Raw | null) | null;
+        source?: (string | null) | null;
     }
 }

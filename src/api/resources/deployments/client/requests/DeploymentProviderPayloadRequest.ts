@@ -16,12 +16,12 @@ import * as Vellum from "../../../../index";
  */
 export interface DeploymentProviderPayloadRequest {
     /** The ID of the deployment. Must provide either this or deployment_name. */
-    deploymentId?: string;
+    deploymentId?: string | null;
     /** The name of the deployment. Must provide either this or deployment_id. */
-    deploymentName?: string;
+    deploymentName?: string | null;
     /** The list of inputs defined in the Prompt's deployment with their corresponding values. */
     inputs: Vellum.PromptDeploymentInputRequest[];
     /** Optionally specify a release tag if you want to pin to a specific release of the Workflow Deployment */
-    releaseTag?: string;
-    expandMeta?: Vellum.CompilePromptDeploymentExpandMetaRequest;
+    releaseTag?: string | null;
+    expandMeta?: Vellum.CompilePromptDeploymentExpandMetaRequest | null;
 }

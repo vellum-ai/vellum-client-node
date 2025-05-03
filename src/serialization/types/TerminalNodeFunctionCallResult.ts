@@ -11,17 +11,17 @@ export const TerminalNodeFunctionCallResult: core.serialization.ObjectSchema<
     serializers.TerminalNodeFunctionCallResult.Raw,
     Vellum.TerminalNodeFunctionCallResult
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optional(),
+    value: FunctionCall.optionalNullable(),
 });
 
 export declare namespace TerminalNodeFunctionCallResult {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         type: "FUNCTION_CALL";
-        value?: FunctionCall.Raw | null;
+        value?: (FunctionCall.Raw | null) | null;
     }
 }

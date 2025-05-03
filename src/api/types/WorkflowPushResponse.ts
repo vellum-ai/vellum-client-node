@@ -4,6 +4,6 @@
 
 export interface WorkflowPushResponse {
     workflowSandboxId: string;
-    workflowDeploymentId?: string;
-    proposedDiffs?: Record<string, unknown>;
+    workflowDeploymentId?: string | null;
+    proposedDiffs?: Record<string, unknown> | null;
 }

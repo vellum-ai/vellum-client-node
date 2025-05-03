@@ -14,7 +14,7 @@ export const TestCaseFunctionCallVariableValue: core.serialization.ObjectSchema<
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optional(),
+    value: FunctionCall.optionalNullable(),
 });
 
 export declare namespace TestCaseFunctionCallVariableValue {
@@ -22,6 +22,6 @@ export declare namespace TestCaseFunctionCallVariableValue {
         variable_id: string;
         name: string;
         type: "FUNCTION_CALL";
-        value?: FunctionCall.Raw | null;
+        value?: (FunctionCall.Raw | null) | null;
     }
 }

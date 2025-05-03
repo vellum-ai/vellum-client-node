@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface NodeExecutionResumedEvent {
-    parent?: Vellum.ParentContext;
-    links?: Vellum.SpanLink[];
+    parent?: Vellum.ParentContext | null;
+    links?: Vellum.SpanLink[] | null;
     name: "node.execution.resumed";
     body: Vellum.NodeExecutionResumedBody;
     id: string;

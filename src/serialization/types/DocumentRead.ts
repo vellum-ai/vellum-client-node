@@ -12,31 +12,39 @@ import { DocumentDocumentToDocumentIndex } from "./DocumentDocumentToDocumentInd
 export const DocumentRead: core.serialization.ObjectSchema<serializers.DocumentRead.Raw, Vellum.DocumentRead> =
     core.serialization.object({
         id: core.serialization.string(),
-        externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+        externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
         lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.date()),
         label: core.serialization.string(),
         processingState: core.serialization.property("processing_state", DocumentProcessingState),
         status: DocumentStatus.optional(),
-        originalFileUrl: core.serialization.property("original_file_url", core.serialization.string().optional()),
-        processedFileUrl: core.serialization.property("processed_file_url", core.serialization.string().optional()),
+        originalFileUrl: core.serialization.property(
+            "original_file_url",
+            core.serialization.string().optionalNullable(),
+        ),
+        processedFileUrl: core.serialization.property(
+            "processed_file_url",
+            core.serialization.string().optionalNullable(),
+        ),
         documentToDocumentIndexes: core.serialization.property(
             "document_to_document_indexes",
             core.serialization.list(DocumentDocumentToDocumentIndex),
         ),
-        metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+        metadata: core.serialization
+            .record(core.serialization.string(), core.serialization.unknown())
+            .optionalNullable(),
     });
 
 export declare namespace DocumentRead {
     export interface Raw {
         id: string;
-        external_id?: string | null;
+        external_id?: (string | null) | null;
         last_uploaded_at: string;
         label: string;
         processing_state: DocumentProcessingState.Raw;
         status?: DocumentStatus.Raw | null;
-        original_file_url?: string | null;
-        processed_file_url?: string | null;
+        original_file_url?: (string | null) | null;
+        processed_file_url?: (string | null) | null;
         document_to_document_indexes: DocumentDocumentToDocumentIndex.Raw[];
-        metadata?: Record<string, unknown> | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

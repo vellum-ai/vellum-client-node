@@ -20,10 +20,10 @@ export const AdHocExecutePromptStream: core.serialization.Schema<
     inputValues: core.serialization.property("input_values", core.serialization.list(PromptRequestInput)),
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     parameters: PromptParameters,
-    settings: PromptSettings.optional(),
+    settings: PromptSettings.optionalNullable(),
     blocks: core.serialization.list(core.serialization.lazy(() => serializers.PromptBlock)),
-    functions: core.serialization.list(FunctionDefinition).optional(),
-    expandMeta: core.serialization.property("expand_meta", AdHocExpandMeta.optional()),
+    functions: core.serialization.list(FunctionDefinition).optionalNullable(),
+    expandMeta: core.serialization.property("expand_meta", AdHocExpandMeta.optionalNullable()),
 });
 
 export declare namespace AdHocExecutePromptStream {
@@ -32,9 +32,9 @@ export declare namespace AdHocExecutePromptStream {
         input_values: PromptRequestInput.Raw[];
         input_variables: VellumVariable.Raw[];
         parameters: PromptParameters.Raw;
-        settings?: PromptSettings.Raw | null;
+        settings?: (PromptSettings.Raw | null) | null;
         blocks: serializers.PromptBlock.Raw[];
-        functions?: FunctionDefinition.Raw[] | null;
-        expand_meta?: AdHocExpandMeta.Raw | null;
+        functions?: (FunctionDefinition.Raw[] | null) | null;
+        expand_meta?: (AdHocExpandMeta.Raw | null) | null;
     }
 }

@@ -12,12 +12,12 @@ export const AudioVellumValue: core.serialization.ObjectSchema<
     Vellum.AudioVellumValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("AUDIO"),
-    value: VellumAudio.optional(),
+    value: VellumAudio.optionalNullable(),
 });
 
 export declare namespace AudioVellumValue {
     export interface Raw {
         type: "AUDIO";
-        value?: VellumAudio.Raw | null;
+        value?: (VellumAudio.Raw | null) | null;
     }
 }

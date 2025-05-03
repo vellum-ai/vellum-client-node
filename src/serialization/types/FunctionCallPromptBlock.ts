@@ -14,8 +14,8 @@ export const FunctionCallPromptBlock: core.serialization.ObjectSchema<
 > = core.serialization.object({
     blockType: core.serialization.property("block_type", core.serialization.stringLiteral("FUNCTION_CALL")),
     state: PromptBlockState.optional(),
-    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optional()),
-    id: core.serialization.string().optional(),
+    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     arguments: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
 });
@@ -24,8 +24,8 @@ export declare namespace FunctionCallPromptBlock {
     export interface Raw {
         block_type: "FUNCTION_CALL";
         state?: PromptBlockState.Raw | null;
-        cache_config?: EphemeralPromptCacheConfig.Raw | null;
-        id?: string | null;
+        cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
+        id?: (string | null) | null;
         name: string;
         arguments: Record<string, unknown>;
     }

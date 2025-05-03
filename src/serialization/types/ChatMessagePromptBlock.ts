@@ -15,9 +15,9 @@ export const ChatMessagePromptBlock: core.serialization.ObjectSchema<
 > = core.serialization.object({
     blockType: core.serialization.property("block_type", core.serialization.stringLiteral("CHAT_MESSAGE")),
     state: PromptBlockState.optional(),
-    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optional()),
+    cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     chatRole: core.serialization.property("chat_role", ChatMessageRole),
-    chatSource: core.serialization.property("chat_source", core.serialization.string().optional()),
+    chatSource: core.serialization.property("chat_source", core.serialization.string().optionalNullable()),
     chatMessageUnterminated: core.serialization.property(
         "chat_message_unterminated",
         core.serialization.boolean().optional(),
@@ -29,9 +29,9 @@ export declare namespace ChatMessagePromptBlock {
     export interface Raw {
         block_type: "CHAT_MESSAGE";
         state?: PromptBlockState.Raw | null;
-        cache_config?: EphemeralPromptCacheConfig.Raw | null;
+        cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         chat_role: ChatMessageRole.Raw;
-        chat_source?: string | null;
+        chat_source?: (string | null) | null;
         chat_message_unterminated?: boolean | null;
         blocks: serializers.PromptBlock.Raw[];
     }

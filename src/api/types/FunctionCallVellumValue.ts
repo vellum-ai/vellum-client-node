@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface FunctionCallVellumValue {
     type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall;
+    value?: Vellum.FunctionCall | null;
 }

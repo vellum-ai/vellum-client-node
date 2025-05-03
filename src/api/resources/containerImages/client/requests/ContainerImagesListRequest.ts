@@ -10,13 +10,13 @@ export interface ContainerImagesListRequest {
     /**
      * Number of results to return per page.
      */
-    limit?: number;
+    limit?: number | null;
     /**
      * The initial index from which to return the results.
      */
-    offset?: number;
+    offset?: number | null;
     /**
      * Which field to use when ordering the results.
      */
-    ordering?: string;
+    ordering?: string | null;
 }

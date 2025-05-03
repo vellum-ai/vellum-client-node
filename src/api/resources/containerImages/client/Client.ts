@@ -41,37 +41,44 @@ export class ContainerImages {
      * @example
      *     await client.containerImages.list()
      */
-    public async list(
+    public list(
         request: Vellum.ContainerImagesListRequest = {},
         requestOptions?: ContainerImages.RequestOptions,
-    ): Promise<Vellum.PaginatedContainerImageReadList> {
+    ): core.HttpResponsePromise<Vellum.PaginatedContainerImageReadList> {
+        return core.HttpResponsePromise.fromPromise(this.__list(request, requestOptions));
+    }
+
+    private async __list(
+        request: Vellum.ContainerImagesListRequest = {},
+        requestOptions?: ContainerImages.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PaginatedContainerImageReadList>> {
         const { limit, offset, ordering } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+        if (limit !== undefined) {
+            _queryParams["limit"] = limit?.toString() ?? null;
         }
 
-        if (offset != null) {
-            _queryParams["offset"] = offset.toString();
+        if (offset !== undefined) {
+            _queryParams["offset"] = offset?.toString() ?? null;
         }
 
-        if (ordering != null) {
+        if (ordering !== undefined) {
             _queryParams["ordering"] = ordering;
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/container-images",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -85,18 +92,22 @@ export class ContainerImages {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PaginatedContainerImageReadList.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PaginatedContainerImageReadList.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -105,12 +116,14 @@ export class ContainerImages {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/container-images.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -124,23 +137,30 @@ export class ContainerImages {
      * @example
      *     await client.containerImages.retrieve("id")
      */
-    public async retrieve(
+    public retrieve(
         id: string,
         requestOptions?: ContainerImages.RequestOptions,
-    ): Promise<Vellum.ContainerImageRead> {
+    ): core.HttpResponsePromise<Vellum.ContainerImageRead> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+    }
+
+    private async __retrieve(
+        id: string,
+        requestOptions?: ContainerImages.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.ContainerImageRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/container-images/${encodeURIComponent(id)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -153,18 +173,22 @@ export class ContainerImages {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.ContainerImageRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.ContainerImageRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -173,12 +197,14 @@ export class ContainerImages {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/container-images/{id}.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -189,22 +215,28 @@ export class ContainerImages {
      * @example
      *     await client.containerImages.dockerServiceToken()
      */
-    public async dockerServiceToken(
+    public dockerServiceToken(
         requestOptions?: ContainerImages.RequestOptions,
-    ): Promise<Vellum.DockerServiceToken> {
+    ): core.HttpResponsePromise<Vellum.DockerServiceToken> {
+        return core.HttpResponsePromise.fromPromise(this.__dockerServiceToken(requestOptions));
+    }
+
+    private async __dockerServiceToken(
+        requestOptions?: ContainerImages.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.DockerServiceToken>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/container-images/docker-service-token",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -217,18 +249,22 @@ export class ContainerImages {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DockerServiceToken.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DockerServiceToken.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -237,6 +273,7 @@ export class ContainerImages {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -245,6 +282,7 @@ export class ContainerImages {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -260,23 +298,30 @@ export class ContainerImages {
      *         tags: ["tags"]
      *     })
      */
-    public async pushContainerImage(
+    public pushContainerImage(
         request: Vellum.PushContainerImageRequest,
         requestOptions?: ContainerImages.RequestOptions,
-    ): Promise<Vellum.ContainerImageRead> {
+    ): core.HttpResponsePromise<Vellum.ContainerImageRead> {
+        return core.HttpResponsePromise.fromPromise(this.__pushContainerImage(request, requestOptions));
+    }
+
+    private async __pushContainerImage(
+        request: Vellum.PushContainerImageRequest,
+        requestOptions?: ContainerImages.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.ContainerImageRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/container-images/push",
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -290,18 +335,22 @@ export class ContainerImages {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.ContainerImageRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.ContainerImageRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -310,12 +359,14 @@ export class ContainerImages {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/container-images/push.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

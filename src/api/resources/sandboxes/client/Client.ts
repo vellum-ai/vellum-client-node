@@ -41,25 +41,34 @@ export class Sandboxes {
      * @example
      *     await client.sandboxes.deployPrompt("id", "prompt_variant_id")
      */
-    public async deployPrompt(
+    public deployPrompt(
         id: string,
         promptVariantId: string,
         request: Vellum.DeploySandboxPromptRequest = {},
         requestOptions?: Sandboxes.RequestOptions,
-    ): Promise<Vellum.DeploymentRead> {
+    ): core.HttpResponsePromise<Vellum.DeploymentRead> {
+        return core.HttpResponsePromise.fromPromise(this.__deployPrompt(id, promptVariantId, request, requestOptions));
+    }
+
+    private async __deployPrompt(
+        id: string,
+        promptVariantId: string,
+        request: Vellum.DeploySandboxPromptRequest = {},
+        requestOptions?: Sandboxes.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.DeploymentRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/sandboxes/${encodeURIComponent(id)}/prompts/${encodeURIComponent(promptVariantId)}/deploy`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -73,18 +82,22 @@ export class Sandboxes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.DeploymentRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.DeploymentRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -93,6 +106,7 @@ export class Sandboxes {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -101,6 +115,7 @@ export class Sandboxes {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -148,24 +163,32 @@ export class Sandboxes {
      *             }]
      *     })
      */
-    public async upsertSandboxScenario(
+    public upsertSandboxScenario(
         id: string,
         request: Vellum.UpsertSandboxScenarioRequest,
         requestOptions?: Sandboxes.RequestOptions,
-    ): Promise<Vellum.SandboxScenario> {
+    ): core.HttpResponsePromise<Vellum.SandboxScenario> {
+        return core.HttpResponsePromise.fromPromise(this.__upsertSandboxScenario(id, request, requestOptions));
+    }
+
+    private async __upsertSandboxScenario(
+        id: string,
+        request: Vellum.UpsertSandboxScenarioRequest,
+        requestOptions?: Sandboxes.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.SandboxScenario>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/sandboxes/${encodeURIComponent(id)}/scenarios`,
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -179,18 +202,22 @@ export class Sandboxes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.SandboxScenario.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.SandboxScenario.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -199,12 +226,14 @@ export class Sandboxes {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/sandboxes/{id}/scenarios.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -219,24 +248,32 @@ export class Sandboxes {
      * @example
      *     await client.sandboxes.deleteSandboxScenario("id", "scenario_id")
      */
-    public async deleteSandboxScenario(
+    public deleteSandboxScenario(
         id: string,
         scenarioId: string,
         requestOptions?: Sandboxes.RequestOptions,
-    ): Promise<void> {
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteSandboxScenario(id, scenarioId, requestOptions));
+    }
+
+    private async __deleteSandboxScenario(
+        id: string,
+        scenarioId: string,
+        requestOptions?: Sandboxes.RequestOptions,
+    ): Promise<core.WithRawResponse<void>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/sandboxes/${encodeURIComponent(id)}/scenarios/${encodeURIComponent(scenarioId)}`,
             ),
             method: "DELETE",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -249,13 +286,14 @@ export class Sandboxes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return;
+            return { data: undefined, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -264,6 +302,7 @@ export class Sandboxes {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -272,6 +311,7 @@ export class Sandboxes {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

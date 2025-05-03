@@ -12,5 +12,5 @@ export interface WorkflowOutputSearchResults {
     /** The output's name, as defined in the workflow */
     name: string;
     type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[];
+    value?: Vellum.SearchResult[] | null;
 }

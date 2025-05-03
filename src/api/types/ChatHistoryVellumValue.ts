@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface ChatHistoryVellumValue {
     type: "CHAT_HISTORY";
-    value?: Vellum.ChatMessage[];
+    value?: Vellum.ChatMessage[] | null;
 }

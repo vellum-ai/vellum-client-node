@@ -3,9 +3,9 @@
  */
 
 export interface TerminalNodeNumberResult {
-    id?: string;
+    id?: string | null;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
     type: "NUMBER";
-    value?: number;
+    value?: number | null;
 }

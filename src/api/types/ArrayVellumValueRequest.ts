@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface ArrayVellumValueRequest {
     type: "ARRAY";
-    value?: Vellum.VellumValueRequest[];
+    value?: Vellum.VellumValueRequest[] | null;
 }

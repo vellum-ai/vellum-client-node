@@ -12,8 +12,8 @@ export const WorkflowExecutionStreamingEvent: core.serialization.ObjectSchema<
     serializers.WorkflowExecutionStreamingEvent.Raw,
     Vellum.WorkflowExecutionStreamingEvent
 > = core.serialization.object({
-    parent: core.serialization.lazy(() => serializers.ParentContext).optional(),
-    links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optional(),
+    parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
+    links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
     name: core.serialization.stringLiteral("workflow.execution.streaming"),
     body: WorkflowExecutionStreamingBody,
     id: core.serialization.string(),
@@ -25,8 +25,8 @@ export const WorkflowExecutionStreamingEvent: core.serialization.ObjectSchema<
 
 export declare namespace WorkflowExecutionStreamingEvent {
     export interface Raw {
-        parent?: serializers.ParentContext.Raw | null;
-        links?: serializers.SpanLink.Raw[] | null;
+        parent?: (serializers.ParentContext.Raw | null) | null;
+        links?: (serializers.SpanLink.Raw[] | null) | null;
         name: "workflow.execution.streaming";
         body: WorkflowExecutionStreamingBody.Raw;
         id: string;

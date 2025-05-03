@@ -10,5 +10,5 @@ export interface WorkflowOutputString {
     /** The output's name, as defined in the workflow */
     name: string;
     type: "STRING";
-    value?: string;
+    value?: string | null;
 }

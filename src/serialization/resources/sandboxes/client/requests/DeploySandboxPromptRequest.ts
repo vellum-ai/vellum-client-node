@@ -10,22 +10,31 @@ export const DeploySandboxPromptRequest: core.serialization.Schema<
     serializers.DeploySandboxPromptRequest.Raw,
     Vellum.DeploySandboxPromptRequest
 > = core.serialization.object({
-    promptDeploymentId: core.serialization.property("prompt_deployment_id", core.serialization.string().optional()),
-    promptDeploymentName: core.serialization.property("prompt_deployment_name", core.serialization.string().optional()),
-    label: core.serialization.string().optional(),
+    promptDeploymentId: core.serialization.property(
+        "prompt_deployment_id",
+        core.serialization.string().optionalNullable(),
+    ),
+    promptDeploymentName: core.serialization.property(
+        "prompt_deployment_name",
+        core.serialization.string().optionalNullable(),
+    ),
+    label: core.serialization.string().optionalNullable(),
     releaseTags: core.serialization.property(
         "release_tags",
-        core.serialization.list(core.serialization.string()).optional(),
+        core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
-    releaseDescription: core.serialization.property("release_description", core.serialization.string().optional()),
+    releaseDescription: core.serialization.property(
+        "release_description",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace DeploySandboxPromptRequest {
     export interface Raw {
-        prompt_deployment_id?: string | null;
-        prompt_deployment_name?: string | null;
-        label?: string | null;
-        release_tags?: string[] | null;
-        release_description?: string | null;
+        prompt_deployment_id?: (string | null) | null;
+        prompt_deployment_name?: (string | null) | null;
+        label?: (string | null) | null;
+        release_tags?: (string[] | null) | null;
+        release_description?: (string | null) | null;
     }
 }

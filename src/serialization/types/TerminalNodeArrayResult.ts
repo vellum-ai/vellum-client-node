@@ -10,17 +10,17 @@ export const TerminalNodeArrayResult: core.serialization.ObjectSchema<
     serializers.TerminalNodeArrayResult.Raw,
     Vellum.TerminalNodeArrayResult
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("ARRAY"),
-    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optional(),
+    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
 });
 
 export declare namespace TerminalNodeArrayResult {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         type: "ARRAY";
-        value?: serializers.VellumValue.Raw[] | null;
+        value?: (serializers.VellumValue.Raw[] | null) | null;
     }
 }

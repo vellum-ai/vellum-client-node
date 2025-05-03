@@ -13,7 +13,7 @@ export const TestSuiteRunExecutionChatHistoryOutput: core.serialization.ObjectSc
 > = core.serialization.object({
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optional(),
+    value: core.serialization.list(ChatMessage).optionalNullable(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
@@ -21,7 +21,7 @@ export declare namespace TestSuiteRunExecutionChatHistoryOutput {
     export interface Raw {
         name: string;
         type: "CHAT_HISTORY";
-        value?: ChatMessage.Raw[] | null;
+        value?: (ChatMessage.Raw[] | null) | null;
         output_variable_id: string;
     }
 }

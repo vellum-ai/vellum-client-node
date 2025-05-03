@@ -40,20 +40,28 @@ export class Organizations {
      * @example
      *     await client.organizations.organizationIdentity()
      */
-    public async organizationIdentity(requestOptions?: Organizations.RequestOptions): Promise<Vellum.OrganizationRead> {
+    public organizationIdentity(
+        requestOptions?: Organizations.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.OrganizationRead> {
+        return core.HttpResponsePromise.fromPromise(this.__organizationIdentity(requestOptions));
+    }
+
+    private async __organizationIdentity(
+        requestOptions?: Organizations.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.OrganizationRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/organizations/identity",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -66,18 +74,22 @@ export class Organizations {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.OrganizationRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.OrganizationRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -86,12 +98,14 @@ export class Organizations {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/organizations/identity.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

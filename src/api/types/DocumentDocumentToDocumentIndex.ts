@@ -22,5 +22,5 @@ export interface DocumentDocumentToDocumentIndex {
      * * `FAILED` - Failed
      */
     indexingState?: Vellum.IndexingStateEnum;
-    extractedTextFileUrl?: string;
+    extractedTextFileUrl?: string | null;
 }

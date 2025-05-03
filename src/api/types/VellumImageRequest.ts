@@ -4,5 +4,5 @@
 
 export interface VellumImageRequest {
     src: string;
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

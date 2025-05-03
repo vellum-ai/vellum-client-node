@@ -14,7 +14,7 @@ export const NodeInputCompiledSearchResultsValue: core.serialization.ObjectSchem
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
     type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optional(),
+    value: core.serialization.list(SearchResult).optionalNullable(),
 });
 
 export declare namespace NodeInputCompiledSearchResultsValue {
@@ -22,6 +22,6 @@ export declare namespace NodeInputCompiledSearchResultsValue {
         node_input_id: string;
         key: string;
         type: "SEARCH_RESULTS";
-        value?: SearchResult.Raw[] | null;
+        value?: (SearchResult.Raw[] | null) | null;
     }
 }

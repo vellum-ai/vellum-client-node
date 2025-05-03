@@ -5,9 +5,9 @@
 import * as Vellum from "../index";
 
 export interface TerminalNodeSearchResultsResult {
-    id?: string;
+    id?: string | null;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
     type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[];
+    value?: Vellum.SearchResult[] | null;
 }

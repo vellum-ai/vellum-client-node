@@ -12,7 +12,7 @@ export const ExternalInputDescriptor: core.serialization.ObjectSchema<
     Vellum.ExternalInputDescriptor
 > = core.serialization.object({
     types: core.serialization.list(CodeResourceDefinition),
-    inputsClass: core.serialization.property("inputs_class", CodeResourceDefinition.optional()),
+    inputsClass: core.serialization.property("inputs_class", CodeResourceDefinition.optionalNullable()),
     instance: core.serialization.unknown().optional(),
     name: core.serialization.string(),
 });
@@ -20,7 +20,7 @@ export const ExternalInputDescriptor: core.serialization.ObjectSchema<
 export declare namespace ExternalInputDescriptor {
     export interface Raw {
         types: CodeResourceDefinition.Raw[];
-        inputs_class?: CodeResourceDefinition.Raw | null;
+        inputs_class?: (CodeResourceDefinition.Raw | null) | null;
         instance?: unknown | null;
         name: string;
     }

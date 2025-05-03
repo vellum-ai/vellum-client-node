@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface SearchResultsVellumValueRequest {
     type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResultRequest[];
+    value?: Vellum.SearchResultRequest[] | null;
 }
