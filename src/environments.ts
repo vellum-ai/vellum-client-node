@@ -9,11 +9,11 @@ export interface VellumEnvironmentUrls {
 }
 
 export const VellumEnvironment = {
-    Default: {
+    Production: {
         base: "https://api.vellum.ai",
         predict: "https://predict.vellum.ai",
         documents: "https://documents.vellum.ai",
     },
 } as const;
 
-export type VellumEnvironment = typeof VellumEnvironment.Default;
+export type VellumEnvironment = typeof VellumEnvironment.Production;
