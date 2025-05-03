@@ -62,16 +62,16 @@ export class ContainerImages {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                        .default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
+                        .base,
                 "v1/container-images",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.51",
-                "User-Agent": "vellum-ai/0.14.51",
+                "X-Fern-SDK-Version": "0.14.52",
+                "User-Agent": "vellum-ai/0.14.52",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -131,16 +131,16 @@ export class ContainerImages {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                        .default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
+                        .base,
                 `v1/container-images/${encodeURIComponent(id)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.51",
-                "User-Agent": "vellum-ai/0.14.51",
+                "X-Fern-SDK-Version": "0.14.52",
+                "User-Agent": "vellum-ai/0.14.52",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -195,16 +195,16 @@ export class ContainerImages {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                        .default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
+                        .base,
                 "v1/container-images/docker-service-token",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.51",
-                "User-Agent": "vellum-ai/0.14.51",
+                "X-Fern-SDK-Version": "0.14.52",
+                "User-Agent": "vellum-ai/0.14.52",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -267,16 +267,16 @@ export class ContainerImages {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                        .default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
+                        .base,
                 "v1/container-images/push",
             ),
             method: "POST",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.51",
-                "User-Agent": "vellum-ai/0.14.51",
+                "X-Fern-SDK-Version": "0.14.52",
+                "User-Agent": "vellum-ai/0.14.52",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
