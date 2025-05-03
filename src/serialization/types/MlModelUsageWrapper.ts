@@ -11,13 +11,13 @@ export const MlModelUsageWrapper: core.serialization.ObjectSchema<
     serializers.MlModelUsageWrapper.Raw,
     Vellum.MlModelUsageWrapper
 > = core.serialization.object({
-    mlModelUsage: core.serialization.property("ml_model_usage", MlModelUsage),
     mlModelName: core.serialization.property("ml_model_name", core.serialization.string()),
+    mlModelUsage: core.serialization.property("ml_model_usage", MlModelUsage),
 });
 
 export declare namespace MlModelUsageWrapper {
     export interface Raw {
-        ml_model_usage: MlModelUsage.Raw;
         ml_model_name: string;
+        ml_model_usage: MlModelUsage.Raw;
     }
 }

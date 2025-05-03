@@ -5,6 +5,6 @@
 import * as Vellum from "../index";
 
 export interface MlModelUsageWrapper {
-    mlModelUsage: Vellum.MlModelUsage;
     mlModelName: string;
+    mlModelUsage: Vellum.MlModelUsage;
 }
