@@ -6,5 +6,5 @@
  * A set of fields with additional properties for use in Vellum Variables.
  */
 export interface VellumVariableExtensions {
-    color?: string;
+    color?: string | null;
 }

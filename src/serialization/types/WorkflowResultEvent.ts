@@ -18,10 +18,10 @@ export const WorkflowResultEvent: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     state: WorkflowNodeResultEventState,
     ts: core.serialization.date(),
-    output: WorkflowResultEventOutputData.optional(),
-    error: WorkflowEventError.optional(),
-    outputs: core.serialization.list(WorkflowOutput).optional(),
-    inputs: core.serialization.list(ExecutionVellumValue).optional(),
+    output: WorkflowResultEventOutputData.optionalNullable(),
+    error: WorkflowEventError.optionalNullable(),
+    outputs: core.serialization.list(WorkflowOutput).optionalNullable(),
+    inputs: core.serialization.list(ExecutionVellumValue).optionalNullable(),
 });
 
 export declare namespace WorkflowResultEvent {
@@ -29,9 +29,9 @@ export declare namespace WorkflowResultEvent {
         id: string;
         state: WorkflowNodeResultEventState.Raw;
         ts: string;
-        output?: WorkflowResultEventOutputData.Raw | null;
-        error?: WorkflowEventError.Raw | null;
-        outputs?: WorkflowOutput.Raw[] | null;
-        inputs?: ExecutionVellumValue.Raw[] | null;
+        output?: (WorkflowResultEventOutputData.Raw | null) | null;
+        error?: (WorkflowEventError.Raw | null) | null;
+        outputs?: (WorkflowOutput.Raw[] | null) | null;
+        inputs?: (ExecutionVellumValue.Raw[] | null) | null;
     }
 }

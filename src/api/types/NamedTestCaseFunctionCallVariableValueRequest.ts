@@ -9,6 +9,6 @@ import * as Vellum from "../index";
  */
 export interface NamedTestCaseFunctionCallVariableValueRequest {
     type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCallRequest;
+    value?: Vellum.FunctionCallRequest | null;
     name: string;
 }

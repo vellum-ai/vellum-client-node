@@ -13,7 +13,7 @@ export const WorkflowOutputNumber: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("NUMBER"),
-    value: core.serialization.number().optional(),
+    value: core.serialization.number().optionalNullable(),
 });
 
 export declare namespace WorkflowOutputNumber {
@@ -21,6 +21,6 @@ export declare namespace WorkflowOutputNumber {
         id: string;
         name: string;
         type: "NUMBER";
-        value?: number | null;
+        value?: (number | null) | null;
     }
 }

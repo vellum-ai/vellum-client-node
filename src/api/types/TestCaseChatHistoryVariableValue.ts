@@ -11,5 +11,5 @@ export interface TestCaseChatHistoryVariableValue {
     variableId: string;
     name: string;
     type: "CHAT_HISTORY";
-    value?: Vellum.ChatMessage[];
+    value?: Vellum.ChatMessage[] | null;
 }

@@ -8,7 +8,7 @@ export interface PromptExecConfig {
     mlModel: string;
     inputVariables: Vellum.VellumVariable[];
     parameters: Vellum.PromptParameters;
-    settings?: Vellum.PromptSettings;
+    settings?: Vellum.PromptSettings | null;
     blocks: Vellum.PromptBlock[];
-    functions?: Vellum.FunctionDefinition[];
+    functions?: Vellum.FunctionDefinition[] | null;
 }

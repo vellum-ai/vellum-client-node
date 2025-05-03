@@ -10,7 +10,7 @@ export const TerminalNodeJsonResult: core.serialization.ObjectSchema<
     serializers.TerminalNodeJsonResult.Raw,
     Vellum.TerminalNodeJsonResult
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("JSON"),
     value: core.serialization.unknown(),
@@ -18,7 +18,7 @@ export const TerminalNodeJsonResult: core.serialization.ObjectSchema<
 
 export declare namespace TerminalNodeJsonResult {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         type: "JSON";
         value?: unknown;

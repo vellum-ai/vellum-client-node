@@ -14,11 +14,11 @@ export const EnrichedNormalizedCompletion: core.serialization.ObjectSchema<
     Vellum.EnrichedNormalizedCompletion
 > = core.serialization.object({
     id: core.serialization.string(),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
     text: core.serialization.string(),
-    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
-    logprobs: NormalizedLogProbs.optional(),
-    modelVersionId: core.serialization.property("model_version_id", core.serialization.string().optional()),
+    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optionalNullable()),
+    logprobs: NormalizedLogProbs.optionalNullable(),
+    modelVersionId: core.serialization.property("model_version_id", core.serialization.string().optionalNullable()),
     promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string()),
     type: VellumVariableType.optional(),
     deploymentReleaseTag: core.serialization.property("deployment_release_tag", core.serialization.string()),
@@ -28,11 +28,11 @@ export const EnrichedNormalizedCompletion: core.serialization.ObjectSchema<
 export declare namespace EnrichedNormalizedCompletion {
     export interface Raw {
         id: string;
-        external_id?: string | null;
+        external_id?: (string | null) | null;
         text: string;
-        finish_reason?: FinishReasonEnum.Raw | null;
-        logprobs?: NormalizedLogProbs.Raw | null;
-        model_version_id?: string | null;
+        finish_reason?: (FinishReasonEnum.Raw | null) | null;
+        logprobs?: (NormalizedLogProbs.Raw | null) | null;
+        model_version_id?: (string | null) | null;
         prompt_version_id: string;
         type?: VellumVariableType.Raw | null;
         deployment_release_tag: string;

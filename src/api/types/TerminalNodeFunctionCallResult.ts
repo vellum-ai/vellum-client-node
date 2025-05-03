@@ -5,9 +5,9 @@
 import * as Vellum from "../index";
 
 export interface TerminalNodeFunctionCallResult {
-    id?: string;
+    id?: string | null;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
     type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall;
+    value?: Vellum.FunctionCall | null;
 }

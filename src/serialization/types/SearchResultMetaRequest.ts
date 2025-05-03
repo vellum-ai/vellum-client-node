@@ -11,11 +11,11 @@ export const SearchResultMetaRequest: core.serialization.ObjectSchema<
     serializers.SearchResultMetaRequest.Raw,
     Vellum.SearchResultMetaRequest
 > = core.serialization.object({
-    source: ComponentsSchemasPdfSearchResultMetaSourceRequest.optional(),
+    source: ComponentsSchemasPdfSearchResultMetaSourceRequest.optionalNullable(),
 });
 
 export declare namespace SearchResultMetaRequest {
     export interface Raw {
-        source?: ComponentsSchemasPdfSearchResultMetaSourceRequest.Raw | null;
+        source?: (ComponentsSchemasPdfSearchResultMetaSourceRequest.Raw | null) | null;
     }
 }

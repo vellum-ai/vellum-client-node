@@ -12,13 +12,13 @@ import * as Vellum from "../../index";
  */
 export interface SearchRequestBodyRequest {
     /** The ID of the index to search against. Must provide either this, index_name or document_index. */
-    indexId?: string;
+    indexId?: string | null;
     /** The name of the index to search against. Must provide either this, index_id or document_index. */
-    indexName?: string;
+    indexName?: string | null;
     /** The query to search for. */
     query: string;
     /** Configuration options for the search. */
-    options?: Vellum.SearchRequestOptionsRequest;
+    options?: Vellum.SearchRequestOptionsRequest | null;
     /** Either the index name or index ID to search against. Must provide either this, index_id or index_name. */
-    documentIndex?: string;
+    documentIndex?: string | null;
 }

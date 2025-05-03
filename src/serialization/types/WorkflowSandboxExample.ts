@@ -12,15 +12,15 @@ export const WorkflowSandboxExample: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     label: core.serialization.string(),
-    description: core.serialization.string().optional(),
-    iconName: core.serialization.property("icon_name", core.serialization.string().optional()),
+    description: core.serialization.string().optionalNullable(),
+    iconName: core.serialization.property("icon_name", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace WorkflowSandboxExample {
     export interface Raw {
         id: string;
         label: string;
-        description?: string | null;
-        icon_name?: string | null;
+        description?: (string | null) | null;
+        icon_name?: (string | null) | null;
     }
 }

@@ -12,5 +12,5 @@ export interface ExecutionChatHistoryVellumValue {
     id: string;
     name: string;
     type: "CHAT_HISTORY";
-    value?: Vellum.ChatMessage[];
+    value?: Vellum.ChatMessage[] | null;
 }

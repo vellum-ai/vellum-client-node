@@ -5,5 +5,5 @@
 export interface TemplatingNodeStringResult {
     id: string;
     type: "STRING";
-    value?: string;
+    value?: string | null;
 }

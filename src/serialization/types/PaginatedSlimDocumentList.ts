@@ -12,16 +12,16 @@ export const PaginatedSlimDocumentList: core.serialization.ObjectSchema<
     Vellum.PaginatedSlimDocumentList
 > = core.serialization.object({
     count: core.serialization.number().optional(),
-    next: core.serialization.string().optional(),
-    previous: core.serialization.string().optional(),
+    next: core.serialization.string().optionalNullable(),
+    previous: core.serialization.string().optionalNullable(),
     results: core.serialization.list(SlimDocument).optional(),
 });
 
 export declare namespace PaginatedSlimDocumentList {
     export interface Raw {
         count?: number | null;
-        next?: string | null;
-        previous?: string | null;
+        next?: (string | null) | null;
+        previous?: (string | null) | null;
         results?: SlimDocument.Raw[] | null;
     }
 }

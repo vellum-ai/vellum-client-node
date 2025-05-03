@@ -9,6 +9,6 @@ import * as Vellum from "../index";
  */
 export interface NamedTestCaseSearchResultsVariableValue {
     type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[];
+    value?: Vellum.SearchResult[] | null;
     name: string;
 }

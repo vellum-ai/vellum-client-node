@@ -11,7 +11,7 @@ export const CreateTestSuiteTestCaseRequest: core.serialization.ObjectSchema<
     serializers.CreateTestSuiteTestCaseRequest.Raw,
     Vellum.CreateTestSuiteTestCaseRequest
 > = core.serialization.object({
-    label: core.serialization.string().optional(),
+    label: core.serialization.string().optionalNullable(),
     inputValues: core.serialization.property(
         "input_values",
         core.serialization.list(NamedTestCaseVariableValueRequest),
@@ -20,14 +20,14 @@ export const CreateTestSuiteTestCaseRequest: core.serialization.ObjectSchema<
         "evaluation_values",
         core.serialization.list(NamedTestCaseVariableValueRequest),
     ),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace CreateTestSuiteTestCaseRequest {
     export interface Raw {
-        label?: string | null;
+        label?: (string | null) | null;
         input_values: NamedTestCaseVariableValueRequest.Raw[];
         evaluation_values: NamedTestCaseVariableValueRequest.Raw[];
-        external_id?: string | null;
+        external_id?: (string | null) | null;
     }
 }

@@ -10,17 +10,20 @@ export const InitiatedPromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.InitiatedPromptExecutionMeta.Raw,
     Vellum.InitiatedPromptExecutionMeta
 > = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.string().optional()),
-    latency: core.serialization.number().optional(),
-    deploymentReleaseTag: core.serialization.property("deployment_release_tag", core.serialization.string().optional()),
-    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optional()),
+    modelName: core.serialization.property("model_name", core.serialization.string().optionalNullable()),
+    latency: core.serialization.number().optionalNullable(),
+    deploymentReleaseTag: core.serialization.property(
+        "deployment_release_tag",
+        core.serialization.string().optionalNullable(),
+    ),
+    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace InitiatedPromptExecutionMeta {
     export interface Raw {
-        model_name?: string | null;
-        latency?: number | null;
-        deployment_release_tag?: string | null;
-        prompt_version_id?: string | null;
+        model_name?: (string | null) | null;
+        latency?: (number | null) | null;
+        deployment_release_tag?: (string | null) | null;
+        prompt_version_id?: (string | null) | null;
     }
 }

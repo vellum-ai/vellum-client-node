@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface WorkflowParentContext {
-    parent?: Vellum.ParentContext;
-    links?: Vellum.SpanLink[];
+    parent?: Vellum.ParentContext | null;
+    links?: Vellum.SpanLink[] | null;
     workflowDefinition: Vellum.VellumCodeResourceDefinition;
     type: "WORKFLOW";
     spanId: string;

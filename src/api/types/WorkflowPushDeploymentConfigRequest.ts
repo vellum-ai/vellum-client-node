@@ -3,8 +3,8 @@
  */
 
 export interface WorkflowPushDeploymentConfigRequest {
-    label?: string;
-    name?: string;
-    description?: string;
-    releaseTags?: string[];
+    label?: string | null;
+    name?: string | null;
+    description?: string | null;
+    releaseTags?: string[] | null;
 }

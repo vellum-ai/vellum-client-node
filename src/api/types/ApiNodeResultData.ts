@@ -3,9 +3,9 @@
  */
 
 export interface ApiNodeResultData {
-    json?: Record<string, unknown>;
+    json?: Record<string, unknown> | null;
     textOutputId: string;
-    text?: string;
+    text?: string | null;
     jsonOutputId: string;
     statusCodeOutputId: string;
     statusCode: number;

@@ -12,5 +12,5 @@ export interface ExecutionFunctionCallVellumValue {
     id: string;
     name: string;
     type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall;
+    value?: Vellum.FunctionCall | null;
 }

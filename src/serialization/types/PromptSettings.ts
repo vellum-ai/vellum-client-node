@@ -8,13 +8,13 @@ import * as core from "../../core";
 
 export const PromptSettings: core.serialization.ObjectSchema<serializers.PromptSettings.Raw, Vellum.PromptSettings> =
     core.serialization.object({
-        timeout: core.serialization.number().optional(),
-        streamEnabled: core.serialization.property("stream_enabled", core.serialization.boolean().optional()),
+        timeout: core.serialization.number().optionalNullable(),
+        streamEnabled: core.serialization.property("stream_enabled", core.serialization.boolean().optionalNullable()),
     });
 
 export declare namespace PromptSettings {
     export interface Raw {
-        timeout?: number | null;
-        stream_enabled?: boolean | null;
+        timeout?: (number | null) | null;
+        stream_enabled?: (boolean | null) | null;
     }
 }

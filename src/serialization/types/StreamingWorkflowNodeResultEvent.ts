@@ -16,11 +16,14 @@ export const StreamingWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     state: core.serialization.stringLiteral("STREAMING"),
-    ts: core.serialization.date().optional(),
-    data: WorkflowNodeResultData.optional(),
-    sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
-    output: NodeOutputCompiledValue.optional(),
-    outputIndex: core.serialization.property("output_index", core.serialization.number().optional()),
+    ts: core.serialization.date().optionalNullable(),
+    data: WorkflowNodeResultData.optionalNullable(),
+    sourceExecutionId: core.serialization.property(
+        "source_execution_id",
+        core.serialization.string().optionalNullable(),
+    ),
+    output: NodeOutputCompiledValue.optionalNullable(),
+    outputIndex: core.serialization.property("output_index", core.serialization.number().optionalNullable()),
 });
 
 export declare namespace StreamingWorkflowNodeResultEvent {
@@ -29,10 +32,10 @@ export declare namespace StreamingWorkflowNodeResultEvent {
         node_id: string;
         node_result_id: string;
         state: "STREAMING";
-        ts?: string | null;
-        data?: WorkflowNodeResultData.Raw | null;
-        source_execution_id?: string | null;
-        output?: NodeOutputCompiledValue.Raw | null;
-        output_index?: number | null;
+        ts?: (string | null) | null;
+        data?: (WorkflowNodeResultData.Raw | null) | null;
+        source_execution_id?: (string | null) | null;
+        output?: (NodeOutputCompiledValue.Raw | null) | null;
+        output_index?: (number | null) | null;
     }
 }

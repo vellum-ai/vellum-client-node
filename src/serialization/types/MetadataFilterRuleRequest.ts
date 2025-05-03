@@ -12,23 +12,23 @@ export const MetadataFilterRuleRequest: core.serialization.ObjectSchema<
     serializers.MetadataFilterRuleRequest.Raw,
     Vellum.MetadataFilterRuleRequest
 > = core.serialization.object({
-    combinator: MetadataFilterRuleCombinator.optional(),
-    negated: core.serialization.boolean().optional(),
+    combinator: MetadataFilterRuleCombinator.optionalNullable(),
+    negated: core.serialization.boolean().optionalNullable(),
     rules: core.serialization
         .list(core.serialization.lazyObject(() => serializers.MetadataFilterRuleRequest))
-        .optional(),
-    field: core.serialization.string().optional(),
-    operator: LogicalOperator.optional(),
-    value: core.serialization.string().optional(),
+        .optionalNullable(),
+    field: core.serialization.string().optionalNullable(),
+    operator: LogicalOperator.optionalNullable(),
+    value: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace MetadataFilterRuleRequest {
     export interface Raw {
-        combinator?: MetadataFilterRuleCombinator.Raw | null;
-        negated?: boolean | null;
-        rules?: serializers.MetadataFilterRuleRequest.Raw[] | null;
-        field?: string | null;
-        operator?: LogicalOperator.Raw | null;
-        value?: string | null;
+        combinator?: (MetadataFilterRuleCombinator.Raw | null) | null;
+        negated?: (boolean | null) | null;
+        rules?: (serializers.MetadataFilterRuleRequest.Raw[] | null) | null;
+        field?: (string | null) | null;
+        operator?: (LogicalOperator.Raw | null) | null;
+        value?: (string | null) | null;
     }
 }

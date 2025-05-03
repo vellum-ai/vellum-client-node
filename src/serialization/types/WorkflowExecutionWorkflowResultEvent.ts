@@ -12,8 +12,8 @@ export const WorkflowExecutionWorkflowResultEvent: core.serialization.ObjectSche
     Vellum.WorkflowExecutionWorkflowResultEvent
 > = core.serialization.object({
     executionId: core.serialization.property("execution_id", core.serialization.string()),
-    runId: core.serialization.property("run_id", core.serialization.string().optional()),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+    runId: core.serialization.property("run_id", core.serialization.string().optionalNullable()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
     type: core.serialization.stringLiteral("WORKFLOW"),
     data: WorkflowResultEvent,
 });
@@ -21,8 +21,8 @@ export const WorkflowExecutionWorkflowResultEvent: core.serialization.ObjectSche
 export declare namespace WorkflowExecutionWorkflowResultEvent {
     export interface Raw {
         execution_id: string;
-        run_id?: string | null;
-        external_id?: string | null;
+        run_id?: (string | null) | null;
+        external_id?: (string | null) | null;
         type: "WORKFLOW";
         data: WorkflowResultEvent.Raw;
     }

@@ -8,13 +8,13 @@ import * as Vellum from "../index";
  * A string output streamed from a Workflow execution.
  */
 export interface WorkflowResultEventOutputDataString {
-    id?: string;
+    id?: string | null;
     name: string;
     state: Vellum.WorkflowNodeResultEventState;
     nodeId: string;
     /** The newly output string value, meant to be concatenated with all previous. Will be non-null for events of state STREAMING. */
-    delta?: string;
+    delta?: string | null;
     type: "STRING";
     /** The entire string value. Will be non-null for events of state FULFILLED. */
-    value?: string;
+    value?: string | null;
 }

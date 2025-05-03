@@ -13,7 +13,7 @@ export const TestCaseStringVariableValue: core.serialization.ObjectSchema<
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optional(),
+    value: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace TestCaseStringVariableValue {
@@ -21,6 +21,6 @@ export declare namespace TestCaseStringVariableValue {
         variable_id: string;
         name: string;
         type: "STRING";
-        value?: string | null;
+        value?: (string | null) | null;
     }
 }

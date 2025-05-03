@@ -16,12 +16,15 @@ export const InitiatedWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
     state: core.serialization.stringLiteral("INITIATED"),
-    ts: core.serialization.date().optional(),
-    data: WorkflowNodeResultData.optional(),
-    sourceExecutionId: core.serialization.property("source_execution_id", core.serialization.string().optional()),
+    ts: core.serialization.date().optionalNullable(),
+    data: WorkflowNodeResultData.optionalNullable(),
+    sourceExecutionId: core.serialization.property(
+        "source_execution_id",
+        core.serialization.string().optionalNullable(),
+    ),
     inputValues: core.serialization.property(
         "input_values",
-        core.serialization.list(NodeInputVariableCompiledValue).optional(),
+        core.serialization.list(NodeInputVariableCompiledValue).optionalNullable(),
     ),
 });
 
@@ -31,9 +34,9 @@ export declare namespace InitiatedWorkflowNodeResultEvent {
         node_id: string;
         node_result_id: string;
         state: "INITIATED";
-        ts?: string | null;
-        data?: WorkflowNodeResultData.Raw | null;
-        source_execution_id?: string | null;
-        input_values?: NodeInputVariableCompiledValue.Raw[] | null;
+        ts?: (string | null) | null;
+        data?: (WorkflowNodeResultData.Raw | null) | null;
+        source_execution_id?: (string | null) | null;
+        input_values?: (NodeInputVariableCompiledValue.Raw[] | null) | null;
     }
 }

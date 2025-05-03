@@ -5,10 +5,10 @@
 import * as Vellum from "../index";
 
 export interface PromptNodeResultData {
-    executionMeta?: Vellum.PromptNodeExecutionMeta;
+    executionMeta?: Vellum.PromptNodeExecutionMeta | null;
     outputId: string;
-    arrayOutputId?: string;
-    executionId?: string;
-    text?: string;
-    delta?: string;
+    arrayOutputId?: string | null;
+    executionId?: string | null;
+    text?: string | null;
+    delta?: string | null;
 }

@@ -10,18 +10,18 @@ export const CompilePromptDeploymentExpandMetaRequest: core.serialization.Object
     serializers.CompilePromptDeploymentExpandMetaRequest.Raw,
     Vellum.CompilePromptDeploymentExpandMetaRequest
 > = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.boolean().optional()),
+    modelName: core.serialization.property("model_name", core.serialization.boolean().optionalNullable()),
     deploymentReleaseTag: core.serialization.property(
         "deployment_release_tag",
-        core.serialization.boolean().optional(),
+        core.serialization.boolean().optionalNullable(),
     ),
-    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.boolean().optional()),
+    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.boolean().optionalNullable()),
 });
 
 export declare namespace CompilePromptDeploymentExpandMetaRequest {
     export interface Raw {
-        model_name?: boolean | null;
-        deployment_release_tag?: boolean | null;
-        prompt_version_id?: boolean | null;
+        model_name?: (boolean | null) | null;
+        deployment_release_tag?: (boolean | null) | null;
+        prompt_version_id?: (boolean | null) | null;
     }
 }

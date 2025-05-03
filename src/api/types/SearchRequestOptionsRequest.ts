@@ -6,11 +6,11 @@ import * as Vellum from "../index";
 
 export interface SearchRequestOptionsRequest {
     /** The maximum number of results to return. */
-    limit?: number;
+    limit?: number | null;
     /** The weights to use for the search. Must add up to 1.0. */
-    weights?: Vellum.SearchWeightsRequest;
+    weights?: Vellum.SearchWeightsRequest | null;
     /** The configuration for merging results. */
-    resultMerging?: Vellum.SearchResultMergingRequest;
+    resultMerging?: Vellum.SearchResultMergingRequest | null;
     /** The filters to apply to the search. */
-    filters?: Vellum.SearchFiltersRequest;
+    filters?: Vellum.SearchFiltersRequest | null;
 }

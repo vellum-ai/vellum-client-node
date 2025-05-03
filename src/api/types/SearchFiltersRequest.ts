@@ -6,7 +6,7 @@ import * as Vellum from "../index";
 
 export interface SearchFiltersRequest {
     /** The document external IDs to filter by */
-    externalIds?: string[];
+    externalIds?: string[] | null;
     /** The metadata filters to apply to the search */
-    metadata?: Vellum.MetadataFiltersRequest;
+    metadata?: Vellum.MetadataFiltersRequest | null;
 }

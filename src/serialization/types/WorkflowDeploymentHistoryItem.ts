@@ -18,7 +18,7 @@ export const WorkflowDeploymentHistoryItem: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     outputVariables: core.serialization.property("output_variables", core.serialization.list(VellumVariable)),
-    description: core.serialization.string().optional(),
+    description: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace WorkflowDeploymentHistoryItem {
@@ -30,6 +30,6 @@ export declare namespace WorkflowDeploymentHistoryItem {
         name: string;
         input_variables: VellumVariable.Raw[];
         output_variables: VellumVariable.Raw[];
-        description?: string | null;
+        description?: (string | null) | null;
     }
 }

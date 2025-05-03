@@ -8,7 +8,7 @@ export interface SlimDocument {
     /** Vellum-generated ID that uniquely identifies this document. */
     id: string;
     /** The external ID that was originally provided when uploading the document. */
-    externalId?: string;
+    externalId?: string | null;
     /** A timestamp representing when this document was most recently uploaded. */
     lastUploadedAt: Date;
     /** Human-friendly name for this document. */
@@ -20,7 +20,7 @@ export interface SlimDocument {
      * * `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
      * * `INVALID_FILE` - Invalid File
      */
-    processingFailureReason?: Vellum.ProcessingFailureReasonEnum;
+    processingFailureReason?: Vellum.ProcessingFailureReasonEnum | null;
     /**
      * The document's current status.
      *
@@ -30,6 +30,6 @@ export interface SlimDocument {
     /** A list of keywords associated with this document. Originally provided when uploading the document. */
     keywords?: string[];
     /** A previously supplied JSON object containing metadata that can be filtered on when searching. */
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
     documentToDocumentIndexes: Vellum.SlimDocumentDocumentToDocumentIndex[];
 }

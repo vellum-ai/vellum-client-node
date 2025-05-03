@@ -16,7 +16,7 @@ export const DocumentDocumentToDocumentIndex: core.serialization.ObjectSchema<
     indexingState: core.serialization.property("indexing_state", IndexingStateEnum.optional()),
     extractedTextFileUrl: core.serialization.property(
         "extracted_text_file_url",
-        core.serialization.string().optional(),
+        core.serialization.string().optionalNullable(),
     ),
 });
 
@@ -25,6 +25,6 @@ export declare namespace DocumentDocumentToDocumentIndex {
         id: string;
         document_index_id: string;
         indexing_state?: IndexingStateEnum.Raw | null;
-        extracted_text_file_url?: string | null;
+        extracted_text_file_url?: (string | null) | null;
     }
 }

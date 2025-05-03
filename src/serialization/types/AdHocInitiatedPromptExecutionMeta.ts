@@ -10,13 +10,13 @@ export const AdHocInitiatedPromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.AdHocInitiatedPromptExecutionMeta.Raw,
     Vellum.AdHocInitiatedPromptExecutionMeta
 > = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.string().optional()),
-    latency: core.serialization.number().optional(),
+    modelName: core.serialization.property("model_name", core.serialization.string().optionalNullable()),
+    latency: core.serialization.number().optionalNullable(),
 });
 
 export declare namespace AdHocInitiatedPromptExecutionMeta {
     export interface Raw {
-        model_name?: string | null;
-        latency?: number | null;
+        model_name?: (string | null) | null;
+        latency?: (number | null) | null;
     }
 }

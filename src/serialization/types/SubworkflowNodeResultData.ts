@@ -10,11 +10,11 @@ export const SubworkflowNodeResultData: core.serialization.ObjectSchema<
     serializers.SubworkflowNodeResultData.Raw,
     Vellum.SubworkflowNodeResultData
 > = core.serialization.object({
-    executionId: core.serialization.property("execution_id", core.serialization.string().optional()),
+    executionId: core.serialization.property("execution_id", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace SubworkflowNodeResultData {
     export interface Raw {
-        execution_id?: string | null;
+        execution_id?: (string | null) | null;
     }
 }

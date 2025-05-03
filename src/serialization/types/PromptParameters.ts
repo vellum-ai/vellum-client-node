@@ -10,33 +10,35 @@ export const PromptParameters: core.serialization.ObjectSchema<
     serializers.PromptParameters.Raw,
     Vellum.PromptParameters
 > = core.serialization.object({
-    stop: core.serialization.list(core.serialization.string()).optional(),
-    temperature: core.serialization.number().optional(),
-    maxTokens: core.serialization.property("max_tokens", core.serialization.number().optional()),
-    topP: core.serialization.property("top_p", core.serialization.number().optional()),
-    topK: core.serialization.property("top_k", core.serialization.number().optional()),
-    frequencyPenalty: core.serialization.property("frequency_penalty", core.serialization.number().optional()),
-    presencePenalty: core.serialization.property("presence_penalty", core.serialization.number().optional()),
+    stop: core.serialization.list(core.serialization.string()).optionalNullable(),
+    temperature: core.serialization.number().optionalNullable(),
+    maxTokens: core.serialization.property("max_tokens", core.serialization.number().optionalNullable()),
+    topP: core.serialization.property("top_p", core.serialization.number().optionalNullable()),
+    topK: core.serialization.property("top_k", core.serialization.number().optionalNullable()),
+    frequencyPenalty: core.serialization.property("frequency_penalty", core.serialization.number().optionalNullable()),
+    presencePenalty: core.serialization.property("presence_penalty", core.serialization.number().optionalNullable()),
     logitBias: core.serialization.property(
         "logit_bias",
-        core.serialization.record(core.serialization.string(), core.serialization.number().optional()).optional(),
+        core.serialization
+            .record(core.serialization.string(), core.serialization.number().optionalNullable())
+            .optionalNullable(),
     ),
     customParameters: core.serialization.property(
         "custom_parameters",
-        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     ),
 });
 
 export declare namespace PromptParameters {
     export interface Raw {
-        stop?: string[] | null;
-        temperature?: number | null;
-        max_tokens?: number | null;
-        top_p?: number | null;
-        top_k?: number | null;
-        frequency_penalty?: number | null;
-        presence_penalty?: number | null;
-        logit_bias?: Record<string, number | null | undefined> | null;
-        custom_parameters?: Record<string, unknown> | null;
+        stop?: (string[] | null) | null;
+        temperature?: (number | null) | null;
+        max_tokens?: (number | null) | null;
+        top_p?: (number | null) | null;
+        top_k?: (number | null) | null;
+        frequency_penalty?: (number | null) | null;
+        presence_penalty?: (number | null) | null;
+        logit_bias?: (Record<string, (number | null) | null | undefined> | null) | null;
+        custom_parameters?: (Record<string, unknown> | null) | null;
     }
 }

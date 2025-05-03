@@ -10,15 +10,17 @@ export const RawPromptExecutionOverridesRequest: core.serialization.ObjectSchema
     serializers.RawPromptExecutionOverridesRequest.Raw,
     Vellum.RawPromptExecutionOverridesRequest
 > = core.serialization.object({
-    body: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
-    headers: core.serialization.record(core.serialization.string(), core.serialization.string().optional()).optional(),
-    url: core.serialization.string().optional(),
+    body: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    headers: core.serialization
+        .record(core.serialization.string(), core.serialization.string().optionalNullable())
+        .optionalNullable(),
+    url: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace RawPromptExecutionOverridesRequest {
     export interface Raw {
-        body?: Record<string, unknown> | null;
-        headers?: Record<string, string | null | undefined> | null;
-        url?: string | null;
+        body?: (Record<string, unknown> | null) | null;
+        headers?: (Record<string, (string | null) | null | undefined> | null) | null;
+        url?: (string | null) | null;
     }
 }

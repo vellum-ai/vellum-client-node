@@ -12,5 +12,5 @@ export interface WorkflowOutputImage {
     /** The output's name, as defined in the workflow */
     name: string;
     type: "IMAGE";
-    value?: Vellum.VellumImage;
+    value?: Vellum.VellumImage | null;
 }

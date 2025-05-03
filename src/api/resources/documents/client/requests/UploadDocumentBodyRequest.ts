@@ -10,13 +10,13 @@
  */
 export interface UploadDocumentBodyRequest {
     /** Optionally include the names of all indexes that you'd like this document to be included in */
-    addToIndexNames?: string[];
+    addToIndexNames?: string[] | null;
     /** Optionally include an external ID for this document. This is useful if you want to re-upload the same document later when its contents change and would like it to be re-indexed. */
-    externalId?: string;
+    externalId?: string | null;
     /** A human-friendly name for this document. Typically the filename. */
     label: string;
     /** Optionally include a list of keywords that'll be associated with this document. Used when performing keyword searches. */
-    keywords?: string[];
+    keywords?: string[] | null;
     /** A stringified JSON object containing any metadata associated with the document that you'd like to filter upon later. */
-    metadata?: string;
+    metadata?: string | null;
 }

@@ -13,23 +13,26 @@ export const PromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.PromptExecutionMeta.Raw,
     Vellum.PromptExecutionMeta
 > = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.string().optional()),
-    latency: core.serialization.number().optional(),
-    deploymentReleaseTag: core.serialization.property("deployment_release_tag", core.serialization.string().optional()),
-    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optional()),
-    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
-    usage: MlModelUsage.optional(),
-    cost: Price.optional(),
+    modelName: core.serialization.property("model_name", core.serialization.string().optionalNullable()),
+    latency: core.serialization.number().optionalNullable(),
+    deploymentReleaseTag: core.serialization.property(
+        "deployment_release_tag",
+        core.serialization.string().optionalNullable(),
+    ),
+    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optionalNullable()),
+    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optionalNullable()),
+    usage: MlModelUsage.optionalNullable(),
+    cost: Price.optionalNullable(),
 });
 
 export declare namespace PromptExecutionMeta {
     export interface Raw {
-        model_name?: string | null;
-        latency?: number | null;
-        deployment_release_tag?: string | null;
-        prompt_version_id?: string | null;
-        finish_reason?: FinishReasonEnum.Raw | null;
-        usage?: MlModelUsage.Raw | null;
-        cost?: Price.Raw | null;
+        model_name?: (string | null) | null;
+        latency?: (number | null) | null;
+        deployment_release_tag?: (string | null) | null;
+        prompt_version_id?: (string | null) | null;
+        finish_reason?: (FinishReasonEnum.Raw | null) | null;
+        usage?: (MlModelUsage.Raw | null) | null;
+        cost?: (Price.Raw | null) | null;
     }
 }

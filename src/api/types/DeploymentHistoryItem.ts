@@ -14,5 +14,5 @@ export interface DeploymentHistoryItem {
     name: string;
     inputVariables: Vellum.VellumVariable[];
     /** A human-readable description of the deployment */
-    description?: string;
+    description?: string | null;
 }

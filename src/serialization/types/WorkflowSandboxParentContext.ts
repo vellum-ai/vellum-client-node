@@ -10,8 +10,8 @@ export const WorkflowSandboxParentContext: core.serialization.ObjectSchema<
     serializers.WorkflowSandboxParentContext.Raw,
     Vellum.WorkflowSandboxParentContext
 > = core.serialization.object({
-    parent: core.serialization.lazy(() => serializers.ParentContext).optional(),
-    links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optional(),
+    parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
+    links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
     type: core.serialization.stringLiteral("WORKFLOW_SANDBOX"),
     spanId: core.serialization.property("span_id", core.serialization.string()),
     sandboxId: core.serialization.property("sandbox_id", core.serialization.string()),
@@ -21,8 +21,8 @@ export const WorkflowSandboxParentContext: core.serialization.ObjectSchema<
 
 export declare namespace WorkflowSandboxParentContext {
     export interface Raw {
-        parent?: serializers.ParentContext.Raw | null;
-        links?: serializers.SpanLink.Raw[] | null;
+        parent?: (serializers.ParentContext.Raw | null) | null;
+        links?: (serializers.SpanLink.Raw[] | null) | null;
         type: "WORKFLOW_SANDBOX";
         span_id: string;
         sandbox_id: string;

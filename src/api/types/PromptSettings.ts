@@ -3,6 +3,6 @@
  */
 
 export interface PromptSettings {
-    timeout?: number;
-    streamEnabled?: boolean;
+    timeout?: number | null;
+    streamEnabled?: boolean | null;
 }

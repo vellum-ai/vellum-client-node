@@ -11,15 +11,15 @@ export const SubmitCompletionActualsRequest: core.serialization.Schema<
     serializers.SubmitCompletionActualsRequest.Raw,
     Vellum.SubmitCompletionActualsRequest
 > = core.serialization.object({
-    deploymentId: core.serialization.property("deployment_id", core.serialization.string().optional()),
-    deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),
+    deploymentId: core.serialization.property("deployment_id", core.serialization.string().optionalNullable()),
+    deploymentName: core.serialization.property("deployment_name", core.serialization.string().optionalNullable()),
     actuals: core.serialization.list(SubmitCompletionActualRequest),
 });
 
 export declare namespace SubmitCompletionActualsRequest {
     export interface Raw {
-        deployment_id?: string | null;
-        deployment_name?: string | null;
+        deployment_id?: (string | null) | null;
+        deployment_name?: (string | null) | null;
         actuals: SubmitCompletionActualRequest.Raw[];
     }
 }

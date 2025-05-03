@@ -13,12 +13,12 @@ export const DocumentIndexIndexingConfigRequest: core.serialization.ObjectSchema
     Vellum.DocumentIndexIndexingConfigRequest
 > = core.serialization.object({
     vectorizer: IndexingConfigVectorizerRequest,
-    chunking: DocumentIndexChunkingRequest.optional(),
+    chunking: DocumentIndexChunkingRequest.optionalNullable(),
 });
 
 export declare namespace DocumentIndexIndexingConfigRequest {
     export interface Raw {
         vectorizer: IndexingConfigVectorizerRequest.Raw;
-        chunking?: DocumentIndexChunkingRequest.Raw | null;
+        chunking?: (DocumentIndexChunkingRequest.Raw | null) | null;
     }
 }

@@ -10,6 +10,6 @@ import * as Vellum from "../index";
 export interface TestSuiteRunExecutionSearchResultsOutput {
     name: string;
     type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[];
+    value?: Vellum.SearchResult[] | null;
     outputVariableId: string;
 }

@@ -8,12 +8,12 @@ import * as Vellum from "../index";
  * A Function Call output returned from a Workflow execution.
  */
 export interface WorkflowResultEventOutputDataFunctionCall {
-    id?: string;
+    id?: string | null;
     name: string;
     state: Vellum.WorkflowNodeResultEventState;
     nodeId: string;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
-    delta?: string;
+    delta?: string | null;
     type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall;
+    value?: Vellum.FunctionCall | null;
 }

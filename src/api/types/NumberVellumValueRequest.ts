@@ -7,5 +7,5 @@
  */
 export interface NumberVellumValueRequest {
     type: "NUMBER";
-    value?: number;
+    value?: number | null;
 }

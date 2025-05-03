@@ -11,5 +11,5 @@ export interface WorkflowExecutionSpan {
     spanId: string;
     startTs: Date;
     endTs: Date;
-    parentSpanId?: string;
+    parentSpanId?: string | null;
 }
