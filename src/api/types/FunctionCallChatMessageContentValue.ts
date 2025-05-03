@@ -8,5 +8,5 @@
 export interface FunctionCallChatMessageContentValue {
     name: string;
     arguments: Record<string, unknown>;
-    id?: string;
+    id?: string | null;
 }

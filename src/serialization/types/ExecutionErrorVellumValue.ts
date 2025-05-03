@@ -14,7 +14,7 @@ export const ExecutionErrorVellumValue: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("ERROR"),
-    value: VellumError.optional(),
+    value: VellumError.optionalNullable(),
 });
 
 export declare namespace ExecutionErrorVellumValue {
@@ -22,6 +22,6 @@ export declare namespace ExecutionErrorVellumValue {
         id: string;
         name: string;
         type: "ERROR";
-        value?: VellumError.Raw | null;
+        value?: (VellumError.Raw | null) | null;
     }
 }

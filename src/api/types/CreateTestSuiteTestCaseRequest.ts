@@ -9,11 +9,11 @@ import * as Vellum from "../index";
  */
 export interface CreateTestSuiteTestCaseRequest {
     /** A human-readable label used to convey the intention of this Test Case */
-    label?: string;
+    label?: string | null;
     /** Values for each of the Test Case's input variables */
     inputValues: Vellum.NamedTestCaseVariableValueRequest[];
     /** Values for each of the Test Case's evaluation variables */
     evaluationValues: Vellum.NamedTestCaseVariableValueRequest[];
     /** Optionally provide an ID that uniquely identifies this Test Case in your system. Useful for updating this Test Cases data after initial creation. Cannot be changed later. */
-    externalId?: string;
+    externalId?: string | null;
 }

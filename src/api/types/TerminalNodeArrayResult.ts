@@ -5,9 +5,9 @@
 import * as Vellum from "../index";
 
 export interface TerminalNodeArrayResult {
-    id?: string;
+    id?: string | null;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
     type: "ARRAY";
-    value?: Vellum.VellumValue[];
+    value?: Vellum.VellumValue[] | null;
 }

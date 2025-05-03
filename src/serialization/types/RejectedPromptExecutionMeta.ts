@@ -11,13 +11,13 @@ export const RejectedPromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.RejectedPromptExecutionMeta.Raw,
     Vellum.RejectedPromptExecutionMeta
 > = core.serialization.object({
-    latency: core.serialization.number().optional(),
-    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optional()),
+    latency: core.serialization.number().optionalNullable(),
+    finishReason: core.serialization.property("finish_reason", FinishReasonEnum.optionalNullable()),
 });
 
 export declare namespace RejectedPromptExecutionMeta {
     export interface Raw {
-        latency?: number | null;
-        finish_reason?: FinishReasonEnum.Raw | null;
+        latency?: (number | null) | null;
+        finish_reason?: (FinishReasonEnum.Raw | null) | null;
     }
 }

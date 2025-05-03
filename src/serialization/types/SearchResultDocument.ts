@@ -10,17 +10,17 @@ export const SearchResultDocument: core.serialization.ObjectSchema<
     serializers.SearchResultDocument.Raw,
     Vellum.SearchResultDocument
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     label: core.serialization.string(),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace SearchResultDocument {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         label: string;
-        external_id?: string | null;
-        metadata?: Record<string, unknown> | null;
+        external_id?: (string | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

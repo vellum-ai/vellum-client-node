@@ -12,14 +12,14 @@ export interface ListWorkflowReleaseTagsRequest {
     /**
      * Number of results to return per page.
      */
-    limit?: number;
+    limit?: number | null;
     /**
      * The initial index from which to return the results.
      */
-    offset?: number;
+    offset?: number | null;
     /**
      * Which field to use when ordering the results.
      */
-    ordering?: string;
-    source?: Vellum.ListWorkflowReleaseTagsRequestSource;
+    ordering?: string | null;
+    source?: Vellum.ListWorkflowReleaseTagsRequestSource | null;
 }

@@ -4,11 +4,11 @@
 
 export interface SearchResultDocumentRequest {
     /** The ID of the document. */
-    id?: string;
+    id?: string | null;
     /** The human-readable name for the document. */
     label: string;
     /** The unique ID of the document as represented in an external system and specified when it was originally uploaded. */
-    externalId?: string;
+    externalId?: string | null;
     /** A previously supplied JSON object containing metadata that can be filtered on when searching. */
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

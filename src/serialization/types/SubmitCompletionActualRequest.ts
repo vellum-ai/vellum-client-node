@@ -10,21 +10,21 @@ export const SubmitCompletionActualRequest: core.serialization.ObjectSchema<
     serializers.SubmitCompletionActualRequest.Raw,
     Vellum.SubmitCompletionActualRequest
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    text: core.serialization.string().optional(),
-    quality: core.serialization.number().optional(),
-    timestamp: core.serialization.date().optional(),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    id: core.serialization.string().optionalNullable(),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
+    text: core.serialization.string().optionalNullable(),
+    quality: core.serialization.number().optionalNullable(),
+    timestamp: core.serialization.date().optionalNullable(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace SubmitCompletionActualRequest {
     export interface Raw {
-        id?: string | null;
-        external_id?: string | null;
-        text?: string | null;
-        quality?: number | null;
-        timestamp?: string | null;
-        metadata?: Record<string, unknown> | null;
+        id?: (string | null) | null;
+        external_id?: (string | null) | null;
+        text?: (string | null) | null;
+        quality?: (number | null) | null;
+        timestamp?: (string | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

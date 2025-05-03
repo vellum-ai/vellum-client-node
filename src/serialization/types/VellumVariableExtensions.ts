@@ -10,11 +10,11 @@ export const VellumVariableExtensions: core.serialization.ObjectSchema<
     serializers.VellumVariableExtensions.Raw,
     Vellum.VellumVariableExtensions
 > = core.serialization.object({
-    color: core.serialization.string().optional(),
+    color: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace VellumVariableExtensions {
     export interface Raw {
-        color?: string | null;
+        color?: (string | null) | null;
     }
 }

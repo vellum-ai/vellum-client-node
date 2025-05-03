@@ -7,6 +7,6 @@
  */
 export interface FunctionCall {
     arguments: Record<string, unknown>;
-    id?: string;
+    id?: string | null;
     name: string;
 }

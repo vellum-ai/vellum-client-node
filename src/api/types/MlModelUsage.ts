@@ -3,11 +3,11 @@
  */
 
 export interface MlModelUsage {
-    outputTokenCount?: number;
-    inputTokenCount?: number;
-    inputCharCount?: number;
-    outputCharCount?: number;
-    computeNanos?: number;
-    cacheCreationInputTokens?: number;
-    cacheReadInputTokens?: number;
+    outputTokenCount?: number | null;
+    inputTokenCount?: number | null;
+    inputCharCount?: number | null;
+    outputCharCount?: number | null;
+    computeNanos?: number | null;
+    cacheCreationInputTokens?: number | null;
+    cacheReadInputTokens?: number | null;
 }

@@ -11,12 +11,12 @@ export const StringVellumValueRequest: core.serialization.ObjectSchema<
     Vellum.StringVellumValueRequest
 > = core.serialization.object({
     type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optional(),
+    value: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace StringVellumValueRequest {
     export interface Raw {
         type: "STRING";
-        value?: string | null;
+        value?: (string | null) | null;
     }
 }

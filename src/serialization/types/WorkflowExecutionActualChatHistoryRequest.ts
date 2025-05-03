@@ -11,26 +11,26 @@ export const WorkflowExecutionActualChatHistoryRequest: core.serialization.Objec
     serializers.WorkflowExecutionActualChatHistoryRequest.Raw,
     Vellum.WorkflowExecutionActualChatHistoryRequest
 > = core.serialization.object({
-    outputId: core.serialization.property("output_id", core.serialization.string().optional()),
-    outputKey: core.serialization.property("output_key", core.serialization.string().optional()),
-    quality: core.serialization.number().optional(),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
-    timestamp: core.serialization.number().optional(),
+    outputId: core.serialization.property("output_id", core.serialization.string().optionalNullable()),
+    outputKey: core.serialization.property("output_key", core.serialization.string().optionalNullable()),
+    quality: core.serialization.number().optionalNullable(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    timestamp: core.serialization.number().optionalNullable(),
     outputType: core.serialization.property("output_type", core.serialization.stringLiteral("CHAT_HISTORY")),
     desiredOutputValue: core.serialization.property(
         "desired_output_value",
-        core.serialization.list(ChatMessageRequest).optional(),
+        core.serialization.list(ChatMessageRequest).optionalNullable(),
     ),
 });
 
 export declare namespace WorkflowExecutionActualChatHistoryRequest {
     export interface Raw {
-        output_id?: string | null;
-        output_key?: string | null;
-        quality?: number | null;
-        metadata?: Record<string, unknown> | null;
-        timestamp?: number | null;
+        output_id?: (string | null) | null;
+        output_key?: (string | null) | null;
+        quality?: (number | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
+        timestamp?: (number | null) | null;
         output_type: "CHAT_HISTORY";
-        desired_output_value?: ChatMessageRequest.Raw[] | null;
+        desired_output_value?: (ChatMessageRequest.Raw[] | null) | null;
     }
 }

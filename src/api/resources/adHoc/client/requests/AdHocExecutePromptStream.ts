@@ -30,8 +30,8 @@ export interface AdHocExecutePromptStream {
     inputValues: Vellum.PromptRequestInput[];
     inputVariables: Vellum.VellumVariable[];
     parameters: Vellum.PromptParameters;
-    settings?: Vellum.PromptSettings;
+    settings?: Vellum.PromptSettings | null;
     blocks: Vellum.PromptBlock[];
-    functions?: Vellum.FunctionDefinition[];
-    expandMeta?: Vellum.AdHocExpandMeta;
+    functions?: Vellum.FunctionDefinition[] | null;
+    expandMeta?: Vellum.AdHocExpandMeta | null;
 }

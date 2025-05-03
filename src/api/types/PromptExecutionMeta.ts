@@ -8,11 +8,11 @@ import * as Vellum from "../index";
  * The subset of the metadata tracked by Vellum during prompt execution that the request opted into with `expand_meta`.
  */
 export interface PromptExecutionMeta {
-    modelName?: string;
-    latency?: number;
-    deploymentReleaseTag?: string;
-    promptVersionId?: string;
-    finishReason?: Vellum.FinishReasonEnum;
-    usage?: Vellum.MlModelUsage;
-    cost?: Vellum.Price;
+    modelName?: string | null;
+    latency?: number | null;
+    deploymentReleaseTag?: string | null;
+    promptVersionId?: string | null;
+    finishReason?: Vellum.FinishReasonEnum | null;
+    usage?: Vellum.MlModelUsage | null;
+    cost?: Vellum.Price | null;
 }

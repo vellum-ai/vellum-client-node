@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface ImageVellumValue {
     type: "IMAGE";
-    value?: Vellum.VellumImage;
+    value?: Vellum.VellumImage | null;
 }

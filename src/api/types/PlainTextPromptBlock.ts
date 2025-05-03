@@ -10,6 +10,6 @@ import * as Vellum from "../index";
 export interface PlainTextPromptBlock {
     blockType: "PLAIN_TEXT";
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     text: string;
 }

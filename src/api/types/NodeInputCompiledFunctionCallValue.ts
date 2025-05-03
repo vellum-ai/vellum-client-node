@@ -8,5 +8,5 @@ export interface NodeInputCompiledFunctionCallValue {
     nodeInputId: string;
     key: string;
     type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall;
+    value?: Vellum.FunctionCall | null;
 }

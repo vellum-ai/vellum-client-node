@@ -8,6 +8,6 @@ import * as Vellum from "../index";
  * The subset of the metadata tracked by Vellum during prompt execution that the request opted into with `expand_meta`.
  */
 export interface RejectedPromptExecutionMeta {
-    latency?: number;
-    finishReason?: Vellum.FinishReasonEnum;
+    latency?: number | null;
+    finishReason?: Vellum.FinishReasonEnum | null;
 }

@@ -19,7 +19,7 @@ export const GenerateRequest: core.serialization.ObjectSchema<serializers.Genera
         ),
         externalIds: core.serialization.property(
             "external_ids",
-            core.serialization.list(core.serialization.string()).optional(),
+            core.serialization.list(core.serialization.string()).optionalNullable(),
         ),
     });
 
@@ -27,6 +27,6 @@ export declare namespace GenerateRequest {
     export interface Raw {
         input_values: Record<string, unknown>;
         chat_history?: ChatMessageRequest.Raw[] | null;
-        external_ids?: string[] | null;
+        external_ids?: (string[] | null) | null;
     }
 }

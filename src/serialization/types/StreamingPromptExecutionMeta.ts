@@ -10,11 +10,11 @@ export const StreamingPromptExecutionMeta: core.serialization.ObjectSchema<
     serializers.StreamingPromptExecutionMeta.Raw,
     Vellum.StreamingPromptExecutionMeta
 > = core.serialization.object({
-    latency: core.serialization.number().optional(),
+    latency: core.serialization.number().optionalNullable(),
 });
 
 export declare namespace StreamingPromptExecutionMeta {
     export interface Raw {
-        latency?: number | null;
+        latency?: (number | null) | null;
     }
 }

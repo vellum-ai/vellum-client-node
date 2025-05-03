@@ -10,26 +10,26 @@ export const WorkflowExecutionActualJsonRequest: core.serialization.ObjectSchema
     serializers.WorkflowExecutionActualJsonRequest.Raw,
     Vellum.WorkflowExecutionActualJsonRequest
 > = core.serialization.object({
-    outputId: core.serialization.property("output_id", core.serialization.string().optional()),
-    outputKey: core.serialization.property("output_key", core.serialization.string().optional()),
-    quality: core.serialization.number().optional(),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
-    timestamp: core.serialization.number().optional(),
+    outputId: core.serialization.property("output_id", core.serialization.string().optionalNullable()),
+    outputKey: core.serialization.property("output_key", core.serialization.string().optionalNullable()),
+    quality: core.serialization.number().optionalNullable(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    timestamp: core.serialization.number().optionalNullable(),
     outputType: core.serialization.property("output_type", core.serialization.stringLiteral("JSON")),
     desiredOutputValue: core.serialization.property(
         "desired_output_value",
-        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     ),
 });
 
 export declare namespace WorkflowExecutionActualJsonRequest {
     export interface Raw {
-        output_id?: string | null;
-        output_key?: string | null;
-        quality?: number | null;
-        metadata?: Record<string, unknown> | null;
-        timestamp?: number | null;
+        output_id?: (string | null) | null;
+        output_key?: (string | null) | null;
+        quality?: (number | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
+        timestamp?: (number | null) | null;
         output_type: "JSON";
-        desired_output_value?: Record<string, unknown> | null;
+        desired_output_value?: (Record<string, unknown> | null) | null;
     }
 }

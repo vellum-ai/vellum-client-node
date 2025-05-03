@@ -11,14 +11,14 @@ export const NamedTestCaseArrayVariableValue: core.serialization.ObjectSchema<
     Vellum.NamedTestCaseArrayVariableValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("ARRAY"),
-    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optional(),
+    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseArrayVariableValue {
     export interface Raw {
         type: "ARRAY";
-        value?: serializers.VellumValue.Raw[] | null;
+        value?: (serializers.VellumValue.Raw[] | null) | null;
         name: string;
     }
 }

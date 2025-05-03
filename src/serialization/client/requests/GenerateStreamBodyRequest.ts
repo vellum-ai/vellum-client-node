@@ -12,17 +12,17 @@ export const GenerateStreamBodyRequest: core.serialization.Schema<
     serializers.GenerateStreamBodyRequest.Raw,
     Vellum.GenerateStreamBodyRequest
 > = core.serialization.object({
-    deploymentId: core.serialization.property("deployment_id", core.serialization.string().optional()),
-    deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),
+    deploymentId: core.serialization.property("deployment_id", core.serialization.string().optionalNullable()),
+    deploymentName: core.serialization.property("deployment_name", core.serialization.string().optionalNullable()),
     requests: core.serialization.list(GenerateRequest),
-    options: GenerateOptionsRequest.optional(),
+    options: GenerateOptionsRequest.optionalNullable(),
 });
 
 export declare namespace GenerateStreamBodyRequest {
     export interface Raw {
-        deployment_id?: string | null;
-        deployment_name?: string | null;
+        deployment_id?: (string | null) | null;
+        deployment_name?: (string | null) | null;
         requests: GenerateRequest.Raw[];
-        options?: GenerateOptionsRequest.Raw | null;
+        options?: (GenerateOptionsRequest.Raw | null) | null;
     }
 }

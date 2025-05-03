@@ -29,9 +29,9 @@ export interface DeploymentRead {
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
     /** A human-readable description of the deployment */
-    description?: string;
+    description?: string | null;
     /** Deprecated. This now always returns an empty array. */
-    activeModelVersionIds?: string[];
+    activeModelVersionIds?: string[] | null;
     /** The ID of the history item associated with this Deployment's LATEST Release Tag */
     lastDeployedHistoryItemId: string;
 }

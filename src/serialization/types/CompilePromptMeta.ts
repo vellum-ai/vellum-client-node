@@ -10,15 +10,18 @@ export const CompilePromptMeta: core.serialization.ObjectSchema<
     serializers.CompilePromptMeta.Raw,
     Vellum.CompilePromptMeta
 > = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.string().optional()),
-    deploymentReleaseTag: core.serialization.property("deployment_release_tag", core.serialization.string().optional()),
-    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optional()),
+    modelName: core.serialization.property("model_name", core.serialization.string().optionalNullable()),
+    deploymentReleaseTag: core.serialization.property(
+        "deployment_release_tag",
+        core.serialization.string().optionalNullable(),
+    ),
+    promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace CompilePromptMeta {
     export interface Raw {
-        model_name?: string | null;
-        deployment_release_tag?: string | null;
-        prompt_version_id?: string | null;
+        model_name?: (string | null) | null;
+        deployment_release_tag?: (string | null) | null;
+        prompt_version_id?: (string | null) | null;
     }
 }

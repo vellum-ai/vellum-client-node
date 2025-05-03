@@ -12,8 +12,8 @@ export const WorkflowExecutionFulfilledEvent: core.serialization.ObjectSchema<
     serializers.WorkflowExecutionFulfilledEvent.Raw,
     Vellum.WorkflowExecutionFulfilledEvent
 > = core.serialization.object({
-    parent: core.serialization.lazy(() => serializers.ParentContext).optional(),
-    links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optional(),
+    parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
+    links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
     name: core.serialization.stringLiteral("workflow.execution.fulfilled"),
     body: WorkflowExecutionFulfilledBody,
     id: core.serialization.string(),
@@ -25,8 +25,8 @@ export const WorkflowExecutionFulfilledEvent: core.serialization.ObjectSchema<
 
 export declare namespace WorkflowExecutionFulfilledEvent {
     export interface Raw {
-        parent?: serializers.ParentContext.Raw | null;
-        links?: serializers.SpanLink.Raw[] | null;
+        parent?: (serializers.ParentContext.Raw | null) | null;
+        links?: (serializers.SpanLink.Raw[] | null) | null;
         name: "workflow.execution.fulfilled";
         body: WorkflowExecutionFulfilledBody.Raw;
         id: string;

@@ -15,5 +15,5 @@ export interface WorkflowDeploymentHistoryItem {
     inputVariables: Vellum.VellumVariable[];
     outputVariables: Vellum.VellumVariable[];
     /** A human-readable description of the workflow deployment */
-    description?: string;
+    description?: string | null;
 }

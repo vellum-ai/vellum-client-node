@@ -6,5 +6,5 @@ import * as Vellum from "../index";
 
 export interface DocumentIndexIndexingConfigRequest {
     vectorizer: Vellum.IndexingConfigVectorizerRequest;
-    chunking?: Vellum.DocumentIndexChunkingRequest;
+    chunking?: Vellum.DocumentIndexChunkingRequest | null;
 }

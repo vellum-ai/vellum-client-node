@@ -8,13 +8,13 @@
  */
 export interface DeploySandboxPromptRequest {
     /** The Vellum-generated ID of the Prompt Deployment you'd like to update. Cannot specify both this and prompt_deployment_name. Leave null to create a new Prompt Deployment. */
-    promptDeploymentId?: string;
+    promptDeploymentId?: string | null;
     /** The unique name of the Prompt Deployment you'd like to either create or update. Cannot specify both this and prompt_deployment_id. If provided and matches an existing Prompt Deployment, that Prompt Deployment will be updated. Otherwise, a new Prompt Deployment will be created. */
-    promptDeploymentName?: string;
+    promptDeploymentName?: string | null;
     /** In the event that a new Prompt Deployment is created, this will be the label it's given. */
-    label?: string;
+    label?: string | null;
     /** Optionally provide the release tags that you'd like to be associated with the latest release of the created/updated Prompt Deployment. */
-    releaseTags?: string[];
+    releaseTags?: string[] | null;
     /** Optionally provide a description that details what's new in this Release. */
-    releaseDescription?: string;
+    releaseDescription?: string | null;
 }

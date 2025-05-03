@@ -13,7 +13,7 @@ export const ExecutionStringVellumValue: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optional(),
+    value: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace ExecutionStringVellumValue {
@@ -21,6 +21,6 @@ export declare namespace ExecutionStringVellumValue {
         id: string;
         name: string;
         type: "STRING";
-        value?: string | null;
+        value?: (string | null) | null;
     }
 }

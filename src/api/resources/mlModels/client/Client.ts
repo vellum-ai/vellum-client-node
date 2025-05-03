@@ -41,20 +41,30 @@ export class MlModels {
      * @example
      *     await client.mlModels.retrieve("id")
      */
-    public async retrieve(id: string, requestOptions?: MlModels.RequestOptions): Promise<Vellum.MlModelRead> {
+    public retrieve(
+        id: string,
+        requestOptions?: MlModels.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.MlModelRead> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+    }
+
+    private async __retrieve(
+        id: string,
+        requestOptions?: MlModels.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.MlModelRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/ml-models/${encodeURIComponent(id)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -67,18 +77,22 @@ export class MlModels {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.MlModelRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.MlModelRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -87,12 +101,14 @@ export class MlModels {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/ml-models/{id}.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

@@ -6,7 +6,7 @@
  * The subset of the metadata tracked by Vellum during Prompt Deployment compilation that the request opted into with `expand_meta`.
  */
 export interface CompilePromptMeta {
-    modelName?: string;
-    deploymentReleaseTag?: string;
-    promptVersionId?: string;
+    modelName?: string | null;
+    deploymentReleaseTag?: string | null;
+    promptVersionId?: string | null;
 }

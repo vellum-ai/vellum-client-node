@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface WorkflowSandboxParentContext {
-    parent?: Vellum.ParentContext;
-    links?: Vellum.SpanLink[];
+    parent?: Vellum.ParentContext | null;
+    links?: Vellum.SpanLink[] | null;
     type: "WORKFLOW_SANDBOX";
     spanId: string;
     sandboxId: string;

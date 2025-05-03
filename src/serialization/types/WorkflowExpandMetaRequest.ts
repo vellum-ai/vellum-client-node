@@ -10,15 +10,15 @@ export const WorkflowExpandMetaRequest: core.serialization.ObjectSchema<
     serializers.WorkflowExpandMetaRequest.Raw,
     Vellum.WorkflowExpandMetaRequest
 > = core.serialization.object({
-    usage: core.serialization.boolean().optional(),
-    cost: core.serialization.boolean().optional(),
-    modelName: core.serialization.property("model_name", core.serialization.boolean().optional()),
+    usage: core.serialization.boolean().optionalNullable(),
+    cost: core.serialization.boolean().optionalNullable(),
+    modelName: core.serialization.property("model_name", core.serialization.boolean().optionalNullable()),
 });
 
 export declare namespace WorkflowExpandMetaRequest {
     export interface Raw {
-        usage?: boolean | null;
-        cost?: boolean | null;
-        model_name?: boolean | null;
+        usage?: (boolean | null) | null;
+        cost?: (boolean | null) | null;
+        model_name?: (boolean | null) | null;
     }
 }

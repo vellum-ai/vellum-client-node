@@ -9,6 +9,6 @@ import * as Vellum from "../index";
  */
 export interface NamedTestCaseArrayVariableValue {
     type: "ARRAY";
-    value?: Vellum.VellumValue[];
+    value?: Vellum.VellumValue[] | null;
     name: string;
 }

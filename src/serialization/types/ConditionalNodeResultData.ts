@@ -10,11 +10,11 @@ export const ConditionalNodeResultData: core.serialization.ObjectSchema<
     serializers.ConditionalNodeResultData.Raw,
     Vellum.ConditionalNodeResultData
 > = core.serialization.object({
-    sourceHandleId: core.serialization.property("source_handle_id", core.serialization.string().optional()),
+    sourceHandleId: core.serialization.property("source_handle_id", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace ConditionalNodeResultData {
     export interface Raw {
-        source_handle_id?: string | null;
+        source_handle_id?: (string | null) | null;
     }
 }

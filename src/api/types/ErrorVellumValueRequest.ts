@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface ErrorVellumValueRequest {
     type: "ERROR";
-    value?: Vellum.VellumErrorRequest;
+    value?: Vellum.VellumErrorRequest | null;
 }

@@ -4,15 +4,15 @@
 
 export interface SubmitCompletionActualRequest {
     /** The Vellum-generated ID of a previously generated completion. Must provide either this or external_id. */
-    id?: string;
+    id?: string | null;
     /** The external ID that was originally provided when generating the completion that you'd now like to submit actuals for. Must provide either this or id. */
-    externalId?: string;
+    externalId?: string | null;
     /** Text representing what the completion _should_ have been. */
-    text?: string;
+    text?: string | null;
     /** A number between 0 and 1 representing the quality of the completion. 0 is the worst, 1 is the best. */
-    quality?: number;
+    quality?: number | null;
     /** Optionally provide the timestamp representing when this feedback was collected. Used for reporting purposes. */
-    timestamp?: Date;
+    timestamp?: Date | null;
     /** Optionally provide additional metadata about the feedback submission. */
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

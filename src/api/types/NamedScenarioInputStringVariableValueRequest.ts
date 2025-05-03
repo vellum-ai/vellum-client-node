@@ -7,6 +7,6 @@
  */
 export interface NamedScenarioInputStringVariableValueRequest {
     type: "STRING";
-    value?: string;
+    value?: string | null;
     name: string;
 }

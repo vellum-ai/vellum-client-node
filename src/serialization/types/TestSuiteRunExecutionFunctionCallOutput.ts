@@ -13,7 +13,7 @@ export const TestSuiteRunExecutionFunctionCallOutput: core.serialization.ObjectS
 > = core.serialization.object({
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optional(),
+    value: FunctionCall.optionalNullable(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
@@ -21,7 +21,7 @@ export declare namespace TestSuiteRunExecutionFunctionCallOutput {
     export interface Raw {
         name: string;
         type: "FUNCTION_CALL";
-        value?: FunctionCall.Raw | null;
+        value?: (FunctionCall.Raw | null) | null;
         output_variable_id: string;
     }
 }

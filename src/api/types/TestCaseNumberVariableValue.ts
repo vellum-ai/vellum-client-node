@@ -9,5 +9,5 @@ export interface TestCaseNumberVariableValue {
     variableId: string;
     name: string;
     type: "NUMBER";
-    value?: number;
+    value?: number | null;
 }

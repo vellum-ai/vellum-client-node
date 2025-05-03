@@ -14,7 +14,7 @@ export const WorkflowOutputImage: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("IMAGE"),
-    value: VellumImage.optional(),
+    value: VellumImage.optionalNullable(),
 });
 
 export declare namespace WorkflowOutputImage {
@@ -22,6 +22,6 @@ export declare namespace WorkflowOutputImage {
         id: string;
         name: string;
         type: "IMAGE";
-        value?: VellumImage.Raw | null;
+        value?: (VellumImage.Raw | null) | null;
     }
 }

@@ -16,7 +16,7 @@ export const FolderEntityWorkflowSandboxData: core.serialization.ObjectSchema<
     created: core.serialization.date(),
     modified: core.serialization.date(),
     status: EntityStatus,
-    lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date().optional()),
+    lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date().optionalNullable()),
 });
 
 export declare namespace FolderEntityWorkflowSandboxData {
@@ -26,6 +26,6 @@ export declare namespace FolderEntityWorkflowSandboxData {
         created: string;
         modified: string;
         status: EntityStatus.Raw;
-        last_deployed_on?: string | null;
+        last_deployed_on?: (string | null) | null;
     }
 }

@@ -12,12 +12,12 @@ export const SearchResultsVellumValue: core.serialization.ObjectSchema<
     Vellum.SearchResultsVellumValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optional(),
+    value: core.serialization.list(SearchResult).optionalNullable(),
 });
 
 export declare namespace SearchResultsVellumValue {
     export interface Raw {
         type: "SEARCH_RESULTS";
-        value?: SearchResult.Raw[] | null;
+        value?: (SearchResult.Raw[] | null) | null;
     }
 }

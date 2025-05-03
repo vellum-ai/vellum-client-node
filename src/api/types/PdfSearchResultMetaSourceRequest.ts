@@ -8,7 +8,7 @@
 export interface PdfSearchResultMetaSourceRequest {
     documentType: "PDF";
     /** The 1-indexed page number where the chunk starts in the document. Only available for supported chunking strategies and document types. */
-    startPageNum?: number;
+    startPageNum?: number | null;
     /** The 1-indexed page number where the chunk ends in the document. Only available for supported chunking strategies and document types. */
-    endPageNum?: number;
+    endPageNum?: number | null;
 }

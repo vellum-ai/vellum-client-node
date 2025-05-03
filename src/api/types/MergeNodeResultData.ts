@@ -3,5 +3,5 @@
  */
 
 export interface MergeNodeResultData {
-    pausedNodeData?: Record<string, unknown>;
+    pausedNodeData?: Record<string, unknown> | null;
 }

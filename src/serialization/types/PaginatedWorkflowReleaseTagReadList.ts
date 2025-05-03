@@ -12,16 +12,16 @@ export const PaginatedWorkflowReleaseTagReadList: core.serialization.ObjectSchem
     Vellum.PaginatedWorkflowReleaseTagReadList
 > = core.serialization.object({
     count: core.serialization.number().optional(),
-    next: core.serialization.string().optional(),
-    previous: core.serialization.string().optional(),
+    next: core.serialization.string().optionalNullable(),
+    previous: core.serialization.string().optionalNullable(),
     results: core.serialization.list(WorkflowReleaseTagRead).optional(),
 });
 
 export declare namespace PaginatedWorkflowReleaseTagReadList {
     export interface Raw {
         count?: number | null;
-        next?: string | null;
-        previous?: string | null;
+        next?: (string | null) | null;
+        previous?: (string | null) | null;
         results?: WorkflowReleaseTagRead.Raw[] | null;
     }
 }

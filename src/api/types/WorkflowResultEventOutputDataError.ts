@@ -8,12 +8,12 @@ import * as Vellum from "../index";
  * An Error output streamed from a Workflow execution.
  */
 export interface WorkflowResultEventOutputDataError {
-    id?: string;
+    id?: string | null;
     name: string;
     state: Vellum.WorkflowNodeResultEventState;
     nodeId: string;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
-    delta?: string;
+    delta?: string | null;
     type: "ERROR";
-    value?: Vellum.VellumError;
+    value?: Vellum.VellumError | null;
 }

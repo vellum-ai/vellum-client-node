@@ -8,5 +8,5 @@ export interface WorkflowExecutionActual {
     output: Vellum.ExecutionVellumValue;
     timestamp: Date;
     quality: number;
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

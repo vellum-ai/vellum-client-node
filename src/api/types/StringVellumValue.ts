@@ -7,5 +7,5 @@
  */
 export interface StringVellumValue {
     type: "STRING";
-    value?: string;
+    value?: string | null;
 }

@@ -12,23 +12,23 @@ export const WorkflowResultEventOutputDataFunctionCall: core.serialization.Objec
     serializers.WorkflowResultEventOutputDataFunctionCall.Raw,
     Vellum.WorkflowResultEventOutputDataFunctionCall
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
-    delta: core.serialization.string().optional(),
+    delta: core.serialization.string().optionalNullable(),
     type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optional(),
+    value: FunctionCall.optionalNullable(),
 });
 
 export declare namespace WorkflowResultEventOutputDataFunctionCall {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         state: WorkflowNodeResultEventState.Raw;
         node_id: string;
-        delta?: string | null;
+        delta?: (string | null) | null;
         type: "FUNCTION_CALL";
-        value?: FunctionCall.Raw | null;
+        value?: (FunctionCall.Raw | null) | null;
     }
 }

@@ -12,12 +12,12 @@ export const ChatHistoryVellumValueRequest: core.serialization.ObjectSchema<
     Vellum.ChatHistoryVellumValueRequest
 > = core.serialization.object({
     type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessageRequest).optional(),
+    value: core.serialization.list(ChatMessageRequest).optionalNullable(),
 });
 
 export declare namespace ChatHistoryVellumValueRequest {
     export interface Raw {
         type: "CHAT_HISTORY";
-        value?: ChatMessageRequest.Raw[] | null;
+        value?: (ChatMessageRequest.Raw[] | null) | null;
     }
 }

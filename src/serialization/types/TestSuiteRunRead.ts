@@ -18,7 +18,7 @@ export const TestSuiteRunRead: core.serialization.ObjectSchema<
     created: core.serialization.date(),
     testSuite: core.serialization.property("test_suite", TestSuiteRunTestSuite),
     state: TestSuiteRunState,
-    execConfig: core.serialization.property("exec_config", TestSuiteRunExecConfig.optional()),
+    execConfig: core.serialization.property("exec_config", TestSuiteRunExecConfig.optionalNullable()),
     progress: TestSuiteRunProgress.optional(),
 });
 
@@ -28,7 +28,7 @@ export declare namespace TestSuiteRunRead {
         created: string;
         test_suite: TestSuiteRunTestSuite.Raw;
         state: TestSuiteRunState.Raw;
-        exec_config?: TestSuiteRunExecConfig.Raw | null;
+        exec_config?: (TestSuiteRunExecConfig.Raw | null) | null;
         progress?: TestSuiteRunProgress.Raw | null;
     }
 }

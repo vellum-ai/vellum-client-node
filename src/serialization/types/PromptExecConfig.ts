@@ -17,9 +17,9 @@ export const PromptExecConfig: core.serialization.ObjectSchema<
     mlModel: core.serialization.property("ml_model", core.serialization.string()),
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     parameters: PromptParameters,
-    settings: PromptSettings.optional(),
+    settings: PromptSettings.optionalNullable(),
     blocks: core.serialization.list(core.serialization.lazy(() => serializers.PromptBlock)),
-    functions: core.serialization.list(FunctionDefinition).optional(),
+    functions: core.serialization.list(FunctionDefinition).optionalNullable(),
 });
 
 export declare namespace PromptExecConfig {
@@ -27,8 +27,8 @@ export declare namespace PromptExecConfig {
         ml_model: string;
         input_variables: VellumVariable.Raw[];
         parameters: PromptParameters.Raw;
-        settings?: PromptSettings.Raw | null;
+        settings?: (PromptSettings.Raw | null) | null;
         blocks: serializers.PromptBlock.Raw[];
-        functions?: FunctionDefinition.Raw[] | null;
+        functions?: (FunctionDefinition.Raw[] | null) | null;
     }
 }

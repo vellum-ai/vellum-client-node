@@ -6,6 +6,6 @@
  * Basic vectorizer for intfloat/multilingual-e5-large.
  */
 export interface BasicVectorizerIntfloatMultilingualE5Large {
-    config?: Record<string, unknown>;
+    config?: Record<string, unknown> | null;
     modelName: "intfloat/multilingual-e5-large";
 }

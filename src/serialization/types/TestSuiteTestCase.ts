@@ -12,8 +12,8 @@ export const TestSuiteTestCase: core.serialization.ObjectSchema<
     Vellum.TestSuiteTestCase
 > = core.serialization.object({
     id: core.serialization.string().optional(),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    label: core.serialization.string().optional(),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
+    label: core.serialization.string().optionalNullable(),
     inputValues: core.serialization.property("input_values", core.serialization.list(TestCaseVariableValue)),
     evaluationValues: core.serialization.property("evaluation_values", core.serialization.list(TestCaseVariableValue)),
 });
@@ -21,8 +21,8 @@ export const TestSuiteTestCase: core.serialization.ObjectSchema<
 export declare namespace TestSuiteTestCase {
     export interface Raw {
         id?: string | null;
-        external_id?: string | null;
-        label?: string | null;
+        external_id?: (string | null) | null;
+        label?: (string | null) | null;
         input_values: TestCaseVariableValue.Raw[];
         evaluation_values: TestCaseVariableValue.Raw[];
     }

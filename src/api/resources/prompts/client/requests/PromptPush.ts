@@ -24,6 +24,6 @@ import * as Vellum from "../../../../index";
  */
 export interface PromptPush {
     execConfig: Vellum.PromptExecConfig;
-    promptVariantId?: string;
-    promptSandboxId?: string;
+    promptVariantId?: string | null;
+    promptSandboxId?: string | null;
 }

@@ -12,12 +12,12 @@ export const ImageVellumValue: core.serialization.ObjectSchema<
     Vellum.ImageVellumValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("IMAGE"),
-    value: VellumImage.optional(),
+    value: VellumImage.optionalNullable(),
 });
 
 export declare namespace ImageVellumValue {
     export interface Raw {
         type: "IMAGE";
-        value?: VellumImage.Raw | null;
+        value?: (VellumImage.Raw | null) | null;
     }
 }

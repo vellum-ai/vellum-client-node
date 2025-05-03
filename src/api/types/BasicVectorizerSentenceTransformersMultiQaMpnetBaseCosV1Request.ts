@@ -6,6 +6,6 @@
  * Basic vectorizer for sentence-transformers/multi-qa-mpnet-base-cos-v1.
  */
 export interface BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1Request {
-    config?: Record<string, unknown>;
+    config?: Record<string, unknown> | null;
     modelName: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
 }

@@ -9,7 +9,7 @@ import * as Vellum from "../index";
  */
 export interface NodeOutputCompiledFunctionCallValue {
     type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall;
+    value?: Vellum.FunctionCall | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

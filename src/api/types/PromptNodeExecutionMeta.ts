@@ -8,7 +8,7 @@ import * as Vellum from "../index";
  * The subset of the metadata tracked by Vellum during prompt execution that the request opted into with `expand_meta`.
  */
 export interface PromptNodeExecutionMeta {
-    usage?: Vellum.MlModelUsage;
-    cost?: Vellum.Price;
-    modelName?: string;
+    usage?: Vellum.MlModelUsage | null;
+    cost?: Vellum.Price | null;
+    modelName?: string | null;
 }

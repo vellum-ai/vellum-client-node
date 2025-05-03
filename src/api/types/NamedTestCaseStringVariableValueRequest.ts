@@ -7,6 +7,6 @@
  */
 export interface NamedTestCaseStringVariableValueRequest {
     type: "STRING";
-    value?: string;
+    value?: string | null;
     name: string;
 }

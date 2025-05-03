@@ -19,7 +19,7 @@ export const PromptDeploymentRelease: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     created: core.serialization.date(),
     environment: ReleaseEnvironment,
-    createdBy: core.serialization.property("created_by", ReleaseCreatedBy.optional()),
+    createdBy: core.serialization.property("created_by", ReleaseCreatedBy.optionalNullable()),
     promptVersion: core.serialization.property("prompt_version", PromptDeploymentReleasePromptVersion),
     deployment: PromptDeploymentReleasePromptDeployment,
     description: core.serialization.string().optional(),
@@ -32,7 +32,7 @@ export declare namespace PromptDeploymentRelease {
         id: string;
         created: string;
         environment: ReleaseEnvironment.Raw;
-        created_by?: ReleaseCreatedBy.Raw | null;
+        created_by?: (ReleaseCreatedBy.Raw | null) | null;
         prompt_version: PromptDeploymentReleasePromptVersion.Raw;
         deployment: PromptDeploymentReleasePromptDeployment.Raw;
         description?: string | null;

@@ -12,19 +12,19 @@ export const DeploymentProviderPayloadRequest: core.serialization.Schema<
     serializers.DeploymentProviderPayloadRequest.Raw,
     Vellum.DeploymentProviderPayloadRequest
 > = core.serialization.object({
-    deploymentId: core.serialization.property("deployment_id", core.serialization.string().optional()),
-    deploymentName: core.serialization.property("deployment_name", core.serialization.string().optional()),
+    deploymentId: core.serialization.property("deployment_id", core.serialization.string().optionalNullable()),
+    deploymentName: core.serialization.property("deployment_name", core.serialization.string().optionalNullable()),
     inputs: core.serialization.list(PromptDeploymentInputRequest),
-    releaseTag: core.serialization.property("release_tag", core.serialization.string().optional()),
-    expandMeta: core.serialization.property("expand_meta", CompilePromptDeploymentExpandMetaRequest.optional()),
+    releaseTag: core.serialization.property("release_tag", core.serialization.string().optionalNullable()),
+    expandMeta: core.serialization.property("expand_meta", CompilePromptDeploymentExpandMetaRequest.optionalNullable()),
 });
 
 export declare namespace DeploymentProviderPayloadRequest {
     export interface Raw {
-        deployment_id?: string | null;
-        deployment_name?: string | null;
+        deployment_id?: (string | null) | null;
+        deployment_name?: (string | null) | null;
         inputs: PromptDeploymentInputRequest.Raw[];
-        release_tag?: string | null;
-        expand_meta?: CompilePromptDeploymentExpandMetaRequest.Raw | null;
+        release_tag?: (string | null) | null;
+        expand_meta?: (CompilePromptDeploymentExpandMetaRequest.Raw | null) | null;
     }
 }

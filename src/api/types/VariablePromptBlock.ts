@@ -10,6 +10,6 @@ import * as Vellum from "../index";
 export interface VariablePromptBlock {
     blockType: "VARIABLE";
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     inputVariable: string;
 }

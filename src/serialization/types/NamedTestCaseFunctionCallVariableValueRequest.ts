@@ -12,14 +12,14 @@ export const NamedTestCaseFunctionCallVariableValueRequest: core.serialization.O
     Vellum.NamedTestCaseFunctionCallVariableValueRequest
 > = core.serialization.object({
     type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCallRequest.optional(),
+    value: FunctionCallRequest.optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseFunctionCallVariableValueRequest {
     export interface Raw {
         type: "FUNCTION_CALL";
-        value?: FunctionCallRequest.Raw | null;
+        value?: (FunctionCallRequest.Raw | null) | null;
         name: string;
     }
 }

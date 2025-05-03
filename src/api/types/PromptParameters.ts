@@ -3,13 +3,13 @@
  */
 
 export interface PromptParameters {
-    stop?: string[];
-    temperature?: number;
-    maxTokens?: number;
-    topP?: number;
-    topK?: number;
-    frequencyPenalty?: number;
-    presencePenalty?: number;
-    logitBias?: Record<string, number | undefined>;
-    customParameters?: Record<string, unknown>;
+    stop?: string[] | null;
+    temperature?: number | null;
+    maxTokens?: number | null;
+    topP?: number | null;
+    topK?: number | null;
+    frequencyPenalty?: number | null;
+    presencePenalty?: number | null;
+    logitBias?: Record<string, (number | null) | undefined> | null;
+    customParameters?: Record<string, unknown> | null;
 }

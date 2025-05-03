@@ -13,25 +13,28 @@ export const ExecuteWorkflowRequest: core.serialization.Schema<
     Vellum.ExecuteWorkflowRequest
 > = core.serialization.object({
     inputs: core.serialization.list(WorkflowRequestInputRequest),
-    expandMeta: core.serialization.property("expand_meta", WorkflowExpandMetaRequest.optional()),
-    workflowDeploymentId: core.serialization.property("workflow_deployment_id", core.serialization.string().optional()),
+    expandMeta: core.serialization.property("expand_meta", WorkflowExpandMetaRequest.optionalNullable()),
+    workflowDeploymentId: core.serialization.property(
+        "workflow_deployment_id",
+        core.serialization.string().optionalNullable(),
+    ),
     workflowDeploymentName: core.serialization.property(
         "workflow_deployment_name",
-        core.serialization.string().optional(),
+        core.serialization.string().optionalNullable(),
     ),
-    releaseTag: core.serialization.property("release_tag", core.serialization.string().optional()),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    releaseTag: core.serialization.property("release_tag", core.serialization.string().optionalNullable()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace ExecuteWorkflowRequest {
     export interface Raw {
         inputs: WorkflowRequestInputRequest.Raw[];
-        expand_meta?: WorkflowExpandMetaRequest.Raw | null;
-        workflow_deployment_id?: string | null;
-        workflow_deployment_name?: string | null;
-        release_tag?: string | null;
-        external_id?: string | null;
-        metadata?: Record<string, unknown> | null;
+        expand_meta?: (WorkflowExpandMetaRequest.Raw | null) | null;
+        workflow_deployment_id?: (string | null) | null;
+        workflow_deployment_name?: (string | null) | null;
+        release_tag?: (string | null) | null;
+        external_id?: (string | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

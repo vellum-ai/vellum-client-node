@@ -9,7 +9,7 @@ import * as Vellum from "../index";
  */
 export interface NodeOutputCompiledErrorValue {
     type: "ERROR";
-    value?: Vellum.VellumError;
+    value?: Vellum.VellumError | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

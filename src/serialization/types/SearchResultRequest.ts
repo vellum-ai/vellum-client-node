@@ -16,7 +16,7 @@ export const SearchResultRequest: core.serialization.ObjectSchema<
     score: core.serialization.number(),
     keywords: core.serialization.list(core.serialization.string()),
     document: SearchResultDocumentRequest,
-    meta: SearchResultMetaRequest.optional(),
+    meta: SearchResultMetaRequest.optionalNullable(),
 });
 
 export declare namespace SearchResultRequest {
@@ -25,6 +25,6 @@ export declare namespace SearchResultRequest {
         score: number;
         keywords: string[];
         document: SearchResultDocumentRequest.Raw;
-        meta?: SearchResultMetaRequest.Raw | null;
+        meta?: (SearchResultMetaRequest.Raw | null) | null;
     }
 }

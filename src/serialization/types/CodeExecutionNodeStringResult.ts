@@ -12,13 +12,13 @@ export const CodeExecutionNodeStringResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optional(),
+    value: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace CodeExecutionNodeStringResult {
     export interface Raw {
         id: string;
         type: "STRING";
-        value?: string | null;
+        value?: (string | null) | null;
     }
 }

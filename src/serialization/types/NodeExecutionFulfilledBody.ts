@@ -13,16 +13,16 @@ export const NodeExecutionFulfilledBody: core.serialization.ObjectSchema<
     Vellum.NodeExecutionFulfilledBody
 > = core.serialization.object({
     nodeDefinition: core.serialization.property("node_definition", VellumCodeResourceDefinition),
-    invokedPorts: core.serialization.property("invoked_ports", core.serialization.list(InvokedPort).optional()),
+    invokedPorts: core.serialization.property("invoked_ports", core.serialization.list(InvokedPort).optionalNullable()),
     outputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    mocked: core.serialization.boolean().optional(),
+    mocked: core.serialization.boolean().optionalNullable(),
 });
 
 export declare namespace NodeExecutionFulfilledBody {
     export interface Raw {
         node_definition: VellumCodeResourceDefinition.Raw;
-        invoked_ports?: InvokedPort.Raw[] | null;
+        invoked_ports?: (InvokedPort.Raw[] | null) | null;
         outputs: Record<string, unknown>;
-        mocked?: boolean | null;
+        mocked?: (boolean | null) | null;
     }
 }

@@ -13,17 +13,19 @@ import { SlimDocumentDocumentToDocumentIndex } from "./SlimDocumentDocumentToDoc
 export const SlimDocument: core.serialization.ObjectSchema<serializers.SlimDocument.Raw, Vellum.SlimDocument> =
     core.serialization.object({
         id: core.serialization.string(),
-        externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+        externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
         lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.date()),
         label: core.serialization.string(),
         processingState: core.serialization.property("processing_state", DocumentProcessingState),
         processingFailureReason: core.serialization.property(
             "processing_failure_reason",
-            ProcessingFailureReasonEnum.optional(),
+            ProcessingFailureReasonEnum.optionalNullable(),
         ),
         status: DocumentStatus.optional(),
         keywords: core.serialization.list(core.serialization.string()).optional(),
-        metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+        metadata: core.serialization
+            .record(core.serialization.string(), core.serialization.unknown())
+            .optionalNullable(),
         documentToDocumentIndexes: core.serialization.property(
             "document_to_document_indexes",
             core.serialization.list(SlimDocumentDocumentToDocumentIndex),
@@ -33,14 +35,14 @@ export const SlimDocument: core.serialization.ObjectSchema<serializers.SlimDocum
 export declare namespace SlimDocument {
     export interface Raw {
         id: string;
-        external_id?: string | null;
+        external_id?: (string | null) | null;
         last_uploaded_at: string;
         label: string;
         processing_state: DocumentProcessingState.Raw;
-        processing_failure_reason?: ProcessingFailureReasonEnum.Raw | null;
+        processing_failure_reason?: (ProcessingFailureReasonEnum.Raw | null) | null;
         status?: DocumentStatus.Raw | null;
         keywords?: string[] | null;
-        metadata?: Record<string, unknown> | null;
+        metadata?: (Record<string, unknown> | null) | null;
         document_to_document_indexes: SlimDocumentDocumentToDocumentIndex.Raw[];
     }
 }

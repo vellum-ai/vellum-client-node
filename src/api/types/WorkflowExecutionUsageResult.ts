@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 export interface WorkflowExecutionUsageResult {
-    usage?: Vellum.MlModelUsageWrapper[];
-    cost?: Vellum.Price[];
-    error?: Vellum.WorkflowExecutionUsageCalculationError;
+    usage?: Vellum.MlModelUsageWrapper[] | null;
+    cost?: Vellum.Price[] | null;
+    error?: Vellum.WorkflowExecutionUsageCalculationError | null;
 }

@@ -12,12 +12,12 @@ export const DocumentVellumValue: core.serialization.ObjectSchema<
     Vellum.DocumentVellumValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("DOCUMENT"),
-    value: VellumDocument.optional(),
+    value: VellumDocument.optionalNullable(),
 });
 
 export declare namespace DocumentVellumValue {
     export interface Raw {
         type: "DOCUMENT";
-        value?: VellumDocument.Raw | null;
+        value?: (VellumDocument.Raw | null) | null;
     }
 }

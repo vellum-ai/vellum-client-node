@@ -10,20 +10,20 @@ export const WorkflowPushDeploymentConfigRequest: core.serialization.ObjectSchem
     serializers.WorkflowPushDeploymentConfigRequest.Raw,
     Vellum.WorkflowPushDeploymentConfigRequest
 > = core.serialization.object({
-    label: core.serialization.string().optional(),
-    name: core.serialization.string().optional(),
-    description: core.serialization.string().optional(),
+    label: core.serialization.string().optionalNullable(),
+    name: core.serialization.string().optionalNullable(),
+    description: core.serialization.string().optionalNullable(),
     releaseTags: core.serialization.property(
         "release_tags",
-        core.serialization.list(core.serialization.string()).optional(),
+        core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
 });
 
 export declare namespace WorkflowPushDeploymentConfigRequest {
     export interface Raw {
-        label?: string | null;
-        name?: string | null;
-        description?: string | null;
-        release_tags?: string[] | null;
+        label?: (string | null) | null;
+        name?: (string | null) | null;
+        description?: (string | null) | null;
+        release_tags?: (string[] | null) | null;
     }
 }

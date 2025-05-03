@@ -10,7 +10,7 @@ export interface UpsertTestSuiteTestCaseRequest {
     /** An ID external to Vellum that uniquely identifies the Test Case that you'd like to create/update. If there's a match on a Test Case that was previously created with the same external_id, it will be updated. Otherwise, a new Test Case will be created with this value as its external_id. If no external_id is specified, then a new Test Case will always be created. */
     externalId?: string;
     /** A human-readable label used to convey the intention of this Test Case */
-    label?: string;
+    label?: string | null;
     /** Values for each of the Test Case's input variables */
     inputValues: Vellum.NamedTestCaseVariableValueRequest[];
     /** Values for each of the Test Case's evaluation variables */

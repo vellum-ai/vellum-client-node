@@ -7,5 +7,5 @@
  */
 export interface StringVellumValueRequest {
     type: "STRING";
-    value?: string;
+    value?: string | null;
 }

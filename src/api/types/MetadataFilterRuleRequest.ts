@@ -5,10 +5,10 @@
 import * as Vellum from "../index";
 
 export interface MetadataFilterRuleRequest {
-    combinator?: Vellum.MetadataFilterRuleCombinator;
-    negated?: boolean;
-    rules?: Vellum.MetadataFilterRuleRequest[];
-    field?: string;
-    operator?: Vellum.LogicalOperator;
-    value?: string;
+    combinator?: Vellum.MetadataFilterRuleCombinator | null;
+    negated?: boolean | null;
+    rules?: Vellum.MetadataFilterRuleRequest[] | null;
+    field?: string | null;
+    operator?: Vellum.LogicalOperator | null;
+    value?: string | null;
 }

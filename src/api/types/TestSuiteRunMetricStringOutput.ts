@@ -6,7 +6,7 @@
  * Output for a test suite run metric that is of type STRING
  */
 export interface TestSuiteRunMetricStringOutput {
-    value?: string;
+    value?: string | null;
     type: "STRING";
     name: string;
 }
