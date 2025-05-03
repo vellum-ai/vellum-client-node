@@ -15,6 +15,8 @@ export declare namespace WorkflowDeployments {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey: core.Supplier<string>;
+        /** Override the X-API-KEY header */
+        apiKey: core.Supplier<string>;
     }
 
     export interface RequestOptions {
@@ -24,6 +26,8 @@ export declare namespace WorkflowDeployments {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Override the X-API-KEY header */
+        apiKey?: string;
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -81,10 +85,11 @@ export class WorkflowDeployments {
             ),
             method: "GET",
             headers: {
+                "X-API-KEY": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.53",
-                "User-Agent": "vellum-ai/0.14.53",
+                "X-Fern-SDK-Version": "0.14.54",
+                "User-Agent": "vellum-ai/0.14.54",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -163,10 +168,11 @@ export class WorkflowDeployments {
             ),
             method: "GET",
             headers: {
+                "X-API-KEY": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.53",
-                "User-Agent": "vellum-ai/0.14.53",
+                "X-Fern-SDK-Version": "0.14.54",
+                "User-Agent": "vellum-ai/0.14.54",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -261,10 +267,11 @@ export class WorkflowDeployments {
             ),
             method: "GET",
             headers: {
+                "X-API-KEY": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.53",
-                "User-Agent": "vellum-ai/0.14.53",
+                "X-Fern-SDK-Version": "0.14.54",
+                "User-Agent": "vellum-ai/0.14.54",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -348,10 +355,11 @@ export class WorkflowDeployments {
             ),
             method: "GET",
             headers: {
+                "X-API-KEY": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.53",
-                "User-Agent": "vellum-ai/0.14.53",
+                "X-Fern-SDK-Version": "0.14.54",
+                "User-Agent": "vellum-ai/0.14.54",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -436,10 +444,11 @@ export class WorkflowDeployments {
             ),
             method: "GET",
             headers: {
+                "X-API-KEY": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.53",
-                "User-Agent": "vellum-ai/0.14.53",
+                "X-Fern-SDK-Version": "0.14.54",
+                "User-Agent": "vellum-ai/0.14.54",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -542,10 +551,11 @@ export class WorkflowDeployments {
             ),
             method: "GET",
             headers: {
+                "X-API-KEY": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.53",
-                "User-Agent": "vellum-ai/0.14.53",
+                "X-Fern-SDK-Version": "0.14.54",
+                "User-Agent": "vellum-ai/0.14.54",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -629,10 +639,11 @@ export class WorkflowDeployments {
             ),
             method: "GET",
             headers: {
+                "X-API-KEY": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.53",
-                "User-Agent": "vellum-ai/0.14.53",
+                "X-Fern-SDK-Version": "0.14.54",
+                "User-Agent": "vellum-ai/0.14.54",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -718,10 +729,11 @@ export class WorkflowDeployments {
             ),
             method: "PATCH",
             headers: {
+                "X-API-KEY": await core.Supplier.get(this._options.apiKey),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.53",
-                "User-Agent": "vellum-ai/0.14.53",
+                "X-Fern-SDK-Version": "0.14.54",
+                "User-Agent": "vellum-ai/0.14.54",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
