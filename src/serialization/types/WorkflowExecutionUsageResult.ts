@@ -13,15 +13,15 @@ export const WorkflowExecutionUsageResult: core.serialization.ObjectSchema<
     serializers.WorkflowExecutionUsageResult.Raw,
     Vellum.WorkflowExecutionUsageResult
 > = core.serialization.object({
-    usage: core.serialization.list(MlModelUsageWrapper).optional(),
-    cost: core.serialization.list(Price).optional(),
-    error: WorkflowExecutionUsageCalculationError.optional(),
+    usage: core.serialization.list(MlModelUsageWrapper).optionalNullable(),
+    cost: core.serialization.list(Price).optionalNullable(),
+    error: WorkflowExecutionUsageCalculationError.optionalNullable(),
 });
 
 export declare namespace WorkflowExecutionUsageResult {
     export interface Raw {
-        usage?: MlModelUsageWrapper.Raw[] | null;
-        cost?: Price.Raw[] | null;
-        error?: WorkflowExecutionUsageCalculationError.Raw | null;
+        usage?: (MlModelUsageWrapper.Raw[] | null) | null;
+        cost?: (Price.Raw[] | null) | null;
+        error?: (WorkflowExecutionUsageCalculationError.Raw | null) | null;
     }
 }

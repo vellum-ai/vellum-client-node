@@ -14,7 +14,7 @@ export const NodeInputCompiledErrorValue: core.serialization.ObjectSchema<
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
     type: core.serialization.stringLiteral("ERROR"),
-    value: VellumError.optional(),
+    value: VellumError.optionalNullable(),
 });
 
 export declare namespace NodeInputCompiledErrorValue {
@@ -22,6 +22,6 @@ export declare namespace NodeInputCompiledErrorValue {
         node_input_id: string;
         key: string;
         type: "ERROR";
-        value?: VellumError.Raw | null;
+        value?: (VellumError.Raw | null) | null;
     }
 }

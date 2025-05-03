@@ -9,12 +9,14 @@ import * as core from "../../core";
 export const VellumImage: core.serialization.ObjectSchema<serializers.VellumImage.Raw, Vellum.VellumImage> =
     core.serialization.object({
         src: core.serialization.string(),
-        metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+        metadata: core.serialization
+            .record(core.serialization.string(), core.serialization.unknown())
+            .optionalNullable(),
     });
 
 export declare namespace VellumImage {
     export interface Raw {
         src: string;
-        metadata?: Record<string, unknown> | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

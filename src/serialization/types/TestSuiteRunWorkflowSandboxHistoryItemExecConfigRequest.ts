@@ -15,7 +15,7 @@ export const TestSuiteRunWorkflowSandboxHistoryItemExecConfigRequest: core.seria
     data: TestSuiteRunWorkflowSandboxHistoryItemExecConfigDataRequest,
     testCaseIds: core.serialization.property(
         "test_case_ids",
-        core.serialization.list(core.serialization.string()).optional(),
+        core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
 });
 
@@ -23,6 +23,6 @@ export declare namespace TestSuiteRunWorkflowSandboxHistoryItemExecConfigRequest
     export interface Raw {
         type: "WORKFLOW_SANDBOX_HISTORY_ITEM";
         data: TestSuiteRunWorkflowSandboxHistoryItemExecConfigDataRequest.Raw;
-        test_case_ids?: string[] | null;
+        test_case_ids?: (string[] | null) | null;
     }
 }

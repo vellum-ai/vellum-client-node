@@ -10,5 +10,5 @@ export interface ExecutionStringVellumValue {
     id: string;
     name: string;
     type: "STRING";
-    value?: string;
+    value?: string | null;
 }

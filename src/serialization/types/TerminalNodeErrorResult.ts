@@ -11,17 +11,17 @@ export const TerminalNodeErrorResult: core.serialization.ObjectSchema<
     serializers.TerminalNodeErrorResult.Raw,
     Vellum.TerminalNodeErrorResult
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("ERROR"),
-    value: VellumError.optional(),
+    value: VellumError.optionalNullable(),
 });
 
 export declare namespace TerminalNodeErrorResult {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         type: "ERROR";
-        value?: VellumError.Raw | null;
+        value?: (VellumError.Raw | null) | null;
     }
 }

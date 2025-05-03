@@ -9,7 +9,7 @@ import * as Vellum from "../index";
  */
 export interface NodeOutputCompiledNumberValue {
     type: "NUMBER";
-    value?: number;
+    value?: number | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

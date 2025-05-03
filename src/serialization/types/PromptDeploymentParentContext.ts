@@ -10,8 +10,8 @@ export const PromptDeploymentParentContext: core.serialization.ObjectSchema<
     serializers.PromptDeploymentParentContext.Raw,
     Vellum.PromptDeploymentParentContext
 > = core.serialization.object({
-    parent: core.serialization.lazy(() => serializers.ParentContext).optional(),
-    links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optional(),
+    parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
+    links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
     type: core.serialization.stringLiteral("PROMPT_RELEASE_TAG"),
     spanId: core.serialization.property("span_id", core.serialization.string()),
     deploymentId: core.serialization.property("deployment_id", core.serialization.string()),
@@ -19,15 +19,15 @@ export const PromptDeploymentParentContext: core.serialization.ObjectSchema<
     deploymentHistoryItemId: core.serialization.property("deployment_history_item_id", core.serialization.string()),
     releaseTagId: core.serialization.property("release_tag_id", core.serialization.string()),
     releaseTagName: core.serialization.property("release_tag_name", core.serialization.string()),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     promptVersionId: core.serialization.property("prompt_version_id", core.serialization.string()),
 });
 
 export declare namespace PromptDeploymentParentContext {
     export interface Raw {
-        parent?: serializers.ParentContext.Raw | null;
-        links?: serializers.SpanLink.Raw[] | null;
+        parent?: (serializers.ParentContext.Raw | null) | null;
+        links?: (serializers.SpanLink.Raw[] | null) | null;
         type: "PROMPT_RELEASE_TAG";
         span_id: string;
         deployment_id: string;
@@ -35,8 +35,8 @@ export declare namespace PromptDeploymentParentContext {
         deployment_history_item_id: string;
         release_tag_id: string;
         release_tag_name: string;
-        external_id?: string | null;
-        metadata?: Record<string, unknown> | null;
+        external_id?: (string | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
         prompt_version_id: string;
     }
 }

@@ -10,5 +10,5 @@ export interface GenerateRequest {
     /** Optionally provide a list of chat messages that'll be used in place of the special chat_history variable, if included in the prompt. */
     chatHistory?: Vellum.ChatMessageRequest[];
     /** Optionally include a unique identifier for each generation, as represented outside of Vellum. Note that this should generally be a list of length one. */
-    externalIds?: string[];
+    externalIds?: string[] | null;
 }

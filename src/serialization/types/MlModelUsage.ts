@@ -8,29 +8,38 @@ import * as core from "../../core";
 
 export const MlModelUsage: core.serialization.ObjectSchema<serializers.MlModelUsage.Raw, Vellum.MlModelUsage> =
     core.serialization.object({
-        outputTokenCount: core.serialization.property("output_token_count", core.serialization.number().optional()),
-        inputTokenCount: core.serialization.property("input_token_count", core.serialization.number().optional()),
-        inputCharCount: core.serialization.property("input_char_count", core.serialization.number().optional()),
-        outputCharCount: core.serialization.property("output_char_count", core.serialization.number().optional()),
-        computeNanos: core.serialization.property("compute_nanos", core.serialization.number().optional()),
+        outputTokenCount: core.serialization.property(
+            "output_token_count",
+            core.serialization.number().optionalNullable(),
+        ),
+        inputTokenCount: core.serialization.property(
+            "input_token_count",
+            core.serialization.number().optionalNullable(),
+        ),
+        inputCharCount: core.serialization.property("input_char_count", core.serialization.number().optionalNullable()),
+        outputCharCount: core.serialization.property(
+            "output_char_count",
+            core.serialization.number().optionalNullable(),
+        ),
+        computeNanos: core.serialization.property("compute_nanos", core.serialization.number().optionalNullable()),
         cacheCreationInputTokens: core.serialization.property(
             "cache_creation_input_tokens",
-            core.serialization.number().optional(),
+            core.serialization.number().optionalNullable(),
         ),
         cacheReadInputTokens: core.serialization.property(
             "cache_read_input_tokens",
-            core.serialization.number().optional(),
+            core.serialization.number().optionalNullable(),
         ),
     });
 
 export declare namespace MlModelUsage {
     export interface Raw {
-        output_token_count?: number | null;
-        input_token_count?: number | null;
-        input_char_count?: number | null;
-        output_char_count?: number | null;
-        compute_nanos?: number | null;
-        cache_creation_input_tokens?: number | null;
-        cache_read_input_tokens?: number | null;
+        output_token_count?: (number | null) | null;
+        input_token_count?: (number | null) | null;
+        input_char_count?: (number | null) | null;
+        output_char_count?: (number | null) | null;
+        compute_nanos?: (number | null) | null;
+        cache_creation_input_tokens?: (number | null) | null;
+        cache_read_input_tokens?: (number | null) | null;
     }
 }

@@ -12,15 +12,15 @@ export const PromptNodeExecutionMeta: core.serialization.ObjectSchema<
     serializers.PromptNodeExecutionMeta.Raw,
     Vellum.PromptNodeExecutionMeta
 > = core.serialization.object({
-    usage: MlModelUsage.optional(),
-    cost: Price.optional(),
-    modelName: core.serialization.property("model_name", core.serialization.string().optional()),
+    usage: MlModelUsage.optionalNullable(),
+    cost: Price.optionalNullable(),
+    modelName: core.serialization.property("model_name", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace PromptNodeExecutionMeta {
     export interface Raw {
-        usage?: MlModelUsage.Raw | null;
-        cost?: Price.Raw | null;
-        model_name?: string | null;
+        usage?: (MlModelUsage.Raw | null) | null;
+        cost?: (Price.Raw | null) | null;
+        model_name?: (string | null) | null;
     }
 }

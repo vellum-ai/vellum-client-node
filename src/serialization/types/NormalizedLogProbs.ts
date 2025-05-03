@@ -12,12 +12,12 @@ export const NormalizedLogProbs: core.serialization.ObjectSchema<
     Vellum.NormalizedLogProbs
 > = core.serialization.object({
     tokens: core.serialization.list(NormalizedTokenLogProbs),
-    likelihood: core.serialization.number().optional(),
+    likelihood: core.serialization.number().optionalNullable(),
 });
 
 export declare namespace NormalizedLogProbs {
     export interface Raw {
         tokens: NormalizedTokenLogProbs.Raw[];
-        likelihood?: number | null;
+        likelihood?: (number | null) | null;
     }
 }

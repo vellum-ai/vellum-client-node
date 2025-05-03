@@ -11,5 +11,5 @@ export interface NodeExecutionSpan {
     spanId: string;
     startTs: Date;
     endTs: Date;
-    parentSpanId?: string;
+    parentSpanId?: string | null;
 }

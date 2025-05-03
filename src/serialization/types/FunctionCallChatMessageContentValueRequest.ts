@@ -12,13 +12,13 @@ export const FunctionCallChatMessageContentValueRequest: core.serialization.Obje
 > = core.serialization.object({
     name: core.serialization.string(),
     arguments: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace FunctionCallChatMessageContentValueRequest {
     export interface Raw {
         name: string;
         arguments: Record<string, unknown>;
-        id?: string | null;
+        id?: (string | null) | null;
     }
 }

@@ -10,6 +10,6 @@ import * as Vellum from "../index";
 export interface JinjaPromptBlock {
     blockType: "JINJA";
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     template: string;
 }

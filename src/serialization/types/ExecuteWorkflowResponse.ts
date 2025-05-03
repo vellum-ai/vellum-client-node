@@ -12,16 +12,16 @@ export const ExecuteWorkflowResponse: core.serialization.ObjectSchema<
     Vellum.ExecuteWorkflowResponse
 > = core.serialization.object({
     executionId: core.serialization.property("execution_id", core.serialization.string()),
-    runId: core.serialization.property("run_id", core.serialization.string().optional()),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+    runId: core.serialization.property("run_id", core.serialization.string().optionalNullable()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
     data: ExecuteWorkflowWorkflowResultEvent,
 });
 
 export declare namespace ExecuteWorkflowResponse {
     export interface Raw {
         execution_id: string;
-        run_id?: string | null;
-        external_id?: string | null;
+        run_id?: (string | null) | null;
+        external_id?: (string | null) | null;
         data: ExecuteWorkflowWorkflowResultEvent.Raw;
     }
 }

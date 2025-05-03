@@ -12,9 +12,9 @@ import * as Vellum from "../../index";
  */
 export interface SubmitCompletionActualsRequest {
     /** The ID of the deployment. Must provide either this or deployment_name. */
-    deploymentId?: string;
+    deploymentId?: string | null;
     /** The name of the deployment. Must provide either this or deployment_id. */
-    deploymentName?: string;
+    deploymentName?: string | null;
     /** Feedback regarding the quality of previously generated completions */
     actuals: Vellum.SubmitCompletionActualRequest[];
 }

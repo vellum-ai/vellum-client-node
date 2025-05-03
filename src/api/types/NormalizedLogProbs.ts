@@ -6,5 +6,5 @@ import * as Vellum from "../index";
 
 export interface NormalizedLogProbs {
     tokens: Vellum.NormalizedTokenLogProbs[];
-    likelihood?: number;
+    likelihood?: number | null;
 }

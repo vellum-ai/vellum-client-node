@@ -15,7 +15,7 @@ export const TestSuiteRunPromptSandboxExecConfigRequest: core.serialization.Obje
     data: TestSuiteRunPromptSandboxExecConfigDataRequest,
     testCaseIds: core.serialization.property(
         "test_case_ids",
-        core.serialization.list(core.serialization.string()).optional(),
+        core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
 });
 
@@ -23,6 +23,6 @@ export declare namespace TestSuiteRunPromptSandboxExecConfigRequest {
     export interface Raw {
         type: "PROMPT_SANDBOX";
         data: TestSuiteRunPromptSandboxExecConfigDataRequest.Raw;
-        test_case_ids?: string[] | null;
+        test_case_ids?: (string[] | null) | null;
     }
 }

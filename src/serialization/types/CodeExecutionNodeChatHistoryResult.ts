@@ -13,13 +13,13 @@ export const CodeExecutionNodeChatHistoryResult: core.serialization.ObjectSchema
 > = core.serialization.object({
     id: core.serialization.string(),
     type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optional(),
+    value: core.serialization.list(ChatMessage).optionalNullable(),
 });
 
 export declare namespace CodeExecutionNodeChatHistoryResult {
     export interface Raw {
         id: string;
         type: "CHAT_HISTORY";
-        value?: ChatMessage.Raw[] | null;
+        value?: (ChatMessage.Raw[] | null) | null;
     }
 }

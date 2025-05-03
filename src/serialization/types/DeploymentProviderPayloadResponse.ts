@@ -13,12 +13,12 @@ export const DeploymentProviderPayloadResponse: core.serialization.ObjectSchema<
     Vellum.DeploymentProviderPayloadResponse
 > = core.serialization.object({
     payload: DeploymentProviderPayloadResponsePayload,
-    meta: CompilePromptMeta.optional(),
+    meta: CompilePromptMeta.optionalNullable(),
 });
 
 export declare namespace DeploymentProviderPayloadResponse {
     export interface Raw {
         payload: DeploymentProviderPayloadResponsePayload.Raw;
-        meta?: CompilePromptMeta.Raw | null;
+        meta?: (CompilePromptMeta.Raw | null) | null;
     }
 }

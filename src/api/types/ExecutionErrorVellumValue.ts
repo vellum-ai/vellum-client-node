@@ -12,5 +12,5 @@ export interface ExecutionErrorVellumValue {
     id: string;
     name: string;
     type: "ERROR";
-    value?: Vellum.VellumError;
+    value?: Vellum.VellumError | null;
 }

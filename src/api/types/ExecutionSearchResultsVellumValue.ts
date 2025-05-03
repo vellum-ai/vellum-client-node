@@ -12,5 +12,5 @@ export interface ExecutionSearchResultsVellumValue {
     id: string;
     name: string;
     type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[];
+    value?: Vellum.SearchResult[] | null;
 }

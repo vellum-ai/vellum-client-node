@@ -12,16 +12,16 @@ export const PaginatedDocumentIndexReadList: core.serialization.ObjectSchema<
     Vellum.PaginatedDocumentIndexReadList
 > = core.serialization.object({
     count: core.serialization.number().optional(),
-    next: core.serialization.string().optional(),
-    previous: core.serialization.string().optional(),
+    next: core.serialization.string().optionalNullable(),
+    previous: core.serialization.string().optionalNullable(),
     results: core.serialization.list(DocumentIndexRead).optional(),
 });
 
 export declare namespace PaginatedDocumentIndexReadList {
     export interface Raw {
         count?: number | null;
-        next?: string | null;
-        previous?: string | null;
+        next?: (string | null) | null;
+        previous?: (string | null) | null;
         results?: DocumentIndexRead.Raw[] | null;
     }
 }

@@ -7,7 +7,7 @@ import * as Vellum from "../index";
 export interface DocumentRead {
     id: string;
     /** The unique id of this document as it exists in the user's system. */
-    externalId?: string;
+    externalId?: string | null;
     lastUploadedAt: Date;
     /** A human-readable label for the document. Defaults to the originally uploaded file's file name. */
     label: string;
@@ -18,9 +18,9 @@ export interface DocumentRead {
      * * `ACTIVE` - Active
      */
     status?: Vellum.DocumentStatus;
-    originalFileUrl?: string;
-    processedFileUrl?: string;
+    originalFileUrl?: string | null;
+    processedFileUrl?: string | null;
     documentToDocumentIndexes: Vellum.DocumentDocumentToDocumentIndex[];
     /** A previously supplied JSON object containing metadata that can be filtered on when searching. */
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

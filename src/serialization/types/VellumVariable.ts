@@ -13,9 +13,9 @@ export const VellumVariable: core.serialization.ObjectSchema<serializers.VellumV
         id: core.serialization.string(),
         key: core.serialization.string(),
         type: VellumVariableType,
-        required: core.serialization.boolean().optional(),
-        default: core.serialization.lazy(() => serializers.VellumValue).optional(),
-        extensions: VellumVariableExtensions.optional(),
+        required: core.serialization.boolean().optionalNullable(),
+        default: core.serialization.lazy(() => serializers.VellumValue).optionalNullable(),
+        extensions: VellumVariableExtensions.optionalNullable(),
     });
 
 export declare namespace VellumVariable {
@@ -23,8 +23,8 @@ export declare namespace VellumVariable {
         id: string;
         key: string;
         type: VellumVariableType.Raw;
-        required?: boolean | null;
-        default?: serializers.VellumValue.Raw | null;
-        extensions?: VellumVariableExtensions.Raw | null;
+        required?: (boolean | null) | null;
+        default?: (serializers.VellumValue.Raw | null) | null;
+        extensions?: (VellumVariableExtensions.Raw | null) | null;
     }
 }

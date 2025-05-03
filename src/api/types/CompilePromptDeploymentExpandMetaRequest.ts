@@ -4,9 +4,9 @@
 
 export interface CompilePromptDeploymentExpandMetaRequest {
     /** If enabled, the response will include the model identifier representing the ML Model invoked by the Prompt. */
-    modelName?: boolean;
+    modelName?: boolean | null;
     /** If enabled, the response will include the release tag of the Prompt Deployment. */
-    deploymentReleaseTag?: boolean;
+    deploymentReleaseTag?: boolean | null;
     /** If enabled, the response will include the ID of the Prompt Version backing the deployment. */
-    promptVersionId?: boolean;
+    promptVersionId?: boolean | null;
 }

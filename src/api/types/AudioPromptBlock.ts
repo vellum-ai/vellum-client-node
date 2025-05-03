@@ -10,7 +10,7 @@ import * as Vellum from "../index";
 export interface AudioPromptBlock {
     blockType: "AUDIO";
     state?: Vellum.PromptBlockState;
-    cacheConfig?: Vellum.EphemeralPromptCacheConfig;
+    cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     src: string;
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | null;
 }

@@ -10,25 +10,31 @@ export const DeploySandboxWorkflowRequest: core.serialization.Schema<
     serializers.DeploySandboxWorkflowRequest.Raw,
     Vellum.DeploySandboxWorkflowRequest
 > = core.serialization.object({
-    workflowDeploymentId: core.serialization.property("workflow_deployment_id", core.serialization.string().optional()),
+    workflowDeploymentId: core.serialization.property(
+        "workflow_deployment_id",
+        core.serialization.string().optionalNullable(),
+    ),
     workflowDeploymentName: core.serialization.property(
         "workflow_deployment_name",
-        core.serialization.string().optional(),
+        core.serialization.string().optionalNullable(),
     ),
-    label: core.serialization.string().optional(),
+    label: core.serialization.string().optionalNullable(),
     releaseTags: core.serialization.property(
         "release_tags",
-        core.serialization.list(core.serialization.string()).optional(),
+        core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
-    releaseDescription: core.serialization.property("release_description", core.serialization.string().optional()),
+    releaseDescription: core.serialization.property(
+        "release_description",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace DeploySandboxWorkflowRequest {
     export interface Raw {
-        workflow_deployment_id?: string | null;
-        workflow_deployment_name?: string | null;
-        label?: string | null;
-        release_tags?: string[] | null;
-        release_description?: string | null;
+        workflow_deployment_id?: (string | null) | null;
+        workflow_deployment_name?: (string | null) | null;
+        label?: (string | null) | null;
+        release_tags?: (string[] | null) | null;
+        release_description?: (string | null) | null;
     }
 }

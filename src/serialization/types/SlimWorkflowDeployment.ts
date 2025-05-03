@@ -22,7 +22,7 @@ export const SlimWorkflowDeployment: core.serialization.ObjectSchema<
     lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date()),
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     outputVariables: core.serialization.property("output_variables", core.serialization.list(VellumVariable)),
-    description: core.serialization.string().optional(),
+    description: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace SlimWorkflowDeployment {
@@ -36,6 +36,6 @@ export declare namespace SlimWorkflowDeployment {
         last_deployed_on: string;
         input_variables: VellumVariable.Raw[];
         output_variables: VellumVariable.Raw[];
-        description?: string | null;
+        description?: (string | null) | null;
     }
 }

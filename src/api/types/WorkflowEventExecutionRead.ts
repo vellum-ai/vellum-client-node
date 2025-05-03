@@ -6,14 +6,14 @@ import * as Vellum from "../index";
 
 export interface WorkflowEventExecutionRead {
     spanId: string;
-    parentContext?: Vellum.WorkflowDeploymentParentContext;
+    parentContext?: Vellum.WorkflowDeploymentParentContext | null;
     start: Date;
-    end?: Date;
+    end?: Date | null;
     inputs: Vellum.ExecutionVellumValue[];
     outputs: Vellum.ExecutionVellumValue[];
-    error?: Vellum.WorkflowError;
-    latestActual?: Vellum.WorkflowExecutionActual;
+    error?: Vellum.WorkflowError | null;
+    latestActual?: Vellum.WorkflowExecutionActual | null;
     metricResults: Vellum.WorkflowExecutionViewOnlineEvalMetricResult[];
-    usageResults?: Vellum.WorkflowExecutionUsageResult[];
+    usageResults?: Vellum.WorkflowExecutionUsageResult[] | null;
     spans: Vellum.VellumSpan[];
 }

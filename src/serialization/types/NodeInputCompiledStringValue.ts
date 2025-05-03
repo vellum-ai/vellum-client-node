@@ -13,7 +13,7 @@ export const NodeInputCompiledStringValue: core.serialization.ObjectSchema<
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
     type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optional(),
+    value: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace NodeInputCompiledStringValue {
@@ -21,6 +21,6 @@ export declare namespace NodeInputCompiledStringValue {
         node_input_id: string;
         key: string;
         type: "STRING";
-        value?: string | null;
+        value?: (string | null) | null;
     }
 }

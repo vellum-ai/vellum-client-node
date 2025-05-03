@@ -15,7 +15,7 @@ export const TestSuiteRunDeploymentReleaseTagExecConfigRequest: core.serializati
     data: TestSuiteRunDeploymentReleaseTagExecConfigDataRequest,
     testCaseIds: core.serialization.property(
         "test_case_ids",
-        core.serialization.list(core.serialization.string()).optional(),
+        core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
 });
 
@@ -23,6 +23,6 @@ export declare namespace TestSuiteRunDeploymentReleaseTagExecConfigRequest {
     export interface Raw {
         type: "DEPLOYMENT_RELEASE_TAG";
         data: TestSuiteRunDeploymentReleaseTagExecConfigDataRequest.Raw;
-        test_case_ids?: string[] | null;
+        test_case_ids?: (string[] | null) | null;
     }
 }

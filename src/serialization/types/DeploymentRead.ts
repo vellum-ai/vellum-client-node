@@ -19,10 +19,10 @@ export const DeploymentRead: core.serialization.ObjectSchema<serializers.Deploym
         environment: EnvironmentEnum.optional(),
         lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date()),
         inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
-        description: core.serialization.string().optional(),
+        description: core.serialization.string().optionalNullable(),
         activeModelVersionIds: core.serialization.property(
             "active_model_version_ids",
-            core.serialization.list(core.serialization.string()).optional(),
+            core.serialization.list(core.serialization.string()).optionalNullable(),
         ),
         lastDeployedHistoryItemId: core.serialization.property(
             "last_deployed_history_item_id",
@@ -40,8 +40,8 @@ export declare namespace DeploymentRead {
         environment?: EnvironmentEnum.Raw | null;
         last_deployed_on: string;
         input_variables: VellumVariable.Raw[];
-        description?: string | null;
-        active_model_version_ids?: string[] | null;
+        description?: (string | null) | null;
+        active_model_version_ids?: (string[] | null) | null;
         last_deployed_history_item_id: string;
     }
 }

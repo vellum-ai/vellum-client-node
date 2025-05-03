@@ -3,5 +3,5 @@
  */
 
 export interface ConditionalNodeResultData {
-    sourceHandleId?: string;
+    sourceHandleId?: string | null;
 }

@@ -12,16 +12,16 @@ export const PaginatedDeploymentReleaseTagReadList: core.serialization.ObjectSch
     Vellum.PaginatedDeploymentReleaseTagReadList
 > = core.serialization.object({
     count: core.serialization.number().optional(),
-    next: core.serialization.string().optional(),
-    previous: core.serialization.string().optional(),
+    next: core.serialization.string().optionalNullable(),
+    previous: core.serialization.string().optionalNullable(),
     results: core.serialization.list(DeploymentReleaseTagRead).optional(),
 });
 
 export declare namespace PaginatedDeploymentReleaseTagReadList {
     export interface Raw {
         count?: number | null;
-        next?: string | null;
-        previous?: string | null;
+        next?: (string | null) | null;
+        previous?: (string | null) | null;
         results?: DeploymentReleaseTagRead.Raw[] | null;
     }
 }

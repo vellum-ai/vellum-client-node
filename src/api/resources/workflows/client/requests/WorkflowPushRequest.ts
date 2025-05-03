@@ -13,8 +13,8 @@ import * as Vellum from "../../../../index";
 export interface WorkflowPushRequest {
     /** The execution configuration of the workflow. */
     execConfig: Vellum.WorkflowPushExecConfig;
-    workflowSandboxId?: string;
-    deploymentConfig?: Vellum.WorkflowPushDeploymentConfigRequest;
+    workflowSandboxId?: string | null;
+    deploymentConfig?: Vellum.WorkflowPushDeploymentConfigRequest | null;
     dryRun?: boolean;
     strict?: boolean;
 }

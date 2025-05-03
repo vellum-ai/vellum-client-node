@@ -8,17 +8,17 @@ import * as core from "../../core";
 
 export const AdHocExpandMeta: core.serialization.ObjectSchema<serializers.AdHocExpandMeta.Raw, Vellum.AdHocExpandMeta> =
     core.serialization.object({
-        cost: core.serialization.boolean().optional(),
-        modelName: core.serialization.property("model_name", core.serialization.boolean().optional()),
-        usage: core.serialization.boolean().optional(),
-        finishReason: core.serialization.property("finish_reason", core.serialization.boolean().optional()),
+        cost: core.serialization.boolean().optionalNullable(),
+        modelName: core.serialization.property("model_name", core.serialization.boolean().optionalNullable()),
+        usage: core.serialization.boolean().optionalNullable(),
+        finishReason: core.serialization.property("finish_reason", core.serialization.boolean().optionalNullable()),
     });
 
 export declare namespace AdHocExpandMeta {
     export interface Raw {
-        cost?: boolean | null;
-        model_name?: boolean | null;
-        usage?: boolean | null;
-        finish_reason?: boolean | null;
+        cost?: (boolean | null) | null;
+        model_name?: (boolean | null) | null;
+        usage?: (boolean | null) | null;
+        finish_reason?: (boolean | null) | null;
     }
 }

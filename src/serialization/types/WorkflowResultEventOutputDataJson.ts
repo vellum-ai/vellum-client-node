@@ -11,22 +11,22 @@ export const WorkflowResultEventOutputDataJson: core.serialization.ObjectSchema<
     serializers.WorkflowResultEventOutputDataJson.Raw,
     Vellum.WorkflowResultEventOutputDataJson
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string()),
-    delta: core.serialization.string().optional(),
+    delta: core.serialization.string().optionalNullable(),
     type: core.serialization.stringLiteral("JSON"),
     value: core.serialization.unknown(),
 });
 
 export declare namespace WorkflowResultEventOutputDataJson {
     export interface Raw {
-        id?: string | null;
+        id?: (string | null) | null;
         name: string;
         state: WorkflowNodeResultEventState.Raw;
         node_id: string;
-        delta?: string | null;
+        delta?: (string | null) | null;
         type: "JSON";
         value?: unknown;
     }

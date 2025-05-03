@@ -6,5 +6,5 @@ import * as Vellum from "../index";
 
 export interface CodeExecutionNodeResultData {
     output: Vellum.CodeExecutionNodeResultOutput;
-    logOutputId?: string;
+    logOutputId?: string | null;
 }

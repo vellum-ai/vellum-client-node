@@ -41,25 +41,32 @@ export class WorkflowDeployments {
      * @example
      *     await client.workflowDeployments.list()
      */
-    public async list(
+    public list(
         request: Vellum.WorkflowDeploymentsListRequest = {},
         requestOptions?: WorkflowDeployments.RequestOptions,
-    ): Promise<Vellum.PaginatedSlimWorkflowDeploymentList> {
+    ): core.HttpResponsePromise<Vellum.PaginatedSlimWorkflowDeploymentList> {
+        return core.HttpResponsePromise.fromPromise(this.__list(request, requestOptions));
+    }
+
+    private async __list(
+        request: Vellum.WorkflowDeploymentsListRequest = {},
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PaginatedSlimWorkflowDeploymentList>> {
         const { limit, offset, ordering, status } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+        if (limit !== undefined) {
+            _queryParams["limit"] = limit?.toString() ?? null;
         }
 
-        if (offset != null) {
-            _queryParams["offset"] = offset.toString();
+        if (offset !== undefined) {
+            _queryParams["offset"] = offset?.toString() ?? null;
         }
 
-        if (ordering != null) {
+        if (ordering !== undefined) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (status != null) {
+        if (status !== undefined) {
             _queryParams["status"] = serializers.WorkflowDeploymentsListRequestStatus.jsonOrThrow(status, {
                 unrecognizedObjectKeys: "strip",
             });
@@ -68,16 +75,16 @@ export class WorkflowDeployments {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 "v1/workflow-deployments",
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -91,18 +98,22 @@ export class WorkflowDeployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PaginatedSlimWorkflowDeploymentList.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PaginatedSlimWorkflowDeploymentList.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -111,12 +122,14 @@ export class WorkflowDeployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/workflow-deployments.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -130,23 +143,30 @@ export class WorkflowDeployments {
      * @example
      *     await client.workflowDeployments.retrieve("id")
      */
-    public async retrieve(
+    public retrieve(
         id: string,
         requestOptions?: WorkflowDeployments.RequestOptions,
-    ): Promise<Vellum.WorkflowDeploymentRead> {
+    ): core.HttpResponsePromise<Vellum.WorkflowDeploymentRead> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+    }
+
+    private async __retrieve(
+        id: string,
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowDeploymentRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-deployments/${encodeURIComponent(id)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -159,18 +179,22 @@ export class WorkflowDeployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkflowDeploymentRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.WorkflowDeploymentRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -179,12 +203,14 @@ export class WorkflowDeployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/workflow-deployments/{id}.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -197,38 +223,48 @@ export class WorkflowDeployments {
      * @example
      *     await client.workflowDeployments.listWorkflowDeploymentEventExecutions("id")
      */
-    public async listWorkflowDeploymentEventExecutions(
+    public listWorkflowDeploymentEventExecutions(
         id: string,
         request: Vellum.ListWorkflowDeploymentEventExecutionsRequest = {},
         requestOptions?: WorkflowDeployments.RequestOptions,
-    ): Promise<Vellum.WorkflowDeploymentEventExecutionsResponse> {
+    ): core.HttpResponsePromise<Vellum.WorkflowDeploymentEventExecutionsResponse> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__listWorkflowDeploymentEventExecutions(id, request, requestOptions),
+        );
+    }
+
+    private async __listWorkflowDeploymentEventExecutions(
+        id: string,
+        request: Vellum.ListWorkflowDeploymentEventExecutionsRequest = {},
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowDeploymentEventExecutionsResponse>> {
         const { filters, limit, offset } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (filters != null) {
+        if (filters !== undefined) {
             _queryParams["filters"] = filters;
         }
 
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+        if (limit !== undefined) {
+            _queryParams["limit"] = limit?.toString() ?? null;
         }
 
-        if (offset != null) {
-            _queryParams["offset"] = offset.toString();
+        if (offset !== undefined) {
+            _queryParams["offset"] = offset?.toString() ?? null;
         }
 
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-deployments/${encodeURIComponent(id)}/execution-events`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -242,18 +278,22 @@ export class WorkflowDeployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkflowDeploymentEventExecutionsResponse.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.WorkflowDeploymentEventExecutionsResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -262,6 +302,7 @@ export class WorkflowDeployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -270,6 +311,7 @@ export class WorkflowDeployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -282,24 +324,34 @@ export class WorkflowDeployments {
      * @example
      *     await client.workflowDeployments.workflowDeploymentEventExecution("execution_id", "id")
      */
-    public async workflowDeploymentEventExecution(
+    public workflowDeploymentEventExecution(
         executionId: string,
         id: string,
         requestOptions?: WorkflowDeployments.RequestOptions,
-    ): Promise<Vellum.WorkflowEventExecutionRead> {
+    ): core.HttpResponsePromise<Vellum.WorkflowEventExecutionRead> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__workflowDeploymentEventExecution(executionId, id, requestOptions),
+        );
+    }
+
+    private async __workflowDeploymentEventExecution(
+        executionId: string,
+        id: string,
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowEventExecutionRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-deployments/${encodeURIComponent(id)}/execution-events/${encodeURIComponent(executionId)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -312,18 +364,22 @@ export class WorkflowDeployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkflowEventExecutionRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.WorkflowEventExecutionRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -332,6 +388,7 @@ export class WorkflowDeployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -340,6 +397,7 @@ export class WorkflowDeployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -354,24 +412,34 @@ export class WorkflowDeployments {
      * @example
      *     await client.workflowDeployments.workflowDeploymentHistoryItemRetrieve("history_id_or_release_tag", "id")
      */
-    public async workflowDeploymentHistoryItemRetrieve(
+    public workflowDeploymentHistoryItemRetrieve(
         historyIdOrReleaseTag: string,
         id: string,
         requestOptions?: WorkflowDeployments.RequestOptions,
-    ): Promise<Vellum.WorkflowDeploymentHistoryItem> {
+    ): core.HttpResponsePromise<Vellum.WorkflowDeploymentHistoryItem> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__workflowDeploymentHistoryItemRetrieve(historyIdOrReleaseTag, id, requestOptions),
+        );
+    }
+
+    private async __workflowDeploymentHistoryItemRetrieve(
+        historyIdOrReleaseTag: string,
+        id: string,
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowDeploymentHistoryItem>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-deployments/${encodeURIComponent(id)}/history/${encodeURIComponent(historyIdOrReleaseTag)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -384,18 +452,22 @@ export class WorkflowDeployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkflowDeploymentHistoryItem.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.WorkflowDeploymentHistoryItem.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -404,6 +476,7 @@ export class WorkflowDeployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -412,6 +485,7 @@ export class WorkflowDeployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -426,26 +500,34 @@ export class WorkflowDeployments {
      * @example
      *     await client.workflowDeployments.listWorkflowReleaseTags("id")
      */
-    public async listWorkflowReleaseTags(
+    public listWorkflowReleaseTags(
         id: string,
         request: Vellum.ListWorkflowReleaseTagsRequest = {},
         requestOptions?: WorkflowDeployments.RequestOptions,
-    ): Promise<Vellum.PaginatedWorkflowReleaseTagReadList> {
+    ): core.HttpResponsePromise<Vellum.PaginatedWorkflowReleaseTagReadList> {
+        return core.HttpResponsePromise.fromPromise(this.__listWorkflowReleaseTags(id, request, requestOptions));
+    }
+
+    private async __listWorkflowReleaseTags(
+        id: string,
+        request: Vellum.ListWorkflowReleaseTagsRequest = {},
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PaginatedWorkflowReleaseTagReadList>> {
         const { limit, offset, ordering, source } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
+        if (limit !== undefined) {
+            _queryParams["limit"] = limit?.toString() ?? null;
         }
 
-        if (offset != null) {
-            _queryParams["offset"] = offset.toString();
+        if (offset !== undefined) {
+            _queryParams["offset"] = offset?.toString() ?? null;
         }
 
-        if (ordering != null) {
+        if (ordering !== undefined) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (source != null) {
+        if (source !== undefined) {
             _queryParams["source"] = serializers.ListWorkflowReleaseTagsRequestSource.jsonOrThrow(source, {
                 unrecognizedObjectKeys: "strip",
             });
@@ -454,16 +536,16 @@ export class WorkflowDeployments {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-deployments/${encodeURIComponent(id)}/release-tags`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -477,18 +559,22 @@ export class WorkflowDeployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.PaginatedWorkflowReleaseTagReadList.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.PaginatedWorkflowReleaseTagReadList.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -497,6 +583,7 @@ export class WorkflowDeployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -505,6 +592,7 @@ export class WorkflowDeployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -519,24 +607,32 @@ export class WorkflowDeployments {
      * @example
      *     await client.workflowDeployments.retrieveWorkflowReleaseTag("id", "name")
      */
-    public async retrieveWorkflowReleaseTag(
+    public retrieveWorkflowReleaseTag(
         id: string,
         name: string,
         requestOptions?: WorkflowDeployments.RequestOptions,
-    ): Promise<Vellum.WorkflowReleaseTagRead> {
+    ): core.HttpResponsePromise<Vellum.WorkflowReleaseTagRead> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieveWorkflowReleaseTag(id, name, requestOptions));
+    }
+
+    private async __retrieveWorkflowReleaseTag(
+        id: string,
+        name: string,
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowReleaseTagRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-deployments/${encodeURIComponent(id)}/release-tags/${encodeURIComponent(name)}`,
             ),
             method: "GET",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -549,18 +645,22 @@ export class WorkflowDeployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkflowReleaseTagRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.WorkflowReleaseTagRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -569,6 +669,7 @@ export class WorkflowDeployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -577,6 +678,7 @@ export class WorkflowDeployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }
@@ -592,25 +694,34 @@ export class WorkflowDeployments {
      * @example
      *     await client.workflowDeployments.updateWorkflowReleaseTag("id", "name")
      */
-    public async updateWorkflowReleaseTag(
+    public updateWorkflowReleaseTag(
         id: string,
         name: string,
         request: Vellum.PatchedWorkflowReleaseTagUpdateRequest = {},
         requestOptions?: WorkflowDeployments.RequestOptions,
-    ): Promise<Vellum.WorkflowReleaseTagRead> {
+    ): core.HttpResponsePromise<Vellum.WorkflowReleaseTagRead> {
+        return core.HttpResponsePromise.fromPromise(this.__updateWorkflowReleaseTag(id, name, request, requestOptions));
+    }
+
+    private async __updateWorkflowReleaseTag(
+        id: string,
+        name: string,
+        request: Vellum.PatchedWorkflowReleaseTagUpdateRequest = {},
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowReleaseTagRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Default)
-                        .base,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
                 `v1/workflow-deployments/${encodeURIComponent(id)}/release-tags/${encodeURIComponent(name)}`,
             ),
             method: "PATCH",
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.52",
-                "User-Agent": "vellum-ai/0.14.52",
+                "X-Fern-SDK-Version": "0.14.53",
+                "User-Agent": "vellum-ai/0.14.53",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -626,18 +737,22 @@ export class WorkflowDeployments {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return serializers.WorkflowReleaseTagRead.parseOrThrow(_response.body, {
-                unrecognizedObjectKeys: "passthrough",
-                allowUnrecognizedUnionMembers: true,
-                allowUnrecognizedEnumValues: true,
-                breadcrumbsPrefix: ["response"],
-            });
+            return {
+                data: serializers.WorkflowReleaseTagRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
             throw new errors.VellumError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
+                rawResponse: _response.rawResponse,
             });
         }
 
@@ -646,6 +761,7 @@ export class WorkflowDeployments {
                 throw new errors.VellumError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
@@ -654,6 +770,7 @@ export class WorkflowDeployments {
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
                 });
         }
     }

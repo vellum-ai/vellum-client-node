@@ -13,13 +13,13 @@ export const CodeExecutionNodeErrorResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     type: core.serialization.stringLiteral("ERROR"),
-    value: VellumError.optional(),
+    value: VellumError.optionalNullable(),
 });
 
 export declare namespace CodeExecutionNodeErrorResult {
     export interface Raw {
         id: string;
         type: "ERROR";
-        value?: VellumError.Raw | null;
+        value?: (VellumError.Raw | null) | null;
     }
 }

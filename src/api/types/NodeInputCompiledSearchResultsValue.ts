@@ -8,5 +8,5 @@ export interface NodeInputCompiledSearchResultsValue {
     nodeInputId: string;
     key: string;
     type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[];
+    value?: Vellum.SearchResult[] | null;
 }

@@ -12,14 +12,14 @@ export const SubmitWorkflowExecutionActualsRequest: core.serialization.Schema<
     Vellum.SubmitWorkflowExecutionActualsRequest
 > = core.serialization.object({
     actuals: core.serialization.list(SubmitWorkflowExecutionActualRequest),
-    executionId: core.serialization.property("execution_id", core.serialization.string().optional()),
-    externalId: core.serialization.property("external_id", core.serialization.string().optional()),
+    executionId: core.serialization.property("execution_id", core.serialization.string().optionalNullable()),
+    externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace SubmitWorkflowExecutionActualsRequest {
     export interface Raw {
         actuals: SubmitWorkflowExecutionActualRequest.Raw[];
-        execution_id?: string | null;
-        external_id?: string | null;
+        execution_id?: (string | null) | null;
+        external_id?: (string | null) | null;
     }
 }

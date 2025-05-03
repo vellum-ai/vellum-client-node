@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface ApiRequestParentContext {
-    parent?: Vellum.ParentContext;
-    links?: Vellum.SpanLink[];
+    parent?: Vellum.ParentContext | null;
+    links?: Vellum.SpanLink[] | null;
     type: "API_REQUEST";
     spanId: string;
 }

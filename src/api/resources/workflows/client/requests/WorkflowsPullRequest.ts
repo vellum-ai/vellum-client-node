@@ -3,8 +3,8 @@
  */
 
 export interface WorkflowsPullRequest {
-    excludeCode?: boolean;
-    includeJson?: boolean;
-    includeSandbox?: boolean;
-    strict?: boolean;
+    excludeCode?: boolean | null;
+    includeJson?: boolean | null;
+    includeSandbox?: boolean | null;
+    strict?: boolean | null;
 }

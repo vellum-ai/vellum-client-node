@@ -11,12 +11,12 @@ export const VellumAudioRequest: core.serialization.ObjectSchema<
     Vellum.VellumAudioRequest
 > = core.serialization.object({
     src: core.serialization.string(),
-    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace VellumAudioRequest {
     export interface Raw {
         src: string;
-        metadata?: Record<string, unknown> | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }

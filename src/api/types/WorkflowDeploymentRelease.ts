@@ -8,7 +8,7 @@ export interface WorkflowDeploymentRelease {
     id: string;
     created: Date;
     environment: Vellum.ReleaseEnvironment;
-    createdBy?: Vellum.ReleaseCreatedBy;
+    createdBy?: Vellum.ReleaseCreatedBy | null;
     workflowVersion: Vellum.WorkflowDeploymentReleaseWorkflowVersion;
     deployment: Vellum.WorkflowDeploymentReleaseWorkflowDeployment;
     description?: string;
