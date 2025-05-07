@@ -11,9 +11,10 @@ export const ExecuteApiRequestBody: core.serialization.Schema<
     Vellum.ExecuteApiRequestBody
 > = core.serialization.undiscriminatedUnion([
     core.serialization.string(),
+    core.serialization.list(core.serialization.unknown()),
     core.serialization.record(core.serialization.string(), core.serialization.unknown()),
 ]);
 
 export declare namespace ExecuteApiRequestBody {
-    export type Raw = string | Record<string, unknown>;
+    export type Raw = string | unknown[] | Record<string, unknown>;
 }
