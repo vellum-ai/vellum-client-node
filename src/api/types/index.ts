@@ -308,6 +308,8 @@ export * from "./PromptRequestInput";
 export * from "./PromptRequestJsonInput";
 export * from "./PromptRequestStringInput";
 export * from "./PromptSettings";
+export * from "./ComponentsSchemasPromptVersionBuildConfigSandbox";
+export * from "./PromptVersionBuildConfigSandbox";
 export * from "./RawPromptExecutionOverridesRequest";
 export * from "./ReductoChunkerConfig";
 export * from "./ReductoChunkerConfigRequest";
