@@ -5,16 +5,19 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { ComponentsSchemasPromptVersionBuildConfigSandbox } from "./ComponentsSchemasPromptVersionBuildConfigSandbox";
 
 export const PromptDeploymentReleasePromptVersion: core.serialization.ObjectSchema<
     serializers.PromptDeploymentReleasePromptVersion.Raw,
     Vellum.PromptDeploymentReleasePromptVersion
 > = core.serialization.object({
     id: core.serialization.string(),
+    buildConfig: core.serialization.property("build_config", ComponentsSchemasPromptVersionBuildConfigSandbox),
 });
 
 export declare namespace PromptDeploymentReleasePromptVersion {
     export interface Raw {
         id: string;
+        build_config: ComponentsSchemasPromptVersionBuildConfigSandbox.Raw;
     }
 }

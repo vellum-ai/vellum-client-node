@@ -83,8 +83,8 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.54",
-                "User-Agent": "vellum-ai/0.14.54",
+                "X-Fern-SDK-Version": "0.14.55",
+                "User-Agent": "vellum-ai/0.14.55",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -165,8 +165,8 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.54",
-                "User-Agent": "vellum-ai/0.14.54",
+                "X-Fern-SDK-Version": "0.14.55",
+                "User-Agent": "vellum-ai/0.14.55",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -263,8 +263,8 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.54",
-                "User-Agent": "vellum-ai/0.14.54",
+                "X-Fern-SDK-Version": "0.14.55",
+                "User-Agent": "vellum-ai/0.14.55",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -350,8 +350,8 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.54",
-                "User-Agent": "vellum-ai/0.14.54",
+                "X-Fern-SDK-Version": "0.14.55",
+                "User-Agent": "vellum-ai/0.14.55",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -403,7 +403,8 @@ export class WorkflowDeployments {
     }
 
     /**
-     * Retrieve a specific Workflow Deployment History Item by either its UUID or the name of a Release Tag that points to it.
+     * DEPRECATED: This endpoint is deprecated and will be removed in a future release. Please use the
+     * `retrieve_workflow_deployment_release` endpoint instead.
      *
      * @param {string} historyIdOrReleaseTag - Either the UUID of Workflow Deployment History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment History Item you'd like to retrieve.
      * @param {string} id - A UUID string identifying this workflow deployment.
@@ -438,8 +439,8 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.54",
-                "User-Agent": "vellum-ai/0.14.54",
+                "X-Fern-SDK-Version": "0.14.55",
+                "User-Agent": "vellum-ai/0.14.55",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -544,8 +545,8 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.54",
-                "User-Agent": "vellum-ai/0.14.54",
+                "X-Fern-SDK-Version": "0.14.55",
+                "User-Agent": "vellum-ai/0.14.55",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -631,8 +632,8 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.54",
-                "User-Agent": "vellum-ai/0.14.54",
+                "X-Fern-SDK-Version": "0.14.55",
+                "User-Agent": "vellum-ai/0.14.55",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -720,8 +721,8 @@ export class WorkflowDeployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.54",
-                "User-Agent": "vellum-ai/0.14.54",
+                "X-Fern-SDK-Version": "0.14.55",
+                "User-Agent": "vellum-ai/0.14.55",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
