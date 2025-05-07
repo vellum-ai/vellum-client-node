@@ -580,7 +580,8 @@ await client.deployments.retrieve("id");
 <dl>
 <dd>
 
-Retrieve a specific Deployment History Item by either its UUID or the name of a Release Tag that points to it.
+DEPRECATED: This endpoint is deprecated and will be removed in a future release. Please use the
+`retrieve_prompt_deployment_release` xendpoint instead.
 
 </dd>
 </dl>
@@ -860,6 +861,77 @@ await client.deployments.updateDeploymentReleaseTag("id", "name");
 </dl>
 </details>
 
+<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrievePromptDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.PromptDeploymentRelease</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a specific Prompt Deployment Release by either its UUID or the name of a Release Tag that points to it.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.deployments.retrievePromptDeploymentRelease("id", "release_id_or_release_tag");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this deployment.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**releaseIdOrReleaseTag:** `string` — Either the UUID of Prompt Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Prompt Deployment Release you'd like to retrieve.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Deployments.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrieveProviderPayload</a>({ ...params }) -> Vellum.DeploymentProviderPayloadResponse</code></summary>
 <dl>
 <dd>
@@ -930,150 +1002,6 @@ await client.deployments.retrieveProviderPayload({
 <dd>
 
 **requestOptions:** `Deployments.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-## ReleaseReviews
-
-<details><summary><code>client.releaseReviews.<a href="/src/api/resources/releaseReviews/client/Client.ts">retrievePromptDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.PromptDeploymentRelease</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve a specific Prompt Deployment Release by either its UUID or the name of a Release Tag that points to it.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.releaseReviews.retrievePromptDeploymentRelease("id", "release_id_or_release_tag");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — A UUID string identifying this deployment.
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**releaseIdOrReleaseTag:** `string` — Either the UUID of Prompt Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Prompt Deployment Release you'd like to retrieve.
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ReleaseReviews.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.releaseReviews.<a href="/src/api/resources/releaseReviews/client/Client.ts">retrieveWorkflowDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.WorkflowDeploymentRelease</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve a specific Workflow Deployment Release by either its UUID or the name of a Release Tag that points to it.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_or_release_tag");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — A UUID string identifying this workflow deployment.
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**releaseIdOrReleaseTag:** `string` — Either the UUID of Workflow Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment Release you'd like to retrieve.
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ReleaseReviews.RequestOptions`
 
 </dd>
 </dl>
@@ -3543,7 +3471,8 @@ await client.workflowDeployments.workflowDeploymentEventExecution("execution_id"
 <dl>
 <dd>
 
-Retrieve a specific Workflow Deployment History Item by either its UUID or the name of a Release Tag that points to it.
+DEPRECATED: This endpoint is deprecated and will be removed in a future release. Please use the
+`retrieve_workflow_deployment_release` endpoint instead.
 
 </dd>
 </dl>
@@ -3813,6 +3742,79 @@ await client.workflowDeployments.updateWorkflowReleaseTag("id", "name");
 <dd>
 
 **requestOptions:** `WorkflowDeployments.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## ReleaseReviews
+
+<details><summary><code>client.releaseReviews.<a href="/src/api/resources/releaseReviews/client/Client.ts">retrieveWorkflowDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.WorkflowDeploymentRelease</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a specific Workflow Deployment Release by either its UUID or the name of a Release Tag that points to it.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_or_release_tag");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this workflow deployment.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**releaseIdOrReleaseTag:** `string` — Either the UUID of Workflow Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment Release you'd like to retrieve.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ReleaseReviews.RequestOptions`
 
 </dd>
 </dl>
