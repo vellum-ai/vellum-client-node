@@ -35,7 +35,7 @@ export class ReleaseReviews {
     /**
      * Retrieve a specific Workflow Deployment Release by either its UUID or the name of a Release Tag that points to it.
      *
-     * @param {string} id - A UUID string identifying this workflow deployment.
+     * @param {string} id - Either the Workflow Deployment's ID or its unique name
      * @param {string} releaseIdOrReleaseTag - Either the UUID of Workflow Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment Release you'd like to retrieve.
      * @param {ReleaseReviews.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -68,8 +68,8 @@ export class ReleaseReviews {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.56",
-                "User-Agent": "vellum-ai/0.14.56",
+                "X-Fern-SDK-Version": "0.14.57",
+                "User-Agent": "vellum-ai/0.14.57",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
