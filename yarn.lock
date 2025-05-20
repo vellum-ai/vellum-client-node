@@ -673,16 +673,16 @@
     form-data "^4.0.0"
 
 "@types/node@*":
-  version "22.15.19"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.15.19.tgz#ba9f321675243af0456d607fa82a4865931e0cef"
-  integrity sha512-3vMNr4TzNQyjHcRZadojpRaD9Ofr6LsonZAoQ+HMUa/9ORTPoxVIw0e0mpqWpdjj8xybyCM+oKOUH2vwFu/oEw==
+  version "22.15.20"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.15.20.tgz#ce4f947a8ff31120032f66d46b0851554e9f25f6"
+  integrity sha512-A6BohGFRGHAscJsTslDCA9JG7qSJr/DWUvrvY8yi9IgnGtMxCyat7vvQ//MFa0DnLsyuS3wYTpLdw4Hf+Q5JXw==
   dependencies:
     undici-types "~6.21.0"
 
 "@types/node@^18.19.70":
-  version "18.19.101"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.101.tgz#6c08ca62bdbc745b60b885f3c38f571ea145ccff"
-  integrity sha512-Ykg7fcE3+cOQlLUv2Ds3zil6DVjriGQaSN/kEpl5HQ3DIGM6W0F2n9+GkWV4bRt7KjLymgzNdTnSKCbFUUJ7Kw==
+  version "18.19.102"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.102.tgz#b5fe360ce2937f039c16a8824233ea3c79130acf"
+  integrity sha512-8+SHxopyHeI9xdylfts948LTTr7ZOCSQWMEEDS1qmFIv1kdl03YoMcy3H2NhmxeozCxJiTw6al1h5PAp9h0a5w==
   dependencies:
     undici-types "~5.26.4"
 
@@ -692,12 +692,11 @@
   integrity sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==
 
 "@types/readable-stream@^4.0.18":
-  version "4.0.18"
-  resolved "https://registry.yarnpkg.com/@types/readable-stream/-/readable-stream-4.0.18.tgz#5d8d15d26c776500ce573cae580787d149823bfc"
-  integrity sha512-21jK/1j+Wg+7jVw1xnSwy/2Q1VgVjWuFssbYGTREPUBeZ+rqVFl2udq0IkxzPC0ZhOzVceUbyIACFZKLqKEBlA==
+  version "4.0.19"
+  resolved "https://registry.yarnpkg.com/@types/readable-stream/-/readable-stream-4.0.19.tgz#e2392f17a9e11aca6e6b21b537aa13bc96a57e46"
+  integrity sha512-6Tgd3lMocKwOul/kwAAgSebkhdMCLhRvcJ6CKHA6wdql2qNIwK6hw3Y4PZQxn9HcJogoC/1ZOmkFM7OZKH/VrA==
   dependencies:
     "@types/node" "*"
-    safe-buffer "~5.1.1"
 
 "@types/stack-utils@^2.0.0":
   version "2.0.3"
@@ -3454,9 +3453,9 @@ webpack-sources@^3.2.3:
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
 webpack@^5.97.1:
-  version "5.99.8"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.99.8.tgz#dd31a020b7c092d30c4c6d9a4edb95809e7f5946"
-  integrity sha512-lQ3CPiSTpfOnrEGeXDwoq5hIGzSjmwD72GdfVzF7CQAI7t47rJG9eDWvcEkEn3CUQymAElVvDg3YNTlCYj+qUQ==
+  version "5.99.9"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.99.9.tgz#d7de799ec17d0cce3c83b70744b4aedb537d8247"
+  integrity sha512-brOPwM3JnmOa+7kd3NsmOUOwbDAj8FT9xDsG3IW0MgbN9yZV7Oi/s/+MNQ/EcSMqw7qfoRyXPoeEWT8zLVdVGg==
   dependencies:
     "@types/eslint-scope" "^3.7.7"
     "@types/estree" "^1.0.6"
