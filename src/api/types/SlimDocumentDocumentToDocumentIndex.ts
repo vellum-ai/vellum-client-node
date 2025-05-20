@@ -10,6 +10,8 @@ import * as Vellum from "../index";
 export interface SlimDocumentDocumentToDocumentIndex {
     /** Vellum-generated ID that uniquely identifies this link. */
     id: string;
+    /** Vellum-generated ID that uniquely identifies the environment index this document is included in. */
+    environmentDocumentIndexId: string;
     /** Vellum-generated ID that uniquely identifies the index this document is included in. */
     documentIndexId: string;
     /**
