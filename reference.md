@@ -549,7 +549,7 @@ await client.deployments.retrieve("id");
 <dl>
 <dd>
 
-**id:** `string` — Either the Deployment's ID or its unique name
+**id:** `string` — Either the Prompt Deployment's ID or its unique name
 
 </dd>
 </dl>
@@ -621,7 +621,7 @@ await client.deployments.deploymentHistoryItemRetrieve("history_id_or_release_ta
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this deployment.
+**id:** `string` — Either the Prompt Deployment's ID or its unique name
 
 </dd>
 </dl>
@@ -755,7 +755,7 @@ await client.deployments.retrieveDeploymentReleaseTag("id", "name");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this deployment.
+**id:** `string` — Either the Prompt Deployment's ID or its unique name
 
 </dd>
 </dl>
@@ -826,7 +826,7 @@ await client.deployments.updateDeploymentReleaseTag("id", "name");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this deployment.
+**id:** `string` — Either the Prompt Deployment's ID or its unique name
 
 </dd>
 </dl>
@@ -905,7 +905,7 @@ await client.deployments.retrievePromptDeploymentRelease("id", "release_id_or_re
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this deployment.
+**id:** `string` — Either the Prompt Deployment's ID or its unique name
 
 </dd>
 </dl>
@@ -3512,7 +3512,7 @@ await client.workflowDeployments.workflowDeploymentHistoryItemRetrieve("history_
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this workflow deployment.
+**id:** `string` — Either the Workflow Deployment's ID or its unique name
 
 </dd>
 </dl>
@@ -3646,7 +3646,7 @@ await client.workflowDeployments.retrieveWorkflowReleaseTag("id", "name");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this workflow deployment.
+**id:** `string` — Either the Workflow Deployment's ID or its unique name
 
 </dd>
 </dl>
@@ -3717,7 +3717,7 @@ await client.workflowDeployments.updateWorkflowReleaseTag("id", "name");
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this workflow deployment.
+**id:** `string` — Either the Workflow Deployment's ID or its unique name
 
 </dd>
 </dl>
@@ -3798,7 +3798,7 @@ await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this workflow deployment.
+**id:** `string` — Either the Workflow Deployment's ID or its unique name
 
 </dd>
 </dl>

@@ -83,8 +83,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.58",
-                "User-Agent": "vellum-ai/0.14.58",
+                "X-Fern-SDK-Version": "0.14.59",
+                "User-Agent": "vellum-ai/0.14.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -137,7 +137,7 @@ export class Deployments {
     /**
      * Used to retrieve a Prompt Deployment given its ID or name.
      *
-     * @param {string} id - Either the Deployment's ID or its unique name
+     * @param {string} id - Either the Prompt Deployment's ID or its unique name
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -165,8 +165,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.58",
-                "User-Agent": "vellum-ai/0.14.58",
+                "X-Fern-SDK-Version": "0.14.59",
+                "User-Agent": "vellum-ai/0.14.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -220,7 +220,7 @@ export class Deployments {
      * `retrieve_prompt_deployment_release` xendpoint instead.
      *
      * @param {string} historyIdOrReleaseTag - Either the UUID of Deployment History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Deployment History Item you'd like to retrieve.
-     * @param {string} id - A UUID string identifying this deployment.
+     * @param {string} id - Either the Prompt Deployment's ID or its unique name
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -252,8 +252,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.58",
-                "User-Agent": "vellum-ai/0.14.58",
+                "X-Fern-SDK-Version": "0.14.59",
+                "User-Agent": "vellum-ai/0.14.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -358,8 +358,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.58",
-                "User-Agent": "vellum-ai/0.14.58",
+                "X-Fern-SDK-Version": "0.14.59",
+                "User-Agent": "vellum-ai/0.14.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -414,7 +414,7 @@ export class Deployments {
     /**
      * Retrieve a Deployment Release Tag by tag name, associated with a specified Deployment.
      *
-     * @param {string} id - A UUID string identifying this deployment.
+     * @param {string} id - Either the Prompt Deployment's ID or its unique name
      * @param {string} name - The name of the Release Tag associated with this Deployment that you'd like to retrieve.
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -445,8 +445,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.58",
-                "User-Agent": "vellum-ai/0.14.58",
+                "X-Fern-SDK-Version": "0.14.59",
+                "User-Agent": "vellum-ai/0.14.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -500,7 +500,7 @@ export class Deployments {
     /**
      * Updates an existing Release Tag associated with the specified Prompt Deployment.
      *
-     * @param {string} id - A UUID string identifying this deployment.
+     * @param {string} id - Either the Prompt Deployment's ID or its unique name
      * @param {string} name - The name of the Release Tag associated with this Deployment that you'd like to update.
      * @param {Vellum.PatchedDeploymentReleaseTagUpdateRequest} request
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
@@ -536,8 +536,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.58",
-                "User-Agent": "vellum-ai/0.14.58",
+                "X-Fern-SDK-Version": "0.14.59",
+                "User-Agent": "vellum-ai/0.14.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -594,7 +594,7 @@ export class Deployments {
     /**
      * Retrieve a specific Prompt Deployment Release by either its UUID or the name of a Release Tag that points to it.
      *
-     * @param {string} id - A UUID string identifying this deployment.
+     * @param {string} id - Either the Prompt Deployment's ID or its unique name
      * @param {string} releaseIdOrReleaseTag - Either the UUID of Prompt Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Prompt Deployment Release you'd like to retrieve.
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -627,8 +627,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.58",
-                "User-Agent": "vellum-ai/0.14.58",
+                "X-Fern-SDK-Version": "0.14.59",
+                "User-Agent": "vellum-ai/0.14.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -730,8 +730,8 @@ export class Deployments {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.58",
-                "User-Agent": "vellum-ai/0.14.58",
+                "X-Fern-SDK-Version": "0.14.59",
+                "User-Agent": "vellum-ai/0.14.59",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
