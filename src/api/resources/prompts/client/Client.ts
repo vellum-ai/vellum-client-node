@@ -75,8 +75,8 @@ export class Prompts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.63",
-                "User-Agent": "vellum-ai/0.14.63",
+                "X-Fern-SDK-Version": "0.14.64",
+                "User-Agent": "vellum-ai/0.14.64",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 Accept: "application/json",
@@ -182,8 +182,8 @@ export class Prompts {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.63",
-                "User-Agent": "vellum-ai/0.14.63",
+                "X-Fern-SDK-Version": "0.14.64",
+                "User-Agent": "vellum-ai/0.14.64",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
