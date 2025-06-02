@@ -1,6 +1,6 @@
 {
     "name": "vellum-ai",
-    "version": "0.14.65",
+    "version": "0.14.66",
     "private": false,
     "repository": "https://github.com/vellum-ai/vellum-client-node",
     "license": "MIT",
@@ -21,8 +21,8 @@
         "readable-stream": "^4.5.2",
         "form-data-encoder": "^4.0.2",
         "cdktf": "^0.20.5",
-        "constructs": "10.3.0",
-        "undici": "6.21.1"
+        "constructs": "^10.3.0",
+        "undici": "^6.21.1"
     },
     "devDependencies": {
         "@types/url-join": "4.0.1",
