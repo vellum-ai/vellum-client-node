@@ -68,8 +68,8 @@ export class ReleaseReviews {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.65",
-                "User-Agent": "vellum-ai/0.14.65",
+                "X-Fern-SDK-Version": "0.14.66",
+                "User-Agent": "vellum-ai/0.14.66",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
