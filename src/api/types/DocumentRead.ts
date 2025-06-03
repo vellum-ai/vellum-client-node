@@ -19,7 +19,6 @@ export interface DocumentRead {
      */
     status?: Vellum.DocumentStatus;
     originalFileUrl?: string | null;
-    processedFileUrl?: string | null;
     documentToDocumentIndexes: Vellum.DocumentDocumentToDocumentIndex[];
     /** A previously supplied JSON object containing metadata that can be filtered on when searching. */
     metadata?: Record<string, unknown> | null;
