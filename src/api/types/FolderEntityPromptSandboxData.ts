@@ -10,5 +10,6 @@ export interface FolderEntityPromptSandboxData {
     created: Date;
     modified: Date;
     status: Vellum.EntityStatus;
+    description?: string | null;
     lastDeployedOn?: Date | null;
 }
