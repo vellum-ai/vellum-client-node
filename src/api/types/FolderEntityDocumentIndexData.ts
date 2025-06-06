@@ -10,4 +10,5 @@ export interface FolderEntityDocumentIndexData {
     created: Date;
     modified: Date;
     status: Vellum.EntityStatus;
+    indexingConfig: Vellum.DocumentIndexIndexingConfig;
 }
