@@ -14,6 +14,7 @@ import { BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1 } from "./Basi
 import { HkunlpInstructorXlVectorizer } from "./HkunlpInstructorXlVectorizer";
 import { GoogleVertexAiVectorizerTextEmbedding004 } from "./GoogleVertexAiVectorizerTextEmbedding004";
 import { GoogleVertexAiVectorizerTextMultilingualEmbedding002 } from "./GoogleVertexAiVectorizerTextMultilingualEmbedding002";
+import { FastEmbedVectorizerBaaiBgeSmallEnV15 } from "./FastEmbedVectorizerBaaiBgeSmallEnV15";
 
 export const IndexingConfigVectorizer: core.serialization.Schema<
     serializers.IndexingConfigVectorizer.Raw,
@@ -28,6 +29,7 @@ export const IndexingConfigVectorizer: core.serialization.Schema<
     HkunlpInstructorXlVectorizer,
     GoogleVertexAiVectorizerTextEmbedding004,
     GoogleVertexAiVectorizerTextMultilingualEmbedding002,
+    FastEmbedVectorizerBaaiBgeSmallEnV15,
 ]);
 
 export declare namespace IndexingConfigVectorizer {
@@ -40,5 +42,6 @@ export declare namespace IndexingConfigVectorizer {
         | BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1.Raw
         | HkunlpInstructorXlVectorizer.Raw
         | GoogleVertexAiVectorizerTextEmbedding004.Raw
-        | GoogleVertexAiVectorizerTextMultilingualEmbedding002.Raw;
+        | GoogleVertexAiVectorizerTextMultilingualEmbedding002.Raw
+        | FastEmbedVectorizerBaaiBgeSmallEnV15.Raw;
 }
