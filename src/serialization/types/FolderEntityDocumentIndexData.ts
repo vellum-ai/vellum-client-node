@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { EntityStatus } from "./EntityStatus";
+import { DocumentIndexIndexingConfig } from "./DocumentIndexIndexingConfig";
 
 export const FolderEntityDocumentIndexData: core.serialization.ObjectSchema<
     serializers.FolderEntityDocumentIndexData.Raw,
@@ -16,6 +17,7 @@ export const FolderEntityDocumentIndexData: core.serialization.ObjectSchema<
     created: core.serialization.date(),
     modified: core.serialization.date(),
     status: EntityStatus,
+    indexingConfig: core.serialization.property("indexing_config", DocumentIndexIndexingConfig),
 });
 
 export declare namespace FolderEntityDocumentIndexData {
@@ -25,5 +27,6 @@ export declare namespace FolderEntityDocumentIndexData {
         created: string;
         modified: string;
         status: EntityStatus.Raw;
+        indexing_config: DocumentIndexIndexingConfig.Raw;
     }
 }
