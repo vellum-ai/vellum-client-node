@@ -13,4 +13,5 @@ export type IndexingConfigVectorizerRequest =
     | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1Request
     | Vellum.HkunlpInstructorXlVectorizerRequest
     | Vellum.GoogleVertexAiVectorizerTextEmbedding004Request
-    | Vellum.GoogleVertexAiVectorizerTextMultilingualEmbedding002Request;
+    | Vellum.GoogleVertexAiVectorizerTextMultilingualEmbedding002Request
+    | Vellum.FastEmbedVectorizerBaaiBgeSmallEnV15Request;

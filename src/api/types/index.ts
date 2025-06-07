@@ -114,6 +114,8 @@ export * from "./ExecutionVellumValue";
 export * from "./ExternalInputDescriptor";
 export * from "./ExternalTestCaseExecution";
 export * from "./ExternalTestCaseExecutionRequest";
+export * from "./FastEmbedVectorizerBaaiBgeSmallEnV15";
+export * from "./FastEmbedVectorizerBaaiBgeSmallEnV15Request";
 export * from "./FinishReasonEnum";
 export * from "./FolderEntity";
 export * from "./FolderEntityDocumentIndex";
