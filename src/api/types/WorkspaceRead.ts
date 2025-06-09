@@ -3,9 +3,9 @@
  */
 
 export interface WorkspaceRead {
-    id: string;
+    id?: string;
     /** The name of the Workspace. */
     name: string;
-    label: string;
-    created: Date;
+    label?: string;
+    created?: Date;
 }

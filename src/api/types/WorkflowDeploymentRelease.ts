@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface WorkflowDeploymentRelease {
-    id: string;
-    created: Date;
+    id?: string;
+    created?: Date;
     environment: Vellum.ReleaseEnvironment;
     createdBy?: Vellum.ReleaseCreatedBy | null;
     workflowVersion: Vellum.WorkflowDeploymentReleaseWorkflowVersion;
