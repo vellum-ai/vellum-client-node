@@ -13,12 +13,12 @@ export const WorkflowDeploymentRead: core.serialization.ObjectSchema<
     serializers.WorkflowDeploymentRead.Raw,
     Vellum.WorkflowDeploymentRead
 > = core.serialization.object({
-    id: core.serialization.string(),
+    id: core.serialization.string().optional(),
     name: core.serialization.string(),
     label: core.serialization.string(),
     status: EntityStatus.optional(),
     environment: EnvironmentEnum.optional(),
-    created: core.serialization.date(),
+    created: core.serialization.date().optional(),
     lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date()),
     lastDeployedHistoryItemId: core.serialization.property(
         "last_deployed_history_item_id",
@@ -31,12 +31,12 @@ export const WorkflowDeploymentRead: core.serialization.ObjectSchema<
 
 export declare namespace WorkflowDeploymentRead {
     export interface Raw {
-        id: string;
+        id?: string | null;
         name: string;
         label: string;
         status?: EntityStatus.Raw | null;
         environment?: EnvironmentEnum.Raw | null;
-        created: string;
+        created?: string | null;
         last_deployed_on: string;
         last_deployed_history_item_id: string;
         input_variables: VellumVariable.Raw[];

@@ -9,7 +9,7 @@ import * as Vellum from "../index";
  */
 export interface TestCaseErrorVariableValue {
     variableId: string;
-    name: string;
+    name?: string;
     type: "ERROR";
     value?: Vellum.VellumError | null;
 }

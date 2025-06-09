@@ -12,8 +12,8 @@ export const DocumentIndexRead: core.serialization.ObjectSchema<
     serializers.DocumentIndexRead.Raw,
     Vellum.DocumentIndexRead
 > = core.serialization.object({
-    id: core.serialization.string(),
-    created: core.serialization.date(),
+    id: core.serialization.string().optional(),
+    created: core.serialization.date().optional(),
     label: core.serialization.string(),
     name: core.serialization.string(),
     status: EntityStatus.optional(),
@@ -22,8 +22,8 @@ export const DocumentIndexRead: core.serialization.ObjectSchema<
 
 export declare namespace DocumentIndexRead {
     export interface Raw {
-        id: string;
-        created: string;
+        id?: string | null;
+        created?: string | null;
         label: string;
         name: string;
         status?: EntityStatus.Raw | null;

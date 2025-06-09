@@ -11,6 +11,6 @@ export interface MetricDefinitionHistoryItem {
     /** A name that uniquely identifies this metric within its workspace */
     name: string;
     description: string;
-    inputVariables: Vellum.VellumVariable[];
-    outputVariables: Vellum.VellumVariable[];
+    inputVariables?: Vellum.VellumVariable[];
+    outputVariables?: Vellum.VellumVariable[];
 }

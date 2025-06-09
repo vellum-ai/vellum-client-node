@@ -11,7 +11,7 @@ export const TestCaseArrayVariableValue: core.serialization.ObjectSchema<
     Vellum.TestCaseArrayVariableValue
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
-    name: core.serialization.string(),
+    name: core.serialization.string().optional(),
     type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
 });
@@ -19,7 +19,7 @@ export const TestCaseArrayVariableValue: core.serialization.ObjectSchema<
 export declare namespace TestCaseArrayVariableValue {
     export interface Raw {
         variable_id: string;
-        name: string;
+        name?: string | null;
         type: "ARRAY";
         value?: (serializers.VellumValue.Raw[] | null) | null;
     }

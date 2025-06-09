@@ -12,7 +12,7 @@ export const ContainerImageRead: core.serialization.ObjectSchema<
     serializers.ContainerImageRead.Raw,
     Vellum.ContainerImageRead
 > = core.serialization.object({
-    id: core.serialization.string(),
+    id: core.serialization.string().optional(),
     name: core.serialization.string(),
     visibility: EntityVisibility,
     created: core.serialization.date(),
@@ -24,7 +24,7 @@ export const ContainerImageRead: core.serialization.ObjectSchema<
 
 export declare namespace ContainerImageRead {
     export interface Raw {
-        id: string;
+        id?: string | null;
         name: string;
         visibility: EntityVisibility.Raw;
         created: string;

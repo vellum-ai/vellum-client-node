@@ -8,17 +8,17 @@ import * as core from "../../core";
 
 export const WorkspaceRead: core.serialization.ObjectSchema<serializers.WorkspaceRead.Raw, Vellum.WorkspaceRead> =
     core.serialization.object({
-        id: core.serialization.string(),
+        id: core.serialization.string().optional(),
         name: core.serialization.string(),
-        label: core.serialization.string(),
-        created: core.serialization.date(),
+        label: core.serialization.string().optional(),
+        created: core.serialization.date().optional(),
     });
 
 export declare namespace WorkspaceRead {
     export interface Raw {
-        id: string;
+        id?: string | null;
         name: string;
-        label: string;
-        created: string;
+        label?: string | null;
+        created?: string | null;
     }
 }

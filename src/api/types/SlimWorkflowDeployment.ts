@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 export interface SlimWorkflowDeployment {
-    id: string;
+    id?: string;
     /** A name that uniquely identifies this workflow deployment within its workspace */
     name: string;
     /** A human-readable label for the workflow deployment */
@@ -25,7 +25,7 @@ export interface SlimWorkflowDeployment {
      * * `PRODUCTION` - Production
      */
     environment?: Vellum.EnvironmentEnum;
-    created: Date;
+    created?: Date;
     lastDeployedOn: Date;
     /** The input variables this Workflow Deployment expects to receive values for when it is executed. */
     inputVariables: Vellum.VellumVariable[];
