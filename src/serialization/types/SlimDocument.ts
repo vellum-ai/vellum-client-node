@@ -12,7 +12,7 @@ import { SlimDocumentDocumentToDocumentIndex } from "./SlimDocumentDocumentToDoc
 
 export const SlimDocument: core.serialization.ObjectSchema<serializers.SlimDocument.Raw, Vellum.SlimDocument> =
     core.serialization.object({
-        id: core.serialization.string(),
+        id: core.serialization.string().optional(),
         externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
         lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.date()),
         label: core.serialization.string(),
@@ -34,7 +34,7 @@ export const SlimDocument: core.serialization.ObjectSchema<serializers.SlimDocum
 
 export declare namespace SlimDocument {
     export interface Raw {
-        id: string;
+        id?: string | null;
         external_id?: (string | null) | null;
         last_uploaded_at: string;
         label: string;

@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface PromptDeploymentRelease {
-    id: string;
-    created: Date;
+    id?: string;
+    created?: Date;
     environment: Vellum.ReleaseEnvironment;
     createdBy?: Vellum.ReleaseCreatedBy | null;
     promptVersion: Vellum.PromptDeploymentReleasePromptVersion;

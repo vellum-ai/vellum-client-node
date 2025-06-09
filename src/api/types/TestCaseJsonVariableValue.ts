@@ -7,7 +7,7 @@
  */
 export interface TestCaseJsonVariableValue {
     variableId: string;
-    name: string;
+    name?: string;
     type: "JSON";
     value?: unknown;
 }
