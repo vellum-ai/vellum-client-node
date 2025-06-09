@@ -60,8 +60,8 @@ export class Organizations {
             headers: {
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.69",
-                "User-Agent": "vellum-ai/0.14.69",
+                "X-Fern-SDK-Version": "0.14.70",
+                "User-Agent": "vellum-ai/0.14.70",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
