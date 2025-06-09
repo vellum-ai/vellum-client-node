@@ -3,6 +3,6 @@
  */
 
 export interface ReleaseReviewReviewer {
-    id: string;
+    id?: string;
     fullName?: string;
 }

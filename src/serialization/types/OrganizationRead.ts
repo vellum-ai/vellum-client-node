@@ -11,7 +11,7 @@ export const OrganizationRead: core.serialization.ObjectSchema<
     serializers.OrganizationRead.Raw,
     Vellum.OrganizationRead
 > = core.serialization.object({
-    id: core.serialization.string(),
+    id: core.serialization.string().optional(),
     name: core.serialization.string(),
     allowStaffAccess: core.serialization.property("allow_staff_access", core.serialization.boolean().optional()),
     newMemberJoinBehavior: core.serialization.property("new_member_join_behavior", NewMemberJoinBehaviorEnum),
@@ -19,7 +19,7 @@ export const OrganizationRead: core.serialization.ObjectSchema<
 
 export declare namespace OrganizationRead {
     export interface Raw {
-        id: string;
+        id?: string | null;
         name: string;
         allow_staff_access?: boolean | null;
         new_member_join_behavior: NewMemberJoinBehaviorEnum.Raw;

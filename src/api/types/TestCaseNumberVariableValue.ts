@@ -7,7 +7,7 @@
  */
 export interface TestCaseNumberVariableValue {
     variableId: string;
-    name: string;
+    name?: string;
     type: "NUMBER";
     value?: number | null;
 }

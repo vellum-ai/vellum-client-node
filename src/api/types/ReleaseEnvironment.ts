@@ -3,7 +3,7 @@
  */
 
 export interface ReleaseEnvironment {
-    id: string;
+    id?: string;
     name: string;
     label: string;
 }

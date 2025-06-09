@@ -10,11 +10,11 @@ export const PromptDeploymentReleasePromptDeployment: core.serialization.ObjectS
     serializers.PromptDeploymentReleasePromptDeployment.Raw,
     Vellum.PromptDeploymentReleasePromptDeployment
 > = core.serialization.object({
-    name: core.serialization.string(),
+    name: core.serialization.string().optional(),
 });
 
 export declare namespace PromptDeploymentReleasePromptDeployment {
     export interface Raw {
-        name: string;
+        name?: string | null;
     }
 }
