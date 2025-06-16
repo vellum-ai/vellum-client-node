@@ -4,7 +4,7 @@
 
 export interface WorkflowSandboxExample {
     id: string;
-    label: string;
+    label?: string;
     description?: string | null;
     iconName?: string | null;
 }

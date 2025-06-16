@@ -8,13 +8,13 @@ import * as core from "../../core";
 
 export const MlModelRead: core.serialization.ObjectSchema<serializers.MlModelRead.Raw, Vellum.MlModelRead> =
     core.serialization.object({
-        id: core.serialization.string(),
+        id: core.serialization.string().optional(),
         name: core.serialization.string(),
     });
 
 export declare namespace MlModelRead {
     export interface Raw {
-        id: string;
+        id?: string | null;
         name: string;
     }
 }

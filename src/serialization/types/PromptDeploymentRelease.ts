@@ -16,8 +16,8 @@ export const PromptDeploymentRelease: core.serialization.ObjectSchema<
     serializers.PromptDeploymentRelease.Raw,
     Vellum.PromptDeploymentRelease
 > = core.serialization.object({
-    id: core.serialization.string(),
-    created: core.serialization.date(),
+    id: core.serialization.string().optional(),
+    created: core.serialization.date().optional(),
     environment: ReleaseEnvironment,
     createdBy: core.serialization.property("created_by", ReleaseCreatedBy.optionalNullable()),
     promptVersion: core.serialization.property("prompt_version", PromptDeploymentReleasePromptVersion),
@@ -29,8 +29,8 @@ export const PromptDeploymentRelease: core.serialization.ObjectSchema<
 
 export declare namespace PromptDeploymentRelease {
     export interface Raw {
-        id: string;
-        created: string;
+        id?: string | null;
+        created?: string | null;
         environment: ReleaseEnvironment.Raw;
         created_by?: (ReleaseCreatedBy.Raw | null) | null;
         prompt_version: PromptDeploymentReleasePromptVersion.Raw;
