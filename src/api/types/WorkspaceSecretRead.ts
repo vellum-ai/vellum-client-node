@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface WorkspaceSecretRead {
-    id: string;
-    modified: Date;
+    id?: string;
+    modified?: Date;
     name: string;
     label: string;
     secretType: Vellum.SecretTypeEnum;

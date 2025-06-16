@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface DocumentIndexRead {
-    id: string;
-    created: Date;
+    id?: string;
+    created?: Date;
     /** A human-readable label for the document index */
     label: string;
     /** A name that uniquely identifies this index within its workspace */

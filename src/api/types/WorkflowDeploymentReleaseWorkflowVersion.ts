@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 export interface WorkflowDeploymentReleaseWorkflowVersion {
-    id: string;
-    inputVariables: Vellum.VellumVariable[];
-    outputVariables: Vellum.VellumVariable[];
+    id?: string;
+    inputVariables?: Vellum.VellumVariable[];
+    outputVariables?: Vellum.VellumVariable[];
 }

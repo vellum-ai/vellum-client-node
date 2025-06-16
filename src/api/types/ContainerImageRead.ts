@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 export interface ContainerImageRead {
-    id: string;
+    id?: string;
     name: string;
     visibility: Vellum.EntityVisibility;
     created: Date;

@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface TestSuiteRunRead {
-    id: string;
-    created: Date;
+    id?: string;
+    created?: Date;
     testSuite: Vellum.TestSuiteRunTestSuite;
     /**
      * The current state of this run

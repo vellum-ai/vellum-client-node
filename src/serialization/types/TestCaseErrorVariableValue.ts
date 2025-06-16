@@ -12,7 +12,7 @@ export const TestCaseErrorVariableValue: core.serialization.ObjectSchema<
     Vellum.TestCaseErrorVariableValue
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
-    name: core.serialization.string(),
+    name: core.serialization.string().optional(),
     type: core.serialization.stringLiteral("ERROR"),
     value: VellumError.optionalNullable(),
 });
@@ -20,7 +20,7 @@ export const TestCaseErrorVariableValue: core.serialization.ObjectSchema<
 export declare namespace TestCaseErrorVariableValue {
     export interface Raw {
         variable_id: string;
-        name: string;
+        name?: string | null;
         type: "ERROR";
         value?: (VellumError.Raw | null) | null;
     }
