@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 export interface DocumentRead {
-    id: string;
+    id?: string;
     /** The unique id of this document as it exists in the user's system. */
     externalId?: string | null;
     lastUploadedAt: Date;

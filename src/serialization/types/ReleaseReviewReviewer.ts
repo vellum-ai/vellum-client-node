@@ -10,13 +10,13 @@ export const ReleaseReviewReviewer: core.serialization.ObjectSchema<
     serializers.ReleaseReviewReviewer.Raw,
     Vellum.ReleaseReviewReviewer
 > = core.serialization.object({
-    id: core.serialization.string(),
+    id: core.serialization.string().optional(),
     fullName: core.serialization.property("full_name", core.serialization.string().optional()),
 });
 
 export declare namespace ReleaseReviewReviewer {
     export interface Raw {
-        id: string;
+        id?: string | null;
         full_name?: string | null;
     }
 }

@@ -11,8 +11,8 @@ export const WorkspaceSecretRead: core.serialization.ObjectSchema<
     serializers.WorkspaceSecretRead.Raw,
     Vellum.WorkspaceSecretRead
 > = core.serialization.object({
-    id: core.serialization.string(),
-    modified: core.serialization.date(),
+    id: core.serialization.string().optional(),
+    modified: core.serialization.date().optional(),
     name: core.serialization.string(),
     label: core.serialization.string(),
     secretType: core.serialization.property("secret_type", SecretTypeEnum),
@@ -20,8 +20,8 @@ export const WorkspaceSecretRead: core.serialization.ObjectSchema<
 
 export declare namespace WorkspaceSecretRead {
     export interface Raw {
-        id: string;
-        modified: string;
+        id?: string | null;
+        modified?: string | null;
         name: string;
         label: string;
         secret_type: SecretTypeEnum.Raw;

@@ -12,7 +12,7 @@ export const TestCaseChatHistoryVariableValue: core.serialization.ObjectSchema<
     Vellum.TestCaseChatHistoryVariableValue
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
-    name: core.serialization.string(),
+    name: core.serialization.string().optional(),
     type: core.serialization.stringLiteral("CHAT_HISTORY"),
     value: core.serialization.list(ChatMessage).optionalNullable(),
 });
@@ -20,7 +20,7 @@ export const TestCaseChatHistoryVariableValue: core.serialization.ObjectSchema<
 export declare namespace TestCaseChatHistoryVariableValue {
     export interface Raw {
         variable_id: string;
-        name: string;
+        name?: string | null;
         type: "CHAT_HISTORY";
         value?: (ChatMessage.Raw[] | null) | null;
     }

@@ -10,14 +10,14 @@ export const ReleaseEnvironment: core.serialization.ObjectSchema<
     serializers.ReleaseEnvironment.Raw,
     Vellum.ReleaseEnvironment
 > = core.serialization.object({
-    id: core.serialization.string(),
+    id: core.serialization.string().optional(),
     name: core.serialization.string(),
     label: core.serialization.string(),
 });
 
 export declare namespace ReleaseEnvironment {
     export interface Raw {
-        id: string;
+        id?: string | null;
         name: string;
         label: string;
     }
