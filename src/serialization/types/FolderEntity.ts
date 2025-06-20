@@ -10,6 +10,7 @@ import { FolderEntityPromptSandbox } from "./FolderEntityPromptSandbox";
 import { FolderEntityWorkflowSandbox } from "./FolderEntityWorkflowSandbox";
 import { FolderEntityDocumentIndex } from "./FolderEntityDocumentIndex";
 import { FolderEntityTestSuite } from "./FolderEntityTestSuite";
+import { FolderEntityDataset } from "./FolderEntityDataset";
 
 export const FolderEntity: core.serialization.Schema<serializers.FolderEntity.Raw, Vellum.FolderEntity> =
     core.serialization.undiscriminatedUnion([
@@ -18,6 +19,7 @@ export const FolderEntity: core.serialization.Schema<serializers.FolderEntity.Ra
         FolderEntityWorkflowSandbox,
         FolderEntityDocumentIndex,
         FolderEntityTestSuite,
+        FolderEntityDataset,
     ]);
 
 export declare namespace FolderEntity {
@@ -26,5 +28,6 @@ export declare namespace FolderEntity {
         | FolderEntityPromptSandbox.Raw
         | FolderEntityWorkflowSandbox.Raw
         | FolderEntityDocumentIndex.Raw
-        | FolderEntityTestSuite.Raw;
+        | FolderEntityTestSuite.Raw
+        | FolderEntityDataset.Raw;
 }

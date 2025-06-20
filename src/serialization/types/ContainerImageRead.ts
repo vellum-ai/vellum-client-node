@@ -7,12 +7,14 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { EntityVisibility } from "./EntityVisibility";
 import { ContainerImageContainerImageTag } from "./ContainerImageContainerImageTag";
+import { BuildStatusEnum } from "./BuildStatusEnum";
+import { ContainerImageBuildConfig } from "./ContainerImageBuildConfig";
 
 export const ContainerImageRead: core.serialization.ObjectSchema<
     serializers.ContainerImageRead.Raw,
     Vellum.ContainerImageRead
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string(),
     name: core.serialization.string(),
     visibility: EntityVisibility,
     created: core.serialization.date(),
@@ -20,11 +22,13 @@ export const ContainerImageRead: core.serialization.ObjectSchema<
     repository: core.serialization.string(),
     sha: core.serialization.string(),
     tags: core.serialization.list(ContainerImageContainerImageTag),
+    buildStatus: core.serialization.property("build_status", BuildStatusEnum.optionalNullable()),
+    buildConfig: core.serialization.property("build_config", ContainerImageBuildConfig.optionalNullable()),
 });
 
 export declare namespace ContainerImageRead {
     export interface Raw {
-        id?: string | null;
+        id: string;
         name: string;
         visibility: EntityVisibility.Raw;
         created: string;
@@ -32,5 +36,7 @@ export declare namespace ContainerImageRead {
         repository: string;
         sha: string;
         tags: ContainerImageContainerImageTag.Raw[];
+        build_status?: (BuildStatusEnum.Raw | null) | null;
+        build_config?: (ContainerImageBuildConfig.Raw | null) | null;
     }
 }

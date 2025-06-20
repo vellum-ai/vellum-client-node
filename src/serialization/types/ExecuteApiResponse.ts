@@ -13,7 +13,7 @@ export const ExecuteApiResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     statusCode: core.serialization.property("status_code", core.serialization.number()),
     text: core.serialization.string(),
-    json: ExecuteApiResponseJson,
+    json: ExecuteApiResponseJson.optionalNullable(),
     headers: core.serialization.record(core.serialization.string(), core.serialization.string()),
 });
 
@@ -21,7 +21,7 @@ export declare namespace ExecuteApiResponse {
     export interface Raw {
         status_code: number;
         text: string;
-        json: ExecuteApiResponseJson.Raw;
+        json?: (ExecuteApiResponseJson.Raw | null) | null;
         headers: Record<string, string>;
     }
 }

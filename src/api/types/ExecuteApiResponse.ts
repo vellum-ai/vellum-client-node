@@ -7,6 +7,6 @@ import * as Vellum from "../index";
 export interface ExecuteApiResponse {
     statusCode: number;
     text: string;
-    json: Vellum.ExecuteApiResponseJson;
+    json?: Vellum.ExecuteApiResponseJson | null;
     headers: Record<string, string>;
 }

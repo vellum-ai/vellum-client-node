@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 export interface ContainerImageRead {
-    id?: string;
+    id: string;
     name: string;
     visibility: Vellum.EntityVisibility;
     created: Date;
@@ -13,4 +13,6 @@ export interface ContainerImageRead {
     repository: string;
     sha: string;
     tags: Vellum.ContainerImageContainerImageTag[];
+    buildStatus?: Vellum.BuildStatusEnum | null;
+    buildConfig?: Vellum.ContainerImageBuildConfig | null;
 }

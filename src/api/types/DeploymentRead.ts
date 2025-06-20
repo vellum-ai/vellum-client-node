@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface DeploymentRead {
-    id?: string;
-    created?: Date;
+    id: string;
+    created: Date;
     /** A human-readable label for the deployment */
     label: string;
     /** A name that uniquely identifies this deployment within its workspace */

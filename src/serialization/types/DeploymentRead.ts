@@ -11,8 +11,8 @@ import { VellumVariable } from "./VellumVariable";
 
 export const DeploymentRead: core.serialization.ObjectSchema<serializers.DeploymentRead.Raw, Vellum.DeploymentRead> =
     core.serialization.object({
-        id: core.serialization.string().optional(),
-        created: core.serialization.date().optional(),
+        id: core.serialization.string(),
+        created: core.serialization.date(),
         label: core.serialization.string(),
         name: core.serialization.string(),
         status: EntityStatus.optional(),
@@ -32,8 +32,8 @@ export const DeploymentRead: core.serialization.ObjectSchema<serializers.Deploym
 
 export declare namespace DeploymentRead {
     export interface Raw {
-        id?: string | null;
-        created?: string | null;
+        id: string;
+        created: string;
         label: string;
         name: string;
         status?: EntityStatus.Raw | null;

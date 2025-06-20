@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 export interface OrganizationRead {
-    id?: string;
+    id: string;
     name: string;
     allowStaffAccess?: boolean;
     newMemberJoinBehavior: Vellum.NewMemberJoinBehaviorEnum;
