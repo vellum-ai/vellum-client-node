@@ -9,4 +9,5 @@ export type FolderEntity =
     | Vellum.FolderEntityPromptSandbox
     | Vellum.FolderEntityWorkflowSandbox
     | Vellum.FolderEntityDocumentIndex
-    | Vellum.FolderEntityTestSuite;
+    | Vellum.FolderEntityTestSuite
+    | Vellum.FolderEntityDataset;

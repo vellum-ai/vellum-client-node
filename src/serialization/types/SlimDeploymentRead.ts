@@ -13,8 +13,8 @@ export const SlimDeploymentRead: core.serialization.ObjectSchema<
     serializers.SlimDeploymentRead.Raw,
     Vellum.SlimDeploymentRead
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
-    created: core.serialization.date().optional(),
+    id: core.serialization.string(),
+    created: core.serialization.date(),
     label: core.serialization.string(),
     name: core.serialization.string(),
     status: EntityStatus.optional(),
@@ -26,8 +26,8 @@ export const SlimDeploymentRead: core.serialization.ObjectSchema<
 
 export declare namespace SlimDeploymentRead {
     export interface Raw {
-        id?: string | null;
-        created?: string | null;
+        id: string;
+        created: string;
         label: string;
         name: string;
         status?: EntityStatus.Raw | null;
