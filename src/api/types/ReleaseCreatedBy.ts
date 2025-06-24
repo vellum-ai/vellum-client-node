@@ -3,7 +3,7 @@
  */
 
 export interface ReleaseCreatedBy {
-    id?: string;
+    id: string;
     fullName?: string;
     email: string;
 }

@@ -6,7 +6,7 @@ import * as Vellum from "../index";
 
 export interface SlimDocument {
     /** Vellum-generated ID that uniquely identifies this document. */
-    id?: string;
+    id: string;
     /** The external ID that was originally provided when uploading the document. */
     externalId?: string | null;
     /** A timestamp representing when this document was most recently uploaded. */

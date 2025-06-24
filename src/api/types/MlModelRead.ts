@@ -6,7 +6,7 @@
  * An ML Model that your Workspace has access to.
  */
 export interface MlModelRead {
-    id?: string;
+    id: string;
     /** The unique name of the ML Model. */
     name: string;
 }

@@ -6,10 +6,12 @@
  * * `USER_DEFINED` - User Defined
  * * `HMAC` - Hmac
  * * `INTERNAL_API_KEY` - Internal Api Key
+ * * `EXTERNALLY_PROVISIONED` - Externally Provisioned
  */
-export type SecretTypeEnum = "USER_DEFINED" | "HMAC" | "INTERNAL_API_KEY";
+export type SecretTypeEnum = "USER_DEFINED" | "HMAC" | "INTERNAL_API_KEY" | "EXTERNALLY_PROVISIONED";
 export const SecretTypeEnum = {
     UserDefined: "USER_DEFINED",
     Hmac: "HMAC",
     InternalApiKey: "INTERNAL_API_KEY",
+    ExternallyProvisioned: "EXTERNALLY_PROVISIONED",
 } as const;

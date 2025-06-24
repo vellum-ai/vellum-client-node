@@ -16,8 +16,8 @@ export const WorkflowDeploymentRelease: core.serialization.ObjectSchema<
     serializers.WorkflowDeploymentRelease.Raw,
     Vellum.WorkflowDeploymentRelease
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
-    created: core.serialization.date().optional(),
+    id: core.serialization.string(),
+    created: core.serialization.date(),
     environment: ReleaseEnvironment,
     createdBy: core.serialization.property("created_by", ReleaseCreatedBy.optionalNullable()),
     workflowVersion: core.serialization.property("workflow_version", WorkflowDeploymentReleaseWorkflowVersion),
@@ -29,8 +29,8 @@ export const WorkflowDeploymentRelease: core.serialization.ObjectSchema<
 
 export declare namespace WorkflowDeploymentRelease {
     export interface Raw {
-        id?: string | null;
-        created?: string | null;
+        id: string;
+        created: string;
         environment: ReleaseEnvironment.Raw;
         created_by?: (ReleaseCreatedBy.Raw | null) | null;
         workflow_version: WorkflowDeploymentReleaseWorkflowVersion.Raw;

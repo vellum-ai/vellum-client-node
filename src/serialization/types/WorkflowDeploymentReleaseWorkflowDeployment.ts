@@ -10,11 +10,11 @@ export const WorkflowDeploymentReleaseWorkflowDeployment: core.serialization.Obj
     serializers.WorkflowDeploymentReleaseWorkflowDeployment.Raw,
     Vellum.WorkflowDeploymentReleaseWorkflowDeployment
 > = core.serialization.object({
-    name: core.serialization.string().optional(),
+    name: core.serialization.string(),
 });
 
 export declare namespace WorkflowDeploymentReleaseWorkflowDeployment {
     export interface Raw {
-        name?: string | null;
+        name: string;
     }
 }
