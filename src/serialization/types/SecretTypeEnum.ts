@@ -7,8 +7,8 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
 export const SecretTypeEnum: core.serialization.Schema<serializers.SecretTypeEnum.Raw, Vellum.SecretTypeEnum> =
-    core.serialization.enum_(["USER_DEFINED", "HMAC", "INTERNAL_API_KEY"]);
+    core.serialization.enum_(["USER_DEFINED", "HMAC", "INTERNAL_API_KEY", "EXTERNALLY_PROVISIONED"]);
 
 export declare namespace SecretTypeEnum {
-    export type Raw = "USER_DEFINED" | "HMAC" | "INTERNAL_API_KEY";
+    export type Raw = "USER_DEFINED" | "HMAC" | "INTERNAL_API_KEY" | "EXTERNALLY_PROVISIONED";
 }

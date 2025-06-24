@@ -10,14 +10,14 @@ export const ReleaseCreatedBy: core.serialization.ObjectSchema<
     serializers.ReleaseCreatedBy.Raw,
     Vellum.ReleaseCreatedBy
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string(),
     fullName: core.serialization.property("full_name", core.serialization.string().optional()),
     email: core.serialization.string(),
 });
 
 export declare namespace ReleaseCreatedBy {
     export interface Raw {
-        id?: string | null;
+        id: string;
         full_name?: string | null;
         email: string;
     }

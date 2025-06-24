@@ -15,11 +15,8 @@ export const MetricDefinitionHistoryItem: core.serialization.ObjectSchema<
     label: core.serialization.string(),
     name: core.serialization.string(),
     description: core.serialization.string(),
-    inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable).optional()),
-    outputVariables: core.serialization.property(
-        "output_variables",
-        core.serialization.list(VellumVariable).optional(),
-    ),
+    inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
+    outputVariables: core.serialization.property("output_variables", core.serialization.list(VellumVariable)),
 });
 
 export declare namespace MetricDefinitionHistoryItem {
@@ -28,7 +25,7 @@ export declare namespace MetricDefinitionHistoryItem {
         label: string;
         name: string;
         description: string;
-        input_variables?: VellumVariable.Raw[] | null;
-        output_variables?: VellumVariable.Raw[] | null;
+        input_variables: VellumVariable.Raw[];
+        output_variables: VellumVariable.Raw[];
     }
 }

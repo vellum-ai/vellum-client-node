@@ -5,8 +5,8 @@
 import * as Vellum from "../index";
 
 export interface SlimReleaseReview {
-    id?: string;
-    created?: Date;
+    id: string;
+    created: Date;
     reviewer: Vellum.ReleaseReviewReviewer;
     state: Vellum.ReleaseReviewState;
 }

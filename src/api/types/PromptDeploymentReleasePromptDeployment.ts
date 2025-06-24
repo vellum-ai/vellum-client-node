@@ -3,5 +3,5 @@
  */
 
 export interface PromptDeploymentReleasePromptDeployment {
-    name?: string;
+    name: string;
 }
