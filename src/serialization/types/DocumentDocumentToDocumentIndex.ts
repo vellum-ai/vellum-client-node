@@ -11,12 +11,12 @@ export const DocumentDocumentToDocumentIndex: core.serialization.ObjectSchema<
     serializers.DocumentDocumentToDocumentIndex.Raw,
     Vellum.DocumentDocumentToDocumentIndex
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string(),
     environmentDocumentIndexId: core.serialization.property(
         "environment_document_index_id",
-        core.serialization.string().optional(),
+        core.serialization.string(),
     ),
-    documentIndexId: core.serialization.property("document_index_id", core.serialization.string().optional()),
+    documentIndexId: core.serialization.property("document_index_id", core.serialization.string()),
     indexingState: core.serialization.property("indexing_state", IndexingStateEnum.optional()),
     extractedTextFileUrl: core.serialization.property(
         "extracted_text_file_url",
@@ -26,9 +26,9 @@ export const DocumentDocumentToDocumentIndex: core.serialization.ObjectSchema<
 
 export declare namespace DocumentDocumentToDocumentIndex {
     export interface Raw {
-        id?: string | null;
-        environment_document_index_id?: string | null;
-        document_index_id?: string | null;
+        id: string;
+        environment_document_index_id: string;
+        document_index_id: string;
         indexing_state?: IndexingStateEnum.Raw | null;
         extracted_text_file_url?: (string | null) | null;
     }

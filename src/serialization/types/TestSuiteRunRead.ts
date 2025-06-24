@@ -14,8 +14,8 @@ export const TestSuiteRunRead: core.serialization.ObjectSchema<
     serializers.TestSuiteRunRead.Raw,
     Vellum.TestSuiteRunRead
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
-    created: core.serialization.date().optional(),
+    id: core.serialization.string(),
+    created: core.serialization.date(),
     testSuite: core.serialization.property("test_suite", TestSuiteRunTestSuite),
     state: TestSuiteRunState,
     execConfig: core.serialization.property("exec_config", TestSuiteRunExecConfig.optionalNullable()),
@@ -24,8 +24,8 @@ export const TestSuiteRunRead: core.serialization.ObjectSchema<
 
 export declare namespace TestSuiteRunRead {
     export interface Raw {
-        id?: string | null;
-        created?: string | null;
+        id: string;
+        created: string;
         test_suite: TestSuiteRunTestSuite.Raw;
         state: TestSuiteRunState.Raw;
         exec_config?: (TestSuiteRunExecConfig.Raw | null) | null;

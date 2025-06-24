@@ -11,7 +11,7 @@ import { DocumentDocumentToDocumentIndex } from "./DocumentDocumentToDocumentInd
 
 export const DocumentRead: core.serialization.ObjectSchema<serializers.DocumentRead.Raw, Vellum.DocumentRead> =
     core.serialization.object({
-        id: core.serialization.string().optional(),
+        id: core.serialization.string(),
         externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
         lastUploadedAt: core.serialization.property("last_uploaded_at", core.serialization.date()),
         label: core.serialization.string(),
@@ -32,7 +32,7 @@ export const DocumentRead: core.serialization.ObjectSchema<serializers.DocumentR
 
 export declare namespace DocumentRead {
     export interface Raw {
-        id?: string | null;
+        id: string;
         external_id?: (string | null) | null;
         last_uploaded_at: string;
         label: string;

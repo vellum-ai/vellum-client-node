@@ -12,16 +12,16 @@ export const SlimReleaseReview: core.serialization.ObjectSchema<
     serializers.SlimReleaseReview.Raw,
     Vellum.SlimReleaseReview
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
-    created: core.serialization.date().optional(),
+    id: core.serialization.string(),
+    created: core.serialization.date(),
     reviewer: ReleaseReviewReviewer,
     state: ReleaseReviewState,
 });
 
 export declare namespace SlimReleaseReview {
     export interface Raw {
-        id?: string | null;
-        created?: string | null;
+        id: string;
+        created: string;
         reviewer: ReleaseReviewReviewer.Raw;
         state: ReleaseReviewState.Raw;
     }

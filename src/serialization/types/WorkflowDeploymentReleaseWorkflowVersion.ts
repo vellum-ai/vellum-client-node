@@ -11,18 +11,15 @@ export const WorkflowDeploymentReleaseWorkflowVersion: core.serialization.Object
     serializers.WorkflowDeploymentReleaseWorkflowVersion.Raw,
     Vellum.WorkflowDeploymentReleaseWorkflowVersion
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
-    inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable).optional()),
-    outputVariables: core.serialization.property(
-        "output_variables",
-        core.serialization.list(VellumVariable).optional(),
-    ),
+    id: core.serialization.string(),
+    inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
+    outputVariables: core.serialization.property("output_variables", core.serialization.list(VellumVariable)),
 });
 
 export declare namespace WorkflowDeploymentReleaseWorkflowVersion {
     export interface Raw {
-        id?: string | null;
-        input_variables?: VellumVariable.Raw[] | null;
-        output_variables?: VellumVariable.Raw[] | null;
+        id: string;
+        input_variables: VellumVariable.Raw[];
+        output_variables: VellumVariable.Raw[];
     }
 }

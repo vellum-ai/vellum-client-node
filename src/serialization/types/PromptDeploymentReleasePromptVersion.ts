@@ -11,16 +11,13 @@ export const PromptDeploymentReleasePromptVersion: core.serialization.ObjectSche
     serializers.PromptDeploymentReleasePromptVersion.Raw,
     Vellum.PromptDeploymentReleasePromptVersion
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
-    buildConfig: core.serialization.property(
-        "build_config",
-        ComponentsSchemasPromptVersionBuildConfigSandbox.optional(),
-    ),
+    id: core.serialization.string(),
+    buildConfig: core.serialization.property("build_config", ComponentsSchemasPromptVersionBuildConfigSandbox),
 });
 
 export declare namespace PromptDeploymentReleasePromptVersion {
     export interface Raw {
-        id?: string | null;
-        build_config?: ComponentsSchemasPromptVersionBuildConfigSandbox.Raw | null;
+        id: string;
+        build_config: ComponentsSchemasPromptVersionBuildConfigSandbox.Raw;
     }
 }

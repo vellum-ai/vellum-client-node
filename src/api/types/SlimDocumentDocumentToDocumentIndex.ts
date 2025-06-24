@@ -9,11 +9,11 @@ import * as Vellum from "../index";
  */
 export interface SlimDocumentDocumentToDocumentIndex {
     /** Vellum-generated ID that uniquely identifies this link. */
-    id?: string;
+    id: string;
     /** Vellum-generated ID that uniquely identifies the environment index this document is included in. */
-    environmentDocumentIndexId?: string;
+    environmentDocumentIndexId: string;
     /** Vellum-generated ID that uniquely identifies the index this document is included in. */
-    documentIndexId?: string;
+    documentIndexId: string;
     /**
      * An enum value representing where this document is along its indexing lifecycle for this index.
      *

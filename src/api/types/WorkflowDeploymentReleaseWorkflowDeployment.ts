@@ -3,5 +3,5 @@
  */
 
 export interface WorkflowDeploymentReleaseWorkflowDeployment {
-    name?: string;
+    name: string;
 }
