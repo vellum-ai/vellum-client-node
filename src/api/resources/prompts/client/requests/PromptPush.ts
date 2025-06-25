@@ -23,7 +23,10 @@ import * as Vellum from "../../../../index";
  *     }
  */
 export interface PromptPush {
-    execConfig: Vellum.PromptExecConfig;
+    /** If specified, an existing Prompt Variant by the provided ID will be updated. Otherwise, a new Prompt Variant will be created and an ID generated. */
     promptVariantId?: string | null;
+    /** If provided, then the created/updated Prompt Variant will have this label. */
+    promptVariantLabel?: string | null;
     promptSandboxId?: string | null;
+    execConfig: Vellum.PromptExecConfig;
 }
