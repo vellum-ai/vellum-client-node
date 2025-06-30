@@ -12,11 +12,13 @@ export const CodeExecutionPackage: core.serialization.ObjectSchema<
 > = core.serialization.object({
     version: core.serialization.string(),
     name: core.serialization.string(),
+    repository: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace CodeExecutionPackage {
     export interface Raw {
         version: string;
         name: string;
+        repository?: (string | null) | null;
     }
 }
