@@ -5,4 +5,5 @@
 export interface CodeExecutionPackage {
     version: string;
     name: string;
+    repository?: string | null;
 }
