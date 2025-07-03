@@ -15,4 +15,5 @@ export type VellumValueRequest =
     | Vellum.ErrorVellumValueRequest
     | Vellum.ArrayVellumValueRequest
     | Vellum.ChatHistoryVellumValueRequest
-    | Vellum.SearchResultsVellumValueRequest;
+    | Vellum.SearchResultsVellumValueRequest
+    | Vellum.ThinkingVellumValueRequest;
