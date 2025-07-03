@@ -12,4 +12,5 @@ export type ExecutionVellumValue =
     | Vellum.ExecutionSearchResultsVellumValue
     | Vellum.ExecutionErrorVellumValue
     | Vellum.ExecutionArrayVellumValue
-    | Vellum.ExecutionFunctionCallVellumValue;
+    | Vellum.ExecutionFunctionCallVellumValue
+    | Vellum.ExecutionThinkingVellumValue;
