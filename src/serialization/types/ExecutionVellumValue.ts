@@ -13,6 +13,7 @@ import { ExecutionSearchResultsVellumValue } from "./ExecutionSearchResultsVellu
 import { ExecutionErrorVellumValue } from "./ExecutionErrorVellumValue";
 import { ExecutionArrayVellumValue } from "./ExecutionArrayVellumValue";
 import { ExecutionFunctionCallVellumValue } from "./ExecutionFunctionCallVellumValue";
+import { ExecutionThinkingVellumValue } from "./ExecutionThinkingVellumValue";
 
 export const ExecutionVellumValue: core.serialization.Schema<
     serializers.ExecutionVellumValue.Raw,
@@ -26,6 +27,7 @@ export const ExecutionVellumValue: core.serialization.Schema<
     ExecutionErrorVellumValue,
     ExecutionArrayVellumValue,
     ExecutionFunctionCallVellumValue,
+    ExecutionThinkingVellumValue,
 ]);
 
 export declare namespace ExecutionVellumValue {
@@ -37,5 +39,6 @@ export declare namespace ExecutionVellumValue {
         | ExecutionSearchResultsVellumValue.Raw
         | ExecutionErrorVellumValue.Raw
         | ExecutionArrayVellumValue.Raw
-        | ExecutionFunctionCallVellumValue.Raw;
+        | ExecutionFunctionCallVellumValue.Raw
+        | ExecutionThinkingVellumValue.Raw;
 }
