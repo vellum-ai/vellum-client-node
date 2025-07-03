@@ -9,6 +9,7 @@ import { StringVellumValue } from "./StringVellumValue";
 import { JsonVellumValue } from "./JsonVellumValue";
 import { ErrorVellumValue } from "./ErrorVellumValue";
 import { FunctionCallVellumValue } from "./FunctionCallVellumValue";
+import { ThinkingVellumValue } from "./ThinkingVellumValue";
 
 export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Raw, Vellum.PromptOutput> =
     core.serialization.undiscriminatedUnion([
@@ -16,8 +17,14 @@ export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Ra
         JsonVellumValue,
         ErrorVellumValue,
         FunctionCallVellumValue,
+        ThinkingVellumValue,
     ]);
 
 export declare namespace PromptOutput {
-    export type Raw = StringVellumValue.Raw | JsonVellumValue.Raw | ErrorVellumValue.Raw | FunctionCallVellumValue.Raw;
+    export type Raw =
+        | StringVellumValue.Raw
+        | JsonVellumValue.Raw
+        | ErrorVellumValue.Raw
+        | FunctionCallVellumValue.Raw
+        | ThinkingVellumValue.Raw;
 }

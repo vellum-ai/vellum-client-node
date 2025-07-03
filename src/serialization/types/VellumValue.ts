@@ -15,6 +15,7 @@ import { FunctionCallVellumValue } from "./FunctionCallVellumValue";
 import { ErrorVellumValue } from "./ErrorVellumValue";
 import { ChatHistoryVellumValue } from "./ChatHistoryVellumValue";
 import { SearchResultsVellumValue } from "./SearchResultsVellumValue";
+import { ThinkingVellumValue } from "./ThinkingVellumValue";
 
 export const VellumValue: core.serialization.Schema<serializers.VellumValue.Raw, Vellum.VellumValue> =
     core.serialization.undiscriminatedUnion([
@@ -29,6 +30,7 @@ export const VellumValue: core.serialization.Schema<serializers.VellumValue.Raw,
         core.serialization.lazyObject(() => serializers.ArrayVellumValue),
         ChatHistoryVellumValue,
         SearchResultsVellumValue,
+        ThinkingVellumValue,
     ]);
 
 export declare namespace VellumValue {
@@ -43,5 +45,6 @@ export declare namespace VellumValue {
         | ErrorVellumValue.Raw
         | serializers.ArrayVellumValue.Raw
         | ChatHistoryVellumValue.Raw
-        | SearchResultsVellumValue.Raw;
+        | SearchResultsVellumValue.Raw
+        | ThinkingVellumValue.Raw;
 }

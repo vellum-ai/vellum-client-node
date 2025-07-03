@@ -8,4 +8,5 @@ export type PromptOutput =
     | Vellum.StringVellumValue
     | Vellum.JsonVellumValue
     | Vellum.ErrorVellumValue
-    | Vellum.FunctionCallVellumValue;
+    | Vellum.FunctionCallVellumValue
+    | Vellum.ThinkingVellumValue;
