@@ -15,6 +15,7 @@
  * * `AUDIO` - AUDIO
  * * `DOCUMENT` - DOCUMENT
  * * `NULL` - NULL
+ * * `THINKING` - THINKING
  */
 export type VellumVariableType =
     | "STRING"
@@ -28,7 +29,8 @@ export type VellumVariableType =
     | "IMAGE"
     | "AUDIO"
     | "DOCUMENT"
-    | "NULL";
+    | "NULL"
+    | "THINKING";
 export const VellumVariableType = {
     String: "STRING",
     Number: "NUMBER",
@@ -42,4 +44,5 @@ export const VellumVariableType = {
     Audio: "AUDIO",
     Document: "DOCUMENT",
     Null: "NULL",
+    Thinking: "THINKING",
 } as const;
