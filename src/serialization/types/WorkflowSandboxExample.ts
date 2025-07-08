@@ -14,6 +14,8 @@ export const WorkflowSandboxExample: core.serialization.ObjectSchema<
     label: core.serialization.string(),
     description: core.serialization.string().optionalNullable(),
     iconName: core.serialization.property("icon_name", core.serialization.string().optionalNullable()),
+    uiImageUrl: core.serialization.property("ui_image_url", core.serialization.string().optionalNullable()),
+    codeImageUrl: core.serialization.property("code_image_url", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace WorkflowSandboxExample {
@@ -22,5 +24,7 @@ export declare namespace WorkflowSandboxExample {
         label: string;
         description?: (string | null) | null;
         icon_name?: (string | null) | null;
+        ui_image_url?: (string | null) | null;
+        code_image_url?: (string | null) | null;
     }
 }

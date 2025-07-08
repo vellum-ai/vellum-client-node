@@ -161,6 +161,8 @@ export * from "./GenerateStreamResult";
 export * from "./GenerateStreamResultData";
 export * from "./GoogleVertexAiVectorizerConfig";
 export * from "./GoogleVertexAiVectorizerConfigRequest";
+export * from "./GoogleVertexAiVectorizerGeminiEmbedding001";
+export * from "./GoogleVertexAiVectorizerGeminiEmbedding001Request";
 export * from "./GoogleVertexAiVectorizerTextEmbedding004";
 export * from "./GoogleVertexAiVectorizerTextEmbedding004Request";
 export * from "./GoogleVertexAiVectorizerTextMultilingualEmbedding002";
