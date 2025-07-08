@@ -17,6 +17,8 @@ export interface PatchedDocumentUpdateRequest {
      * * `ACTIVE` - Active
      */
     status?: Vellum.DocumentStatus;
+    /** A list of keywords that'll be associated with the document. Used as part of keyword search. */
+    keywords?: string[];
     /** A JSON object containing any metadata associated with the document that you'd like to filter upon later. */
     metadata?: Record<string, unknown> | null;
 }
