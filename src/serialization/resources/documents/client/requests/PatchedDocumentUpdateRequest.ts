@@ -13,6 +13,7 @@ export const PatchedDocumentUpdateRequest: core.serialization.Schema<
 > = core.serialization.object({
     label: core.serialization.string().optional(),
     status: DocumentStatus.optional(),
+    keywords: core.serialization.list(core.serialization.string()).optional(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
@@ -20,6 +21,7 @@ export declare namespace PatchedDocumentUpdateRequest {
     export interface Raw {
         label?: string | null;
         status?: DocumentStatus.Raw | null;
+        keywords?: string[] | null;
         metadata?: (Record<string, unknown> | null) | null;
     }
 }
