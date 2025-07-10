@@ -9,5 +9,5 @@ import * as Vellum from "../index";
  */
 export interface ThinkingVellumValue {
     type: "THINKING";
-    value: Vellum.StringVellumValue[];
+    value: Vellum.StringVellumValue;
 }
