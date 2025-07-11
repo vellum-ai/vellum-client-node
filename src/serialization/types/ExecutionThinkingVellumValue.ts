@@ -14,7 +14,7 @@ export const ExecutionThinkingVellumValue: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("THINKING"),
-    value: StringVellumValue,
+    value: core.serialization.list(StringVellumValue),
 });
 
 export declare namespace ExecutionThinkingVellumValue {
@@ -22,6 +22,6 @@ export declare namespace ExecutionThinkingVellumValue {
         id: string;
         name: string;
         type: "THINKING";
-        value: StringVellumValue.Raw;
+        value: StringVellumValue.Raw[];
     }
 }
