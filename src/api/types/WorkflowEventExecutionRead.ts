@@ -16,4 +16,5 @@ export interface WorkflowEventExecutionRead {
     metricResults: Vellum.WorkflowExecutionViewOnlineEvalMetricResult[];
     usageResults?: Vellum.WorkflowExecutionUsageResult[] | null;
     spans: Vellum.VellumSpan[];
+    state?: Record<string, unknown> | null;
 }
