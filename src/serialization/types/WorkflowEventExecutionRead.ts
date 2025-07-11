@@ -36,6 +36,7 @@ export const WorkflowEventExecutionRead: core.serialization.ObjectSchema<
         core.serialization.list(WorkflowExecutionUsageResult).optionalNullable(),
     ),
     spans: core.serialization.list(VellumSpan),
+    state: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace WorkflowEventExecutionRead {
@@ -51,5 +52,6 @@ export declare namespace WorkflowEventExecutionRead {
         metric_results: WorkflowExecutionViewOnlineEvalMetricResult.Raw[];
         usage_results?: (WorkflowExecutionUsageResult.Raw[] | null) | null;
         spans: VellumSpan.Raw[];
+        state?: (Record<string, unknown> | null) | null;
     }
 }
