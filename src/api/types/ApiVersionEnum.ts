@@ -3,6 +3,11 @@
  */
 
 /**
- * * `2024-10-25` - 2024-10-25
+ * * `2024-10-25` - V2024_10_25
+ * * `2025-07-30` - V2025_07_30
  */
-export type ApiVersionEnum = "2024-10-25";
+export type ApiVersionEnum = "2024-10-25" | "2025-07-30";
+export const ApiVersionEnum = {
+    TwoThousandTwentyFour1025: "2024-10-25",
+    TwoThousandTwentyFive0730: "2025-07-30",
+} as const;

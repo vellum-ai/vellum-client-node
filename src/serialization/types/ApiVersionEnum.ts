@@ -7,8 +7,8 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
 export const ApiVersionEnum: core.serialization.Schema<serializers.ApiVersionEnum.Raw, Vellum.ApiVersionEnum> =
-    core.serialization.stringLiteral("2024-10-25");
+    core.serialization.enum_(["2024-10-25", "2025-07-30"]);
 
 export declare namespace ApiVersionEnum {
-    export type Raw = "2024-10-25";
+    export type Raw = "2024-10-25" | "2025-07-30";
 }
