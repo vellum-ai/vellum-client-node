@@ -12,5 +12,5 @@ export interface ExecutionThinkingVellumValue {
     id: string;
     name: string;
     type: "THINKING";
-    value: Vellum.StringVellumValue[];
+    value: Vellum.StringVellumValue;
 }
