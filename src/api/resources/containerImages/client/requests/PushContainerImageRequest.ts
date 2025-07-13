@@ -5,9 +5,9 @@
 /**
  * @example
  *     {
- *         name: "name",
- *         sha: "sha",
- *         tags: ["tags"]
+ *         name: "x",
+ *         sha: "x",
+ *         tags: ["tags", "tags"]
  *     }
  */
 export interface PushContainerImageRequest {

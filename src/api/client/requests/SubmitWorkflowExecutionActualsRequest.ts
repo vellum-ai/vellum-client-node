@@ -9,6 +9,8 @@ import * as Vellum from "../../index";
  *     {
  *         actuals: [{
  *                 outputType: "STRING"
+ *             }, {
+ *                 outputType: "STRING"
  *             }]
  *     }
  */

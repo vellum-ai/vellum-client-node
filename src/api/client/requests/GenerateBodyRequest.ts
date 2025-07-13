@@ -9,7 +9,15 @@ import * as Vellum from "../../index";
  *     {
  *         requests: [{
  *                 inputValues: {
- *                     "key": "value"
+ *                     "input_values": {
+ *                         "key": "value"
+ *                     }
+ *                 }
+ *             }, {
+ *                 inputValues: {
+ *                     "input_values": {
+ *                         "key": "value"
+ *                     }
  *                 }
  *             }]
  *     }
