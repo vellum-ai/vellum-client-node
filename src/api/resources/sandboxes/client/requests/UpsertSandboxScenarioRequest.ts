@@ -7,31 +7,12 @@ import * as Vellum from "../../../../index";
 /**
  * @example
  *     {
- *         label: "Scenario 1",
  *         inputs: [{
  *                 type: "STRING",
- *                 value: "Hello, world!",
- *                 name: "var_1"
+ *                 name: "x"
  *             }, {
  *                 type: "STRING",
- *                 value: "Why hello, there!",
- *                 name: "var_2"
- *             }]
- *     }
- *
- * @example
- *     {
- *         label: "Scenario 2",
- *         inputs: [{
- *                 type: "CHAT_HISTORY",
- *                 value: [{
- *                         text: "What's your favorite color?",
- *                         role: "USER"
- *                     }, {
- *                         text: "AI's don't have a favorite color.... Yet.",
- *                         role: "ASSISTANT"
- *                     }],
- *                 name: "chat_history"
+ *                 name: "x"
  *             }]
  *     }
  */

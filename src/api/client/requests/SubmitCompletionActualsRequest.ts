@@ -7,7 +7,7 @@ import * as Vellum from "../../index";
 /**
  * @example
  *     {
- *         actuals: [{}]
+ *         actuals: [{}, {}]
  *     }
  */
 export interface SubmitCompletionActualsRequest {

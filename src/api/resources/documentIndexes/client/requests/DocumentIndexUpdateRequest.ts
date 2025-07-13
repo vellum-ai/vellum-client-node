@@ -7,7 +7,7 @@ import * as Vellum from "../../../../index";
 /**
  * @example
  *     {
- *         label: "label"
+ *         label: "x"
  *     }
  */
 export interface DocumentIndexUpdateRequest {

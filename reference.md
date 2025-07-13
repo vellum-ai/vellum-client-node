@@ -35,6 +35,9 @@ await client.submitWorkflowExecutionActuals({
         {
             outputType: "STRING",
         },
+        {
+            outputType: "STRING",
+        },
     ],
 });
 ```
@@ -89,23 +92,37 @@ await client.submitWorkflowExecutionActuals({
 
 ```typescript
 await client.adHoc.adhocExecutePrompt({
-    mlModel: "ml_model",
+    mlModel: "x",
     inputValues: [
         {
-            key: "key",
+            key: "x",
+            type: "STRING",
+            value: "value",
+        },
+        {
+            key: "x",
             type: "STRING",
             value: "value",
         },
     ],
     inputVariables: [
         {
-            id: "id",
+            id: "x",
+            key: "key",
+            type: "STRING",
+        },
+        {
+            id: "x",
             key: "key",
             type: "STRING",
         },
     ],
     parameters: {},
     blocks: [
+        {
+            blockType: "JINJA",
+            template: "template",
+        },
         {
             blockType: "JINJA",
             template: "template",
@@ -160,23 +177,37 @@ await client.adHoc.adhocExecutePrompt({
 
 ```typescript
 const response = await client.adHoc.adhocExecutePromptStream({
-    mlModel: "ml_model",
+    mlModel: "x",
     inputValues: [
         {
-            key: "key",
+            key: "x",
+            type: "STRING",
+            value: "value",
+        },
+        {
+            key: "x",
             type: "STRING",
             value: "value",
         },
     ],
     inputVariables: [
         {
-            id: "id",
+            id: "x",
+            key: "key",
+            type: "STRING",
+        },
+        {
+            id: "x",
             key: "key",
             type: "STRING",
         },
     ],
     parameters: {},
     blocks: [
+        {
+            blockType: "JINJA",
+            template: "template",
+        },
         {
             blockType: "JINJA",
             template: "template",
@@ -402,9 +433,9 @@ await client.containerImages.dockerServiceToken();
 
 ```typescript
 await client.containerImages.pushContainerImage({
-    name: "name",
-    sha: "sha",
-    tags: ["tags"],
+    name: "x",
+    sha: "x",
+    tags: ["tags", "tags"],
 });
 ```
 
@@ -972,7 +1003,12 @@ We encourage you to seek advise from Vellum Support before integrating with this
 await client.deployments.retrieveProviderPayload({
     inputs: [
         {
-            name: "name",
+            name: "x",
+            type: "STRING",
+            value: "value",
+        },
+        {
+            name: "x",
             type: "STRING",
             value: "value",
         },
@@ -1106,23 +1142,12 @@ Creates a new document index.
 
 ```typescript
 await client.documentIndexes.create({
-    label: "My Document Index",
-    name: "my-document-index",
+    label: "x",
+    name: "x",
     indexingConfig: {
         vectorizer: {
-            modelName: "hkunlp/instructor-xl",
-            config: {
-                instructionDomain: "",
-                instructionQueryTextType: "plain_text",
-                instructionDocumentTextType: "plain_text",
-            },
-        },
-        chunking: {
-            chunkerName: "sentence-chunker",
-            chunkerConfig: {
-                characterLimit: 1000,
-                minOverlapRatio: 0.5,
-            },
+            config: {},
+            modelName: "text-embedding-3-small",
         },
     },
 });
@@ -1252,7 +1277,7 @@ Used to fully update a Document Index given its ID or name.
 
 ```typescript
 await client.documentIndexes.update("id", {
-    label: "label",
+    label: "x",
 });
 ```
 
@@ -1834,81 +1859,6 @@ await client.documents.partialUpdate("id");
 </dl>
 </details>
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">upload</a>(contents, { ...params }) -> Vellum.UploadDocumentResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Upload a document to be indexed and used for search.
-
-**Note:** Uses a base url of `https://documents.vellum.ai`.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.documents.upload(fs.createReadStream("/path/to/your/file"), {
-    label: "label",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**contents:** `File | fs.ReadStream | Blob`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vellum.UploadDocumentBodyRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Documents.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 ## FolderEntities
 
 <details><summary><code>client.folderEntities.<a href="/src/api/resources/folderEntities/client/Client.ts">list</a>({ ...params }) -> Vellum.PaginatedFolderEntityList</code></summary>
@@ -2077,7 +2027,12 @@ directory. Supported root directories include:
 await client.metricDefinitions.executeMetricDefinition("id", {
     inputs: [
         {
-            name: "name",
+            name: "x",
+            type: "STRING",
+            value: "value",
+        },
+        {
+            name: "x",
             type: "STRING",
             value: "value",
         },
@@ -2409,13 +2364,22 @@ await client.prompts.push({
         mlModel: "ml_model",
         inputVariables: [
             {
-                id: "id",
+                id: "x",
+                key: "key",
+                type: "STRING",
+            },
+            {
+                id: "x",
                 key: "key",
                 type: "STRING",
             },
         ],
         parameters: {},
         blocks: [
+            {
+                blockType: "JINJA",
+                template: "template",
+            },
             {
                 blockType: "JINJA",
                 template: "template",
@@ -2558,17 +2522,14 @@ or overwritten with default values.
 
 ```typescript
 await client.sandboxes.upsertSandboxScenario("id", {
-    label: "Scenario 1",
     inputs: [
         {
             type: "STRING",
-            value: "Hello, world!",
-            name: "var_1",
+            name: "x",
         },
         {
             type: "STRING",
-            value: "Why hello, there!",
-            name: "var_2",
+            name: "x",
         },
     ],
 });
@@ -2984,32 +2945,24 @@ or overwritten with default values.
 
 ```typescript
 await client.testSuites.upsertTestSuiteTestCase("id", {
-    label: "Test Case 1",
     inputValues: [
         {
             type: "STRING",
-            value: "What are your favorite colors?",
-            name: "var_1",
+            name: "x",
+        },
+        {
+            type: "STRING",
+            name: "x",
         },
     ],
     evaluationValues: [
         {
-            type: "ARRAY",
-            value: [
-                {
-                    type: "STRING",
-                    value: "Red",
-                },
-                {
-                    type: "STRING",
-                    value: "Green",
-                },
-                {
-                    type: "STRING",
-                    value: "Blue",
-                },
-            ],
-            name: "var_2",
+            type: "STRING",
+            name: "x",
+        },
+        {
+            type: "STRING",
+            name: "x",
         },
     ],
 });
@@ -3091,13 +3044,47 @@ const response = await client.testSuites.testSuiteTestCasesBulk("id", [
             inputValues: [
                 {
                     type: "STRING",
-                    name: "name",
+                    name: "x",
+                },
+                {
+                    type: "STRING",
+                    name: "x",
                 },
             ],
             evaluationValues: [
                 {
                     type: "STRING",
-                    name: "name",
+                    name: "x",
+                },
+                {
+                    type: "STRING",
+                    name: "x",
+                },
+            ],
+        },
+    },
+    {
+        id: "id",
+        type: "CREATE",
+        data: {
+            inputValues: [
+                {
+                    type: "STRING",
+                    name: "x",
+                },
+                {
+                    type: "STRING",
+                    name: "x",
+                },
+            ],
+            evaluationValues: [
+                {
+                    type: "STRING",
+                    name: "x",
+                },
+                {
+                    type: "STRING",
+                    name: "x",
                 },
             ],
         },
@@ -3955,64 +3942,6 @@ await client.workflowSandboxes.listWorkflowSandboxExamples();
 </details>
 
 ## Workflows
-
-<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">push</a>(artifact, { ...params }) -> Vellum.WorkflowPushResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.workflows.push(fs.createReadStream("/path/to/your/file"), {
-    execConfig: "exec_config",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**artifact:** `File | fs.ReadStream | Blob | undefined`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Vellum.WorkflowPushRequest`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Workflows.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
 
 ## WorkspaceSecrets
 

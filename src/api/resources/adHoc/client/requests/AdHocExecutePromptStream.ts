@@ -7,19 +7,30 @@ import * as Vellum from "../../../../index";
 /**
  * @example
  *     {
- *         mlModel: "ml_model",
+ *         mlModel: "x",
  *         inputValues: [{
- *                 key: "key",
+ *                 key: "x",
+ *                 type: "STRING",
+ *                 value: "value"
+ *             }, {
+ *                 key: "x",
  *                 type: "STRING",
  *                 value: "value"
  *             }],
  *         inputVariables: [{
- *                 id: "id",
+ *                 id: "x",
+ *                 key: "key",
+ *                 type: "STRING"
+ *             }, {
+ *                 id: "x",
  *                 key: "key",
  *                 type: "STRING"
  *             }],
  *         parameters: {},
  *         blocks: [{
+ *                 blockType: "JINJA",
+ *                 template: "template"
+ *             }, {
  *                 blockType: "JINJA",
  *                 template: "template"
  *             }]

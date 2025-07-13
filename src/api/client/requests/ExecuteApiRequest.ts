@@ -7,7 +7,7 @@ import * as Vellum from "../../index";
 /**
  * @example
  *     {
- *         url: "url"
+ *         url: "x"
  *     }
  */
 export interface ExecuteApiRequest {

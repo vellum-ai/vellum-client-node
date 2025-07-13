@@ -10,12 +10,19 @@ import * as Vellum from "../../../../index";
  *         execConfig: {
  *             mlModel: "ml_model",
  *             inputVariables: [{
- *                     id: "id",
+ *                     id: "x",
+ *                     key: "key",
+ *                     type: "STRING"
+ *                 }, {
+ *                     id: "x",
  *                     key: "key",
  *                     type: "STRING"
  *                 }],
  *             parameters: {},
  *             blocks: [{
+ *                     blockType: "JINJA",
+ *                     template: "template"
+ *                 }, {
  *                     blockType: "JINJA",
  *                     template: "template"
  *                 }]
