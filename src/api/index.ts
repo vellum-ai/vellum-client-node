@@ -2,3 +2,4 @@ export * from "./resources";
 export * from "./types";
 export * from "./errors";
 export * from "./client";
+export { VellumVersion } from "./version";
