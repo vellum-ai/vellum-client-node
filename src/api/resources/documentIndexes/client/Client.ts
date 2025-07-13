@@ -15,6 +15,8 @@ export declare namespace DocumentIndexes {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey: core.Supplier<string>;
+        /** Override the X-API-Version header */
+        apiVersion?: core.Supplier<Vellum.ApiVersionEnum | undefined>;
     }
 
     export interface RequestOptions {
@@ -24,6 +26,8 @@ export declare namespace DocumentIndexes {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Override the X-API-Version header */
+        apiVersion?: Vellum.ApiVersionEnum | undefined;
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -85,10 +89,16 @@ export class DocumentIndexes {
             ),
             method: "GET",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -146,65 +156,12 @@ export class DocumentIndexes {
      *
      * @example
      *     await client.documentIndexes.create({
-     *         label: "My Document Index",
-     *         name: "my-document-index",
+     *         label: "x",
+     *         name: "x",
      *         indexingConfig: {
      *             vectorizer: {
-     *                 modelName: "hkunlp/instructor-xl",
-     *                 config: {
-     *                     instructionDomain: "",
-     *                     instructionQueryTextType: "plain_text",
-     *                     instructionDocumentTextType: "plain_text"
-     *                 }
-     *             },
-     *             chunking: {
-     *                 chunkerName: "sentence-chunker",
-     *                 chunkerConfig: {
-     *                     characterLimit: 1000,
-     *                     minOverlapRatio: 0.5
-     *                 }
-     *             }
-     *         }
-     *     })
-     *
-     * @example
-     *     await client.documentIndexes.create({
-     *         label: "My Document Index",
-     *         name: "my-document-index",
-     *         indexingConfig: {
-     *             vectorizer: {
-     *                 modelName: "sentence-transformers/multi-qa-mpnet-base-dot-v1",
-     *                 config: {
-     *                     "key": "value"
-     *                 }
-     *             },
-     *             chunking: {
-     *                 chunkerName: "sentence-chunker",
-     *                 chunkerConfig: {
-     *                     characterLimit: 1000,
-     *                     minOverlapRatio: 0.5
-     *                 }
-     *             }
-     *         }
-     *     })
-     *
-     * @example
-     *     await client.documentIndexes.create({
-     *         label: "My Document Index",
-     *         name: "my-document-index",
-     *         indexingConfig: {
-     *             vectorizer: {
-     *                 config: {
-     *                     addOpenaiApiKey: true
-     *                 },
-     *                 modelName: "text-embedding-ada-002"
-     *             },
-     *             chunking: {
-     *                 chunkerName: "sentence-chunker",
-     *                 chunkerConfig: {
-     *                     characterLimit: 1000,
-     *                     minOverlapRatio: 0.5
-     *                 }
+     *                 config: {},
+     *                 modelName: "text-embedding-3-small"
      *             }
      *         }
      *     })
@@ -229,10 +186,16 @@ export class DocumentIndexes {
             ),
             method: "POST",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -311,10 +274,16 @@ export class DocumentIndexes {
             ),
             method: "GET",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -372,7 +341,7 @@ export class DocumentIndexes {
      *
      * @example
      *     await client.documentIndexes.update("id", {
-     *         label: "label"
+     *         label: "x"
      *     })
      */
     public update(
@@ -397,10 +366,16 @@ export class DocumentIndexes {
             ),
             method: "PUT",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -476,10 +451,16 @@ export class DocumentIndexes {
             ),
             method: "DELETE",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -552,10 +533,16 @@ export class DocumentIndexes {
             ),
             method: "PATCH",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -639,10 +626,16 @@ export class DocumentIndexes {
             ),
             method: "POST",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -717,10 +710,16 @@ export class DocumentIndexes {
             ),
             method: "DELETE",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

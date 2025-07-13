@@ -7,14 +7,21 @@ import * as Vellum from "../../index";
 /**
  * @example
  *     {
- *         code: "code",
+ *         code: "x",
  *         runtime: "PYTHON_3_11_6",
  *         inputValues: [{
- *                 name: "name",
+ *                 name: "x",
+ *                 type: "STRING",
+ *                 value: "value"
+ *             }, {
+ *                 name: "x",
  *                 type: "STRING",
  *                 value: "value"
  *             }],
  *         packages: [{
+ *                 version: "version",
+ *                 name: "name"
+ *             }, {
  *                 version: "version",
  *                 name: "name"
  *             }],

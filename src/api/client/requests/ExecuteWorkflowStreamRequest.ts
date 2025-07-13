@@ -8,7 +8,11 @@ import * as Vellum from "../../index";
  * @example
  *     {
  *         inputs: [{
- *                 name: "name",
+ *                 name: "x",
+ *                 type: "STRING",
+ *                 value: "value"
+ *             }, {
+ *                 name: "x",
  *                 type: "STRING",
  *                 value: "value"
  *             }]

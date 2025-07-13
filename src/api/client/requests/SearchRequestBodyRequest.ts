@@ -7,7 +7,7 @@ import * as Vellum from "../../index";
 /**
  * @example
  *     {
- *         query: "query"
+ *         query: "x"
  *     }
  */
 export interface SearchRequestBodyRequest {
