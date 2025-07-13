@@ -5,8 +5,8 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vellum from "../../../index";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization/index";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 import * as stream from "stream";
 
@@ -16,6 +16,8 @@ export declare namespace TestSuites {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey: core.Supplier<string>;
+        /** Override the X-API-Version header */
+        apiVersion?: core.Supplier<Vellum.ApiVersionEnum | undefined>;
     }
 
     export interface RequestOptions {
@@ -25,6 +27,8 @@ export declare namespace TestSuites {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Override the X-API-Version header */
+        apiVersion?: Vellum.ApiVersionEnum | undefined;
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -75,10 +79,16 @@ export class TestSuites {
             ),
             method: "GET",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -145,25 +155,19 @@ export class TestSuites {
      *
      * @example
      *     await client.testSuites.upsertTestSuiteTestCase("id", {
-     *         label: "Test Case 1",
      *         inputValues: [{
      *                 type: "STRING",
-     *                 value: "What are your favorite colors?",
-     *                 name: "var_1"
+     *                 name: "x"
+     *             }, {
+     *                 type: "STRING",
+     *                 name: "x"
      *             }],
      *         evaluationValues: [{
-     *                 type: "ARRAY",
-     *                 value: [{
-     *                         type: "STRING",
-     *                         value: "Red"
-     *                     }, {
-     *                         type: "STRING",
-     *                         value: "Green"
-     *                     }, {
-     *                         type: "STRING",
-     *                         value: "Blue"
-     *                     }],
-     *                 name: "var_2"
+     *                 type: "STRING",
+     *                 name: "x"
+     *             }, {
+     *                 type: "STRING",
+     *                 name: "x"
      *             }]
      *     })
      */
@@ -189,10 +193,16 @@ export class TestSuites {
             ),
             method: "POST",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -269,10 +279,16 @@ export class TestSuites {
             ),
             method: "POST",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -369,10 +385,16 @@ export class TestSuites {
             ),
             method: "DELETE",
             headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
