@@ -6,11 +6,11 @@ import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vellum from "../../../index";
 import * as stream from "stream";
+import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 import * as fs from "fs";
 import { Blob } from "buffer";
-import * as serializers from "../../../../serialization/index";
 import { toJson } from "../../../../core/json";
 
 export declare namespace Workflows {
@@ -19,6 +19,8 @@ export declare namespace Workflows {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey: core.Supplier<string>;
+        /** Override the X-API-Version header */
+        apiVersion: core.Supplier<Vellum.ApiVersionEnum>;
     }
 
     export interface RequestOptions {
@@ -28,6 +30,8 @@ export declare namespace Workflows {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
+        /** Override the X-API-Version header */
+        apiVersion?: Vellum.ApiVersionEnum;
         /** Additional headers to include in the request. */
         headers?: Record<string, string>;
     }
@@ -79,10 +83,14 @@ export class Workflows {
             ),
             method: "GET",
             headers: {
+                "X-API-Version": serializers.ApiVersionEnum.jsonOrThrow(
+                    await core.Supplier.get(this._options.apiVersion),
+                    { unrecognizedObjectKeys: "strip" },
+                ),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -195,10 +203,14 @@ export class Workflows {
             ),
             method: "POST",
             headers: {
+                "X-API-Version": serializers.ApiVersionEnum.jsonOrThrow(
+                    await core.Supplier.get(this._options.apiVersion),
+                    { unrecognizedObjectKeys: "strip" },
+                ),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "0.14.88",
-                "User-Agent": "vellum-ai/0.14.88",
+                "X-Fern-SDK-Version": "0.14.89",
+                "User-Agent": "vellum-ai/0.14.89",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
