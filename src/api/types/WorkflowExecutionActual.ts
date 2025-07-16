@@ -7,6 +7,6 @@ import * as Vellum from "../index";
 export interface WorkflowExecutionActual {
     output: Vellum.ExecutionVellumValue;
     timestamp: Date;
-    quality: number;
+    quality?: number | null;
     metadata?: Record<string, unknown> | null;
 }
