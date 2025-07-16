@@ -13,7 +13,7 @@ export const WorkflowExecutionActual: core.serialization.ObjectSchema<
 > = core.serialization.object({
     output: ExecutionVellumValue,
     timestamp: core.serialization.date(),
-    quality: core.serialization.number(),
+    quality: core.serialization.number().optionalNullable(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
@@ -21,7 +21,7 @@ export declare namespace WorkflowExecutionActual {
     export interface Raw {
         output: ExecutionVellumValue.Raw;
         timestamp: string;
-        quality: number;
+        quality?: (number | null) | null;
         metadata?: (Record<string, unknown> | null) | null;
     }
 }
