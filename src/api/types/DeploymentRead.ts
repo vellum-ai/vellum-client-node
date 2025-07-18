@@ -25,7 +25,7 @@ export interface DeploymentRead {
      * * `STAGING` - Staging
      * * `PRODUCTION` - Production
      */
-    environment?: Vellum.EnvironmentEnum;
+    environment?: Vellum.EnvironmentEnum | null;
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
     /** A human-readable description of the deployment */

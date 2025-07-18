@@ -12,4 +12,5 @@ export type NodeOutputCompiledValue =
     | Vellum.NodeOutputCompiledSearchResultsValue
     | Vellum.NodeOutputCompiledErrorValue
     | Vellum.NodeOutputCompiledArrayValue
-    | Vellum.NodeOutputCompiledFunctionCallValue;
+    | Vellum.NodeOutputCompiledFunctionCallValue
+    | Vellum.NodeOutputCompiledThinkingValue;

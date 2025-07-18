@@ -9,7 +9,7 @@ import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace Organizations {
+export declare namespace WorkflowExecutions {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -33,32 +33,35 @@ export declare namespace Organizations {
     }
 }
 
-export class Organizations {
-    constructor(protected readonly _options: Organizations.Options) {}
+export class WorkflowExecutions {
+    constructor(protected readonly _options: WorkflowExecutions.Options) {}
 
     /**
-     * Retrieves information about the active Organization
-     *
-     * @param {Organizations.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {string} executionId
+     * @param {WorkflowExecutions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.organizations.organizationIdentity()
+     *     await client.workflowExecutions.retrieveWorkflowExecutionDetail("execution_id")
      */
-    public organizationIdentity(
-        requestOptions?: Organizations.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.OrganizationRead> {
-        return core.HttpResponsePromise.fromPromise(this.__organizationIdentity(requestOptions));
+    public retrieveWorkflowExecutionDetail(
+        executionId: string,
+        requestOptions?: WorkflowExecutions.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.WorkflowExecutionDetail> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__retrieveWorkflowExecutionDetail(executionId, requestOptions),
+        );
     }
 
-    private async __organizationIdentity(
-        requestOptions?: Organizations.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.OrganizationRead>> {
+    private async __retrieveWorkflowExecutionDetail(
+        executionId: string,
+        requestOptions?: WorkflowExecutions.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowExecutionDetail>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                "v1/organizations/identity",
+                `v1/workflow-executions/${encodeURIComponent(executionId)}/detail`,
             ),
             method: "GET",
             headers: {
@@ -85,7 +88,7 @@ export class Organizations {
         });
         if (_response.ok) {
             return {
-                data: serializers.OrganizationRead.parseOrThrow(_response.body, {
+                data: serializers.WorkflowExecutionDetail.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -111,7 +114,9 @@ export class Organizations {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/organizations/identity.");
+                throw new errors.VellumTimeoutError(
+                    "Timeout exceeded when calling GET /v1/workflow-executions/{execution_id}/detail.",
+                );
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
