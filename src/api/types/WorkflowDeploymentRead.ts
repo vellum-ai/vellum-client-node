@@ -24,7 +24,7 @@ export interface WorkflowDeploymentRead {
      * * `STAGING` - Staging
      * * `PRODUCTION` - Production
      */
-    environment?: Vellum.EnvironmentEnum;
+    environment?: Vellum.EnvironmentEnum | null;
     created: Date;
     lastDeployedOn: Date;
     /** The ID of the history item associated with this Workflow Deployment's LATEST Release Tag */

@@ -17,7 +17,7 @@ export const SlimWorkflowDeployment: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     label: core.serialization.string(),
     status: EntityStatus.optional(),
-    environment: EnvironmentEnum.optional(),
+    environment: EnvironmentEnum.optionalNullable(),
     created: core.serialization.date(),
     lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date()),
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
@@ -31,7 +31,7 @@ export declare namespace SlimWorkflowDeployment {
         name: string;
         label: string;
         status?: EntityStatus.Raw | null;
-        environment?: EnvironmentEnum.Raw | null;
+        environment?: (EnvironmentEnum.Raw | null) | null;
         created: string;
         last_deployed_on: string;
         input_variables: VellumVariable.Raw[];

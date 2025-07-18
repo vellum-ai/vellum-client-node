@@ -3812,6 +3812,56 @@ await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_
 </dl>
 </details>
 
+## WorkflowExecutions
+
+<details><summary><code>client.workflowExecutions.<a href="/src/api/resources/workflowExecutions/client/Client.ts">retrieveWorkflowExecutionDetail</a>(executionId) -> Vellum.WorkflowExecutionDetail</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workflowExecutions.retrieveWorkflowExecutionDetail("execution_id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**executionId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WorkflowExecutions.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## WorkflowSandboxes
 
 <details><summary><code>client.workflowSandboxes.<a href="/src/api/resources/workflowSandboxes/client/Client.ts">deployWorkflow</a>(id, workflowId, { ...params }) -> Vellum.WorkflowDeploymentRead</code></summary>

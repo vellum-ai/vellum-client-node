@@ -18,7 +18,7 @@ export const SlimDeploymentRead: core.serialization.ObjectSchema<
     label: core.serialization.string(),
     name: core.serialization.string(),
     status: EntityStatus.optional(),
-    environment: EnvironmentEnum.optional(),
+    environment: EnvironmentEnum.optionalNullable(),
     lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date()),
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     description: core.serialization.string().optionalNullable(),
@@ -31,7 +31,7 @@ export declare namespace SlimDeploymentRead {
         label: string;
         name: string;
         status?: EntityStatus.Raw | null;
-        environment?: EnvironmentEnum.Raw | null;
+        environment?: (EnvironmentEnum.Raw | null) | null;
         last_deployed_on: string;
         input_variables: VellumVariable.Raw[];
         description?: (string | null) | null;

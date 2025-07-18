@@ -5,7 +5,7 @@ import { getVersion } from './utils.js';
 
 dotenv.config();
 
-const SDK_REPO = "vellum-python-sdks";
+const SDK_REPO = "vellum-client-node";
 
 const main = async () => {
   const version = getVersion();

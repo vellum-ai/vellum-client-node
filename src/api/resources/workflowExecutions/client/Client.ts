@@ -9,7 +9,7 @@ import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace MlModels {
+export declare namespace WorkflowExecutions {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -33,35 +33,35 @@ export declare namespace MlModels {
     }
 }
 
-export class MlModels {
-    constructor(protected readonly _options: MlModels.Options) {}
+export class WorkflowExecutions {
+    constructor(protected readonly _options: WorkflowExecutions.Options) {}
 
     /**
-     * Retrieve details about an ML Model
-     *
-     * @param {string} id - Either the ML Model's ID, its unique name, or its ID in the workspace.
-     * @param {MlModels.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {string} executionId
+     * @param {WorkflowExecutions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.mlModels.retrieve("id")
+     *     await client.workflowExecutions.retrieveWorkflowExecutionDetail("execution_id")
      */
-    public retrieve(
-        id: string,
-        requestOptions?: MlModels.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.MlModelRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+    public retrieveWorkflowExecutionDetail(
+        executionId: string,
+        requestOptions?: WorkflowExecutions.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.WorkflowExecutionDetail> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__retrieveWorkflowExecutionDetail(executionId, requestOptions),
+        );
     }
 
-    private async __retrieve(
-        id: string,
-        requestOptions?: MlModels.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.MlModelRead>> {
+    private async __retrieveWorkflowExecutionDetail(
+        executionId: string,
+        requestOptions?: WorkflowExecutions.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowExecutionDetail>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                `v1/ml-models/${encodeURIComponent(id)}`,
+                `v1/workflow-executions/${encodeURIComponent(executionId)}/detail`,
             ),
             method: "GET",
             headers: {
@@ -88,7 +88,7 @@ export class MlModels {
         });
         if (_response.ok) {
             return {
-                data: serializers.MlModelRead.parseOrThrow(_response.body, {
+                data: serializers.WorkflowExecutionDetail.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -114,7 +114,9 @@ export class MlModels {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/ml-models/{id}.");
+                throw new errors.VellumTimeoutError(
+                    "Timeout exceeded when calling GET /v1/workflow-executions/{execution_id}/detail.",
+                );
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
