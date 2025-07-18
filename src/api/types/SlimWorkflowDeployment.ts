@@ -24,7 +24,7 @@ export interface SlimWorkflowDeployment {
      * * `STAGING` - Staging
      * * `PRODUCTION` - Production
      */
-    environment?: Vellum.EnvironmentEnum;
+    environment?: Vellum.EnvironmentEnum | null;
     created: Date;
     lastDeployedOn: Date;
     /** The input variables this Workflow Deployment expects to receive values for when it is executed. */

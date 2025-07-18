@@ -13,6 +13,7 @@ import { NodeOutputCompiledSearchResultsValue } from "./NodeOutputCompiledSearch
 import { NodeOutputCompiledErrorValue } from "./NodeOutputCompiledErrorValue";
 import { NodeOutputCompiledArrayValue } from "./NodeOutputCompiledArrayValue";
 import { NodeOutputCompiledFunctionCallValue } from "./NodeOutputCompiledFunctionCallValue";
+import { NodeOutputCompiledThinkingValue } from "./NodeOutputCompiledThinkingValue";
 
 export const NodeOutputCompiledValue: core.serialization.Schema<
     serializers.NodeOutputCompiledValue.Raw,
@@ -26,6 +27,7 @@ export const NodeOutputCompiledValue: core.serialization.Schema<
     NodeOutputCompiledErrorValue,
     NodeOutputCompiledArrayValue,
     NodeOutputCompiledFunctionCallValue,
+    NodeOutputCompiledThinkingValue,
 ]);
 
 export declare namespace NodeOutputCompiledValue {
@@ -37,5 +39,6 @@ export declare namespace NodeOutputCompiledValue {
         | NodeOutputCompiledSearchResultsValue.Raw
         | NodeOutputCompiledErrorValue.Raw
         | NodeOutputCompiledArrayValue.Raw
-        | NodeOutputCompiledFunctionCallValue.Raw;
+        | NodeOutputCompiledFunctionCallValue.Raw
+        | NodeOutputCompiledThinkingValue.Raw;
 }

@@ -17,7 +17,7 @@ export const WorkflowDeploymentRead: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     label: core.serialization.string(),
     status: EntityStatus.optional(),
-    environment: EnvironmentEnum.optional(),
+    environment: EnvironmentEnum.optionalNullable(),
     created: core.serialization.date(),
     lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date()),
     lastDeployedHistoryItemId: core.serialization.property(
@@ -35,7 +35,7 @@ export declare namespace WorkflowDeploymentRead {
         name: string;
         label: string;
         status?: EntityStatus.Raw | null;
-        environment?: EnvironmentEnum.Raw | null;
+        environment?: (EnvironmentEnum.Raw | null) | null;
         created: string;
         last_deployed_on: string;
         last_deployed_history_item_id: string;
