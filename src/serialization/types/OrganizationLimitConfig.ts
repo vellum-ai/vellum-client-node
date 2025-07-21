@@ -19,6 +19,10 @@ export const OrganizationLimitConfig: core.serialization.ObjectSchema<
         "workflow_runtime_seconds_quota",
         Quota.optionalNullable(),
     ),
+    maxWorkflowRuntimeSeconds: core.serialization.property(
+        "max_workflow_runtime_seconds",
+        core.serialization.number().optionalNullable(),
+    ),
 });
 
 export declare namespace OrganizationLimitConfig {
@@ -27,5 +31,6 @@ export declare namespace OrganizationLimitConfig {
         prompt_executions_quota?: (Quota.Raw | null) | null;
         workflow_executions_quota?: (Quota.Raw | null) | null;
         workflow_runtime_seconds_quota?: (Quota.Raw | null) | null;
+        max_workflow_runtime_seconds?: (number | null) | null;
     }
 }
