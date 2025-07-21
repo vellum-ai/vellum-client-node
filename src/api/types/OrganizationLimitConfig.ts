@@ -9,4 +9,5 @@ export interface OrganizationLimitConfig {
     promptExecutionsQuota?: Vellum.Quota | null;
     workflowExecutionsQuota?: Vellum.Quota | null;
     workflowRuntimeSecondsQuota?: Vellum.Quota | null;
+    maxWorkflowRuntimeSeconds?: number | null;
 }
