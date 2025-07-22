@@ -5,16 +5,17 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { NameEnum } from "./NameEnum";
 
 export const Quota: core.serialization.ObjectSchema<serializers.Quota.Raw, Vellum.Quota> = core.serialization.object({
-    name: core.serialization.string(),
+    name: NameEnum,
     value: core.serialization.number().optionalNullable(),
     periodSeconds: core.serialization.property("period_seconds", core.serialization.number().optionalNullable()),
 });
 
 export declare namespace Quota {
     export interface Raw {
-        name: string;
+        name: NameEnum.Raw;
         value?: (number | null) | null;
         period_seconds?: (number | null) | null;
     }
