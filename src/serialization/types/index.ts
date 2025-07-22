@@ -208,6 +208,7 @@ export * from "./MetricDefinitionExecution";
 export * from "./MetricDefinitionHistoryItem";
 export * from "./MetricDefinitionInput";
 export * from "./MetricNodeResult";
+export * from "./NameEnum";
 export * from "./NamedScenarioInputChatHistoryVariableValueRequest";
 export * from "./NamedScenarioInputJsonVariableValueRequest";
 export * from "./NamedScenarioInputRequest";
