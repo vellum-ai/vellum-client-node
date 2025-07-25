@@ -9,5 +9,5 @@ export interface OrganizationRead {
     name: string;
     allowStaffAccess?: boolean;
     newMemberJoinBehavior: Vellum.NewMemberJoinBehaviorEnum;
-    limitConfig: Vellum.OrganizationLimitConfig;
+    limitConfig?: Record<string, unknown>;
 }
