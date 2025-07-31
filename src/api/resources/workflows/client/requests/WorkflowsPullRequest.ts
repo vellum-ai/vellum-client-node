@@ -4,6 +4,7 @@
 
 export interface WorkflowsPullRequest {
     excludeCode?: boolean | null;
+    excludeDisplay?: boolean | null;
     includeJson?: boolean | null;
     includeSandbox?: boolean | null;
     strict?: boolean | null;
