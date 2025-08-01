@@ -13,6 +13,7 @@ export const OrganizationRead: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
+    created: core.serialization.date().optional(),
     allowStaffAccess: core.serialization.property("allow_staff_access", core.serialization.boolean().optional()),
     newMemberJoinBehavior: core.serialization.property("new_member_join_behavior", NewMemberJoinBehaviorEnum),
     limitConfig: core.serialization.property(
@@ -25,6 +26,7 @@ export declare namespace OrganizationRead {
     export interface Raw {
         id: string;
         name: string;
+        created?: string | null;
         allow_staff_access?: boolean | null;
         new_member_join_behavior: NewMemberJoinBehaviorEnum.Raw;
         limit_config?: Record<string, unknown> | null;
