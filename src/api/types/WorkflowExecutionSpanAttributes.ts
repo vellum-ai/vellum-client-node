@@ -4,4 +4,5 @@
 
 export interface WorkflowExecutionSpanAttributes {
     label: string;
+    workflowId: string;
 }

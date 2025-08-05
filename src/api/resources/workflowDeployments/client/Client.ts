@@ -90,11 +90,11 @@ export class WorkflowDeployments {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.0.11",
-                "User-Agent": "vellum-ai/1.0.11",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -178,11 +178,11 @@ export class WorkflowDeployments {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.0.11",
-                "User-Agent": "vellum-ai/1.0.11",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -282,11 +282,11 @@ export class WorkflowDeployments {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.0.11",
-                "User-Agent": "vellum-ai/1.0.11",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -375,11 +375,11 @@ export class WorkflowDeployments {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.0.11",
-                "User-Agent": "vellum-ai/1.0.11",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -470,11 +470,11 @@ export class WorkflowDeployments {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.0.11",
-                "User-Agent": "vellum-ai/1.0.11",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -582,11 +582,11 @@ export class WorkflowDeployments {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.0.11",
-                "User-Agent": "vellum-ai/1.0.11",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -675,11 +675,11 @@ export class WorkflowDeployments {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.0.11",
-                "User-Agent": "vellum-ai/1.0.11",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -770,11 +770,11 @@ export class WorkflowDeployments {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.0.11",
-                "User-Agent": "vellum-ai/1.0.11",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -819,6 +819,100 @@ export class WorkflowDeployments {
             case "timeout":
                 throw new errors.VellumTimeoutError(
                     "Timeout exceeded when calling PATCH /v1/workflow-deployments/{id}/release-tags/{name}.",
+                );
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * Retrieve a specific Workflow Deployment Release by either its UUID or the name of a Release Tag that points to it.
+     *
+     * @param {string} id - Either the Workflow Deployment's ID or its unique name
+     * @param {string} releaseIdOrReleaseTag - Either the UUID of Workflow Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment Release you'd like to retrieve.
+     * @param {WorkflowDeployments.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.workflowDeployments.retrieveWorkflowDeploymentRelease("id", "release_id_or_release_tag")
+     */
+    public retrieveWorkflowDeploymentRelease(
+        id: string,
+        releaseIdOrReleaseTag: string,
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.WorkflowDeploymentRelease> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__retrieveWorkflowDeploymentRelease(id, releaseIdOrReleaseTag, requestOptions),
+        );
+    }
+
+    private async __retrieveWorkflowDeploymentRelease(
+        id: string,
+        releaseIdOrReleaseTag: string,
+        requestOptions?: WorkflowDeployments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowDeploymentRelease>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                `v1/workflow-deployments/${encodeURIComponent(id)}/releases/${encodeURIComponent(releaseIdOrReleaseTag)}`,
+            ),
+            method: "GET",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.0.12",
+                "User-Agent": "vellum-ai/1.0.12",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.WorkflowDeploymentRelease.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError(
+                    "Timeout exceeded when calling GET /v1/workflow-deployments/{id}/releases/{release_id_or_release_tag}.",
                 );
             case "unknown":
                 throw new errors.VellumError({
