@@ -3,5 +3,6 @@
  */
 
 export interface NodeExecutionSpanAttributes {
+    label: string;
     nodeId: string;
 }

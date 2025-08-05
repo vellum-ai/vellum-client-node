@@ -14,6 +14,7 @@ export const ParentContext: core.serialization.Schema<serializers.ParentContext.
         core.serialization.lazyObject(() => serializers.WorkflowSandboxParentContext),
         core.serialization.lazyObject(() => serializers.PromptDeploymentParentContext),
         core.serialization.lazyObject(() => serializers.ApiRequestParentContext),
+        core.serialization.lazyObject(() => serializers.ExternalParentContext),
     ]);
 
 export declare namespace ParentContext {
@@ -23,5 +24,6 @@ export declare namespace ParentContext {
         | serializers.WorkflowDeploymentParentContext.Raw
         | serializers.WorkflowSandboxParentContext.Raw
         | serializers.PromptDeploymentParentContext.Raw
-        | serializers.ApiRequestParentContext.Raw;
+        | serializers.ApiRequestParentContext.Raw
+        | serializers.ExternalParentContext.Raw;
 }

@@ -10,4 +10,5 @@ export type ParentContext =
     | Vellum.WorkflowDeploymentParentContext
     | Vellum.WorkflowSandboxParentContext
     | Vellum.PromptDeploymentParentContext
-    | Vellum.ApiRequestParentContext;
+    | Vellum.ApiRequestParentContext
+    | Vellum.ExternalParentContext;
