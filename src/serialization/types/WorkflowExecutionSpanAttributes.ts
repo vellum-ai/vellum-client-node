@@ -11,10 +11,12 @@ export const WorkflowExecutionSpanAttributes: core.serialization.ObjectSchema<
     Vellum.WorkflowExecutionSpanAttributes
 > = core.serialization.object({
     label: core.serialization.string(),
+    workflowId: core.serialization.property("workflow_id", core.serialization.string()),
 });
 
 export declare namespace WorkflowExecutionSpanAttributes {
     export interface Raw {
         label: string;
+        workflow_id: string;
     }
 }

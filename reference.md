@@ -3739,9 +3739,7 @@ await client.workflowDeployments.updateWorkflowReleaseTag("id", "name");
 </dl>
 </details>
 
-## ReleaseReviews
-
-<details><summary><code>client.releaseReviews.<a href="/src/api/resources/releaseReviews/client/Client.ts">retrieveWorkflowDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.WorkflowDeploymentRelease</code></summary>
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">retrieveWorkflowDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.WorkflowDeploymentRelease</code></summary>
 <dl>
 <dd>
 
@@ -3769,7 +3767,7 @@ Retrieve a specific Workflow Deployment Release by either its UUID or the name o
 <dd>
 
 ```typescript
-await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_or_release_tag");
+await client.workflowDeployments.retrieveWorkflowDeploymentRelease("id", "release_id_or_release_tag");
 ```
 
 </dd>
@@ -3801,7 +3799,7 @@ await client.releaseReviews.retrieveWorkflowDeploymentRelease("id", "release_id_
 <dl>
 <dd>
 
-**requestOptions:** `ReleaseReviews.RequestOptions`
+**requestOptions:** `WorkflowDeployments.RequestOptions`
 
 </dd>
 </dl>

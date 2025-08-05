@@ -115,6 +115,7 @@ export * from "./ExecutionStringVellumValue";
 export * from "./ExecutionThinkingVellumValue";
 export * from "./ExecutionVellumValue";
 export * from "./ExternalInputDescriptor";
+export * from "./ExternalParentContext";
 export * from "./ExternalTestCaseExecution";
 export * from "./ExternalTestCaseExecutionRequest";
 export * from "./FastEmbedVectorizerBaaiBgeSmallEnV15";
