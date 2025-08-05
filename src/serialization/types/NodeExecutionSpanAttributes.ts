@@ -10,11 +10,13 @@ export const NodeExecutionSpanAttributes: core.serialization.ObjectSchema<
     serializers.NodeExecutionSpanAttributes.Raw,
     Vellum.NodeExecutionSpanAttributes
 > = core.serialization.object({
+    label: core.serialization.string(),
     nodeId: core.serialization.property("node_id", core.serialization.string()),
 });
 
 export declare namespace NodeExecutionSpanAttributes {
     export interface Raw {
+        label: string;
         node_id: string;
     }
 }
