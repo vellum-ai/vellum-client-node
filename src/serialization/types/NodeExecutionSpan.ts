@@ -7,6 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { VellumNodeExecutionEvent } from "./VellumNodeExecutionEvent";
 import { NodeExecutionSpanAttributes } from "./NodeExecutionSpanAttributes";
+import { WorkflowExecutionUsageCalculationFulfilledBody } from "./WorkflowExecutionUsageCalculationFulfilledBody";
 
 export const NodeExecutionSpan: core.serialization.ObjectSchema<
     serializers.NodeExecutionSpan.Raw,
@@ -15,6 +16,10 @@ export const NodeExecutionSpan: core.serialization.ObjectSchema<
     name: core.serialization.stringLiteral("node.execution"),
     events: core.serialization.list(VellumNodeExecutionEvent),
     attributes: NodeExecutionSpanAttributes,
+    usageResult: core.serialization.property(
+        "usage_result",
+        WorkflowExecutionUsageCalculationFulfilledBody.optionalNullable(),
+    ),
     spanId: core.serialization.property("span_id", core.serialization.string()),
     startTs: core.serialization.property("start_ts", core.serialization.date()),
     endTs: core.serialization.property("end_ts", core.serialization.date()),
@@ -26,6 +31,7 @@ export declare namespace NodeExecutionSpan {
         name: "node.execution";
         events: VellumNodeExecutionEvent.Raw[];
         attributes: NodeExecutionSpanAttributes.Raw;
+        usage_result?: (WorkflowExecutionUsageCalculationFulfilledBody.Raw | null) | null;
         span_id: string;
         start_ts: string;
         end_ts: string;

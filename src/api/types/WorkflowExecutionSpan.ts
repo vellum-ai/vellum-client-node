@@ -8,6 +8,7 @@ export interface WorkflowExecutionSpan {
     name: "workflow.execution";
     events: Vellum.VellumWorkflowExecutionEvent[];
     attributes: Vellum.WorkflowExecutionSpanAttributes;
+    usageResult?: Vellum.WorkflowExecutionUsageCalculationFulfilledBody | null;
     spanId: string;
     startTs: Date;
     endTs: Date;

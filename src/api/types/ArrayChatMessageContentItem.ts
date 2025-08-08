@@ -7,6 +7,7 @@ import * as Vellum from "../index";
 export type ArrayChatMessageContentItem =
     | Vellum.StringChatMessageContent
     | Vellum.FunctionCallChatMessageContent
-    | Vellum.ImageChatMessageContent
     | Vellum.AudioChatMessageContent
+    | Vellum.VideoChatMessageContent
+    | Vellum.ImageChatMessageContent
     | Vellum.DocumentChatMessageContent;

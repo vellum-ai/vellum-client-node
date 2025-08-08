@@ -9,7 +9,8 @@ export type PromptBlock =
     | Vellum.ChatMessagePromptBlock
     | Vellum.VariablePromptBlock
     | Vellum.RichTextPromptBlock
-    | Vellum.AudioPromptBlock
     | Vellum.FunctionCallPromptBlock
+    | Vellum.AudioPromptBlock
+    | Vellum.VideoPromptBlock
     | Vellum.ImagePromptBlock
     | Vellum.DocumentPromptBlock;

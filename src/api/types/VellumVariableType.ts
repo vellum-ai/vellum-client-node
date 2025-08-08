@@ -11,8 +11,9 @@
  * * `ERROR` - ERROR
  * * `ARRAY` - ARRAY
  * * `FUNCTION_CALL` - FUNCTION_CALL
- * * `IMAGE` - IMAGE
  * * `AUDIO` - AUDIO
+ * * `VIDEO` - VIDEO
+ * * `IMAGE` - IMAGE
  * * `DOCUMENT` - DOCUMENT
  * * `NULL` - NULL
  * * `THINKING` - THINKING
@@ -26,8 +27,9 @@ export type VellumVariableType =
     | "ERROR"
     | "ARRAY"
     | "FUNCTION_CALL"
-    | "IMAGE"
     | "AUDIO"
+    | "VIDEO"
+    | "IMAGE"
     | "DOCUMENT"
     | "NULL"
     | "THINKING";
@@ -40,8 +42,9 @@ export const VellumVariableType = {
     Error: "ERROR",
     Array: "ARRAY",
     FunctionCall: "FUNCTION_CALL",
-    Image: "IMAGE",
     Audio: "AUDIO",
+    Video: "VIDEO",
+    Image: "IMAGE",
     Document: "DOCUMENT",
     Null: "NULL",
     Thinking: "THINKING",

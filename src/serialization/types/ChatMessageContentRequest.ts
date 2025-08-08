@@ -8,8 +8,9 @@ import * as core from "../../core";
 import { StringChatMessageContentRequest } from "./StringChatMessageContentRequest";
 import { FunctionCallChatMessageContentRequest } from "./FunctionCallChatMessageContentRequest";
 import { ArrayChatMessageContentRequest } from "./ArrayChatMessageContentRequest";
-import { ImageChatMessageContentRequest } from "./ImageChatMessageContentRequest";
 import { AudioChatMessageContentRequest } from "./AudioChatMessageContentRequest";
+import { VideoChatMessageContentRequest } from "./VideoChatMessageContentRequest";
+import { ImageChatMessageContentRequest } from "./ImageChatMessageContentRequest";
 import { DocumentChatMessageContentRequest } from "./DocumentChatMessageContentRequest";
 
 export const ChatMessageContentRequest: core.serialization.Schema<
@@ -19,8 +20,9 @@ export const ChatMessageContentRequest: core.serialization.Schema<
     StringChatMessageContentRequest,
     FunctionCallChatMessageContentRequest,
     ArrayChatMessageContentRequest,
-    ImageChatMessageContentRequest,
     AudioChatMessageContentRequest,
+    VideoChatMessageContentRequest,
+    ImageChatMessageContentRequest,
     DocumentChatMessageContentRequest,
 ]);
 
@@ -29,7 +31,8 @@ export declare namespace ChatMessageContentRequest {
         | StringChatMessageContentRequest.Raw
         | FunctionCallChatMessageContentRequest.Raw
         | ArrayChatMessageContentRequest.Raw
-        | ImageChatMessageContentRequest.Raw
         | AudioChatMessageContentRequest.Raw
+        | VideoChatMessageContentRequest.Raw
+        | ImageChatMessageContentRequest.Raw
         | DocumentChatMessageContentRequest.Raw;
 }
