@@ -8,6 +8,7 @@ export interface NodeExecutionSpan {
     name: "node.execution";
     events: Vellum.VellumNodeExecutionEvent[];
     attributes: Vellum.NodeExecutionSpanAttributes;
+    usageResult?: Vellum.WorkflowExecutionUsageCalculationFulfilledBody | null;
     spanId: string;
     startTs: Date;
     endTs: Date;

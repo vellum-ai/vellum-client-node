@@ -8,8 +8,9 @@ import * as core from "../../core";
 import { StringVellumValueRequest } from "./StringVellumValueRequest";
 import { NumberVellumValueRequest } from "./NumberVellumValueRequest";
 import { JsonVellumValueRequest } from "./JsonVellumValueRequest";
-import { ImageVellumValueRequest } from "./ImageVellumValueRequest";
 import { AudioVellumValueRequest } from "./AudioVellumValueRequest";
+import { VideoVellumValueRequest } from "./VideoVellumValueRequest";
+import { ImageVellumValueRequest } from "./ImageVellumValueRequest";
 import { DocumentVellumValueRequest } from "./DocumentVellumValueRequest";
 import { FunctionCallVellumValueRequest } from "./FunctionCallVellumValueRequest";
 import { ErrorVellumValueRequest } from "./ErrorVellumValueRequest";
@@ -24,8 +25,9 @@ export const VellumValueRequest: core.serialization.Schema<
     StringVellumValueRequest,
     NumberVellumValueRequest,
     JsonVellumValueRequest,
-    ImageVellumValueRequest,
     AudioVellumValueRequest,
+    VideoVellumValueRequest,
+    ImageVellumValueRequest,
     DocumentVellumValueRequest,
     FunctionCallVellumValueRequest,
     ErrorVellumValueRequest,
@@ -40,8 +42,9 @@ export declare namespace VellumValueRequest {
         | StringVellumValueRequest.Raw
         | NumberVellumValueRequest.Raw
         | JsonVellumValueRequest.Raw
-        | ImageVellumValueRequest.Raw
         | AudioVellumValueRequest.Raw
+        | VideoVellumValueRequest.Raw
+        | ImageVellumValueRequest.Raw
         | DocumentVellumValueRequest.Raw
         | FunctionCallVellumValueRequest.Raw
         | ErrorVellumValueRequest.Raw

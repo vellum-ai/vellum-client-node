@@ -7,8 +7,9 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { StringChatMessageContent } from "./StringChatMessageContent";
 import { FunctionCallChatMessageContent } from "./FunctionCallChatMessageContent";
-import { ImageChatMessageContent } from "./ImageChatMessageContent";
 import { AudioChatMessageContent } from "./AudioChatMessageContent";
+import { VideoChatMessageContent } from "./VideoChatMessageContent";
+import { ImageChatMessageContent } from "./ImageChatMessageContent";
 import { DocumentChatMessageContent } from "./DocumentChatMessageContent";
 
 export const ArrayChatMessageContentItem: core.serialization.Schema<
@@ -17,8 +18,9 @@ export const ArrayChatMessageContentItem: core.serialization.Schema<
 > = core.serialization.undiscriminatedUnion([
     StringChatMessageContent,
     FunctionCallChatMessageContent,
-    ImageChatMessageContent,
     AudioChatMessageContent,
+    VideoChatMessageContent,
+    ImageChatMessageContent,
     DocumentChatMessageContent,
 ]);
 
@@ -26,7 +28,8 @@ export declare namespace ArrayChatMessageContentItem {
     export type Raw =
         | StringChatMessageContent.Raw
         | FunctionCallChatMessageContent.Raw
-        | ImageChatMessageContent.Raw
         | AudioChatMessageContent.Raw
+        | VideoChatMessageContent.Raw
+        | ImageChatMessageContent.Raw
         | DocumentChatMessageContent.Raw;
 }
