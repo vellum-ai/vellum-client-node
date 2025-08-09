@@ -8,8 +8,9 @@ import * as core from "../../core";
 import { JinjaPromptBlock } from "./JinjaPromptBlock";
 import { VariablePromptBlock } from "./VariablePromptBlock";
 import { RichTextPromptBlock } from "./RichTextPromptBlock";
-import { AudioPromptBlock } from "./AudioPromptBlock";
 import { FunctionCallPromptBlock } from "./FunctionCallPromptBlock";
+import { AudioPromptBlock } from "./AudioPromptBlock";
+import { VideoPromptBlock } from "./VideoPromptBlock";
 import { ImagePromptBlock } from "./ImagePromptBlock";
 import { DocumentPromptBlock } from "./DocumentPromptBlock";
 
@@ -19,8 +20,9 @@ export const PromptBlock: core.serialization.Schema<serializers.PromptBlock.Raw,
         core.serialization.lazyObject(() => serializers.ChatMessagePromptBlock),
         VariablePromptBlock,
         RichTextPromptBlock,
-        AudioPromptBlock,
         FunctionCallPromptBlock,
+        AudioPromptBlock,
+        VideoPromptBlock,
         ImagePromptBlock,
         DocumentPromptBlock,
     ]);
@@ -31,8 +33,9 @@ export declare namespace PromptBlock {
         | serializers.ChatMessagePromptBlock.Raw
         | VariablePromptBlock.Raw
         | RichTextPromptBlock.Raw
-        | AudioPromptBlock.Raw
         | FunctionCallPromptBlock.Raw
+        | AudioPromptBlock.Raw
+        | VideoPromptBlock.Raw
         | ImagePromptBlock.Raw
         | DocumentPromptBlock.Raw;
 }

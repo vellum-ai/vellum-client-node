@@ -8,8 +8,9 @@ import * as core from "../../core";
 import { StringVellumValue } from "./StringVellumValue";
 import { NumberVellumValue } from "./NumberVellumValue";
 import { JsonVellumValue } from "./JsonVellumValue";
-import { ImageVellumValue } from "./ImageVellumValue";
 import { AudioVellumValue } from "./AudioVellumValue";
+import { VideoVellumValue } from "./VideoVellumValue";
+import { ImageVellumValue } from "./ImageVellumValue";
 import { DocumentVellumValue } from "./DocumentVellumValue";
 import { FunctionCallVellumValue } from "./FunctionCallVellumValue";
 import { ErrorVellumValue } from "./ErrorVellumValue";
@@ -22,8 +23,9 @@ export const VellumValue: core.serialization.Schema<serializers.VellumValue.Raw,
         StringVellumValue,
         NumberVellumValue,
         JsonVellumValue,
-        ImageVellumValue,
         AudioVellumValue,
+        VideoVellumValue,
+        ImageVellumValue,
         DocumentVellumValue,
         FunctionCallVellumValue,
         ErrorVellumValue,
@@ -38,8 +40,9 @@ export declare namespace VellumValue {
         | StringVellumValue.Raw
         | NumberVellumValue.Raw
         | JsonVellumValue.Raw
-        | ImageVellumValue.Raw
         | AudioVellumValue.Raw
+        | VideoVellumValue.Raw
+        | ImageVellumValue.Raw
         | DocumentVellumValue.Raw
         | FunctionCallVellumValue.Raw
         | ErrorVellumValue.Raw

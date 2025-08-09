@@ -8,8 +8,9 @@ export type VellumValue =
     | Vellum.StringVellumValue
     | Vellum.NumberVellumValue
     | Vellum.JsonVellumValue
-    | Vellum.ImageVellumValue
     | Vellum.AudioVellumValue
+    | Vellum.VideoVellumValue
+    | Vellum.ImageVellumValue
     | Vellum.DocumentVellumValue
     | Vellum.FunctionCallVellumValue
     | Vellum.ErrorVellumValue

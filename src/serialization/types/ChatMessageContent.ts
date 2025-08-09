@@ -8,8 +8,9 @@ import * as core from "../../core";
 import { StringChatMessageContent } from "./StringChatMessageContent";
 import { FunctionCallChatMessageContent } from "./FunctionCallChatMessageContent";
 import { ArrayChatMessageContent } from "./ArrayChatMessageContent";
-import { ImageChatMessageContent } from "./ImageChatMessageContent";
 import { AudioChatMessageContent } from "./AudioChatMessageContent";
+import { VideoChatMessageContent } from "./VideoChatMessageContent";
+import { ImageChatMessageContent } from "./ImageChatMessageContent";
 import { DocumentChatMessageContent } from "./DocumentChatMessageContent";
 
 export const ChatMessageContent: core.serialization.Schema<
@@ -19,8 +20,9 @@ export const ChatMessageContent: core.serialization.Schema<
     StringChatMessageContent,
     FunctionCallChatMessageContent,
     ArrayChatMessageContent,
-    ImageChatMessageContent,
     AudioChatMessageContent,
+    VideoChatMessageContent,
+    ImageChatMessageContent,
     DocumentChatMessageContent,
 ]);
 
@@ -29,7 +31,8 @@ export declare namespace ChatMessageContent {
         | StringChatMessageContent.Raw
         | FunctionCallChatMessageContent.Raw
         | ArrayChatMessageContent.Raw
-        | ImageChatMessageContent.Raw
         | AudioChatMessageContent.Raw
+        | VideoChatMessageContent.Raw
+        | ImageChatMessageContent.Raw
         | DocumentChatMessageContent.Raw;
 }

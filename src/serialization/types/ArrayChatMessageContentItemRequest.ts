@@ -7,8 +7,9 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { StringChatMessageContentRequest } from "./StringChatMessageContentRequest";
 import { FunctionCallChatMessageContentRequest } from "./FunctionCallChatMessageContentRequest";
-import { ImageChatMessageContentRequest } from "./ImageChatMessageContentRequest";
 import { AudioChatMessageContentRequest } from "./AudioChatMessageContentRequest";
+import { VideoChatMessageContentRequest } from "./VideoChatMessageContentRequest";
+import { ImageChatMessageContentRequest } from "./ImageChatMessageContentRequest";
 import { DocumentChatMessageContentRequest } from "./DocumentChatMessageContentRequest";
 
 export const ArrayChatMessageContentItemRequest: core.serialization.Schema<
@@ -17,8 +18,9 @@ export const ArrayChatMessageContentItemRequest: core.serialization.Schema<
 > = core.serialization.undiscriminatedUnion([
     StringChatMessageContentRequest,
     FunctionCallChatMessageContentRequest,
-    ImageChatMessageContentRequest,
     AudioChatMessageContentRequest,
+    VideoChatMessageContentRequest,
+    ImageChatMessageContentRequest,
     DocumentChatMessageContentRequest,
 ]);
 
@@ -26,7 +28,8 @@ export declare namespace ArrayChatMessageContentItemRequest {
     export type Raw =
         | StringChatMessageContentRequest.Raw
         | FunctionCallChatMessageContentRequest.Raw
-        | ImageChatMessageContentRequest.Raw
         | AudioChatMessageContentRequest.Raw
+        | VideoChatMessageContentRequest.Raw
+        | ImageChatMessageContentRequest.Raw
         | DocumentChatMessageContentRequest.Raw;
 }
