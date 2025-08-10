@@ -9,4 +9,5 @@ export interface MlModelRead {
     id: string;
     /** The unique name of the ML Model. */
     name: string;
+    introducedOn: Date;
 }

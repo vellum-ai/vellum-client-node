@@ -10,11 +10,13 @@ export const MlModelRead: core.serialization.ObjectSchema<serializers.MlModelRea
     core.serialization.object({
         id: core.serialization.string(),
         name: core.serialization.string(),
+        introducedOn: core.serialization.property("introduced_on", core.serialization.date()),
     });
 
 export declare namespace MlModelRead {
     export interface Raw {
         id: string;
         name: string;
+        introduced_on: string;
     }
 }
