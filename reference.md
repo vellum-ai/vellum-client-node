@@ -76,6 +76,89 @@ await client.submitWorkflowExecutionActuals({
 
 ##
 
+## Events
+
+<details><summary><code>client.events.<a href="/src/api/resources/events/client/Client.ts">monitoringV1EventsCreate</a>({ ...params }) -> Vellum.EventCreateResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Accept an event and publish it to ClickHouse for analytics processing.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.events.monitoringV1EventsCreate({
+    name: "node.execution.initiated",
+    body: {
+        nodeDefinition: {
+            name: "name",
+            module: ["module", "module"],
+            id: "id",
+        },
+        inputs: {
+            inputs: {
+                key: "value",
+            },
+        },
+    },
+    id: "id",
+    timestamp: "2024-01-15T09:30:00Z",
+    traceId: "trace_id",
+    spanId: "span_id",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.WorkflowEvent`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Events.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## AdHoc
 
 <details><summary><code>client.adHoc.<a href="/src/api/resources/adHoc/client/Client.ts">adhocExecutePrompt</a>({ ...params }) -> Vellum.AdHocExecutePromptEvent</code></summary>
