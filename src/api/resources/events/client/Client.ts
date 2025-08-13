@@ -9,7 +9,7 @@ import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace MlModels {
+export declare namespace Events {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -33,37 +33,60 @@ export declare namespace MlModels {
     }
 }
 
-export class MlModels {
-    constructor(protected readonly _options: MlModels.Options) {}
+export class Events {
+    constructor(protected readonly _options: Events.Options) {}
 
     /**
-     * Retrieve details about an ML Model
+     * Accept an event and publish it to ClickHouse for analytics processing.
      *
-     * @param {string} id - Either the ML Model's ID, its unique name, or its ID in the workspace.
-     * @param {MlModels.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Vellum.WorkflowEvent} request
+     * @param {Events.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.UnauthorizedError}
+     * @throws {@link Vellum.ForbiddenError}
+     * @throws {@link Vellum.TooManyRequestsError}
      *
      * @example
-     *     await client.mlModels.retrieve("id")
+     *     await client.events.create({
+     *         name: "node.execution.initiated",
+     *         body: {
+     *             nodeDefinition: {
+     *                 name: "name",
+     *                 module: ["module", "module"],
+     *                 id: "id"
+     *             },
+     *             inputs: {
+     *                 "inputs": {
+     *                     "key": "value"
+     *                 }
+     *             }
+     *         },
+     *         id: "id",
+     *         timestamp: "2024-01-15T09:30:00Z",
+     *         traceId: "trace_id",
+     *         spanId: "span_id"
+     *     })
      */
-    public retrieve(
-        id: string,
-        requestOptions?: MlModels.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.MlModelRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+    public create(
+        request: Vellum.WorkflowEvent,
+        requestOptions?: Events.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.EventCreateResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
-    private async __retrieve(
-        id: string,
-        requestOptions?: MlModels.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.MlModelRead>> {
+    private async __create(
+        request: Vellum.WorkflowEvent,
+        requestOptions?: Events.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.EventCreateResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                `v1/ml-models/${encodeURIComponent(id)}`,
+                "monitoring/v1/events",
             ),
-            method: "GET",
+            method: "POST",
             headers: {
                 "X-API-Version":
                     (await core.Supplier.get(this._options.apiVersion)) != null
@@ -82,13 +105,14 @@ export class MlModels {
             },
             contentType: "application/json",
             requestType: "json",
+            body: serializers.WorkflowEvent.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                data: serializers.MlModelRead.parseOrThrow(_response.body, {
+                data: serializers.EventCreateResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -99,11 +123,38 @@ export class MlModels {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
+                case 401:
+                    throw new Vellum.UnauthorizedError(
+                        serializers.ErrorDetailResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                case 403:
+                    throw new Vellum.ForbiddenError(_response.error.body, _response.rawResponse);
+                case 429:
+                    throw new Vellum.TooManyRequestsError(
+                        serializers.ErrorDetailResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -114,7 +165,7 @@ export class MlModels {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/ml-models/{id}.");
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /monitoring/v1/events.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
