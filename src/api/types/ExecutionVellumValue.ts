@@ -13,4 +13,8 @@ export type ExecutionVellumValue =
     | Vellum.ExecutionErrorVellumValue
     | Vellum.ExecutionArrayVellumValue
     | Vellum.ExecutionFunctionCallVellumValue
-    | Vellum.ExecutionThinkingVellumValue;
+    | Vellum.ExecutionThinkingVellumValue
+    | Vellum.ExecutionAudioVellumValue
+    | Vellum.ExecutionVideoVellumValue
+    | Vellum.ExecutionImageVellumValue
+    | Vellum.ExecutionDocumentVellumValue;

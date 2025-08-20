@@ -8,12 +8,31 @@ import * as core from "../../core";
 import { StringInputRequest } from "./StringInputRequest";
 import { JsonInputRequest } from "./JsonInputRequest";
 import { ChatHistoryInputRequest } from "./ChatHistoryInputRequest";
+import { AudioInputRequest } from "./AudioInputRequest";
+import { VideoInputRequest } from "./VideoInputRequest";
+import { ImageInputRequest } from "./ImageInputRequest";
+import { DocumentInputRequest } from "./DocumentInputRequest";
 
 export const PromptDeploymentInputRequest: core.serialization.Schema<
     serializers.PromptDeploymentInputRequest.Raw,
     Vellum.PromptDeploymentInputRequest
-> = core.serialization.undiscriminatedUnion([StringInputRequest, JsonInputRequest, ChatHistoryInputRequest]);
+> = core.serialization.undiscriminatedUnion([
+    StringInputRequest,
+    JsonInputRequest,
+    ChatHistoryInputRequest,
+    AudioInputRequest,
+    VideoInputRequest,
+    ImageInputRequest,
+    DocumentInputRequest,
+]);
 
 export declare namespace PromptDeploymentInputRequest {
-    export type Raw = StringInputRequest.Raw | JsonInputRequest.Raw | ChatHistoryInputRequest.Raw;
+    export type Raw =
+        | StringInputRequest.Raw
+        | JsonInputRequest.Raw
+        | ChatHistoryInputRequest.Raw
+        | AudioInputRequest.Raw
+        | VideoInputRequest.Raw
+        | ImageInputRequest.Raw
+        | DocumentInputRequest.Raw;
 }

@@ -38,6 +38,7 @@ export class WorkflowExecutions {
 
     /**
      * @param {string} executionId
+     * @param {Vellum.RetrieveWorkflowExecutionDetailRequest} request
      * @param {WorkflowExecutions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -45,17 +46,29 @@ export class WorkflowExecutions {
      */
     public retrieveWorkflowExecutionDetail(
         executionId: string,
+        request: Vellum.RetrieveWorkflowExecutionDetailRequest = {},
         requestOptions?: WorkflowExecutions.RequestOptions,
     ): core.HttpResponsePromise<Vellum.WorkflowExecutionDetail> {
         return core.HttpResponsePromise.fromPromise(
-            this.__retrieveWorkflowExecutionDetail(executionId, requestOptions),
+            this.__retrieveWorkflowExecutionDetail(executionId, request, requestOptions),
         );
     }
 
     private async __retrieveWorkflowExecutionDetail(
         executionId: string,
+        request: Vellum.RetrieveWorkflowExecutionDetailRequest = {},
         requestOptions?: WorkflowExecutions.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.WorkflowExecutionDetail>> {
+        const { prevSpanId, spanLimit } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (prevSpanId !== undefined) {
+            _queryParams["prev_span_id"] = prevSpanId;
+        }
+
+        if (spanLimit !== undefined) {
+            _queryParams["span_limit"] = spanLimit?.toString() ?? null;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -73,14 +86,15 @@ export class WorkflowExecutions {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.2.2",
-                "User-Agent": "vellum-ai/1.2.2",
+                "X-Fern-SDK-Version": "1.2.3",
+                "User-Agent": "vellum-ai/1.2.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,

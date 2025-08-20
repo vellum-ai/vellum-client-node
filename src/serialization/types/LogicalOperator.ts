@@ -34,6 +34,7 @@ export const LogicalOperator: core.serialization.Schema<serializers.LogicalOpera
         "and",
         "or",
         "isError",
+        "length",
     ]);
 
 export declare namespace LogicalOperator {
@@ -63,5 +64,6 @@ export declare namespace LogicalOperator {
         | "parseJson"
         | "and"
         | "or"
-        | "isError";
+        | "isError"
+        | "length";
 }

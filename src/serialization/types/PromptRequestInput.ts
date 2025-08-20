@@ -8,6 +8,10 @@ import * as core from "../../core";
 import { PromptRequestStringInput } from "./PromptRequestStringInput";
 import { PromptRequestJsonInput } from "./PromptRequestJsonInput";
 import { PromptRequestChatHistoryInput } from "./PromptRequestChatHistoryInput";
+import { PromptRequestAudioInput } from "./PromptRequestAudioInput";
+import { PromptRequestVideoInput } from "./PromptRequestVideoInput";
+import { PromptRequestImageInput } from "./PromptRequestImageInput";
+import { PromptRequestDocumentInput } from "./PromptRequestDocumentInput";
 
 export const PromptRequestInput: core.serialization.Schema<
     serializers.PromptRequestInput.Raw,
@@ -16,8 +20,19 @@ export const PromptRequestInput: core.serialization.Schema<
     PromptRequestStringInput,
     PromptRequestJsonInput,
     PromptRequestChatHistoryInput,
+    PromptRequestAudioInput,
+    PromptRequestVideoInput,
+    PromptRequestImageInput,
+    PromptRequestDocumentInput,
 ]);
 
 export declare namespace PromptRequestInput {
-    export type Raw = PromptRequestStringInput.Raw | PromptRequestJsonInput.Raw | PromptRequestChatHistoryInput.Raw;
+    export type Raw =
+        | PromptRequestStringInput.Raw
+        | PromptRequestJsonInput.Raw
+        | PromptRequestChatHistoryInput.Raw
+        | PromptRequestAudioInput.Raw
+        | PromptRequestVideoInput.Raw
+        | PromptRequestImageInput.Raw
+        | PromptRequestDocumentInput.Raw;
 }
