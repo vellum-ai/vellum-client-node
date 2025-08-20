@@ -8,6 +8,7 @@ import * as core from "../../core";
 import { ReductoChunkingRequest } from "./ReductoChunkingRequest";
 import { SentenceChunkingRequest } from "./SentenceChunkingRequest";
 import { TokenOverlappingWindowChunkingRequest } from "./TokenOverlappingWindowChunkingRequest";
+import { DelimiterChunkingRequest } from "./DelimiterChunkingRequest";
 
 export const DocumentIndexChunkingRequest: core.serialization.Schema<
     serializers.DocumentIndexChunkingRequest.Raw,
@@ -16,11 +17,13 @@ export const DocumentIndexChunkingRequest: core.serialization.Schema<
     ReductoChunkingRequest,
     SentenceChunkingRequest,
     TokenOverlappingWindowChunkingRequest,
+    DelimiterChunkingRequest,
 ]);
 
 export declare namespace DocumentIndexChunkingRequest {
     export type Raw =
         | ReductoChunkingRequest.Raw
         | SentenceChunkingRequest.Raw
-        | TokenOverlappingWindowChunkingRequest.Raw;
+        | TokenOverlappingWindowChunkingRequest.Raw
+        | DelimiterChunkingRequest.Raw;
 }

@@ -14,6 +14,10 @@ import { NodeInputCompiledErrorValue } from "./NodeInputCompiledErrorValue";
 import { NodeInputCompiledArrayValue } from "./NodeInputCompiledArrayValue";
 import { NodeInputCompiledFunctionCallValue } from "./NodeInputCompiledFunctionCallValue";
 import { NodeInputCompiledSecretValue } from "./NodeInputCompiledSecretValue";
+import { NodeInputCompiledAudioValue } from "./NodeInputCompiledAudioValue";
+import { NodeInputCompiledVideoValue } from "./NodeInputCompiledVideoValue";
+import { NodeInputCompiledImageValue } from "./NodeInputCompiledImageValue";
+import { NodeInputCompiledDocumentValue } from "./NodeInputCompiledDocumentValue";
 
 export const NodeInputVariableCompiledValue: core.serialization.Schema<
     serializers.NodeInputVariableCompiledValue.Raw,
@@ -28,6 +32,10 @@ export const NodeInputVariableCompiledValue: core.serialization.Schema<
     NodeInputCompiledArrayValue,
     NodeInputCompiledFunctionCallValue,
     NodeInputCompiledSecretValue,
+    NodeInputCompiledAudioValue,
+    NodeInputCompiledVideoValue,
+    NodeInputCompiledImageValue,
+    NodeInputCompiledDocumentValue,
 ]);
 
 export declare namespace NodeInputVariableCompiledValue {
@@ -40,5 +48,9 @@ export declare namespace NodeInputVariableCompiledValue {
         | NodeInputCompiledErrorValue.Raw
         | NodeInputCompiledArrayValue.Raw
         | NodeInputCompiledFunctionCallValue.Raw
-        | NodeInputCompiledSecretValue.Raw;
+        | NodeInputCompiledSecretValue.Raw
+        | NodeInputCompiledAudioValue.Raw
+        | NodeInputCompiledVideoValue.Raw
+        | NodeInputCompiledImageValue.Raw
+        | NodeInputCompiledDocumentValue.Raw;
 }

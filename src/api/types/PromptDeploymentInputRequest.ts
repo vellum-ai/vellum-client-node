@@ -7,4 +7,8 @@ import * as Vellum from "../index";
 export type PromptDeploymentInputRequest =
     | Vellum.StringInputRequest
     | Vellum.JsonInputRequest
-    | Vellum.ChatHistoryInputRequest;
+    | Vellum.ChatHistoryInputRequest
+    | Vellum.AudioInputRequest
+    | Vellum.VideoInputRequest
+    | Vellum.ImageInputRequest
+    | Vellum.DocumentInputRequest;

@@ -3895,7 +3895,7 @@ await client.workflowDeployments.retrieveWorkflowDeploymentRelease("id", "releas
 
 ## WorkflowExecutions
 
-<details><summary><code>client.workflowExecutions.<a href="/src/api/resources/workflowExecutions/client/Client.ts">retrieveWorkflowExecutionDetail</a>(executionId) -> Vellum.WorkflowExecutionDetail</code></summary>
+<details><summary><code>client.workflowExecutions.<a href="/src/api/resources/workflowExecutions/client/Client.ts">retrieveWorkflowExecutionDetail</a>(executionId, { ...params }) -> Vellum.WorkflowExecutionDetail</code></summary>
 <dl>
 <dd>
 
@@ -3925,6 +3925,14 @@ await client.workflowExecutions.retrieveWorkflowExecutionDetail("execution_id");
 <dd>
 
 **executionId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.RetrieveWorkflowExecutionDetailRequest`
 
 </dd>
 </dl>

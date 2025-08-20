@@ -7,4 +7,5 @@ import * as Vellum from "../index";
 export type DocumentIndexChunkingRequest =
     | Vellum.ReductoChunkingRequest
     | Vellum.SentenceChunkingRequest
-    | Vellum.TokenOverlappingWindowChunkingRequest;
+    | Vellum.TokenOverlappingWindowChunkingRequest
+    | Vellum.DelimiterChunkingRequest;

@@ -14,6 +14,10 @@ import { ExecutionErrorVellumValue } from "./ExecutionErrorVellumValue";
 import { ExecutionArrayVellumValue } from "./ExecutionArrayVellumValue";
 import { ExecutionFunctionCallVellumValue } from "./ExecutionFunctionCallVellumValue";
 import { ExecutionThinkingVellumValue } from "./ExecutionThinkingVellumValue";
+import { ExecutionAudioVellumValue } from "./ExecutionAudioVellumValue";
+import { ExecutionVideoVellumValue } from "./ExecutionVideoVellumValue";
+import { ExecutionImageVellumValue } from "./ExecutionImageVellumValue";
+import { ExecutionDocumentVellumValue } from "./ExecutionDocumentVellumValue";
 
 export const ExecutionVellumValue: core.serialization.Schema<
     serializers.ExecutionVellumValue.Raw,
@@ -28,6 +32,10 @@ export const ExecutionVellumValue: core.serialization.Schema<
     ExecutionArrayVellumValue,
     ExecutionFunctionCallVellumValue,
     ExecutionThinkingVellumValue,
+    ExecutionAudioVellumValue,
+    ExecutionVideoVellumValue,
+    ExecutionImageVellumValue,
+    ExecutionDocumentVellumValue,
 ]);
 
 export declare namespace ExecutionVellumValue {
@@ -40,5 +48,9 @@ export declare namespace ExecutionVellumValue {
         | ExecutionErrorVellumValue.Raw
         | ExecutionArrayVellumValue.Raw
         | ExecutionFunctionCallVellumValue.Raw
-        | ExecutionThinkingVellumValue.Raw;
+        | ExecutionThinkingVellumValue.Raw
+        | ExecutionAudioVellumValue.Raw
+        | ExecutionVideoVellumValue.Raw
+        | ExecutionImageVellumValue.Raw
+        | ExecutionDocumentVellumValue.Raw;
 }

@@ -8,12 +8,22 @@ import * as core from "../../core";
 import { ReductoChunking } from "./ReductoChunking";
 import { SentenceChunking } from "./SentenceChunking";
 import { TokenOverlappingWindowChunking } from "./TokenOverlappingWindowChunking";
+import { DelimiterChunking } from "./DelimiterChunking";
 
 export const DocumentIndexChunking: core.serialization.Schema<
     serializers.DocumentIndexChunking.Raw,
     Vellum.DocumentIndexChunking
-> = core.serialization.undiscriminatedUnion([ReductoChunking, SentenceChunking, TokenOverlappingWindowChunking]);
+> = core.serialization.undiscriminatedUnion([
+    ReductoChunking,
+    SentenceChunking,
+    TokenOverlappingWindowChunking,
+    DelimiterChunking,
+]);
 
 export declare namespace DocumentIndexChunking {
-    export type Raw = ReductoChunking.Raw | SentenceChunking.Raw | TokenOverlappingWindowChunking.Raw;
+    export type Raw =
+        | ReductoChunking.Raw
+        | SentenceChunking.Raw
+        | TokenOverlappingWindowChunking.Raw
+        | DelimiterChunking.Raw;
 }
