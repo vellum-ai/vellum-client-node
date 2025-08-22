@@ -2,6 +2,5 @@
 
 README.md
 LICENSE
-src/terraform
 src/core/fetcher/getFetchFn.ts
 tests/unit/fetcher/stream-wrappers/webpack.test.ts
