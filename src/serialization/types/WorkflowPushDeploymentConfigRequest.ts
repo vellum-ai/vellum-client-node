@@ -17,6 +17,10 @@ export const WorkflowPushDeploymentConfigRequest: core.serialization.ObjectSchem
         "release_tags",
         core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
+    releaseDescription: core.serialization.property(
+        "release_description",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace WorkflowPushDeploymentConfigRequest {
@@ -25,5 +29,6 @@ export declare namespace WorkflowPushDeploymentConfigRequest {
         name?: (string | null) | null;
         description?: (string | null) | null;
         release_tags?: (string[] | null) | null;
+        release_description?: (string | null) | null;
     }
 }
