@@ -7,4 +7,5 @@ export interface WorkflowPushDeploymentConfigRequest {
     name?: string | null;
     description?: string | null;
     releaseTags?: string[] | null;
+    releaseDescription?: string | null;
 }

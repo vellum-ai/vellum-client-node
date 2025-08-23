@@ -13,6 +13,10 @@ import { TestCaseSearchResultsVariableValue } from "./TestCaseSearchResultsVaria
 import { TestCaseErrorVariableValue } from "./TestCaseErrorVariableValue";
 import { TestCaseFunctionCallVariableValue } from "./TestCaseFunctionCallVariableValue";
 import { TestCaseArrayVariableValue } from "./TestCaseArrayVariableValue";
+import { TestCaseAudioVariableValue } from "./TestCaseAudioVariableValue";
+import { TestCaseImageVariableValue } from "./TestCaseImageVariableValue";
+import { TestCaseVideoVariableValue } from "./TestCaseVideoVariableValue";
+import { TestCaseDocumentVariableValue } from "./TestCaseDocumentVariableValue";
 
 export const TestCaseVariableValue: core.serialization.Schema<
     serializers.TestCaseVariableValue.Raw,
@@ -26,6 +30,10 @@ export const TestCaseVariableValue: core.serialization.Schema<
     TestCaseErrorVariableValue,
     TestCaseFunctionCallVariableValue,
     TestCaseArrayVariableValue,
+    TestCaseAudioVariableValue,
+    TestCaseImageVariableValue,
+    TestCaseVideoVariableValue,
+    TestCaseDocumentVariableValue,
 ]);
 
 export declare namespace TestCaseVariableValue {
@@ -37,5 +45,9 @@ export declare namespace TestCaseVariableValue {
         | TestCaseSearchResultsVariableValue.Raw
         | TestCaseErrorVariableValue.Raw
         | TestCaseFunctionCallVariableValue.Raw
-        | TestCaseArrayVariableValue.Raw;
+        | TestCaseArrayVariableValue.Raw
+        | TestCaseAudioVariableValue.Raw
+        | TestCaseImageVariableValue.Raw
+        | TestCaseVideoVariableValue.Raw
+        | TestCaseDocumentVariableValue.Raw;
 }
