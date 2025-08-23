@@ -7,8 +7,8 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
 export const SpanLinkTypeEnum: core.serialization.Schema<serializers.SpanLinkTypeEnum.Raw, Vellum.SpanLinkTypeEnum> =
-    core.serialization.stringLiteral("TRIGGERED_BY");
+    core.serialization.enum_(["TRIGGERED_BY", "PREVIOUS_SPAN", "ROOT_SPAN"]);
 
 export declare namespace SpanLinkTypeEnum {
-    export type Raw = "TRIGGERED_BY";
+    export type Raw = "TRIGGERED_BY" | "PREVIOUS_SPAN" | "ROOT_SPAN";
 }

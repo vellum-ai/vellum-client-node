@@ -7,5 +7,13 @@ export interface WorkflowsPullRequest {
     excludeDisplay?: boolean | null;
     includeJson?: boolean | null;
     includeSandbox?: boolean | null;
+    /**
+     * Release tag to use when pulling from deployment (implies deployment-only lookup)
+     */
+    releaseTag?: string | null;
     strict?: boolean | null;
+    /**
+     * Semantic version range to validate against the Workflow SDK version (e.g., '>=1.0.0,<1.2.3')
+     */
+    version?: string | null;
 }

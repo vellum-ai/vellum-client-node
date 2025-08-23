@@ -7,4 +7,8 @@ import * as Vellum from "../index";
 export type ScenarioInput =
     | Vellum.ScenarioInputStringVariableValue
     | Vellum.ScenarioInputJsonVariableValue
-    | Vellum.ScenarioInputChatHistoryVariableValue;
+    | Vellum.ScenarioInputChatHistoryVariableValue
+    | Vellum.ScenarioInputAudioVariableValue
+    | Vellum.ScenarioInputVideoVariableValue
+    | Vellum.ScenarioInputImageVariableValue
+    | Vellum.ScenarioInputDocumentVariableValue;

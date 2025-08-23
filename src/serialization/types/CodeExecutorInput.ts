@@ -13,6 +13,10 @@ import { SearchResultsInput } from "./SearchResultsInput";
 import { ErrorInput } from "./ErrorInput";
 import { ArrayInput } from "./ArrayInput";
 import { FunctionCallInput } from "./FunctionCallInput";
+import { AudioInput } from "./AudioInput";
+import { VideoInput } from "./VideoInput";
+import { ImageInput } from "./ImageInput";
+import { DocumentInput } from "./DocumentInput";
 import { CodeExecutorSecretInput } from "./CodeExecutorSecretInput";
 
 export const CodeExecutorInput: core.serialization.Schema<serializers.CodeExecutorInput.Raw, Vellum.CodeExecutorInput> =
@@ -25,6 +29,10 @@ export const CodeExecutorInput: core.serialization.Schema<serializers.CodeExecut
         ErrorInput,
         ArrayInput,
         FunctionCallInput,
+        AudioInput,
+        VideoInput,
+        ImageInput,
+        DocumentInput,
         CodeExecutorSecretInput,
     ]);
 
@@ -38,5 +46,9 @@ export declare namespace CodeExecutorInput {
         | ErrorInput.Raw
         | ArrayInput.Raw
         | FunctionCallInput.Raw
+        | AudioInput.Raw
+        | VideoInput.Raw
+        | ImageInput.Raw
+        | DocumentInput.Raw
         | CodeExecutorSecretInput.Raw;
 }

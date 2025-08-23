@@ -56,7 +56,7 @@ export class Workflows {
         request: Vellum.WorkflowsPullRequest = {},
         requestOptions?: Workflows.RequestOptions,
     ): Promise<core.WithRawResponse<stream.Readable>> {
-        const { excludeCode, excludeDisplay, includeJson, includeSandbox, strict } = request;
+        const { excludeCode, excludeDisplay, includeJson, includeSandbox, releaseTag, strict, version } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (excludeCode !== undefined) {
             _queryParams["exclude_code"] = excludeCode?.toString() ?? null;
@@ -74,8 +74,16 @@ export class Workflows {
             _queryParams["include_sandbox"] = includeSandbox?.toString() ?? null;
         }
 
+        if (releaseTag !== undefined) {
+            _queryParams["release_tag"] = releaseTag;
+        }
+
         if (strict !== undefined) {
             _queryParams["strict"] = strict?.toString() ?? null;
+        }
+
+        if (version !== undefined) {
+            _queryParams["version"] = version;
         }
 
         const _response = await core.fetcher<stream.Readable>({
@@ -95,8 +103,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.2.4",
-                "User-Agent": "vellum-ai/1.2.4",
+                "X-Fern-SDK-Version": "1.2.5",
+                "User-Agent": "vellum-ai/1.2.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -212,8 +220,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.2.4",
-                "User-Agent": "vellum-ai/1.2.4",
+                "X-Fern-SDK-Version": "1.2.5",
+                "User-Agent": "vellum-ai/1.2.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

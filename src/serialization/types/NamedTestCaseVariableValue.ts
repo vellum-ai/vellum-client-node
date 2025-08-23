@@ -13,6 +13,10 @@ import { NamedTestCaseSearchResultsVariableValue } from "./NamedTestCaseSearchRe
 import { NamedTestCaseErrorVariableValue } from "./NamedTestCaseErrorVariableValue";
 import { NamedTestCaseFunctionCallVariableValue } from "./NamedTestCaseFunctionCallVariableValue";
 import { NamedTestCaseArrayVariableValue } from "./NamedTestCaseArrayVariableValue";
+import { NamedTestCaseAudioVariableValue } from "./NamedTestCaseAudioVariableValue";
+import { NamedTestCaseVideoVariableValue } from "./NamedTestCaseVideoVariableValue";
+import { NamedTestCaseImageVariableValue } from "./NamedTestCaseImageVariableValue";
+import { NamedTestCaseDocumentVariableValue } from "./NamedTestCaseDocumentVariableValue";
 
 export const NamedTestCaseVariableValue: core.serialization.Schema<
     serializers.NamedTestCaseVariableValue.Raw,
@@ -26,6 +30,10 @@ export const NamedTestCaseVariableValue: core.serialization.Schema<
     NamedTestCaseErrorVariableValue,
     NamedTestCaseFunctionCallVariableValue,
     NamedTestCaseArrayVariableValue,
+    NamedTestCaseAudioVariableValue,
+    NamedTestCaseVideoVariableValue,
+    NamedTestCaseImageVariableValue,
+    NamedTestCaseDocumentVariableValue,
 ]);
 
 export declare namespace NamedTestCaseVariableValue {
@@ -37,5 +45,9 @@ export declare namespace NamedTestCaseVariableValue {
         | NamedTestCaseSearchResultsVariableValue.Raw
         | NamedTestCaseErrorVariableValue.Raw
         | NamedTestCaseFunctionCallVariableValue.Raw
-        | NamedTestCaseArrayVariableValue.Raw;
+        | NamedTestCaseArrayVariableValue.Raw
+        | NamedTestCaseAudioVariableValue.Raw
+        | NamedTestCaseVideoVariableValue.Raw
+        | NamedTestCaseImageVariableValue.Raw
+        | NamedTestCaseDocumentVariableValue.Raw;
 }
