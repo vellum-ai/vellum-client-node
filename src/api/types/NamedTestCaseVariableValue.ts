@@ -12,4 +12,8 @@ export type NamedTestCaseVariableValue =
     | Vellum.NamedTestCaseSearchResultsVariableValue
     | Vellum.NamedTestCaseErrorVariableValue
     | Vellum.NamedTestCaseFunctionCallVariableValue
-    | Vellum.NamedTestCaseArrayVariableValue;
+    | Vellum.NamedTestCaseArrayVariableValue
+    | Vellum.NamedTestCaseAudioVariableValue
+    | Vellum.NamedTestCaseVideoVariableValue
+    | Vellum.NamedTestCaseImageVariableValue
+    | Vellum.NamedTestCaseDocumentVariableValue;

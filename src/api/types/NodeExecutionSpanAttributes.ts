@@ -4,5 +4,6 @@
 
 export interface NodeExecutionSpanAttributes {
     label: string;
+    filepath?: string | null;
     nodeId: string;
 }

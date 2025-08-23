@@ -8,6 +8,10 @@ import * as core from "../../core";
 import { NamedScenarioInputStringVariableValueRequest } from "./NamedScenarioInputStringVariableValueRequest";
 import { NamedScenarioInputJsonVariableValueRequest } from "./NamedScenarioInputJsonVariableValueRequest";
 import { NamedScenarioInputChatHistoryVariableValueRequest } from "./NamedScenarioInputChatHistoryVariableValueRequest";
+import { NamedScenarioInputAudioVariableValueRequest } from "./NamedScenarioInputAudioVariableValueRequest";
+import { NamedScenarioInputVideoVariableValueRequest } from "./NamedScenarioInputVideoVariableValueRequest";
+import { NamedScenarioInputImageVariableValueRequest } from "./NamedScenarioInputImageVariableValueRequest";
+import { NamedScenarioInputDocumentVariableValueRequest } from "./NamedScenarioInputDocumentVariableValueRequest";
 
 export const NamedScenarioInputRequest: core.serialization.Schema<
     serializers.NamedScenarioInputRequest.Raw,
@@ -16,11 +20,19 @@ export const NamedScenarioInputRequest: core.serialization.Schema<
     NamedScenarioInputStringVariableValueRequest,
     NamedScenarioInputJsonVariableValueRequest,
     NamedScenarioInputChatHistoryVariableValueRequest,
+    NamedScenarioInputAudioVariableValueRequest,
+    NamedScenarioInputVideoVariableValueRequest,
+    NamedScenarioInputImageVariableValueRequest,
+    NamedScenarioInputDocumentVariableValueRequest,
 ]);
 
 export declare namespace NamedScenarioInputRequest {
     export type Raw =
         | NamedScenarioInputStringVariableValueRequest.Raw
         | NamedScenarioInputJsonVariableValueRequest.Raw
-        | NamedScenarioInputChatHistoryVariableValueRequest.Raw;
+        | NamedScenarioInputChatHistoryVariableValueRequest.Raw
+        | NamedScenarioInputAudioVariableValueRequest.Raw
+        | NamedScenarioInputVideoVariableValueRequest.Raw
+        | NamedScenarioInputImageVariableValueRequest.Raw
+        | NamedScenarioInputDocumentVariableValueRequest.Raw;
 }
