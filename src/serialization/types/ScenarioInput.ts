@@ -8,17 +8,29 @@ import * as core from "../../core";
 import { ScenarioInputStringVariableValue } from "./ScenarioInputStringVariableValue";
 import { ScenarioInputJsonVariableValue } from "./ScenarioInputJsonVariableValue";
 import { ScenarioInputChatHistoryVariableValue } from "./ScenarioInputChatHistoryVariableValue";
+import { ScenarioInputAudioVariableValue } from "./ScenarioInputAudioVariableValue";
+import { ScenarioInputVideoVariableValue } from "./ScenarioInputVideoVariableValue";
+import { ScenarioInputImageVariableValue } from "./ScenarioInputImageVariableValue";
+import { ScenarioInputDocumentVariableValue } from "./ScenarioInputDocumentVariableValue";
 
 export const ScenarioInput: core.serialization.Schema<serializers.ScenarioInput.Raw, Vellum.ScenarioInput> =
     core.serialization.undiscriminatedUnion([
         ScenarioInputStringVariableValue,
         ScenarioInputJsonVariableValue,
         ScenarioInputChatHistoryVariableValue,
+        ScenarioInputAudioVariableValue,
+        ScenarioInputVideoVariableValue,
+        ScenarioInputImageVariableValue,
+        ScenarioInputDocumentVariableValue,
     ]);
 
 export declare namespace ScenarioInput {
     export type Raw =
         | ScenarioInputStringVariableValue.Raw
         | ScenarioInputJsonVariableValue.Raw
-        | ScenarioInputChatHistoryVariableValue.Raw;
+        | ScenarioInputChatHistoryVariableValue.Raw
+        | ScenarioInputAudioVariableValue.Raw
+        | ScenarioInputVideoVariableValue.Raw
+        | ScenarioInputImageVariableValue.Raw
+        | ScenarioInputDocumentVariableValue.Raw;
 }

@@ -4,5 +4,12 @@
 
 /**
  * * `TRIGGERED_BY` - TRIGGERED_BY
+ * * `PREVIOUS_SPAN` - PREVIOUS_SPAN
+ * * `ROOT_SPAN` - ROOT_SPAN
  */
-export type SpanLinkTypeEnum = "TRIGGERED_BY";
+export type SpanLinkTypeEnum = "TRIGGERED_BY" | "PREVIOUS_SPAN" | "ROOT_SPAN";
+export const SpanLinkTypeEnum = {
+    TriggeredBy: "TRIGGERED_BY",
+    PreviousSpan: "PREVIOUS_SPAN",
+    RootSpan: "ROOT_SPAN",
+} as const;

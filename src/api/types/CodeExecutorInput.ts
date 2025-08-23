@@ -13,4 +13,8 @@ export type CodeExecutorInput =
     | Vellum.ErrorInput
     | Vellum.ArrayInput
     | Vellum.FunctionCallInput
+    | Vellum.AudioInput
+    | Vellum.VideoInput
+    | Vellum.ImageInput
+    | Vellum.DocumentInput
     | Vellum.CodeExecutorSecretInput;
