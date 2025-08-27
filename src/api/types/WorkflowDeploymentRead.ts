@@ -4,6 +4,9 @@
 
 import * as Vellum from "../index";
 
+/**
+ * A Workflow Deployment's full details.
+ */
 export interface WorkflowDeploymentRead {
     id: string;
     /** A name that uniquely identifies this workflow deployment within its workspace */
@@ -17,13 +20,7 @@ export interface WorkflowDeploymentRead {
      * * `ARCHIVED` - Archived
      */
     status?: Vellum.EntityStatus;
-    /**
-     * The environment this workflow deployment is used in
-     *
-     * * `DEVELOPMENT` - Development
-     * * `STAGING` - Staging
-     * * `PRODUCTION` - Production
-     */
+    /** Deprecated. The value returned will always be 'PRODUCTION'. */
     environment?: Vellum.EnvironmentEnum | null;
     created: Date;
     lastDeployedOn: Date;

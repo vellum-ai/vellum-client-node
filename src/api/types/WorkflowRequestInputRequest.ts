@@ -8,4 +8,8 @@ export type WorkflowRequestInputRequest =
     | Vellum.WorkflowRequestStringInputRequest
     | Vellum.WorkflowRequestJsonInputRequest
     | Vellum.WorkflowRequestChatHistoryInputRequest
-    | Vellum.WorkflowRequestNumberInputRequest;
+    | Vellum.WorkflowRequestNumberInputRequest
+    | Vellum.WorkflowRequestAudioInputRequest
+    | Vellum.WorkflowRequestVideoInputRequest
+    | Vellum.WorkflowRequestImageInputRequest
+    | Vellum.WorkflowRequestDocumentInputRequest;
