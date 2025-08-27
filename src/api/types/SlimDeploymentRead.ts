@@ -4,6 +4,9 @@
 
 import * as Vellum from "../index";
 
+/**
+ * A subset of a Prompt Deployment's full details.
+ */
 export interface SlimDeploymentRead {
     id: string;
     created: Date;
@@ -18,13 +21,7 @@ export interface SlimDeploymentRead {
      * * `ARCHIVED` - Archived
      */
     status?: Vellum.EntityStatus;
-    /**
-     * The environment this deployment is used in
-     *
-     * * `DEVELOPMENT` - Development
-     * * `STAGING` - Staging
-     * * `PRODUCTION` - Production
-     */
+    /** Deprecated. The value returned will always be 'PRODUCTION'. */
     environment?: Vellum.EnvironmentEnum | null;
     lastDeployedOn: Date;
     inputVariables: Vellum.VellumVariable[];
