@@ -38,25 +38,22 @@ export class WorkflowSandboxes {
 
     /**
      * @param {string} id - A UUID string identifying this workflow sandbox.
-     * @param {string} workflowId - An ID identifying the Workflow you'd like to deploy.
      * @param {Vellum.DeploySandboxWorkflowRequest} request
      * @param {WorkflowSandboxes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.workflowSandboxes.deployWorkflow("id", "workflow_id")
+     *     await client.workflowSandboxes.deployWorkflow("id")
      */
     public deployWorkflow(
         id: string,
-        workflowId: string,
         request: Vellum.DeploySandboxWorkflowRequest = {},
         requestOptions?: WorkflowSandboxes.RequestOptions,
     ): core.HttpResponsePromise<Vellum.WorkflowDeploymentRead> {
-        return core.HttpResponsePromise.fromPromise(this.__deployWorkflow(id, workflowId, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__deployWorkflow(id, request, requestOptions));
     }
 
     private async __deployWorkflow(
         id: string,
-        workflowId: string,
         request: Vellum.DeploySandboxWorkflowRequest = {},
         requestOptions?: WorkflowSandboxes.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.WorkflowDeploymentRead>> {
@@ -65,7 +62,7 @@ export class WorkflowSandboxes {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                `v1/workflow-sandboxes/${encodeURIComponent(id)}/workflows/${encodeURIComponent(workflowId)}/deploy`,
+                `v1/workflow-sandboxes/${encodeURIComponent(id)}/deploy`,
             ),
             method: "POST",
             headers: {
@@ -74,11 +71,11 @@ export class WorkflowSandboxes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.2.5",
-                "User-Agent": "vellum-ai/1.2.5",
+                "X-Fern-SDK-Version": "1.2.6",
+                "User-Agent": "vellum-ai/1.2.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -120,7 +117,7 @@ export class WorkflowSandboxes {
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
-                    "Timeout exceeded when calling POST /v1/workflow-sandboxes/{id}/workflows/{workflow_id}/deploy.",
+                    "Timeout exceeded when calling POST /v1/workflow-sandboxes/{id}/deploy.",
                 );
             case "unknown":
                 throw new errors.VellumError({
@@ -184,11 +181,11 @@ export class WorkflowSandboxes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.2.5",
-                "User-Agent": "vellum-ai/1.2.5",
+                "X-Fern-SDK-Version": "1.2.6",
+                "User-Agent": "vellum-ai/1.2.6",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
