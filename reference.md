@@ -3953,7 +3953,7 @@ await client.workflowExecutions.retrieveWorkflowExecutionDetail("execution_id");
 
 ## WorkflowSandboxes
 
-<details><summary><code>client.workflowSandboxes.<a href="/src/api/resources/workflowSandboxes/client/Client.ts">deployWorkflow</a>(id, workflowId, { ...params }) -> Vellum.WorkflowDeploymentRead</code></summary>
+<details><summary><code>client.workflowSandboxes.<a href="/src/api/resources/workflowSandboxes/client/Client.ts">deployWorkflow</a>(id, { ...params }) -> Vellum.WorkflowDeploymentRead</code></summary>
 <dl>
 <dd>
 
@@ -3966,7 +3966,7 @@ await client.workflowExecutions.retrieveWorkflowExecutionDetail("execution_id");
 <dd>
 
 ```typescript
-await client.workflowSandboxes.deployWorkflow("id", "workflow_id");
+await client.workflowSandboxes.deployWorkflow("id");
 ```
 
 </dd>
@@ -3983,14 +3983,6 @@ await client.workflowSandboxes.deployWorkflow("id", "workflow_id");
 <dd>
 
 **id:** `string` — A UUID string identifying this workflow sandbox.
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**workflowId:** `string` — An ID identifying the Workflow you'd like to deploy.
 
 </dd>
 </dl>
