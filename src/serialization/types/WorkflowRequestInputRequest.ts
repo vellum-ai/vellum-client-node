@@ -9,6 +9,10 @@ import { WorkflowRequestStringInputRequest } from "./WorkflowRequestStringInputR
 import { WorkflowRequestJsonInputRequest } from "./WorkflowRequestJsonInputRequest";
 import { WorkflowRequestChatHistoryInputRequest } from "./WorkflowRequestChatHistoryInputRequest";
 import { WorkflowRequestNumberInputRequest } from "./WorkflowRequestNumberInputRequest";
+import { WorkflowRequestAudioInputRequest } from "./WorkflowRequestAudioInputRequest";
+import { WorkflowRequestVideoInputRequest } from "./WorkflowRequestVideoInputRequest";
+import { WorkflowRequestImageInputRequest } from "./WorkflowRequestImageInputRequest";
+import { WorkflowRequestDocumentInputRequest } from "./WorkflowRequestDocumentInputRequest";
 
 export const WorkflowRequestInputRequest: core.serialization.Schema<
     serializers.WorkflowRequestInputRequest.Raw,
@@ -18,6 +22,10 @@ export const WorkflowRequestInputRequest: core.serialization.Schema<
     WorkflowRequestJsonInputRequest,
     WorkflowRequestChatHistoryInputRequest,
     WorkflowRequestNumberInputRequest,
+    WorkflowRequestAudioInputRequest,
+    WorkflowRequestVideoInputRequest,
+    WorkflowRequestImageInputRequest,
+    WorkflowRequestDocumentInputRequest,
 ]);
 
 export declare namespace WorkflowRequestInputRequest {
@@ -25,5 +33,9 @@ export declare namespace WorkflowRequestInputRequest {
         | WorkflowRequestStringInputRequest.Raw
         | WorkflowRequestJsonInputRequest.Raw
         | WorkflowRequestChatHistoryInputRequest.Raw
-        | WorkflowRequestNumberInputRequest.Raw;
+        | WorkflowRequestNumberInputRequest.Raw
+        | WorkflowRequestAudioInputRequest.Raw
+        | WorkflowRequestVideoInputRequest.Raw
+        | WorkflowRequestImageInputRequest.Raw
+        | WorkflowRequestDocumentInputRequest.Raw;
 }
