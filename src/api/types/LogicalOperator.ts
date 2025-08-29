@@ -21,6 +21,7 @@
  * * `notIn` - NOT_IN
  * * `between` - BETWEEN
  * * `notBetween` - NOT_BETWEEN
+ * * `concat` - CONCAT
  * * `blank` - BLANK
  * * `notBlank` - NOT_BLANK
  * * `coalesce` - COALESCE
@@ -86,6 +87,7 @@ export type LogicalOperator =
     /**
      * Not between */
     | "notBetween"
+    | "concat"
     | "blank"
     | "notBlank"
     | "coalesce"
@@ -116,6 +118,7 @@ export const LogicalOperator = {
     NotIn: "notIn",
     Between: "between",
     NotBetween: "notBetween",
+    Concat: "concat",
     Blank: "blank",
     NotBlank: "notBlank",
     Coalesce: "coalesce",

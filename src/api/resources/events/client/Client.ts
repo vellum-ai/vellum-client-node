@@ -37,9 +37,9 @@ export class Events {
     constructor(protected readonly _options: Events.Options) {}
 
     /**
-     * Accept an event and publish it to ClickHouse for analytics processing.
+     * Accept an event or list of events and publish them to ClickHouse for analytics processing.
      *
-     * @param {Vellum.WorkflowEvent} request
+     * @param {Vellum.CreateWorkflowEventRequest} request
      * @param {Events.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vellum.BadRequestError}
@@ -48,35 +48,53 @@ export class Events {
      * @throws {@link Vellum.TooManyRequestsError}
      *
      * @example
-     *     await client.events.create({
-     *         name: "node.execution.initiated",
-     *         body: {
-     *             nodeDefinition: {
-     *                 name: "name",
-     *                 module: ["module", "module"],
-     *                 id: "id"
-     *             },
-     *             inputs: {
-     *                 "inputs": {
-     *                     "key": "value"
+     *     await client.events.create([{
+     *             name: "node.execution.initiated",
+     *             body: {
+     *                 nodeDefinition: {
+     *                     name: "name",
+     *                     module: ["module", "module"],
+     *                     id: "id"
+     *                 },
+     *                 inputs: {
+     *                     "inputs": {
+     *                         "key": "value"
+     *                     }
      *                 }
-     *             }
-     *         },
-     *         id: "id",
-     *         timestamp: "2024-01-15T09:30:00Z",
-     *         traceId: "trace_id",
-     *         spanId: "span_id"
-     *     })
+     *             },
+     *             id: "id",
+     *             timestamp: "2024-01-15T09:30:00Z",
+     *             traceId: "trace_id",
+     *             spanId: "span_id"
+     *         }, {
+     *             name: "node.execution.initiated",
+     *             body: {
+     *                 nodeDefinition: {
+     *                     name: "name",
+     *                     module: ["module", "module"],
+     *                     id: "id"
+     *                 },
+     *                 inputs: {
+     *                     "inputs": {
+     *                         "key": "value"
+     *                     }
+     *                 }
+     *             },
+     *             id: "id",
+     *             timestamp: "2024-01-15T09:30:00Z",
+     *             traceId: "trace_id",
+     *             spanId: "span_id"
+     *         }])
      */
     public create(
-        request: Vellum.WorkflowEvent,
+        request: Vellum.CreateWorkflowEventRequest,
         requestOptions?: Events.RequestOptions,
     ): core.HttpResponsePromise<Vellum.EventCreateResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: Vellum.WorkflowEvent,
+        request: Vellum.CreateWorkflowEventRequest,
         requestOptions?: Events.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.EventCreateResponse>> {
         const _response = await core.fetcher({
@@ -96,8 +114,8 @@ export class Events {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.3.1",
-                "User-Agent": "vellum-ai/1.3.1",
+                "X-Fern-SDK-Version": "1.3.2",
+                "User-Agent": "vellum-ai/1.3.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -105,7 +123,7 @@ export class Events {
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.WorkflowEvent.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.CreateWorkflowEventRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
