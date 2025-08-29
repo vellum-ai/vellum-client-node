@@ -5,9 +5,11 @@
 /**
  * * `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
  * * `INVALID_FILE` - Invalid File
+ * * `INVALID_CREDENTIALS` - Invalid Credentials
  */
-export type ProcessingFailureReasonEnum = "EXCEEDED_CHARACTER_LIMIT" | "INVALID_FILE";
+export type ProcessingFailureReasonEnum = "EXCEEDED_CHARACTER_LIMIT" | "INVALID_FILE" | "INVALID_CREDENTIALS";
 export const ProcessingFailureReasonEnum = {
     ExceededCharacterLimit: "EXCEEDED_CHARACTER_LIMIT",
     InvalidFile: "INVALID_FILE",
+    InvalidCredentials: "INVALID_CREDENTIALS",
 } as const;
