@@ -5,7 +5,7 @@
 import * as serializers from "../../../../index";
 import * as Vellum from "../../../../../api/index";
 import * as core from "../../../../../core";
-import { PromptRequestInput } from "../../../../types/PromptRequestInput";
+import { DeprecatedPromptRequestInput } from "../../../../types/DeprecatedPromptRequestInput";
 import { VellumVariable } from "../../../../types/VellumVariable";
 import { PromptParameters } from "../../../../types/PromptParameters";
 import { PromptSettings } from "../../../../types/PromptSettings";
@@ -17,7 +17,7 @@ export const AdHocExecutePrompt: core.serialization.Schema<
     Vellum.AdHocExecutePrompt
 > = core.serialization.object({
     mlModel: core.serialization.property("ml_model", core.serialization.string()),
-    inputValues: core.serialization.property("input_values", core.serialization.list(PromptRequestInput)),
+    inputValues: core.serialization.property("input_values", core.serialization.list(DeprecatedPromptRequestInput)),
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     parameters: PromptParameters,
     settings: PromptSettings.optionalNullable(),
@@ -29,7 +29,7 @@ export const AdHocExecutePrompt: core.serialization.Schema<
 export declare namespace AdHocExecutePrompt {
     export interface Raw {
         ml_model: string;
-        input_values: PromptRequestInput.Raw[];
+        input_values: DeprecatedPromptRequestInput.Raw[];
         input_variables: VellumVariable.Raw[];
         parameters: PromptParameters.Raw;
         settings?: (PromptSettings.Raw | null) | null;

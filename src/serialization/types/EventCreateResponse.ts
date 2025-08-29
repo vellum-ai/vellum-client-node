@@ -11,10 +11,12 @@ export const EventCreateResponse: core.serialization.ObjectSchema<
     Vellum.EventCreateResponse
 > = core.serialization.object({
     success: core.serialization.boolean().optional(),
+    count: core.serialization.number(),
 });
 
 export declare namespace EventCreateResponse {
     export interface Raw {
         success?: boolean | null;
+        count: number;
     }
 }
