@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const ProcessingFailureReasonEnum: core.serialization.Schema<
     serializers.ProcessingFailureReasonEnum.Raw,
     Vellum.ProcessingFailureReasonEnum
-> = core.serialization.enum_(["EXCEEDED_CHARACTER_LIMIT", "INVALID_FILE"]);
+> = core.serialization.enum_(["EXCEEDED_CHARACTER_LIMIT", "INVALID_FILE", "INVALID_CREDENTIALS"]);
 
 export declare namespace ProcessingFailureReasonEnum {
-    export type Raw = "EXCEEDED_CHARACTER_LIMIT" | "INVALID_FILE";
+    export type Raw = "EXCEEDED_CHARACTER_LIMIT" | "INVALID_FILE" | "INVALID_CREDENTIALS";
 }

@@ -30,6 +30,10 @@ export const ExecuteWorkflowStreamRequest: core.serialization.Schema<
         core.serialization.list(WorkflowExecutionEventType).optional(),
     ),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    previousExecutionId: core.serialization.property(
+        "previous_execution_id",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace ExecuteWorkflowStreamRequest {
@@ -42,5 +46,6 @@ export declare namespace ExecuteWorkflowStreamRequest {
         external_id?: (string | null) | null;
         event_types?: WorkflowExecutionEventType.Raw[] | null;
         metadata?: (Record<string, unknown> | null) | null;
+        previous_execution_id?: (string | null) | null;
     }
 }

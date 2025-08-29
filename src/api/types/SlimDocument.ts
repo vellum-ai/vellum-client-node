@@ -19,6 +19,7 @@ export interface SlimDocument {
      *
      * * `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
      * * `INVALID_FILE` - Invalid File
+     * * `INVALID_CREDENTIALS` - Invalid Credentials
      */
     processingFailureReason?: Vellum.ProcessingFailureReasonEnum | null;
     /**

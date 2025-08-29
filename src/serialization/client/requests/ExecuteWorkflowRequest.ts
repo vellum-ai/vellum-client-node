@@ -25,6 +25,10 @@ export const ExecuteWorkflowRequest: core.serialization.Schema<
     releaseTag: core.serialization.property("release_tag", core.serialization.string().optionalNullable()),
     externalId: core.serialization.property("external_id", core.serialization.string().optionalNullable()),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    previousExecutionId: core.serialization.property(
+        "previous_execution_id",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace ExecuteWorkflowRequest {
@@ -36,5 +40,6 @@ export declare namespace ExecuteWorkflowRequest {
         release_tag?: (string | null) | null;
         external_id?: (string | null) | null;
         metadata?: (Record<string, unknown> | null) | null;
+        previous_execution_id?: (string | null) | null;
     }
 }
