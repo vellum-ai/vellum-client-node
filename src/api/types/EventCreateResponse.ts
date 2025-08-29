@@ -8,4 +8,6 @@
 export interface EventCreateResponse {
     /** Indicates whether the event was published successfully. */
     success?: boolean;
+    /** Number of events processed */
+    count: number;
 }

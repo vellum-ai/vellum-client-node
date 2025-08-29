@@ -1,6 +1,6 @@
 {
     "name": "vellum-ai",
-    "version": "1.3.1",
+    "version": "1.3.2",
     "private": false,
     "repository": "https://github.com/vellum-ai/vellum-client-node",
     "license": "MIT",
@@ -42,8 +42,5 @@
         "os": false,
         "path": false
     },
-    "packageManager": "yarn@1.22.22",
-    "resolutions": {
-        "strip-ansi": "^6.0.1"
-    }
+    "packageManager": "yarn@1.22.22"
 }

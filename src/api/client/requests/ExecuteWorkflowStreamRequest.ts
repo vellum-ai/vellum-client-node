@@ -35,4 +35,6 @@ export interface ExecuteWorkflowStreamRequest {
     eventTypes?: Vellum.WorkflowExecutionEventType[];
     /** Arbitrary JSON metadata associated with this request. Can be used to capture additional monitoring data such as user id, session id, etc. for future analysis. */
     metadata?: Record<string, unknown> | null;
+    /** The ID of a previous Workflow Execution to reference for initial State loading. */
+    previousExecutionId?: string | null;
 }

@@ -90,7 +90,7 @@ await client.submitWorkflowExecutionActuals({
 <dl>
 <dd>
 
-Accept an event and publish it to ClickHouse for analytics processing.
+Accept an event or list of events and publish them to ClickHouse for analytics processing.
 
 </dd>
 </dl>
@@ -106,25 +106,46 @@ Accept an event and publish it to ClickHouse for analytics processing.
 <dd>
 
 ```typescript
-await client.events.create({
-    name: "node.execution.initiated",
-    body: {
-        nodeDefinition: {
-            name: "name",
-            module: ["module", "module"],
-            id: "id",
-        },
-        inputs: {
+await client.events.create([
+    {
+        name: "node.execution.initiated",
+        body: {
+            nodeDefinition: {
+                name: "name",
+                module: ["module", "module"],
+                id: "id",
+            },
             inputs: {
-                key: "value",
+                inputs: {
+                    key: "value",
+                },
             },
         },
+        id: "id",
+        timestamp: "2024-01-15T09:30:00Z",
+        traceId: "trace_id",
+        spanId: "span_id",
     },
-    id: "id",
-    timestamp: "2024-01-15T09:30:00Z",
-    traceId: "trace_id",
-    spanId: "span_id",
-});
+    {
+        name: "node.execution.initiated",
+        body: {
+            nodeDefinition: {
+                name: "name",
+                module: ["module", "module"],
+                id: "id",
+            },
+            inputs: {
+                inputs: {
+                    key: "value",
+                },
+            },
+        },
+        id: "id",
+        timestamp: "2024-01-15T09:30:00Z",
+        traceId: "trace_id",
+        spanId: "span_id",
+    },
+]);
 ```
 
 </dd>
@@ -140,7 +161,7 @@ await client.events.create({
 <dl>
 <dd>
 
-**request:** `Vellum.WorkflowEvent`
+**request:** `Vellum.CreateWorkflowEventRequest`
 
 </dd>
 </dl>
@@ -178,12 +199,12 @@ await client.adHoc.adhocExecutePrompt({
     mlModel: "x",
     inputValues: [
         {
-            key: "x",
+            name: "x",
             type: "STRING",
             value: "value",
         },
         {
-            key: "x",
+            name: "x",
             type: "STRING",
             value: "value",
         },
@@ -263,12 +284,12 @@ const response = await client.adHoc.adhocExecutePromptStream({
     mlModel: "x",
     inputValues: [
         {
-            key: "x",
+            name: "x",
             type: "STRING",
             value: "value",
         },
         {
-            key: "x",
+            name: "x",
             type: "STRING",
             value: "value",
         },

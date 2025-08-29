@@ -9,11 +9,11 @@ import * as Vellum from "../../../../index";
  *     {
  *         mlModel: "x",
  *         inputValues: [{
- *                 key: "x",
+ *                 name: "x",
  *                 type: "STRING",
  *                 value: "value"
  *             }, {
- *                 key: "x",
+ *                 name: "x",
  *                 type: "STRING",
  *                 value: "value"
  *             }],
@@ -38,7 +38,7 @@ import * as Vellum from "../../../../index";
  */
 export interface AdHocExecutePrompt {
     mlModel: string;
-    inputValues: Vellum.PromptRequestInput[];
+    inputValues: Vellum.DeprecatedPromptRequestInput[];
     inputVariables: Vellum.VellumVariable[];
     parameters: Vellum.PromptParameters;
     settings?: Vellum.PromptSettings | null;
