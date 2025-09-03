@@ -6,6 +6,6 @@ import * as Vellum from "../index";
 
 export interface ScenarioInputDocumentVariableValue {
     type: "DOCUMENT";
-    value: Vellum.VellumDocument;
+    value?: Vellum.VellumDocument | null;
     inputVariableId: string;
 }
