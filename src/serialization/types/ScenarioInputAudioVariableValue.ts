@@ -12,14 +12,14 @@ export const ScenarioInputAudioVariableValue: core.serialization.ObjectSchema<
     Vellum.ScenarioInputAudioVariableValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("AUDIO"),
-    value: VellumAudio,
+    value: VellumAudio.optionalNullable(),
     inputVariableId: core.serialization.property("input_variable_id", core.serialization.string()),
 });
 
 export declare namespace ScenarioInputAudioVariableValue {
     export interface Raw {
         type: "AUDIO";
-        value: VellumAudio.Raw;
+        value?: (VellumAudio.Raw | null) | null;
         input_variable_id: string;
     }
 }
