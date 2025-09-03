@@ -12,14 +12,14 @@ export const ScenarioInputVideoVariableValue: core.serialization.ObjectSchema<
     Vellum.ScenarioInputVideoVariableValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("VIDEO"),
-    value: VellumVideo,
+    value: VellumVideo.optionalNullable(),
     inputVariableId: core.serialization.property("input_variable_id", core.serialization.string()),
 });
 
 export declare namespace ScenarioInputVideoVariableValue {
     export interface Raw {
         type: "VIDEO";
-        value: VellumVideo.Raw;
+        value?: (VellumVideo.Raw | null) | null;
         input_variable_id: string;
     }
 }
