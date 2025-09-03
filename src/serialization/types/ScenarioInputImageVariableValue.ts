@@ -12,14 +12,14 @@ export const ScenarioInputImageVariableValue: core.serialization.ObjectSchema<
     Vellum.ScenarioInputImageVariableValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("IMAGE"),
-    value: VellumImage,
+    value: VellumImage.optionalNullable(),
     inputVariableId: core.serialization.property("input_variable_id", core.serialization.string()),
 });
 
 export declare namespace ScenarioInputImageVariableValue {
     export interface Raw {
         type: "IMAGE";
-        value: VellumImage.Raw;
+        value?: (VellumImage.Raw | null) | null;
         input_variable_id: string;
     }
 }

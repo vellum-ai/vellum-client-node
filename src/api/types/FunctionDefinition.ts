@@ -16,6 +16,8 @@ export interface FunctionDefinition {
     description?: string | null;
     /** An OpenAPI specification of parameters that are supported by this function. */
     parameters?: Record<string, unknown> | null;
+    /** Optional user defined input mappings for this function. */
+    inputs?: Record<string, unknown> | null;
     /** Set this option to true to force the model to return a function call of this function. */
     forced?: boolean | null;
     /** Set this option to use strict schema decoding when available. */
