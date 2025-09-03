@@ -17,6 +17,7 @@ export const FunctionDefinition: core.serialization.ObjectSchema<
     name: core.serialization.string().optionalNullable(),
     description: core.serialization.string().optionalNullable(),
     parameters: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    inputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     forced: core.serialization.boolean().optionalNullable(),
     strict: core.serialization.boolean().optionalNullable(),
 });
@@ -28,6 +29,7 @@ export declare namespace FunctionDefinition {
         name?: (string | null) | null;
         description?: (string | null) | null;
         parameters?: (Record<string, unknown> | null) | null;
+        inputs?: (Record<string, unknown> | null) | null;
         forced?: (boolean | null) | null;
         strict?: (boolean | null) | null;
     }
