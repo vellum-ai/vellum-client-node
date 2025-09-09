@@ -13,11 +13,13 @@ export const WorkflowEventError: core.serialization.ObjectSchema<
 > = core.serialization.object({
     message: core.serialization.string(),
     code: WorkflowExecutionEventErrorCode,
+    stacktrace: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace WorkflowEventError {
     export interface Raw {
         message: string;
         code: WorkflowExecutionEventErrorCode.Raw;
+        stacktrace?: (string | null) | null;
     }
 }

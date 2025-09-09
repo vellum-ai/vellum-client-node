@@ -14,11 +14,13 @@ export const WorkflowExecutionRejectedBody: core.serialization.ObjectSchema<
 > = core.serialization.object({
     workflowDefinition: core.serialization.property("workflow_definition", VellumCodeResourceDefinition),
     error: VellumSdkError,
+    stacktrace: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace WorkflowExecutionRejectedBody {
     export interface Raw {
         workflow_definition: VellumCodeResourceDefinition.Raw;
         error: VellumSdkError.Raw;
+        stacktrace?: (string | null) | null;
     }
 }

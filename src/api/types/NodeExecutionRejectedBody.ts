@@ -7,4 +7,5 @@ import * as Vellum from "../index";
 export interface NodeExecutionRejectedBody {
     nodeDefinition: Vellum.VellumCodeResourceDefinition;
     error: Vellum.VellumSdkError;
+    stacktrace?: string | null;
 }
