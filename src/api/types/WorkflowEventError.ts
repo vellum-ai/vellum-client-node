@@ -7,4 +7,5 @@ import * as Vellum from "../index";
 export interface WorkflowEventError {
     message: string;
     code: Vellum.WorkflowExecutionEventErrorCode;
+    stacktrace?: string | null;
 }

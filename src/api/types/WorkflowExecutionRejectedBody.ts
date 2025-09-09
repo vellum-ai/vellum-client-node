@@ -7,4 +7,5 @@ import * as Vellum from "../index";
 export interface WorkflowExecutionRejectedBody {
     workflowDefinition: Vellum.VellumCodeResourceDefinition;
     error: Vellum.VellumSdkError;
+    stacktrace?: string | null;
 }
