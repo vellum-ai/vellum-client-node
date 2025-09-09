@@ -14,11 +14,13 @@ export const NodeExecutionRejectedBody: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeDefinition: core.serialization.property("node_definition", VellumCodeResourceDefinition),
     error: VellumSdkError,
+    stacktrace: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace NodeExecutionRejectedBody {
     export interface Raw {
         node_definition: VellumCodeResourceDefinition.Raw;
         error: VellumSdkError.Raw;
+        stacktrace?: (string | null) | null;
     }
 }
