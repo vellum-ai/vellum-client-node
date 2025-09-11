@@ -5,6 +5,7 @@
 import * as Vellum from "../index";
 
 export interface VellumError {
-    message: string;
     code: Vellum.VellumErrorCodeEnum;
+    message: string;
+    rawData?: Record<string, unknown> | null;
 }
