@@ -4095,6 +4095,75 @@ await client.workflowSandboxes.listWorkflowSandboxExamples();
 
 ## Workflows
 
+<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">serializeWorkflowFiles</a>({ ...params }) -> Record<string, unknown></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Serialize files
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workflows.serializeWorkflowFiles({
+    files: {
+        files: {
+            key: "value",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.SerializeWorkflowFilesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Workflows.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## WorkspaceSecrets
 
 <details><summary><code>client.workspaceSecrets.<a href="/src/api/resources/workspaceSecrets/client/Client.ts">retrieve</a>(id) -> Vellum.WorkspaceSecretRead</code></summary>
