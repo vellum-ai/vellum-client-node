@@ -103,8 +103,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.3.8",
-                "User-Agent": "vellum-ai/1.3.8",
+                "X-Fern-SDK-Version": "1.3.9",
+                "User-Agent": "vellum-ai/1.3.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -220,8 +220,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.3.8",
-                "User-Agent": "vellum-ai/1.3.8",
+                "X-Fern-SDK-Version": "1.3.9",
+                "User-Agent": "vellum-ai/1.3.9",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -264,6 +264,100 @@ export class Workflows {
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/workflows/push.");
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * Serialize files
+     *
+     * @param {Vellum.SerializeWorkflowFilesRequest} request
+     * @param {Workflows.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.workflows.serializeWorkflowFiles({
+     *         files: {
+     *             "files": {
+     *                 "key": "value"
+     *             }
+     *         }
+     *     })
+     */
+    public serializeWorkflowFiles(
+        request: Vellum.SerializeWorkflowFilesRequest,
+        requestOptions?: Workflows.RequestOptions,
+    ): core.HttpResponsePromise<Record<string, unknown>> {
+        return core.HttpResponsePromise.fromPromise(this.__serializeWorkflowFiles(request, requestOptions));
+    }
+
+    private async __serializeWorkflowFiles(
+        request: Vellum.SerializeWorkflowFilesRequest,
+        requestOptions?: Workflows.RequestOptions,
+    ): Promise<core.WithRawResponse<Record<string, unknown>>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                "v1/workflows/serialize",
+            ),
+            method: "POST",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : "2025-07-30",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.3.9",
+                "User-Agent": "vellum-ai/1.3.9",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.SerializeWorkflowFilesRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.workflows.serializeWorkflowFiles.Response.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/workflows/serialize.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
