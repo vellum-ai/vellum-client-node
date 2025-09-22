@@ -8,6 +8,7 @@ export * as workflowDeployments from "./workflowDeployments";
 export * from "./workflowDeployments/types";
 export * as workflowSandboxes from "./workflowSandboxes";
 export * from "./workflowSandboxes/types";
+export * as integrations from "./integrations";
 export * as events from "./events";
 export * as adHoc from "./adHoc";
 export * as containerImages from "./containerImages";
