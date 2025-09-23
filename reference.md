@@ -76,6 +76,151 @@ await client.submitWorkflowExecutionActuals({
 
 ##
 
+## Integrations
+
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieveIntegrationToolDefinition</a>(integration, provider, toolName) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.retrieveIntegrationToolDefinition("integration", "provider", "tool_name");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**integration:** `string` — The integration name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**provider:** `string` — The integration provider name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**toolName:** `string` — The tool's unique name, as specified by the integration provider
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Integrations.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">executeIntegrationTool</a>(integration, provider, toolName, { ...params }) -> Vellum.ComponentsSchemasComposioExecuteToolResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.executeIntegrationTool("integration", "provider", "tool_name", {
+    provider: "COMPOSIO",
+    arguments: {
+        arguments: {
+            key: "value",
+        },
+    },
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**integration:** `string` — The integration name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**provider:** `string` — The integration provider name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**toolName:** `string` — The tool's unique name, as specified by the integration provider
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.ComponentsSchemasComposioExecuteToolRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Integrations.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Events
 
 <details><summary><code>client.events.<a href="/src/api/resources/events/client/Client.ts">create</a>({ ...params }) -> Vellum.EventCreateResponse</code></summary>

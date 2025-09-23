@@ -8,9 +8,8 @@ import * as Vellum from "../../../index";
 import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
-import * as stream from "stream";
 
-export declare namespace AdHoc {
+export declare namespace Integrations {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -34,65 +33,148 @@ export declare namespace AdHoc {
     }
 }
 
-export class AdHoc {
-    constructor(protected readonly _options: AdHoc.Options) {}
+export class Integrations {
+    constructor(protected readonly _options: Integrations.Options) {}
 
     /**
-     * @param {Vellum.AdHocExecutePrompt} request
-     * @param {AdHoc.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Vellum.BadRequestError}
-     * @throws {@link Vellum.ForbiddenError}
-     * @throws {@link Vellum.InternalServerError}
+     * @param {string} integration - The integration name
+     * @param {string} provider - The integration provider name
+     * @param {string} toolName - The tool's unique name, as specified by the integration provider
+     * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.adHoc.adhocExecutePrompt({
-     *         mlModel: "x",
-     *         inputValues: [{
-     *                 name: "x",
-     *                 type: "STRING",
-     *                 value: "value"
-     *             }, {
-     *                 name: "x",
-     *                 type: "STRING",
-     *                 value: "value"
-     *             }],
-     *         inputVariables: [{
-     *                 id: "x",
-     *                 key: "key",
-     *                 type: "STRING"
-     *             }, {
-     *                 id: "x",
-     *                 key: "key",
-     *                 type: "STRING"
-     *             }],
-     *         parameters: {},
-     *         blocks: [{
-     *                 blockType: "JINJA",
-     *                 template: "template"
-     *             }, {
-     *                 blockType: "JINJA",
-     *                 template: "template"
-     *             }]
-     *     })
+     *     await client.integrations.retrieveIntegrationToolDefinition("integration", "provider", "tool_name")
      */
-    public adhocExecutePrompt(
-        request: Vellum.AdHocExecutePrompt,
-        requestOptions?: AdHoc.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.AdHocExecutePromptEvent> {
-        return core.HttpResponsePromise.fromPromise(this.__adhocExecutePrompt(request, requestOptions));
+    public retrieveIntegrationToolDefinition(
+        integration: string,
+        provider: string,
+        toolName: string,
+        requestOptions?: Integrations.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioToolDefinition> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__retrieveIntegrationToolDefinition(integration, provider, toolName, requestOptions),
+        );
     }
 
-    private async __adhocExecutePrompt(
-        request: Vellum.AdHocExecutePrompt,
-        requestOptions?: AdHoc.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.AdHocExecutePromptEvent>> {
+    private async __retrieveIntegrationToolDefinition(
+        integration: string,
+        provider: string,
+        toolName: string,
+        requestOptions?: Integrations.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioToolDefinition>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                "v1/ad-hoc/execute-prompt",
+                `integrations/v1/providers/${encodeURIComponent(provider)}/integrations/${encodeURIComponent(integration)}/tools/${encodeURIComponent(toolName)}`,
+            ),
+            method: "GET",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.4.3",
+                "User-Agent": "vellum-ai/1.4.3",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.ComponentsSchemasComposioToolDefinition.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError(
+                    "Timeout exceeded when calling GET /integrations/v1/providers/{provider}/integrations/{integration}/tools/{tool_name}.",
+                );
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * @param {string} integration - The integration name
+     * @param {string} provider - The integration provider name
+     * @param {string} toolName - The tool's unique name, as specified by the integration provider
+     * @param {Vellum.ComponentsSchemasComposioExecuteToolRequest} request
+     * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vellum.BadRequestError}
+     *
+     * @example
+     *     await client.integrations.executeIntegrationTool("integration", "provider", "tool_name", {
+     *         provider: "COMPOSIO",
+     *         arguments: {
+     *             "arguments": {
+     *                 "key": "value"
+     *             }
+     *         }
+     *     })
+     */
+    public executeIntegrationTool(
+        integration: string,
+        provider: string,
+        toolName: string,
+        request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
+        requestOptions?: Integrations.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioExecuteToolResponse> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__executeIntegrationTool(integration, provider, toolName, request, requestOptions),
+        );
+    }
+
+    private async __executeIntegrationTool(
+        integration: string,
+        provider: string,
+        toolName: string,
+        request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
+        requestOptions?: Integrations.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioExecuteToolResponse>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                `integrations/v1/providers/${encodeURIComponent(provider)}/integrations/${encodeURIComponent(integration)}/tools/${encodeURIComponent(toolName)}/execute`,
             ),
             method: "POST",
             headers: {
@@ -113,14 +195,16 @@ export class AdHoc {
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.AdHocExecutePrompt.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.ComponentsSchemasComposioExecuteToolRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                data: serializers.AdHocExecutePromptEvent.parseOrThrow(_response.body, {
+                data: serializers.ComponentsSchemasComposioExecuteToolResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -134,109 +218,6 @@ export class AdHoc {
             switch (_response.error.statusCode) {
                 case 400:
                     throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
-                case 403:
-                    throw new Vellum.ForbiddenError(_response.error.body, _response.rawResponse);
-                case 500:
-                    throw new Vellum.InternalServerError(_response.error.body, _response.rawResponse);
-                default:
-                    throw new errors.VellumError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VellumError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/ad-hoc/execute-prompt.");
-            case "unknown":
-                throw new errors.VellumError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
-    }
-
-    public adhocExecutePromptStream(
-        request: Vellum.AdHocExecutePromptStream,
-        requestOptions?: AdHoc.RequestOptions,
-    ): core.HttpResponsePromise<core.Stream<Vellum.AdHocExecutePromptEvent>> {
-        return core.HttpResponsePromise.fromPromise(this.__adhocExecutePromptStream(request, requestOptions));
-    }
-
-    private async __adhocExecutePromptStream(
-        request: Vellum.AdHocExecutePromptStream,
-        requestOptions?: AdHoc.RequestOptions,
-    ): Promise<core.WithRawResponse<core.Stream<Vellum.AdHocExecutePromptEvent>>> {
-        const _response = await core.fetcher<stream.Readable>({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                        .predict,
-                "v1/ad-hoc/execute-prompt-stream",
-            ),
-            method: "POST",
-            headers: {
-                "X-API-Version":
-                    (await core.Supplier.get(this._options.apiVersion)) != null
-                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
-                              unrecognizedObjectKeys: "strip",
-                          })
-                        : undefined,
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.4.3",
-                "User-Agent": "vellum-ai/1.4.3",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...(await this._getCustomAuthorizationHeaders()),
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.AdHocExecutePromptStream.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            responseType: "sse",
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                data: new core.Stream({
-                    stream: _response.body,
-                    parse: async (data) => {
-                        return serializers.AdHocExecutePromptEvent.parseOrThrow(data, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            breadcrumbsPrefix: ["response"],
-                        });
-                    },
-                    signal: requestOptions?.abortSignal,
-                    eventShape: {
-                        type: "json",
-                        messageTerminator: "\n",
-                    },
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 400:
-                    throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
-                case 403:
-                    throw new Vellum.ForbiddenError(_response.error.body, _response.rawResponse);
-                case 500:
-                    throw new Vellum.InternalServerError(_response.error.body, _response.rawResponse);
                 default:
                     throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
@@ -255,7 +236,7 @@ export class AdHoc {
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
-                    "Timeout exceeded when calling POST /v1/ad-hoc/execute-prompt-stream.",
+                    "Timeout exceeded when calling POST /integrations/v1/providers/{provider}/integrations/{integration}/tools/{tool_name}/execute.",
                 );
             case "unknown":
                 throw new errors.VellumError({
