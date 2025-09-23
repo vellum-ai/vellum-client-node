@@ -13,6 +13,10 @@ export const WorkflowEventError: core.serialization.ObjectSchema<
 > = core.serialization.object({
     message: core.serialization.string(),
     code: WorkflowExecutionEventErrorCode,
+    rawData: core.serialization.property(
+        "raw_data",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    ),
     stacktrace: core.serialization.string().optionalNullable(),
 });
 
@@ -20,6 +24,7 @@ export declare namespace WorkflowEventError {
     export interface Raw {
         message: string;
         code: WorkflowExecutionEventErrorCode.Raw;
+        raw_data?: (Record<string, unknown> | null) | null;
         stacktrace?: (string | null) | null;
     }
 }
