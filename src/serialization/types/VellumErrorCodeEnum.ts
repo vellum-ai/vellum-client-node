@@ -13,9 +13,11 @@ export const VellumErrorCodeEnum: core.serialization.Schema<
     "INVALID_REQUEST",
     "INVALID_INPUTS",
     "PROVIDER_ERROR",
+    "PROVIDER_CREDENTIALS_AVAILABLE",
     "REQUEST_TIMEOUT",
     "INTERNAL_SERVER_ERROR",
     "USER_DEFINED_ERROR",
+    "WORKFLOW_CANCELLED",
 ]);
 
 export declare namespace VellumErrorCodeEnum {
@@ -23,7 +25,9 @@ export declare namespace VellumErrorCodeEnum {
         | "INVALID_REQUEST"
         | "INVALID_INPUTS"
         | "PROVIDER_ERROR"
+        | "PROVIDER_CREDENTIALS_AVAILABLE"
         | "REQUEST_TIMEOUT"
         | "INTERNAL_SERVER_ERROR"
-        | "USER_DEFINED_ERROR";
+        | "USER_DEFINED_ERROR"
+        | "WORKFLOW_CANCELLED";
 }
