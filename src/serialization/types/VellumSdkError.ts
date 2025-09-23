@@ -11,11 +11,16 @@ export const VellumSdkError: core.serialization.ObjectSchema<serializers.VellumS
     core.serialization.object({
         message: core.serialization.string(),
         code: VellumSdkErrorCodeEnum,
+        rawData: core.serialization.property(
+            "raw_data",
+            core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+        ),
     });
 
 export declare namespace VellumSdkError {
     export interface Raw {
         message: string;
         code: VellumSdkErrorCodeEnum.Raw;
+        raw_data?: (Record<string, unknown> | null) | null;
     }
 }

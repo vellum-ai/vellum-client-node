@@ -7,4 +7,5 @@ import * as Vellum from "../index";
 export interface VellumSdkError {
     message: string;
     code: Vellum.VellumSdkErrorCodeEnum;
+    rawData?: Record<string, unknown> | null;
 }

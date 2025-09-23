@@ -9,7 +9,7 @@ import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace MetricDefinitions {
+export declare namespace Integrations {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -33,139 +33,41 @@ export declare namespace MetricDefinitions {
     }
 }
 
-export class MetricDefinitions {
-    constructor(protected readonly _options: MetricDefinitions.Options) {}
+export class Integrations {
+    constructor(protected readonly _options: Integrations.Options) {}
 
     /**
-     * @param {string} id - Either the Metric Definition's ID or its unique name
-     * @param {Vellum.ExecuteMetricDefinition} request
-     * @param {MetricDefinitions.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {string} integration - The integration name
+     * @param {string} provider - The integration provider name
+     * @param {string} toolName - The tool's unique name, as specified by the integration provider
+     * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.metricDefinitions.executeMetricDefinition("id", {
-     *         inputs: [{
-     *                 name: "x",
-     *                 type: "STRING",
-     *                 value: "value"
-     *             }, {
-     *                 name: "x",
-     *                 type: "STRING",
-     *                 value: "value"
-     *             }]
-     *     })
+     *     await client.integrations.retrieveIntegrationToolDefinition("integration", "provider", "tool_name")
      */
-    public executeMetricDefinition(
-        id: string,
-        request: Vellum.ExecuteMetricDefinition,
-        requestOptions?: MetricDefinitions.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.MetricDefinitionExecution> {
-        return core.HttpResponsePromise.fromPromise(this.__executeMetricDefinition(id, request, requestOptions));
-    }
-
-    private async __executeMetricDefinition(
-        id: string,
-        request: Vellum.ExecuteMetricDefinition,
-        requestOptions?: MetricDefinitions.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.MetricDefinitionExecution>> {
-        const _response = await core.fetcher({
-            url: urlJoin(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                        .predict,
-                `v1/metric-definitions/${encodeURIComponent(id)}/execute`,
-            ),
-            method: "POST",
-            headers: {
-                "X-API-Version":
-                    (await core.Supplier.get(this._options.apiVersion)) != null
-                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
-                              unrecognizedObjectKeys: "strip",
-                          })
-                        : "2025-07-30",
-                "X-Fern-Language": "JavaScript",
-                "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.0",
-                "User-Agent": "vellum-ai/1.5.0",
-                "X-Fern-Runtime": core.RUNTIME.type,
-                "X-Fern-Runtime-Version": core.RUNTIME.version,
-                ...(await this._getCustomAuthorizationHeaders()),
-                ...requestOptions?.headers,
-            },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.ExecuteMetricDefinition.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                data: serializers.MetricDefinitionExecution.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.VellumError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.VellumTimeoutError(
-                    "Timeout exceeded when calling POST /v1/metric-definitions/{id}/execute.",
-                );
-            case "unknown":
-                throw new errors.VellumError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
-    }
-
-    /**
-     * @param {string} historyIdOrReleaseTag - Either the UUID of Metric Definition History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Metric Definition History Item you'd like to retrieve.
-     * @param {string} id - A UUID string identifying this metric definition.
-     * @param {MetricDefinitions.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_or_release_tag", "id")
-     */
-    public metricDefinitionHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
-        id: string,
-        requestOptions?: MetricDefinitions.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.MetricDefinitionHistoryItem> {
+    public retrieveIntegrationToolDefinition(
+        integration: string,
+        provider: string,
+        toolName: string,
+        requestOptions?: Integrations.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioToolDefinition> {
         return core.HttpResponsePromise.fromPromise(
-            this.__metricDefinitionHistoryItemRetrieve(historyIdOrReleaseTag, id, requestOptions),
+            this.__retrieveIntegrationToolDefinition(integration, provider, toolName, requestOptions),
         );
     }
 
-    private async __metricDefinitionHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
-        id: string,
-        requestOptions?: MetricDefinitions.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.MetricDefinitionHistoryItem>> {
+    private async __retrieveIntegrationToolDefinition(
+        integration: string,
+        provider: string,
+        toolName: string,
+        requestOptions?: Integrations.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioToolDefinition>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                `v1/metric-definitions/${encodeURIComponent(id)}/history/${encodeURIComponent(historyIdOrReleaseTag)}`,
+                `integrations/v1/providers/${encodeURIComponent(provider)}/integrations/${encodeURIComponent(integration)}/tools/${encodeURIComponent(toolName)}`,
             ),
             method: "GET",
             headers: {
@@ -192,7 +94,7 @@ export class MetricDefinitions {
         });
         if (_response.ok) {
             return {
-                data: serializers.MetricDefinitionHistoryItem.parseOrThrow(_response.body, {
+                data: serializers.ComponentsSchemasComposioToolDefinition.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -219,7 +121,122 @@ export class MetricDefinitions {
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
-                    "Timeout exceeded when calling GET /v1/metric-definitions/{id}/history/{history_id_or_release_tag}.",
+                    "Timeout exceeded when calling GET /integrations/v1/providers/{provider}/integrations/{integration}/tools/{tool_name}.",
+                );
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * @param {string} integration - The integration name
+     * @param {string} provider - The integration provider name
+     * @param {string} toolName - The tool's unique name, as specified by the integration provider
+     * @param {Vellum.ComponentsSchemasComposioExecuteToolRequest} request
+     * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Vellum.BadRequestError}
+     *
+     * @example
+     *     await client.integrations.executeIntegrationTool("integration", "provider", "tool_name", {
+     *         provider: "COMPOSIO",
+     *         arguments: {
+     *             "arguments": {
+     *                 "key": "value"
+     *             }
+     *         }
+     *     })
+     */
+    public executeIntegrationTool(
+        integration: string,
+        provider: string,
+        toolName: string,
+        request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
+        requestOptions?: Integrations.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioExecuteToolResponse> {
+        return core.HttpResponsePromise.fromPromise(
+            this.__executeIntegrationTool(integration, provider, toolName, request, requestOptions),
+        );
+    }
+
+    private async __executeIntegrationTool(
+        integration: string,
+        provider: string,
+        toolName: string,
+        request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
+        requestOptions?: Integrations.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioExecuteToolResponse>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                `integrations/v1/providers/${encodeURIComponent(provider)}/integrations/${encodeURIComponent(integration)}/tools/${encodeURIComponent(toolName)}/execute`,
+            ),
+            method: "POST",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : "2025-07-30",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.5.0",
+                "User-Agent": "vellum-ai/1.5.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.ComponentsSchemasComposioExecuteToolRequest.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.ComponentsSchemasComposioExecuteToolResponse.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError(
+                    "Timeout exceeded when calling POST /integrations/v1/providers/{provider}/integrations/{integration}/tools/{tool_name}/execute.",
                 );
             case "unknown":
                 throw new errors.VellumError({
