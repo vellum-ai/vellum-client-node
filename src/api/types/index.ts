@@ -336,6 +336,8 @@ export * from "./PdfSearchResultMetaSource";
 export * from "./PdfSearchResultMetaSourceRequest";
 export * from "./PlainTextPromptBlock";
 export * from "./Price";
+export * from "./PrivateVectorizer";
+export * from "./PrivateVectorizerRequest";
 export * from "./ProcessingFailureReasonEnum";
 export * from "./PromptBlock";
 export * from "./PromptBlockState";

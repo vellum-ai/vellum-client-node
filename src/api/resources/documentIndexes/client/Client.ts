@@ -94,11 +94,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.2",
-                "User-Agent": "vellum-ai/1.5.2",
+                "X-Fern-SDK-Version": "1.5.3",
+                "User-Agent": "vellum-ai/1.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -191,11 +191,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.2",
-                "User-Agent": "vellum-ai/1.5.2",
+                "X-Fern-SDK-Version": "1.5.3",
+                "User-Agent": "vellum-ai/1.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -249,6 +249,7 @@ export class DocumentIndexes {
      * Used to retrieve a Document Index given its ID or name.
      *
      * @param {string} id - Either the Document Index's ID or its unique name
+     * @param {Vellum.DocumentIndexesRetrieveRequest} request
      * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -256,15 +257,23 @@ export class DocumentIndexes {
      */
     public retrieve(
         id: string,
+        request: Vellum.DocumentIndexesRetrieveRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions,
     ): core.HttpResponsePromise<Vellum.DocumentIndexRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.DocumentIndexesRetrieveRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.DocumentIndexRead>> {
+        const { maskIndexingConfig } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (maskIndexingConfig !== undefined) {
+            _queryParams["mask_indexing_config"] = maskIndexingConfig?.toString() ?? null;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -279,17 +288,18 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.2",
-                "User-Agent": "vellum-ai/1.5.2",
+                "X-Fern-SDK-Version": "1.5.3",
+                "User-Agent": "vellum-ai/1.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
@@ -371,11 +381,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.2",
-                "User-Agent": "vellum-ai/1.5.2",
+                "X-Fern-SDK-Version": "1.5.3",
+                "User-Agent": "vellum-ai/1.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -456,11 +466,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.2",
-                "User-Agent": "vellum-ai/1.5.2",
+                "X-Fern-SDK-Version": "1.5.3",
+                "User-Agent": "vellum-ai/1.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -538,11 +548,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.2",
-                "User-Agent": "vellum-ai/1.5.2",
+                "X-Fern-SDK-Version": "1.5.3",
+                "User-Agent": "vellum-ai/1.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -631,11 +641,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.2",
-                "User-Agent": "vellum-ai/1.5.2",
+                "X-Fern-SDK-Version": "1.5.3",
+                "User-Agent": "vellum-ai/1.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -715,11 +725,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.2",
-                "User-Agent": "vellum-ai/1.5.2",
+                "X-Fern-SDK-Version": "1.5.3",
+                "User-Agent": "vellum-ai/1.5.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
