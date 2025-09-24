@@ -1434,7 +1434,7 @@ await client.documentIndexes.create({
 </dl>
 </details>
 
-<details><summary><code>client.documentIndexes.<a href="/src/api/resources/documentIndexes/client/Client.ts">retrieve</a>(id) -> Vellum.DocumentIndexRead</code></summary>
+<details><summary><code>client.documentIndexes.<a href="/src/api/resources/documentIndexes/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.DocumentIndexRead</code></summary>
 <dl>
 <dd>
 
@@ -1479,6 +1479,14 @@ await client.documentIndexes.retrieve("id");
 <dd>
 
 **id:** `string` — Either the Document Index's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.DocumentIndexesRetrieveRequest`
 
 </dd>
 </dl>

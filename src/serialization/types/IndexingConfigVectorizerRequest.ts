@@ -16,6 +16,7 @@ import { GoogleVertexAiVectorizerTextEmbedding004Request } from "./GoogleVertexA
 import { GoogleVertexAiVectorizerTextMultilingualEmbedding002Request } from "./GoogleVertexAiVectorizerTextMultilingualEmbedding002Request";
 import { GoogleVertexAiVectorizerGeminiEmbedding001Request } from "./GoogleVertexAiVectorizerGeminiEmbedding001Request";
 import { FastEmbedVectorizerBaaiBgeSmallEnV15Request } from "./FastEmbedVectorizerBaaiBgeSmallEnV15Request";
+import { PrivateVectorizerRequest } from "./PrivateVectorizerRequest";
 
 export const IndexingConfigVectorizerRequest: core.serialization.Schema<
     serializers.IndexingConfigVectorizerRequest.Raw,
@@ -32,6 +33,7 @@ export const IndexingConfigVectorizerRequest: core.serialization.Schema<
     GoogleVertexAiVectorizerTextMultilingualEmbedding002Request,
     GoogleVertexAiVectorizerGeminiEmbedding001Request,
     FastEmbedVectorizerBaaiBgeSmallEnV15Request,
+    PrivateVectorizerRequest,
 ]);
 
 export declare namespace IndexingConfigVectorizerRequest {
@@ -46,5 +48,6 @@ export declare namespace IndexingConfigVectorizerRequest {
         | GoogleVertexAiVectorizerTextEmbedding004Request.Raw
         | GoogleVertexAiVectorizerTextMultilingualEmbedding002Request.Raw
         | GoogleVertexAiVectorizerGeminiEmbedding001Request.Raw
-        | FastEmbedVectorizerBaaiBgeSmallEnV15Request.Raw;
+        | FastEmbedVectorizerBaaiBgeSmallEnV15Request.Raw
+        | PrivateVectorizerRequest.Raw;
 }

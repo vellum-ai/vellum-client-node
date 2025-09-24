@@ -13,7 +13,7 @@ export const VellumErrorCodeEnum: core.serialization.Schema<
     "INVALID_REQUEST",
     "INVALID_INPUTS",
     "PROVIDER_ERROR",
-    "PROVIDER_CREDENTIALS_AVAILABLE",
+    "PROVIDER_CREDENTIALS_UNAVAILABLE",
     "REQUEST_TIMEOUT",
     "INTERNAL_SERVER_ERROR",
     "USER_DEFINED_ERROR",
@@ -25,7 +25,7 @@ export declare namespace VellumErrorCodeEnum {
         | "INVALID_REQUEST"
         | "INVALID_INPUTS"
         | "PROVIDER_ERROR"
-        | "PROVIDER_CREDENTIALS_AVAILABLE"
+        | "PROVIDER_CREDENTIALS_UNAVAILABLE"
         | "REQUEST_TIMEOUT"
         | "INTERNAL_SERVER_ERROR"
         | "USER_DEFINED_ERROR"
