@@ -16,4 +16,5 @@ export interface ListWorkflowDeploymentEventExecutionsRequest {
      * The initial index from which to return the executions.
      */
     offset?: number | null;
+    ordering?: string | null;
 }
