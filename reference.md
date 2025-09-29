@@ -78,7 +78,7 @@ await client.submitWorkflowExecutionActuals({
 
 ## Integrations
 
-<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieveIntegrationToolDefinition</a>(integration, provider, toolName) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieveIntegrationToolDefinition</a>(integrationName, integrationProvider, toolName) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
 <dl>
 <dd>
 
@@ -91,7 +91,7 @@ await client.submitWorkflowExecutionActuals({
 <dd>
 
 ```typescript
-await client.integrations.retrieveIntegrationToolDefinition("integration", "provider", "tool_name");
+await client.integrations.retrieveIntegrationToolDefinition("integration_name", "integration_provider", "tool_name");
 ```
 
 </dd>
@@ -107,7 +107,7 @@ await client.integrations.retrieveIntegrationToolDefinition("integration", "prov
 <dl>
 <dd>
 
-**integration:** `string` — The integration name
+**integrationName:** `string` — The integration name
 
 </dd>
 </dl>
@@ -115,7 +115,7 @@ await client.integrations.retrieveIntegrationToolDefinition("integration", "prov
 <dl>
 <dd>
 
-**provider:** `string` — The integration provider name
+**integrationProvider:** `string` — The integration provider name
 
 </dd>
 </dl>
@@ -142,7 +142,7 @@ await client.integrations.retrieveIntegrationToolDefinition("integration", "prov
 </dl>
 </details>
 
-<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">executeIntegrationTool</a>(integration, provider, toolName, { ...params }) -> Vellum.ComponentsSchemasComposioExecuteToolResponse</code></summary>
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">executeIntegrationTool</a>(integrationName, integrationProvider, toolName, { ...params }) -> Vellum.ComponentsSchemasComposioExecuteToolResponse</code></summary>
 <dl>
 <dd>
 
@@ -155,7 +155,7 @@ await client.integrations.retrieveIntegrationToolDefinition("integration", "prov
 <dd>
 
 ```typescript
-await client.integrations.executeIntegrationTool("integration", "provider", "tool_name", {
+await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
     provider: "COMPOSIO",
     arguments: {
         arguments: {
@@ -178,7 +178,7 @@ await client.integrations.executeIntegrationTool("integration", "provider", "too
 <dl>
 <dd>
 
-**integration:** `string` — The integration name
+**integrationName:** `string` — The integration name
 
 </dd>
 </dl>
@@ -186,7 +186,7 @@ await client.integrations.executeIntegrationTool("integration", "provider", "too
 <dl>
 <dd>
 
-**provider:** `string` — The integration provider name
+**integrationProvider:** `string` — The integration provider name
 
 </dd>
 </dl>
@@ -203,6 +203,132 @@ await client.integrations.executeIntegrationTool("integration", "provider", "too
 <dd>
 
 **request:** `Vellum.ComponentsSchemasComposioExecuteToolRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Integrations.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">list</a>({ ...params }) -> Vellum.PaginatedSlimIntegrationReadList</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all integrations
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.list();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.IntegrationsListRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Integrations.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieve</a>(id) -> Vellum.IntegrationRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve an integration
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.retrieve("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this integration.
 
 </dd>
 </dl>
@@ -2256,6 +2382,227 @@ directory. Supported root directories include:
 <dd>
 
 **requestOptions:** `FolderEntities.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## IntegrationAuthConfigs
+
+<details><summary><code>client.integrationAuthConfigs.<a href="/src/api/resources/integrationAuthConfigs/client/Client.ts">listIntegrationAuthConfigs</a>({ ...params }) -> Vellum.PaginatedSlimIntegrationAuthConfigReadList</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List Integration Auth Configs
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrationAuthConfigs.listIntegrationAuthConfigs();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.ListIntegrationAuthConfigsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `IntegrationAuthConfigs.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## IntegrationProviders
+
+<details><summary><code>client.integrationProviders.<a href="/src/api/resources/integrationProviders/client/Client.ts">retrieveIntegrationProviderToolDefinition</a>(integrationName, integrationProvider, toolName) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a specific integration tool definition.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrationProviders.retrieveIntegrationProviderToolDefinition(
+    "integration_name",
+    "integration_provider",
+    "tool_name",
+);
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**integrationName:** `string` — The integration name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**integrationProvider:** `string` — The integration provider name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**toolName:** `string` — The tool's unique name, as specified by the integration provider
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `IntegrationProviders.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.integrationProviders.<a href="/src/api/resources/integrationProviders/client/Client.ts">listIntegrationTools</a>(integrationProvider, { ...params }) -> Vellum.PaginatedSlimToolDefinitionList</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all integration tools for a given provider and integration.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrationProviders.listIntegrationTools("integration_provider");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**integrationProvider:** `string` — The integration provider name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.ListIntegrationToolsRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `IntegrationProviders.RequestOptions`
 
 </dd>
 </dl>
