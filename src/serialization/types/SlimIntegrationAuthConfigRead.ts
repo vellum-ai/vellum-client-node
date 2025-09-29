@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { IntegrationAuthConfigIntegration } from "./IntegrationAuthConfigIntegration";
 import { IntegrationAuthConfigIntegrationCredential } from "./IntegrationAuthConfigIntegrationCredential";
 import { IntegrationCredentialAccessType } from "./IntegrationCredentialAccessType";
 
@@ -13,6 +14,7 @@ export const SlimIntegrationAuthConfigRead: core.serialization.ObjectSchema<
     Vellum.SlimIntegrationAuthConfigRead
 > = core.serialization.object({
     id: core.serialization.string().optional(),
+    integration: IntegrationAuthConfigIntegration,
     integrationCredentials: core.serialization.property(
         "integration_credentials",
         core.serialization.list(IntegrationAuthConfigIntegrationCredential).optionalNullable(),
@@ -23,6 +25,7 @@ export const SlimIntegrationAuthConfigRead: core.serialization.ObjectSchema<
 export declare namespace SlimIntegrationAuthConfigRead {
     export interface Raw {
         id?: string | null;
+        integration: IntegrationAuthConfigIntegration.Raw;
         integration_credentials?: (IntegrationAuthConfigIntegrationCredential.Raw[] | null) | null;
         default_access_type?: IntegrationCredentialAccessType.Raw | null;
     }
