@@ -9,6 +9,7 @@ import * as Vellum from "../index";
  */
 export interface SlimIntegrationAuthConfigRead {
     id?: string;
+    integration: Vellum.IntegrationAuthConfigIntegration;
     integrationCredentials?: Vellum.IntegrationAuthConfigIntegrationCredential[] | null;
     defaultAccessType?: Vellum.IntegrationCredentialAccessType;
 }
