@@ -5,22 +5,33 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { ToolDefinitionIntegration } from "./ToolDefinitionIntegration";
 
 export const ComposioToolDefinition: core.serialization.ObjectSchema<
     serializers.ComposioToolDefinition.Raw,
     Vellum.ComposioToolDefinition
 > = core.serialization.object({
     provider: core.serialization.stringLiteral("COMPOSIO"),
+    integration: ToolDefinitionIntegration,
     name: core.serialization.string(),
     description: core.serialization.string(),
-    parameters: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    inputParameters: core.serialization.property(
+        "input_parameters",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    ),
+    outputParameters: core.serialization.property(
+        "output_parameters",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    ),
 });
 
 export declare namespace ComposioToolDefinition {
     export interface Raw {
         provider: "COMPOSIO";
+        integration: ToolDefinitionIntegration.Raw;
         name: string;
         description: string;
-        parameters: Record<string, unknown>;
+        input_parameters: Record<string, unknown>;
+        output_parameters: Record<string, unknown>;
     }
 }
