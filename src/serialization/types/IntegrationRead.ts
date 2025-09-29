@@ -11,7 +11,7 @@ import { ComponentsSchemasComposioIntegrationExecConfig } from "./ComponentsSche
 
 export const IntegrationRead: core.serialization.ObjectSchema<serializers.IntegrationRead.Raw, Vellum.IntegrationRead> =
     core.serialization.object({
-        id: core.serialization.string().optional(),
+        id: core.serialization.string(),
         label: core.serialization.string().optional(),
         iconUrl: core.serialization.property("icon_url", core.serialization.string()),
         name: IntegrationName,
@@ -21,7 +21,7 @@ export const IntegrationRead: core.serialization.ObjectSchema<serializers.Integr
 
 export declare namespace IntegrationRead {
     export interface Raw {
-        id?: string | null;
+        id: string;
         label?: string | null;
         icon_url: string;
         name: IntegrationName.Raw;
