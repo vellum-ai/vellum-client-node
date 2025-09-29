@@ -10,11 +10,11 @@ export const IntegrationAuthConfigIntegrationCredential: core.serialization.Obje
     serializers.IntegrationAuthConfigIntegrationCredential.Raw,
     Vellum.IntegrationAuthConfigIntegrationCredential
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string(),
 });
 
 export declare namespace IntegrationAuthConfigIntegrationCredential {
     export interface Raw {
-        id?: string | null;
+        id: string;
     }
 }

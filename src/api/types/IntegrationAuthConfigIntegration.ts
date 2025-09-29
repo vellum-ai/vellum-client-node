@@ -4,7 +4,7 @@
 
 import * as Vellum from "../index";
 
-export interface ToolDefinitionIntegration {
+export interface IntegrationAuthConfigIntegration {
     id: string;
     provider: Vellum.IntegrationProvider;
     name: Vellum.IntegrationName;

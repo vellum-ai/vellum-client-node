@@ -12,7 +12,7 @@ export const SlimIntegrationRead: core.serialization.ObjectSchema<
     serializers.SlimIntegrationRead.Raw,
     Vellum.SlimIntegrationRead
 > = core.serialization.object({
-    id: core.serialization.string().optional(),
+    id: core.serialization.string(),
     label: core.serialization.string().optional(),
     iconUrl: core.serialization.property("icon_url", core.serialization.string()),
     name: IntegrationName,
@@ -21,7 +21,7 @@ export const SlimIntegrationRead: core.serialization.ObjectSchema<
 
 export declare namespace SlimIntegrationRead {
     export interface Raw {
-        id?: string | null;
+        id: string;
         label?: string | null;
         icon_url: string;
         name: IntegrationName.Raw;

@@ -5,7 +5,7 @@
 import * as Vellum from "../index";
 
 export interface IntegrationRead {
-    id?: string;
+    id: string;
     label?: string;
     iconUrl: string;
     name: Vellum.IntegrationName;
