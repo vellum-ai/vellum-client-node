@@ -208,6 +208,7 @@ export * from "./InitiatedPromptExecutionMeta";
 export * from "./InitiatedWorkflowNodeResultEvent";
 export * from "./InstructorVectorizerConfig";
 export * from "./InstructorVectorizerConfigRequest";
+export * from "./IntegrationAuthConfigIntegration";
 export * from "./IntegrationAuthConfigIntegrationCredential";
 export * from "./IntegrationCredentialAccessType";
 export * from "./ComponentsSchemasComposioIntegrationExecConfig";

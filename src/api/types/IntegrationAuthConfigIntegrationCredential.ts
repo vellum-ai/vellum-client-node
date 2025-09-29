@@ -3,5 +3,5 @@
  */
 
 export interface IntegrationAuthConfigIntegrationCredential {
-    id?: string;
+    id: string;
 }
