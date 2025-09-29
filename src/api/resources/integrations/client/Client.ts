@@ -37,28 +37,28 @@ export class Integrations {
     constructor(protected readonly _options: Integrations.Options) {}
 
     /**
-     * @param {string} integration - The integration name
-     * @param {string} provider - The integration provider name
+     * @param {string} integrationName - The integration name
+     * @param {string} integrationProvider - The integration provider name
      * @param {string} toolName - The tool's unique name, as specified by the integration provider
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.integrations.retrieveIntegrationToolDefinition("integration", "provider", "tool_name")
+     *     await client.integrations.retrieveIntegrationToolDefinition("integration_name", "integration_provider", "tool_name")
      */
     public retrieveIntegrationToolDefinition(
-        integration: string,
-        provider: string,
+        integrationName: string,
+        integrationProvider: string,
         toolName: string,
         requestOptions?: Integrations.RequestOptions,
     ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioToolDefinition> {
         return core.HttpResponsePromise.fromPromise(
-            this.__retrieveIntegrationToolDefinition(integration, provider, toolName, requestOptions),
+            this.__retrieveIntegrationToolDefinition(integrationName, integrationProvider, toolName, requestOptions),
         );
     }
 
     private async __retrieveIntegrationToolDefinition(
-        integration: string,
-        provider: string,
+        integrationName: string,
+        integrationProvider: string,
         toolName: string,
         requestOptions?: Integrations.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioToolDefinition>> {
@@ -67,7 +67,7 @@ export class Integrations {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                `integrations/v1/providers/${encodeURIComponent(provider)}/integrations/${encodeURIComponent(integration)}/tools/${encodeURIComponent(toolName)}`,
+                `integrations/v1/providers/${encodeURIComponent(integrationProvider)}/integrations/${encodeURIComponent(integrationName)}/tools/${encodeURIComponent(toolName)}`,
             ),
             method: "GET",
             headers: {
@@ -79,8 +79,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.4",
-                "User-Agent": "vellum-ai/1.5.4",
+                "X-Fern-SDK-Version": "1.5.5",
+                "User-Agent": "vellum-ai/1.5.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -121,7 +121,7 @@ export class Integrations {
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
-                    "Timeout exceeded when calling GET /integrations/v1/providers/{provider}/integrations/{integration}/tools/{tool_name}.",
+                    "Timeout exceeded when calling GET /integrations/v1/providers/{integration_provider}/integrations/{integration_name}/tools/{tool_name}.",
                 );
             case "unknown":
                 throw new errors.VellumError({
@@ -132,16 +132,17 @@ export class Integrations {
     }
 
     /**
-     * @param {string} integration - The integration name
-     * @param {string} provider - The integration provider name
+     * @param {string} integrationName - The integration name
+     * @param {string} integrationProvider - The integration provider name
      * @param {string} toolName - The tool's unique name, as specified by the integration provider
      * @param {Vellum.ComponentsSchemasComposioExecuteToolRequest} request
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.ForbiddenError}
      *
      * @example
-     *     await client.integrations.executeIntegrationTool("integration", "provider", "tool_name", {
+     *     await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
      *         provider: "COMPOSIO",
      *         arguments: {
      *             "arguments": {
@@ -151,20 +152,20 @@ export class Integrations {
      *     })
      */
     public executeIntegrationTool(
-        integration: string,
-        provider: string,
+        integrationName: string,
+        integrationProvider: string,
         toolName: string,
         request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
         requestOptions?: Integrations.RequestOptions,
     ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioExecuteToolResponse> {
         return core.HttpResponsePromise.fromPromise(
-            this.__executeIntegrationTool(integration, provider, toolName, request, requestOptions),
+            this.__executeIntegrationTool(integrationName, integrationProvider, toolName, request, requestOptions),
         );
     }
 
     private async __executeIntegrationTool(
-        integration: string,
-        provider: string,
+        integrationName: string,
+        integrationProvider: string,
         toolName: string,
         request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
         requestOptions?: Integrations.RequestOptions,
@@ -174,7 +175,7 @@ export class Integrations {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                `integrations/v1/providers/${encodeURIComponent(provider)}/integrations/${encodeURIComponent(integration)}/tools/${encodeURIComponent(toolName)}/execute`,
+                `integrations/v1/providers/${encodeURIComponent(integrationProvider)}/integrations/${encodeURIComponent(integrationName)}/tools/${encodeURIComponent(toolName)}/execute`,
             ),
             method: "POST",
             headers: {
@@ -186,8 +187,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.5.4",
-                "User-Agent": "vellum-ai/1.5.4",
+                "X-Fern-SDK-Version": "1.5.5",
+                "User-Agent": "vellum-ai/1.5.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -218,6 +219,8 @@ export class Integrations {
             switch (_response.error.statusCode) {
                 case 400:
                     throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
+                case 403:
+                    throw new Vellum.ForbiddenError(_response.error.body, _response.rawResponse);
                 default:
                     throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
@@ -236,8 +239,205 @@ export class Integrations {
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError(
-                    "Timeout exceeded when calling POST /integrations/v1/providers/{provider}/integrations/{integration}/tools/{tool_name}/execute.",
+                    "Timeout exceeded when calling POST /integrations/v1/providers/{integration_provider}/integrations/{integration_name}/tools/{tool_name}/execute.",
                 );
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * List all integrations
+     *
+     * @param {Vellum.IntegrationsListRequest} request
+     * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.integrations.list()
+     */
+    public list(
+        request: Vellum.IntegrationsListRequest = {},
+        requestOptions?: Integrations.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.PaginatedSlimIntegrationReadList> {
+        return core.HttpResponsePromise.fromPromise(this.__list(request, requestOptions));
+    }
+
+    private async __list(
+        request: Vellum.IntegrationsListRequest = {},
+        requestOptions?: Integrations.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.PaginatedSlimIntegrationReadList>> {
+        const { integrationProvider, limit, offset, ordering, search } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (integrationProvider !== undefined) {
+            _queryParams["integration_provider"] = integrationProvider;
+        }
+
+        if (limit !== undefined) {
+            _queryParams["limit"] = limit?.toString() ?? null;
+        }
+
+        if (offset !== undefined) {
+            _queryParams["offset"] = offset?.toString() ?? null;
+        }
+
+        if (ordering !== undefined) {
+            _queryParams["ordering"] = ordering;
+        }
+
+        if (search !== undefined) {
+            _queryParams["search"] = search;
+        }
+
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                "v1/integrations",
+            ),
+            method: "GET",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : "2025-07-30",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.5.5",
+                "User-Agent": "vellum-ai/1.5.5",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            queryParameters: _queryParams,
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.PaginatedSlimIntegrationReadList.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/integrations.");
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * Retrieve an integration
+     *
+     * @param {string} id - A UUID string identifying this integration.
+     * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.integrations.retrieve("id")
+     */
+    public retrieve(
+        id: string,
+        requestOptions?: Integrations.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.IntegrationRead> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+    }
+
+    private async __retrieve(
+        id: string,
+        requestOptions?: Integrations.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.IntegrationRead>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                `v1/integrations/${encodeURIComponent(id)}`,
+            ),
+            method: "GET",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : "2025-07-30",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.5.5",
+                "User-Agent": "vellum-ai/1.5.5",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.IntegrationRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/integrations/{id}.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
