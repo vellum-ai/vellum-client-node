@@ -11,5 +11,5 @@ export interface TestCaseAudioVariableValue {
     variableId: string;
     name?: string;
     type: "AUDIO";
-    value: Vellum.VellumAudio;
+    value?: Vellum.VellumAudio | null;
 }

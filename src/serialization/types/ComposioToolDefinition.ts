@@ -14,6 +14,7 @@ export const ComposioToolDefinition: core.serialization.ObjectSchema<
     provider: core.serialization.stringLiteral("COMPOSIO"),
     integration: ToolDefinitionIntegration,
     name: core.serialization.string(),
+    label: core.serialization.string(),
     description: core.serialization.string(),
     inputParameters: core.serialization.property(
         "input_parameters",
@@ -30,6 +31,7 @@ export declare namespace ComposioToolDefinition {
         provider: "COMPOSIO";
         integration: ToolDefinitionIntegration.Raw;
         name: string;
+        label: string;
         description: string;
         input_parameters: Record<string, unknown>;
         output_parameters: Record<string, unknown>;
