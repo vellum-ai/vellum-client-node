@@ -6,6 +6,6 @@ import * as Vellum from "../index";
 
 export interface NamedTestCaseImageVariableValue {
     type: "IMAGE";
-    value: Vellum.VellumImage;
+    value?: Vellum.VellumImage | null;
     name: string;
 }
