@@ -14,6 +14,7 @@ export const SlimComposioToolDefinition: core.serialization.ObjectSchema<
     provider: core.serialization.stringLiteral("COMPOSIO"),
     integration: ToolDefinitionIntegration,
     name: core.serialization.string(),
+    label: core.serialization.string(),
     description: core.serialization.string(),
 });
 
@@ -22,6 +23,7 @@ export declare namespace SlimComposioToolDefinition {
         provider: "COMPOSIO";
         integration: ToolDefinitionIntegration.Raw;
         name: string;
+        label: string;
         description: string;
     }
 }

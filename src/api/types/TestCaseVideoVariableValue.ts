@@ -11,5 +11,5 @@ export interface TestCaseVideoVariableValue {
     variableId: string;
     name?: string;
     type: "VIDEO";
-    value: Vellum.VellumVideo;
+    value?: Vellum.VellumVideo | null;
 }

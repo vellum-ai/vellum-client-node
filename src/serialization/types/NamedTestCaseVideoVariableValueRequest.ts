@@ -12,14 +12,14 @@ export const NamedTestCaseVideoVariableValueRequest: core.serialization.ObjectSc
     Vellum.NamedTestCaseVideoVariableValueRequest
 > = core.serialization.object({
     type: core.serialization.stringLiteral("VIDEO"),
-    value: VellumVideoRequest,
+    value: VellumVideoRequest.optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseVideoVariableValueRequest {
     export interface Raw {
         type: "VIDEO";
-        value: VellumVideoRequest.Raw;
+        value?: (VellumVideoRequest.Raw | null) | null;
         name: string;
     }
 }

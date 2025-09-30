@@ -8,5 +8,6 @@ export interface SlimComposioToolDefinition {
     provider: "COMPOSIO";
     integration: Vellum.ToolDefinitionIntegration;
     name: string;
+    label: string;
     description: string;
 }
