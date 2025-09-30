@@ -11,6 +11,7 @@ export interface ComposioToolDefinition {
     provider: "COMPOSIO";
     integration: Vellum.ToolDefinitionIntegration;
     name: string;
+    label: string;
     description: string;
     inputParameters: Record<string, unknown>;
     outputParameters: Record<string, unknown>;

@@ -12,14 +12,14 @@ export const NamedTestCaseImageVariableValue: core.serialization.ObjectSchema<
     Vellum.NamedTestCaseImageVariableValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("IMAGE"),
-    value: VellumImage,
+    value: VellumImage.optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseImageVariableValue {
     export interface Raw {
         type: "IMAGE";
-        value: VellumImage.Raw;
+        value?: (VellumImage.Raw | null) | null;
         name: string;
     }
 }

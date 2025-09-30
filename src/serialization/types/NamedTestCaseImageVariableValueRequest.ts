@@ -12,14 +12,14 @@ export const NamedTestCaseImageVariableValueRequest: core.serialization.ObjectSc
     Vellum.NamedTestCaseImageVariableValueRequest
 > = core.serialization.object({
     type: core.serialization.stringLiteral("IMAGE"),
-    value: VellumImageRequest,
+    value: VellumImageRequest.optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseImageVariableValueRequest {
     export interface Raw {
         type: "IMAGE";
-        value: VellumImageRequest.Raw;
+        value?: (VellumImageRequest.Raw | null) | null;
         name: string;
     }
 }
