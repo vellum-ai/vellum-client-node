@@ -11,5 +11,5 @@ export interface TestCaseImageVariableValue {
     variableId: string;
     name?: string;
     type: "IMAGE";
-    value: Vellum.VellumImage;
+    value?: Vellum.VellumImage | null;
 }

@@ -11,5 +11,5 @@ export interface TestCaseDocumentVariableValue {
     variableId: string;
     name?: string;
     type: "DOCUMENT";
-    value: Vellum.VellumDocument;
+    value?: Vellum.VellumDocument | null;
 }
