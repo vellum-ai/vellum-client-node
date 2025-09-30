@@ -12,14 +12,14 @@ export const NamedTestCaseAudioVariableValue: core.serialization.ObjectSchema<
     Vellum.NamedTestCaseAudioVariableValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("AUDIO"),
-    value: VellumAudio,
+    value: VellumAudio.optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseAudioVariableValue {
     export interface Raw {
         type: "AUDIO";
-        value: VellumAudio.Raw;
+        value?: (VellumAudio.Raw | null) | null;
         name: string;
     }
 }

@@ -12,14 +12,14 @@ export const NamedTestCaseDocumentVariableValue: core.serialization.ObjectSchema
     Vellum.NamedTestCaseDocumentVariableValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("DOCUMENT"),
-    value: VellumDocument,
+    value: VellumDocument.optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseDocumentVariableValue {
     export interface Raw {
         type: "DOCUMENT";
-        value: VellumDocument.Raw;
+        value?: (VellumDocument.Raw | null) | null;
         name: string;
     }
 }
