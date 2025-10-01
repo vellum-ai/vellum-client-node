@@ -14,7 +14,7 @@ export const TestCaseAudioVariableValue: core.serialization.ObjectSchema<
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string().optional(),
     type: core.serialization.stringLiteral("AUDIO"),
-    value: VellumAudio,
+    value: VellumAudio.optionalNullable(),
 });
 
 export declare namespace TestCaseAudioVariableValue {
@@ -22,6 +22,6 @@ export declare namespace TestCaseAudioVariableValue {
         variable_id: string;
         name?: string | null;
         type: "AUDIO";
-        value: VellumAudio.Raw;
+        value?: (VellumAudio.Raw | null) | null;
     }
 }

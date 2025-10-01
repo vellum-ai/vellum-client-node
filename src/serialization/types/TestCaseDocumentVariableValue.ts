@@ -14,7 +14,7 @@ export const TestCaseDocumentVariableValue: core.serialization.ObjectSchema<
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string().optional(),
     type: core.serialization.stringLiteral("DOCUMENT"),
-    value: VellumDocument,
+    value: VellumDocument.optionalNullable(),
 });
 
 export declare namespace TestCaseDocumentVariableValue {
@@ -22,6 +22,6 @@ export declare namespace TestCaseDocumentVariableValue {
         variable_id: string;
         name?: string | null;
         type: "DOCUMENT";
-        value: VellumDocument.Raw;
+        value?: (VellumDocument.Raw | null) | null;
     }
 }
