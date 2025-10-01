@@ -11,17 +11,17 @@ export const PaginatedSlimToolDefinitionList: core.serialization.ObjectSchema<
     serializers.PaginatedSlimToolDefinitionList.Raw,
     Vellum.PaginatedSlimToolDefinitionList
 > = core.serialization.object({
-    count: core.serialization.number().optional(),
+    count: core.serialization.number(),
     next: core.serialization.string().optionalNullable(),
     previous: core.serialization.string().optionalNullable(),
-    results: core.serialization.list(ComponentsSchemasSlimComposioToolDefinition).optional(),
+    results: core.serialization.list(ComponentsSchemasSlimComposioToolDefinition),
 });
 
 export declare namespace PaginatedSlimToolDefinitionList {
     export interface Raw {
-        count?: number | null;
+        count: number;
         next?: (string | null) | null;
         previous?: (string | null) | null;
-        results?: ComponentsSchemasSlimComposioToolDefinition.Raw[] | null;
+        results: ComponentsSchemasSlimComposioToolDefinition.Raw[];
     }
 }
