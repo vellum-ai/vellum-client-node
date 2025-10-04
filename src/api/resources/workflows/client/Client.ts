@@ -103,8 +103,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.6.4",
-                "User-Agent": "vellum-ai/1.6.4",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "vellum-ai/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -144,6 +144,95 @@ export class Workflows {
                 });
             case "timeout":
                 throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/workflows/{id}/pull.");
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * Retrieve the current state of a workflow execution.
+     *
+     * **Note:** Uses a base url of `https://predict.vellum.ai`.
+     *
+     * @param {string} spanId - The span ID of the workflow execution to retrieve state for
+     * @param {Workflows.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.workflows.retrieveState("span_id")
+     */
+    public retrieveState(
+        spanId: string,
+        requestOptions?: Workflows.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.WorkflowResolvedState> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieveState(spanId, requestOptions));
+    }
+
+    private async __retrieveState(
+        spanId: string,
+        requestOptions?: Workflows.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.WorkflowResolvedState>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .predict,
+                `v1/workflows/${encodeURIComponent(spanId)}/state`,
+            ),
+            method: "GET",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : "2025-07-30",
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "vellum-ai/1.7.0",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.WorkflowResolvedState.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/workflows/{span_id}/state.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
@@ -220,8 +309,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.6.4",
-                "User-Agent": "vellum-ai/1.6.4",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "vellum-ai/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -315,8 +404,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.6.4",
-                "User-Agent": "vellum-ai/1.6.4",
+                "X-Fern-SDK-Version": "1.7.0",
+                "User-Agent": "vellum-ai/1.7.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

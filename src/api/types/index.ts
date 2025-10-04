@@ -671,6 +671,7 @@ export * from "./WorkflowRequestJsonInputRequest";
 export * from "./WorkflowRequestNumberInputRequest";
 export * from "./WorkflowRequestStringInputRequest";
 export * from "./WorkflowRequestVideoInputRequest";
+export * from "./WorkflowResolvedState";
 export * from "./WorkflowResultEvent";
 export * from "./WorkflowResultEventOutputData";
 export * from "./WorkflowResultEventOutputDataArray";
