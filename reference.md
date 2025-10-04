@@ -4595,6 +4595,71 @@ await client.workflowSandboxes.listWorkflowSandboxExamples();
 
 ## Workflows
 
+<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">retrieveState</a>(spanId) -> Vellum.WorkflowResolvedState</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the current state of a workflow execution.
+
+**Note:** Uses a base url of `https://predict.vellum.ai`.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workflows.retrieveState("span_id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**spanId:** `string` — The span ID of the workflow execution to retrieve state for
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Workflows.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">serializeWorkflowFiles</a>({ ...params }) -> Record<string, unknown></code></summary>
 <dl>
 <dd>

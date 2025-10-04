@@ -14,4 +14,5 @@ export interface PushContainerImageRequest {
     name: string;
     sha: string;
     tags: string[];
+    force?: boolean;
 }

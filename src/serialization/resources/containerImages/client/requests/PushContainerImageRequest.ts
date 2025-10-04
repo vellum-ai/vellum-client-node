@@ -13,6 +13,7 @@ export const PushContainerImageRequest: core.serialization.Schema<
     name: core.serialization.string(),
     sha: core.serialization.string(),
     tags: core.serialization.list(core.serialization.string()),
+    force: core.serialization.boolean().optional(),
 });
 
 export declare namespace PushContainerImageRequest {
@@ -20,5 +21,6 @@ export declare namespace PushContainerImageRequest {
         name: string;
         sha: string;
         tags: string[];
+        force?: boolean | null;
     }
 }
