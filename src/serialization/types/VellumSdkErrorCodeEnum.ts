@@ -18,9 +18,11 @@ export const VellumSdkErrorCodeEnum: core.serialization.Schema<
     "INVALID_TEMPLATE",
     "INTERNAL_ERROR",
     "PROVIDER_CREDENTIALS_UNAVAILABLE",
+    "INTEGRATION_CREDENTIALS_UNAVAILABLE",
     "PROVIDER_ERROR",
     "USER_DEFINED_ERROR",
     "WORKFLOW_CANCELLED",
+    "NODE_CANCELLED",
     "NODE_EXECUTION",
 ]);
 
@@ -34,8 +36,10 @@ export declare namespace VellumSdkErrorCodeEnum {
         | "INVALID_TEMPLATE"
         | "INTERNAL_ERROR"
         | "PROVIDER_CREDENTIALS_UNAVAILABLE"
+        | "INTEGRATION_CREDENTIALS_UNAVAILABLE"
         | "PROVIDER_ERROR"
         | "USER_DEFINED_ERROR"
         | "WORKFLOW_CANCELLED"
+        | "NODE_CANCELLED"
         | "NODE_EXECUTION";
 }
