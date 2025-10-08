@@ -2,3 +2,4 @@ export { type WorkflowDeploymentsListRequest } from "./WorkflowDeploymentsListRe
 export { type ListWorkflowDeploymentEventExecutionsRequest } from "./ListWorkflowDeploymentEventExecutionsRequest";
 export { type ListWorkflowReleaseTagsRequest } from "./ListWorkflowReleaseTagsRequest";
 export { type PatchedWorkflowReleaseTagUpdateRequest } from "./PatchedWorkflowReleaseTagUpdateRequest";
+export { type ListWorkflowDeploymentReleasesRequest } from "./ListWorkflowDeploymentReleasesRequest";
