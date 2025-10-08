@@ -340,6 +340,7 @@ export * from "./PaginatedSlimToolDefinitionList";
 export * from "./PaginatedSlimWorkflowDeploymentList";
 export * from "./PaginatedTestSuiteRunExecutionList";
 export * from "./PaginatedTestSuiteTestCaseList";
+export * from "./PaginatedWorkflowDeploymentReleaseList";
 export * from "./PaginatedWorkflowReleaseTagReadList";
 export * from "./PaginatedWorkflowSandboxExampleList";
 export * from "./ParentContext";

@@ -4343,6 +4343,77 @@ await client.workflowDeployments.updateWorkflowReleaseTag("id", "name");
 </dl>
 </details>
 
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">listWorkflowDeploymentReleases</a>(id, { ...params }) -> Vellum.PaginatedWorkflowDeploymentReleaseList</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List the Releases of the specified Workflow Deployment for the current Environment.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workflowDeployments.listWorkflowDeploymentReleases("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Either the Workflow Deployment's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.ListWorkflowDeploymentReleasesRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WorkflowDeployments.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">retrieveWorkflowDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.WorkflowDeploymentRelease</code></summary>
 <dl>
 <dd>
