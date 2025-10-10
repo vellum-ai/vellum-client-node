@@ -14,6 +14,7 @@
  * * `GOOGLE_CALENDAR` - Google Calendar
  * * `GOOGLE_DRIVE` - Google Drive
  * * `GMAIL` - Gmail
+ * * `AIRTABLE` - Airtable
  */
 export type IntegrationName =
     | "SLACK"
@@ -26,7 +27,8 @@ export type IntegrationName =
     | "GOOGLE_SHEETS"
     | "GOOGLE_CALENDAR"
     | "GOOGLE_DRIVE"
-    | "GMAIL";
+    | "GMAIL"
+    | "AIRTABLE";
 export const IntegrationName = {
     Slack: "SLACK",
     Notion: "NOTION",
@@ -39,4 +41,5 @@ export const IntegrationName = {
     GoogleCalendar: "GOOGLE_CALENDAR",
     GoogleDrive: "GOOGLE_DRIVE",
     Gmail: "GMAIL",
+    Airtable: "AIRTABLE",
 } as const;

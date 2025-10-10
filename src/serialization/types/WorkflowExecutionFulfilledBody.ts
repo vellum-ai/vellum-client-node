@@ -13,11 +13,16 @@ export const WorkflowExecutionFulfilledBody: core.serialization.ObjectSchema<
 > = core.serialization.object({
     workflowDefinition: core.serialization.property("workflow_definition", VellumCodeResourceDefinition),
     outputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    finalState: core.serialization.property(
+        "final_state",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    ),
 });
 
 export declare namespace WorkflowExecutionFulfilledBody {
     export interface Raw {
         workflow_definition: VellumCodeResourceDefinition.Raw;
         outputs: Record<string, unknown>;
+        final_state?: (Record<string, unknown> | null) | null;
     }
 }
