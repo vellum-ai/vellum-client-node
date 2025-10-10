@@ -91,7 +91,7 @@ export class AdHoc {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                        .default,
+                        .predict,
                 "v1/ad-hoc/execute-prompt",
             ),
             method: "POST",
@@ -104,8 +104,8 @@ export class AdHoc {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.7.7",
-                "User-Agent": "vellum-ai/1.7.7",
+                "X-Fern-SDK-Version": "1.7.8",
+                "User-Agent": "vellum-ai/1.7.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -192,8 +192,8 @@ export class AdHoc {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.7.7",
-                "User-Agent": "vellum-ai/1.7.7",
+                "X-Fern-SDK-Version": "1.7.8",
+                "User-Agent": "vellum-ai/1.7.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
