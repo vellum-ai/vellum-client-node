@@ -83,11 +83,11 @@ export class IntegrationProviders {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.7.7",
-                "User-Agent": "vellum-ai/1.7.7",
+                "X-Fern-SDK-Version": "1.7.8",
+                "User-Agent": "vellum-ai/1.7.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -163,8 +163,16 @@ export class IntegrationProviders {
         request: Vellum.ListIntegrationToolsRequest = {},
         requestOptions?: IntegrationProviders.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.PaginatedSlimToolDefinitionList>> {
-        const { integrationName, limit, offset, search } = request;
+        const { important, includeDeprecated, integrationName, limit, offset, search } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (important !== undefined) {
+            _queryParams["important"] = important?.toString() ?? null;
+        }
+
+        if (includeDeprecated !== undefined) {
+            _queryParams["include_deprecated"] = includeDeprecated?.toString() ?? null;
+        }
+
         if (integrationName !== undefined) {
             _queryParams["integration_name"] = integrationName;
         }
@@ -195,11 +203,11 @@ export class IntegrationProviders {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.7.7",
-                "User-Agent": "vellum-ai/1.7.7",
+                "X-Fern-SDK-Version": "1.7.8",
+                "User-Agent": "vellum-ai/1.7.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
