@@ -19,6 +19,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "GOOGLE_CALENDAR",
         "GOOGLE_DRIVE",
         "GMAIL",
+        "AIRTABLE",
     ]);
 
 export declare namespace IntegrationName {
@@ -33,5 +34,6 @@ export declare namespace IntegrationName {
         | "GOOGLE_SHEETS"
         | "GOOGLE_CALENDAR"
         | "GOOGLE_DRIVE"
-        | "GMAIL";
+        | "GMAIL"
+        | "AIRTABLE";
 }

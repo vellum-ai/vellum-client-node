@@ -8,6 +8,14 @@
  */
 export interface ListIntegrationToolsRequest {
     /**
+     * Whether to filter the tools by important
+     */
+    important?: boolean | null;
+    /**
+     * Whether to include deprecated tools
+     */
+    includeDeprecated?: boolean | null;
+    /**
      * The Vellum Integration name
      */
     integrationName?: string | null;
