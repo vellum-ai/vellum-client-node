@@ -26,6 +26,7 @@ export * from "./AudioInputRequest";
 export * from "./AudioPromptBlock";
 export * from "./AudioVellumValue";
 export * from "./AudioVellumValueRequest";
+export * from "./AuthTypeEnum";
 export * from "./BaseOutput";
 export * from "./BasicVectorizerIntfloatMultilingualE5Large";
 export * from "./BasicVectorizerIntfloatMultilingualE5LargeRequest";

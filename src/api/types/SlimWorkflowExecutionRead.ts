@@ -6,13 +6,13 @@ import * as Vellum from "../index";
 
 export interface SlimWorkflowExecutionRead {
     spanId: string;
-    parentContext?: Vellum.WorkflowDeploymentParentContext | null;
     start: Date;
     end?: Date | null;
     inputs: Vellum.ExecutionVellumValue[];
     outputs: Vellum.ExecutionVellumValue[];
     error?: Vellum.WorkflowError | null;
+    usageResults?: Vellum.WorkflowExecutionUsageResult[] | null;
+    parentContext?: Vellum.WorkflowDeploymentParentContext | null;
     latestActual?: Vellum.WorkflowExecutionActual | null;
     metricResults: Vellum.WorkflowExecutionViewOnlineEvalMetricResult[];
-    usageResults?: Vellum.WorkflowExecutionUsageResult[] | null;
 }

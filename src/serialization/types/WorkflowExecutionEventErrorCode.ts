@@ -21,6 +21,7 @@ export const WorkflowExecutionEventErrorCode: core.serialization.Schema<
     "LLM_PROVIDER",
     "INVALID_TEMPLATE",
     "INVALID_INPUTS",
+    "PROVIDER_QUOTA_EXCEEDED",
     "USER_DEFINED_ERROR",
 ]);
 
@@ -37,5 +38,6 @@ export declare namespace WorkflowExecutionEventErrorCode {
         | "LLM_PROVIDER"
         | "INVALID_TEMPLATE"
         | "INVALID_INPUTS"
+        | "PROVIDER_QUOTA_EXCEEDED"
         | "USER_DEFINED_ERROR";
 }
