@@ -15,6 +15,10 @@
  * * `GOOGLE_DRIVE` - Google Drive
  * * `GMAIL` - Gmail
  * * `AIRTABLE` - Airtable
+ * * `GAMMA` - Gamma
+ * * `FIRECRAWL` - Firecrawl
+ * * `PERPLEXITY` - Perplexity
+ * * `SERPAPI` - Serp Api
  */
 export type IntegrationName =
     | "SLACK"
@@ -28,7 +32,11 @@ export type IntegrationName =
     | "GOOGLE_CALENDAR"
     | "GOOGLE_DRIVE"
     | "GMAIL"
-    | "AIRTABLE";
+    | "AIRTABLE"
+    | "GAMMA"
+    | "FIRECRAWL"
+    | "PERPLEXITY"
+    | "SERPAPI";
 export const IntegrationName = {
     Slack: "SLACK",
     Notion: "NOTION",
@@ -42,4 +50,8 @@ export const IntegrationName = {
     GoogleDrive: "GOOGLE_DRIVE",
     Gmail: "GMAIL",
     Airtable: "AIRTABLE",
+    Gamma: "GAMMA",
+    Firecrawl: "FIRECRAWL",
+    Perplexity: "PERPLEXITY",
+    Serpapi: "SERPAPI",
 } as const;

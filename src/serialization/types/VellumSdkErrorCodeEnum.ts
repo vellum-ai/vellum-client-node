@@ -20,6 +20,7 @@ export const VellumSdkErrorCodeEnum: core.serialization.Schema<
     "PROVIDER_CREDENTIALS_UNAVAILABLE",
     "INTEGRATION_CREDENTIALS_UNAVAILABLE",
     "PROVIDER_ERROR",
+    "PROVIDER_QUOTA_EXCEEDED",
     "USER_DEFINED_ERROR",
     "WORKFLOW_CANCELLED",
     "NODE_CANCELLED",
@@ -38,6 +39,7 @@ export declare namespace VellumSdkErrorCodeEnum {
         | "PROVIDER_CREDENTIALS_UNAVAILABLE"
         | "INTEGRATION_CREDENTIALS_UNAVAILABLE"
         | "PROVIDER_ERROR"
+        | "PROVIDER_QUOTA_EXCEEDED"
         | "USER_DEFINED_ERROR"
         | "WORKFLOW_CANCELLED"
         | "NODE_CANCELLED"
