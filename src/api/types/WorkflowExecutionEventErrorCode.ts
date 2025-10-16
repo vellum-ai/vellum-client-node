@@ -14,6 +14,7 @@
  * * `LLM_PROVIDER` - LLM_PROVIDER
  * * `INVALID_TEMPLATE` - INVALID_TEMPLATE
  * * `INVALID_INPUTS` - INVALID_INPUTS
+ * * `PROVIDER_QUOTA_EXCEEDED` - PROVIDER_QUOTA_EXCEEDED
  * * `USER_DEFINED_ERROR` - USER_DEFINED_ERROR
  */
 export type WorkflowExecutionEventErrorCode =
@@ -28,6 +29,7 @@ export type WorkflowExecutionEventErrorCode =
     | "LLM_PROVIDER"
     | "INVALID_TEMPLATE"
     | "INVALID_INPUTS"
+    | "PROVIDER_QUOTA_EXCEEDED"
     | "USER_DEFINED_ERROR";
 export const WorkflowExecutionEventErrorCode = {
     WorkflowInitialization: "WORKFLOW_INITIALIZATION",
@@ -41,5 +43,6 @@ export const WorkflowExecutionEventErrorCode = {
     LlmProvider: "LLM_PROVIDER",
     InvalidTemplate: "INVALID_TEMPLATE",
     InvalidInputs: "INVALID_INPUTS",
+    ProviderQuotaExceeded: "PROVIDER_QUOTA_EXCEEDED",
     UserDefinedError: "USER_DEFINED_ERROR",
 } as const;

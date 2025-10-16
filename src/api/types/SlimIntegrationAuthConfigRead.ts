@@ -11,5 +11,6 @@ export interface SlimIntegrationAuthConfigRead {
     id: string;
     integration: Vellum.IntegrationAuthConfigIntegration;
     integrationCredentials?: Vellum.IntegrationAuthConfigIntegrationCredential[] | null;
+    authType?: Vellum.AuthTypeEnum;
     defaultAccessType?: Vellum.IntegrationCredentialAccessType;
 }

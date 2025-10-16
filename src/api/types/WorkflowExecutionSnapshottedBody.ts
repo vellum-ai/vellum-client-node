@@ -6,5 +6,6 @@ import * as Vellum from "../index";
 
 export interface WorkflowExecutionSnapshottedBody {
     workflowDefinition: Vellum.VellumCodeResourceDefinition;
+    editedBy?: Vellum.VellumCodeResourceDefinition | null;
     state: Record<string, unknown>;
 }

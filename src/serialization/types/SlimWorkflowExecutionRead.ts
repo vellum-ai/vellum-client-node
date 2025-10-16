@@ -7,46 +7,46 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { ExecutionVellumValue } from "./ExecutionVellumValue";
 import { WorkflowError } from "./WorkflowError";
+import { WorkflowExecutionUsageResult } from "./WorkflowExecutionUsageResult";
 import { WorkflowExecutionActual } from "./WorkflowExecutionActual";
 import { WorkflowExecutionViewOnlineEvalMetricResult } from "./WorkflowExecutionViewOnlineEvalMetricResult";
-import { WorkflowExecutionUsageResult } from "./WorkflowExecutionUsageResult";
 
 export const SlimWorkflowExecutionRead: core.serialization.ObjectSchema<
     serializers.SlimWorkflowExecutionRead.Raw,
     Vellum.SlimWorkflowExecutionRead
 > = core.serialization.object({
     spanId: core.serialization.property("span_id", core.serialization.string()),
-    parentContext: core.serialization.property(
-        "parent_context",
-        core.serialization.lazyObject(() => serializers.WorkflowDeploymentParentContext).optionalNullable(),
-    ),
     start: core.serialization.date(),
     end: core.serialization.date().optionalNullable(),
     inputs: core.serialization.list(ExecutionVellumValue),
     outputs: core.serialization.list(ExecutionVellumValue),
     error: WorkflowError.optionalNullable(),
+    usageResults: core.serialization.property(
+        "usage_results",
+        core.serialization.list(WorkflowExecutionUsageResult).optionalNullable(),
+    ),
+    parentContext: core.serialization.property(
+        "parent_context",
+        core.serialization.lazyObject(() => serializers.WorkflowDeploymentParentContext).optionalNullable(),
+    ),
     latestActual: core.serialization.property("latest_actual", WorkflowExecutionActual.optionalNullable()),
     metricResults: core.serialization.property(
         "metric_results",
         core.serialization.list(WorkflowExecutionViewOnlineEvalMetricResult),
-    ),
-    usageResults: core.serialization.property(
-        "usage_results",
-        core.serialization.list(WorkflowExecutionUsageResult).optionalNullable(),
     ),
 });
 
 export declare namespace SlimWorkflowExecutionRead {
     export interface Raw {
         span_id: string;
-        parent_context?: (serializers.WorkflowDeploymentParentContext.Raw | null) | null;
         start: string;
         end?: (string | null) | null;
         inputs: ExecutionVellumValue.Raw[];
         outputs: ExecutionVellumValue.Raw[];
         error?: (WorkflowError.Raw | null) | null;
+        usage_results?: (WorkflowExecutionUsageResult.Raw[] | null) | null;
+        parent_context?: (serializers.WorkflowDeploymentParentContext.Raw | null) | null;
         latest_actual?: (WorkflowExecutionActual.Raw | null) | null;
         metric_results: WorkflowExecutionViewOnlineEvalMetricResult.Raw[];
-        usage_results?: (WorkflowExecutionUsageResult.Raw[] | null) | null;
     }
 }

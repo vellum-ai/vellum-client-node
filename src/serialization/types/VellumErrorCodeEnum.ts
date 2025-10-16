@@ -20,6 +20,7 @@ export const VellumErrorCodeEnum: core.serialization.Schema<
     "USER_DEFINED_ERROR",
     "WORKFLOW_CANCELLED",
     "NODE_CANCELLED",
+    "PROVIDER_QUOTA_EXCEEDED",
 ]);
 
 export declare namespace VellumErrorCodeEnum {
@@ -33,5 +34,6 @@ export declare namespace VellumErrorCodeEnum {
         | "INTERNAL_SERVER_ERROR"
         | "USER_DEFINED_ERROR"
         | "WORKFLOW_CANCELLED"
-        | "NODE_CANCELLED";
+        | "NODE_CANCELLED"
+        | "PROVIDER_QUOTA_EXCEEDED";
 }

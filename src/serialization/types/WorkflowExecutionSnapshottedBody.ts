@@ -12,12 +12,14 @@ export const WorkflowExecutionSnapshottedBody: core.serialization.ObjectSchema<
     Vellum.WorkflowExecutionSnapshottedBody
 > = core.serialization.object({
     workflowDefinition: core.serialization.property("workflow_definition", VellumCodeResourceDefinition),
+    editedBy: core.serialization.property("edited_by", VellumCodeResourceDefinition.optionalNullable()),
     state: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
 });
 
 export declare namespace WorkflowExecutionSnapshottedBody {
     export interface Raw {
         workflow_definition: VellumCodeResourceDefinition.Raw;
+        edited_by?: (VellumCodeResourceDefinition.Raw | null) | null;
         state: Record<string, unknown>;
     }
 }
