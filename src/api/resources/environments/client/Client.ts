@@ -9,7 +9,7 @@ import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace IntegrationAuthConfigs {
+export declare namespace Environments {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -33,69 +33,32 @@ export declare namespace IntegrationAuthConfigs {
     }
 }
 
-export class IntegrationAuthConfigs {
-    constructor(protected readonly _options: IntegrationAuthConfigs.Options) {}
+export class Environments {
+    constructor(protected readonly _options: Environments.Options) {}
 
     /**
-     * List Integration Auth Configs
+     * Retrieves information about the active Environment
      *
-     * @param {Vellum.ListIntegrationAuthConfigsRequest} request
-     * @param {IntegrationAuthConfigs.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Environments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.integrationAuthConfigs.listIntegrationAuthConfigs()
+     *     await client.environments.environmentIdentity()
      */
-    public listIntegrationAuthConfigs(
-        request: Vellum.ListIntegrationAuthConfigsRequest = {},
-        requestOptions?: IntegrationAuthConfigs.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.PaginatedSlimIntegrationAuthConfigReadList> {
-        return core.HttpResponsePromise.fromPromise(this.__listIntegrationAuthConfigs(request, requestOptions));
+    public environmentIdentity(
+        requestOptions?: Environments.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.EnvironmentRead> {
+        return core.HttpResponsePromise.fromPromise(this.__environmentIdentity(requestOptions));
     }
 
-    private async __listIntegrationAuthConfigs(
-        request: Vellum.ListIntegrationAuthConfigsRequest = {},
-        requestOptions?: IntegrationAuthConfigs.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.PaginatedSlimIntegrationAuthConfigReadList>> {
-        const { expand, integrationName, integrationProvider, limit, offset, ordering, search } = request;
-        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (expand != null) {
-            if (Array.isArray(expand)) {
-                _queryParams["expand"] = expand.map((item) => item);
-            } else {
-                _queryParams["expand"] = expand;
-            }
-        }
-
-        if (integrationName !== undefined) {
-            _queryParams["integration_name"] = integrationName;
-        }
-
-        if (integrationProvider !== undefined) {
-            _queryParams["integration_provider"] = integrationProvider;
-        }
-
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
-        }
-
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
-        }
-
-        if (ordering !== undefined) {
-            _queryParams["ordering"] = ordering;
-        }
-
-        if (search !== undefined) {
-            _queryParams["search"] = search;
-        }
-
+    private async __environmentIdentity(
+        requestOptions?: Environments.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.EnvironmentRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                "v1/integration-auth-configs",
+                "v1/environments/identity",
             ),
             method: "GET",
             headers: {
@@ -115,7 +78,6 @@ export class IntegrationAuthConfigs {
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
-            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
@@ -123,7 +85,7 @@ export class IntegrationAuthConfigs {
         });
         if (_response.ok) {
             return {
-                data: serializers.PaginatedSlimIntegrationAuthConfigReadList.parseOrThrow(_response.body, {
+                data: serializers.EnvironmentRead.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -149,7 +111,7 @@ export class IntegrationAuthConfigs {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/integration-auth-configs.");
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/environments/identity.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,

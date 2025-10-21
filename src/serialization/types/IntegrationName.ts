@@ -12,18 +12,33 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "NOTION",
         "GOOGLE",
         "CALENDLY",
+        "CANVA",
         "HUBSPOT",
         "LINEAR",
+        "LINKEDIN",
+        "MAILCHIMP",
         "GITHUB",
         "GOOGLE_SHEETS",
         "GOOGLE_CALENDAR",
         "GOOGLE_DRIVE",
         "GMAIL",
         "AIRTABLE",
+        "ATLASSIAN",
         "GAMMA",
+        "GITLAB",
         "FIRECRAWL",
+        "FIGMA",
+        "PAGERDUTY",
         "PERPLEXITY",
+        "REDDIT",
         "SERPAPI",
+        "SUPABASE",
+        "WEBFLOW",
+        "ZENDESK",
+        "DROPBOX",
+        "EVENTBRITE",
+        "CONFLUENCE",
+        "DOCUSIGN",
     ]);
 
 export declare namespace IntegrationName {
@@ -32,16 +47,31 @@ export declare namespace IntegrationName {
         | "NOTION"
         | "GOOGLE"
         | "CALENDLY"
+        | "CANVA"
         | "HUBSPOT"
         | "LINEAR"
+        | "LINKEDIN"
+        | "MAILCHIMP"
         | "GITHUB"
         | "GOOGLE_SHEETS"
         | "GOOGLE_CALENDAR"
         | "GOOGLE_DRIVE"
         | "GMAIL"
         | "AIRTABLE"
+        | "ATLASSIAN"
         | "GAMMA"
+        | "GITLAB"
         | "FIRECRAWL"
+        | "FIGMA"
+        | "PAGERDUTY"
         | "PERPLEXITY"
-        | "SERPAPI";
+        | "REDDIT"
+        | "SERPAPI"
+        | "SUPABASE"
+        | "WEBFLOW"
+        | "ZENDESK"
+        | "DROPBOX"
+        | "EVENTBRITE"
+        | "CONFLUENCE"
+        | "DOCUSIGN";
 }

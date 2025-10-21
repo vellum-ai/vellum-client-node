@@ -17,6 +17,10 @@ export const WorkflowExecutionFulfilledBody: core.serialization.ObjectSchema<
         "final_state",
         core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     ),
+    serverMetadata: core.serialization.property(
+        "server_metadata",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    ),
 });
 
 export declare namespace WorkflowExecutionFulfilledBody {
@@ -24,5 +28,6 @@ export declare namespace WorkflowExecutionFulfilledBody {
         workflow_definition: VellumCodeResourceDefinition.Raw;
         outputs: Record<string, unknown>;
         final_state?: (Record<string, unknown> | null) | null;
+        server_metadata?: (Record<string, unknown> | null) | null;
     }
 }

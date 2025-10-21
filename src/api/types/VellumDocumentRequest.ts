@@ -3,6 +3,7 @@
  */
 
 export interface VellumDocumentRequest {
+    /** A valid data URL containing the document data. */
     src: string;
     metadata?: Record<string, unknown> | null;
 }

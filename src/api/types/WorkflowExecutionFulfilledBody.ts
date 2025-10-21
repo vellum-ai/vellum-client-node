@@ -8,4 +8,5 @@ export interface WorkflowExecutionFulfilledBody {
     workflowDefinition: Vellum.VellumCodeResourceDefinition;
     outputs: Record<string, unknown>;
     finalState?: Record<string, unknown> | null;
+    serverMetadata?: Record<string, unknown> | null;
 }

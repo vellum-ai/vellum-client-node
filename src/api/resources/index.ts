@@ -13,6 +13,7 @@ export * as events from "./events";
 export * as adHoc from "./adHoc";
 export * as containerImages from "./containerImages";
 export * as documents from "./documents";
+export * as environments from "./environments";
 export * as integrationAuthConfigs from "./integrationAuthConfigs";
 export * as integrationProviders from "./integrationProviders";
 export * as metricDefinitions from "./metricDefinitions";
