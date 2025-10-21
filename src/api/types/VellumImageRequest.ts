@@ -3,6 +3,7 @@
  */
 
 export interface VellumImageRequest {
+    /** A valid data URL containing the image data. */
     src: string;
     metadata?: Record<string, unknown> | null;
 }
