@@ -9,6 +9,8 @@ export interface WorkflowPushRequest {
     execConfig: Vellum.WorkflowPushExecConfig;
     workflowSandboxId?: string | null;
     deploymentConfig?: Vellum.WorkflowPushDeploymentConfigRequest | null;
+    /** List of dataset rows with inputs for scenarios. */
+    dataset?: Vellum.DatasetRowPushRequest[] | null;
     dryRun?: boolean;
     strict?: boolean;
 }

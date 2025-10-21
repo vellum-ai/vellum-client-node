@@ -100,11 +100,11 @@ export class Workflows {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.7.13",
-                "User-Agent": "vellum-ai/1.7.13",
+                "X-Fern-SDK-Version": "1.7.14",
+                "User-Agent": "vellum-ai/1.7.14",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -188,11 +188,11 @@ export class Workflows {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.7.13",
-                "User-Agent": "vellum-ai/1.7.13",
+                "X-Fern-SDK-Version": "1.7.14",
+                "User-Agent": "vellum-ai/1.7.14",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -283,6 +283,15 @@ export class Workflows {
             await _request.appendFile("artifact", artifact);
         }
 
+        if (request.dataset != null) {
+            for (const _item of request.dataset) {
+                _request.append(
+                    "dataset",
+                    toJson(serializers.DatasetRowPushRequest.jsonOrThrow(_item, { unrecognizedObjectKeys: "strip" })),
+                );
+            }
+        }
+
         if (request.dryRun != null) {
             _request.append("dry_run", request.dryRun.toString());
         }
@@ -306,11 +315,11 @@ export class Workflows {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.7.13",
-                "User-Agent": "vellum-ai/1.7.13",
+                "X-Fern-SDK-Version": "1.7.14",
+                "User-Agent": "vellum-ai/1.7.14",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -401,11 +410,11 @@ export class Workflows {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.7.13",
-                "User-Agent": "vellum-ai/1.7.13",
+                "X-Fern-SDK-Version": "1.7.14",
+                "User-Agent": "vellum-ai/1.7.14",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

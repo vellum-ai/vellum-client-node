@@ -2242,6 +2242,63 @@ await client.documents.partialUpdate("id");
 </dl>
 </details>
 
+## Environments
+
+<details><summary><code>client.environments.<a href="/src/api/resources/environments/client/Client.ts">environmentIdentity</a>() -> Vellum.EnvironmentRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves information about the active Environment
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.environments.environmentIdentity();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `Environments.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## FolderEntities
 
 <details><summary><code>client.folderEntities.<a href="/src/api/resources/folderEntities/client/Client.ts">list</a>({ ...params }) -> Vellum.PaginatedFolderEntityList</code></summary>

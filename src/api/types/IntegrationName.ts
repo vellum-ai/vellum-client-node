@@ -7,51 +7,96 @@
  * * `NOTION` - Notion
  * * `GOOGLE` - Google
  * * `CALENDLY` - Calendly
+ * * `CANVA` - Canva
  * * `HUBSPOT` - Hubspot
  * * `LINEAR` - Linear
+ * * `LINKEDIN` - LinkedIn
+ * * `MAILCHIMP` - Mailchimp
  * * `GITHUB` - Github
  * * `GOOGLE_SHEETS` - Google Sheets
  * * `GOOGLE_CALENDAR` - Google Calendar
  * * `GOOGLE_DRIVE` - Google Drive
  * * `GMAIL` - Gmail
  * * `AIRTABLE` - Airtable
+ * * `ATLASSIAN` - Atlassian
  * * `GAMMA` - Gamma
+ * * `GITLAB` - Gitlab
  * * `FIRECRAWL` - Firecrawl
+ * * `FIGMA` - Figma
+ * * `PAGERDUTY` - PagerDuty
  * * `PERPLEXITY` - Perplexity
+ * * `REDDIT` - Reddit
  * * `SERPAPI` - Serp Api
+ * * `SUPABASE` - Supabase
+ * * `WEBFLOW` - Webflow
+ * * `ZENDESK` - Zendesk
+ * * `DROPBOX` - Dropbox
+ * * `EVENTBRITE` - Eventbrite
+ * * `CONFLUENCE` - Confluence
+ * * `DOCUSIGN` - DocuSign
  */
 export type IntegrationName =
     | "SLACK"
     | "NOTION"
     | "GOOGLE"
     | "CALENDLY"
+    | "CANVA"
     | "HUBSPOT"
     | "LINEAR"
+    | "LINKEDIN"
+    | "MAILCHIMP"
     | "GITHUB"
     | "GOOGLE_SHEETS"
     | "GOOGLE_CALENDAR"
     | "GOOGLE_DRIVE"
     | "GMAIL"
     | "AIRTABLE"
+    | "ATLASSIAN"
     | "GAMMA"
+    | "GITLAB"
     | "FIRECRAWL"
+    | "FIGMA"
+    | "PAGERDUTY"
     | "PERPLEXITY"
-    | "SERPAPI";
+    | "REDDIT"
+    | "SERPAPI"
+    | "SUPABASE"
+    | "WEBFLOW"
+    | "ZENDESK"
+    | "DROPBOX"
+    | "EVENTBRITE"
+    | "CONFLUENCE"
+    | "DOCUSIGN";
 export const IntegrationName = {
     Slack: "SLACK",
     Notion: "NOTION",
     Google: "GOOGLE",
     Calendly: "CALENDLY",
+    Canva: "CANVA",
     Hubspot: "HUBSPOT",
     Linear: "LINEAR",
+    Linkedin: "LINKEDIN",
+    Mailchimp: "MAILCHIMP",
     Github: "GITHUB",
     GoogleSheets: "GOOGLE_SHEETS",
     GoogleCalendar: "GOOGLE_CALENDAR",
     GoogleDrive: "GOOGLE_DRIVE",
     Gmail: "GMAIL",
     Airtable: "AIRTABLE",
+    Atlassian: "ATLASSIAN",
     Gamma: "GAMMA",
+    Gitlab: "GITLAB",
     Firecrawl: "FIRECRAWL",
+    Figma: "FIGMA",
+    Pagerduty: "PAGERDUTY",
     Perplexity: "PERPLEXITY",
+    Reddit: "REDDIT",
     Serpapi: "SERPAPI",
+    Supabase: "SUPABASE",
+    Webflow: "WEBFLOW",
+    Zendesk: "ZENDESK",
+    Dropbox: "DROPBOX",
+    Eventbrite: "EVENTBRITE",
+    Confluence: "CONFLUENCE",
+    Docusign: "DOCUSIGN",
 } as const;
