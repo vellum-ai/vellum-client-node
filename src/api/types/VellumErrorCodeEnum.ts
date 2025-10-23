@@ -14,6 +14,7 @@
  * * `WORKFLOW_CANCELLED` - WORKFLOW_CANCELLED
  * * `NODE_CANCELLED` - NODE_CANCELLED
  * * `PROVIDER_QUOTA_EXCEEDED` - PROVIDER_QUOTA_EXCEEDED
+ * * `CHAT_QUOTA_EXCEEDED` - CHAT_QUOTA_EXCEEDED
  */
 export type VellumErrorCodeEnum =
     | "INVALID_REQUEST"
@@ -26,7 +27,8 @@ export type VellumErrorCodeEnum =
     | "USER_DEFINED_ERROR"
     | "WORKFLOW_CANCELLED"
     | "NODE_CANCELLED"
-    | "PROVIDER_QUOTA_EXCEEDED";
+    | "PROVIDER_QUOTA_EXCEEDED"
+    | "CHAT_QUOTA_EXCEEDED";
 export const VellumErrorCodeEnum = {
     InvalidRequest: "INVALID_REQUEST",
     InvalidInputs: "INVALID_INPUTS",
@@ -39,4 +41,5 @@ export const VellumErrorCodeEnum = {
     WorkflowCancelled: "WORKFLOW_CANCELLED",
     NodeCancelled: "NODE_CANCELLED",
     ProviderQuotaExceeded: "PROVIDER_QUOTA_EXCEEDED",
+    ChatQuotaExceeded: "CHAT_QUOTA_EXCEEDED",
 } as const;
