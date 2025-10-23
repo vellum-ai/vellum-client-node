@@ -4,7 +4,10 @@
 
 import * as Vellum from "../index";
 
-export interface ToolDefinitionIntegration {
+/**
+ * Serializer for Integration model - used in both tool and trigger definitions.
+ */
+export interface Integration {
     id: string;
     provider: Vellum.IntegrationProvider;
     name: Vellum.IntegrationName;

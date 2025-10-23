@@ -5,14 +5,14 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { ToolDefinitionIntegration } from "./ToolDefinitionIntegration";
+import { Integration } from "./Integration";
 
 export const ComposioToolDefinition: core.serialization.ObjectSchema<
     serializers.ComposioToolDefinition.Raw,
     Vellum.ComposioToolDefinition
 > = core.serialization.object({
     provider: core.serialization.stringLiteral("COMPOSIO"),
-    integration: ToolDefinitionIntegration,
+    integration: Integration,
     name: core.serialization.string(),
     label: core.serialization.string(),
     description: core.serialization.string(),
@@ -29,7 +29,7 @@ export const ComposioToolDefinition: core.serialization.ObjectSchema<
 export declare namespace ComposioToolDefinition {
     export interface Raw {
         provider: "COMPOSIO";
-        integration: ToolDefinitionIntegration.Raw;
+        integration: Integration.Raw;
         name: string;
         label: string;
         description: string;

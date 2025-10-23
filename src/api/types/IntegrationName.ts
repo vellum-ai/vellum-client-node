@@ -8,31 +8,54 @@
  * * `GOOGLE` - Google
  * * `CALENDLY` - Calendly
  * * `CANVA` - Canva
+ * * `CLICKUP` - ClickUp
  * * `HUBSPOT` - Hubspot
+ * * `INTERCOM` - Intercom
  * * `LINEAR` - Linear
  * * `LINKEDIN` - LinkedIn
  * * `MAILCHIMP` - Mailchimp
+ * * `MEM0` - Mem0
+ * * `NEON` - Neon
  * * `GITHUB` - Github
  * * `GOOGLE_SHEETS` - Google Sheets
  * * `GOOGLE_CALENDAR` - Google Calendar
  * * `GOOGLE_DRIVE` - Google Drive
  * * `GMAIL` - Gmail
  * * `AIRTABLE` - Airtable
+ * * `APOLLO` - Apollo
+ * * `ASANA` - Asana
  * * `ATLASSIAN` - Atlassian
+ * * `BOX` - Box
+ * * `BREVO` - Brevo
+ * * `BROWSERBASE_TOOL` - Browserbase Tool
+ * * `CAL` - Cal
+ * * `CANVAS` - Canvas
+ * * `ELEVENLABS` - ElevenLabs
+ * * `EXA` - Exa
  * * `GAMMA` - Gamma
  * * `GITLAB` - Gitlab
  * * `FIRECRAWL` - Firecrawl
  * * `FIGMA` - Figma
+ * * `GOOGLE_MAPS` - Google Maps
+ * * `JIRA` - Jira
+ * * `KLAVIYO` - Klaviyo
  * * `PAGERDUTY` - PagerDuty
+ * * `PEOPLEDATALABS` - People Data Labs
  * * `PERPLEXITY` - Perplexity
+ * * `POSTHOG` - PostHog
  * * `REDDIT` - Reddit
+ * * `SEMRUSH` - Semrush
  * * `SERPAPI` - Serp Api
+ * * `STRIPE` - Stripe
  * * `SUPABASE` - Supabase
+ * * `TAVILY` - Tavily
+ * * `TRELLO` - Trello
  * * `WEBFLOW` - Webflow
  * * `ZENDESK` - Zendesk
  * * `DROPBOX` - Dropbox
  * * `EVENTBRITE` - Eventbrite
  * * `CONFLUENCE` - Confluence
+ * * `DISCORD` - Discord
  * * `DOCUSIGN` - DocuSign
  */
 export type IntegrationName =
@@ -41,31 +64,54 @@ export type IntegrationName =
     | "GOOGLE"
     | "CALENDLY"
     | "CANVA"
+    | "CLICKUP"
     | "HUBSPOT"
+    | "INTERCOM"
     | "LINEAR"
     | "LINKEDIN"
     | "MAILCHIMP"
+    | "MEM0"
+    | "NEON"
     | "GITHUB"
     | "GOOGLE_SHEETS"
     | "GOOGLE_CALENDAR"
     | "GOOGLE_DRIVE"
     | "GMAIL"
     | "AIRTABLE"
+    | "APOLLO"
+    | "ASANA"
     | "ATLASSIAN"
+    | "BOX"
+    | "BREVO"
+    | "BROWSERBASE_TOOL"
+    | "CAL"
+    | "CANVAS"
+    | "ELEVENLABS"
+    | "EXA"
     | "GAMMA"
     | "GITLAB"
     | "FIRECRAWL"
     | "FIGMA"
+    | "GOOGLE_MAPS"
+    | "JIRA"
+    | "KLAVIYO"
     | "PAGERDUTY"
+    | "PEOPLEDATALABS"
     | "PERPLEXITY"
+    | "POSTHOG"
     | "REDDIT"
+    | "SEMRUSH"
     | "SERPAPI"
+    | "STRIPE"
     | "SUPABASE"
+    | "TAVILY"
+    | "TRELLO"
     | "WEBFLOW"
     | "ZENDESK"
     | "DROPBOX"
     | "EVENTBRITE"
     | "CONFLUENCE"
+    | "DISCORD"
     | "DOCUSIGN";
 export const IntegrationName = {
     Slack: "SLACK",
@@ -73,30 +119,53 @@ export const IntegrationName = {
     Google: "GOOGLE",
     Calendly: "CALENDLY",
     Canva: "CANVA",
+    Clickup: "CLICKUP",
     Hubspot: "HUBSPOT",
+    Intercom: "INTERCOM",
     Linear: "LINEAR",
     Linkedin: "LINKEDIN",
     Mailchimp: "MAILCHIMP",
+    Mem0: "MEM0",
+    Neon: "NEON",
     Github: "GITHUB",
     GoogleSheets: "GOOGLE_SHEETS",
     GoogleCalendar: "GOOGLE_CALENDAR",
     GoogleDrive: "GOOGLE_DRIVE",
     Gmail: "GMAIL",
     Airtable: "AIRTABLE",
+    Apollo: "APOLLO",
+    Asana: "ASANA",
     Atlassian: "ATLASSIAN",
+    Box: "BOX",
+    Brevo: "BREVO",
+    BrowserbaseTool: "BROWSERBASE_TOOL",
+    Cal: "CAL",
+    Canvas: "CANVAS",
+    Elevenlabs: "ELEVENLABS",
+    Exa: "EXA",
     Gamma: "GAMMA",
     Gitlab: "GITLAB",
     Firecrawl: "FIRECRAWL",
     Figma: "FIGMA",
+    GoogleMaps: "GOOGLE_MAPS",
+    Jira: "JIRA",
+    Klaviyo: "KLAVIYO",
     Pagerduty: "PAGERDUTY",
+    Peopledatalabs: "PEOPLEDATALABS",
     Perplexity: "PERPLEXITY",
+    Posthog: "POSTHOG",
     Reddit: "REDDIT",
+    Semrush: "SEMRUSH",
     Serpapi: "SERPAPI",
+    Stripe: "STRIPE",
     Supabase: "SUPABASE",
+    Tavily: "TAVILY",
+    Trello: "TRELLO",
     Webflow: "WEBFLOW",
     Zendesk: "ZENDESK",
     Dropbox: "DROPBOX",
     Eventbrite: "EVENTBRITE",
     Confluence: "CONFLUENCE",
+    Discord: "DISCORD",
     Docusign: "DOCUSIGN",
 } as const;

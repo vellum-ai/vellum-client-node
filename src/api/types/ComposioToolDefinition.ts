@@ -9,7 +9,7 @@ import * as Vellum from "../index";
  */
 export interface ComposioToolDefinition {
     provider: "COMPOSIO";
-    integration: Vellum.ToolDefinitionIntegration;
+    integration: Vellum.Integration;
     name: string;
     label: string;
     description: string;
