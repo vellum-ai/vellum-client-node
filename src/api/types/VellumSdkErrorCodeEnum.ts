@@ -16,7 +16,9 @@
  * * `PROVIDER_QUOTA_EXCEEDED` - PROVIDER_QUOTA_EXCEEDED
  * * `USER_DEFINED_ERROR` - USER_DEFINED_ERROR
  * * `WORKFLOW_CANCELLED` - WORKFLOW_CANCELLED
+ * * `WORKFLOW_TIMEOUT` - WORKFLOW_TIMEOUT
  * * `NODE_CANCELLED` - NODE_CANCELLED
+ * * `NODE_TIMEOUT` - NODE_TIMEOUT
  * * `NODE_EXECUTION` - NODE_EXECUTION
  */
 export type VellumSdkErrorCodeEnum =
@@ -33,7 +35,9 @@ export type VellumSdkErrorCodeEnum =
     | "PROVIDER_QUOTA_EXCEEDED"
     | "USER_DEFINED_ERROR"
     | "WORKFLOW_CANCELLED"
+    | "WORKFLOW_TIMEOUT"
     | "NODE_CANCELLED"
+    | "NODE_TIMEOUT"
     | "NODE_EXECUTION";
 export const VellumSdkErrorCodeEnum = {
     InvalidWorkflow: "INVALID_WORKFLOW",
@@ -49,6 +53,8 @@ export const VellumSdkErrorCodeEnum = {
     ProviderQuotaExceeded: "PROVIDER_QUOTA_EXCEEDED",
     UserDefinedError: "USER_DEFINED_ERROR",
     WorkflowCancelled: "WORKFLOW_CANCELLED",
+    WorkflowTimeout: "WORKFLOW_TIMEOUT",
     NodeCancelled: "NODE_CANCELLED",
+    NodeTimeout: "NODE_TIMEOUT",
     NodeExecution: "NODE_EXECUTION",
 } as const;

@@ -8,16 +8,14 @@ import * as core from "../../core";
 import { IntegrationProvider } from "./IntegrationProvider";
 import { IntegrationName } from "./IntegrationName";
 
-export const ToolDefinitionIntegration: core.serialization.ObjectSchema<
-    serializers.ToolDefinitionIntegration.Raw,
-    Vellum.ToolDefinitionIntegration
-> = core.serialization.object({
-    id: core.serialization.string(),
-    provider: IntegrationProvider,
-    name: IntegrationName,
-});
+export const Integration: core.serialization.ObjectSchema<serializers.Integration.Raw, Vellum.Integration> =
+    core.serialization.object({
+        id: core.serialization.string(),
+        provider: IntegrationProvider,
+        name: IntegrationName,
+    });
 
-export declare namespace ToolDefinitionIntegration {
+export declare namespace Integration {
     export interface Raw {
         id: string;
         provider: IntegrationProvider.Raw;

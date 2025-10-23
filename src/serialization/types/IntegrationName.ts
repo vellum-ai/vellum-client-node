@@ -13,31 +13,54 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "GOOGLE",
         "CALENDLY",
         "CANVA",
+        "CLICKUP",
         "HUBSPOT",
+        "INTERCOM",
         "LINEAR",
         "LINKEDIN",
         "MAILCHIMP",
+        "MEM0",
+        "NEON",
         "GITHUB",
         "GOOGLE_SHEETS",
         "GOOGLE_CALENDAR",
         "GOOGLE_DRIVE",
         "GMAIL",
         "AIRTABLE",
+        "APOLLO",
+        "ASANA",
         "ATLASSIAN",
+        "BOX",
+        "BREVO",
+        "BROWSERBASE_TOOL",
+        "CAL",
+        "CANVAS",
+        "ELEVENLABS",
+        "EXA",
         "GAMMA",
         "GITLAB",
         "FIRECRAWL",
         "FIGMA",
+        "GOOGLE_MAPS",
+        "JIRA",
+        "KLAVIYO",
         "PAGERDUTY",
+        "PEOPLEDATALABS",
         "PERPLEXITY",
+        "POSTHOG",
         "REDDIT",
+        "SEMRUSH",
         "SERPAPI",
+        "STRIPE",
         "SUPABASE",
+        "TAVILY",
+        "TRELLO",
         "WEBFLOW",
         "ZENDESK",
         "DROPBOX",
         "EVENTBRITE",
         "CONFLUENCE",
+        "DISCORD",
         "DOCUSIGN",
     ]);
 
@@ -48,30 +71,53 @@ export declare namespace IntegrationName {
         | "GOOGLE"
         | "CALENDLY"
         | "CANVA"
+        | "CLICKUP"
         | "HUBSPOT"
+        | "INTERCOM"
         | "LINEAR"
         | "LINKEDIN"
         | "MAILCHIMP"
+        | "MEM0"
+        | "NEON"
         | "GITHUB"
         | "GOOGLE_SHEETS"
         | "GOOGLE_CALENDAR"
         | "GOOGLE_DRIVE"
         | "GMAIL"
         | "AIRTABLE"
+        | "APOLLO"
+        | "ASANA"
         | "ATLASSIAN"
+        | "BOX"
+        | "BREVO"
+        | "BROWSERBASE_TOOL"
+        | "CAL"
+        | "CANVAS"
+        | "ELEVENLABS"
+        | "EXA"
         | "GAMMA"
         | "GITLAB"
         | "FIRECRAWL"
         | "FIGMA"
+        | "GOOGLE_MAPS"
+        | "JIRA"
+        | "KLAVIYO"
         | "PAGERDUTY"
+        | "PEOPLEDATALABS"
         | "PERPLEXITY"
+        | "POSTHOG"
         | "REDDIT"
+        | "SEMRUSH"
         | "SERPAPI"
+        | "STRIPE"
         | "SUPABASE"
+        | "TAVILY"
+        | "TRELLO"
         | "WEBFLOW"
         | "ZENDESK"
         | "DROPBOX"
         | "EVENTBRITE"
         | "CONFLUENCE"
+        | "DISCORD"
         | "DOCUSIGN";
 }

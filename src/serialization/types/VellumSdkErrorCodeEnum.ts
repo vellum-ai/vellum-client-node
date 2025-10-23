@@ -23,7 +23,9 @@ export const VellumSdkErrorCodeEnum: core.serialization.Schema<
     "PROVIDER_QUOTA_EXCEEDED",
     "USER_DEFINED_ERROR",
     "WORKFLOW_CANCELLED",
+    "WORKFLOW_TIMEOUT",
     "NODE_CANCELLED",
+    "NODE_TIMEOUT",
     "NODE_EXECUTION",
 ]);
 
@@ -42,6 +44,8 @@ export declare namespace VellumSdkErrorCodeEnum {
         | "PROVIDER_QUOTA_EXCEEDED"
         | "USER_DEFINED_ERROR"
         | "WORKFLOW_CANCELLED"
+        | "WORKFLOW_TIMEOUT"
         | "NODE_CANCELLED"
+        | "NODE_TIMEOUT"
         | "NODE_EXECUTION";
 }
