@@ -51,10 +51,10 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "REDDIT",
         "SEMRUSH",
         "SERPAPI",
+        "SHARE_POINT",
         "STRIPE",
         "SUPABASE",
         "TAVILY",
-        "TRELLO",
         "WEBFLOW",
         "ZENDESK",
         "DROPBOX",
@@ -109,10 +109,10 @@ export declare namespace IntegrationName {
         | "REDDIT"
         | "SEMRUSH"
         | "SERPAPI"
+        | "SHARE_POINT"
         | "STRIPE"
         | "SUPABASE"
         | "TAVILY"
-        | "TRELLO"
         | "WEBFLOW"
         | "ZENDESK"
         | "DROPBOX"
