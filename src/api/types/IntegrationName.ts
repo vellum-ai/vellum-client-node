@@ -46,10 +46,10 @@
  * * `REDDIT` - Reddit
  * * `SEMRUSH` - Semrush
  * * `SERPAPI` - Serp Api
+ * * `SHARE_POINT` - SharePoint
  * * `STRIPE` - Stripe
  * * `SUPABASE` - Supabase
  * * `TAVILY` - Tavily
- * * `TRELLO` - Trello
  * * `WEBFLOW` - Webflow
  * * `ZENDESK` - Zendesk
  * * `DROPBOX` - Dropbox
@@ -102,10 +102,10 @@ export type IntegrationName =
     | "REDDIT"
     | "SEMRUSH"
     | "SERPAPI"
+    | "SHARE_POINT"
     | "STRIPE"
     | "SUPABASE"
     | "TAVILY"
-    | "TRELLO"
     | "WEBFLOW"
     | "ZENDESK"
     | "DROPBOX"
@@ -157,10 +157,10 @@ export const IntegrationName = {
     Reddit: "REDDIT",
     Semrush: "SEMRUSH",
     Serpapi: "SERPAPI",
+    SharePoint: "SHARE_POINT",
     Stripe: "STRIPE",
     Supabase: "SUPABASE",
     Tavily: "TAVILY",
-    Trello: "TRELLO",
     Webflow: "WEBFLOW",
     Zendesk: "ZENDESK",
     Dropbox: "DROPBOX",
