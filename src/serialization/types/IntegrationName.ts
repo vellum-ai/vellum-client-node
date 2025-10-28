@@ -45,6 +45,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "JIRA",
         "KLAVIYO",
         "PAGERDUTY",
+        "PARSERA",
         "PEOPLEDATALABS",
         "PERPLEXITY",
         "POSTHOG",
@@ -103,6 +104,7 @@ export declare namespace IntegrationName {
         | "JIRA"
         | "KLAVIYO"
         | "PAGERDUTY"
+        | "PARSERA"
         | "PEOPLEDATALABS"
         | "PERPLEXITY"
         | "POSTHOG"
