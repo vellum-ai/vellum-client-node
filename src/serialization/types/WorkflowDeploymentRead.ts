@@ -8,6 +8,7 @@ import * as core from "../../core";
 import { EntityStatus } from "./EntityStatus";
 import { EnvironmentEnum } from "./EnvironmentEnum";
 import { VellumVariable } from "./VellumVariable";
+import { WorkflowDeploymentDisplayData } from "./WorkflowDeploymentDisplayData";
 
 export const WorkflowDeploymentRead: core.serialization.ObjectSchema<
     serializers.WorkflowDeploymentRead.Raw,
@@ -27,6 +28,7 @@ export const WorkflowDeploymentRead: core.serialization.ObjectSchema<
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     outputVariables: core.serialization.property("output_variables", core.serialization.list(VellumVariable)),
     description: core.serialization.string().optionalNullable(),
+    displayData: core.serialization.property("display_data", WorkflowDeploymentDisplayData.optionalNullable()),
 });
 
 export declare namespace WorkflowDeploymentRead {
@@ -42,5 +44,6 @@ export declare namespace WorkflowDeploymentRead {
         input_variables: VellumVariable.Raw[];
         output_variables: VellumVariable.Raw[];
         description?: (string | null) | null;
+        display_data?: (WorkflowDeploymentDisplayData.Raw | null) | null;
     }
 }

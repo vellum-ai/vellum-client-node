@@ -32,4 +32,6 @@ export interface WorkflowDeploymentRead {
     outputVariables: Vellum.VellumVariable[];
     /** A human-readable description of the workflow deployment */
     description?: string | null;
+    /** Information used to display this Workflow Deployment. */
+    displayData?: Vellum.WorkflowDeploymentDisplayData | null;
 }
