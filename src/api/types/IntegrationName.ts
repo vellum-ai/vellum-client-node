@@ -40,6 +40,7 @@
  * * `JIRA` - Jira
  * * `KLAVIYO` - Klaviyo
  * * `PAGERDUTY` - PagerDuty
+ * * `PARSERA` - Parsera
  * * `PEOPLEDATALABS` - People Data Labs
  * * `PERPLEXITY` - Perplexity
  * * `POSTHOG` - PostHog
@@ -96,6 +97,7 @@ export type IntegrationName =
     | "JIRA"
     | "KLAVIYO"
     | "PAGERDUTY"
+    | "PARSERA"
     | "PEOPLEDATALABS"
     | "PERPLEXITY"
     | "POSTHOG"
@@ -151,6 +153,7 @@ export const IntegrationName = {
     Jira: "JIRA",
     Klaviyo: "KLAVIYO",
     Pagerduty: "PAGERDUTY",
+    Parsera: "PARSERA",
     Peopledatalabs: "PEOPLEDATALABS",
     Perplexity: "PERPLEXITY",
     Posthog: "POSTHOG",
