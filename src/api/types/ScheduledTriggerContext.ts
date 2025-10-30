@@ -4,12 +4,9 @@
 
 import * as Vellum from "../index";
 
-export interface ApiRequestParentContext {
+export interface ScheduledTriggerContext {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    type: "API_REQUEST";
+    type: "SCHEDULED";
     spanId: string;
-    apiActorId?: string | null;
-    apiActorType?: Vellum.ApiActorTypeEnum | null;
-    apiActorLabel?: string | null;
 }

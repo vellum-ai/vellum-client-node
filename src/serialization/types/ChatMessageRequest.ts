@@ -12,7 +12,7 @@ export const ChatMessageRequest: core.serialization.ObjectSchema<
     serializers.ChatMessageRequest.Raw,
     Vellum.ChatMessageRequest
 > = core.serialization.object({
-    text: core.serialization.string().optional(),
+    text: core.serialization.string().optionalNullable(),
     role: ChatMessageRole,
     content: ChatMessageContentRequest.optionalNullable(),
     source: core.serialization.string().optionalNullable(),
@@ -20,7 +20,7 @@ export const ChatMessageRequest: core.serialization.ObjectSchema<
 
 export declare namespace ChatMessageRequest {
     export interface Raw {
-        text?: string | null;
+        text?: (string | null) | null;
         role: ChatMessageRole.Raw;
         content?: (ChatMessageContentRequest.Raw | null) | null;
         source?: (string | null) | null;

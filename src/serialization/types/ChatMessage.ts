@@ -10,7 +10,7 @@ import { ChatMessageContent } from "./ChatMessageContent";
 
 export const ChatMessage: core.serialization.ObjectSchema<serializers.ChatMessage.Raw, Vellum.ChatMessage> =
     core.serialization.object({
-        text: core.serialization.string().optional(),
+        text: core.serialization.string().optionalNullable(),
         role: ChatMessageRole,
         content: ChatMessageContent.optionalNullable(),
         source: core.serialization.string().optionalNullable(),
@@ -18,7 +18,7 @@ export const ChatMessage: core.serialization.ObjectSchema<serializers.ChatMessag
 
 export declare namespace ChatMessage {
     export interface Raw {
-        text?: string | null;
+        text?: (string | null) | null;
         role: ChatMessageRole.Raw;
         content?: (ChatMessageContent.Raw | null) | null;
         source?: (string | null) | null;
