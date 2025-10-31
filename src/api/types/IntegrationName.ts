@@ -25,6 +25,7 @@
  * * `APOLLO` - Apollo
  * * `ASANA` - Asana
  * * `ATLASSIAN` - Atlassian
+ * * `BITBUCKET` - Bitbucket
  * * `BOX` - Box
  * * `BREVO` - Brevo
  * * `BROWSERBASE_TOOL` - Browserbase Tool
@@ -82,6 +83,7 @@ export type IntegrationName =
     | "APOLLO"
     | "ASANA"
     | "ATLASSIAN"
+    | "BITBUCKET"
     | "BOX"
     | "BREVO"
     | "BROWSERBASE_TOOL"
@@ -138,6 +140,7 @@ export const IntegrationName = {
     Apollo: "APOLLO",
     Asana: "ASANA",
     Atlassian: "ATLASSIAN",
+    Bitbucket: "BITBUCKET",
     Box: "BOX",
     Brevo: "BREVO",
     BrowserbaseTool: "BROWSERBASE_TOOL",

@@ -30,6 +30,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "APOLLO",
         "ASANA",
         "ATLASSIAN",
+        "BITBUCKET",
         "BOX",
         "BREVO",
         "BROWSERBASE_TOOL",
@@ -89,6 +90,7 @@ export declare namespace IntegrationName {
         | "APOLLO"
         | "ASANA"
         | "ATLASSIAN"
+        | "BITBUCKET"
         | "BOX"
         | "BREVO"
         | "BROWSERBASE_TOOL"
