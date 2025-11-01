@@ -27,6 +27,8 @@ export const LogicalOperator: core.serialization.Schema<serializers.LogicalOpera
         "between",
         "notBetween",
         "concat",
+        "+",
+        "-",
         "blank",
         "notBlank",
         "coalesce",
@@ -59,6 +61,8 @@ export declare namespace LogicalOperator {
         | "between"
         | "notBetween"
         | "concat"
+        | "+"
+        | "-"
         | "blank"
         | "notBlank"
         | "coalesce"
