@@ -6,8 +6,8 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { IntegrationAuthConfigIntegration } from "./IntegrationAuthConfigIntegration";
-import { IntegrationAuthConfigIntegrationCredential } from "./IntegrationAuthConfigIntegrationCredential";
 import { AuthTypeEnum } from "./AuthTypeEnum";
+import { IntegrationAuthConfigIntegrationCredential } from "./IntegrationAuthConfigIntegrationCredential";
 import { IntegrationCredentialAccessType } from "./IntegrationCredentialAccessType";
 
 export const SlimIntegrationAuthConfigRead: core.serialization.ObjectSchema<
@@ -16,11 +16,15 @@ export const SlimIntegrationAuthConfigRead: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     integration: IntegrationAuthConfigIntegration,
+    authType: core.serialization.property("auth_type", AuthTypeEnum.optional()),
     integrationCredentials: core.serialization.property(
         "integration_credentials",
         core.serialization.list(IntegrationAuthConfigIntegrationCredential).optionalNullable(),
     ),
-    authType: core.serialization.property("auth_type", AuthTypeEnum.optional()),
+    systemCredentialEligible: core.serialization.property(
+        "system_credential_eligible",
+        core.serialization.boolean().optional(),
+    ),
     defaultAccessType: core.serialization.property("default_access_type", IntegrationCredentialAccessType.optional()),
 });
 
@@ -28,8 +32,9 @@ export declare namespace SlimIntegrationAuthConfigRead {
     export interface Raw {
         id: string;
         integration: IntegrationAuthConfigIntegration.Raw;
-        integration_credentials?: (IntegrationAuthConfigIntegrationCredential.Raw[] | null) | null;
         auth_type?: AuthTypeEnum.Raw | null;
+        integration_credentials?: (IntegrationAuthConfigIntegrationCredential.Raw[] | null) | null;
+        system_credential_eligible?: boolean | null;
         default_access_type?: IntegrationCredentialAccessType.Raw | null;
     }
 }

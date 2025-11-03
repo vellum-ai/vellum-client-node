@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { EntityStatus } from "./EntityStatus";
+import { WorkflowSandboxDisplayData } from "./WorkflowSandboxDisplayData";
 
 export const FolderEntityWorkflowSandboxData: core.serialization.ObjectSchema<
     serializers.FolderEntityWorkflowSandboxData.Raw,
@@ -18,6 +19,7 @@ export const FolderEntityWorkflowSandboxData: core.serialization.ObjectSchema<
     status: EntityStatus,
     description: core.serialization.string().optionalNullable(),
     lastDeployedOn: core.serialization.property("last_deployed_on", core.serialization.date().optionalNullable()),
+    displayData: core.serialization.property("display_data", WorkflowSandboxDisplayData.optionalNullable()),
 });
 
 export declare namespace FolderEntityWorkflowSandboxData {
@@ -29,5 +31,6 @@ export declare namespace FolderEntityWorkflowSandboxData {
         status: EntityStatus.Raw;
         description?: (string | null) | null;
         last_deployed_on?: (string | null) | null;
+        display_data?: (WorkflowSandboxDisplayData.Raw | null) | null;
     }
 }
