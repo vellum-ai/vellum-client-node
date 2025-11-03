@@ -7,7 +7,7 @@ export function getVersion() {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
 
-  const manifestFile = "pyproject.toml";
+  const manifestFile = "package.json";
   if (!manifestFile) {
     throw new Error('FERN_MANIFEST_FILE environment variable is required');
   }
