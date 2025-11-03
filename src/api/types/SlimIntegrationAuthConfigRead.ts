@@ -10,7 +10,9 @@ import * as Vellum from "../index";
 export interface SlimIntegrationAuthConfigRead {
     id: string;
     integration: Vellum.IntegrationAuthConfigIntegration;
-    integrationCredentials?: Vellum.IntegrationAuthConfigIntegrationCredential[] | null;
     authType?: Vellum.AuthTypeEnum;
+    integrationCredentials?: Vellum.IntegrationAuthConfigIntegrationCredential[] | null;
+    /** Whether or not this auth config is eligible to use Vellum-managed system credentials to authenticate. */
+    systemCredentialEligible?: boolean;
     defaultAccessType?: Vellum.IntegrationCredentialAccessType;
 }
