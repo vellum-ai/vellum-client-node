@@ -42,6 +42,8 @@ export class Integrations {
      * @param {string} toolName - The tool's unique name, as specified by the integration provider
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Vellum.NotFoundError}
+     *
      * @example
      *     await client.integrations.retrieveIntegrationToolDefinition("integration_name", "integration_provider", "tool_name")
      */
@@ -76,11 +78,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.6",
-                "User-Agent": "vellum-ai/1.9.6",
+                "X-Fern-SDK-Version": "1.9.7",
+                "User-Agent": "vellum-ai/1.9.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -105,11 +107,16 @@ export class Integrations {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body, _response.rawResponse);
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -140,6 +147,7 @@ export class Integrations {
      *
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.ForbiddenError}
+     * @throws {@link Vellum.NotFoundError}
      *
      * @example
      *     await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
@@ -184,11 +192,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.6",
-                "User-Agent": "vellum-ai/1.9.6",
+                "X-Fern-SDK-Version": "1.9.7",
+                "User-Agent": "vellum-ai/1.9.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -221,6 +229,8 @@ export class Integrations {
                     throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
                 case 403:
                     throw new Vellum.ForbiddenError(_response.error.body, _response.rawResponse);
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body, _response.rawResponse);
                 default:
                     throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
@@ -305,11 +315,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.6",
-                "User-Agent": "vellum-ai/1.9.6",
+                "X-Fern-SDK-Version": "1.9.7",
+                "User-Agent": "vellum-ai/1.9.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -393,11 +403,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.6",
-                "User-Agent": "vellum-ai/1.9.6",
+                "X-Fern-SDK-Version": "1.9.7",
+                "User-Agent": "vellum-ai/1.9.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

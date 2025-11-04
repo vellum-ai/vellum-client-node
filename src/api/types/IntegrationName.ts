@@ -52,6 +52,7 @@
  * * `STRIPE` - Stripe
  * * `SUPABASE` - Supabase
  * * `TAVILY` - Tavily
+ * * `TELEGRAM` - Telegram
  * * `WEBFLOW` - Webflow
  * * `ZENDESK` - Zendesk
  * * `DROPBOX` - Dropbox
@@ -110,6 +111,7 @@ export type IntegrationName =
     | "STRIPE"
     | "SUPABASE"
     | "TAVILY"
+    | "TELEGRAM"
     | "WEBFLOW"
     | "ZENDESK"
     | "DROPBOX"
@@ -167,6 +169,7 @@ export const IntegrationName = {
     Stripe: "STRIPE",
     Supabase: "SUPABASE",
     Tavily: "TAVILY",
+    Telegram: "TELEGRAM",
     Webflow: "WEBFLOW",
     Zendesk: "ZENDESK",
     Dropbox: "DROPBOX",

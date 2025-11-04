@@ -57,6 +57,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "STRIPE",
         "SUPABASE",
         "TAVILY",
+        "TELEGRAM",
         "WEBFLOW",
         "ZENDESK",
         "DROPBOX",
@@ -117,6 +118,7 @@ export declare namespace IntegrationName {
         | "STRIPE"
         | "SUPABASE"
         | "TAVILY"
+        | "TELEGRAM"
         | "WEBFLOW"
         | "ZENDESK"
         | "DROPBOX"
