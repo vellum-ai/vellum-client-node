@@ -7,6 +7,6 @@
  */
 export interface NamedScenarioInputJsonVariableValueRequest {
     type: "JSON";
-    value?: unknown;
+    value?: unknown | null;
     name: string;
 }

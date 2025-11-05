@@ -7,6 +7,6 @@
  */
 export interface ScenarioInputJsonVariableValue {
     type: "JSON";
-    value?: unknown;
+    value?: unknown | null;
     inputVariableId: string;
 }

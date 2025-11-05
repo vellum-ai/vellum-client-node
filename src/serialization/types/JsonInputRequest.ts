@@ -12,13 +12,13 @@ export const JsonInputRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().optionalNullable(),
 });
 
 export declare namespace JsonInputRequest {
     export interface Raw {
         name: string;
         type: "JSON";
-        value?: unknown;
+        value?: (unknown | null) | null;
     }
 }
