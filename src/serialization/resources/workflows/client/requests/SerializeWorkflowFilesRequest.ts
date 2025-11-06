@@ -11,10 +11,12 @@ export const SerializeWorkflowFilesRequest: core.serialization.Schema<
     Vellum.SerializeWorkflowFilesRequest
 > = core.serialization.object({
     files: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    module: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace SerializeWorkflowFilesRequest {
     export interface Raw {
         files: Record<string, unknown>;
+        module?: (string | null) | null;
     }
 }
