@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { WorkspaceDisplayConfig } from "./WorkspaceDisplayConfig";
 
 export const WorkspaceRead: core.serialization.ObjectSchema<serializers.WorkspaceRead.Raw, Vellum.WorkspaceRead> =
     core.serialization.object({
@@ -12,6 +13,7 @@ export const WorkspaceRead: core.serialization.ObjectSchema<serializers.Workspac
         name: core.serialization.string(),
         label: core.serialization.string(),
         created: core.serialization.date(),
+        displayConfig: core.serialization.property("display_config", WorkspaceDisplayConfig.optionalNullable()),
     });
 
 export declare namespace WorkspaceRead {
@@ -20,5 +22,6 @@ export declare namespace WorkspaceRead {
         name: string;
         label: string;
         created: string;
+        display_config?: (WorkspaceDisplayConfig.Raw | null) | null;
     }
 }

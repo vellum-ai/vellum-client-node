@@ -696,5 +696,6 @@ export * from "./WorkflowSandboxDisplayData";
 export * from "./WorkflowSandboxExample";
 export * from "./WorkflowSandboxParentContext";
 export * from "./WorkflowStreamEvent";
+export * from "./WorkspaceDisplayConfig";
 export * from "./WorkspaceRead";
 export * from "./WorkspaceSecretRead";
