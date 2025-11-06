@@ -14,4 +14,5 @@
  */
 export interface SerializeWorkflowFilesRequest {
     files: Record<string, unknown>;
+    module?: string | null;
 }
