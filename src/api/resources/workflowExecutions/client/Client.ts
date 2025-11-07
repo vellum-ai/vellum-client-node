@@ -41,6 +41,9 @@ export class WorkflowExecutions {
      * @param {Vellum.RetrieveWorkflowExecutionDetailRequest} request
      * @param {WorkflowExecutions.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.MisdirectedRequestError}
+     *
      * @example
      *     await client.workflowExecutions.retrieveWorkflowExecutionDetail("execution_id")
      */
@@ -83,11 +86,11 @@ export class WorkflowExecutions {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.9",
-                "User-Agent": "vellum-ai/1.9.9",
+                "X-Fern-SDK-Version": "1.9.10",
+                "User-Agent": "vellum-ai/1.9.10",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -113,11 +116,26 @@ export class WorkflowExecutions {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VellumError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 404:
+                    throw new Vellum.NotFoundError(_response.error.body, _response.rawResponse);
+                case 421:
+                    throw new Vellum.MisdirectedRequestError(
+                        serializers.UpdateActiveWorkspaceResponse.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                default:
+                    throw new errors.VellumError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

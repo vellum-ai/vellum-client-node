@@ -9,9 +9,13 @@
  * * `CALENDLY` - Calendly
  * * `CANVA` - Canva
  * * `CLICKUP` - ClickUp
+ * * `CODA` - Coda
  * * `HUBSPOT` - Hubspot
  * * `INTERCOM` - Intercom
  * * `LINEAR` - Linear
+ * * `LINKUP` - Linkup
+ * * `LISTENNOTES` - Listen Notes
+ * * `LMNT` - LMNT
  * * `LINKEDIN` - LinkedIn
  * * `MAILCHIMP` - Mailchimp
  * * `MEM0` - Mem0
@@ -21,6 +25,10 @@
  * * `GOOGLE_CALENDAR` - Google Calendar
  * * `GOOGLE_DRIVE` - Google Drive
  * * `GMAIL` - Gmail
+ * * `ACCULYNX` - AccuLynx
+ * * `AFFINITY` - Affinity
+ * * `AGENCYZOOM` - AgencyZoom
+ * * `AHREFS` - Ahrefs
  * * `AIRTABLE` - Airtable
  * * `APOLLO` - Apollo
  * * `ASANA` - Asana
@@ -37,8 +45,11 @@
  * * `GITLAB` - Gitlab
  * * `FIRECRAWL` - Firecrawl
  * * `FIGMA` - Figma
+ * * `FIREFLIES` - Fireflies
  * * `GOOGLE_MAPS` - Google Maps
+ * * `HEYGEN` - HeyGen
  * * `JIRA` - Jira
+ * * `JUNGLESCOUT` - Jungle Scout
  * * `KLAVIYO` - Klaviyo
  * * `PAGERDUTY` - PagerDuty
  * * `PARSERA` - Parsera
@@ -47,17 +58,23 @@
  * * `POSTHOG` - PostHog
  * * `REDDIT` - Reddit
  * * `SEMRUSH` - Semrush
+ * * `SEMANTICSCHOLAR` - Semantic Scholar
+ * * `SENDGRID` - SendGrid
  * * `SERPAPI` - Serp Api
  * * `SHARE_POINT` - SharePoint
+ * * `SHORTCUT` - Shortcut
  * * `STRIPE` - Stripe
  * * `SUPABASE` - Supabase
  * * `TAVILY` - Tavily
  * * `TELEGRAM` - Telegram
  * * `WEBFLOW` - Webflow
+ * * `YOUSEARCH` - You Search
  * * `ZENDESK` - Zendesk
+ * * `ZENROWS` - ZenRows
  * * `DROPBOX` - Dropbox
  * * `EVENTBRITE` - Eventbrite
  * * `CONFLUENCE` - Confluence
+ * * `COINBASE` - Coinbase
  * * `DISCORD` - Discord
  * * `DOCUSIGN` - DocuSign
  */
@@ -68,9 +85,13 @@ export type IntegrationName =
     | "CALENDLY"
     | "CANVA"
     | "CLICKUP"
+    | "CODA"
     | "HUBSPOT"
     | "INTERCOM"
     | "LINEAR"
+    | "LINKUP"
+    | "LISTENNOTES"
+    | "LMNT"
     | "LINKEDIN"
     | "MAILCHIMP"
     | "MEM0"
@@ -80,6 +101,10 @@ export type IntegrationName =
     | "GOOGLE_CALENDAR"
     | "GOOGLE_DRIVE"
     | "GMAIL"
+    | "ACCULYNX"
+    | "AFFINITY"
+    | "AGENCYZOOM"
+    | "AHREFS"
     | "AIRTABLE"
     | "APOLLO"
     | "ASANA"
@@ -96,8 +121,11 @@ export type IntegrationName =
     | "GITLAB"
     | "FIRECRAWL"
     | "FIGMA"
+    | "FIREFLIES"
     | "GOOGLE_MAPS"
+    | "HEYGEN"
     | "JIRA"
+    | "JUNGLESCOUT"
     | "KLAVIYO"
     | "PAGERDUTY"
     | "PARSERA"
@@ -106,17 +134,23 @@ export type IntegrationName =
     | "POSTHOG"
     | "REDDIT"
     | "SEMRUSH"
+    | "SEMANTICSCHOLAR"
+    | "SENDGRID"
     | "SERPAPI"
     | "SHARE_POINT"
+    | "SHORTCUT"
     | "STRIPE"
     | "SUPABASE"
     | "TAVILY"
     | "TELEGRAM"
     | "WEBFLOW"
+    | "YOUSEARCH"
     | "ZENDESK"
+    | "ZENROWS"
     | "DROPBOX"
     | "EVENTBRITE"
     | "CONFLUENCE"
+    | "COINBASE"
     | "DISCORD"
     | "DOCUSIGN";
 export const IntegrationName = {
@@ -126,9 +160,13 @@ export const IntegrationName = {
     Calendly: "CALENDLY",
     Canva: "CANVA",
     Clickup: "CLICKUP",
+    Coda: "CODA",
     Hubspot: "HUBSPOT",
     Intercom: "INTERCOM",
     Linear: "LINEAR",
+    Linkup: "LINKUP",
+    Listennotes: "LISTENNOTES",
+    Lmnt: "LMNT",
     Linkedin: "LINKEDIN",
     Mailchimp: "MAILCHIMP",
     Mem0: "MEM0",
@@ -138,6 +176,10 @@ export const IntegrationName = {
     GoogleCalendar: "GOOGLE_CALENDAR",
     GoogleDrive: "GOOGLE_DRIVE",
     Gmail: "GMAIL",
+    Acculynx: "ACCULYNX",
+    Affinity: "AFFINITY",
+    Agencyzoom: "AGENCYZOOM",
+    Ahrefs: "AHREFS",
     Airtable: "AIRTABLE",
     Apollo: "APOLLO",
     Asana: "ASANA",
@@ -154,8 +196,11 @@ export const IntegrationName = {
     Gitlab: "GITLAB",
     Firecrawl: "FIRECRAWL",
     Figma: "FIGMA",
+    Fireflies: "FIREFLIES",
     GoogleMaps: "GOOGLE_MAPS",
+    Heygen: "HEYGEN",
     Jira: "JIRA",
+    Junglescout: "JUNGLESCOUT",
     Klaviyo: "KLAVIYO",
     Pagerduty: "PAGERDUTY",
     Parsera: "PARSERA",
@@ -164,17 +209,23 @@ export const IntegrationName = {
     Posthog: "POSTHOG",
     Reddit: "REDDIT",
     Semrush: "SEMRUSH",
+    Semanticscholar: "SEMANTICSCHOLAR",
+    Sendgrid: "SENDGRID",
     Serpapi: "SERPAPI",
     SharePoint: "SHARE_POINT",
+    Shortcut: "SHORTCUT",
     Stripe: "STRIPE",
     Supabase: "SUPABASE",
     Tavily: "TAVILY",
     Telegram: "TELEGRAM",
     Webflow: "WEBFLOW",
+    Yousearch: "YOUSEARCH",
     Zendesk: "ZENDESK",
+    Zenrows: "ZENROWS",
     Dropbox: "DROPBOX",
     Eventbrite: "EVENTBRITE",
     Confluence: "CONFLUENCE",
+    Coinbase: "COINBASE",
     Discord: "DISCORD",
     Docusign: "DOCUSIGN",
 } as const;
