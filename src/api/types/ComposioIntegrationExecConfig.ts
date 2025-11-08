@@ -5,4 +5,5 @@
 export interface ComposioIntegrationExecConfig {
     type: "COMPOSIO";
     slug: string;
+    supportsWebhookTriggers?: boolean;
 }

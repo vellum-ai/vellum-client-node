@@ -12,11 +12,16 @@ export const ComposioIntegrationExecConfig: core.serialization.ObjectSchema<
 > = core.serialization.object({
     type: core.serialization.stringLiteral("COMPOSIO"),
     slug: core.serialization.string(),
+    supportsWebhookTriggers: core.serialization.property(
+        "supports_webhook_triggers",
+        core.serialization.boolean().optional(),
+    ),
 });
 
 export declare namespace ComposioIntegrationExecConfig {
     export interface Raw {
         type: "COMPOSIO";
         slug: string;
+        supports_webhook_triggers?: boolean | null;
     }
 }

@@ -27,4 +27,5 @@ export interface IntegrationsListRequest {
      * A search term.
      */
     search?: string | null;
+    supportsIntegrationTriggers?: string | null;
 }

@@ -14,9 +14,13 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "CALENDLY",
         "CANVA",
         "CLICKUP",
+        "CODA",
         "HUBSPOT",
         "INTERCOM",
         "LINEAR",
+        "LINKUP",
+        "LISTENNOTES",
+        "LMNT",
         "LINKEDIN",
         "MAILCHIMP",
         "MEM0",
@@ -26,6 +30,10 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "GOOGLE_CALENDAR",
         "GOOGLE_DRIVE",
         "GMAIL",
+        "ACCULYNX",
+        "AFFINITY",
+        "AGENCYZOOM",
+        "AHREFS",
         "AIRTABLE",
         "APOLLO",
         "ASANA",
@@ -42,8 +50,11 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "GITLAB",
         "FIRECRAWL",
         "FIGMA",
+        "FIREFLIES",
         "GOOGLE_MAPS",
+        "HEYGEN",
         "JIRA",
+        "JUNGLESCOUT",
         "KLAVIYO",
         "PAGERDUTY",
         "PARSERA",
@@ -52,17 +63,23 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "POSTHOG",
         "REDDIT",
         "SEMRUSH",
+        "SEMANTICSCHOLAR",
+        "SENDGRID",
         "SERPAPI",
         "SHARE_POINT",
+        "SHORTCUT",
         "STRIPE",
         "SUPABASE",
         "TAVILY",
         "TELEGRAM",
         "WEBFLOW",
+        "YOUSEARCH",
         "ZENDESK",
+        "ZENROWS",
         "DROPBOX",
         "EVENTBRITE",
         "CONFLUENCE",
+        "COINBASE",
         "DISCORD",
         "DOCUSIGN",
     ]);
@@ -75,9 +92,13 @@ export declare namespace IntegrationName {
         | "CALENDLY"
         | "CANVA"
         | "CLICKUP"
+        | "CODA"
         | "HUBSPOT"
         | "INTERCOM"
         | "LINEAR"
+        | "LINKUP"
+        | "LISTENNOTES"
+        | "LMNT"
         | "LINKEDIN"
         | "MAILCHIMP"
         | "MEM0"
@@ -87,6 +108,10 @@ export declare namespace IntegrationName {
         | "GOOGLE_CALENDAR"
         | "GOOGLE_DRIVE"
         | "GMAIL"
+        | "ACCULYNX"
+        | "AFFINITY"
+        | "AGENCYZOOM"
+        | "AHREFS"
         | "AIRTABLE"
         | "APOLLO"
         | "ASANA"
@@ -103,8 +128,11 @@ export declare namespace IntegrationName {
         | "GITLAB"
         | "FIRECRAWL"
         | "FIGMA"
+        | "FIREFLIES"
         | "GOOGLE_MAPS"
+        | "HEYGEN"
         | "JIRA"
+        | "JUNGLESCOUT"
         | "KLAVIYO"
         | "PAGERDUTY"
         | "PARSERA"
@@ -113,17 +141,23 @@ export declare namespace IntegrationName {
         | "POSTHOG"
         | "REDDIT"
         | "SEMRUSH"
+        | "SEMANTICSCHOLAR"
+        | "SENDGRID"
         | "SERPAPI"
         | "SHARE_POINT"
+        | "SHORTCUT"
         | "STRIPE"
         | "SUPABASE"
         | "TAVILY"
         | "TELEGRAM"
         | "WEBFLOW"
+        | "YOUSEARCH"
         | "ZENDESK"
+        | "ZENROWS"
         | "DROPBOX"
         | "EVENTBRITE"
         | "CONFLUENCE"
+        | "COINBASE"
         | "DISCORD"
         | "DOCUSIGN";
 }
