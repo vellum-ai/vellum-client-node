@@ -571,6 +571,7 @@ export * from "./TokenOverlappingWindowChunking";
 export * from "./TokenOverlappingWindowChunkingRequest";
 export * from "./ComponentsSchemasComposioToolDefinition";
 export * from "./UnitEnum";
+export * from "./UpdateActiveWorkspaceResponse";
 export * from "./UploadDocumentResponse";
 export * from "./UpsertTestSuiteTestCaseRequest";
 export * from "./VariablePromptBlock";

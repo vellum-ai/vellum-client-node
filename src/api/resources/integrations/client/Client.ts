@@ -81,8 +81,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.9",
-                "User-Agent": "vellum-ai/1.9.9",
+                "X-Fern-SDK-Version": "1.10.0",
+                "User-Agent": "vellum-ai/1.10.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -195,8 +195,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.9",
-                "User-Agent": "vellum-ai/1.9.9",
+                "X-Fern-SDK-Version": "1.10.0",
+                "User-Agent": "vellum-ai/1.10.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -279,7 +279,7 @@ export class Integrations {
         request: Vellum.IntegrationsListRequest = {},
         requestOptions?: Integrations.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.PaginatedSlimIntegrationReadList>> {
-        const { integrationProvider, limit, offset, ordering, search } = request;
+        const { integrationProvider, limit, offset, ordering, search, supportsIntegrationTriggers } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (integrationProvider !== undefined) {
             _queryParams["integration_provider"] = integrationProvider;
@@ -301,6 +301,10 @@ export class Integrations {
             _queryParams["search"] = search;
         }
 
+        if (supportsIntegrationTriggers !== undefined) {
+            _queryParams["supports_integration_triggers"] = supportsIntegrationTriggers;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -318,8 +322,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.9",
-                "User-Agent": "vellum-ai/1.9.9",
+                "X-Fern-SDK-Version": "1.10.0",
+                "User-Agent": "vellum-ai/1.10.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -406,8 +410,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.9.9",
-                "User-Agent": "vellum-ai/1.9.9",
+                "X-Fern-SDK-Version": "1.10.0",
+                "User-Agent": "vellum-ai/1.10.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
