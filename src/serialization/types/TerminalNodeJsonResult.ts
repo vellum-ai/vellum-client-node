@@ -13,7 +13,7 @@ export const TerminalNodeJsonResult: core.serialization.ObjectSchema<
     id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().optionalNullable(),
 });
 
 export declare namespace TerminalNodeJsonResult {
@@ -21,6 +21,6 @@ export declare namespace TerminalNodeJsonResult {
         id?: (string | null) | null;
         name: string;
         type: "JSON";
-        value?: unknown;
+        value?: (unknown | null) | null;
     }
 }

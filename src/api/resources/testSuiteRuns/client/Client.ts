@@ -80,8 +80,8 @@ export class TestSuiteRuns {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.0",
-                "User-Agent": "vellum-ai/1.10.0",
+                "X-Fern-SDK-Version": "1.10.1",
+                "User-Agent": "vellum-ai/1.10.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -168,8 +168,8 @@ export class TestSuiteRuns {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.0",
-                "User-Agent": "vellum-ai/1.10.0",
+                "X-Fern-SDK-Version": "1.10.1",
+                "User-Agent": "vellum-ai/1.10.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -241,7 +241,7 @@ export class TestSuiteRuns {
     ): Promise<core.WithRawResponse<Vellum.PaginatedTestSuiteRunExecutionList>> {
         const { expand, limit, offset } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (expand != null) {
+        if (expand !== undefined) {
             if (Array.isArray(expand)) {
                 _queryParams["expand"] = expand.map((item) => item);
             } else {
@@ -274,8 +274,8 @@ export class TestSuiteRuns {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.0",
-                "User-Agent": "vellum-ai/1.10.0",
+                "X-Fern-SDK-Version": "1.10.1",
+                "User-Agent": "vellum-ai/1.10.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

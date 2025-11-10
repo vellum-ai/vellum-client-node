@@ -9,5 +9,5 @@ export interface JsonInputRequest {
     /** The variable's name */
     name: string;
     type: "JSON";
-    value?: unknown;
+    value?: unknown | null;
 }
