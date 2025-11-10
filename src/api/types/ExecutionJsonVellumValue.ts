@@ -10,5 +10,5 @@ export interface ExecutionJsonVellumValue {
     id: string;
     name: string;
     type: "JSON";
-    value?: unknown;
+    value?: unknown | null;
 }
