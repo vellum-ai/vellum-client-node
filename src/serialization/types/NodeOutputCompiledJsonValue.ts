@@ -12,7 +12,7 @@ export const NodeOutputCompiledJsonValue: core.serialization.ObjectSchema<
     Vellum.NodeOutputCompiledJsonValue
 > = core.serialization.object({
     type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().optionalNullable(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
@@ -20,7 +20,7 @@ export const NodeOutputCompiledJsonValue: core.serialization.ObjectSchema<
 export declare namespace NodeOutputCompiledJsonValue {
     export interface Raw {
         type: "JSON";
-        value?: unknown;
+        value?: (unknown | null) | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }
