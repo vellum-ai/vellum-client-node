@@ -7,4 +7,5 @@
  */
 export interface VellumVariableExtensions {
     color?: string | null;
+    description?: string | null;
 }

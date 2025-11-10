@@ -77,6 +77,7 @@
  * * `COINBASE` - Coinbase
  * * `DISCORD` - Discord
  * * `DOCUSIGN` - DocuSign
+ * * `TRELLO` - Trello
  */
 export type IntegrationName =
     | "SLACK"
@@ -152,7 +153,8 @@ export type IntegrationName =
     | "CONFLUENCE"
     | "COINBASE"
     | "DISCORD"
-    | "DOCUSIGN";
+    | "DOCUSIGN"
+    | "TRELLO";
 export const IntegrationName = {
     Slack: "SLACK",
     Notion: "NOTION",
@@ -228,4 +230,5 @@ export const IntegrationName = {
     Coinbase: "COINBASE",
     Discord: "DISCORD",
     Docusign: "DOCUSIGN",
+    Trello: "TRELLO",
 } as const;
