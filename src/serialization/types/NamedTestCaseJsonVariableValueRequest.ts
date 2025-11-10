@@ -11,14 +11,14 @@ export const NamedTestCaseJsonVariableValueRequest: core.serialization.ObjectSch
     Vellum.NamedTestCaseJsonVariableValueRequest
 > = core.serialization.object({
     type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().optionalNullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseJsonVariableValueRequest {
     export interface Raw {
         type: "JSON";
-        value?: unknown;
+        value?: (unknown | null) | null;
         name: string;
     }
 }

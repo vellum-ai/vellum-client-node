@@ -39,24 +39,24 @@ export class IntegrationProviders {
     /**
      * Retrieve a specific integration tool definition.
      *
-     * @param {string} integrationName - The integration name
      * @param {string} integrationProvider - The integration provider name
+     * @param {string} integrationName - The integration name
      * @param {string} toolName - The tool's unique name, as specified by the integration provider
      * @param {IntegrationProviders.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.integrationProviders.retrieveIntegrationProviderToolDefinition("integration_name", "integration_provider", "tool_name")
+     *     await client.integrationProviders.retrieveIntegrationProviderToolDefinition("integration_provider", "integration_name", "tool_name")
      */
     public retrieveIntegrationProviderToolDefinition(
-        integrationName: string,
         integrationProvider: string,
+        integrationName: string,
         toolName: string,
         requestOptions?: IntegrationProviders.RequestOptions,
     ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioToolDefinition> {
         return core.HttpResponsePromise.fromPromise(
             this.__retrieveIntegrationProviderToolDefinition(
-                integrationName,
                 integrationProvider,
+                integrationName,
                 toolName,
                 requestOptions,
             ),
@@ -64,8 +64,8 @@ export class IntegrationProviders {
     }
 
     private async __retrieveIntegrationProviderToolDefinition(
-        integrationName: string,
         integrationProvider: string,
+        integrationName: string,
         toolName: string,
         requestOptions?: IntegrationProviders.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioToolDefinition>> {
@@ -83,11 +83,11 @@ export class IntegrationProviders {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.0",
-                "User-Agent": "vellum-ai/1.10.0",
+                "X-Fern-SDK-Version": "1.10.1",
+                "User-Agent": "vellum-ai/1.10.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -203,11 +203,11 @@ export class IntegrationProviders {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.0",
-                "User-Agent": "vellum-ai/1.10.0",
+                "X-Fern-SDK-Version": "1.10.1",
+                "User-Agent": "vellum-ai/1.10.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

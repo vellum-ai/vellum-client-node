@@ -6,7 +6,7 @@
  * Output for a test suite run metric that is of type NUMBER
  */
 export interface TestSuiteRunMetricJsonOutput {
-    value?: unknown;
+    value?: unknown | null;
     type: "JSON";
     name: string;
 }

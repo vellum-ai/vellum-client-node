@@ -11,12 +11,12 @@ export const JsonVellumValueRequest: core.serialization.ObjectSchema<
     Vellum.JsonVellumValueRequest
 > = core.serialization.object({
     type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().optionalNullable(),
 });
 
 export declare namespace JsonVellumValueRequest {
     export interface Raw {
         type: "JSON";
-        value?: unknown;
+        value?: (unknown | null) | null;
     }
 }
