@@ -58,7 +58,7 @@ export class IntegrationAuthConfigs {
     ): Promise<core.WithRawResponse<Vellum.PaginatedSlimIntegrationAuthConfigReadList>> {
         const { expand, integrationName, integrationProvider, limit, offset, ordering, search } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (expand != null) {
+        if (expand !== undefined) {
             if (Array.isArray(expand)) {
                 _queryParams["expand"] = expand.map((item) => item);
             } else {
@@ -107,8 +107,8 @@ export class IntegrationAuthConfigs {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

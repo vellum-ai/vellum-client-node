@@ -13,7 +13,7 @@ export const WorkflowOutputJson: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     name: core.serialization.string(),
     type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().optionalNullable(),
 });
 
 export declare namespace WorkflowOutputJson {
@@ -21,6 +21,6 @@ export declare namespace WorkflowOutputJson {
         id: string;
         name: string;
         type: "JSON";
-        value?: unknown;
+        value?: (unknown | null) | null;
     }
 }

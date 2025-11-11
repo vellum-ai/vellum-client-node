@@ -93,8 +93,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -181,8 +181,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -235,26 +235,26 @@ export class Deployments {
      * DEPRECATED: This endpoint is deprecated and will be removed in a future release. Please use the
      * `retrieve_prompt_deployment_release` xendpoint instead.
      *
-     * @param {string} historyIdOrReleaseTag - Either the UUID of Deployment History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Deployment History Item you'd like to retrieve.
      * @param {string} id - Either the Prompt Deployment's ID or its unique name
+     * @param {string} historyIdOrReleaseTag - Either the UUID of Deployment History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Deployment History Item you'd like to retrieve.
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.deployments.deploymentHistoryItemRetrieve("history_id_or_release_tag", "id")
+     *     await client.deployments.deploymentHistoryItemRetrieve("id", "history_id_or_release_tag")
      */
     public deploymentHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
         id: string,
+        historyIdOrReleaseTag: string,
         requestOptions?: Deployments.RequestOptions,
     ): core.HttpResponsePromise<Vellum.DeploymentHistoryItem> {
         return core.HttpResponsePromise.fromPromise(
-            this.__deploymentHistoryItemRetrieve(historyIdOrReleaseTag, id, requestOptions),
+            this.__deploymentHistoryItemRetrieve(id, historyIdOrReleaseTag, requestOptions),
         );
     }
 
     private async __deploymentHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
         id: string,
+        historyIdOrReleaseTag: string,
         requestOptions?: Deployments.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.DeploymentHistoryItem>> {
         const _response = await core.fetcher({
@@ -274,8 +274,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -386,8 +386,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -479,8 +479,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -576,8 +576,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -673,8 +673,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -786,8 +786,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

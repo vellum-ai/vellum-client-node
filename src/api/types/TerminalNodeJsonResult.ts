@@ -7,5 +7,5 @@ export interface TerminalNodeJsonResult {
     /** The unique name given to the terminal node that produced this output. */
     name: string;
     type: "JSON";
-    value?: unknown;
+    value?: unknown | null;
 }

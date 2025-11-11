@@ -15,5 +15,5 @@ export interface WorkflowResultEventOutputDataJson {
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string | null;
     type: "JSON";
-    value?: unknown;
+    value?: unknown | null;
 }

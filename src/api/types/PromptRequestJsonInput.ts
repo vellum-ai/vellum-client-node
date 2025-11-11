@@ -6,5 +6,5 @@ export interface PromptRequestJsonInput {
     /** The variable's name, as defined in the Prompt. */
     key: string;
     type: "JSON";
-    value?: unknown;
+    value?: unknown | null;
 }
