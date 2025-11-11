@@ -77,11 +77,11 @@ export class TestSuiteRuns {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -165,11 +165,11 @@ export class TestSuiteRuns {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -241,7 +241,7 @@ export class TestSuiteRuns {
     ): Promise<core.WithRawResponse<Vellum.PaginatedTestSuiteRunExecutionList>> {
         const { expand, limit, offset } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (expand != null) {
+        if (expand !== undefined) {
             if (Array.isArray(expand)) {
                 _queryParams["expand"] = expand.map((item) => item);
             } else {
@@ -271,11 +271,11 @@ export class TestSuiteRuns {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

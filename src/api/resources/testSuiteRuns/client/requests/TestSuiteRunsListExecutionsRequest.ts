@@ -13,7 +13,7 @@ export interface TestSuiteRunsListExecutionsRequest {
      * - 'metric_results.metric_definition' expands the metric definition for each metric result.
      * - 'metric_results.metric_definition.name' expands the metric definition name for each metric result.
      */
-    expand?: string | string[];
+    expand?: (string | null) | (string | null)[];
     /**
      * Number of results to return per page.
      */

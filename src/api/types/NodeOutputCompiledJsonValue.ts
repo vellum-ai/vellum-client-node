@@ -9,7 +9,7 @@ import * as Vellum from "../index";
  */
 export interface NodeOutputCompiledJsonValue {
     type: "JSON";
-    value?: unknown;
+    value?: unknown | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

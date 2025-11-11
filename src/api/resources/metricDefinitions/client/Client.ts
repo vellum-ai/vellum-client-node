@@ -81,11 +81,11 @@ export class MetricDefinitions {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -138,26 +138,26 @@ export class MetricDefinitions {
     }
 
     /**
-     * @param {string} historyIdOrReleaseTag - Either the UUID of Metric Definition History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Metric Definition History Item you'd like to retrieve.
      * @param {string} id - A UUID string identifying this metric definition.
+     * @param {string} historyIdOrReleaseTag - Either the UUID of Metric Definition History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Metric Definition History Item you'd like to retrieve.
      * @param {MetricDefinitions.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_or_release_tag", "id")
+     *     await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("id", "history_id_or_release_tag")
      */
     public metricDefinitionHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
         id: string,
+        historyIdOrReleaseTag: string,
         requestOptions?: MetricDefinitions.RequestOptions,
     ): core.HttpResponsePromise<Vellum.MetricDefinitionHistoryItem> {
         return core.HttpResponsePromise.fromPromise(
-            this.__metricDefinitionHistoryItemRetrieve(historyIdOrReleaseTag, id, requestOptions),
+            this.__metricDefinitionHistoryItemRetrieve(id, historyIdOrReleaseTag, requestOptions),
         );
     }
 
     private async __metricDefinitionHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
         id: string,
+        historyIdOrReleaseTag: string,
         requestOptions?: MetricDefinitions.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.MetricDefinitionHistoryItem>> {
         const _response = await core.fetcher({
@@ -174,11 +174,11 @@ export class MetricDefinitions {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.1",
-                "User-Agent": "vellum-ai/1.10.1",
+                "X-Fern-SDK-Version": "1.10.2",
+                "User-Agent": "vellum-ai/1.10.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
