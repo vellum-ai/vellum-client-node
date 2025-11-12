@@ -8,15 +8,15 @@ import * as core from "../../core";
 
 export const BaseOutput: core.serialization.ObjectSchema<serializers.BaseOutput.Raw, Vellum.BaseOutput> =
     core.serialization.object({
-        value: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
-        delta: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+        value: core.serialization.unknown().optional(),
+        delta: core.serialization.unknown().optional(),
         name: core.serialization.string(),
     });
 
 export declare namespace BaseOutput {
     export interface Raw {
-        value?: (Record<string, unknown> | null) | null;
-        delta?: (Record<string, unknown> | null) | null;
+        value?: unknown | null;
+        delta?: unknown | null;
         name: string;
     }
 }
