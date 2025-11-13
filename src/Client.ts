@@ -27,6 +27,7 @@ import { Prompts } from "./api/resources/prompts/client/Client";
 import { Sandboxes } from "./api/resources/sandboxes/client/Client";
 import { TestSuiteRuns } from "./api/resources/testSuiteRuns/client/Client";
 import { TestSuites } from "./api/resources/testSuites/client/Client";
+import { UploadedFiles } from "./api/resources/uploadedFiles/client/Client";
 import { WorkflowDeployments } from "./api/resources/workflowDeployments/client/Client";
 import { WorkflowExecutions } from "./api/resources/workflowExecutions/client/Client";
 import { WorkflowSandboxes } from "./api/resources/workflowSandboxes/client/Client";
@@ -77,6 +78,7 @@ export class VellumClient {
     protected _sandboxes: Sandboxes | undefined;
     protected _testSuiteRuns: TestSuiteRuns | undefined;
     protected _testSuites: TestSuites | undefined;
+    protected _uploadedFiles: UploadedFiles | undefined;
     protected _workflowDeployments: WorkflowDeployments | undefined;
     protected _workflowExecutions: WorkflowExecutions | undefined;
     protected _workflowSandboxes: WorkflowSandboxes | undefined;
@@ -158,6 +160,10 @@ export class VellumClient {
         return (this._testSuites ??= new TestSuites(this._options));
     }
 
+    public get uploadedFiles(): UploadedFiles {
+        return (this._uploadedFiles ??= new UploadedFiles(this._options));
+    }
+
     public get workflowDeployments(): WorkflowDeployments {
         return (this._workflowDeployments ??= new WorkflowDeployments(this._options));
     }
@@ -216,11 +222,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -324,11 +330,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -432,11 +438,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -525,11 +531,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -649,11 +655,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -740,11 +746,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -870,11 +876,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -966,11 +972,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1082,11 +1088,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1185,11 +1191,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -1284,11 +1290,11 @@ export class VellumClient {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.10.4",
-                "User-Agent": "vellum-ai/1.10.4",
+                "X-Fern-SDK-Version": "1.10.5",
+                "User-Agent": "vellum-ai/1.10.5",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
