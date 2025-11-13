@@ -56,6 +56,7 @@
  * * `PEOPLEDATALABS` - People Data Labs
  * * `PERPLEXITY` - Perplexity
  * * `POSTHOG` - PostHog
+ * * `PRODUCTBOARD` - Productboard
  * * `REDDIT` - Reddit
  * * `SEMRUSH` - Semrush
  * * `SEMANTICSCHOLAR` - Semantic Scholar
@@ -133,6 +134,7 @@ export type IntegrationName =
     | "PEOPLEDATALABS"
     | "PERPLEXITY"
     | "POSTHOG"
+    | "PRODUCTBOARD"
     | "REDDIT"
     | "SEMRUSH"
     | "SEMANTICSCHOLAR"
@@ -209,6 +211,7 @@ export const IntegrationName = {
     Peopledatalabs: "PEOPLEDATALABS",
     Perplexity: "PERPLEXITY",
     Posthog: "POSTHOG",
+    Productboard: "PRODUCTBOARD",
     Reddit: "REDDIT",
     Semrush: "SEMRUSH",
     Semanticscholar: "SEMANTICSCHOLAR",

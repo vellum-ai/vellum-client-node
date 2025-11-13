@@ -13,4 +13,7 @@ export type WorkflowOutput =
     | Vellum.WorkflowOutputArray
     | Vellum.WorkflowOutputError
     | Vellum.WorkflowOutputFunctionCall
-    | Vellum.WorkflowOutputImage;
+    | Vellum.WorkflowOutputImage
+    | Vellum.WorkflowOutputAudio
+    | Vellum.WorkflowOutputVideo
+    | Vellum.WorkflowOutputDocument;
