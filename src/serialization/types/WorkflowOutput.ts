@@ -14,6 +14,9 @@ import { WorkflowOutputArray } from "./WorkflowOutputArray";
 import { WorkflowOutputError } from "./WorkflowOutputError";
 import { WorkflowOutputFunctionCall } from "./WorkflowOutputFunctionCall";
 import { WorkflowOutputImage } from "./WorkflowOutputImage";
+import { WorkflowOutputAudio } from "./WorkflowOutputAudio";
+import { WorkflowOutputVideo } from "./WorkflowOutputVideo";
+import { WorkflowOutputDocument } from "./WorkflowOutputDocument";
 
 export const WorkflowOutput: core.serialization.Schema<serializers.WorkflowOutput.Raw, Vellum.WorkflowOutput> =
     core.serialization.undiscriminatedUnion([
@@ -26,6 +29,9 @@ export const WorkflowOutput: core.serialization.Schema<serializers.WorkflowOutpu
         WorkflowOutputError,
         WorkflowOutputFunctionCall,
         WorkflowOutputImage,
+        WorkflowOutputAudio,
+        WorkflowOutputVideo,
+        WorkflowOutputDocument,
     ]);
 
 export declare namespace WorkflowOutput {
@@ -38,5 +44,8 @@ export declare namespace WorkflowOutput {
         | WorkflowOutputArray.Raw
         | WorkflowOutputError.Raw
         | WorkflowOutputFunctionCall.Raw
-        | WorkflowOutputImage.Raw;
+        | WorkflowOutputImage.Raw
+        | WorkflowOutputAudio.Raw
+        | WorkflowOutputVideo.Raw
+        | WorkflowOutputDocument.Raw;
 }
