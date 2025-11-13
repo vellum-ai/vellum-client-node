@@ -3867,6 +3867,71 @@ await client.testSuites.deleteTestSuiteTestCase("id", "test_case_id");
 </dl>
 </details>
 
+## UploadedFiles
+
+<details><summary><code>client.uploadedFiles.<a href="/src/api/resources/uploadedFiles/client/Client.ts">retrieve</a>(id) -> Vellum.UploadedFileRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a previously uploaded file by its ID
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.uploadedFiles.retrieve("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this uploaded file.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `UploadedFiles.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## WorkflowDeployments
 
 <details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">list</a>({ ...params }) -> Vellum.PaginatedSlimWorkflowDeploymentList</code></summary>
