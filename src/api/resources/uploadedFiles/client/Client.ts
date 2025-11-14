@@ -5,11 +5,13 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as Vellum from "../../../index";
+import * as fs from "fs";
+import { Blob } from "buffer";
 import * as serializers from "../../../../serialization/index";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index";
 
-export declare namespace MetricDefinitions {
+export declare namespace UploadedFiles {
     export interface Options {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
@@ -33,46 +35,35 @@ export declare namespace MetricDefinitions {
     }
 }
 
-export class MetricDefinitions {
-    constructor(protected readonly _options: MetricDefinitions.Options) {}
+export class UploadedFiles {
+    constructor(protected readonly _options: UploadedFiles.Options) {}
 
     /**
-     * @param {string} id - Either the Metric Definition's ID or its unique name
-     * @param {Vellum.ExecuteMetricDefinition} request
-     * @param {MetricDefinitions.RequestOptions} requestOptions - Request-specific configuration.
+     * Upload a file to be used in the Workspace
      *
-     * @example
-     *     await client.metricDefinitions.executeMetricDefinition("id", {
-     *         inputs: [{
-     *                 name: "x",
-     *                 type: "STRING",
-     *                 value: "value"
-     *             }, {
-     *                 name: "x",
-     *                 type: "STRING",
-     *                 value: "value"
-     *             }]
-     *     })
+     * @param {File | fs.ReadStream | Blob} file
+     * @param {UploadedFiles.RequestOptions} requestOptions - Request-specific configuration.
      */
-    public executeMetricDefinition(
-        id: string,
-        request: Vellum.ExecuteMetricDefinition,
-        requestOptions?: MetricDefinitions.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.MetricDefinitionExecution> {
-        return core.HttpResponsePromise.fromPromise(this.__executeMetricDefinition(id, request, requestOptions));
+    public create(
+        file: File | fs.ReadStream | Blob,
+        requestOptions?: UploadedFiles.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.UploadedFileRead> {
+        return core.HttpResponsePromise.fromPromise(this.__create(file, requestOptions));
     }
 
-    private async __executeMetricDefinition(
-        id: string,
-        request: Vellum.ExecuteMetricDefinition,
-        requestOptions?: MetricDefinitions.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.MetricDefinitionExecution>> {
+    private async __create(
+        file: File | fs.ReadStream | Blob,
+        requestOptions?: UploadedFiles.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.UploadedFileRead>> {
+        const _request = await core.newFormData();
+        await _request.appendFile("file", file);
+        const _maybeEncodedRequest = await _request.getRequest();
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
-                        .predict,
-                `v1/metric-definitions/${encodeURIComponent(id)}/execute`,
+                        .default,
+                "v1/uploaded-files",
             ),
             method: "POST",
             headers: {
@@ -89,18 +80,19 @@ export class MetricDefinitions {
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
+                ..._maybeEncodedRequest.headers,
                 ...requestOptions?.headers,
             },
-            contentType: "application/json",
-            requestType: "json",
-            body: serializers.ExecuteMetricDefinition.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            requestType: "file",
+            duplex: _maybeEncodedRequest.duplex,
+            body: _maybeEncodedRequest.body,
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                data: serializers.MetricDefinitionExecution.parseOrThrow(_response.body, {
+                data: serializers.UploadedFileRead.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -126,9 +118,7 @@ export class MetricDefinitions {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.VellumTimeoutError(
-                    "Timeout exceeded when calling POST /v1/metric-definitions/{id}/execute.",
-                );
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/uploaded-files.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
@@ -138,34 +128,31 @@ export class MetricDefinitions {
     }
 
     /**
-     * @param {string} historyIdOrReleaseTag - Either the UUID of Metric Definition History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Metric Definition History Item you'd like to retrieve.
-     * @param {string} id - A UUID string identifying this metric definition.
-     * @param {MetricDefinitions.RequestOptions} requestOptions - Request-specific configuration.
+     * Retrieve a previously uploaded file by its ID
+     *
+     * @param {string} id - A UUID string identifying this uploaded file.
+     * @param {UploadedFiles.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_or_release_tag", "id")
+     *     await client.uploadedFiles.retrieve("id")
      */
-    public metricDefinitionHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
+    public retrieve(
         id: string,
-        requestOptions?: MetricDefinitions.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.MetricDefinitionHistoryItem> {
-        return core.HttpResponsePromise.fromPromise(
-            this.__metricDefinitionHistoryItemRetrieve(historyIdOrReleaseTag, id, requestOptions),
-        );
+        requestOptions?: UploadedFiles.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.UploadedFileRead> {
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
     }
 
-    private async __metricDefinitionHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
+    private async __retrieve(
         id: string,
-        requestOptions?: MetricDefinitions.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.MetricDefinitionHistoryItem>> {
+        requestOptions?: UploadedFiles.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.UploadedFileRead>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
                         .default,
-                `v1/metric-definitions/${encodeURIComponent(id)}/history/${encodeURIComponent(historyIdOrReleaseTag)}`,
+                `v1/uploaded-files/${encodeURIComponent(id)}`,
             ),
             method: "GET",
             headers: {
@@ -192,7 +179,7 @@ export class MetricDefinitions {
         });
         if (_response.ok) {
             return {
-                data: serializers.MetricDefinitionHistoryItem.parseOrThrow(_response.body, {
+                data: serializers.UploadedFileRead.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -218,9 +205,7 @@ export class MetricDefinitions {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.VellumTimeoutError(
-                    "Timeout exceeded when calling GET /v1/metric-definitions/{id}/history/{history_id_or_release_tag}.",
-                );
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling GET /v1/uploaded-files/{id}.");
             case "unknown":
                 throw new errors.VellumError({
                     message: _response.error.errorMessage,
