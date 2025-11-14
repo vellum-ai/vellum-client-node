@@ -573,6 +573,7 @@ export * from "./ComponentsSchemasComposioToolDefinition";
 export * from "./UnitEnum";
 export * from "./UpdateActiveWorkspaceResponse";
 export * from "./UploadDocumentResponse";
+export * from "./UploadedFileRead";
 export * from "./UpsertTestSuiteTestCaseRequest";
 export * from "./VariablePromptBlock";
 export * from "./VellumAudio";
