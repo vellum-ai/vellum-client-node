@@ -6,7 +6,7 @@ import * as Vellum from "../index";
 
 export interface WorkflowResultEvent {
     id: string;
-    state: Vellum.WorkflowNodeResultEventState;
+    state: Vellum.WorkflowResultEventState;
     ts: Date;
     output?: Vellum.WorkflowResultEventOutputData | null;
     error?: Vellum.WorkflowEventError | null;
