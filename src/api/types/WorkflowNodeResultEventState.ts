@@ -3,10 +3,10 @@
  */
 
 /**
- * * `INITIATED` - Initiated
- * * `STREAMING` - Streaming
- * * `FULFILLED` - Fulfilled
- * * `REJECTED` - Rejected
+ * * `INITIATED` - INITIATED
+ * * `STREAMING` - STREAMING
+ * * `FULFILLED` - FULFILLED
+ * * `REJECTED` - REJECTED
  */
 export type WorkflowNodeResultEventState = "INITIATED" | "STREAMING" | "FULFILLED" | "REJECTED";
 export const WorkflowNodeResultEventState = {
