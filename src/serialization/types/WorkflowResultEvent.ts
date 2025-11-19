@@ -5,7 +5,7 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { WorkflowNodeResultEventState } from "./WorkflowNodeResultEventState";
+import { WorkflowResultEventState } from "./WorkflowResultEventState";
 import { WorkflowResultEventOutputData } from "./WorkflowResultEventOutputData";
 import { WorkflowEventError } from "./WorkflowEventError";
 import { WorkflowOutput } from "./WorkflowOutput";
@@ -16,7 +16,7 @@ export const WorkflowResultEvent: core.serialization.ObjectSchema<
     Vellum.WorkflowResultEvent
 > = core.serialization.object({
     id: core.serialization.string(),
-    state: WorkflowNodeResultEventState,
+    state: WorkflowResultEventState,
     ts: core.serialization.date(),
     output: WorkflowResultEventOutputData.optionalNullable(),
     error: WorkflowEventError.optionalNullable(),
@@ -27,7 +27,7 @@ export const WorkflowResultEvent: core.serialization.ObjectSchema<
 export declare namespace WorkflowResultEvent {
     export interface Raw {
         id: string;
-        state: WorkflowNodeResultEventState.Raw;
+        state: WorkflowResultEventState.Raw;
         ts: string;
         output?: (WorkflowResultEventOutputData.Raw | null) | null;
         error?: (WorkflowEventError.Raw | null) | null;

@@ -697,6 +697,7 @@ export * from "./WorkflowResultEventOutputDataJson";
 export * from "./WorkflowResultEventOutputDataNumber";
 export * from "./WorkflowResultEventOutputDataSearchResults";
 export * from "./WorkflowResultEventOutputDataString";
+export * from "./WorkflowResultEventState";
 export * from "./WorkflowSandboxDisplayData";
 export * from "./WorkflowSandboxExample";
 export * from "./WorkflowSandboxParentContext";
