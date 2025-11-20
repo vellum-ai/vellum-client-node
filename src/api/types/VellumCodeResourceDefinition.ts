@@ -6,5 +6,7 @@ export interface VellumCodeResourceDefinition {
     name: string;
     /** The module that this resource is defined in. */
     module: string[];
+    /** Whether this node should be excluded from monitoring views. */
+    excludeFromMonitoring?: boolean | null;
     id: string;
 }
