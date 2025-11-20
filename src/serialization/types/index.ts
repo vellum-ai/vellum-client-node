@@ -125,6 +125,7 @@ export * from "./ExecutePromptEvent";
 export * from "./ExecutePromptResponse";
 export * from "./ComponentsSchemasComposioExecuteToolRequest";
 export * from "./ComponentsSchemasComposioExecuteToolResponse";
+export * from "./ExecuteWorkflowAsyncResponse";
 export * from "./ExecuteWorkflowResponse";
 export * from "./ExecuteWorkflowWorkflowResultEvent";
 export * from "./ExecutionArrayVellumValue";
