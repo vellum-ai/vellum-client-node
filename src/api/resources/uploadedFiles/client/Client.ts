@@ -72,11 +72,11 @@ export class UploadedFiles {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.0",
-                "User-Agent": "vellum-ai/1.11.0",
+                "X-Fern-SDK-Version": "1.11.1",
+                "User-Agent": "vellum-ai/1.11.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -131,6 +131,7 @@ export class UploadedFiles {
      * Retrieve a previously uploaded file by its ID
      *
      * @param {string} id - A UUID string identifying this uploaded file.
+     * @param {Vellum.UploadedFilesRetrieveRequest} request
      * @param {UploadedFiles.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -138,15 +139,23 @@ export class UploadedFiles {
      */
     public retrieve(
         id: string,
+        request: Vellum.UploadedFilesRetrieveRequest = {},
         requestOptions?: UploadedFiles.RequestOptions,
     ): core.HttpResponsePromise<Vellum.UploadedFileRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.UploadedFilesRetrieveRequest = {},
         requestOptions?: UploadedFiles.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.UploadedFileRead>> {
+        const { expirySeconds } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (expirySeconds !== undefined) {
+            _queryParams["expiry_seconds"] = expirySeconds?.toString() ?? null;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -161,17 +170,18 @@ export class UploadedFiles {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.0",
-                "User-Agent": "vellum-ai/1.11.0",
+                "X-Fern-SDK-Version": "1.11.1",
+                "User-Agent": "vellum-ai/1.11.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
@@ -251,11 +261,11 @@ export class UploadedFiles {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.0",
-                "User-Agent": "vellum-ai/1.11.0",
+                "X-Fern-SDK-Version": "1.11.1",
+                "User-Agent": "vellum-ai/1.11.1",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

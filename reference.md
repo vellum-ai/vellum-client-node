@@ -3869,7 +3869,7 @@ await client.testSuites.deleteTestSuiteTestCase("id", "test_case_id");
 
 ## UploadedFiles
 
-<details><summary><code>client.uploadedFiles.<a href="/src/api/resources/uploadedFiles/client/Client.ts">retrieve</a>(id) -> Vellum.UploadedFileRead</code></summary>
+<details><summary><code>client.uploadedFiles.<a href="/src/api/resources/uploadedFiles/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.UploadedFileRead</code></summary>
 <dl>
 <dd>
 
@@ -3914,6 +3914,14 @@ await client.uploadedFiles.retrieve("id");
 <dd>
 
 **id:** `string` — A UUID string identifying this uploaded file.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.UploadedFilesRetrieveRequest`
 
 </dd>
 </dl>

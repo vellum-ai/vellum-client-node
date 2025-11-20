@@ -12,6 +12,10 @@ export const VellumCodeResourceDefinition: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: core.serialization.string(),
     module: core.serialization.list(core.serialization.string()),
+    excludeFromMonitoring: core.serialization.property(
+        "exclude_from_monitoring",
+        core.serialization.boolean().optionalNullable(),
+    ),
     id: core.serialization.string(),
 });
 
@@ -19,6 +23,7 @@ export declare namespace VellumCodeResourceDefinition {
     export interface Raw {
         name: string;
         module: string[];
+        exclude_from_monitoring?: (boolean | null) | null;
         id: string;
     }
 }
