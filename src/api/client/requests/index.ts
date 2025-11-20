@@ -3,6 +3,7 @@ export { type CodeExecutor } from "./CodeExecutor";
 export { type ExecutePromptRequest } from "./ExecutePromptRequest";
 export { type ExecutePromptStreamRequest } from "./ExecutePromptStreamRequest";
 export { type ExecuteWorkflowRequest } from "./ExecuteWorkflowRequest";
+export { type ExecuteWorkflowAsyncRequest } from "./ExecuteWorkflowAsyncRequest";
 export { type ExecuteWorkflowStreamRequest } from "./ExecuteWorkflowStreamRequest";
 export { type GenerateBodyRequest } from "./GenerateBodyRequest";
 export { type GenerateStreamBodyRequest } from "./GenerateStreamBodyRequest";
