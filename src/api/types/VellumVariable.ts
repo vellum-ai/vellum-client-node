@@ -11,4 +11,5 @@ export interface VellumVariable {
     required?: boolean | null;
     default?: Vellum.VellumValue | null;
     extensions?: Vellum.VellumVariableExtensions | null;
+    schema?: Record<string, unknown> | null;
 }
