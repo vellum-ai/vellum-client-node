@@ -12,6 +12,7 @@
  * * `CODA` - Coda
  * * `HUBSPOT` - Hubspot
  * * `INTERCOM` - Intercom
+ * * `INSTAGRAM` - Instagram
  * * `LINEAR` - Linear
  * * `LINKUP` - Linkup
  * * `LISTENNOTES` - Listen Notes
@@ -25,6 +26,13 @@
  * * `GOOGLE_CALENDAR` - Google Calendar
  * * `GOOGLE_DRIVE` - Google Drive
  * * `GMAIL` - Gmail
+ * * `GOOGLE_ADS` - Google Ads
+ * * `GOOGLE_ANALYTICS` - Google Analytics
+ * * `GOOGLE_DOCS` - Google Docs
+ * * `GOOGLE_PHOTOS` - Google Photos
+ * * `GOOGLE_SEARCH_CONSOLE` - Google Search Console
+ * * `GOOGLE_SLIDES` - Google Slides
+ * * `GOOGLE_TASKS` - Google Tasks
  * * `ACCULYNX` - AccuLynx
  * * `AFFINITY` - Affinity
  * * `AGENCYZOOM` - AgencyZoom
@@ -74,6 +82,7 @@
  * * `ZENROWS` - ZenRows
  * * `DROPBOX` - Dropbox
  * * `EVENTBRITE` - Eventbrite
+ * * `FACEBOOK` - Facebook
  * * `CONFLUENCE` - Confluence
  * * `COINBASE` - Coinbase
  * * `DISCORD` - Discord
@@ -90,6 +99,7 @@ export type IntegrationName =
     | "CODA"
     | "HUBSPOT"
     | "INTERCOM"
+    | "INSTAGRAM"
     | "LINEAR"
     | "LINKUP"
     | "LISTENNOTES"
@@ -103,6 +113,13 @@ export type IntegrationName =
     | "GOOGLE_CALENDAR"
     | "GOOGLE_DRIVE"
     | "GMAIL"
+    | "GOOGLE_ADS"
+    | "GOOGLE_ANALYTICS"
+    | "GOOGLE_DOCS"
+    | "GOOGLE_PHOTOS"
+    | "GOOGLE_SEARCH_CONSOLE"
+    | "GOOGLE_SLIDES"
+    | "GOOGLE_TASKS"
     | "ACCULYNX"
     | "AFFINITY"
     | "AGENCYZOOM"
@@ -152,6 +169,7 @@ export type IntegrationName =
     | "ZENROWS"
     | "DROPBOX"
     | "EVENTBRITE"
+    | "FACEBOOK"
     | "CONFLUENCE"
     | "COINBASE"
     | "DISCORD"
@@ -167,6 +185,7 @@ export const IntegrationName = {
     Coda: "CODA",
     Hubspot: "HUBSPOT",
     Intercom: "INTERCOM",
+    Instagram: "INSTAGRAM",
     Linear: "LINEAR",
     Linkup: "LINKUP",
     Listennotes: "LISTENNOTES",
@@ -180,6 +199,13 @@ export const IntegrationName = {
     GoogleCalendar: "GOOGLE_CALENDAR",
     GoogleDrive: "GOOGLE_DRIVE",
     Gmail: "GMAIL",
+    GoogleAds: "GOOGLE_ADS",
+    GoogleAnalytics: "GOOGLE_ANALYTICS",
+    GoogleDocs: "GOOGLE_DOCS",
+    GooglePhotos: "GOOGLE_PHOTOS",
+    GoogleSearchConsole: "GOOGLE_SEARCH_CONSOLE",
+    GoogleSlides: "GOOGLE_SLIDES",
+    GoogleTasks: "GOOGLE_TASKS",
     Acculynx: "ACCULYNX",
     Affinity: "AFFINITY",
     Agencyzoom: "AGENCYZOOM",
@@ -229,6 +255,7 @@ export const IntegrationName = {
     Zenrows: "ZENROWS",
     Dropbox: "DROPBOX",
     Eventbrite: "EVENTBRITE",
+    Facebook: "FACEBOOK",
     Confluence: "CONFLUENCE",
     Coinbase: "COINBASE",
     Discord: "DISCORD",

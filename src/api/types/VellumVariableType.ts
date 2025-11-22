@@ -18,6 +18,7 @@
  * * `DOCUMENT` - DOCUMENT
  * * `NULL` - NULL
  * * `THINKING` - THINKING
+ * * `REFERENCE` - REFERENCE
  */
 export type VellumVariableType =
     | "STRING"
@@ -33,7 +34,8 @@ export type VellumVariableType =
     | "IMAGE"
     | "DOCUMENT"
     | "NULL"
-    | "THINKING";
+    | "THINKING"
+    | "REFERENCE";
 export const VellumVariableType = {
     String: "STRING",
     Number: "NUMBER",
@@ -49,4 +51,5 @@ export const VellumVariableType = {
     Document: "DOCUMENT",
     Null: "NULL",
     Thinking: "THINKING",
+    Reference: "REFERENCE",
 } as const;
