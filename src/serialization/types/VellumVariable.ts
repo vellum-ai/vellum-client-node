@@ -16,6 +16,7 @@ export const VellumVariable: core.serialization.ObjectSchema<serializers.VellumV
         required: core.serialization.boolean().optionalNullable(),
         default: core.serialization.lazy(() => serializers.VellumValue).optionalNullable(),
         extensions: VellumVariableExtensions.optionalNullable(),
+        schema: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     });
 
 export declare namespace VellumVariable {
@@ -26,5 +27,6 @@ export declare namespace VellumVariable {
         required?: (boolean | null) | null;
         default?: (serializers.VellumValue.Raw | null) | null;
         extensions?: (VellumVariableExtensions.Raw | null) | null;
+        schema?: (Record<string, unknown> | null) | null;
     }
 }

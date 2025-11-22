@@ -17,6 +17,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "CODA",
         "HUBSPOT",
         "INTERCOM",
+        "INSTAGRAM",
         "LINEAR",
         "LINKUP",
         "LISTENNOTES",
@@ -30,6 +31,13 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "GOOGLE_CALENDAR",
         "GOOGLE_DRIVE",
         "GMAIL",
+        "GOOGLE_ADS",
+        "GOOGLE_ANALYTICS",
+        "GOOGLE_DOCS",
+        "GOOGLE_PHOTOS",
+        "GOOGLE_SEARCH_CONSOLE",
+        "GOOGLE_SLIDES",
+        "GOOGLE_TASKS",
         "ACCULYNX",
         "AFFINITY",
         "AGENCYZOOM",
@@ -79,6 +87,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "ZENROWS",
         "DROPBOX",
         "EVENTBRITE",
+        "FACEBOOK",
         "CONFLUENCE",
         "COINBASE",
         "DISCORD",
@@ -97,6 +106,7 @@ export declare namespace IntegrationName {
         | "CODA"
         | "HUBSPOT"
         | "INTERCOM"
+        | "INSTAGRAM"
         | "LINEAR"
         | "LINKUP"
         | "LISTENNOTES"
@@ -110,6 +120,13 @@ export declare namespace IntegrationName {
         | "GOOGLE_CALENDAR"
         | "GOOGLE_DRIVE"
         | "GMAIL"
+        | "GOOGLE_ADS"
+        | "GOOGLE_ANALYTICS"
+        | "GOOGLE_DOCS"
+        | "GOOGLE_PHOTOS"
+        | "GOOGLE_SEARCH_CONSOLE"
+        | "GOOGLE_SLIDES"
+        | "GOOGLE_TASKS"
         | "ACCULYNX"
         | "AFFINITY"
         | "AGENCYZOOM"
@@ -159,6 +176,7 @@ export declare namespace IntegrationName {
         | "ZENROWS"
         | "DROPBOX"
         | "EVENTBRITE"
+        | "FACEBOOK"
         | "CONFLUENCE"
         | "COINBASE"
         | "DISCORD"
