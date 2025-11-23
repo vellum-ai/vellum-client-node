@@ -9,6 +9,8 @@ export interface UploadDocumentBodyRequest {
     externalId?: string | null;
     /** A human-friendly name for this document. Typically the filename. */
     label: string;
+    /** A URL from which the document can be downloaded. Either contents or url must be provided. */
+    url?: string | null;
     /** Optionally include a list of keywords that'll be associated with this document. Used when performing keyword searches. */
     keywords?: string[] | null;
     /** A stringified JSON object containing any metadata associated with the document that you'd like to filter upon later. */
