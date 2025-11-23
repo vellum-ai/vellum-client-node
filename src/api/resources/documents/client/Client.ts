@@ -94,11 +94,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.3",
-                "User-Agent": "vellum-ai/1.11.3",
+                "X-Fern-SDK-Version": "1.11.4",
+                "User-Agent": "vellum-ai/1.11.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -182,11 +182,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.3",
-                "User-Agent": "vellum-ai/1.11.3",
+                "X-Fern-SDK-Version": "1.11.4",
+                "User-Agent": "vellum-ai/1.11.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -266,11 +266,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.3",
-                "User-Agent": "vellum-ai/1.11.3",
+                "X-Fern-SDK-Version": "1.11.4",
+                "User-Agent": "vellum-ai/1.11.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -348,11 +348,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.3",
-                "User-Agent": "vellum-ai/1.11.3",
+                "X-Fern-SDK-Version": "1.11.4",
+                "User-Agent": "vellum-ai/1.11.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -407,7 +407,7 @@ export class Documents {
      *
      * **Note:** Uses a base url of `https://documents.vellum.ai`.
      *
-     * @param {File | fs.ReadStream | Blob} contents
+     * @param {File | fs.ReadStream | Blob | undefined} contents
      * @param {Vellum.UploadDocumentBodyRequest} request
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -416,7 +416,7 @@ export class Documents {
      * @throws {@link Vellum.InternalServerError}
      */
     public upload(
-        contents: File | fs.ReadStream | Blob,
+        contents: File | fs.ReadStream | Blob | undefined,
         request: Vellum.UploadDocumentBodyRequest,
         requestOptions?: Documents.RequestOptions,
     ): core.HttpResponsePromise<Vellum.UploadDocumentResponse> {
@@ -424,7 +424,7 @@ export class Documents {
     }
 
     private async __upload(
-        contents: File | fs.ReadStream | Blob,
+        contents: File | fs.ReadStream | Blob | undefined,
         request: Vellum.UploadDocumentBodyRequest,
         requestOptions?: Documents.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.UploadDocumentResponse>> {
@@ -440,7 +440,14 @@ export class Documents {
         }
 
         _request.append("label", request.label);
-        await _request.appendFile("contents", contents);
+        if (contents != null) {
+            await _request.appendFile("contents", contents);
+        }
+
+        if (request.url != null) {
+            _request.append("url", request.url);
+        }
+
         if (request.keywords != null) {
             for (const _item of request.keywords) {
                 _request.append("keywords", _item);
@@ -466,11 +473,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.3",
-                "User-Agent": "vellum-ai/1.11.3",
+                "X-Fern-SDK-Version": "1.11.4",
+                "User-Agent": "vellum-ai/1.11.4",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
