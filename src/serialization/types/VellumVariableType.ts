@@ -24,6 +24,7 @@ export const VellumVariableType: core.serialization.Schema<
     "DOCUMENT",
     "NULL",
     "THINKING",
+    "REFERENCE",
 ]);
 
 export declare namespace VellumVariableType {
@@ -41,5 +42,6 @@ export declare namespace VellumVariableType {
         | "IMAGE"
         | "DOCUMENT"
         | "NULL"
-        | "THINKING";
+        | "THINKING"
+        | "REFERENCE";
 }
