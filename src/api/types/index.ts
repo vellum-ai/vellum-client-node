@@ -407,6 +407,7 @@ export * from "./ReleaseTagSource";
 export * from "./ReplaceTestSuiteTestCaseRequest";
 export * from "./RichTextChildBlock";
 export * from "./RichTextPromptBlock";
+export * from "./RunnerConfigRequest";
 export * from "./SandboxScenario";
 export * from "./ScenarioInput";
 export * from "./ScenarioInputAudioVariableValue";
