@@ -24,7 +24,9 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "LMNT",
         "LINKEDIN",
         "MAILCHIMP",
+        "MIRO",
         "MEM0",
+        "MONDAY",
         "NEON",
         "GITHUB",
         "GOOGLE_SHEETS",
@@ -77,10 +79,12 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "SERPAPI",
         "SHARE_POINT",
         "SHORTCUT",
+        "SPOTIFY",
         "STRIPE",
         "SUPABASE",
         "TAVILY",
         "TELEGRAM",
+        "TODOIST",
         "WEBFLOW",
         "YOUSEARCH",
         "ZENDESK",
@@ -113,7 +117,9 @@ export declare namespace IntegrationName {
         | "LMNT"
         | "LINKEDIN"
         | "MAILCHIMP"
+        | "MIRO"
         | "MEM0"
+        | "MONDAY"
         | "NEON"
         | "GITHUB"
         | "GOOGLE_SHEETS"
@@ -166,10 +172,12 @@ export declare namespace IntegrationName {
         | "SERPAPI"
         | "SHARE_POINT"
         | "SHORTCUT"
+        | "SPOTIFY"
         | "STRIPE"
         | "SUPABASE"
         | "TAVILY"
         | "TELEGRAM"
+        | "TODOIST"
         | "WEBFLOW"
         | "YOUSEARCH"
         | "ZENDESK"
