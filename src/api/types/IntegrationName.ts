@@ -19,7 +19,9 @@
  * * `LMNT` - LMNT
  * * `LINKEDIN` - LinkedIn
  * * `MAILCHIMP` - Mailchimp
+ * * `MIRO` - Miro
  * * `MEM0` - Mem0
+ * * `MONDAY` - Monday
  * * `NEON` - Neon
  * * `GITHUB` - Github
  * * `GOOGLE_SHEETS` - Google Sheets
@@ -72,10 +74,12 @@
  * * `SERPAPI` - Serp Api
  * * `SHARE_POINT` - SharePoint
  * * `SHORTCUT` - Shortcut
+ * * `SPOTIFY` - Spotify
  * * `STRIPE` - Stripe
  * * `SUPABASE` - Supabase
  * * `TAVILY` - Tavily
  * * `TELEGRAM` - Telegram
+ * * `TODOIST` - Todoist
  * * `WEBFLOW` - Webflow
  * * `YOUSEARCH` - You Search
  * * `ZENDESK` - Zendesk
@@ -106,7 +110,9 @@ export type IntegrationName =
     | "LMNT"
     | "LINKEDIN"
     | "MAILCHIMP"
+    | "MIRO"
     | "MEM0"
+    | "MONDAY"
     | "NEON"
     | "GITHUB"
     | "GOOGLE_SHEETS"
@@ -159,10 +165,12 @@ export type IntegrationName =
     | "SERPAPI"
     | "SHARE_POINT"
     | "SHORTCUT"
+    | "SPOTIFY"
     | "STRIPE"
     | "SUPABASE"
     | "TAVILY"
     | "TELEGRAM"
+    | "TODOIST"
     | "WEBFLOW"
     | "YOUSEARCH"
     | "ZENDESK"
@@ -192,7 +200,9 @@ export const IntegrationName = {
     Lmnt: "LMNT",
     Linkedin: "LINKEDIN",
     Mailchimp: "MAILCHIMP",
+    Miro: "MIRO",
     Mem0: "MEM0",
+    Monday: "MONDAY",
     Neon: "NEON",
     Github: "GITHUB",
     GoogleSheets: "GOOGLE_SHEETS",
@@ -245,10 +255,12 @@ export const IntegrationName = {
     Serpapi: "SERPAPI",
     SharePoint: "SHARE_POINT",
     Shortcut: "SHORTCUT",
+    Spotify: "SPOTIFY",
     Stripe: "STRIPE",
     Supabase: "SUPABASE",
     Tavily: "TAVILY",
     Telegram: "TELEGRAM",
+    Todoist: "TODOIST",
     Webflow: "WEBFLOW",
     Yousearch: "YOUSEARCH",
     Zendesk: "ZENDESK",
