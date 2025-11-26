@@ -3,7 +3,13 @@
  */
 
 export interface VellumDocumentRequest {
-    /** A valid data URL containing the document data. */
+    /**
+     * The reference to the source data. This can be one of the following formats:
+     * 1. A base64-encoded data URL (e.g., 'data:application/pdf;base64,JVBERi0xLjQKJcfs...').
+     * 2. A url pointing to a file accessible over HTTP or HTTPS.
+     * 3. A reference to a file that's been previously uploaded to Vellum, in the form of 'vellum:uploaded-file:{uploaded_file_id}'.
+     *     You can use the Uploaded Files API to retrieve the url of the uploaded file given its ID. See https://docs.vellum.ai/developers/client-sdk/uploaded-files/retrieve for details.
+     */
     src: string;
     metadata?: Record<string, unknown> | null;
 }
