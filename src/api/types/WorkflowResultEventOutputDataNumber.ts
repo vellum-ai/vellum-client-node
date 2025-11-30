@@ -11,7 +11,7 @@ export interface WorkflowResultEventOutputDataNumber {
     id?: string | null;
     name: string;
     state: Vellum.WorkflowNodeResultEventState;
-    nodeId: string;
+    nodeId?: string | null;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string | null;
     type: "NUMBER";

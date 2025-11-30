@@ -14,7 +14,7 @@ export const WorkflowResultEventOutputDataArray: core.serialization.ObjectSchema
     id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
     state: WorkflowNodeResultEventState,
-    nodeId: core.serialization.property("node_id", core.serialization.string()),
+    nodeId: core.serialization.property("node_id", core.serialization.string().optionalNullable()),
     delta: core.serialization.string().optionalNullable(),
     type: core.serialization.stringLiteral("ARRAY"),
     value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
@@ -25,7 +25,7 @@ export declare namespace WorkflowResultEventOutputDataArray {
         id?: (string | null) | null;
         name: string;
         state: WorkflowNodeResultEventState.Raw;
-        node_id: string;
+        node_id?: (string | null) | null;
         delta?: (string | null) | null;
         type: "ARRAY";
         value?: (serializers.VellumValue.Raw[] | null) | null;
