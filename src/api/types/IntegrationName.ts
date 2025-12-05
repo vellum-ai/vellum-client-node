@@ -23,6 +23,7 @@
  * * `MEM0` - Mem0
  * * `MONDAY` - Monday
  * * `NEON` - Neon
+ * * `OUTLOOK` - Outlook
  * * `GITHUB` - Github
  * * `GOOGLE_SHEETS` - Google Sheets
  * * `GOOGLE_CALENDAR` - Google Calendar
@@ -114,6 +115,7 @@ export type IntegrationName =
     | "MEM0"
     | "MONDAY"
     | "NEON"
+    | "OUTLOOK"
     | "GITHUB"
     | "GOOGLE_SHEETS"
     | "GOOGLE_CALENDAR"
@@ -204,6 +206,7 @@ export const IntegrationName = {
     Mem0: "MEM0",
     Monday: "MONDAY",
     Neon: "NEON",
+    Outlook: "OUTLOOK",
     Github: "GITHUB",
     GoogleSheets: "GOOGLE_SHEETS",
     GoogleCalendar: "GOOGLE_CALENDAR",

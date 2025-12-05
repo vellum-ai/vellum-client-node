@@ -24,6 +24,7 @@ export const RunnerConfigRequest: core.serialization.ObjectSchema<
         "is_deployment_inlining_enabled",
         core.serialization.boolean().optional(),
     ),
+    serverVersion: core.serialization.property("server_version", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace RunnerConfigRequest {
@@ -33,5 +34,6 @@ export declare namespace RunnerConfigRequest {
         codegen_version?: (string | null) | null;
         sdk_version?: (string | null) | null;
         is_deployment_inlining_enabled?: boolean | null;
+        server_version?: (string | null) | null;
     }
 }
