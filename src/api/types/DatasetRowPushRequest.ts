@@ -5,4 +5,5 @@
 export interface DatasetRowPushRequest {
     label: string;
     inputs: Record<string, unknown>;
+    workflowTriggerId?: string | null;
 }

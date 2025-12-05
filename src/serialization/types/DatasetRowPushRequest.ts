@@ -12,11 +12,16 @@ export const DatasetRowPushRequest: core.serialization.ObjectSchema<
 > = core.serialization.object({
     label: core.serialization.string(),
     inputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    workflowTriggerId: core.serialization.property(
+        "workflow_trigger_id",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace DatasetRowPushRequest {
     export interface Raw {
         label: string;
         inputs: Record<string, unknown>;
+        workflow_trigger_id?: (string | null) | null;
     }
 }

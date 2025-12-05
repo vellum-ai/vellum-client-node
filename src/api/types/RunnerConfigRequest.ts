@@ -8,4 +8,5 @@ export interface RunnerConfigRequest {
     codegenVersion?: string | null;
     sdkVersion?: string | null;
     isDeploymentInliningEnabled?: boolean;
+    serverVersion?: string | null;
 }

@@ -13,11 +13,16 @@ export const ContainerImageBuildConfig: core.serialization.ObjectSchema<
 > = core.serialization.object({
     packages: core.serialization.list(CodeExecutionPackage),
     userScript: core.serialization.property("user_script", core.serialization.string().optionalNullable()),
+    hotswappableVersion: core.serialization.property(
+        "hotswappable_version",
+        core.serialization.string().optionalNullable(),
+    ),
 });
 
 export declare namespace ContainerImageBuildConfig {
     export interface Raw {
         packages: CodeExecutionPackage.Raw[];
         user_script?: (string | null) | null;
+        hotswappable_version?: (string | null) | null;
     }
 }
