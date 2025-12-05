@@ -7,4 +7,5 @@ import * as Vellum from "../index";
 export interface ContainerImageBuildConfig {
     packages: Vellum.CodeExecutionPackage[];
     userScript?: string | null;
+    hotswappableVersion?: string | null;
 }

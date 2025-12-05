@@ -28,6 +28,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "MEM0",
         "MONDAY",
         "NEON",
+        "OUTLOOK",
         "GITHUB",
         "GOOGLE_SHEETS",
         "GOOGLE_CALENDAR",
@@ -121,6 +122,7 @@ export declare namespace IntegrationName {
         | "MEM0"
         | "MONDAY"
         | "NEON"
+        | "OUTLOOK"
         | "GITHUB"
         | "GOOGLE_SHEETS"
         | "GOOGLE_CALENDAR"
