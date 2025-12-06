@@ -93,6 +93,10 @@
  * * `DISCORD` - Discord
  * * `DOCUSIGN` - DocuSign
  * * `TRELLO` - Trello
+ * * `HEYREACH` - HeyReach
+ * * `ACTIVE_CAMPAIGN` - Active Campaign
+ * * `CUSTOMER_IO` - Customer.io
+ * * `SEGMENT` - Segment
  */
 export type IntegrationName =
     | "SLACK"
@@ -184,7 +188,11 @@ export type IntegrationName =
     | "COINBASE"
     | "DISCORD"
     | "DOCUSIGN"
-    | "TRELLO";
+    | "TRELLO"
+    | "HEYREACH"
+    | "ACTIVE_CAMPAIGN"
+    | "CUSTOMER_IO"
+    | "SEGMENT";
 export const IntegrationName = {
     Slack: "SLACK",
     Notion: "NOTION",
@@ -276,4 +284,8 @@ export const IntegrationName = {
     Discord: "DISCORD",
     Docusign: "DOCUSIGN",
     Trello: "TRELLO",
+    Heyreach: "HEYREACH",
+    ActiveCampaign: "ACTIVE_CAMPAIGN",
+    CustomerIo: "CUSTOMER_IO",
+    Segment: "SEGMENT",
 } as const;
