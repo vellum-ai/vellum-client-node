@@ -98,6 +98,10 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "DISCORD",
         "DOCUSIGN",
         "TRELLO",
+        "HEYREACH",
+        "ACTIVE_CAMPAIGN",
+        "CUSTOMER_IO",
+        "SEGMENT",
     ]);
 
 export declare namespace IntegrationName {
@@ -191,5 +195,9 @@ export declare namespace IntegrationName {
         | "COINBASE"
         | "DISCORD"
         | "DOCUSIGN"
-        | "TRELLO";
+        | "TRELLO"
+        | "HEYREACH"
+        | "ACTIVE_CAMPAIGN"
+        | "CUSTOMER_IO"
+        | "SEGMENT";
 }
