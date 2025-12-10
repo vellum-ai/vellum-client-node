@@ -59,6 +59,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "EXA",
         "GAMMA",
         "GITLAB",
+        "GONG",
         "FIRECRAWL",
         "FIGMA",
         "FIREFLIES",
@@ -157,6 +158,7 @@ export declare namespace IntegrationName {
         | "EXA"
         | "GAMMA"
         | "GITLAB"
+        | "GONG"
         | "FIRECRAWL"
         | "FIGMA"
         | "FIREFLIES"
