@@ -54,6 +54,7 @@
  * * `EXA` - Exa
  * * `GAMMA` - Gamma
  * * `GITLAB` - Gitlab
+ * * `GONG` - Gong
  * * `FIRECRAWL` - Firecrawl
  * * `FIGMA` - Figma
  * * `FIREFLIES` - Fireflies
@@ -150,6 +151,7 @@ export type IntegrationName =
     | "EXA"
     | "GAMMA"
     | "GITLAB"
+    | "GONG"
     | "FIRECRAWL"
     | "FIGMA"
     | "FIREFLIES"
@@ -245,6 +247,7 @@ export const IntegrationName = {
     Exa: "EXA",
     Gamma: "GAMMA",
     Gitlab: "GITLAB",
+    Gong: "GONG",
     Firecrawl: "FIRECRAWL",
     Figma: "FIGMA",
     Fireflies: "FIREFLIES",
