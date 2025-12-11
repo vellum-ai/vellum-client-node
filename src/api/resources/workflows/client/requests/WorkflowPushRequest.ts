@@ -5,8 +5,8 @@
 import * as Vellum from "../../../../index";
 
 export interface WorkflowPushRequest {
-    /** The execution configuration of the workflow. */
-    execConfig: Vellum.WorkflowPushExecConfig;
+    /** The execution configuration of the workflow. If not provided, it will be derived from the artifact. */
+    execConfig?: Vellum.WorkflowPushExecConfig | null;
     workflowSandboxId?: string | null;
     deploymentConfig?: Vellum.WorkflowPushDeploymentConfigRequest | null;
     /** List of dataset rows with inputs for scenarios. */

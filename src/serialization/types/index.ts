@@ -58,6 +58,7 @@ export * from "./CodeExecutionNodeResultOutput";
 export * from "./CodeExecutionNodeSearchResultsResult";
 export * from "./CodeExecutionNodeStringResult";
 export * from "./CodeExecutionPackage";
+export * from "./CodeExecutionPackageRequest";
 export * from "./CodeExecutionRuntime";
 export * from "./CodeExecutorInput";
 export * from "./CodeExecutorResponse";

@@ -100,7 +100,7 @@ export class Workflows {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
                 "X-Fern-SDK-Version": "1.11.16",
@@ -188,7 +188,7 @@ export class Workflows {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
                 "X-Fern-SDK-Version": "1.11.16",
@@ -260,10 +260,13 @@ export class Workflows {
         requestOptions?: Workflows.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.WorkflowPushResponse>> {
         const _request = await core.newFormData();
-        _request.append(
-            "exec_config",
-            serializers.WorkflowPushExecConfig.jsonOrThrow(request.execConfig, { unrecognizedObjectKeys: "strip" }),
-        );
+        if (request.execConfig != null) {
+            _request.append(
+                "exec_config",
+                serializers.WorkflowPushExecConfig.jsonOrThrow(request.execConfig, { unrecognizedObjectKeys: "strip" }),
+            );
+        }
+
         if (request.workflowSandboxId != null) {
             _request.append("workflow_sandbox_id", request.workflowSandboxId);
         }
@@ -315,7 +318,7 @@ export class Workflows {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
                 "X-Fern-SDK-Version": "1.11.16",
@@ -410,7 +413,7 @@ export class Workflows {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
                 "X-Fern-SDK-Version": "1.11.16",
