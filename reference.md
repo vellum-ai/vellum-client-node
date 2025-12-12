@@ -691,6 +691,82 @@ await client.containerImages.list();
 </dl>
 </details>
 
+<details><summary><code>client.containerImages.<a href="/src/api/resources/containerImages/client/Client.ts">createContainerImage</a>({ ...params }) -> Vellum.ContainerImageRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new Container Image.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.containerImages.createContainerImage({
+    name: "x",
+    packages: [
+        {
+            version: "x",
+            name: "x",
+        },
+        {
+            version: "x",
+            name: "x",
+        },
+    ],
+    tag: "x",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.CreateContainerImageRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ContainerImages.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.containerImages.<a href="/src/api/resources/containerImages/client/Client.ts">retrieve</a>(id) -> Vellum.ContainerImageRead</code></summary>
 <dl>
 <dd>
@@ -736,6 +812,89 @@ await client.containerImages.retrieve("id");
 <dd>
 
 **id:** `string` — Either the Container Image's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ContainerImages.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.containerImages.<a href="/src/api/resources/containerImages/client/Client.ts">updateContainerImage</a>(id, { ...params }) -> Vellum.ContainerImageRead</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing Container Image.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.containerImages.updateContainerImage("id", {
+    packages: [
+        {
+            version: "x",
+            name: "x",
+        },
+        {
+            version: "x",
+            name: "x",
+        },
+    ],
+    tag: "x",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — A UUID string identifying this container image.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.UpdateContainerImageRequest`
 
 </dd>
 </dl>

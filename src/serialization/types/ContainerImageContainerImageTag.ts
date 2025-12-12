@@ -12,11 +12,13 @@ export const ContainerImageContainerImageTag: core.serialization.ObjectSchema<
 > = core.serialization.object({
     name: core.serialization.string(),
     modified: core.serialization.date(),
+    historyItemSha: core.serialization.property("history_item_sha", core.serialization.string().optional()),
 });
 
 export declare namespace ContainerImageContainerImageTag {
     export interface Raw {
         name: string;
         modified: string;
+        history_item_sha?: string | null;
     }
 }
