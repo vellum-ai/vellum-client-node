@@ -84,11 +84,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.16",
-                "User-Agent": "vellum-ai/1.11.16",
+                "X-Fern-SDK-Version": "1.11.17",
+                "User-Agent": "vellum-ai/1.11.17",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -139,6 +139,104 @@ export class ContainerImages {
     }
 
     /**
+     * Create a new Container Image.
+     *
+     * @param {Vellum.CreateContainerImageRequest} request
+     * @param {ContainerImages.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.containerImages.createContainerImage({
+     *         name: "x",
+     *         packages: [{
+     *                 version: "x",
+     *                 name: "x"
+     *             }, {
+     *                 version: "x",
+     *                 name: "x"
+     *             }],
+     *         tag: "x"
+     *     })
+     */
+    public createContainerImage(
+        request: Vellum.CreateContainerImageRequest,
+        requestOptions?: ContainerImages.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.ContainerImageRead> {
+        return core.HttpResponsePromise.fromPromise(this.__createContainerImage(request, requestOptions));
+    }
+
+    private async __createContainerImage(
+        request: Vellum.CreateContainerImageRequest,
+        requestOptions?: ContainerImages.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.ContainerImageRead>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                "v1/container-images",
+            ),
+            method: "POST",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.11.17",
+                "User-Agent": "vellum-ai/1.11.17",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.CreateContainerImageRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.ContainerImageRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling POST /v1/container-images.");
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
      * Retrieve a Container Image by its ID or name.
      *
      * @param {string} id - Either the Container Image's ID or its unique name
@@ -172,11 +270,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.16",
-                "User-Agent": "vellum-ai/1.11.16",
+                "X-Fern-SDK-Version": "1.11.17",
+                "User-Agent": "vellum-ai/1.11.17",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -226,6 +324,106 @@ export class ContainerImages {
     }
 
     /**
+     * Update an existing Container Image.
+     *
+     * @param {string} id - A UUID string identifying this container image.
+     * @param {Vellum.UpdateContainerImageRequest} request
+     * @param {ContainerImages.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.containerImages.updateContainerImage("id", {
+     *         packages: [{
+     *                 version: "x",
+     *                 name: "x"
+     *             }, {
+     *                 version: "x",
+     *                 name: "x"
+     *             }],
+     *         tag: "x"
+     *     })
+     */
+    public updateContainerImage(
+        id: string,
+        request: Vellum.UpdateContainerImageRequest,
+        requestOptions?: ContainerImages.RequestOptions,
+    ): core.HttpResponsePromise<Vellum.ContainerImageRead> {
+        return core.HttpResponsePromise.fromPromise(this.__updateContainerImage(id, request, requestOptions));
+    }
+
+    private async __updateContainerImage(
+        id: string,
+        request: Vellum.UpdateContainerImageRequest,
+        requestOptions?: ContainerImages.RequestOptions,
+    ): Promise<core.WithRawResponse<Vellum.ContainerImageRead>> {
+        const _response = await core.fetcher({
+            url: urlJoin(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.VellumEnvironment.Production)
+                        .default,
+                `v1/container-images/${encodeURIComponent(id)}`,
+            ),
+            method: "PUT",
+            headers: {
+                "X-API-Version":
+                    (await core.Supplier.get(this._options.apiVersion)) != null
+                        ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
+                              unrecognizedObjectKeys: "strip",
+                          })
+                        : undefined,
+                "X-Fern-Language": "JavaScript",
+                "X-Fern-SDK-Name": "vellum-ai",
+                "X-Fern-SDK-Version": "1.11.17",
+                "User-Agent": "vellum-ai/1.11.17",
+                "X-Fern-Runtime": core.RUNTIME.type,
+                "X-Fern-Runtime-Version": core.RUNTIME.version,
+                ...(await this._getCustomAuthorizationHeaders()),
+                ...requestOptions?.headers,
+            },
+            contentType: "application/json",
+            requestType: "json",
+            body: serializers.UpdateContainerImageRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: serializers.ContainerImageRead.parseOrThrow(_response.body, {
+                    unrecognizedObjectKeys: "passthrough",
+                    allowUnrecognizedUnionMembers: true,
+                    allowUnrecognizedEnumValues: true,
+                    breadcrumbsPrefix: ["response"],
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.VellumError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.VellumError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.VellumTimeoutError("Timeout exceeded when calling PUT /v1/container-images/{id}.");
+            case "unknown":
+                throw new errors.VellumError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
      * @param {ContainerImages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -254,11 +452,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.16",
-                "User-Agent": "vellum-ai/1.11.16",
+                "X-Fern-SDK-Version": "1.11.17",
+                "User-Agent": "vellum-ai/1.11.17",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -345,11 +543,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.16",
-                "User-Agent": "vellum-ai/1.11.16",
+                "X-Fern-SDK-Version": "1.11.17",
+                "User-Agent": "vellum-ai/1.11.17",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
