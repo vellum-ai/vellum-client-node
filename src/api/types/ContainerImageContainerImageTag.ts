@@ -5,4 +5,5 @@
 export interface ContainerImageContainerImageTag {
     name: string;
     modified: Date;
+    historyItemSha?: string;
 }
