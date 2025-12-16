@@ -3,5 +3,6 @@
  */
 
 export interface WorkflowDeploymentReleaseWorkflowDeployment {
+    id: string;
     name: string;
 }
