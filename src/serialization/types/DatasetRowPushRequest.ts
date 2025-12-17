@@ -10,8 +10,12 @@ export const DatasetRowPushRequest: core.serialization.ObjectSchema<
     serializers.DatasetRowPushRequest.Raw,
     Vellum.DatasetRowPushRequest
 > = core.serialization.object({
+    id: core.serialization.string().optionalNullable(),
     label: core.serialization.string(),
     inputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    mocks: core.serialization
+        .list(core.serialization.record(core.serialization.string(), core.serialization.unknown()))
+        .optionalNullable(),
     workflowTriggerId: core.serialization.property(
         "workflow_trigger_id",
         core.serialization.string().optionalNullable(),
@@ -20,8 +24,10 @@ export const DatasetRowPushRequest: core.serialization.ObjectSchema<
 
 export declare namespace DatasetRowPushRequest {
     export interface Raw {
+        id?: (string | null) | null;
         label: string;
         inputs: Record<string, unknown>;
+        mocks?: (Record<string, unknown>[] | null) | null;
         workflow_trigger_id?: (string | null) | null;
     }
 }
