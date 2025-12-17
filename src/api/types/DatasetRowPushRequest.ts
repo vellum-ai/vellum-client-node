@@ -3,7 +3,9 @@
  */
 
 export interface DatasetRowPushRequest {
+    id?: string | null;
     label: string;
     inputs: Record<string, unknown>;
+    mocks?: Record<string, unknown>[] | null;
     workflowTriggerId?: string | null;
 }
