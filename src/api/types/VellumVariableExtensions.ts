@@ -8,4 +8,5 @@
 export interface VellumVariableExtensions {
     color?: string | null;
     description?: string | null;
+    title?: string | null;
 }
