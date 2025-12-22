@@ -11,6 +11,7 @@ export type WorkflowEvent =
     | Vellum.NodeExecutionRejectedEvent
     | Vellum.NodeExecutionPausedEvent
     | Vellum.NodeExecutionResumedEvent
+    | Vellum.NodeExecutionLogEvent
     | Vellum.WorkflowExecutionInitiatedEvent
     | Vellum.WorkflowExecutionStreamingEvent
     | Vellum.WorkflowExecutionRejectedEvent

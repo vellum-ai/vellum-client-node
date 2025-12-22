@@ -70,6 +70,7 @@
  * * `POSTHOG` - PostHog
  * * `PRODUCTBOARD` - Productboard
  * * `REDDIT` - Reddit
+ * * `SALESFORCE` - Salesforce
  * * `SEMRUSH` - Semrush
  * * `SEMANTICSCHOLAR` - Semantic Scholar
  * * `SENDGRID` - SendGrid
@@ -167,6 +168,7 @@ export type IntegrationName =
     | "POSTHOG"
     | "PRODUCTBOARD"
     | "REDDIT"
+    | "SALESFORCE"
     | "SEMRUSH"
     | "SEMANTICSCHOLAR"
     | "SENDGRID"
@@ -263,6 +265,7 @@ export const IntegrationName = {
     Posthog: "POSTHOG",
     Productboard: "PRODUCTBOARD",
     Reddit: "REDDIT",
+    Salesforce: "SALESFORCE",
     Semrush: "SEMRUSH",
     Semanticscholar: "SEMANTICSCHOLAR",
     Sendgrid: "SENDGRID",
