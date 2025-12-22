@@ -75,6 +75,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "POSTHOG",
         "PRODUCTBOARD",
         "REDDIT",
+        "SALESFORCE",
         "SEMRUSH",
         "SEMANTICSCHOLAR",
         "SENDGRID",
@@ -174,6 +175,7 @@ export declare namespace IntegrationName {
         | "POSTHOG"
         | "PRODUCTBOARD"
         | "REDDIT"
+        | "SALESFORCE"
         | "SEMRUSH"
         | "SEMANTICSCHOLAR"
         | "SENDGRID"
