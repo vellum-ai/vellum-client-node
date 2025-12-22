@@ -10,4 +10,5 @@ export type VellumNodeExecutionEvent =
     | Vellum.NodeExecutionFulfilledEvent
     | Vellum.NodeExecutionRejectedEvent
     | Vellum.NodeExecutionPausedEvent
-    | Vellum.NodeExecutionResumedEvent;
+    | Vellum.NodeExecutionResumedEvent
+    | Vellum.NodeExecutionLogEvent;

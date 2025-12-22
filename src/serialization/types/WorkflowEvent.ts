@@ -11,6 +11,7 @@ import { NodeExecutionFulfilledEvent } from "./NodeExecutionFulfilledEvent";
 import { NodeExecutionRejectedEvent } from "./NodeExecutionRejectedEvent";
 import { NodeExecutionPausedEvent } from "./NodeExecutionPausedEvent";
 import { NodeExecutionResumedEvent } from "./NodeExecutionResumedEvent";
+import { NodeExecutionLogEvent } from "./NodeExecutionLogEvent";
 import { WorkflowExecutionInitiatedEvent } from "./WorkflowExecutionInitiatedEvent";
 import { WorkflowExecutionStreamingEvent } from "./WorkflowExecutionStreamingEvent";
 import { WorkflowExecutionRejectedEvent } from "./WorkflowExecutionRejectedEvent";
@@ -27,6 +28,7 @@ export const WorkflowEvent: core.serialization.Schema<serializers.WorkflowEvent.
         NodeExecutionRejectedEvent,
         NodeExecutionPausedEvent,
         NodeExecutionResumedEvent,
+        NodeExecutionLogEvent,
         WorkflowExecutionInitiatedEvent,
         WorkflowExecutionStreamingEvent,
         WorkflowExecutionRejectedEvent,
@@ -44,6 +46,7 @@ export declare namespace WorkflowEvent {
         | NodeExecutionRejectedEvent.Raw
         | NodeExecutionPausedEvent.Raw
         | NodeExecutionResumedEvent.Raw
+        | NodeExecutionLogEvent.Raw
         | WorkflowExecutionInitiatedEvent.Raw
         | WorkflowExecutionStreamingEvent.Raw
         | WorkflowExecutionRejectedEvent.Raw
