@@ -11,6 +11,7 @@ import { NodeExecutionFulfilledEvent } from "./NodeExecutionFulfilledEvent";
 import { NodeExecutionRejectedEvent } from "./NodeExecutionRejectedEvent";
 import { NodeExecutionPausedEvent } from "./NodeExecutionPausedEvent";
 import { NodeExecutionResumedEvent } from "./NodeExecutionResumedEvent";
+import { NodeExecutionLogEvent } from "./NodeExecutionLogEvent";
 
 export const VellumNodeExecutionEvent: core.serialization.Schema<
     serializers.VellumNodeExecutionEvent.Raw,
@@ -22,6 +23,7 @@ export const VellumNodeExecutionEvent: core.serialization.Schema<
     NodeExecutionRejectedEvent,
     NodeExecutionPausedEvent,
     NodeExecutionResumedEvent,
+    NodeExecutionLogEvent,
 ]);
 
 export declare namespace VellumNodeExecutionEvent {
@@ -31,5 +33,6 @@ export declare namespace VellumNodeExecutionEvent {
         | NodeExecutionFulfilledEvent.Raw
         | NodeExecutionRejectedEvent.Raw
         | NodeExecutionPausedEvent.Raw
-        | NodeExecutionResumedEvent.Raw;
+        | NodeExecutionResumedEvent.Raw
+        | NodeExecutionLogEvent.Raw;
 }
