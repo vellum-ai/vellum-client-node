@@ -24,6 +24,7 @@ export const ComposioToolDefinition: core.serialization.ObjectSchema<
         "output_parameters",
         core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     ),
+    toolkitVersion: core.serialization.property("toolkit_version", core.serialization.string()),
 });
 
 export declare namespace ComposioToolDefinition {
@@ -35,5 +36,6 @@ export declare namespace ComposioToolDefinition {
         description: string;
         input_parameters: Record<string, unknown>;
         output_parameters: Record<string, unknown>;
+        toolkit_version: string;
     }
 }

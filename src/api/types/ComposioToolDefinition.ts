@@ -15,4 +15,5 @@ export interface ComposioToolDefinition {
     description: string;
     inputParameters: Record<string, unknown>;
     outputParameters: Record<string, unknown>;
+    toolkitVersion: string;
 }

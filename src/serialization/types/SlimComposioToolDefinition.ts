@@ -16,6 +16,7 @@ export const SlimComposioToolDefinition: core.serialization.ObjectSchema<
     name: core.serialization.string(),
     label: core.serialization.string(),
     description: core.serialization.string(),
+    toolkitVersion: core.serialization.property("toolkit_version", core.serialization.string()),
 });
 
 export declare namespace SlimComposioToolDefinition {
@@ -25,5 +26,6 @@ export declare namespace SlimComposioToolDefinition {
         name: string;
         label: string;
         description: string;
+        toolkit_version: string;
     }
 }
