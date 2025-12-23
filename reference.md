@@ -78,7 +78,7 @@ await client.submitWorkflowExecutionActuals({
 
 ## Integrations
 
-<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieveIntegrationToolDefinition</a>(integrationName, integrationProvider, toolName) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieveIntegrationToolDefinition</a>(integrationName, integrationProvider, toolName, { ...params }) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
 <dl>
 <dd>
 
@@ -124,6 +124,14 @@ await client.integrations.retrieveIntegrationToolDefinition("integration_name", 
 <dd>
 
 **toolName:** `string` — The tool's unique name, as specified by the integration provider
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.RetrieveIntegrationToolDefinitionRequest`
 
 </dd>
 </dl>
@@ -2675,7 +2683,7 @@ await client.integrationAuthConfigs.listIntegrationAuthConfigs();
 
 ## IntegrationProviders
 
-<details><summary><code>client.integrationProviders.<a href="/src/api/resources/integrationProviders/client/Client.ts">retrieveIntegrationProviderToolDefinition</a>(integrationName, integrationProvider, toolName) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
+<details><summary><code>client.integrationProviders.<a href="/src/api/resources/integrationProviders/client/Client.ts">retrieveIntegrationProviderToolDefinition</a>(integrationName, integrationProvider, toolName, { ...params }) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
 <dl>
 <dd>
 
@@ -2740,6 +2748,14 @@ await client.integrationProviders.retrieveIntegrationProviderToolDefinition(
 <dd>
 
 **toolName:** `string` — The tool's unique name, as specified by the integration provider
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.RetrieveIntegrationProviderToolDefinitionRequest`
 
 </dd>
 </dl>

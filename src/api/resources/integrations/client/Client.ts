@@ -40,6 +40,7 @@ export class Integrations {
      * @param {string} integrationName - The integration name
      * @param {string} integrationProvider - The integration provider name
      * @param {string} toolName - The tool's unique name, as specified by the integration provider
+     * @param {Vellum.RetrieveIntegrationToolDefinitionRequest} request
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vellum.NotFoundError}
@@ -51,10 +52,17 @@ export class Integrations {
         integrationName: string,
         integrationProvider: string,
         toolName: string,
+        request: Vellum.RetrieveIntegrationToolDefinitionRequest = {},
         requestOptions?: Integrations.RequestOptions,
     ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioToolDefinition> {
         return core.HttpResponsePromise.fromPromise(
-            this.__retrieveIntegrationToolDefinition(integrationName, integrationProvider, toolName, requestOptions),
+            this.__retrieveIntegrationToolDefinition(
+                integrationName,
+                integrationProvider,
+                toolName,
+                request,
+                requestOptions,
+            ),
         );
     }
 
@@ -62,8 +70,15 @@ export class Integrations {
         integrationName: string,
         integrationProvider: string,
         toolName: string,
+        request: Vellum.RetrieveIntegrationToolDefinitionRequest = {},
         requestOptions?: Integrations.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioToolDefinition>> {
+        const { toolkitVersion } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (toolkitVersion !== undefined) {
+            _queryParams["toolkit_version"] = toolkitVersion;
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -81,14 +96,15 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.16",
-                "User-Agent": "vellum-ai/1.11.16",
+                "X-Fern-SDK-Version": "1.12.2",
+                "User-Agent": "vellum-ai/1.12.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
@@ -195,8 +211,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.16",
-                "User-Agent": "vellum-ai/1.11.16",
+                "X-Fern-SDK-Version": "1.12.2",
+                "User-Agent": "vellum-ai/1.12.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -322,8 +338,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.16",
-                "User-Agent": "vellum-ai/1.11.16",
+                "X-Fern-SDK-Version": "1.12.2",
+                "User-Agent": "vellum-ai/1.12.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -410,8 +426,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.11.16",
-                "User-Agent": "vellum-ai/1.11.16",
+                "X-Fern-SDK-Version": "1.12.2",
+                "User-Agent": "vellum-ai/1.12.2",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

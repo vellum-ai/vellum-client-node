@@ -31,4 +31,8 @@ export interface ListIntegrationToolsRequest {
      * The search term to filter the tools by
      */
     search?: string | null;
+    /**
+     * The version of the toolkit to lookup. Pass 'latest' to get the latest version, or a specific version string to pin it. If not provided, uses the provider's default.
+     */
+    toolkitVersion?: string | null;
 }
