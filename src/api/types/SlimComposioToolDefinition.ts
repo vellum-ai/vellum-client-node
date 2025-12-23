@@ -10,4 +10,5 @@ export interface SlimComposioToolDefinition {
     name: string;
     label: string;
     description: string;
+    toolkitVersion: string;
 }
