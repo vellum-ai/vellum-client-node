@@ -9,4 +9,5 @@ export interface NodeExecutionFulfilledBody {
     invokedPorts?: Vellum.InvokedPort[] | null;
     outputs: Record<string, unknown>;
     mocked?: boolean | null;
+    redacted?: boolean | null;
 }
