@@ -16,6 +16,7 @@ export const NodeExecutionFulfilledBody: core.serialization.ObjectSchema<
     invokedPorts: core.serialization.property("invoked_ports", core.serialization.list(InvokedPort).optionalNullable()),
     outputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     mocked: core.serialization.boolean().optionalNullable(),
+    redacted: core.serialization.boolean().optionalNullable(),
 });
 
 export declare namespace NodeExecutionFulfilledBody {
@@ -24,5 +25,6 @@ export declare namespace NodeExecutionFulfilledBody {
         invoked_ports?: (InvokedPort.Raw[] | null) | null;
         outputs: Record<string, unknown>;
         mocked?: (boolean | null) | null;
+        redacted?: (boolean | null) | null;
     }
 }

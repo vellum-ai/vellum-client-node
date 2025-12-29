@@ -9,4 +9,5 @@ export interface WorkflowExecutionFulfilledBody {
     outputs: Record<string, unknown>;
     finalState?: Record<string, unknown> | null;
     serverMetadata?: Record<string, unknown> | null;
+    redacted?: boolean | null;
 }
