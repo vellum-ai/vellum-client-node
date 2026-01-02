@@ -76,6 +76,7 @@
  * * `SENDGRID` - SendGrid
  * * `SERPAPI` - Serp Api
  * * `SHARE_POINT` - SharePoint
+ * * `SHOPIFY` - Shopify
  * * `SHORTCUT` - Shortcut
  * * `SPOTIFY` - Spotify
  * * `STRIPE` - Stripe
@@ -99,6 +100,7 @@
  * * `ACTIVE_CAMPAIGN` - Active Campaign
  * * `CUSTOMER_IO` - Customer.io
  * * `SEGMENT` - Segment
+ * * `WHATSAPP` - WhatsApp
  */
 export type IntegrationName =
     | "SLACK"
@@ -174,6 +176,7 @@ export type IntegrationName =
     | "SENDGRID"
     | "SERPAPI"
     | "SHARE_POINT"
+    | "SHOPIFY"
     | "SHORTCUT"
     | "SPOTIFY"
     | "STRIPE"
@@ -196,7 +199,8 @@ export type IntegrationName =
     | "HEYREACH"
     | "ACTIVE_CAMPAIGN"
     | "CUSTOMER_IO"
-    | "SEGMENT";
+    | "SEGMENT"
+    | "WHATSAPP";
 export const IntegrationName = {
     Slack: "SLACK",
     Notion: "NOTION",
@@ -271,6 +275,7 @@ export const IntegrationName = {
     Sendgrid: "SENDGRID",
     Serpapi: "SERPAPI",
     SharePoint: "SHARE_POINT",
+    Shopify: "SHOPIFY",
     Shortcut: "SHORTCUT",
     Spotify: "SPOTIFY",
     Stripe: "STRIPE",
@@ -294,4 +299,5 @@ export const IntegrationName = {
     ActiveCampaign: "ACTIVE_CAMPAIGN",
     CustomerIo: "CUSTOMER_IO",
     Segment: "SEGMENT",
+    Whatsapp: "WHATSAPP",
 } as const;
