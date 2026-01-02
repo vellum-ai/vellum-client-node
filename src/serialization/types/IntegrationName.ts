@@ -81,6 +81,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "SENDGRID",
         "SERPAPI",
         "SHARE_POINT",
+        "SHOPIFY",
         "SHORTCUT",
         "SPOTIFY",
         "STRIPE",
@@ -104,6 +105,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "ACTIVE_CAMPAIGN",
         "CUSTOMER_IO",
         "SEGMENT",
+        "WHATSAPP",
     ]);
 
 export declare namespace IntegrationName {
@@ -181,6 +183,7 @@ export declare namespace IntegrationName {
         | "SENDGRID"
         | "SERPAPI"
         | "SHARE_POINT"
+        | "SHOPIFY"
         | "SHORTCUT"
         | "SPOTIFY"
         | "STRIPE"
@@ -203,5 +206,6 @@ export declare namespace IntegrationName {
         | "HEYREACH"
         | "ACTIVE_CAMPAIGN"
         | "CUSTOMER_IO"
-        | "SEGMENT";
+        | "SEGMENT"
+        | "WHATSAPP";
 }
