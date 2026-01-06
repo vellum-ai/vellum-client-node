@@ -52,6 +52,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "BITBUCKET",
         "BOX",
         "BREVO",
+        "BREX",
         "BROWSERBASE_TOOL",
         "CAL",
         "CANVAS",
@@ -154,6 +155,7 @@ export declare namespace IntegrationName {
         | "BITBUCKET"
         | "BOX"
         | "BREVO"
+        | "BREX"
         | "BROWSERBASE_TOOL"
         | "CAL"
         | "CANVAS"
