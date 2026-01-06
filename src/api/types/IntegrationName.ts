@@ -47,6 +47,7 @@
  * * `BITBUCKET` - Bitbucket
  * * `BOX` - Box
  * * `BREVO` - Brevo
+ * * `BREX` - Brex
  * * `BROWSERBASE_TOOL` - Browserbase Tool
  * * `CAL` - Cal
  * * `CANVAS` - Canvas
@@ -147,6 +148,7 @@ export type IntegrationName =
     | "BITBUCKET"
     | "BOX"
     | "BREVO"
+    | "BREX"
     | "BROWSERBASE_TOOL"
     | "CAL"
     | "CANVAS"
@@ -246,6 +248,7 @@ export const IntegrationName = {
     Bitbucket: "BITBUCKET",
     Box: "BOX",
     Brevo: "BREVO",
+    Brex: "BREX",
     BrowserbaseTool: "BROWSERBASE_TOOL",
     Cal: "CAL",
     Canvas: "CANVAS",
