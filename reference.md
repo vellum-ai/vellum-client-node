@@ -5036,6 +5036,70 @@ await client.workflows.retrieveState("span_id");
 </dl>
 </details>
 
+<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">workflowExecutionStatus</a>(executionId) -> Vellum.CheckWorkflowExecutionStatusResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Checks if a workflow execution is currently executing (not fulfilled, not rejected, and has no end time).
+Uses the ClickHouse Prime summary materialized view.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workflows.workflowExecutionStatus("execution_id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**executionId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Workflows.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">serializeWorkflowFiles</a>({ ...params }) -> Record<string, unknown></code></summary>
 <dl>
 <dd>
