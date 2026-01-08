@@ -84,6 +84,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "SHARE_POINT",
         "SHOPIFY",
         "SHORTCUT",
+        "SLACKBOT",
         "SPOTIFY",
         "STRIPE",
         "SUPABASE",
@@ -187,6 +188,7 @@ export declare namespace IntegrationName {
         | "SHARE_POINT"
         | "SHOPIFY"
         | "SHORTCUT"
+        | "SLACKBOT"
         | "SPOTIFY"
         | "STRIPE"
         | "SUPABASE"
