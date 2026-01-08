@@ -79,6 +79,7 @@
  * * `SHARE_POINT` - SharePoint
  * * `SHOPIFY` - Shopify
  * * `SHORTCUT` - Shortcut
+ * * `SLACKBOT` - Slackbot
  * * `SPOTIFY` - Spotify
  * * `STRIPE` - Stripe
  * * `SUPABASE` - Supabase
@@ -180,6 +181,7 @@ export type IntegrationName =
     | "SHARE_POINT"
     | "SHOPIFY"
     | "SHORTCUT"
+    | "SLACKBOT"
     | "SPOTIFY"
     | "STRIPE"
     | "SUPABASE"
@@ -280,6 +282,7 @@ export const IntegrationName = {
     SharePoint: "SHARE_POINT",
     Shopify: "SHOPIFY",
     Shortcut: "SHORTCUT",
+    Slackbot: "SLACKBOT",
     Spotify: "SPOTIFY",
     Stripe: "STRIPE",
     Supabase: "SUPABASE",

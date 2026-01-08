@@ -10,6 +10,7 @@ import * as Vellum from "../index";
 export interface CheckWorkflowExecutionStatusResponse {
     status: Vellum.WorkflowResultEventState;
     outputs?: Record<string, unknown> | null;
+    error?: Vellum.CheckWorkflowExecutionStatusError | null;
     executionId: string;
     executionDetailUrl?: string | null;
 }
