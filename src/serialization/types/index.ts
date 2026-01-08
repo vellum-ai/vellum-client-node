@@ -46,6 +46,7 @@ export * from "./ChatMessageContentRequest";
 export * from "./ChatMessagePromptBlock";
 export * from "./ChatMessageRequest";
 export * from "./ChatMessageRole";
+export * from "./CheckWorkflowExecutionStatusError";
 export * from "./CheckWorkflowExecutionStatusResponse";
 export * from "./CodeExecutionNodeArrayResult";
 export * from "./CodeExecutionNodeChatHistoryResult";

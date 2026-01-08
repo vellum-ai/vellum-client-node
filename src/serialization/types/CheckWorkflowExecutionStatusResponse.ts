@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { WorkflowResultEventState } from "./WorkflowResultEventState";
+import { CheckWorkflowExecutionStatusError } from "./CheckWorkflowExecutionStatusError";
 
 export const CheckWorkflowExecutionStatusResponse: core.serialization.ObjectSchema<
     serializers.CheckWorkflowExecutionStatusResponse.Raw,
@@ -13,6 +14,7 @@ export const CheckWorkflowExecutionStatusResponse: core.serialization.ObjectSche
 > = core.serialization.object({
     status: WorkflowResultEventState,
     outputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    error: CheckWorkflowExecutionStatusError.optionalNullable(),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
     executionDetailUrl: core.serialization.property(
         "execution_detail_url",
@@ -24,6 +26,7 @@ export declare namespace CheckWorkflowExecutionStatusResponse {
     export interface Raw {
         status: WorkflowResultEventState.Raw;
         outputs?: (Record<string, unknown> | null) | null;
+        error?: (CheckWorkflowExecutionStatusError.Raw | null) | null;
         execution_id: string;
         execution_detail_url?: (string | null) | null;
     }
