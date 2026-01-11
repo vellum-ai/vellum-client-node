@@ -34,8 +34,8 @@ jobs:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
       contents: read
+      id-token: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4

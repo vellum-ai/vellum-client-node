@@ -3,13 +3,15 @@
  */
 
 /**
+ * * `ANONYMOUS` - ANONYMOUS
  * * `WORKSPACE_API_KEY` - WORKSPACE_API_KEY
  * * `ENVIRONMENT_API_KEY` - ENVIRONMENT_API_KEY
  * * `JWT` - JWT
  * * `SERVICE_TOKEN` - SERVICE_TOKEN
  */
-export type ApiActorTypeEnum = "WORKSPACE_API_KEY" | "ENVIRONMENT_API_KEY" | "JWT" | "SERVICE_TOKEN";
+export type ApiActorTypeEnum = "ANONYMOUS" | "WORKSPACE_API_KEY" | "ENVIRONMENT_API_KEY" | "JWT" | "SERVICE_TOKEN";
 export const ApiActorTypeEnum = {
+    Anonymous: "ANONYMOUS",
     WorkspaceApiKey: "WORKSPACE_API_KEY",
     EnvironmentApiKey: "ENVIRONMENT_API_KEY",
     Jwt: "JWT",
