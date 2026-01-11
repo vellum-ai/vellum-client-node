@@ -15,7 +15,7 @@ export declare namespace TestSuites {
         environment?: core.Supplier<environments.VellumEnvironment | environments.VellumEnvironmentUrls>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
-        apiKey: core.Supplier<string>;
+        apiKey?: core.Supplier<string | undefined>;
         /** Override the X-API-Version header */
         apiVersion?: core.Supplier<Vellum.ApiVersionEnum | undefined>;
     }
@@ -35,7 +35,7 @@ export declare namespace TestSuites {
 }
 
 export class TestSuites {
-    constructor(protected readonly _options: TestSuites.Options) {}
+    constructor(protected readonly _options: TestSuites.Options = {}) {}
 
     /**
      * List the Test Cases associated with a Test Suite
@@ -84,11 +84,11 @@ export class TestSuites {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.12.12",
-                "User-Agent": "vellum-ai/1.12.12",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -198,11 +198,11 @@ export class TestSuites {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.12.12",
-                "User-Agent": "vellum-ai/1.12.12",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -284,11 +284,11 @@ export class TestSuites {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.12.12",
-                "User-Agent": "vellum-ai/1.12.12",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -390,11 +390,11 @@ export class TestSuites {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.12.12",
-                "User-Agent": "vellum-ai/1.12.12",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

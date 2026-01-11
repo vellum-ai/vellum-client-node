@@ -4243,6 +4243,93 @@ await client.workflowDeployments.retrieve("id");
 </dl>
 </details>
 
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">executeStream</a>(id, { ...params }) -> core.Stream<Vellum.WorkflowEvent></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Executes a deployed Workflow and streams back its results.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.workflowDeployments.executeStream("id", {
+    inputs: [
+        {
+            name: "x",
+            type: "STRING",
+            value: "value",
+        },
+        {
+            name: "x",
+            type: "STRING",
+            value: "value",
+        },
+    ],
+});
+for await (const item of response) {
+    console.log(item);
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Either the Workflow Deployment's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.ExecuteWorkflowDeploymentStreamRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WorkflowDeployments.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">listWorkflowDeploymentEventExecutions</a>(id, { ...params }) -> Vellum.WorkflowDeploymentEventExecutionsResponse</code></summary>
 <dl>
 <dd>
