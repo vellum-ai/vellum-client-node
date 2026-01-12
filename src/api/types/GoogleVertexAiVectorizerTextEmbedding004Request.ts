@@ -5,6 +5,5 @@
 import * as Vellum from "../index";
 
 export interface GoogleVertexAiVectorizerTextEmbedding004Request {
-    modelName: "text-embedding-004";
     config: Vellum.GoogleVertexAiVectorizerConfigRequest;
 }

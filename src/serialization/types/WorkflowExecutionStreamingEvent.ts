@@ -14,7 +14,6 @@ export const WorkflowExecutionStreamingEvent: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    name: core.serialization.stringLiteral("workflow.execution.streaming"),
     body: WorkflowExecutionStreamingBody,
     id: core.serialization.string(),
     timestamp: core.serialization.date(),
@@ -27,7 +26,6 @@ export declare namespace WorkflowExecutionStreamingEvent {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        name: "workflow.execution.streaming";
         body: WorkflowExecutionStreamingBody.Raw;
         id: string;
         timestamp: string;

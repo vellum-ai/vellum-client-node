@@ -10,15 +10,13 @@ export const TestSuiteRunMetricArrayOutput: core.serialization.ObjectSchema<
     serializers.TestSuiteRunMetricArrayOutput.Raw,
     Vellum.TestSuiteRunMetricArrayOutput
 > = core.serialization.object({
-    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
-    type: core.serialization.stringLiteral("ARRAY"),
+    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).nullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace TestSuiteRunMetricArrayOutput {
     export interface Raw {
-        value?: (serializers.VellumValue.Raw[] | null) | null;
-        type: "ARRAY";
+        value: serializers.VellumValue.Raw[] | null;
         name: string;
     }
 }

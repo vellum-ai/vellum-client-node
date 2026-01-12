@@ -12,14 +12,12 @@ export const TestSuiteTestCaseReplaceBulkOperationRequest: core.serialization.Ob
     Vellum.TestSuiteTestCaseReplaceBulkOperationRequest
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("REPLACE"),
     data: ReplaceTestSuiteTestCaseRequest,
 });
 
 export declare namespace TestSuiteTestCaseReplaceBulkOperationRequest {
     export interface Raw {
         id: string;
-        type: "REPLACE";
         data: ReplaceTestSuiteTestCaseRequest.Raw;
     }
 }

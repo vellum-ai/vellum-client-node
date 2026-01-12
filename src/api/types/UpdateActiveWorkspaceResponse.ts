@@ -4,9 +4,9 @@
 
 export interface UpdateActiveWorkspaceResponse {
     /** The id of the workspace that the user should update to, or null if no workspace change needed. */
-    updateActiveWorkspaceId?: string | null;
+    updateActiveWorkspaceId: string | null;
     /** The id of the environment that the user should update to, or null if no environment change needed. */
-    updateActiveEnvironmentId?: string | null;
+    updateActiveEnvironmentId: string | null;
     /** Whether or not the user is a staff member of Vellum. */
     isStaff?: boolean;
 }

@@ -16,23 +16,56 @@ import { DocumentInputRequest } from "./DocumentInputRequest";
 export const PromptDeploymentInputRequest: core.serialization.Schema<
     serializers.PromptDeploymentInputRequest.Raw,
     Vellum.PromptDeploymentInputRequest
-> = core.serialization.undiscriminatedUnion([
-    StringInputRequest,
-    JsonInputRequest,
-    ChatHistoryInputRequest,
-    AudioInputRequest,
-    VideoInputRequest,
-    ImageInputRequest,
-    DocumentInputRequest,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: StringInputRequest,
+        JSON: JsonInputRequest,
+        CHAT_HISTORY: ChatHistoryInputRequest,
+        AUDIO: AudioInputRequest,
+        VIDEO: VideoInputRequest,
+        IMAGE: ImageInputRequest,
+        DOCUMENT: DocumentInputRequest,
+    })
+    .transform<Vellum.PromptDeploymentInputRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PromptDeploymentInputRequest {
     export type Raw =
-        | StringInputRequest.Raw
-        | JsonInputRequest.Raw
-        | ChatHistoryInputRequest.Raw
-        | AudioInputRequest.Raw
-        | VideoInputRequest.Raw
-        | ImageInputRequest.Raw
-        | DocumentInputRequest.Raw;
+        | PromptDeploymentInputRequest.String
+        | PromptDeploymentInputRequest.Json
+        | PromptDeploymentInputRequest.ChatHistory
+        | PromptDeploymentInputRequest.Audio
+        | PromptDeploymentInputRequest.Video
+        | PromptDeploymentInputRequest.Image
+        | PromptDeploymentInputRequest.Document;
+
+    export interface String extends StringInputRequest.Raw {
+        type: "STRING";
+    }
+
+    export interface Json extends JsonInputRequest.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends ChatHistoryInputRequest.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Audio extends AudioInputRequest.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends VideoInputRequest.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends ImageInputRequest.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends DocumentInputRequest.Raw {
+        type: "DOCUMENT";
+    }
 }

@@ -9,6 +9,5 @@ import * as Vellum from "../index";
  */
 export interface FolderEntityDocumentIndex {
     id: string;
-    type: "DOCUMENT_INDEX";
     data: Vellum.FolderEntityDocumentIndexData;
 }

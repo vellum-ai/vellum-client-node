@@ -12,7 +12,6 @@ export const ExternalParentContext: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    type: core.serialization.stringLiteral("EXTERNAL"),
     spanId: core.serialization.property("span_id", core.serialization.string()),
 });
 
@@ -20,7 +19,6 @@ export declare namespace ExternalParentContext {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        type: "EXTERNAL";
         span_id: string;
     }
 }

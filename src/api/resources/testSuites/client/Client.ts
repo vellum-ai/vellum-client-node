@@ -62,12 +62,12 @@ export class TestSuites {
     ): Promise<core.WithRawResponse<Vellum.PaginatedTestSuiteTestCaseList>> {
         const { limit, offset } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
         }
 
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
+        if (offset != null) {
+            _queryParams["offset"] = offset.toString();
         }
 
         const _response = await core.fetcher({
@@ -84,11 +84,11 @@ export class TestSuites {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -155,20 +155,22 @@ export class TestSuites {
      *
      * @example
      *     await client.testSuites.upsertTestSuiteTestCase("id", {
-     *         inputValues: [{
-     *                 type: "STRING",
-     *                 name: "x"
-     *             }, {
-     *                 type: "STRING",
-     *                 name: "x"
-     *             }],
-     *         evaluationValues: [{
-     *                 type: "STRING",
-     *                 name: "x"
-     *             }, {
-     *                 type: "STRING",
-     *                 name: "x"
-     *             }]
+     *         body: {
+     *             inputValues: [{
+     *                     type: "STRING",
+     *                     name: "x"
+     *                 }, {
+     *                     type: "STRING",
+     *                     name: "x"
+     *                 }],
+     *             evaluationValues: [{
+     *                     type: "STRING",
+     *                     name: "x"
+     *                 }, {
+     *                     type: "STRING",
+     *                     name: "x"
+     *                 }]
+     *         }
      *     })
      */
     public upsertTestSuiteTestCase(
@@ -198,11 +200,11 @@ export class TestSuites {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -210,7 +212,9 @@ export class TestSuites {
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.UpsertTestSuiteTestCaseRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
+            body: serializers.UpsertTestSuiteTestCaseRequestBody.jsonOrThrow(request, {
+                unrecognizedObjectKeys: "strip",
+            }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -259,7 +263,7 @@ export class TestSuites {
      */
     public testSuiteTestCasesBulk(
         id: string,
-        request: Vellum.TestSuiteTestCaseBulkOperationRequest[],
+        request: Vellum.TestSuiteTestCasesBulkRequest,
         requestOptions?: TestSuites.RequestOptions,
     ): core.HttpResponsePromise<core.Stream<Vellum.TestSuiteTestCaseBulkResult[]>> {
         return core.HttpResponsePromise.fromPromise(this.__testSuiteTestCasesBulk(id, request, requestOptions));
@@ -267,7 +271,7 @@ export class TestSuites {
 
     private async __testSuiteTestCasesBulk(
         id: string,
-        request: Vellum.TestSuiteTestCaseBulkOperationRequest[],
+        request: Vellum.TestSuiteTestCasesBulkRequest,
         requestOptions?: TestSuites.RequestOptions,
     ): Promise<core.WithRawResponse<core.Stream<Vellum.TestSuiteTestCaseBulkResult[]>>> {
         const _response = await core.fetcher<stream.Readable>({
@@ -284,11 +288,11 @@ export class TestSuites {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -358,6 +362,7 @@ export class TestSuites {
      *
      * @param {string} id - Either the Test Suites' ID or its unique name
      * @param {string} testCaseId - An id identifying the test case that you'd like to delete
+     * @param {Vellum.DeleteTestSuiteTestCaseRequest} request
      * @param {TestSuites.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -366,14 +371,18 @@ export class TestSuites {
     public deleteTestSuiteTestCase(
         id: string,
         testCaseId: string,
+        request: Vellum.DeleteTestSuiteTestCaseRequest = {},
         requestOptions?: TestSuites.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteTestSuiteTestCase(id, testCaseId, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__deleteTestSuiteTestCase(id, testCaseId, request, requestOptions),
+        );
     }
 
     private async __deleteTestSuiteTestCase(
         id: string,
         testCaseId: string,
+        request: Vellum.DeleteTestSuiteTestCaseRequest = {},
         requestOptions?: TestSuites.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _response = await core.fetcher({
@@ -390,11 +399,11 @@ export class TestSuites {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

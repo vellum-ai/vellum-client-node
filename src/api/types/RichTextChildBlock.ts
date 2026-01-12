@@ -4,4 +4,14 @@
 
 import * as Vellum from "../index";
 
-export type RichTextChildBlock = Vellum.VariablePromptBlock | Vellum.PlainTextPromptBlock;
+export type RichTextChildBlock = Vellum.RichTextChildBlock.Variable | Vellum.RichTextChildBlock.PlainText;
+
+export namespace RichTextChildBlock {
+    export interface Variable extends Vellum.VariablePromptBlock {
+        blockType: "VARIABLE";
+    }
+
+    export interface PlainText extends Vellum.PlainTextPromptBlock {
+        blockType: "PLAIN_TEXT";
+    }
+}

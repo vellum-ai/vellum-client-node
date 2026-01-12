@@ -5,10 +5,40 @@
 import * as Vellum from "../index";
 
 export type VellumWorkflowExecutionEvent =
-    | Vellum.WorkflowExecutionInitiatedEvent
-    | Vellum.WorkflowExecutionStreamingEvent
-    | Vellum.WorkflowExecutionFulfilledEvent
-    | Vellum.WorkflowExecutionRejectedEvent
-    | Vellum.WorkflowExecutionPausedEvent
-    | Vellum.WorkflowExecutionResumedEvent
-    | Vellum.WorkflowExecutionSnapshottedEvent;
+    | Vellum.VellumWorkflowExecutionEvent.WorkflowExecutionInitiated
+    | Vellum.VellumWorkflowExecutionEvent.WorkflowExecutionStreaming
+    | Vellum.VellumWorkflowExecutionEvent.WorkflowExecutionFulfilled
+    | Vellum.VellumWorkflowExecutionEvent.WorkflowExecutionRejected
+    | Vellum.VellumWorkflowExecutionEvent.WorkflowExecutionPaused
+    | Vellum.VellumWorkflowExecutionEvent.WorkflowExecutionResumed
+    | Vellum.VellumWorkflowExecutionEvent.WorkflowExecutionSnapshotted;
+
+export namespace VellumWorkflowExecutionEvent {
+    export interface WorkflowExecutionInitiated extends Vellum.WorkflowExecutionInitiatedEvent {
+        name: "workflow.execution.initiated";
+    }
+
+    export interface WorkflowExecutionStreaming extends Vellum.WorkflowExecutionStreamingEvent {
+        name: "workflow.execution.streaming";
+    }
+
+    export interface WorkflowExecutionFulfilled extends Vellum.WorkflowExecutionFulfilledEvent {
+        name: "workflow.execution.fulfilled";
+    }
+
+    export interface WorkflowExecutionRejected extends Vellum.WorkflowExecutionRejectedEvent {
+        name: "workflow.execution.rejected";
+    }
+
+    export interface WorkflowExecutionPaused extends Vellum.WorkflowExecutionPausedEvent {
+        name: "workflow.execution.paused";
+    }
+
+    export interface WorkflowExecutionResumed extends Vellum.WorkflowExecutionResumedEvent {
+        name: "workflow.execution.resumed";
+    }
+
+    export interface WorkflowExecutionSnapshotted extends Vellum.WorkflowExecutionSnapshottedEvent {
+        name: "workflow.execution.snapshotted";
+    }
+}

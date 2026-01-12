@@ -9,6 +9,5 @@ import * as Vellum from "../index";
  */
 export interface FolderEntityDataset {
     id: string;
-    type: "DATASET";
     data: Vellum.FolderEntityDatasetData;
 }

@@ -6,3 +6,6 @@
  * * `EPHEMERAL` - EPHEMERAL
  */
 export type EphemeralPromptCacheConfigTypeEnum = "EPHEMERAL";
+export const EphemeralPromptCacheConfigTypeEnum = {
+    Ephemeral: "EPHEMERAL",
+} as const;

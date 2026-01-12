@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A value representing Search Results.
  */
 export interface SearchResultsVellumValue {
-    type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[] | null;
+    value: Vellum.SearchResult[] | null;
 }

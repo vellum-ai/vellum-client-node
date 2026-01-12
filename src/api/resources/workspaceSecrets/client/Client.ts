@@ -40,6 +40,7 @@ export class WorkspaceSecrets {
      * Used to retrieve a Workspace Secret given its ID or name.
      *
      * @param {string} id - Either the Workspace Secret's ID or its unique name
+     * @param {Vellum.WorkspaceSecretsRetrieveRequest} request
      * @param {WorkspaceSecrets.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -47,13 +48,15 @@ export class WorkspaceSecrets {
      */
     public retrieve(
         id: string,
+        request: Vellum.WorkspaceSecretsRetrieveRequest = {},
         requestOptions?: WorkspaceSecrets.RequestOptions,
     ): core.HttpResponsePromise<Vellum.WorkspaceSecretRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.WorkspaceSecretsRetrieveRequest = {},
         requestOptions?: WorkspaceSecrets.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.WorkspaceSecretRead>> {
         const _response = await core.fetcher({
@@ -70,11 +73,11 @@ export class WorkspaceSecrets {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -160,11 +163,11 @@ export class WorkspaceSecrets {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -11,16 +11,11 @@ export const GoogleVertexAiVectorizerTextMultilingualEmbedding002: core.serializ
     serializers.GoogleVertexAiVectorizerTextMultilingualEmbedding002.Raw,
     Vellum.GoogleVertexAiVectorizerTextMultilingualEmbedding002
 > = core.serialization.object({
-    modelName: core.serialization.property(
-        "model_name",
-        core.serialization.stringLiteral("text-multilingual-embedding-002"),
-    ),
     config: GoogleVertexAiVectorizerConfig,
 });
 
 export declare namespace GoogleVertexAiVectorizerTextMultilingualEmbedding002 {
     export interface Raw {
-        model_name: "text-multilingual-embedding-002";
         config: GoogleVertexAiVectorizerConfig.Raw;
     }
 }

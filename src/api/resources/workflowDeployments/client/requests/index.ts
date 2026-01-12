@@ -1,6 +1,11 @@
 export { type WorkflowDeploymentsListRequest } from "./WorkflowDeploymentsListRequest";
+export { type WorkflowDeploymentsRetrieveRequest } from "./WorkflowDeploymentsRetrieveRequest";
 export { type ExecuteWorkflowDeploymentStreamRequest } from "./ExecuteWorkflowDeploymentStreamRequest";
 export { type ListWorkflowDeploymentEventExecutionsRequest } from "./ListWorkflowDeploymentEventExecutionsRequest";
+export { type WorkflowDeploymentEventExecutionRequest } from "./WorkflowDeploymentEventExecutionRequest";
+export { type WorkflowDeploymentHistoryItemRetrieveRequest } from "./WorkflowDeploymentHistoryItemRetrieveRequest";
 export { type ListWorkflowReleaseTagsRequest } from "./ListWorkflowReleaseTagsRequest";
+export { type RetrieveWorkflowReleaseTagRequest } from "./RetrieveWorkflowReleaseTagRequest";
 export { type PatchedWorkflowReleaseTagUpdateRequest } from "./PatchedWorkflowReleaseTagUpdateRequest";
 export { type ListWorkflowDeploymentReleasesRequest } from "./ListWorkflowDeploymentReleasesRequest";
+export { type RetrieveWorkflowDeploymentReleaseRequest } from "./RetrieveWorkflowDeploymentReleaseRequest";

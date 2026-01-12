@@ -11,6 +11,5 @@ export interface ExecutionThinkingVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    type: "THINKING";
-    value?: Vellum.StringVellumValue | null;
+    value: Vellum.StringVellumValue | null;
 }

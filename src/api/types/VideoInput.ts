@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface VideoInput {
     /** The variable's name */
     name: string;
-    type: "VIDEO";
     value: Vellum.VellumVideo;
 }

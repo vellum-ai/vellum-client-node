@@ -9,6 +9,5 @@ import * as Vellum from "../index";
  */
 export interface FolderEntityWorkflowSandbox {
     id: string;
-    type: "WORKFLOW_SANDBOX";
     data: Vellum.FolderEntityWorkflowSandboxData;
 }

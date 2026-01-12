@@ -12,14 +12,12 @@ export const PromptRequestImageInput: core.serialization.ObjectSchema<
     Vellum.PromptRequestImageInput
 > = core.serialization.object({
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("IMAGE"),
     value: VellumImage,
 });
 
 export declare namespace PromptRequestImageInput {
     export interface Raw {
         key: string;
-        type: "IMAGE";
         value: VellumImage.Raw;
     }
 }

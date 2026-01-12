@@ -12,16 +12,14 @@ export const NodeOutputCompiledErrorValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledErrorValue.Raw,
     Vellum.NodeOutputCompiledErrorValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("ERROR"),
-    value: VellumError.optionalNullable(),
+    value: VellumError.nullable(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledErrorValue {
     export interface Raw {
-        type: "ERROR";
-        value?: (VellumError.Raw | null) | null;
+        value: VellumError.Raw | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

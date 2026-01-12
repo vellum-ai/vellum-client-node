@@ -12,14 +12,12 @@ export const FunctionCallInput: core.serialization.ObjectSchema<
     Vellum.FunctionCallInput
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("FUNCTION_CALL"),
     value: FunctionCall,
 });
 
 export declare namespace FunctionCallInput {
     export interface Raw {
         name: string;
-        type: "FUNCTION_CALL";
         value: FunctionCall.Raw;
     }
 }

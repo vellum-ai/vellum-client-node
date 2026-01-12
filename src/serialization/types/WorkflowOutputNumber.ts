@@ -12,15 +12,13 @@ export const WorkflowOutputNumber: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("NUMBER"),
-    value: core.serialization.number().optionalNullable(),
+    value: core.serialization.number().nullable(),
 });
 
 export declare namespace WorkflowOutputNumber {
     export interface Raw {
         id: string;
         name: string;
-        type: "NUMBER";
-        value?: (number | null) | null;
+        value: number | null;
     }
 }

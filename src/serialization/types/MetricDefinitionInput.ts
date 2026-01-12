@@ -13,8 +13,38 @@ import { NumberInput } from "./NumberInput";
 export const MetricDefinitionInput: core.serialization.Schema<
     serializers.MetricDefinitionInput.Raw,
     Vellum.MetricDefinitionInput
-> = core.serialization.undiscriminatedUnion([StringInput, JsonInput, ChatHistoryInput, NumberInput]);
+> = core.serialization
+    .union("type", {
+        STRING: StringInput,
+        JSON: JsonInput,
+        CHAT_HISTORY: ChatHistoryInput,
+        NUMBER: NumberInput,
+    })
+    .transform<Vellum.MetricDefinitionInput>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace MetricDefinitionInput {
-    export type Raw = StringInput.Raw | JsonInput.Raw | ChatHistoryInput.Raw | NumberInput.Raw;
+    export type Raw =
+        | MetricDefinitionInput.String
+        | MetricDefinitionInput.Json
+        | MetricDefinitionInput.ChatHistory
+        | MetricDefinitionInput.Number;
+
+    export interface String extends StringInput.Raw {
+        type: "STRING";
+    }
+
+    export interface Json extends JsonInput.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends ChatHistoryInput.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Number extends NumberInput.Raw {
+        type: "NUMBER";
+    }
 }

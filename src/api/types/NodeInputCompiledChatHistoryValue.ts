@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledChatHistoryValue {
     nodeInputId: string;
     key: string;
-    type: "CHAT_HISTORY";
-    value?: Vellum.ChatMessage[] | null;
+    value: Vellum.ChatMessage[] | null;
 }

@@ -9,6 +9,5 @@ import * as Vellum from "../index";
  */
 export interface FolderEntityTestSuite {
     id: string;
-    type: "TEST_SUITE";
     data: Vellum.FolderEntityTestSuiteData;
 }

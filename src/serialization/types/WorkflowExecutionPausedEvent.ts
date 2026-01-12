@@ -14,7 +14,6 @@ export const WorkflowExecutionPausedEvent: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    name: core.serialization.stringLiteral("workflow.execution.paused"),
     body: WorkflowExecutionPausedBody,
     id: core.serialization.string(),
     timestamp: core.serialization.date(),
@@ -27,7 +26,6 @@ export declare namespace WorkflowExecutionPausedEvent {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        name: "workflow.execution.paused";
         body: WorkflowExecutionPausedBody.Raw;
         id: string;
         timestamp: string;

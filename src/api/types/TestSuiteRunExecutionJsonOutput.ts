@@ -7,7 +7,6 @@
  */
 export interface TestSuiteRunExecutionJsonOutput {
     name: string;
-    type: "JSON";
-    value?: unknown;
+    value: unknown | null;
     outputVariableId: string;
 }

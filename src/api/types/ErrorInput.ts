@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface ErrorInput {
     /** The variable's name */
     name: string;
-    type: "ERROR";
     value: Vellum.VellumError;
 }

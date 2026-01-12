@@ -9,7 +9,6 @@ import * as Vellum from "../index";
  */
 export interface FulfilledExecuteWorkflowWorkflowResultEvent {
     id: string;
-    state: "FULFILLED";
     ts: Date;
     outputs: Vellum.WorkflowOutput[];
 }

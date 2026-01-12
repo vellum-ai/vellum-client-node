@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * An image value that is used in a chat message.
  */
 export interface ImageChatMessageContent {
-    type: "IMAGE";
     value: Vellum.VellumImage;
 }

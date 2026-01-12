@@ -13,15 +13,13 @@ export const TestCaseFunctionCallVariableValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optionalNullable(),
+    value: FunctionCall.nullable(),
 });
 
 export declare namespace TestCaseFunctionCallVariableValue {
     export interface Raw {
         variable_id: string;
         name: string;
-        type: "FUNCTION_CALL";
-        value?: (FunctionCall.Raw | null) | null;
+        value: FunctionCall.Raw | null;
     }
 }

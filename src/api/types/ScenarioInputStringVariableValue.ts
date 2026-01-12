@@ -6,7 +6,6 @@
  * Prompt Sandbox Scenario input value that is of type STRING
  */
 export interface ScenarioInputStringVariableValue {
-    type: "STRING";
-    value?: string | null;
+    value: string | null;
     inputVariableId: string;
 }

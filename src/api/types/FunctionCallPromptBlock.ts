@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A block that represents a function call in a prompt template.
  */
 export interface FunctionCallPromptBlock {
-    blockType: "FUNCTION_CALL";
     state?: Vellum.PromptBlockState;
     cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     id?: string | null;

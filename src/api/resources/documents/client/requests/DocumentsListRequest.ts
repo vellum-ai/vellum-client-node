@@ -10,21 +10,21 @@ export interface DocumentsListRequest {
     /**
      * Filter down to only those documents that are included in the specified index. You may provide either the Vellum-generated ID or the unique name of the index specified upon initial creation.
      */
-    documentIndexId?: string | null;
+    documentIndexId?: string;
     /**
      * Number of results to return per page.
      */
-    limit?: number | null;
+    limit?: number;
     /**
      * The initial index from which to return the results.
      */
-    offset?: number | null;
+    offset?: number;
     /**
      * Which field to use when ordering the results.
      */
-    ordering?: string | null;
+    ordering?: string;
     /**
      * A search term.
      */
-    search?: string | null;
+    search?: string;
 }

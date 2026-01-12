@@ -17,8 +17,7 @@ export const WorkflowResultEventOutputDataChatHistory: core.serialization.Object
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string().optionalNullable()),
     delta: core.serialization.string().optionalNullable(),
-    type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optionalNullable(),
+    value: core.serialization.list(ChatMessage).nullable(),
 });
 
 export declare namespace WorkflowResultEventOutputDataChatHistory {
@@ -28,7 +27,6 @@ export declare namespace WorkflowResultEventOutputDataChatHistory {
         state: WorkflowNodeResultEventState.Raw;
         node_id?: (string | null) | null;
         delta?: (string | null) | null;
-        type: "CHAT_HISTORY";
-        value?: (ChatMessage.Raw[] | null) | null;
+        value: ChatMessage.Raw[] | null;
     }
 }

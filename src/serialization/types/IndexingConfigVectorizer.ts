@@ -21,33 +21,88 @@ import { PrivateVectorizer } from "./PrivateVectorizer";
 export const IndexingConfigVectorizer: core.serialization.Schema<
     serializers.IndexingConfigVectorizer.Raw,
     Vellum.IndexingConfigVectorizer
-> = core.serialization.undiscriminatedUnion([
-    OpenAiVectorizerTextEmbedding3Small,
-    OpenAiVectorizerTextEmbedding3Large,
-    OpenAiVectorizerTextEmbeddingAda002,
-    BasicVectorizerIntfloatMultilingualE5Large,
-    BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1,
-    BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1,
-    HkunlpInstructorXlVectorizer,
-    GoogleVertexAiVectorizerTextEmbedding004,
-    GoogleVertexAiVectorizerTextMultilingualEmbedding002,
-    GoogleVertexAiVectorizerGeminiEmbedding001,
-    FastEmbedVectorizerBaaiBgeSmallEnV15,
-    PrivateVectorizer,
-]);
+> = core.serialization
+    .union(core.serialization.discriminant("modelName", "model_name"), {
+        "text-embedding-3-small": OpenAiVectorizerTextEmbedding3Small,
+        "text-embedding-3-large": OpenAiVectorizerTextEmbedding3Large,
+        "text-embedding-ada-002": OpenAiVectorizerTextEmbeddingAda002,
+        "intfloat/multilingual-e5-large": BasicVectorizerIntfloatMultilingualE5Large,
+        "sentence-transformers/multi-qa-mpnet-base-cos-v1": BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1,
+        "sentence-transformers/multi-qa-mpnet-base-dot-v1": BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1,
+        "hkunlp/instructor-xl": HkunlpInstructorXlVectorizer,
+        "text-embedding-004": GoogleVertexAiVectorizerTextEmbedding004,
+        "text-multilingual-embedding-002": GoogleVertexAiVectorizerTextMultilingualEmbedding002,
+        "gemini-embedding-001": GoogleVertexAiVectorizerGeminiEmbedding001,
+        "BAAI/bge-small-en-v1.5": FastEmbedVectorizerBaaiBgeSmallEnV15,
+        "private-vectorizer": PrivateVectorizer,
+    })
+    .transform<Vellum.IndexingConfigVectorizer>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace IndexingConfigVectorizer {
     export type Raw =
-        | OpenAiVectorizerTextEmbedding3Small.Raw
-        | OpenAiVectorizerTextEmbedding3Large.Raw
-        | OpenAiVectorizerTextEmbeddingAda002.Raw
-        | BasicVectorizerIntfloatMultilingualE5Large.Raw
-        | BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1.Raw
-        | BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1.Raw
-        | HkunlpInstructorXlVectorizer.Raw
-        | GoogleVertexAiVectorizerTextEmbedding004.Raw
-        | GoogleVertexAiVectorizerTextMultilingualEmbedding002.Raw
-        | GoogleVertexAiVectorizerGeminiEmbedding001.Raw
-        | FastEmbedVectorizerBaaiBgeSmallEnV15.Raw
-        | PrivateVectorizer.Raw;
+        | IndexingConfigVectorizer.TextEmbedding3Small
+        | IndexingConfigVectorizer.TextEmbedding3Large
+        | IndexingConfigVectorizer.TextEmbeddingAda002
+        | IndexingConfigVectorizer.IntfloatMultilingualE5Large
+        | IndexingConfigVectorizer.SentenceTransformersMultiQaMpnetBaseCosV1
+        | IndexingConfigVectorizer.SentenceTransformersMultiQaMpnetBaseDotV1
+        | IndexingConfigVectorizer.HkunlpInstructorXl
+        | IndexingConfigVectorizer.TextEmbedding004
+        | IndexingConfigVectorizer.TextMultilingualEmbedding002
+        | IndexingConfigVectorizer.GeminiEmbedding001
+        | IndexingConfigVectorizer.BaaiBgeSmallEnV15
+        | IndexingConfigVectorizer.PrivateVectorizer;
+
+    export interface TextEmbedding3Small extends OpenAiVectorizerTextEmbedding3Small.Raw {
+        model_name: "text-embedding-3-small";
+    }
+
+    export interface TextEmbedding3Large extends OpenAiVectorizerTextEmbedding3Large.Raw {
+        model_name: "text-embedding-3-large";
+    }
+
+    export interface TextEmbeddingAda002 extends OpenAiVectorizerTextEmbeddingAda002.Raw {
+        model_name: "text-embedding-ada-002";
+    }
+
+    export interface IntfloatMultilingualE5Large extends BasicVectorizerIntfloatMultilingualE5Large.Raw {
+        model_name: "intfloat/multilingual-e5-large";
+    }
+
+    export interface SentenceTransformersMultiQaMpnetBaseCosV1
+        extends BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1.Raw {
+        model_name: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
+    }
+
+    export interface SentenceTransformersMultiQaMpnetBaseDotV1
+        extends BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1.Raw {
+        model_name: "sentence-transformers/multi-qa-mpnet-base-dot-v1";
+    }
+
+    export interface HkunlpInstructorXl extends HkunlpInstructorXlVectorizer.Raw {
+        model_name: "hkunlp/instructor-xl";
+    }
+
+    export interface TextEmbedding004 extends GoogleVertexAiVectorizerTextEmbedding004.Raw {
+        model_name: "text-embedding-004";
+    }
+
+    export interface TextMultilingualEmbedding002 extends GoogleVertexAiVectorizerTextMultilingualEmbedding002.Raw {
+        model_name: "text-multilingual-embedding-002";
+    }
+
+    export interface GeminiEmbedding001 extends GoogleVertexAiVectorizerGeminiEmbedding001.Raw {
+        model_name: "gemini-embedding-001";
+    }
+
+    export interface BaaiBgeSmallEnV15 extends FastEmbedVectorizerBaaiBgeSmallEnV15.Raw {
+        model_name: "BAAI/bge-small-en-v1.5";
+    }
+
+    export interface PrivateVectorizer extends PrivateVectorizer.Raw {
+        model_name: "private-vectorizer";
+    }
 }

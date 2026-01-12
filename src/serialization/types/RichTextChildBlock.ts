@@ -11,8 +11,24 @@ import { PlainTextPromptBlock } from "./PlainTextPromptBlock";
 export const RichTextChildBlock: core.serialization.Schema<
     serializers.RichTextChildBlock.Raw,
     Vellum.RichTextChildBlock
-> = core.serialization.undiscriminatedUnion([VariablePromptBlock, PlainTextPromptBlock]);
+> = core.serialization
+    .union(core.serialization.discriminant("blockType", "block_type"), {
+        VARIABLE: VariablePromptBlock,
+        PLAIN_TEXT: PlainTextPromptBlock,
+    })
+    .transform<Vellum.RichTextChildBlock>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace RichTextChildBlock {
-    export type Raw = VariablePromptBlock.Raw | PlainTextPromptBlock.Raw;
+    export type Raw = RichTextChildBlock.Variable | RichTextChildBlock.PlainText;
+
+    export interface Variable extends VariablePromptBlock.Raw {
+        block_type: "VARIABLE";
+    }
+
+    export interface PlainText extends PlainTextPromptBlock.Raw {
+        block_type: "PLAIN_TEXT";
+    }
 }

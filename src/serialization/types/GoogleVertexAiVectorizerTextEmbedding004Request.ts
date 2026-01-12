@@ -11,13 +11,11 @@ export const GoogleVertexAiVectorizerTextEmbedding004Request: core.serialization
     serializers.GoogleVertexAiVectorizerTextEmbedding004Request.Raw,
     Vellum.GoogleVertexAiVectorizerTextEmbedding004Request
 > = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.stringLiteral("text-embedding-004")),
     config: GoogleVertexAiVectorizerConfigRequest,
 });
 
 export declare namespace GoogleVertexAiVectorizerTextEmbedding004Request {
     export interface Raw {
-        model_name: "text-embedding-004";
         config: GoogleVertexAiVectorizerConfigRequest.Raw;
     }
 }

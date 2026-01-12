@@ -12,15 +12,13 @@ export const WorkflowOutputArray: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("ARRAY"),
-    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
+    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).nullable(),
 });
 
 export declare namespace WorkflowOutputArray {
     export interface Raw {
         id: string;
         name: string;
-        type: "ARRAY";
-        value?: (serializers.VellumValue.Raw[] | null) | null;
+        value: serializers.VellumValue.Raw[] | null;
     }
 }

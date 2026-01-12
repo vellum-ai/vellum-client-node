@@ -15,7 +15,6 @@ export const RejectedExecutePromptResponse: core.serialization.ObjectSchema<
     meta: PromptExecutionMeta.optional(),
     raw: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
-    state: core.serialization.stringLiteral("REJECTED"),
     error: VellumError,
 });
 
@@ -24,7 +23,6 @@ export declare namespace RejectedExecutePromptResponse {
         meta?: PromptExecutionMeta.Raw | null;
         raw?: Record<string, unknown> | null;
         execution_id: string;
-        state: "REJECTED";
         error: VellumError.Raw;
     }
 }

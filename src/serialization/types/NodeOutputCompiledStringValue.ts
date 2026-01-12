@@ -11,16 +11,14 @@ export const NodeOutputCompiledStringValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledStringValue.Raw,
     Vellum.NodeOutputCompiledStringValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optionalNullable(),
+    value: core.serialization.string().nullable(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledStringValue {
     export interface Raw {
-        type: "STRING";
-        value?: (string | null) | null;
+        value: string | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

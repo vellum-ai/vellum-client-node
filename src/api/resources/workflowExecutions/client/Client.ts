@@ -64,12 +64,12 @@ export class WorkflowExecutions {
     ): Promise<core.WithRawResponse<Vellum.WorkflowExecutionDetail>> {
         const { prevSpanId, spanLimit } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (prevSpanId !== undefined) {
+        if (prevSpanId != null) {
             _queryParams["prev_span_id"] = prevSpanId;
         }
 
-        if (spanLimit !== undefined) {
-            _queryParams["span_limit"] = spanLimit?.toString() ?? null;
+        if (spanLimit != null) {
+            _queryParams["span_limit"] = spanLimit.toString();
         }
 
         const _response = await core.fetcher({
@@ -86,11 +86,11 @@ export class WorkflowExecutions {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

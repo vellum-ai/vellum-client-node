@@ -17,25 +17,62 @@ import { WorkflowRequestDocumentInputRequest } from "./WorkflowRequestDocumentIn
 export const WorkflowRequestInputRequest: core.serialization.Schema<
     serializers.WorkflowRequestInputRequest.Raw,
     Vellum.WorkflowRequestInputRequest
-> = core.serialization.undiscriminatedUnion([
-    WorkflowRequestStringInputRequest,
-    WorkflowRequestJsonInputRequest,
-    WorkflowRequestChatHistoryInputRequest,
-    WorkflowRequestNumberInputRequest,
-    WorkflowRequestAudioInputRequest,
-    WorkflowRequestVideoInputRequest,
-    WorkflowRequestImageInputRequest,
-    WorkflowRequestDocumentInputRequest,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: WorkflowRequestStringInputRequest,
+        JSON: WorkflowRequestJsonInputRequest,
+        CHAT_HISTORY: WorkflowRequestChatHistoryInputRequest,
+        NUMBER: WorkflowRequestNumberInputRequest,
+        AUDIO: WorkflowRequestAudioInputRequest,
+        VIDEO: WorkflowRequestVideoInputRequest,
+        IMAGE: WorkflowRequestImageInputRequest,
+        DOCUMENT: WorkflowRequestDocumentInputRequest,
+    })
+    .transform<Vellum.WorkflowRequestInputRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace WorkflowRequestInputRequest {
     export type Raw =
-        | WorkflowRequestStringInputRequest.Raw
-        | WorkflowRequestJsonInputRequest.Raw
-        | WorkflowRequestChatHistoryInputRequest.Raw
-        | WorkflowRequestNumberInputRequest.Raw
-        | WorkflowRequestAudioInputRequest.Raw
-        | WorkflowRequestVideoInputRequest.Raw
-        | WorkflowRequestImageInputRequest.Raw
-        | WorkflowRequestDocumentInputRequest.Raw;
+        | WorkflowRequestInputRequest.String
+        | WorkflowRequestInputRequest.Json
+        | WorkflowRequestInputRequest.ChatHistory
+        | WorkflowRequestInputRequest.Number
+        | WorkflowRequestInputRequest.Audio
+        | WorkflowRequestInputRequest.Video
+        | WorkflowRequestInputRequest.Image
+        | WorkflowRequestInputRequest.Document;
+
+    export interface String extends WorkflowRequestStringInputRequest.Raw {
+        type: "STRING";
+    }
+
+    export interface Json extends WorkflowRequestJsonInputRequest.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends WorkflowRequestChatHistoryInputRequest.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Number extends WorkflowRequestNumberInputRequest.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Audio extends WorkflowRequestAudioInputRequest.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends WorkflowRequestVideoInputRequest.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends WorkflowRequestImageInputRequest.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends WorkflowRequestDocumentInputRequest.Raw {
+        type: "DOCUMENT";
+    }
 }

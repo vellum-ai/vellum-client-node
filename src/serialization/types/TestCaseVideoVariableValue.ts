@@ -13,15 +13,13 @@ export const TestCaseVideoVariableValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string().optional(),
-    type: core.serialization.stringLiteral("VIDEO"),
-    value: VellumVideo.optionalNullable(),
+    value: VellumVideo.nullable(),
 });
 
 export declare namespace TestCaseVideoVariableValue {
     export interface Raw {
         variable_id: string;
         name?: string | null;
-        type: "VIDEO";
-        value?: (VellumVideo.Raw | null) | null;
+        value: VellumVideo.Raw | null;
     }
 }

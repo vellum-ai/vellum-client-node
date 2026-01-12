@@ -11,14 +11,12 @@ export const StringInputRequest: core.serialization.ObjectSchema<
     Vellum.StringInputRequest
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("STRING"),
     value: core.serialization.string(),
 });
 
 export declare namespace StringInputRequest {
     export interface Raw {
         name: string;
-        type: "STRING";
         value: string;
     }
 }

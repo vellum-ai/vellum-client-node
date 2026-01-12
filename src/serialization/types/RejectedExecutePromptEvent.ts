@@ -12,7 +12,6 @@ export const RejectedExecutePromptEvent: core.serialization.ObjectSchema<
     serializers.RejectedExecutePromptEvent.Raw,
     Vellum.RejectedExecutePromptEvent
 > = core.serialization.object({
-    state: core.serialization.stringLiteral("REJECTED"),
     error: VellumError,
     executionId: core.serialization.property("execution_id", core.serialization.string()),
     meta: RejectedPromptExecutionMeta.optional(),
@@ -20,7 +19,6 @@ export const RejectedExecutePromptEvent: core.serialization.ObjectSchema<
 
 export declare namespace RejectedExecutePromptEvent {
     export interface Raw {
-        state: "REJECTED";
         error: VellumError.Raw;
         execution_id: string;
         meta?: RejectedPromptExecutionMeta.Raw | null;

@@ -5,6 +5,5 @@
 export interface NodeInputCompiledStringValue {
     nodeInputId: string;
     key: string;
-    type: "STRING";
-    value?: string | null;
+    value: string | null;
 }

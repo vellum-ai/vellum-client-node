@@ -11,14 +11,12 @@ export const PromptRequestJsonInput: core.serialization.ObjectSchema<
     Vellum.PromptRequestJsonInput
 > = core.serialization.object({
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().nullable(),
 });
 
 export declare namespace PromptRequestJsonInput {
     export interface Raw {
         key: string;
-        type: "JSON";
-        value?: unknown;
+        value: unknown | null;
     }
 }

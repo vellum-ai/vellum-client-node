@@ -5,7 +5,25 @@
 import * as Vellum from "../index";
 
 export type AdHocExecutePromptEvent =
-    | Vellum.InitiatedAdHocExecutePromptEvent
-    | Vellum.StreamingAdHocExecutePromptEvent
-    | Vellum.FulfilledAdHocExecutePromptEvent
-    | Vellum.RejectedAdHocExecutePromptEvent;
+    | Vellum.AdHocExecutePromptEvent.Initiated
+    | Vellum.AdHocExecutePromptEvent.Streaming
+    | Vellum.AdHocExecutePromptEvent.Fulfilled
+    | Vellum.AdHocExecutePromptEvent.Rejected;
+
+export namespace AdHocExecutePromptEvent {
+    export interface Initiated extends Vellum.InitiatedAdHocExecutePromptEvent {
+        state: "INITIATED";
+    }
+
+    export interface Streaming extends Vellum.StreamingAdHocExecutePromptEvent {
+        state: "STREAMING";
+    }
+
+    export interface Fulfilled extends Vellum.FulfilledAdHocExecutePromptEvent {
+        state: "FULFILLED";
+    }
+
+    export interface Rejected extends Vellum.RejectedAdHocExecutePromptEvent {
+        state: "REJECTED";
+    }
+}

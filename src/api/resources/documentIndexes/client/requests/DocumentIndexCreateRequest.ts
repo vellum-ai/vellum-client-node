@@ -11,8 +11,8 @@ import * as Vellum from "../../../../index";
  *         name: "x",
  *         indexingConfig: {
  *             vectorizer: {
- *                 config: {},
- *                 modelName: "text-embedding-3-small"
+ *                 modelName: "text-embedding-3-small",
+ *                 config: {}
  *             }
  *         }
  *     }

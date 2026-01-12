@@ -3,7 +3,7 @@
  */
 
 export interface BaseOutput {
-    value?: unknown;
-    delta?: unknown;
+    value?: unknown | null;
+    delta?: unknown | null;
     name: string;
 }

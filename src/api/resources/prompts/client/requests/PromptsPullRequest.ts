@@ -10,5 +10,5 @@ export interface PromptsPullRequest {
     /**
      * The ID of the Prompt Variant within a Prompt Sandbox to pull. Must be included if providing the ID of a Prompt Sandbox.
      */
-    promptVariantId?: string | null;
+    promptVariantId?: string;
 }

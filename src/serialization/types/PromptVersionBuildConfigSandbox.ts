@@ -10,7 +10,6 @@ export const PromptVersionBuildConfigSandbox: core.serialization.ObjectSchema<
     serializers.PromptVersionBuildConfigSandbox.Raw,
     Vellum.PromptVersionBuildConfigSandbox
 > = core.serialization.object({
-    source: core.serialization.stringLiteral("SANDBOX"),
     sandboxId: core.serialization.property("sandbox_id", core.serialization.string()),
     sandboxSnapshotId: core.serialization.property("sandbox_snapshot_id", core.serialization.string()),
     promptId: core.serialization.property("prompt_id", core.serialization.string()),
@@ -18,7 +17,6 @@ export const PromptVersionBuildConfigSandbox: core.serialization.ObjectSchema<
 
 export declare namespace PromptVersionBuildConfigSandbox {
     export interface Raw {
-        source: "SANDBOX";
         sandbox_id: string;
         sandbox_snapshot_id: string;
         prompt_id: string;

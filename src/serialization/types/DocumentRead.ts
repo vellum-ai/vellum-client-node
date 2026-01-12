@@ -18,10 +18,7 @@ export const DocumentRead: core.serialization.ObjectSchema<serializers.DocumentR
         processingState: core.serialization.property("processing_state", DocumentProcessingState),
         status: DocumentStatus.optional(),
         keywords: core.serialization.list(core.serialization.string()).optional(),
-        originalFileUrl: core.serialization.property(
-            "original_file_url",
-            core.serialization.string().optionalNullable(),
-        ),
+        originalFileUrl: core.serialization.property("original_file_url", core.serialization.string().nullable()),
         documentToDocumentIndexes: core.serialization.property(
             "document_to_document_indexes",
             core.serialization.list(DocumentDocumentToDocumentIndex),
@@ -40,7 +37,7 @@ export declare namespace DocumentRead {
         processing_state: DocumentProcessingState.Raw;
         status?: DocumentStatus.Raw | null;
         keywords?: string[] | null;
-        original_file_url?: (string | null) | null;
+        original_file_url: string | null;
         document_to_document_indexes: DocumentDocumentToDocumentIndex.Raw[];
         metadata?: (Record<string, unknown> | null) | null;
     }

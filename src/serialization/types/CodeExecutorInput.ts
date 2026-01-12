@@ -20,35 +20,92 @@ import { DocumentInput } from "./DocumentInput";
 import { CodeExecutorSecretInput } from "./CodeExecutorSecretInput";
 
 export const CodeExecutorInput: core.serialization.Schema<serializers.CodeExecutorInput.Raw, Vellum.CodeExecutorInput> =
-    core.serialization.undiscriminatedUnion([
-        StringInput,
-        JsonInput,
-        ChatHistoryInput,
-        NumberInput,
-        SearchResultsInput,
-        ErrorInput,
-        ArrayInput,
-        FunctionCallInput,
-        AudioInput,
-        VideoInput,
-        ImageInput,
-        DocumentInput,
-        CodeExecutorSecretInput,
-    ]);
+    core.serialization
+        .union("type", {
+            STRING: StringInput,
+            JSON: JsonInput,
+            CHAT_HISTORY: ChatHistoryInput,
+            NUMBER: NumberInput,
+            SEARCH_RESULTS: SearchResultsInput,
+            ERROR: ErrorInput,
+            ARRAY: ArrayInput,
+            FUNCTION_CALL: FunctionCallInput,
+            AUDIO: AudioInput,
+            VIDEO: VideoInput,
+            IMAGE: ImageInput,
+            DOCUMENT: DocumentInput,
+            SECRET: CodeExecutorSecretInput,
+        })
+        .transform<Vellum.CodeExecutorInput>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace CodeExecutorInput {
     export type Raw =
-        | StringInput.Raw
-        | JsonInput.Raw
-        | ChatHistoryInput.Raw
-        | NumberInput.Raw
-        | SearchResultsInput.Raw
-        | ErrorInput.Raw
-        | ArrayInput.Raw
-        | FunctionCallInput.Raw
-        | AudioInput.Raw
-        | VideoInput.Raw
-        | ImageInput.Raw
-        | DocumentInput.Raw
-        | CodeExecutorSecretInput.Raw;
+        | CodeExecutorInput.String
+        | CodeExecutorInput.Json
+        | CodeExecutorInput.ChatHistory
+        | CodeExecutorInput.Number
+        | CodeExecutorInput.SearchResults
+        | CodeExecutorInput.Error
+        | CodeExecutorInput.Array
+        | CodeExecutorInput.FunctionCall
+        | CodeExecutorInput.Audio
+        | CodeExecutorInput.Video
+        | CodeExecutorInput.Image
+        | CodeExecutorInput.Document
+        | CodeExecutorInput.Secret;
+
+    export interface String extends StringInput.Raw {
+        type: "STRING";
+    }
+
+    export interface Json extends JsonInput.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends ChatHistoryInput.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Number extends NumberInput.Raw {
+        type: "NUMBER";
+    }
+
+    export interface SearchResults extends SearchResultsInput.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends ErrorInput.Raw {
+        type: "ERROR";
+    }
+
+    export interface Array extends ArrayInput.Raw {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends FunctionCallInput.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Audio extends AudioInput.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends VideoInput.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends ImageInput.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends DocumentInput.Raw {
+        type: "DOCUMENT";
+    }
+
+    export interface Secret extends CodeExecutorSecretInput.Raw {
+        type: "SECRET";
+    }
 }

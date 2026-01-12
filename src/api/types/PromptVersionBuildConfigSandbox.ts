@@ -3,7 +3,6 @@
  */
 
 export interface PromptVersionBuildConfigSandbox {
-    source: "SANDBOX";
     sandboxId: string;
     sandboxSnapshotId: string;
     promptId: string;

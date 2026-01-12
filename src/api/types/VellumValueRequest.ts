@@ -5,16 +5,70 @@
 import * as Vellum from "../index";
 
 export type VellumValueRequest =
-    | Vellum.StringVellumValueRequest
-    | Vellum.NumberVellumValueRequest
-    | Vellum.JsonVellumValueRequest
-    | Vellum.AudioVellumValueRequest
-    | Vellum.VideoVellumValueRequest
-    | Vellum.ImageVellumValueRequest
-    | Vellum.DocumentVellumValueRequest
-    | Vellum.FunctionCallVellumValueRequest
-    | Vellum.ErrorVellumValueRequest
-    | Vellum.ArrayVellumValueRequest
-    | Vellum.ChatHistoryVellumValueRequest
-    | Vellum.SearchResultsVellumValueRequest
-    | Vellum.ThinkingVellumValueRequest;
+    | Vellum.VellumValueRequest.String
+    | Vellum.VellumValueRequest.Number
+    | Vellum.VellumValueRequest.Json
+    | Vellum.VellumValueRequest.Audio
+    | Vellum.VellumValueRequest.Video
+    | Vellum.VellumValueRequest.Image
+    | Vellum.VellumValueRequest.Document
+    | Vellum.VellumValueRequest.FunctionCall
+    | Vellum.VellumValueRequest.Error_
+    | Vellum.VellumValueRequest.Array
+    | Vellum.VellumValueRequest.ChatHistory
+    | Vellum.VellumValueRequest.SearchResults
+    | Vellum.VellumValueRequest.Thinking;
+
+export namespace VellumValueRequest {
+    export interface String extends Vellum.StringVellumValueRequest {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.NumberVellumValueRequest {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.JsonVellumValueRequest {
+        type: "JSON";
+    }
+
+    export interface Audio extends Vellum.AudioVellumValueRequest {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.VideoVellumValueRequest {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.ImageVellumValueRequest {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.DocumentVellumValueRequest {
+        type: "DOCUMENT";
+    }
+
+    export interface FunctionCall extends Vellum.FunctionCallVellumValueRequest {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Error_ extends Vellum.ErrorVellumValueRequest {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.ArrayVellumValueRequest {
+        type: "ARRAY";
+    }
+
+    export interface ChatHistory extends Vellum.ChatHistoryVellumValueRequest {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.SearchResultsVellumValueRequest {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Thinking extends Vellum.ThinkingVellumValueRequest {
+        type: "THINKING";
+    }
+}

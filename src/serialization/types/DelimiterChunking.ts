@@ -11,13 +11,11 @@ export const DelimiterChunking: core.serialization.ObjectSchema<
     serializers.DelimiterChunking.Raw,
     Vellum.DelimiterChunking
 > = core.serialization.object({
-    chunkerName: core.serialization.property("chunker_name", core.serialization.stringLiteral("delimiter-chunker")),
     chunkerConfig: core.serialization.property("chunker_config", DelimiterChunkerConfig.optional()),
 });
 
 export declare namespace DelimiterChunking {
     export interface Raw {
-        chunker_name: "delimiter-chunker";
         chunker_config?: DelimiterChunkerConfig.Raw | null;
     }
 }

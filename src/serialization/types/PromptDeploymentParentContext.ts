@@ -12,7 +12,6 @@ export const PromptDeploymentParentContext: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    type: core.serialization.stringLiteral("PROMPT_RELEASE_TAG"),
     spanId: core.serialization.property("span_id", core.serialization.string()),
     deploymentId: core.serialization.property("deployment_id", core.serialization.string()),
     deploymentName: core.serialization.property("deployment_name", core.serialization.string()),
@@ -28,7 +27,6 @@ export declare namespace PromptDeploymentParentContext {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        type: "PROMPT_RELEASE_TAG";
         span_id: string;
         deployment_id: string;
         deployment_name: string;

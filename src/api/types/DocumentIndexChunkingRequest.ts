@@ -5,7 +5,25 @@
 import * as Vellum from "../index";
 
 export type DocumentIndexChunkingRequest =
-    | Vellum.ReductoChunkingRequest
-    | Vellum.SentenceChunkingRequest
-    | Vellum.TokenOverlappingWindowChunkingRequest
-    | Vellum.DelimiterChunkingRequest;
+    | Vellum.DocumentIndexChunkingRequest.ReductoChunker
+    | Vellum.DocumentIndexChunkingRequest.SentenceChunker
+    | Vellum.DocumentIndexChunkingRequest.TokenOverlappingWindowChunker
+    | Vellum.DocumentIndexChunkingRequest.DelimiterChunker;
+
+export namespace DocumentIndexChunkingRequest {
+    export interface ReductoChunker extends Vellum.ReductoChunkingRequest {
+        chunkerName: "reducto-chunker";
+    }
+
+    export interface SentenceChunker extends Vellum.SentenceChunkingRequest {
+        chunkerName: "sentence-chunker";
+    }
+
+    export interface TokenOverlappingWindowChunker extends Vellum.TokenOverlappingWindowChunkingRequest {
+        chunkerName: "token-overlapping-window-chunker";
+    }
+
+    export interface DelimiterChunker extends Vellum.DelimiterChunkingRequest {
+        chunkerName: "delimiter-chunker";
+    }
+}

@@ -10,13 +10,11 @@ export const NumberVellumValue: core.serialization.ObjectSchema<
     serializers.NumberVellumValue.Raw,
     Vellum.NumberVellumValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("NUMBER"),
-    value: core.serialization.number().optionalNullable(),
+    value: core.serialization.number().nullable(),
 });
 
 export declare namespace NumberVellumValue {
     export interface Raw {
-        type: "NUMBER";
-        value?: (number | null) | null;
+        value: number | null;
     }
 }

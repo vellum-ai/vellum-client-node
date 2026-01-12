@@ -60,23 +60,23 @@ export class Documents {
     ): Promise<core.WithRawResponse<Vellum.PaginatedSlimDocumentList>> {
         const { documentIndexId, limit, offset, ordering, search } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (documentIndexId !== undefined) {
+        if (documentIndexId != null) {
             _queryParams["document_index_id"] = documentIndexId;
         }
 
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
         }
 
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
+        if (offset != null) {
+            _queryParams["offset"] = offset.toString();
         }
 
-        if (ordering !== undefined) {
+        if (ordering != null) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (search !== undefined) {
+        if (search != null) {
             _queryParams["search"] = search;
         }
 
@@ -94,11 +94,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -152,6 +152,7 @@ export class Documents {
      * Retrieve a Document, keying off of either its Vellum-generated ID or its external ID.
      *
      * @param {string} id
+     * @param {Vellum.DocumentsRetrieveRequest} request
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -159,13 +160,15 @@ export class Documents {
      */
     public retrieve(
         id: string,
+        request: Vellum.DocumentsRetrieveRequest = {},
         requestOptions?: Documents.RequestOptions,
     ): core.HttpResponsePromise<Vellum.DocumentRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.DocumentsRetrieveRequest = {},
         requestOptions?: Documents.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.DocumentRead>> {
         const _response = await core.fetcher({
@@ -182,11 +185,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -239,17 +242,23 @@ export class Documents {
      * Delete a Document, keying off of either its Vellum-generated ID or its external ID.
      *
      * @param {string} id
+     * @param {Vellum.DocumentsDestroyRequest} request
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.documents.destroy("id")
      */
-    public destroy(id: string, requestOptions?: Documents.RequestOptions): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__destroy(id, requestOptions));
+    public destroy(
+        id: string,
+        request: Vellum.DocumentsDestroyRequest = {},
+        requestOptions?: Documents.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__destroy(id, request, requestOptions));
     }
 
     private async __destroy(
         id: string,
+        request: Vellum.DocumentsDestroyRequest = {},
         requestOptions?: Documents.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _response = await core.fetcher({
@@ -266,11 +275,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -348,11 +357,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -473,11 +482,11 @@ export class Documents {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

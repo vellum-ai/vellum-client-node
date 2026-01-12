@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface WorkflowRequestAudioInputRequest {
     /** The variable's name, as defined in the Workflow. */
     name: string;
-    type: "AUDIO";
     value: Vellum.VellumAudioRequest;
 }

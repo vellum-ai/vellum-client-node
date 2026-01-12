@@ -9,6 +9,5 @@ import * as Vellum from "../index";
  */
 export interface FolderEntityPromptSandbox {
     id: string;
-    type: "PROMPT_SANDBOX";
     data: Vellum.FolderEntityPromptSandboxData;
 }

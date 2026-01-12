@@ -10,9 +10,9 @@ export interface RetrieveWorkflowExecutionDetailRequest {
     /**
      * Optional keyset cursor span_id to continue from (exclusive)
      */
-    prevSpanId?: string | null;
+    prevSpanId?: string;
     /**
      * Maximum number of spans to return (for lazy loading)
      */
-    spanLimit?: number | null;
+    spanLimit?: number;
 }

@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { WorkflowReleaseTagEnum } from "./WorkflowReleaseTagEnum";
 
 export const WorkflowDeploymentParentContext: core.serialization.ObjectSchema<
     serializers.WorkflowDeploymentParentContext.Raw,
@@ -12,7 +13,7 @@ export const WorkflowDeploymentParentContext: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    type: core.serialization.stringLiteral("WORKFLOW_RELEASE_TAG"),
+    type: WorkflowReleaseTagEnum,
     spanId: core.serialization.property("span_id", core.serialization.string()),
     deploymentId: core.serialization.property("deployment_id", core.serialization.string()),
     deploymentName: core.serialization.property("deployment_name", core.serialization.string()),
@@ -28,7 +29,7 @@ export declare namespace WorkflowDeploymentParentContext {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        type: "WORKFLOW_RELEASE_TAG";
+        type: WorkflowReleaseTagEnum.Raw;
         span_id: string;
         deployment_id: string;
         deployment_name: string;

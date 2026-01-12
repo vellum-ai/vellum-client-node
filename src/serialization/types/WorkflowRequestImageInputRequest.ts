@@ -12,14 +12,12 @@ export const WorkflowRequestImageInputRequest: core.serialization.ObjectSchema<
     Vellum.WorkflowRequestImageInputRequest
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("IMAGE"),
     value: VellumImageRequest,
 });
 
 export declare namespace WorkflowRequestImageInputRequest {
     export interface Raw {
         name: string;
-        type: "IMAGE";
         value: VellumImageRequest.Raw;
     }
 }

@@ -14,6 +14,5 @@ export interface WorkflowResultEventOutputDataChatHistory {
     nodeId?: string | null;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string | null;
-    type: "CHAT_HISTORY";
-    value?: Vellum.ChatMessage[] | null;
+    value: Vellum.ChatMessage[] | null;
 }

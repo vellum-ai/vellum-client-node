@@ -12,24 +12,24 @@ export interface DocumentIndexesListRequest {
     /**
      * Number of results to return per page.
      */
-    limit?: number | null;
+    limit?: number;
     /**
      * The initial index from which to return the results.
      */
-    offset?: number | null;
+    offset?: number;
     /**
      * Which field to use when ordering the results.
      */
-    ordering?: string | null;
+    ordering?: string;
     /**
      * Search for document indices by name or label
      */
-    search?: string | null;
+    search?: string;
     /**
      * Filter down to only document indices that have a status matching the status specified
      *
      * * `ACTIVE` - Active
      * * `ARCHIVED` - Archived
      */
-    status?: Vellum.DocumentIndexesListRequestStatus | null;
+    status?: Vellum.DocumentIndexesListRequestStatus;
 }

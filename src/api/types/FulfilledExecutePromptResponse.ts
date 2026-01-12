@@ -13,6 +13,5 @@ export interface FulfilledExecutePromptResponse {
     raw?: Record<string, unknown>;
     /** The ID of the execution. */
     executionId: string;
-    state: "FULFILLED";
     outputs: Vellum.PromptOutput[];
 }

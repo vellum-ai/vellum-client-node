@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface IntegrationTriggerContext {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    type: "INTEGRATION";
     triggerId?: string | null;
     spanId: string;
 }

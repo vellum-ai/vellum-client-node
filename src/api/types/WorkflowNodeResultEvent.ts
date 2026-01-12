@@ -5,7 +5,25 @@
 import * as Vellum from "../index";
 
 export type WorkflowNodeResultEvent =
-    | Vellum.InitiatedWorkflowNodeResultEvent
-    | Vellum.StreamingWorkflowNodeResultEvent
-    | Vellum.FulfilledWorkflowNodeResultEvent
-    | Vellum.RejectedWorkflowNodeResultEvent;
+    | Vellum.WorkflowNodeResultEvent.Initiated
+    | Vellum.WorkflowNodeResultEvent.Streaming
+    | Vellum.WorkflowNodeResultEvent.Fulfilled
+    | Vellum.WorkflowNodeResultEvent.Rejected;
+
+export namespace WorkflowNodeResultEvent {
+    export interface Initiated extends Vellum.InitiatedWorkflowNodeResultEvent {
+        state: "INITIATED";
+    }
+
+    export interface Streaming extends Vellum.StreamingWorkflowNodeResultEvent {
+        state: "STREAMING";
+    }
+
+    export interface Fulfilled extends Vellum.FulfilledWorkflowNodeResultEvent {
+        state: "FULFILLED";
+    }
+
+    export interface Rejected extends Vellum.RejectedWorkflowNodeResultEvent {
+        state: "REJECTED";
+    }
+}

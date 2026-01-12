@@ -4,4 +4,14 @@
 
 import * as Vellum from "../index";
 
-export type VellumSpan = Vellum.WorkflowExecutionSpan | Vellum.NodeExecutionSpan;
+export type VellumSpan = Vellum.VellumSpan.WorkflowExecution | Vellum.VellumSpan.NodeExecution;
+
+export namespace VellumSpan {
+    export interface WorkflowExecution extends Vellum.WorkflowExecutionSpan {
+        name: "workflow.execution";
+    }
+
+    export interface NodeExecution extends Vellum.NodeExecutionSpan {
+        name: "node.execution";
+    }
+}

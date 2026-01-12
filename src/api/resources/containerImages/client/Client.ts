@@ -58,15 +58,15 @@ export class ContainerImages {
     ): Promise<core.WithRawResponse<Vellum.PaginatedContainerImageReadList>> {
         const { limit, offset, ordering } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
         }
 
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
+        if (offset != null) {
+            _queryParams["offset"] = offset.toString();
         }
 
-        if (ordering !== undefined) {
+        if (ordering != null) {
             _queryParams["ordering"] = ordering;
         }
 
@@ -84,11 +84,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -182,11 +182,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -240,6 +240,7 @@ export class ContainerImages {
      * Retrieve a Container Image by its ID or name.
      *
      * @param {string} id - Either the Container Image's ID or its unique name
+     * @param {Vellum.ContainerImagesRetrieveRequest} request
      * @param {ContainerImages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -247,13 +248,15 @@ export class ContainerImages {
      */
     public retrieve(
         id: string,
+        request: Vellum.ContainerImagesRetrieveRequest = {},
         requestOptions?: ContainerImages.RequestOptions,
     ): core.HttpResponsePromise<Vellum.ContainerImageRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.ContainerImagesRetrieveRequest = {},
         requestOptions?: ContainerImages.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.ContainerImageRead>> {
         const _response = await core.fetcher({
@@ -270,11 +273,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -369,11 +372,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -452,11 +455,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -543,11 +546,11 @@ export class ContainerImages {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -12,14 +12,12 @@ export const PromptRequestAudioInput: core.serialization.ObjectSchema<
     Vellum.PromptRequestAudioInput
 > = core.serialization.object({
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("AUDIO"),
     value: VellumAudio,
 });
 
 export declare namespace PromptRequestAudioInput {
     export interface Raw {
         key: string;
-        type: "AUDIO";
         value: VellumAudio.Raw;
     }
 }

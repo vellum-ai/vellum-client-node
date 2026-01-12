@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A value representing Thinking mode output.
  */
 export interface ThinkingVellumValueRequest {
-    type: "THINKING";
-    value?: Vellum.StringVellumValueRequest | null;
+    value: Vellum.StringVellumValueRequest | null;
 }

@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A value representing an array of Vellum variable values.
  */
 export interface ArrayVellumValueRequest {
-    type: "ARRAY";
-    value?: Vellum.VellumValueRequest[] | null;
+    value: Vellum.VellumValueRequest[] | null;
 }

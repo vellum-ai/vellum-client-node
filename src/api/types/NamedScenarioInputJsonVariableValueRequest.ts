@@ -6,7 +6,6 @@
  * Named Prompt Sandbox Scenario input value that is of type JSON
  */
 export interface NamedScenarioInputJsonVariableValueRequest {
-    type: "JSON";
-    value?: unknown;
+    value: unknown | null;
     name: string;
 }

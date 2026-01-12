@@ -13,7 +13,6 @@ export const NodeInputCompiledSecretValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("SECRET"),
     value: VellumSecret,
 });
 
@@ -21,7 +20,6 @@ export declare namespace NodeInputCompiledSecretValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "SECRET";
         value: VellumSecret.Raw;
     }
 }

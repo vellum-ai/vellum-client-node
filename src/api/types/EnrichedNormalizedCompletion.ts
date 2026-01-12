@@ -18,11 +18,11 @@ export interface EnrichedNormalizedCompletion {
      * * `STOP` - STOP
      * * `UNKNOWN` - UNKNOWN
      */
-    finishReason?: Vellum.FinishReasonEnum | null;
+    finishReason: Vellum.FinishReasonEnum | null;
     /** The logprobs of the completion. Only present if specified in the original request options. */
     logprobs?: Vellum.NormalizedLogProbs | null;
     /** The ID of the model version used to generate this completion. */
-    modelVersionId?: string | null;
+    modelVersionId: string | null;
     promptVersionId: string;
     type?: Vellum.VellumVariableType;
     deploymentReleaseTag: string;

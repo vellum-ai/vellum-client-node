@@ -11,13 +11,11 @@ export const VideoVellumValueRequest: core.serialization.ObjectSchema<
     serializers.VideoVellumValueRequest.Raw,
     Vellum.VideoVellumValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("VIDEO"),
-    value: VellumVideoRequest.optionalNullable(),
+    value: VellumVideoRequest.nullable(),
 });
 
 export declare namespace VideoVellumValueRequest {
     export interface Raw {
-        type: "VIDEO";
-        value?: (VellumVideoRequest.Raw | null) | null;
+        value: VellumVideoRequest.Raw | null;
     }
 }

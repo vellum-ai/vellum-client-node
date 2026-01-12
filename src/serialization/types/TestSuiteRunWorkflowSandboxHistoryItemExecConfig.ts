@@ -11,7 +11,6 @@ export const TestSuiteRunWorkflowSandboxHistoryItemExecConfig: core.serializatio
     serializers.TestSuiteRunWorkflowSandboxHistoryItemExecConfig.Raw,
     Vellum.TestSuiteRunWorkflowSandboxHistoryItemExecConfig
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("WORKFLOW_SANDBOX_HISTORY_ITEM"),
     data: TestSuiteRunWorkflowSandboxHistoryItemExecConfigData,
     testCaseIds: core.serialization.property(
         "test_case_ids",
@@ -21,7 +20,6 @@ export const TestSuiteRunWorkflowSandboxHistoryItemExecConfig: core.serializatio
 
 export declare namespace TestSuiteRunWorkflowSandboxHistoryItemExecConfig {
     export interface Raw {
-        type: "WORKFLOW_SANDBOX_HISTORY_ITEM";
         data: TestSuiteRunWorkflowSandboxHistoryItemExecConfigData.Raw;
         test_case_ids?: (string[] | null) | null;
     }

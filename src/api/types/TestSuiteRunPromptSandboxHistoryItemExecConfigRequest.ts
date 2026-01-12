@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * Execution configuration for running a Test Suite against a Prompt Sandbox History Item
  */
 export interface TestSuiteRunPromptSandboxHistoryItemExecConfigRequest {
-    type: "PROMPT_SANDBOX_HISTORY_ITEM";
     data: Vellum.TestSuiteRunPromptSandboxHistoryItemExecConfigDataRequest;
     /** Optionally specify a subset of test case ids to run. If not provided, all test cases within the test suite will be run by default. */
     testCaseIds?: string[] | null;

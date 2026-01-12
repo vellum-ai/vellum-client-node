@@ -5,15 +5,65 @@
 import * as Vellum from "../index";
 
 export type NamedTestCaseVariableValueRequest =
-    | Vellum.NamedTestCaseStringVariableValueRequest
-    | Vellum.NamedTestCaseNumberVariableValueRequest
-    | Vellum.NamedTestCaseJsonVariableValueRequest
-    | Vellum.NamedTestCaseChatHistoryVariableValueRequest
-    | Vellum.NamedTestCaseSearchResultsVariableValueRequest
-    | Vellum.NamedTestCaseErrorVariableValueRequest
-    | Vellum.NamedTestCaseFunctionCallVariableValueRequest
-    | Vellum.NamedTestCaseArrayVariableValueRequest
-    | Vellum.NamedTestCaseAudioVariableValueRequest
-    | Vellum.NamedTestCaseVideoVariableValueRequest
-    | Vellum.NamedTestCaseImageVariableValueRequest
-    | Vellum.NamedTestCaseDocumentVariableValueRequest;
+    | Vellum.NamedTestCaseVariableValueRequest.String
+    | Vellum.NamedTestCaseVariableValueRequest.Number
+    | Vellum.NamedTestCaseVariableValueRequest.Json
+    | Vellum.NamedTestCaseVariableValueRequest.ChatHistory
+    | Vellum.NamedTestCaseVariableValueRequest.SearchResults
+    | Vellum.NamedTestCaseVariableValueRequest.Error_
+    | Vellum.NamedTestCaseVariableValueRequest.FunctionCall
+    | Vellum.NamedTestCaseVariableValueRequest.Array
+    | Vellum.NamedTestCaseVariableValueRequest.Audio
+    | Vellum.NamedTestCaseVariableValueRequest.Video
+    | Vellum.NamedTestCaseVariableValueRequest.Image
+    | Vellum.NamedTestCaseVariableValueRequest.Document;
+
+export namespace NamedTestCaseVariableValueRequest {
+    export interface String extends Vellum.NamedTestCaseStringVariableValueRequest {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.NamedTestCaseNumberVariableValueRequest {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.NamedTestCaseJsonVariableValueRequest {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.NamedTestCaseChatHistoryVariableValueRequest {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.NamedTestCaseSearchResultsVariableValueRequest {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.NamedTestCaseErrorVariableValueRequest {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends Vellum.NamedTestCaseFunctionCallVariableValueRequest {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Array extends Vellum.NamedTestCaseArrayVariableValueRequest {
+        type: "ARRAY";
+    }
+
+    export interface Audio extends Vellum.NamedTestCaseAudioVariableValueRequest {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.NamedTestCaseVideoVariableValueRequest {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.NamedTestCaseImageVariableValueRequest {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.NamedTestCaseDocumentVariableValueRequest {
+        type: "DOCUMENT";
+    }
+}

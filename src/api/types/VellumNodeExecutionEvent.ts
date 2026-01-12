@@ -5,10 +5,40 @@
 import * as Vellum from "../index";
 
 export type VellumNodeExecutionEvent =
-    | Vellum.NodeExecutionInitiatedEvent
-    | Vellum.NodeExecutionStreamingEvent
-    | Vellum.NodeExecutionFulfilledEvent
-    | Vellum.NodeExecutionRejectedEvent
-    | Vellum.NodeExecutionPausedEvent
-    | Vellum.NodeExecutionResumedEvent
-    | Vellum.NodeExecutionLogEvent;
+    | Vellum.VellumNodeExecutionEvent.NodeExecutionInitiated
+    | Vellum.VellumNodeExecutionEvent.NodeExecutionStreaming
+    | Vellum.VellumNodeExecutionEvent.NodeExecutionFulfilled
+    | Vellum.VellumNodeExecutionEvent.NodeExecutionRejected
+    | Vellum.VellumNodeExecutionEvent.NodeExecutionPaused
+    | Vellum.VellumNodeExecutionEvent.NodeExecutionResumed
+    | Vellum.VellumNodeExecutionEvent.NodeExecutionLog;
+
+export namespace VellumNodeExecutionEvent {
+    export interface NodeExecutionInitiated extends Vellum.NodeExecutionInitiatedEvent {
+        name: "node.execution.initiated";
+    }
+
+    export interface NodeExecutionStreaming extends Vellum.NodeExecutionStreamingEvent {
+        name: "node.execution.streaming";
+    }
+
+    export interface NodeExecutionFulfilled extends Vellum.NodeExecutionFulfilledEvent {
+        name: "node.execution.fulfilled";
+    }
+
+    export interface NodeExecutionRejected extends Vellum.NodeExecutionRejectedEvent {
+        name: "node.execution.rejected";
+    }
+
+    export interface NodeExecutionPaused extends Vellum.NodeExecutionPausedEvent {
+        name: "node.execution.paused";
+    }
+
+    export interface NodeExecutionResumed extends Vellum.NodeExecutionResumedEvent {
+        name: "node.execution.resumed";
+    }
+
+    export interface NodeExecutionLog extends Vellum.NodeExecutionLogEvent {
+        name: "node.execution.log";
+    }
+}

@@ -6,6 +6,5 @@
  * A string value that is used in a chat message.
  */
 export interface StringChatMessageContentRequest {
-    type: "STRING";
     value: string;
 }

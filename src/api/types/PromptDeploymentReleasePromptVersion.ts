@@ -7,5 +7,5 @@ import * as Vellum from "../index";
 export interface PromptDeploymentReleasePromptVersion {
     id: string;
     /** Configuration used to build this prompt version. */
-    buildConfig: Vellum.ComponentsSchemasPromptVersionBuildConfigSandbox;
+    buildConfig: Vellum.PromptVersionBuildConfig;
 }

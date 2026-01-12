@@ -12,15 +12,13 @@ export const NodeInputCompiledJsonValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().nullable(),
 });
 
 export declare namespace NodeInputCompiledJsonValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "JSON";
-        value?: unknown;
+        value: unknown | null;
     }
 }

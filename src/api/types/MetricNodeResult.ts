@@ -5,6 +5,4 @@
 /**
  * A Node Result Event emitted from a Metric Node.
  */
-export interface MetricNodeResult {
-    type: "METRIC";
-}
+export interface MetricNodeResult {}

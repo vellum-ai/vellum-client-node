@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface DocumentInput {
     /** The variable's name */
     name: string;
-    type: "DOCUMENT";
     value: Vellum.VellumDocument;
 }

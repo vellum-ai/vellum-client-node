@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface NodeExecutionStreamingEvent {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    name: "node.execution.streaming";
     body: Vellum.NodeExecutionStreamingBody;
     id: string;
     timestamp: Date;

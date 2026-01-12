@@ -11,13 +11,11 @@ export const GoogleVertexAiVectorizerGeminiEmbedding001: core.serialization.Obje
     serializers.GoogleVertexAiVectorizerGeminiEmbedding001.Raw,
     Vellum.GoogleVertexAiVectorizerGeminiEmbedding001
 > = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.stringLiteral("gemini-embedding-001")),
     config: GoogleVertexAiVectorizerConfig,
 });
 
 export declare namespace GoogleVertexAiVectorizerGeminiEmbedding001 {
     export interface Raw {
-        model_name: "gemini-embedding-001";
         config: GoogleVertexAiVectorizerConfig.Raw;
     }
 }

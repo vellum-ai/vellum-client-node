@@ -6,7 +6,7 @@ import * as Vellum from "../index";
 
 export interface PaginatedTestSuiteRunExecutionList {
     count: number;
-    next?: string | null;
-    previous?: string | null;
+    next: string | null;
+    previous: string | null;
     results: Vellum.TestSuiteRunExecution[];
 }

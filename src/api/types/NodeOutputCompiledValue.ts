@@ -5,12 +5,50 @@
 import * as Vellum from "../index";
 
 export type NodeOutputCompiledValue =
-    | Vellum.NodeOutputCompiledStringValue
-    | Vellum.NodeOutputCompiledNumberValue
-    | Vellum.NodeOutputCompiledJsonValue
-    | Vellum.NodeOutputCompiledChatHistoryValue
-    | Vellum.NodeOutputCompiledSearchResultsValue
-    | Vellum.NodeOutputCompiledErrorValue
-    | Vellum.NodeOutputCompiledArrayValue
-    | Vellum.NodeOutputCompiledFunctionCallValue
-    | Vellum.NodeOutputCompiledThinkingValue;
+    | Vellum.NodeOutputCompiledValue.String
+    | Vellum.NodeOutputCompiledValue.Number
+    | Vellum.NodeOutputCompiledValue.Json
+    | Vellum.NodeOutputCompiledValue.ChatHistory
+    | Vellum.NodeOutputCompiledValue.SearchResults
+    | Vellum.NodeOutputCompiledValue.Error_
+    | Vellum.NodeOutputCompiledValue.Array
+    | Vellum.NodeOutputCompiledValue.FunctionCall
+    | Vellum.NodeOutputCompiledValue.Thinking;
+
+export namespace NodeOutputCompiledValue {
+    export interface String extends Vellum.NodeOutputCompiledStringValue {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.NodeOutputCompiledNumberValue {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.NodeOutputCompiledJsonValue {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.NodeOutputCompiledChatHistoryValue {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.NodeOutputCompiledSearchResultsValue {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.NodeOutputCompiledErrorValue {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.NodeOutputCompiledArrayValue {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends Vellum.NodeOutputCompiledFunctionCallValue {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Thinking extends Vellum.NodeOutputCompiledThinkingValue {
+        type: "THINKING";
+    }
+}

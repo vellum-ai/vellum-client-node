@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A block that represents an video file in a prompt template.
  */
 export interface VideoPromptBlock {
-    blockType: "VIDEO";
     state?: Vellum.PromptBlockState;
     cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     src: string;

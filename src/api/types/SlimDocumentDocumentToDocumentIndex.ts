@@ -13,7 +13,7 @@ export interface SlimDocumentDocumentToDocumentIndex {
     /** Vellum-generated ID that uniquely identifies the environment index this document is included in. */
     environmentDocumentIndexId: string;
     /** Vellum-generated ID that uniquely identifies the index this document is included in. */
-    documentIndexId?: string | null;
+    documentIndexId: string | null;
     /**
      * An enum value representing where this document is along its indexing lifecycle for this index.
      *

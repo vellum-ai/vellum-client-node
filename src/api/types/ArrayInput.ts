@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface ArrayInput {
     /** The variable's name */
     name: string;
-    type: "ARRAY";
     value: Vellum.VellumValue[];
 }

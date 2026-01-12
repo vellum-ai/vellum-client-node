@@ -17,8 +17,7 @@ export const WorkflowResultEventOutputDataFunctionCall: core.serialization.Objec
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string().optionalNullable()),
     delta: core.serialization.string().optionalNullable(),
-    type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optionalNullable(),
+    value: FunctionCall.nullable(),
 });
 
 export declare namespace WorkflowResultEventOutputDataFunctionCall {
@@ -28,7 +27,6 @@ export declare namespace WorkflowResultEventOutputDataFunctionCall {
         state: WorkflowNodeResultEventState.Raw;
         node_id?: (string | null) | null;
         delta?: (string | null) | null;
-        type: "FUNCTION_CALL";
-        value?: (FunctionCall.Raw | null) | null;
+        value: FunctionCall.Raw | null;
     }
 }

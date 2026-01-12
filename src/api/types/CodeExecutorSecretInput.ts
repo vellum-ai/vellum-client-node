@@ -8,6 +8,5 @@
 export interface CodeExecutorSecretInput {
     /** The variable's name */
     name: string;
-    type: "SECRET";
     value: string;
 }

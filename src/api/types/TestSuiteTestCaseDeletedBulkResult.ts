@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface TestSuiteTestCaseDeletedBulkResult {
     /** An ID that maps back to one of the initially supplied operations. Can be used to determine the result of a given operation. */
     id: string;
-    type: "DELETED";
     data: Vellum.TestSuiteTestCaseDeletedBulkResultData;
 }

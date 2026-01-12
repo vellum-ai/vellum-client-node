@@ -20,7 +20,7 @@ export interface DocumentRead {
     status?: Vellum.DocumentStatus;
     /** A list of keywords that'll be associated with the document. Used as part of keyword search. */
     keywords?: string[];
-    originalFileUrl?: string | null;
+    originalFileUrl: string | null;
     documentToDocumentIndexes: Vellum.DocumentDocumentToDocumentIndex[];
     /** A previously supplied JSON object containing metadata that can be filtered on when searching. */
     metadata?: Record<string, unknown> | null;

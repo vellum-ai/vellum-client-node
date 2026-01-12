@@ -11,5 +11,5 @@ export interface IntegrationRead {
     name: Vellum.IntegrationName;
     provider: Vellum.IntegrationProvider;
     /** Integration provider specific information needed for filtering tools. */
-    execConfig: Vellum.ComponentsSchemasComposioIntegrationExecConfig;
+    execConfig: Vellum.IntegrationExecConfig;
 }

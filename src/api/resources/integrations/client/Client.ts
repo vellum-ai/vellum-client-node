@@ -37,8 +37,8 @@ export class Integrations {
     constructor(protected readonly _options: Integrations.Options) {}
 
     /**
-     * @param {string} integrationName - The integration name
      * @param {string} integrationProvider - The integration provider name
+     * @param {string} integrationName - The integration name
      * @param {string} toolName - The tool's unique name, as specified by the integration provider
      * @param {Vellum.RetrieveIntegrationToolDefinitionRequest} request
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
@@ -46,19 +46,19 @@ export class Integrations {
      * @throws {@link Vellum.NotFoundError}
      *
      * @example
-     *     await client.integrations.retrieveIntegrationToolDefinition("integration_name", "integration_provider", "tool_name")
+     *     await client.integrations.retrieveIntegrationToolDefinition("integration_provider", "integration_name", "tool_name")
      */
     public retrieveIntegrationToolDefinition(
-        integrationName: string,
         integrationProvider: string,
+        integrationName: string,
         toolName: string,
         request: Vellum.RetrieveIntegrationToolDefinitionRequest = {},
         requestOptions?: Integrations.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioToolDefinition> {
+    ): core.HttpResponsePromise<Vellum.ToolDefinition> {
         return core.HttpResponsePromise.fromPromise(
             this.__retrieveIntegrationToolDefinition(
-                integrationName,
                 integrationProvider,
+                integrationName,
                 toolName,
                 request,
                 requestOptions,
@@ -67,15 +67,15 @@ export class Integrations {
     }
 
     private async __retrieveIntegrationToolDefinition(
-        integrationName: string,
         integrationProvider: string,
+        integrationName: string,
         toolName: string,
         request: Vellum.RetrieveIntegrationToolDefinitionRequest = {},
         requestOptions?: Integrations.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioToolDefinition>> {
+    ): Promise<core.WithRawResponse<Vellum.ToolDefinition>> {
         const { toolkitVersion } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (toolkitVersion !== undefined) {
+        if (toolkitVersion != null) {
             _queryParams["toolkit_version"] = toolkitVersion;
         }
 
@@ -93,11 +93,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -112,7 +112,7 @@ export class Integrations {
         });
         if (_response.ok) {
             return {
-                data: serializers.ComponentsSchemasComposioToolDefinition.parseOrThrow(_response.body, {
+                data: serializers.ToolDefinition.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -155,10 +155,10 @@ export class Integrations {
     }
 
     /**
-     * @param {string} integrationName - The integration name
      * @param {string} integrationProvider - The integration provider name
+     * @param {string} integrationName - The integration name
      * @param {string} toolName - The tool's unique name, as specified by the integration provider
-     * @param {Vellum.ComponentsSchemasComposioExecuteToolRequest} request
+     * @param {Vellum.ExecuteIntegrationToolRequest} request
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vellum.BadRequestError}
@@ -166,34 +166,36 @@ export class Integrations {
      * @throws {@link Vellum.NotFoundError}
      *
      * @example
-     *     await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
-     *         provider: "COMPOSIO",
-     *         arguments: {
-     *             "arguments": {
-     *                 "key": "value"
+     *     await client.integrations.executeIntegrationTool("integration_provider", "integration_name", "tool_name", {
+     *         body: {
+     *             provider: "COMPOSIO",
+     *             arguments: {
+     *                 "arguments": {
+     *                     "key": "value"
+     *                 }
      *             }
      *         }
      *     })
      */
     public executeIntegrationTool(
-        integrationName: string,
         integrationProvider: string,
+        integrationName: string,
         toolName: string,
-        request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
+        request: Vellum.ExecuteIntegrationToolRequest,
         requestOptions?: Integrations.RequestOptions,
-    ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioExecuteToolResponse> {
+    ): core.HttpResponsePromise<Vellum.ExecuteToolResponse> {
         return core.HttpResponsePromise.fromPromise(
-            this.__executeIntegrationTool(integrationName, integrationProvider, toolName, request, requestOptions),
+            this.__executeIntegrationTool(integrationProvider, integrationName, toolName, request, requestOptions),
         );
     }
 
     private async __executeIntegrationTool(
-        integrationName: string,
         integrationProvider: string,
+        integrationName: string,
         toolName: string,
-        request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
+        request: Vellum.ExecuteIntegrationToolRequest,
         requestOptions?: Integrations.RequestOptions,
-    ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioExecuteToolResponse>> {
+    ): Promise<core.WithRawResponse<Vellum.ExecuteToolResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -208,11 +210,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -220,16 +222,14 @@ export class Integrations {
             },
             contentType: "application/json",
             requestType: "json",
-            body: serializers.ComponentsSchemasComposioExecuteToolRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-            }),
+            body: serializers.ExecuteToolRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
             maxRetries: requestOptions?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                data: serializers.ComponentsSchemasComposioExecuteToolResponse.parseOrThrow(_response.body, {
+                data: serializers.ExecuteToolResponse.parseOrThrow(_response.body, {
                     unrecognizedObjectKeys: "passthrough",
                     allowUnrecognizedUnionMembers: true,
                     allowUnrecognizedEnumValues: true,
@@ -297,27 +297,30 @@ export class Integrations {
     ): Promise<core.WithRawResponse<Vellum.PaginatedSlimIntegrationReadList>> {
         const { integrationProvider, limit, offset, ordering, search, supportsIntegrationTriggers } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (integrationProvider !== undefined) {
-            _queryParams["integration_provider"] = integrationProvider;
+        if (integrationProvider != null) {
+            _queryParams["integration_provider"] = serializers.IntegrationsListRequestIntegrationProvider.jsonOrThrow(
+                integrationProvider,
+                { unrecognizedObjectKeys: "strip" },
+            );
         }
 
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
         }
 
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
+        if (offset != null) {
+            _queryParams["offset"] = offset.toString();
         }
 
-        if (ordering !== undefined) {
+        if (ordering != null) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (search !== undefined) {
+        if (search != null) {
             _queryParams["search"] = search;
         }
 
-        if (supportsIntegrationTriggers !== undefined) {
+        if (supportsIntegrationTriggers != null) {
             _queryParams["supports_integration_triggers"] = supportsIntegrationTriggers;
         }
 
@@ -335,11 +338,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -393,6 +396,7 @@ export class Integrations {
      * Retrieve an integration
      *
      * @param {string} id - A UUID string identifying this integration.
+     * @param {Vellum.IntegrationsRetrieveRequest} request
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -400,13 +404,15 @@ export class Integrations {
      */
     public retrieve(
         id: string,
+        request: Vellum.IntegrationsRetrieveRequest = {},
         requestOptions?: Integrations.RequestOptions,
     ): core.HttpResponsePromise<Vellum.IntegrationRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.IntegrationsRetrieveRequest = {},
         requestOptions?: Integrations.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.IntegrationRead>> {
         const _response = await core.fetcher({
@@ -423,11 +429,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

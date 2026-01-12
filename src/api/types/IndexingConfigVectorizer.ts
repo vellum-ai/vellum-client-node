@@ -5,15 +5,67 @@
 import * as Vellum from "../index";
 
 export type IndexingConfigVectorizer =
-    | Vellum.OpenAiVectorizerTextEmbedding3Small
-    | Vellum.OpenAiVectorizerTextEmbedding3Large
-    | Vellum.OpenAiVectorizerTextEmbeddingAda002
-    | Vellum.BasicVectorizerIntfloatMultilingualE5Large
-    | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1
-    | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1
-    | Vellum.HkunlpInstructorXlVectorizer
-    | Vellum.GoogleVertexAiVectorizerTextEmbedding004
-    | Vellum.GoogleVertexAiVectorizerTextMultilingualEmbedding002
-    | Vellum.GoogleVertexAiVectorizerGeminiEmbedding001
-    | Vellum.FastEmbedVectorizerBaaiBgeSmallEnV15
-    | Vellum.PrivateVectorizer;
+    | Vellum.IndexingConfigVectorizer.TextEmbedding3Small
+    | Vellum.IndexingConfigVectorizer.TextEmbedding3Large
+    | Vellum.IndexingConfigVectorizer.TextEmbeddingAda002
+    | Vellum.IndexingConfigVectorizer.IntfloatMultilingualE5Large
+    | Vellum.IndexingConfigVectorizer.SentenceTransformersMultiQaMpnetBaseCosV1
+    | Vellum.IndexingConfigVectorizer.SentenceTransformersMultiQaMpnetBaseDotV1
+    | Vellum.IndexingConfigVectorizer.HkunlpInstructorXl
+    | Vellum.IndexingConfigVectorizer.TextEmbedding004
+    | Vellum.IndexingConfigVectorizer.TextMultilingualEmbedding002
+    | Vellum.IndexingConfigVectorizer.GeminiEmbedding001
+    | Vellum.IndexingConfigVectorizer.BaaiBgeSmallEnV15
+    | Vellum.IndexingConfigVectorizer.PrivateVectorizer;
+
+export namespace IndexingConfigVectorizer {
+    export interface TextEmbedding3Small extends Vellum.OpenAiVectorizerTextEmbedding3Small {
+        modelName: "text-embedding-3-small";
+    }
+
+    export interface TextEmbedding3Large extends Vellum.OpenAiVectorizerTextEmbedding3Large {
+        modelName: "text-embedding-3-large";
+    }
+
+    export interface TextEmbeddingAda002 extends Vellum.OpenAiVectorizerTextEmbeddingAda002 {
+        modelName: "text-embedding-ada-002";
+    }
+
+    export interface IntfloatMultilingualE5Large extends Vellum.BasicVectorizerIntfloatMultilingualE5Large {
+        modelName: "intfloat/multilingual-e5-large";
+    }
+
+    export interface SentenceTransformersMultiQaMpnetBaseCosV1
+        extends Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1 {
+        modelName: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
+    }
+
+    export interface SentenceTransformersMultiQaMpnetBaseDotV1
+        extends Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1 {
+        modelName: "sentence-transformers/multi-qa-mpnet-base-dot-v1";
+    }
+
+    export interface HkunlpInstructorXl extends Vellum.HkunlpInstructorXlVectorizer {
+        modelName: "hkunlp/instructor-xl";
+    }
+
+    export interface TextEmbedding004 extends Vellum.GoogleVertexAiVectorizerTextEmbedding004 {
+        modelName: "text-embedding-004";
+    }
+
+    export interface TextMultilingualEmbedding002 extends Vellum.GoogleVertexAiVectorizerTextMultilingualEmbedding002 {
+        modelName: "text-multilingual-embedding-002";
+    }
+
+    export interface GeminiEmbedding001 extends Vellum.GoogleVertexAiVectorizerGeminiEmbedding001 {
+        modelName: "gemini-embedding-001";
+    }
+
+    export interface BaaiBgeSmallEnV15 extends Vellum.FastEmbedVectorizerBaaiBgeSmallEnV15 {
+        modelName: "BAAI/bge-small-en-v1.5";
+    }
+
+    export interface PrivateVectorizer extends Vellum.PrivateVectorizer {
+        modelName: "private-vectorizer";
+    }
+}

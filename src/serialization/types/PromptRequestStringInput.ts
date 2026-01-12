@@ -11,14 +11,12 @@ export const PromptRequestStringInput: core.serialization.ObjectSchema<
     Vellum.PromptRequestStringInput
 > = core.serialization.object({
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("STRING"),
     value: core.serialization.string(),
 });
 
 export declare namespace PromptRequestStringInput {
     export interface Raw {
         key: string;
-        type: "STRING";
         value: string;
     }
 }

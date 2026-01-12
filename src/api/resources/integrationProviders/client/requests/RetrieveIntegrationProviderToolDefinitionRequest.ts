@@ -10,5 +10,5 @@ export interface RetrieveIntegrationProviderToolDefinitionRequest {
     /**
      * The version of the toolkit to use. Pass 'latest' to get the latest version, or a specific version string to pin it. If not provided, uses the provider's default.
      */
-    toolkitVersion?: string | null;
+    toolkitVersion?: string;
 }

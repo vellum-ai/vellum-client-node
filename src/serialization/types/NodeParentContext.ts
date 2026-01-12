@@ -14,7 +14,6 @@ export const NodeParentContext: core.serialization.ObjectSchema<
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
     nodeDefinition: core.serialization.property("node_definition", VellumCodeResourceDefinition),
-    type: core.serialization.stringLiteral("WORKFLOW_NODE"),
     spanId: core.serialization.property("span_id", core.serialization.string()),
 });
 
@@ -23,7 +22,6 @@ export declare namespace NodeParentContext {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
         node_definition: VellumCodeResourceDefinition.Raw;
-        type: "WORKFLOW_NODE";
         span_id: string;
     }
 }

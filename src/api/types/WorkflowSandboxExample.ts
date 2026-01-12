@@ -5,8 +5,8 @@
 export interface WorkflowSandboxExample {
     id: string;
     label: string;
-    description?: string | null;
-    iconName?: string | null;
-    uiImageUrl?: string | null;
-    codeImageUrl?: string | null;
+    description: string | null;
+    iconName: string | null;
+    uiImageUrl: string | null;
+    codeImageUrl: string | null;
 }

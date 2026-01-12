@@ -11,7 +11,6 @@ export const ComposioToolDefinition: core.serialization.ObjectSchema<
     serializers.ComposioToolDefinition.Raw,
     Vellum.ComposioToolDefinition
 > = core.serialization.object({
-    provider: core.serialization.stringLiteral("COMPOSIO"),
     integration: Integration,
     name: core.serialization.string(),
     label: core.serialization.string(),
@@ -29,7 +28,6 @@ export const ComposioToolDefinition: core.serialization.ObjectSchema<
 
 export declare namespace ComposioToolDefinition {
     export interface Raw {
-        provider: "COMPOSIO";
         integration: Integration.Raw;
         name: string;
         label: string;

@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledErrorValue {
     nodeInputId: string;
     key: string;
-    type: "ERROR";
-    value?: Vellum.VellumError | null;
+    value: Vellum.VellumError | null;
 }

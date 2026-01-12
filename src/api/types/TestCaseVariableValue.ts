@@ -5,15 +5,65 @@
 import * as Vellum from "../index";
 
 export type TestCaseVariableValue =
-    | Vellum.TestCaseStringVariableValue
-    | Vellum.TestCaseNumberVariableValue
-    | Vellum.TestCaseJsonVariableValue
-    | Vellum.TestCaseChatHistoryVariableValue
-    | Vellum.TestCaseSearchResultsVariableValue
-    | Vellum.TestCaseErrorVariableValue
-    | Vellum.TestCaseFunctionCallVariableValue
-    | Vellum.TestCaseArrayVariableValue
-    | Vellum.TestCaseAudioVariableValue
-    | Vellum.TestCaseImageVariableValue
-    | Vellum.TestCaseVideoVariableValue
-    | Vellum.TestCaseDocumentVariableValue;
+    | Vellum.TestCaseVariableValue.String
+    | Vellum.TestCaseVariableValue.Number
+    | Vellum.TestCaseVariableValue.Json
+    | Vellum.TestCaseVariableValue.ChatHistory
+    | Vellum.TestCaseVariableValue.SearchResults
+    | Vellum.TestCaseVariableValue.Error_
+    | Vellum.TestCaseVariableValue.FunctionCall
+    | Vellum.TestCaseVariableValue.Array
+    | Vellum.TestCaseVariableValue.Audio
+    | Vellum.TestCaseVariableValue.Image
+    | Vellum.TestCaseVariableValue.Video
+    | Vellum.TestCaseVariableValue.Document;
+
+export namespace TestCaseVariableValue {
+    export interface String extends Vellum.TestCaseStringVariableValue {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.TestCaseNumberVariableValue {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.TestCaseJsonVariableValue {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.TestCaseChatHistoryVariableValue {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.TestCaseSearchResultsVariableValue {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.TestCaseErrorVariableValue {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends Vellum.TestCaseFunctionCallVariableValue {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Array extends Vellum.TestCaseArrayVariableValue {
+        type: "ARRAY";
+    }
+
+    export interface Audio extends Vellum.TestCaseAudioVariableValue {
+        type: "AUDIO";
+    }
+
+    export interface Image extends Vellum.TestCaseImageVariableValue {
+        type: "IMAGE";
+    }
+
+    export interface Video extends Vellum.TestCaseVideoVariableValue {
+        type: "VIDEO";
+    }
+
+    export interface Document extends Vellum.TestCaseDocumentVariableValue {
+        type: "DOCUMENT";
+    }
+}

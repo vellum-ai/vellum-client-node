@@ -8,6 +8,5 @@ export interface TerminalNodeChatHistoryResult {
     id?: string | null;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
-    type: "CHAT_HISTORY";
-    value?: Vellum.ChatMessage[] | null;
+    value: Vellum.ChatMessage[] | null;
 }

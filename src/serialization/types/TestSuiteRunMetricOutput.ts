@@ -14,19 +14,44 @@ import { TestSuiteRunMetricArrayOutput } from "./TestSuiteRunMetricArrayOutput";
 export const TestSuiteRunMetricOutput: core.serialization.Schema<
     serializers.TestSuiteRunMetricOutput.Raw,
     Vellum.TestSuiteRunMetricOutput
-> = core.serialization.undiscriminatedUnion([
-    TestSuiteRunMetricStringOutput,
-    TestSuiteRunMetricNumberOutput,
-    TestSuiteRunMetricJsonOutput,
-    TestSuiteRunMetricErrorOutput,
-    TestSuiteRunMetricArrayOutput,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: TestSuiteRunMetricStringOutput,
+        NUMBER: TestSuiteRunMetricNumberOutput,
+        JSON: TestSuiteRunMetricJsonOutput,
+        ERROR: TestSuiteRunMetricErrorOutput,
+        ARRAY: TestSuiteRunMetricArrayOutput,
+    })
+    .transform<Vellum.TestSuiteRunMetricOutput>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace TestSuiteRunMetricOutput {
     export type Raw =
-        | TestSuiteRunMetricStringOutput.Raw
-        | TestSuiteRunMetricNumberOutput.Raw
-        | TestSuiteRunMetricJsonOutput.Raw
-        | TestSuiteRunMetricErrorOutput.Raw
-        | TestSuiteRunMetricArrayOutput.Raw;
+        | TestSuiteRunMetricOutput.String
+        | TestSuiteRunMetricOutput.Number
+        | TestSuiteRunMetricOutput.Json
+        | TestSuiteRunMetricOutput.Error
+        | TestSuiteRunMetricOutput.Array;
+
+    export interface String extends TestSuiteRunMetricStringOutput.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends TestSuiteRunMetricNumberOutput.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends TestSuiteRunMetricJsonOutput.Raw {
+        type: "JSON";
+    }
+
+    export interface Error extends TestSuiteRunMetricErrorOutput.Raw {
+        type: "ERROR";
+    }
+
+    export interface Array extends TestSuiteRunMetricArrayOutput.Raw {
+        type: "ARRAY";
+    }
 }

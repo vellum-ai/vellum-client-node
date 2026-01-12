@@ -12,19 +12,19 @@ export const UpdateActiveWorkspaceResponse: core.serialization.ObjectSchema<
 > = core.serialization.object({
     updateActiveWorkspaceId: core.serialization.property(
         "update_active_workspace_id",
-        core.serialization.string().optionalNullable(),
+        core.serialization.string().nullable(),
     ),
     updateActiveEnvironmentId: core.serialization.property(
         "update_active_environment_id",
-        core.serialization.string().optionalNullable(),
+        core.serialization.string().nullable(),
     ),
     isStaff: core.serialization.property("is_staff", core.serialization.boolean().optional()),
 });
 
 export declare namespace UpdateActiveWorkspaceResponse {
     export interface Raw {
-        update_active_workspace_id?: (string | null) | null;
-        update_active_environment_id?: (string | null) | null;
+        update_active_workspace_id: string | null;
+        update_active_environment_id: string | null;
         is_staff?: boolean | null;
     }
 }

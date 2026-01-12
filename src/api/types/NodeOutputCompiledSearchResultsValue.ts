@@ -8,8 +8,7 @@ import * as Vellum from "../index";
  * An output returned by a node that is of type SEARCH_RESULTS.
  */
 export interface NodeOutputCompiledSearchResultsValue {
-    type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[] | null;
+    value: Vellum.SearchResult[] | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

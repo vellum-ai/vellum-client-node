@@ -7,7 +7,6 @@
  */
 export interface TestSuiteRunExecutionStringOutput {
     name: string;
-    type: "STRING";
-    value?: string | null;
+    value: string | null;
     outputVariableId: string;
 }

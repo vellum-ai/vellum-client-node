@@ -14,19 +14,44 @@ import { TestSuiteRunExternalExecConfig } from "./TestSuiteRunExternalExecConfig
 export const TestSuiteRunExecConfig: core.serialization.Schema<
     serializers.TestSuiteRunExecConfig.Raw,
     Vellum.TestSuiteRunExecConfig
-> = core.serialization.undiscriminatedUnion([
-    TestSuiteRunDeploymentReleaseTagExecConfig,
-    TestSuiteRunPromptSandboxHistoryItemExecConfig,
-    TestSuiteRunWorkflowReleaseTagExecConfig,
-    TestSuiteRunWorkflowSandboxHistoryItemExecConfig,
-    TestSuiteRunExternalExecConfig,
-]);
+> = core.serialization
+    .union("type", {
+        DEPLOYMENT_RELEASE_TAG: TestSuiteRunDeploymentReleaseTagExecConfig,
+        PROMPT_SANDBOX_HISTORY_ITEM: TestSuiteRunPromptSandboxHistoryItemExecConfig,
+        WORKFLOW_RELEASE_TAG: TestSuiteRunWorkflowReleaseTagExecConfig,
+        WORKFLOW_SANDBOX_HISTORY_ITEM: TestSuiteRunWorkflowSandboxHistoryItemExecConfig,
+        EXTERNAL: TestSuiteRunExternalExecConfig,
+    })
+    .transform<Vellum.TestSuiteRunExecConfig>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace TestSuiteRunExecConfig {
     export type Raw =
-        | TestSuiteRunDeploymentReleaseTagExecConfig.Raw
-        | TestSuiteRunPromptSandboxHistoryItemExecConfig.Raw
-        | TestSuiteRunWorkflowReleaseTagExecConfig.Raw
-        | TestSuiteRunWorkflowSandboxHistoryItemExecConfig.Raw
-        | TestSuiteRunExternalExecConfig.Raw;
+        | TestSuiteRunExecConfig.DeploymentReleaseTag
+        | TestSuiteRunExecConfig.PromptSandboxHistoryItem
+        | TestSuiteRunExecConfig.WorkflowReleaseTag
+        | TestSuiteRunExecConfig.WorkflowSandboxHistoryItem
+        | TestSuiteRunExecConfig.External;
+
+    export interface DeploymentReleaseTag extends TestSuiteRunDeploymentReleaseTagExecConfig.Raw {
+        type: "DEPLOYMENT_RELEASE_TAG";
+    }
+
+    export interface PromptSandboxHistoryItem extends TestSuiteRunPromptSandboxHistoryItemExecConfig.Raw {
+        type: "PROMPT_SANDBOX_HISTORY_ITEM";
+    }
+
+    export interface WorkflowReleaseTag extends TestSuiteRunWorkflowReleaseTagExecConfig.Raw {
+        type: "WORKFLOW_RELEASE_TAG";
+    }
+
+    export interface WorkflowSandboxHistoryItem extends TestSuiteRunWorkflowSandboxHistoryItemExecConfig.Raw {
+        type: "WORKFLOW_SANDBOX_HISTORY_ITEM";
+    }
+
+    export interface External extends TestSuiteRunExternalExecConfig.Raw {
+        type: "EXTERNAL";
+    }
 }

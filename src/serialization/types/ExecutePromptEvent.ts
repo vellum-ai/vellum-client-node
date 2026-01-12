@@ -13,17 +13,38 @@ import { RejectedExecutePromptEvent } from "./RejectedExecutePromptEvent";
 export const ExecutePromptEvent: core.serialization.Schema<
     serializers.ExecutePromptEvent.Raw,
     Vellum.ExecutePromptEvent
-> = core.serialization.undiscriminatedUnion([
-    InitiatedExecutePromptEvent,
-    StreamingExecutePromptEvent,
-    FulfilledExecutePromptEvent,
-    RejectedExecutePromptEvent,
-]);
+> = core.serialization
+    .union("state", {
+        INITIATED: InitiatedExecutePromptEvent,
+        STREAMING: StreamingExecutePromptEvent,
+        FULFILLED: FulfilledExecutePromptEvent,
+        REJECTED: RejectedExecutePromptEvent,
+    })
+    .transform<Vellum.ExecutePromptEvent>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace ExecutePromptEvent {
     export type Raw =
-        | InitiatedExecutePromptEvent.Raw
-        | StreamingExecutePromptEvent.Raw
-        | FulfilledExecutePromptEvent.Raw
-        | RejectedExecutePromptEvent.Raw;
+        | ExecutePromptEvent.Initiated
+        | ExecutePromptEvent.Streaming
+        | ExecutePromptEvent.Fulfilled
+        | ExecutePromptEvent.Rejected;
+
+    export interface Initiated extends InitiatedExecutePromptEvent.Raw {
+        state: "INITIATED";
+    }
+
+    export interface Streaming extends StreamingExecutePromptEvent.Raw {
+        state: "STREAMING";
+    }
+
+    export interface Fulfilled extends FulfilledExecutePromptEvent.Raw {
+        state: "FULFILLED";
+    }
+
+    export interface Rejected extends RejectedExecutePromptEvent.Raw {
+        state: "REJECTED";
+    }
 }

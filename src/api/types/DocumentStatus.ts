@@ -6,3 +6,6 @@
  * * `ACTIVE` - Active
  */
 export type DocumentStatus = "ACTIVE";
+export const DocumentStatus = {
+    Active: "ACTIVE",
+} as const;

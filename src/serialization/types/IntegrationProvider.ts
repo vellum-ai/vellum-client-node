@@ -9,7 +9,7 @@ import * as core from "../../core";
 export const IntegrationProvider: core.serialization.Schema<
     serializers.IntegrationProvider.Raw,
     Vellum.IntegrationProvider
-> = core.serialization.stringLiteral("COMPOSIO");
+> = core.serialization.enum_(["COMPOSIO"]);
 
 export declare namespace IntegrationProvider {
     export type Raw = "COMPOSIO";

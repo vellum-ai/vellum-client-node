@@ -12,15 +12,13 @@ export const TestCaseJsonVariableValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("JSON"),
-    value: core.serialization.unknown(),
+    value: core.serialization.unknown().nullable(),
 });
 
 export declare namespace TestCaseJsonVariableValue {
     export interface Raw {
         variable_id: string;
         name: string;
-        type: "JSON";
-        value?: unknown;
+        value: unknown | null;
     }
 }

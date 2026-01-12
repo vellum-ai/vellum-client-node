@@ -19,7 +19,7 @@ export const WorkflowDeploymentRelease: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     created: core.serialization.date(),
     environment: ReleaseEnvironment,
-    createdBy: core.serialization.property("created_by", ReleaseCreatedBy.optionalNullable()),
+    createdBy: core.serialization.property("created_by", ReleaseCreatedBy.nullable()),
     workflowVersion: core.serialization.property("workflow_version", WorkflowDeploymentReleaseWorkflowVersion),
     deployment: WorkflowDeploymentReleaseWorkflowDeployment,
     description: core.serialization.string().optional(),
@@ -32,7 +32,7 @@ export declare namespace WorkflowDeploymentRelease {
         id: string;
         created: string;
         environment: ReleaseEnvironment.Raw;
-        created_by?: (ReleaseCreatedBy.Raw | null) | null;
+        created_by: ReleaseCreatedBy.Raw | null;
         workflow_version: WorkflowDeploymentReleaseWorkflowVersion.Raw;
         deployment: WorkflowDeploymentReleaseWorkflowDeployment.Raw;
         description?: string | null;

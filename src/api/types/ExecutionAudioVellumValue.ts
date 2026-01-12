@@ -11,6 +11,5 @@ export interface ExecutionAudioVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    type: "AUDIO";
-    value?: Vellum.VellumAudio | null;
+    value: Vellum.VellumAudio | null;
 }

@@ -10,14 +10,12 @@ import { VellumDocument } from "./VellumDocument";
 export const DocumentInput: core.serialization.ObjectSchema<serializers.DocumentInput.Raw, Vellum.DocumentInput> =
     core.serialization.object({
         name: core.serialization.string(),
-        type: core.serialization.stringLiteral("DOCUMENT"),
         value: VellumDocument,
     });
 
 export declare namespace DocumentInput {
     export interface Raw {
         name: string;
-        type: "DOCUMENT";
         value: VellumDocument.Raw;
     }
 }

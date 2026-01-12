@@ -5,6 +5,4 @@
 /**
  * Serializer for private vectorizer.
  */
-export interface PrivateVectorizerRequest {
-    modelName: "private-vectorizer";
-}
+export interface PrivateVectorizerRequest {}

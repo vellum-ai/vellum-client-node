@@ -5,7 +5,7 @@
 export interface RawPromptExecutionOverridesRequest {
     body?: Record<string, unknown> | null;
     /** The raw headers to send to the model host. */
-    headers?: Record<string, (string | null) | undefined> | null;
+    headers?: Record<string, string | null> | null;
     /** The raw URL to send to the model host. */
     url?: string | null;
 }

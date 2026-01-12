@@ -13,15 +13,13 @@ export const WorkflowOutputImage: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("IMAGE"),
-    value: VellumImage.optionalNullable(),
+    value: VellumImage.nullable(),
 });
 
 export declare namespace WorkflowOutputImage {
     export interface Raw {
         id: string;
         name: string;
-        type: "IMAGE";
-        value?: (VellumImage.Raw | null) | null;
+        value: VellumImage.Raw | null;
     }
 }

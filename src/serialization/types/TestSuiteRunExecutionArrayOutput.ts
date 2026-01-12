@@ -11,16 +11,14 @@ export const TestSuiteRunExecutionArrayOutput: core.serialization.ObjectSchema<
     Vellum.TestSuiteRunExecutionArrayOutput
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("ARRAY"),
-    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
+    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).nullable(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
 export declare namespace TestSuiteRunExecutionArrayOutput {
     export interface Raw {
         name: string;
-        type: "ARRAY";
-        value?: (serializers.VellumValue.Raw[] | null) | null;
+        value: serializers.VellumValue.Raw[] | null;
         output_variable_id: string;
     }
 }

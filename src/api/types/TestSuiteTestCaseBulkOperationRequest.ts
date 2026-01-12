@@ -5,7 +5,25 @@
 import * as Vellum from "../index";
 
 export type TestSuiteTestCaseBulkOperationRequest =
-    | Vellum.TestSuiteTestCaseCreateBulkOperationRequest
-    | Vellum.TestSuiteTestCaseReplaceBulkOperationRequest
-    | Vellum.TestSuiteTestCaseUpsertBulkOperationRequest
-    | Vellum.TestSuiteTestCaseDeleteBulkOperationRequest;
+    | Vellum.TestSuiteTestCaseBulkOperationRequest.Create
+    | Vellum.TestSuiteTestCaseBulkOperationRequest.Replace
+    | Vellum.TestSuiteTestCaseBulkOperationRequest.Upsert
+    | Vellum.TestSuiteTestCaseBulkOperationRequest.Delete;
+
+export namespace TestSuiteTestCaseBulkOperationRequest {
+    export interface Create extends Vellum.TestSuiteTestCaseCreateBulkOperationRequest {
+        type: "CREATE";
+    }
+
+    export interface Replace extends Vellum.TestSuiteTestCaseReplaceBulkOperationRequest {
+        type: "REPLACE";
+    }
+
+    export interface Upsert extends Vellum.TestSuiteTestCaseUpsertBulkOperationRequest {
+        type: "UPSERT";
+    }
+
+    export interface Delete extends Vellum.TestSuiteTestCaseDeleteBulkOperationRequest {
+        type: "DELETE";
+    }
+}

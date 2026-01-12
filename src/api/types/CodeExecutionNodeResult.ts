@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Code Execution Node.
  */
 export interface CodeExecutionNodeResult {
-    type: "CODE_EXECUTION";
     data: Vellum.CodeExecutionNodeResultData;
 }

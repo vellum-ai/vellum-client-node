@@ -12,14 +12,12 @@ export const SearchResultsInput: core.serialization.ObjectSchema<
     Vellum.SearchResultsInput
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
     value: core.serialization.list(SearchResult),
 });
 
 export declare namespace SearchResultsInput {
     export interface Raw {
         name: string;
-        type: "SEARCH_RESULTS";
         value: SearchResult.Raw[];
     }
 }

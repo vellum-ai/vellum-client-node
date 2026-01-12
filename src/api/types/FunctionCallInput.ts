@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface FunctionCallInput {
     /** The variable's name */
     name: string;
-    type: "FUNCTION_CALL";
     value: Vellum.FunctionCall;
 }

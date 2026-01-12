@@ -20,7 +20,7 @@ export const PromptParameters: core.serialization.ObjectSchema<
     logitBias: core.serialization.property(
         "logit_bias",
         core.serialization
-            .record(core.serialization.string(), core.serialization.number().optionalNullable())
+            .record(core.serialization.string(), core.serialization.number().nullable())
             .optionalNullable(),
     ),
     customParameters: core.serialization.property(
@@ -38,7 +38,7 @@ export declare namespace PromptParameters {
         top_k?: (number | null) | null;
         frequency_penalty?: (number | null) | null;
         presence_penalty?: (number | null) | null;
-        logit_bias?: (Record<string, (number | null) | null | undefined> | null) | null;
+        logit_bias?: (Record<string, number | null> | null) | null;
         custom_parameters?: (Record<string, unknown> | null) | null;
     }
 }

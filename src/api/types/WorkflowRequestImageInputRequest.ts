@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface WorkflowRequestImageInputRequest {
     /** The variable's name, as defined in the Workflow. */
     name: string;
-    type: "IMAGE";
     value: Vellum.VellumImageRequest;
 }

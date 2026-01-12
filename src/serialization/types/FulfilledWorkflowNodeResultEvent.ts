@@ -15,9 +15,8 @@ export const FulfilledWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
-    state: core.serialization.stringLiteral("FULFILLED"),
     ts: core.serialization.date().optionalNullable(),
-    data: WorkflowNodeResultData.optionalNullable(),
+    data: WorkflowNodeResultData.nullable(),
     sourceExecutionId: core.serialization.property(
         "source_execution_id",
         core.serialization.string().optionalNullable(),
@@ -31,9 +30,8 @@ export declare namespace FulfilledWorkflowNodeResultEvent {
         id: string;
         node_id: string;
         node_result_id: string;
-        state: "FULFILLED";
         ts?: (string | null) | null;
-        data?: (WorkflowNodeResultData.Raw | null) | null;
+        data: WorkflowNodeResultData.Raw | null;
         source_execution_id?: (string | null) | null;
         output_values: NodeOutputCompiledValue.Raw[];
         mocked?: boolean | null;

@@ -11,9 +11,8 @@ export interface StreamingWorkflowNodeResultEvent {
     id: string;
     nodeId: string;
     nodeResultId: string;
-    state: "STREAMING";
     ts?: Date | null;
-    data?: Vellum.WorkflowNodeResultData | null;
+    data: Vellum.WorkflowNodeResultData | null;
     sourceExecutionId?: string | null;
     output?: Vellum.NodeOutputCompiledValue | null;
     outputIndex?: number | null;

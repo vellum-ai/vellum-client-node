@@ -7,12 +7,12 @@ import * as Vellum from "../index";
 export interface SlimWorkflowExecutionRead {
     spanId: string;
     start: Date;
-    end?: Date | null;
+    end: Date | null;
     inputs: Vellum.ExecutionVellumValue[];
     outputs: Vellum.ExecutionVellumValue[];
-    error?: Vellum.WorkflowError | null;
-    usageResults?: Vellum.WorkflowExecutionUsageResult[] | null;
-    parentContext?: Vellum.WorkflowDeploymentParentContext | null;
-    latestActual?: Vellum.WorkflowExecutionActual | null;
+    error: Vellum.WorkflowError | null;
+    usageResults: Vellum.WorkflowExecutionUsageResult[] | null;
+    parentContext: Vellum.WorkflowDeploymentParentContext | null;
+    latestActual: Vellum.WorkflowExecutionActual | null;
     metricResults: Vellum.WorkflowExecutionViewOnlineEvalMetricResult[];
 }

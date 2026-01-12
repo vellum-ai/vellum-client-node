@@ -9,12 +9,8 @@ import * as core from "../../core";
 export const PrivateVectorizerRequest: core.serialization.ObjectSchema<
     serializers.PrivateVectorizerRequest.Raw,
     Vellum.PrivateVectorizerRequest
-> = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.stringLiteral("private-vectorizer")),
-});
+> = core.serialization.object({});
 
 export declare namespace PrivateVectorizerRequest {
-    export interface Raw {
-        model_name: "private-vectorizer";
-    }
+    export interface Raw {}
 }

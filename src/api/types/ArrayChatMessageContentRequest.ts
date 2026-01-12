@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A list of chat message content items.
  */
 export interface ArrayChatMessageContentRequest {
-    type: "ARRAY";
     value: Vellum.ArrayChatMessageContentItemRequest[];
 }

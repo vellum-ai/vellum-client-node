@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * The final data event returned indicating that the stream has ended and all final resolved values from the model can be found.
  */
 export interface FulfilledAdHocExecutePromptEvent {
-    state: "FULFILLED";
     outputs: Vellum.PromptOutput[];
     executionId: string;
     meta?: Vellum.AdHocFulfilledPromptExecutionMeta;

@@ -5,15 +5,68 @@
 import * as Vellum from "../index";
 
 export type IndexingConfigVectorizerRequest =
-    | Vellum.OpenAiVectorizerTextEmbedding3SmallRequest
-    | Vellum.OpenAiVectorizerTextEmbedding3LargeRequest
-    | Vellum.OpenAiVectorizerTextEmbeddingAda002Request
-    | Vellum.BasicVectorizerIntfloatMultilingualE5LargeRequest
-    | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1Request
-    | Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1Request
-    | Vellum.HkunlpInstructorXlVectorizerRequest
-    | Vellum.GoogleVertexAiVectorizerTextEmbedding004Request
-    | Vellum.GoogleVertexAiVectorizerTextMultilingualEmbedding002Request
-    | Vellum.GoogleVertexAiVectorizerGeminiEmbedding001Request
-    | Vellum.FastEmbedVectorizerBaaiBgeSmallEnV15Request
-    | Vellum.PrivateVectorizerRequest;
+    | Vellum.IndexingConfigVectorizerRequest.TextEmbedding3Small
+    | Vellum.IndexingConfigVectorizerRequest.TextEmbedding3Large
+    | Vellum.IndexingConfigVectorizerRequest.TextEmbeddingAda002
+    | Vellum.IndexingConfigVectorizerRequest.IntfloatMultilingualE5Large
+    | Vellum.IndexingConfigVectorizerRequest.SentenceTransformersMultiQaMpnetBaseCosV1
+    | Vellum.IndexingConfigVectorizerRequest.SentenceTransformersMultiQaMpnetBaseDotV1
+    | Vellum.IndexingConfigVectorizerRequest.HkunlpInstructorXl
+    | Vellum.IndexingConfigVectorizerRequest.TextEmbedding004
+    | Vellum.IndexingConfigVectorizerRequest.TextMultilingualEmbedding002
+    | Vellum.IndexingConfigVectorizerRequest.GeminiEmbedding001
+    | Vellum.IndexingConfigVectorizerRequest.BaaiBgeSmallEnV15
+    | Vellum.IndexingConfigVectorizerRequest.PrivateVectorizer;
+
+export namespace IndexingConfigVectorizerRequest {
+    export interface TextEmbedding3Small extends Vellum.OpenAiVectorizerTextEmbedding3SmallRequest {
+        modelName: "text-embedding-3-small";
+    }
+
+    export interface TextEmbedding3Large extends Vellum.OpenAiVectorizerTextEmbedding3LargeRequest {
+        modelName: "text-embedding-3-large";
+    }
+
+    export interface TextEmbeddingAda002 extends Vellum.OpenAiVectorizerTextEmbeddingAda002Request {
+        modelName: "text-embedding-ada-002";
+    }
+
+    export interface IntfloatMultilingualE5Large extends Vellum.BasicVectorizerIntfloatMultilingualE5LargeRequest {
+        modelName: "intfloat/multilingual-e5-large";
+    }
+
+    export interface SentenceTransformersMultiQaMpnetBaseCosV1
+        extends Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1Request {
+        modelName: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
+    }
+
+    export interface SentenceTransformersMultiQaMpnetBaseDotV1
+        extends Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1Request {
+        modelName: "sentence-transformers/multi-qa-mpnet-base-dot-v1";
+    }
+
+    export interface HkunlpInstructorXl extends Vellum.HkunlpInstructorXlVectorizerRequest {
+        modelName: "hkunlp/instructor-xl";
+    }
+
+    export interface TextEmbedding004 extends Vellum.GoogleVertexAiVectorizerTextEmbedding004Request {
+        modelName: "text-embedding-004";
+    }
+
+    export interface TextMultilingualEmbedding002
+        extends Vellum.GoogleVertexAiVectorizerTextMultilingualEmbedding002Request {
+        modelName: "text-multilingual-embedding-002";
+    }
+
+    export interface GeminiEmbedding001 extends Vellum.GoogleVertexAiVectorizerGeminiEmbedding001Request {
+        modelName: "gemini-embedding-001";
+    }
+
+    export interface BaaiBgeSmallEnV15 extends Vellum.FastEmbedVectorizerBaaiBgeSmallEnV15Request {
+        modelName: "BAAI/bge-small-en-v1.5";
+    }
+
+    export interface PrivateVectorizer extends Vellum.PrivateVectorizerRequest {
+        modelName: "private-vectorizer";
+    }
+}

@@ -5,7 +5,6 @@
 import * as Vellum from "../index";
 
 export interface SlimComposioToolDefinition {
-    provider: "COMPOSIO";
     integration: Vellum.Integration;
     name: string;
     label: string;

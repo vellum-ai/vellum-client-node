@@ -5,5 +5,15 @@
 import * as Vellum from "../index";
 
 export type VellumValueLogicalExpressionRequest =
-    | Vellum.VellumValueLogicalConditionRequest
-    | Vellum.VellumValueLogicalConditionGroupRequest;
+    | Vellum.VellumValueLogicalExpressionRequest.LogicalCondition
+    | Vellum.VellumValueLogicalExpressionRequest.LogicalConditionGroup;
+
+export namespace VellumValueLogicalExpressionRequest {
+    export interface LogicalCondition extends Vellum.VellumValueLogicalConditionRequest {
+        type: "LOGICAL_CONDITION";
+    }
+
+    export interface LogicalConditionGroup extends Vellum.VellumValueLogicalConditionGroupRequest {
+        type: "LOGICAL_CONDITION_GROUP";
+    }
+}

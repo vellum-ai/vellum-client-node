@@ -22,35 +22,92 @@ import { NodeInputCompiledDocumentValue } from "./NodeInputCompiledDocumentValue
 export const NodeInputVariableCompiledValue: core.serialization.Schema<
     serializers.NodeInputVariableCompiledValue.Raw,
     Vellum.NodeInputVariableCompiledValue
-> = core.serialization.undiscriminatedUnion([
-    NodeInputCompiledStringValue,
-    NodeInputCompiledNumberValue,
-    NodeInputCompiledJsonValue,
-    NodeInputCompiledChatHistoryValue,
-    NodeInputCompiledSearchResultsValue,
-    NodeInputCompiledErrorValue,
-    NodeInputCompiledArrayValue,
-    NodeInputCompiledFunctionCallValue,
-    NodeInputCompiledSecretValue,
-    NodeInputCompiledAudioValue,
-    NodeInputCompiledVideoValue,
-    NodeInputCompiledImageValue,
-    NodeInputCompiledDocumentValue,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: NodeInputCompiledStringValue,
+        NUMBER: NodeInputCompiledNumberValue,
+        JSON: NodeInputCompiledJsonValue,
+        CHAT_HISTORY: NodeInputCompiledChatHistoryValue,
+        SEARCH_RESULTS: NodeInputCompiledSearchResultsValue,
+        ERROR: NodeInputCompiledErrorValue,
+        ARRAY: NodeInputCompiledArrayValue,
+        FUNCTION_CALL: NodeInputCompiledFunctionCallValue,
+        SECRET: NodeInputCompiledSecretValue,
+        AUDIO: NodeInputCompiledAudioValue,
+        VIDEO: NodeInputCompiledVideoValue,
+        IMAGE: NodeInputCompiledImageValue,
+        DOCUMENT: NodeInputCompiledDocumentValue,
+    })
+    .transform<Vellum.NodeInputVariableCompiledValue>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace NodeInputVariableCompiledValue {
     export type Raw =
-        | NodeInputCompiledStringValue.Raw
-        | NodeInputCompiledNumberValue.Raw
-        | NodeInputCompiledJsonValue.Raw
-        | NodeInputCompiledChatHistoryValue.Raw
-        | NodeInputCompiledSearchResultsValue.Raw
-        | NodeInputCompiledErrorValue.Raw
-        | NodeInputCompiledArrayValue.Raw
-        | NodeInputCompiledFunctionCallValue.Raw
-        | NodeInputCompiledSecretValue.Raw
-        | NodeInputCompiledAudioValue.Raw
-        | NodeInputCompiledVideoValue.Raw
-        | NodeInputCompiledImageValue.Raw
-        | NodeInputCompiledDocumentValue.Raw;
+        | NodeInputVariableCompiledValue.String
+        | NodeInputVariableCompiledValue.Number
+        | NodeInputVariableCompiledValue.Json
+        | NodeInputVariableCompiledValue.ChatHistory
+        | NodeInputVariableCompiledValue.SearchResults
+        | NodeInputVariableCompiledValue.Error
+        | NodeInputVariableCompiledValue.Array
+        | NodeInputVariableCompiledValue.FunctionCall
+        | NodeInputVariableCompiledValue.Secret
+        | NodeInputVariableCompiledValue.Audio
+        | NodeInputVariableCompiledValue.Video
+        | NodeInputVariableCompiledValue.Image
+        | NodeInputVariableCompiledValue.Document;
+
+    export interface String extends NodeInputCompiledStringValue.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends NodeInputCompiledNumberValue.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends NodeInputCompiledJsonValue.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends NodeInputCompiledChatHistoryValue.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends NodeInputCompiledSearchResultsValue.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends NodeInputCompiledErrorValue.Raw {
+        type: "ERROR";
+    }
+
+    export interface Array extends NodeInputCompiledArrayValue.Raw {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends NodeInputCompiledFunctionCallValue.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Secret extends NodeInputCompiledSecretValue.Raw {
+        type: "SECRET";
+    }
+
+    export interface Audio extends NodeInputCompiledAudioValue.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends NodeInputCompiledVideoValue.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends NodeInputCompiledImageValue.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends NodeInputCompiledDocumentValue.Raw {
+        type: "DOCUMENT";
+    }
 }

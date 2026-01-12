@@ -11,14 +11,12 @@ export const TemplatingNodeNumberResult: core.serialization.ObjectSchema<
     Vellum.TemplatingNodeNumberResult
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("NUMBER"),
-    value: core.serialization.number().optionalNullable(),
+    value: core.serialization.number().nullable(),
 });
 
 export declare namespace TemplatingNodeNumberResult {
     export interface Raw {
         id: string;
-        type: "NUMBER";
-        value?: (number | null) | null;
+        value: number | null;
     }
 }

@@ -16,23 +16,56 @@ import { WorkflowExecutionSnapshottedEvent } from "./WorkflowExecutionSnapshotte
 export const VellumWorkflowExecutionEvent: core.serialization.Schema<
     serializers.VellumWorkflowExecutionEvent.Raw,
     Vellum.VellumWorkflowExecutionEvent
-> = core.serialization.undiscriminatedUnion([
-    WorkflowExecutionInitiatedEvent,
-    WorkflowExecutionStreamingEvent,
-    WorkflowExecutionFulfilledEvent,
-    WorkflowExecutionRejectedEvent,
-    WorkflowExecutionPausedEvent,
-    WorkflowExecutionResumedEvent,
-    WorkflowExecutionSnapshottedEvent,
-]);
+> = core.serialization
+    .union("name", {
+        "workflow.execution.initiated": WorkflowExecutionInitiatedEvent,
+        "workflow.execution.streaming": WorkflowExecutionStreamingEvent,
+        "workflow.execution.fulfilled": WorkflowExecutionFulfilledEvent,
+        "workflow.execution.rejected": WorkflowExecutionRejectedEvent,
+        "workflow.execution.paused": WorkflowExecutionPausedEvent,
+        "workflow.execution.resumed": WorkflowExecutionResumedEvent,
+        "workflow.execution.snapshotted": WorkflowExecutionSnapshottedEvent,
+    })
+    .transform<Vellum.VellumWorkflowExecutionEvent>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace VellumWorkflowExecutionEvent {
     export type Raw =
-        | WorkflowExecutionInitiatedEvent.Raw
-        | WorkflowExecutionStreamingEvent.Raw
-        | WorkflowExecutionFulfilledEvent.Raw
-        | WorkflowExecutionRejectedEvent.Raw
-        | WorkflowExecutionPausedEvent.Raw
-        | WorkflowExecutionResumedEvent.Raw
-        | WorkflowExecutionSnapshottedEvent.Raw;
+        | VellumWorkflowExecutionEvent.WorkflowExecutionInitiated
+        | VellumWorkflowExecutionEvent.WorkflowExecutionStreaming
+        | VellumWorkflowExecutionEvent.WorkflowExecutionFulfilled
+        | VellumWorkflowExecutionEvent.WorkflowExecutionRejected
+        | VellumWorkflowExecutionEvent.WorkflowExecutionPaused
+        | VellumWorkflowExecutionEvent.WorkflowExecutionResumed
+        | VellumWorkflowExecutionEvent.WorkflowExecutionSnapshotted;
+
+    export interface WorkflowExecutionInitiated extends WorkflowExecutionInitiatedEvent.Raw {
+        name: "workflow.execution.initiated";
+    }
+
+    export interface WorkflowExecutionStreaming extends WorkflowExecutionStreamingEvent.Raw {
+        name: "workflow.execution.streaming";
+    }
+
+    export interface WorkflowExecutionFulfilled extends WorkflowExecutionFulfilledEvent.Raw {
+        name: "workflow.execution.fulfilled";
+    }
+
+    export interface WorkflowExecutionRejected extends WorkflowExecutionRejectedEvent.Raw {
+        name: "workflow.execution.rejected";
+    }
+
+    export interface WorkflowExecutionPaused extends WorkflowExecutionPausedEvent.Raw {
+        name: "workflow.execution.paused";
+    }
+
+    export interface WorkflowExecutionResumed extends WorkflowExecutionResumedEvent.Raw {
+        name: "workflow.execution.resumed";
+    }
+
+    export interface WorkflowExecutionSnapshotted extends WorkflowExecutionSnapshottedEvent.Raw {
+        name: "workflow.execution.snapshotted";
+    }
 }

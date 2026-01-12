@@ -7,7 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { IntegrationName } from "./IntegrationName";
 import { IntegrationProvider } from "./IntegrationProvider";
-import { ComponentsSchemasComposioIntegrationExecConfig } from "./ComponentsSchemasComposioIntegrationExecConfig";
+import { IntegrationExecConfig } from "./IntegrationExecConfig";
 
 export const IntegrationRead: core.serialization.ObjectSchema<serializers.IntegrationRead.Raw, Vellum.IntegrationRead> =
     core.serialization.object({
@@ -16,7 +16,7 @@ export const IntegrationRead: core.serialization.ObjectSchema<serializers.Integr
         iconUrl: core.serialization.property("icon_url", core.serialization.string()),
         name: IntegrationName,
         provider: IntegrationProvider,
-        execConfig: core.serialization.property("exec_config", ComponentsSchemasComposioIntegrationExecConfig),
+        execConfig: core.serialization.property("exec_config", IntegrationExecConfig),
     });
 
 export declare namespace IntegrationRead {
@@ -26,6 +26,6 @@ export declare namespace IntegrationRead {
         icon_url: string;
         name: IntegrationName.Raw;
         provider: IntegrationProvider.Raw;
-        exec_config: ComponentsSchemasComposioIntegrationExecConfig.Raw;
+        exec_config: IntegrationExecConfig.Raw;
     }
 }

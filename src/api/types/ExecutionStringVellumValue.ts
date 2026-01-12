@@ -9,6 +9,5 @@ export interface ExecutionStringVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    type: "STRING";
-    value?: string | null;
+    value: string | null;
 }

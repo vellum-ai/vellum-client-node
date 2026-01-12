@@ -10,5 +10,5 @@ export interface UploadedFilesRetrieveRequest {
     /**
      * The number of seconds until the signed URL expires. Must be > 0 and <= 2592000 (30 days). Non-numeric or out-of-range values fall back to the default (604800 seconds or 7 days).
      */
-    expirySeconds?: number | null;
+    expirySeconds?: number;
 }

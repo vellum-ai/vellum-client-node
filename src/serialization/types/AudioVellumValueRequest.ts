@@ -11,13 +11,11 @@ export const AudioVellumValueRequest: core.serialization.ObjectSchema<
     serializers.AudioVellumValueRequest.Raw,
     Vellum.AudioVellumValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("AUDIO"),
-    value: VellumAudioRequest.optionalNullable(),
+    value: VellumAudioRequest.nullable(),
 });
 
 export declare namespace AudioVellumValueRequest {
     export interface Raw {
-        type: "AUDIO";
-        value?: (VellumAudioRequest.Raw | null) | null;
+        value: VellumAudioRequest.Raw | null;
     }
 }

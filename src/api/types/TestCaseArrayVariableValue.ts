@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface TestCaseArrayVariableValue {
     variableId: string;
     name: string;
-    type: "ARRAY";
-    value?: Vellum.VellumValue[] | null;
+    value: Vellum.VellumValue[] | null;
 }

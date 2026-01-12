@@ -12,7 +12,6 @@ export const FunctionCallPromptBlock: core.serialization.ObjectSchema<
     serializers.FunctionCallPromptBlock.Raw,
     Vellum.FunctionCallPromptBlock
 > = core.serialization.object({
-    blockType: core.serialization.property("block_type", core.serialization.stringLiteral("FUNCTION_CALL")),
     state: PromptBlockState.optional(),
     cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     id: core.serialization.string().optionalNullable(),
@@ -22,7 +21,6 @@ export const FunctionCallPromptBlock: core.serialization.ObjectSchema<
 
 export declare namespace FunctionCallPromptBlock {
     export interface Raw {
-        block_type: "FUNCTION_CALL";
         state?: PromptBlockState.Raw | null;
         cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         id?: (string | null) | null;

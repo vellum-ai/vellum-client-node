@@ -33,9 +33,6 @@ jobs:
     needs: [ compile, test ]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -48,6 +45,7 @@ jobs:
 
       - name: Publish to npm
         run: |
+          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           if [[ ${GITHUB_REF} == *alpha* ]]; then
             npm publish --access public --tag alpha
           elif [[ ${GITHUB_REF} == *beta* ]]; then
@@ -55,3 +53,5 @@ jobs:
           else
             npm publish --access public
           fi
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

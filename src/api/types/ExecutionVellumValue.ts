@@ -5,16 +5,70 @@
 import * as Vellum from "../index";
 
 export type ExecutionVellumValue =
-    | Vellum.ExecutionStringVellumValue
-    | Vellum.ExecutionNumberVellumValue
-    | Vellum.ExecutionJsonVellumValue
-    | Vellum.ExecutionChatHistoryVellumValue
-    | Vellum.ExecutionSearchResultsVellumValue
-    | Vellum.ExecutionErrorVellumValue
-    | Vellum.ExecutionArrayVellumValue
-    | Vellum.ExecutionFunctionCallVellumValue
-    | Vellum.ExecutionThinkingVellumValue
-    | Vellum.ExecutionAudioVellumValue
-    | Vellum.ExecutionVideoVellumValue
-    | Vellum.ExecutionImageVellumValue
-    | Vellum.ExecutionDocumentVellumValue;
+    | Vellum.ExecutionVellumValue.String
+    | Vellum.ExecutionVellumValue.Number
+    | Vellum.ExecutionVellumValue.Json
+    | Vellum.ExecutionVellumValue.ChatHistory
+    | Vellum.ExecutionVellumValue.SearchResults
+    | Vellum.ExecutionVellumValue.Error_
+    | Vellum.ExecutionVellumValue.Array
+    | Vellum.ExecutionVellumValue.FunctionCall
+    | Vellum.ExecutionVellumValue.Thinking
+    | Vellum.ExecutionVellumValue.Audio
+    | Vellum.ExecutionVellumValue.Video
+    | Vellum.ExecutionVellumValue.Image
+    | Vellum.ExecutionVellumValue.Document;
+
+export namespace ExecutionVellumValue {
+    export interface String extends Vellum.ExecutionStringVellumValue {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.ExecutionNumberVellumValue {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.ExecutionJsonVellumValue {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.ExecutionChatHistoryVellumValue {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.ExecutionSearchResultsVellumValue {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.ExecutionErrorVellumValue {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.ExecutionArrayVellumValue {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends Vellum.ExecutionFunctionCallVellumValue {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Thinking extends Vellum.ExecutionThinkingVellumValue {
+        type: "THINKING";
+    }
+
+    export interface Audio extends Vellum.ExecutionAudioVellumValue {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.ExecutionVideoVellumValue {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.ExecutionImageVellumValue {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.ExecutionDocumentVellumValue {
+        type: "DOCUMENT";
+    }
+}

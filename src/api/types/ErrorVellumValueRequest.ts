@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A value representing an Error.
  */
 export interface ErrorVellumValueRequest {
-    type: "ERROR";
-    value?: Vellum.VellumErrorRequest | null;
+    value: Vellum.VellumErrorRequest | null;
 }

@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * Token overlapping window chunking
  */
 export interface TokenOverlappingWindowChunking {
-    chunkerName: "token-overlapping-window-chunker";
     chunkerConfig?: Vellum.TokenOverlappingWindowChunkerConfig;
 }

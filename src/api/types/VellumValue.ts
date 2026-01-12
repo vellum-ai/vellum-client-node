@@ -5,16 +5,70 @@
 import * as Vellum from "../index";
 
 export type VellumValue =
-    | Vellum.StringVellumValue
-    | Vellum.NumberVellumValue
-    | Vellum.JsonVellumValue
-    | Vellum.AudioVellumValue
-    | Vellum.VideoVellumValue
-    | Vellum.ImageVellumValue
-    | Vellum.DocumentVellumValue
-    | Vellum.FunctionCallVellumValue
-    | Vellum.ErrorVellumValue
-    | Vellum.ArrayVellumValue
-    | Vellum.ChatHistoryVellumValue
-    | Vellum.SearchResultsVellumValue
-    | Vellum.ThinkingVellumValue;
+    | Vellum.VellumValue.String
+    | Vellum.VellumValue.Number
+    | Vellum.VellumValue.Json
+    | Vellum.VellumValue.Audio
+    | Vellum.VellumValue.Video
+    | Vellum.VellumValue.Image
+    | Vellum.VellumValue.Document
+    | Vellum.VellumValue.FunctionCall
+    | Vellum.VellumValue.Error_
+    | Vellum.VellumValue.Array
+    | Vellum.VellumValue.ChatHistory
+    | Vellum.VellumValue.SearchResults
+    | Vellum.VellumValue.Thinking;
+
+export namespace VellumValue {
+    export interface String extends Vellum.StringVellumValue {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.NumberVellumValue {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.JsonVellumValue {
+        type: "JSON";
+    }
+
+    export interface Audio extends Vellum.AudioVellumValue {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.VideoVellumValue {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.ImageVellumValue {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.DocumentVellumValue {
+        type: "DOCUMENT";
+    }
+
+    export interface FunctionCall extends Vellum.FunctionCallVellumValue {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Error_ extends Vellum.ErrorVellumValue {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.ArrayVellumValue {
+        type: "ARRAY";
+    }
+
+    export interface ChatHistory extends Vellum.ChatHistoryVellumValue {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.SearchResultsVellumValue {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Thinking extends Vellum.ThinkingVellumValue {
+        type: "THINKING";
+    }
+}

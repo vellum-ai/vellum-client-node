@@ -5,11 +5,45 @@
 import * as Vellum from "../index";
 
 export type WorkflowResultEventOutputData =
-    | Vellum.WorkflowResultEventOutputDataString
-    | Vellum.WorkflowResultEventOutputDataNumber
-    | Vellum.WorkflowResultEventOutputDataJson
-    | Vellum.WorkflowResultEventOutputDataChatHistory
-    | Vellum.WorkflowResultEventOutputDataSearchResults
-    | Vellum.WorkflowResultEventOutputDataArray
-    | Vellum.WorkflowResultEventOutputDataFunctionCall
-    | Vellum.WorkflowResultEventOutputDataError;
+    | Vellum.WorkflowResultEventOutputData.String
+    | Vellum.WorkflowResultEventOutputData.Number
+    | Vellum.WorkflowResultEventOutputData.Json
+    | Vellum.WorkflowResultEventOutputData.ChatHistory
+    | Vellum.WorkflowResultEventOutputData.SearchResults
+    | Vellum.WorkflowResultEventOutputData.Array
+    | Vellum.WorkflowResultEventOutputData.FunctionCall
+    | Vellum.WorkflowResultEventOutputData.Error_;
+
+export namespace WorkflowResultEventOutputData {
+    export interface String extends Vellum.WorkflowResultEventOutputDataString {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.WorkflowResultEventOutputDataNumber {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.WorkflowResultEventOutputDataJson {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.WorkflowResultEventOutputDataChatHistory {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.WorkflowResultEventOutputDataSearchResults {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Array extends Vellum.WorkflowResultEventOutputDataArray {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends Vellum.WorkflowResultEventOutputDataFunctionCall {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Error_ extends Vellum.WorkflowResultEventOutputDataError {
+        type: "ERROR";
+    }
+}

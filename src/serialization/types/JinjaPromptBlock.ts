@@ -12,7 +12,6 @@ export const JinjaPromptBlock: core.serialization.ObjectSchema<
     serializers.JinjaPromptBlock.Raw,
     Vellum.JinjaPromptBlock
 > = core.serialization.object({
-    blockType: core.serialization.property("block_type", core.serialization.stringLiteral("JINJA")),
     state: PromptBlockState.optional(),
     cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     template: core.serialization.string(),
@@ -20,7 +19,6 @@ export const JinjaPromptBlock: core.serialization.ObjectSchema<
 
 export declare namespace JinjaPromptBlock {
     export interface Raw {
-        block_type: "JINJA";
         state?: PromptBlockState.Raw | null;
         cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         template: string;

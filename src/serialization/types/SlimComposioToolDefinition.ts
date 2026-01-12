@@ -11,7 +11,6 @@ export const SlimComposioToolDefinition: core.serialization.ObjectSchema<
     serializers.SlimComposioToolDefinition.Raw,
     Vellum.SlimComposioToolDefinition
 > = core.serialization.object({
-    provider: core.serialization.stringLiteral("COMPOSIO"),
     integration: Integration,
     name: core.serialization.string(),
     label: core.serialization.string(),
@@ -21,7 +20,6 @@ export const SlimComposioToolDefinition: core.serialization.ObjectSchema<
 
 export declare namespace SlimComposioToolDefinition {
     export interface Raw {
-        provider: "COMPOSIO";
         integration: Integration.Raw;
         name: string;
         label: string;

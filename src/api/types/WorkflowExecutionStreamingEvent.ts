@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface WorkflowExecutionStreamingEvent {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    name: "workflow.execution.streaming";
     body: Vellum.WorkflowExecutionStreamingBody;
     id: string;
     timestamp: Date;

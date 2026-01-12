@@ -16,23 +16,56 @@ import { NamedScenarioInputDocumentVariableValueRequest } from "./NamedScenarioI
 export const NamedScenarioInputRequest: core.serialization.Schema<
     serializers.NamedScenarioInputRequest.Raw,
     Vellum.NamedScenarioInputRequest
-> = core.serialization.undiscriminatedUnion([
-    NamedScenarioInputStringVariableValueRequest,
-    NamedScenarioInputJsonVariableValueRequest,
-    NamedScenarioInputChatHistoryVariableValueRequest,
-    NamedScenarioInputAudioVariableValueRequest,
-    NamedScenarioInputVideoVariableValueRequest,
-    NamedScenarioInputImageVariableValueRequest,
-    NamedScenarioInputDocumentVariableValueRequest,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: NamedScenarioInputStringVariableValueRequest,
+        JSON: NamedScenarioInputJsonVariableValueRequest,
+        CHAT_HISTORY: NamedScenarioInputChatHistoryVariableValueRequest,
+        AUDIO: NamedScenarioInputAudioVariableValueRequest,
+        VIDEO: NamedScenarioInputVideoVariableValueRequest,
+        IMAGE: NamedScenarioInputImageVariableValueRequest,
+        DOCUMENT: NamedScenarioInputDocumentVariableValueRequest,
+    })
+    .transform<Vellum.NamedScenarioInputRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace NamedScenarioInputRequest {
     export type Raw =
-        | NamedScenarioInputStringVariableValueRequest.Raw
-        | NamedScenarioInputJsonVariableValueRequest.Raw
-        | NamedScenarioInputChatHistoryVariableValueRequest.Raw
-        | NamedScenarioInputAudioVariableValueRequest.Raw
-        | NamedScenarioInputVideoVariableValueRequest.Raw
-        | NamedScenarioInputImageVariableValueRequest.Raw
-        | NamedScenarioInputDocumentVariableValueRequest.Raw;
+        | NamedScenarioInputRequest.String
+        | NamedScenarioInputRequest.Json
+        | NamedScenarioInputRequest.ChatHistory
+        | NamedScenarioInputRequest.Audio
+        | NamedScenarioInputRequest.Video
+        | NamedScenarioInputRequest.Image
+        | NamedScenarioInputRequest.Document;
+
+    export interface String extends NamedScenarioInputStringVariableValueRequest.Raw {
+        type: "STRING";
+    }
+
+    export interface Json extends NamedScenarioInputJsonVariableValueRequest.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends NamedScenarioInputChatHistoryVariableValueRequest.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Audio extends NamedScenarioInputAudioVariableValueRequest.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends NamedScenarioInputVideoVariableValueRequest.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends NamedScenarioInputImageVariableValueRequest.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends NamedScenarioInputDocumentVariableValueRequest.Raw {
+        type: "DOCUMENT";
+    }
 }

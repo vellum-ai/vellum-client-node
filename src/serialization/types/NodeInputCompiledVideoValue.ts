@@ -13,15 +13,13 @@ export const NodeInputCompiledVideoValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("VIDEO"),
-    value: VellumVideo.optionalNullable(),
+    value: VellumVideo.nullable(),
 });
 
 export declare namespace NodeInputCompiledVideoValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "VIDEO";
-        value?: (VellumVideo.Raw | null) | null;
+        value: VellumVideo.Raw | null;
     }
 }

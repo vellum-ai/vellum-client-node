@@ -8,6 +8,5 @@
 export interface WorkflowRequestStringInputRequest {
     /** The variable's name, as defined in the Workflow. */
     name: string;
-    type: "STRING";
     value: string;
 }

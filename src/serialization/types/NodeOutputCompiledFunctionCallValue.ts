@@ -12,16 +12,14 @@ export const NodeOutputCompiledFunctionCallValue: core.serialization.ObjectSchem
     serializers.NodeOutputCompiledFunctionCallValue.Raw,
     Vellum.NodeOutputCompiledFunctionCallValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optionalNullable(),
+    value: FunctionCall.nullable(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledFunctionCallValue {
     export interface Raw {
-        type: "FUNCTION_CALL";
-        value?: (FunctionCall.Raw | null) | null;
+        value: FunctionCall.Raw | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

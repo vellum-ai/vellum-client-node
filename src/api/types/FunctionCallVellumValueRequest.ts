@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A value representing a Function Call.
  */
 export interface FunctionCallVellumValueRequest {
-    type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCallRequest | null;
+    value: Vellum.FunctionCallRequest | null;
 }

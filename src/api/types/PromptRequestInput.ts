@@ -5,10 +5,40 @@
 import * as Vellum from "../index";
 
 export type PromptRequestInput =
-    | Vellum.PromptRequestStringInput
-    | Vellum.PromptRequestJsonInput
-    | Vellum.PromptRequestChatHistoryInput
-    | Vellum.PromptRequestAudioInput
-    | Vellum.PromptRequestVideoInput
-    | Vellum.PromptRequestImageInput
-    | Vellum.PromptRequestDocumentInput;
+    | Vellum.PromptRequestInput.String
+    | Vellum.PromptRequestInput.Json
+    | Vellum.PromptRequestInput.ChatHistory
+    | Vellum.PromptRequestInput.Audio
+    | Vellum.PromptRequestInput.Video
+    | Vellum.PromptRequestInput.Image
+    | Vellum.PromptRequestInput.Document;
+
+export namespace PromptRequestInput {
+    export interface String extends Vellum.PromptRequestStringInput {
+        type: "STRING";
+    }
+
+    export interface Json extends Vellum.PromptRequestJsonInput {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.PromptRequestChatHistoryInput {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Audio extends Vellum.PromptRequestAudioInput {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.PromptRequestVideoInput {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.PromptRequestImageInput {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.PromptRequestDocumentInput {
+        type: "DOCUMENT";
+    }
+}

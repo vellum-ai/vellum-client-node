@@ -11,6 +11,5 @@ export interface ExecutionArrayVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    type: "ARRAY";
-    value?: Vellum.VellumValue[] | null;
+    value: Vellum.VellumValue[] | null;
 }

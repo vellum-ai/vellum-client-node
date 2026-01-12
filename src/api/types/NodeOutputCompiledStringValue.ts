@@ -8,8 +8,7 @@ import * as Vellum from "../index";
  * An output returned by a node that is of type STRING.
  */
 export interface NodeOutputCompiledStringValue {
-    type: "STRING";
-    value?: string | null;
+    value: string | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

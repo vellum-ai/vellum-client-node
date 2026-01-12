@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface SearchResultsInput {
     /** The variable's name */
     name: string;
-    type: "SEARCH_RESULTS";
     value: Vellum.SearchResult[];
 }

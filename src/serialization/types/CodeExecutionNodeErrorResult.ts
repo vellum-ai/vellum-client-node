@@ -12,14 +12,12 @@ export const CodeExecutionNodeErrorResult: core.serialization.ObjectSchema<
     Vellum.CodeExecutionNodeErrorResult
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("ERROR"),
-    value: VellumError.optionalNullable(),
+    value: VellumError.nullable(),
 });
 
 export declare namespace CodeExecutionNodeErrorResult {
     export interface Raw {
         id: string;
-        type: "ERROR";
-        value?: (VellumError.Raw | null) | null;
+        value: VellumError.Raw | null;
     }
 }

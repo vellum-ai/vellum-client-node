@@ -5,11 +5,45 @@
 import * as Vellum from "../index";
 
 export type WorkflowRequestInputRequest =
-    | Vellum.WorkflowRequestStringInputRequest
-    | Vellum.WorkflowRequestJsonInputRequest
-    | Vellum.WorkflowRequestChatHistoryInputRequest
-    | Vellum.WorkflowRequestNumberInputRequest
-    | Vellum.WorkflowRequestAudioInputRequest
-    | Vellum.WorkflowRequestVideoInputRequest
-    | Vellum.WorkflowRequestImageInputRequest
-    | Vellum.WorkflowRequestDocumentInputRequest;
+    | Vellum.WorkflowRequestInputRequest.String
+    | Vellum.WorkflowRequestInputRequest.Json
+    | Vellum.WorkflowRequestInputRequest.ChatHistory
+    | Vellum.WorkflowRequestInputRequest.Number
+    | Vellum.WorkflowRequestInputRequest.Audio
+    | Vellum.WorkflowRequestInputRequest.Video
+    | Vellum.WorkflowRequestInputRequest.Image
+    | Vellum.WorkflowRequestInputRequest.Document;
+
+export namespace WorkflowRequestInputRequest {
+    export interface String extends Vellum.WorkflowRequestStringInputRequest {
+        type: "STRING";
+    }
+
+    export interface Json extends Vellum.WorkflowRequestJsonInputRequest {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.WorkflowRequestChatHistoryInputRequest {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Number extends Vellum.WorkflowRequestNumberInputRequest {
+        type: "NUMBER";
+    }
+
+    export interface Audio extends Vellum.WorkflowRequestAudioInputRequest {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.WorkflowRequestVideoInputRequest {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.WorkflowRequestImageInputRequest {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.WorkflowRequestDocumentInputRequest {
+        type: "DOCUMENT";
+    }
+}

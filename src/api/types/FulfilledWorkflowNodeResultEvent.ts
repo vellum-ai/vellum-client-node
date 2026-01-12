@@ -11,9 +11,8 @@ export interface FulfilledWorkflowNodeResultEvent {
     id: string;
     nodeId: string;
     nodeResultId: string;
-    state: "FULFILLED";
     ts?: Date | null;
-    data?: Vellum.WorkflowNodeResultData | null;
+    data: Vellum.WorkflowNodeResultData | null;
     sourceExecutionId?: string | null;
     outputValues: Vellum.NodeOutputCompiledValue[];
     mocked?: boolean;

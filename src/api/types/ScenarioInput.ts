@@ -5,10 +5,40 @@
 import * as Vellum from "../index";
 
 export type ScenarioInput =
-    | Vellum.ScenarioInputStringVariableValue
-    | Vellum.ScenarioInputJsonVariableValue
-    | Vellum.ScenarioInputChatHistoryVariableValue
-    | Vellum.ScenarioInputAudioVariableValue
-    | Vellum.ScenarioInputVideoVariableValue
-    | Vellum.ScenarioInputImageVariableValue
-    | Vellum.ScenarioInputDocumentVariableValue;
+    | Vellum.ScenarioInput.String
+    | Vellum.ScenarioInput.Json
+    | Vellum.ScenarioInput.ChatHistory
+    | Vellum.ScenarioInput.Audio
+    | Vellum.ScenarioInput.Video
+    | Vellum.ScenarioInput.Image
+    | Vellum.ScenarioInput.Document;
+
+export namespace ScenarioInput {
+    export interface String extends Vellum.ScenarioInputStringVariableValue {
+        type: "STRING";
+    }
+
+    export interface Json extends Vellum.ScenarioInputJsonVariableValue {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.ScenarioInputChatHistoryVariableValue {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Audio extends Vellum.ScenarioInputAudioVariableValue {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.ScenarioInputVideoVariableValue {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.ScenarioInputImageVariableValue {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.ScenarioInputDocumentVariableValue {
+        type: "DOCUMENT";
+    }
+}

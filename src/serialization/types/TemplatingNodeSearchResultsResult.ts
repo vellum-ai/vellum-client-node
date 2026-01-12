@@ -12,14 +12,12 @@ export const TemplatingNodeSearchResultsResult: core.serialization.ObjectSchema<
     Vellum.TemplatingNodeSearchResultsResult
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optionalNullable(),
+    value: core.serialization.list(SearchResult).nullable(),
 });
 
 export declare namespace TemplatingNodeSearchResultsResult {
     export interface Raw {
         id: string;
-        type: "SEARCH_RESULTS";
-        value?: (SearchResult.Raw[] | null) | null;
+        value: SearchResult.Raw[] | null;
     }
 }

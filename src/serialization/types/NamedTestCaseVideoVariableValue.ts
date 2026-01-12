@@ -11,15 +11,13 @@ export const NamedTestCaseVideoVariableValue: core.serialization.ObjectSchema<
     serializers.NamedTestCaseVideoVariableValue.Raw,
     Vellum.NamedTestCaseVideoVariableValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("VIDEO"),
-    value: VellumVideo.optionalNullable(),
+    value: VellumVideo.nullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseVideoVariableValue {
     export interface Raw {
-        type: "VIDEO";
-        value?: (VellumVideo.Raw | null) | null;
+        value: VellumVideo.Raw | null;
         name: string;
     }
 }

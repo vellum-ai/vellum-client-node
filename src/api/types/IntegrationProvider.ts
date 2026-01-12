@@ -6,3 +6,6 @@
  * * `COMPOSIO` - Composio
  */
 export type IntegrationProvider = "COMPOSIO";
+export const IntegrationProvider = {
+    Composio: "COMPOSIO",
+} as const;

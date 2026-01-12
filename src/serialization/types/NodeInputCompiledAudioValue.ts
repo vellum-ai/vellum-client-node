@@ -13,15 +13,13 @@ export const NodeInputCompiledAudioValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("AUDIO"),
-    value: VellumAudio.optionalNullable(),
+    value: VellumAudio.nullable(),
 });
 
 export declare namespace NodeInputCompiledAudioValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "AUDIO";
-        value?: (VellumAudio.Raw | null) | null;
+        value: VellumAudio.Raw | null;
     }
 }

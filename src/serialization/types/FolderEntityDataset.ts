@@ -12,14 +12,12 @@ export const FolderEntityDataset: core.serialization.ObjectSchema<
     Vellum.FolderEntityDataset
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("DATASET"),
     data: FolderEntityDatasetData,
 });
 
 export declare namespace FolderEntityDataset {
     export interface Raw {
         id: string;
-        type: "DATASET";
         data: FolderEntityDatasetData.Raw;
     }
 }

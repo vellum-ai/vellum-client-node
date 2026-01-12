@@ -18,27 +18,68 @@ import { NodeOutputCompiledThinkingValue } from "./NodeOutputCompiledThinkingVal
 export const NodeOutputCompiledValue: core.serialization.Schema<
     serializers.NodeOutputCompiledValue.Raw,
     Vellum.NodeOutputCompiledValue
-> = core.serialization.undiscriminatedUnion([
-    NodeOutputCompiledStringValue,
-    NodeOutputCompiledNumberValue,
-    NodeOutputCompiledJsonValue,
-    NodeOutputCompiledChatHistoryValue,
-    NodeOutputCompiledSearchResultsValue,
-    NodeOutputCompiledErrorValue,
-    NodeOutputCompiledArrayValue,
-    NodeOutputCompiledFunctionCallValue,
-    NodeOutputCompiledThinkingValue,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: NodeOutputCompiledStringValue,
+        NUMBER: NodeOutputCompiledNumberValue,
+        JSON: NodeOutputCompiledJsonValue,
+        CHAT_HISTORY: NodeOutputCompiledChatHistoryValue,
+        SEARCH_RESULTS: NodeOutputCompiledSearchResultsValue,
+        ERROR: NodeOutputCompiledErrorValue,
+        ARRAY: NodeOutputCompiledArrayValue,
+        FUNCTION_CALL: NodeOutputCompiledFunctionCallValue,
+        THINKING: NodeOutputCompiledThinkingValue,
+    })
+    .transform<Vellum.NodeOutputCompiledValue>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace NodeOutputCompiledValue {
     export type Raw =
-        | NodeOutputCompiledStringValue.Raw
-        | NodeOutputCompiledNumberValue.Raw
-        | NodeOutputCompiledJsonValue.Raw
-        | NodeOutputCompiledChatHistoryValue.Raw
-        | NodeOutputCompiledSearchResultsValue.Raw
-        | NodeOutputCompiledErrorValue.Raw
-        | NodeOutputCompiledArrayValue.Raw
-        | NodeOutputCompiledFunctionCallValue.Raw
-        | NodeOutputCompiledThinkingValue.Raw;
+        | NodeOutputCompiledValue.String
+        | NodeOutputCompiledValue.Number
+        | NodeOutputCompiledValue.Json
+        | NodeOutputCompiledValue.ChatHistory
+        | NodeOutputCompiledValue.SearchResults
+        | NodeOutputCompiledValue.Error
+        | NodeOutputCompiledValue.Array
+        | NodeOutputCompiledValue.FunctionCall
+        | NodeOutputCompiledValue.Thinking;
+
+    export interface String extends NodeOutputCompiledStringValue.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends NodeOutputCompiledNumberValue.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends NodeOutputCompiledJsonValue.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends NodeOutputCompiledChatHistoryValue.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends NodeOutputCompiledSearchResultsValue.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends NodeOutputCompiledErrorValue.Raw {
+        type: "ERROR";
+    }
+
+    export interface Array extends NodeOutputCompiledArrayValue.Raw {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends NodeOutputCompiledFunctionCallValue.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Thinking extends NodeOutputCompiledThinkingValue.Raw {
+        type: "THINKING";
+    }
 }

@@ -10,15 +10,13 @@ export const NamedTestCaseNumberVariableValueRequest: core.serialization.ObjectS
     serializers.NamedTestCaseNumberVariableValueRequest.Raw,
     Vellum.NamedTestCaseNumberVariableValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("NUMBER"),
-    value: core.serialization.number().optionalNullable(),
+    value: core.serialization.number().nullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedTestCaseNumberVariableValueRequest {
     export interface Raw {
-        type: "NUMBER";
-        value?: (number | null) | null;
+        value: number | null;
         name: string;
     }
 }

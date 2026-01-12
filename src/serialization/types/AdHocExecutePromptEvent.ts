@@ -13,17 +13,38 @@ import { RejectedAdHocExecutePromptEvent } from "./RejectedAdHocExecutePromptEve
 export const AdHocExecutePromptEvent: core.serialization.Schema<
     serializers.AdHocExecutePromptEvent.Raw,
     Vellum.AdHocExecutePromptEvent
-> = core.serialization.undiscriminatedUnion([
-    InitiatedAdHocExecutePromptEvent,
-    StreamingAdHocExecutePromptEvent,
-    FulfilledAdHocExecutePromptEvent,
-    RejectedAdHocExecutePromptEvent,
-]);
+> = core.serialization
+    .union("state", {
+        INITIATED: InitiatedAdHocExecutePromptEvent,
+        STREAMING: StreamingAdHocExecutePromptEvent,
+        FULFILLED: FulfilledAdHocExecutePromptEvent,
+        REJECTED: RejectedAdHocExecutePromptEvent,
+    })
+    .transform<Vellum.AdHocExecutePromptEvent>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace AdHocExecutePromptEvent {
     export type Raw =
-        | InitiatedAdHocExecutePromptEvent.Raw
-        | StreamingAdHocExecutePromptEvent.Raw
-        | FulfilledAdHocExecutePromptEvent.Raw
-        | RejectedAdHocExecutePromptEvent.Raw;
+        | AdHocExecutePromptEvent.Initiated
+        | AdHocExecutePromptEvent.Streaming
+        | AdHocExecutePromptEvent.Fulfilled
+        | AdHocExecutePromptEvent.Rejected;
+
+    export interface Initiated extends InitiatedAdHocExecutePromptEvent.Raw {
+        state: "INITIATED";
+    }
+
+    export interface Streaming extends StreamingAdHocExecutePromptEvent.Raw {
+        state: "STREAMING";
+    }
+
+    export interface Fulfilled extends FulfilledAdHocExecutePromptEvent.Raw {
+        state: "FULFILLED";
+    }
+
+    export interface Rejected extends RejectedAdHocExecutePromptEvent.Raw {
+        state: "REJECTED";
+    }
 }

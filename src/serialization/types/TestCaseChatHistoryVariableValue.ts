@@ -13,15 +13,13 @@ export const TestCaseChatHistoryVariableValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optionalNullable(),
+    value: core.serialization.list(ChatMessage).nullable(),
 });
 
 export declare namespace TestCaseChatHistoryVariableValue {
     export interface Raw {
         variable_id: string;
         name: string;
-        type: "CHAT_HISTORY";
-        value?: (ChatMessage.Raw[] | null) | null;
+        value: ChatMessage.Raw[] | null;
     }
 }

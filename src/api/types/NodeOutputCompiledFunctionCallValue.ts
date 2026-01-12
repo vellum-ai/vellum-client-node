@@ -8,8 +8,7 @@ import * as Vellum from "../index";
  * An output returned by a node that is of type FUNCTION_CALL.
  */
 export interface NodeOutputCompiledFunctionCallValue {
-    type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall | null;
+    value: Vellum.FunctionCall | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

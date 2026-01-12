@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * An audio value that is used in a chat message.
  */
 export interface AudioChatMessageContentRequest {
-    type: "AUDIO";
     value: Vellum.VellumAudioRequest;
 }

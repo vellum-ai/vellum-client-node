@@ -13,17 +13,38 @@ import { DelimiterChunking } from "./DelimiterChunking";
 export const DocumentIndexChunking: core.serialization.Schema<
     serializers.DocumentIndexChunking.Raw,
     Vellum.DocumentIndexChunking
-> = core.serialization.undiscriminatedUnion([
-    ReductoChunking,
-    SentenceChunking,
-    TokenOverlappingWindowChunking,
-    DelimiterChunking,
-]);
+> = core.serialization
+    .union(core.serialization.discriminant("chunkerName", "chunker_name"), {
+        "reducto-chunker": ReductoChunking,
+        "sentence-chunker": SentenceChunking,
+        "token-overlapping-window-chunker": TokenOverlappingWindowChunking,
+        "delimiter-chunker": DelimiterChunking,
+    })
+    .transform<Vellum.DocumentIndexChunking>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace DocumentIndexChunking {
     export type Raw =
-        | ReductoChunking.Raw
-        | SentenceChunking.Raw
-        | TokenOverlappingWindowChunking.Raw
-        | DelimiterChunking.Raw;
+        | DocumentIndexChunking.ReductoChunker
+        | DocumentIndexChunking.SentenceChunker
+        | DocumentIndexChunking.TokenOverlappingWindowChunker
+        | DocumentIndexChunking.DelimiterChunker;
+
+    export interface ReductoChunker extends ReductoChunking.Raw {
+        chunker_name: "reducto-chunker";
+    }
+
+    export interface SentenceChunker extends SentenceChunking.Raw {
+        chunker_name: "sentence-chunker";
+    }
+
+    export interface TokenOverlappingWindowChunker extends TokenOverlappingWindowChunking.Raw {
+        chunker_name: "token-overlapping-window-chunker";
+    }
+
+    export interface DelimiterChunker extends DelimiterChunking.Raw {
+        chunker_name: "delimiter-chunker";
+    }
 }

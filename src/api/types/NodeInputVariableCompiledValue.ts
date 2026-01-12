@@ -5,16 +5,70 @@
 import * as Vellum from "../index";
 
 export type NodeInputVariableCompiledValue =
-    | Vellum.NodeInputCompiledStringValue
-    | Vellum.NodeInputCompiledNumberValue
-    | Vellum.NodeInputCompiledJsonValue
-    | Vellum.NodeInputCompiledChatHistoryValue
-    | Vellum.NodeInputCompiledSearchResultsValue
-    | Vellum.NodeInputCompiledErrorValue
-    | Vellum.NodeInputCompiledArrayValue
-    | Vellum.NodeInputCompiledFunctionCallValue
-    | Vellum.NodeInputCompiledSecretValue
-    | Vellum.NodeInputCompiledAudioValue
-    | Vellum.NodeInputCompiledVideoValue
-    | Vellum.NodeInputCompiledImageValue
-    | Vellum.NodeInputCompiledDocumentValue;
+    | Vellum.NodeInputVariableCompiledValue.String
+    | Vellum.NodeInputVariableCompiledValue.Number
+    | Vellum.NodeInputVariableCompiledValue.Json
+    | Vellum.NodeInputVariableCompiledValue.ChatHistory
+    | Vellum.NodeInputVariableCompiledValue.SearchResults
+    | Vellum.NodeInputVariableCompiledValue.Error_
+    | Vellum.NodeInputVariableCompiledValue.Array
+    | Vellum.NodeInputVariableCompiledValue.FunctionCall
+    | Vellum.NodeInputVariableCompiledValue.Secret
+    | Vellum.NodeInputVariableCompiledValue.Audio
+    | Vellum.NodeInputVariableCompiledValue.Video
+    | Vellum.NodeInputVariableCompiledValue.Image
+    | Vellum.NodeInputVariableCompiledValue.Document;
+
+export namespace NodeInputVariableCompiledValue {
+    export interface String extends Vellum.NodeInputCompiledStringValue {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.NodeInputCompiledNumberValue {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.NodeInputCompiledJsonValue {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.NodeInputCompiledChatHistoryValue {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.NodeInputCompiledSearchResultsValue {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.NodeInputCompiledErrorValue {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.NodeInputCompiledArrayValue {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends Vellum.NodeInputCompiledFunctionCallValue {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Secret extends Vellum.NodeInputCompiledSecretValue {
+        type: "SECRET";
+    }
+
+    export interface Audio extends Vellum.NodeInputCompiledAudioValue {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.NodeInputCompiledVideoValue {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.NodeInputCompiledImageValue {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.NodeInputCompiledDocumentValue {
+        type: "DOCUMENT";
+    }
+}

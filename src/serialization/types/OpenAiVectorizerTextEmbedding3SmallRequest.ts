@@ -12,12 +12,10 @@ export const OpenAiVectorizerTextEmbedding3SmallRequest: core.serialization.Obje
     Vellum.OpenAiVectorizerTextEmbedding3SmallRequest
 > = core.serialization.object({
     config: OpenAiVectorizerConfigRequest,
-    modelName: core.serialization.property("model_name", core.serialization.stringLiteral("text-embedding-3-small")),
 });
 
 export declare namespace OpenAiVectorizerTextEmbedding3SmallRequest {
     export interface Raw {
         config: OpenAiVectorizerConfigRequest.Raw;
-        model_name: "text-embedding-3-small";
     }
 }

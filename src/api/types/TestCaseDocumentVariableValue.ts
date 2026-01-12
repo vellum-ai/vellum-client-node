@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface TestCaseDocumentVariableValue {
     variableId: string;
     name?: string;
-    type: "DOCUMENT";
-    value?: Vellum.VellumDocument | null;
+    value: Vellum.VellumDocument | null;
 }

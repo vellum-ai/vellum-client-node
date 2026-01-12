@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface NodeExecutionRejectedEvent {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    name: "node.execution.rejected";
     body: Vellum.NodeExecutionRejectedBody;
     id: string;
     timestamp: Date;

@@ -17,16 +17,16 @@ export const WorkflowExecutionDetail: core.serialization.ObjectSchema<
     spanId: core.serialization.property("span_id", core.serialization.string()),
     parentContext: core.serialization.property(
         "parent_context",
-        core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
+        core.serialization.lazy(() => serializers.ParentContext).nullable(),
     ),
     start: core.serialization.date(),
-    end: core.serialization.date().optionalNullable(),
+    end: core.serialization.date().nullable(),
     inputs: core.serialization.list(ExecutionVellumValue),
     outputs: core.serialization.list(ExecutionVellumValue),
-    error: WorkflowError.optionalNullable(),
+    error: WorkflowError.nullable(),
     usageResults: core.serialization.property(
         "usage_results",
-        core.serialization.list(WorkflowExecutionUsageResult).optionalNullable(),
+        core.serialization.list(WorkflowExecutionUsageResult).nullable(),
     ),
     spans: core.serialization.list(VellumSpan),
     state: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
@@ -35,13 +35,13 @@ export const WorkflowExecutionDetail: core.serialization.ObjectSchema<
 export declare namespace WorkflowExecutionDetail {
     export interface Raw {
         span_id: string;
-        parent_context?: (serializers.ParentContext.Raw | null) | null;
+        parent_context: serializers.ParentContext.Raw | null;
         start: string;
-        end?: (string | null) | null;
+        end: string | null;
         inputs: ExecutionVellumValue.Raw[];
         outputs: ExecutionVellumValue.Raw[];
-        error?: (WorkflowError.Raw | null) | null;
-        usage_results?: (WorkflowExecutionUsageResult.Raw[] | null) | null;
+        error: WorkflowError.Raw | null;
+        usage_results: WorkflowExecutionUsageResult.Raw[] | null;
         spans: VellumSpan.Raw[];
         state?: (Record<string, unknown> | null) | null;
     }

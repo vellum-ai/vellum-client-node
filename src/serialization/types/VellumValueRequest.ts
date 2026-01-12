@@ -21,35 +21,92 @@ import { ThinkingVellumValueRequest } from "./ThinkingVellumValueRequest";
 export const VellumValueRequest: core.serialization.Schema<
     serializers.VellumValueRequest.Raw,
     Vellum.VellumValueRequest
-> = core.serialization.undiscriminatedUnion([
-    StringVellumValueRequest,
-    NumberVellumValueRequest,
-    JsonVellumValueRequest,
-    AudioVellumValueRequest,
-    VideoVellumValueRequest,
-    ImageVellumValueRequest,
-    DocumentVellumValueRequest,
-    FunctionCallVellumValueRequest,
-    ErrorVellumValueRequest,
-    core.serialization.lazyObject(() => serializers.ArrayVellumValueRequest),
-    ChatHistoryVellumValueRequest,
-    SearchResultsVellumValueRequest,
-    ThinkingVellumValueRequest,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: StringVellumValueRequest,
+        NUMBER: NumberVellumValueRequest,
+        JSON: JsonVellumValueRequest,
+        AUDIO: AudioVellumValueRequest,
+        VIDEO: VideoVellumValueRequest,
+        IMAGE: ImageVellumValueRequest,
+        DOCUMENT: DocumentVellumValueRequest,
+        FUNCTION_CALL: FunctionCallVellumValueRequest,
+        ERROR: ErrorVellumValueRequest,
+        ARRAY: core.serialization.lazyObject(() => serializers.ArrayVellumValueRequest),
+        CHAT_HISTORY: ChatHistoryVellumValueRequest,
+        SEARCH_RESULTS: SearchResultsVellumValueRequest,
+        THINKING: ThinkingVellumValueRequest,
+    })
+    .transform<Vellum.VellumValueRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace VellumValueRequest {
     export type Raw =
-        | StringVellumValueRequest.Raw
-        | NumberVellumValueRequest.Raw
-        | JsonVellumValueRequest.Raw
-        | AudioVellumValueRequest.Raw
-        | VideoVellumValueRequest.Raw
-        | ImageVellumValueRequest.Raw
-        | DocumentVellumValueRequest.Raw
-        | FunctionCallVellumValueRequest.Raw
-        | ErrorVellumValueRequest.Raw
-        | serializers.ArrayVellumValueRequest.Raw
-        | ChatHistoryVellumValueRequest.Raw
-        | SearchResultsVellumValueRequest.Raw
-        | ThinkingVellumValueRequest.Raw;
+        | VellumValueRequest.String
+        | VellumValueRequest.Number
+        | VellumValueRequest.Json
+        | VellumValueRequest.Audio
+        | VellumValueRequest.Video
+        | VellumValueRequest.Image
+        | VellumValueRequest.Document
+        | VellumValueRequest.FunctionCall
+        | VellumValueRequest.Error
+        | VellumValueRequest.Array
+        | VellumValueRequest.ChatHistory
+        | VellumValueRequest.SearchResults
+        | VellumValueRequest.Thinking;
+
+    export interface String extends StringVellumValueRequest.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends NumberVellumValueRequest.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends JsonVellumValueRequest.Raw {
+        type: "JSON";
+    }
+
+    export interface Audio extends AudioVellumValueRequest.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends VideoVellumValueRequest.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends ImageVellumValueRequest.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends DocumentVellumValueRequest.Raw {
+        type: "DOCUMENT";
+    }
+
+    export interface FunctionCall extends FunctionCallVellumValueRequest.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Error extends ErrorVellumValueRequest.Raw {
+        type: "ERROR";
+    }
+
+    export interface Array extends serializers.ArrayVellumValueRequest.Raw {
+        type: "ARRAY";
+    }
+
+    export interface ChatHistory extends ChatHistoryVellumValueRequest.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends SearchResultsVellumValueRequest.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Thinking extends ThinkingVellumValueRequest.Raw {
+        type: "THINKING";
+    }
 }

@@ -5,7 +5,25 @@
 import * as Vellum from "../index";
 
 export type MetricDefinitionInput =
-    | Vellum.StringInput
-    | Vellum.JsonInput
-    | Vellum.ChatHistoryInput
-    | Vellum.NumberInput;
+    | Vellum.MetricDefinitionInput.String
+    | Vellum.MetricDefinitionInput.Json
+    | Vellum.MetricDefinitionInput.ChatHistory
+    | Vellum.MetricDefinitionInput.Number;
+
+export namespace MetricDefinitionInput {
+    export interface String extends Vellum.StringInput {
+        type: "STRING";
+    }
+
+    export interface Json extends Vellum.JsonInput {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.ChatHistoryInput {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Number extends Vellum.NumberInput {
+        type: "NUMBER";
+    }
+}

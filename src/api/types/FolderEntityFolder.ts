@@ -9,6 +9,5 @@ import * as Vellum from "../index";
  */
 export interface FolderEntityFolder {
     id: string;
-    type: "FOLDER";
     data: Vellum.FolderEntityFolderData;
 }

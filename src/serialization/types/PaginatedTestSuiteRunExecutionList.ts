@@ -12,16 +12,16 @@ export const PaginatedTestSuiteRunExecutionList: core.serialization.ObjectSchema
     Vellum.PaginatedTestSuiteRunExecutionList
 > = core.serialization.object({
     count: core.serialization.number(),
-    next: core.serialization.string().optionalNullable(),
-    previous: core.serialization.string().optionalNullable(),
+    next: core.serialization.string().nullable(),
+    previous: core.serialization.string().nullable(),
     results: core.serialization.list(TestSuiteRunExecution),
 });
 
 export declare namespace PaginatedTestSuiteRunExecutionList {
     export interface Raw {
         count: number;
-        next?: (string | null) | null;
-        previous?: (string | null) | null;
+        next: string | null;
+        previous: string | null;
         results: TestSuiteRunExecution.Raw[];
     }
 }

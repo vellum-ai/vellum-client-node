@@ -11,14 +11,12 @@ export const NamedScenarioInputVideoVariableValueRequest: core.serialization.Obj
     serializers.NamedScenarioInputVideoVariableValueRequest.Raw,
     Vellum.NamedScenarioInputVideoVariableValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("VIDEO"),
     value: VellumVideoRequest,
     name: core.serialization.string(),
 });
 
 export declare namespace NamedScenarioInputVideoVariableValueRequest {
     export interface Raw {
-        type: "VIDEO";
         value: VellumVideoRequest.Raw;
         name: string;
     }

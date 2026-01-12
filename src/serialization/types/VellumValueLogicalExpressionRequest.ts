@@ -10,11 +10,28 @@ import { VellumValueLogicalConditionRequest } from "./VellumValueLogicalConditio
 export const VellumValueLogicalExpressionRequest: core.serialization.Schema<
     serializers.VellumValueLogicalExpressionRequest.Raw,
     Vellum.VellumValueLogicalExpressionRequest
-> = core.serialization.undiscriminatedUnion([
-    VellumValueLogicalConditionRequest,
-    core.serialization.lazyObject(() => serializers.VellumValueLogicalConditionGroupRequest),
-]);
+> = core.serialization
+    .union("type", {
+        LOGICAL_CONDITION: VellumValueLogicalConditionRequest,
+        LOGICAL_CONDITION_GROUP: core.serialization.lazyObject(
+            () => serializers.VellumValueLogicalConditionGroupRequest,
+        ),
+    })
+    .transform<Vellum.VellumValueLogicalExpressionRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace VellumValueLogicalExpressionRequest {
-    export type Raw = VellumValueLogicalConditionRequest.Raw | serializers.VellumValueLogicalConditionGroupRequest.Raw;
+    export type Raw =
+        | VellumValueLogicalExpressionRequest.LogicalCondition
+        | VellumValueLogicalExpressionRequest.LogicalConditionGroup;
+
+    export interface LogicalCondition extends VellumValueLogicalConditionRequest.Raw {
+        type: "LOGICAL_CONDITION";
+    }
+
+    export interface LogicalConditionGroup extends serializers.VellumValueLogicalConditionGroupRequest.Raw {
+        type: "LOGICAL_CONDITION_GROUP";
+    }
 }

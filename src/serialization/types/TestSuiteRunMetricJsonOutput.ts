@@ -10,15 +10,13 @@ export const TestSuiteRunMetricJsonOutput: core.serialization.ObjectSchema<
     serializers.TestSuiteRunMetricJsonOutput.Raw,
     Vellum.TestSuiteRunMetricJsonOutput
 > = core.serialization.object({
-    value: core.serialization.unknown(),
-    type: core.serialization.stringLiteral("JSON"),
+    value: core.serialization.unknown().nullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace TestSuiteRunMetricJsonOutput {
     export interface Raw {
-        value?: unknown;
-        type: "JSON";
+        value: unknown | null;
         name: string;
     }
 }

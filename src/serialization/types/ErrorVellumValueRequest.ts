@@ -11,13 +11,11 @@ export const ErrorVellumValueRequest: core.serialization.ObjectSchema<
     serializers.ErrorVellumValueRequest.Raw,
     Vellum.ErrorVellumValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("ERROR"),
-    value: VellumErrorRequest.optionalNullable(),
+    value: VellumErrorRequest.nullable(),
 });
 
 export declare namespace ErrorVellumValueRequest {
     export interface Raw {
-        type: "ERROR";
-        value?: (VellumErrorRequest.Raw | null) | null;
+        value: VellumErrorRequest.Raw | null;
     }
 }

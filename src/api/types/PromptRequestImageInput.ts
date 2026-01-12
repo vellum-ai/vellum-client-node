@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface PromptRequestImageInput {
     /** The variable's name, as defined in the Prompt. */
     key: string;
-    type: "IMAGE";
     value: Vellum.VellumImage;
 }

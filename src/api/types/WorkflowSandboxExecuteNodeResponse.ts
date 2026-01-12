@@ -4,4 +4,16 @@
 
 import * as Vellum from "../index";
 
-export type WorkflowSandboxExecuteNodeResponse = Vellum.NodeExecutionFulfilledEvent | Vellum.NodeExecutionRejectedEvent;
+export type WorkflowSandboxExecuteNodeResponse =
+    | Vellum.WorkflowSandboxExecuteNodeResponse.NodeExecutionFulfilled
+    | Vellum.WorkflowSandboxExecuteNodeResponse.NodeExecutionRejected;
+
+export namespace WorkflowSandboxExecuteNodeResponse {
+    export interface NodeExecutionFulfilled extends Vellum.NodeExecutionFulfilledEvent {
+        name: "node.execution.fulfilled";
+    }
+
+    export interface NodeExecutionRejected extends Vellum.NodeExecutionRejectedEvent {
+        name: "node.execution.rejected";
+    }
+}

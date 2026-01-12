@@ -13,21 +13,50 @@ import { FolderEntityTestSuite } from "./FolderEntityTestSuite";
 import { FolderEntityDataset } from "./FolderEntityDataset";
 
 export const FolderEntity: core.serialization.Schema<serializers.FolderEntity.Raw, Vellum.FolderEntity> =
-    core.serialization.undiscriminatedUnion([
-        FolderEntityFolder,
-        FolderEntityPromptSandbox,
-        FolderEntityWorkflowSandbox,
-        FolderEntityDocumentIndex,
-        FolderEntityTestSuite,
-        FolderEntityDataset,
-    ]);
+    core.serialization
+        .union("type", {
+            FOLDER: FolderEntityFolder,
+            PROMPT_SANDBOX: FolderEntityPromptSandbox,
+            WORKFLOW_SANDBOX: FolderEntityWorkflowSandbox,
+            DOCUMENT_INDEX: FolderEntityDocumentIndex,
+            TEST_SUITE: FolderEntityTestSuite,
+            DATASET: FolderEntityDataset,
+        })
+        .transform<Vellum.FolderEntity>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace FolderEntity {
     export type Raw =
-        | FolderEntityFolder.Raw
-        | FolderEntityPromptSandbox.Raw
-        | FolderEntityWorkflowSandbox.Raw
-        | FolderEntityDocumentIndex.Raw
-        | FolderEntityTestSuite.Raw
-        | FolderEntityDataset.Raw;
+        | FolderEntity.Folder
+        | FolderEntity.PromptSandbox
+        | FolderEntity.WorkflowSandbox
+        | FolderEntity.DocumentIndex
+        | FolderEntity.TestSuite
+        | FolderEntity.Dataset;
+
+    export interface Folder extends FolderEntityFolder.Raw {
+        type: "FOLDER";
+    }
+
+    export interface PromptSandbox extends FolderEntityPromptSandbox.Raw {
+        type: "PROMPT_SANDBOX";
+    }
+
+    export interface WorkflowSandbox extends FolderEntityWorkflowSandbox.Raw {
+        type: "WORKFLOW_SANDBOX";
+    }
+
+    export interface DocumentIndex extends FolderEntityDocumentIndex.Raw {
+        type: "DOCUMENT_INDEX";
+    }
+
+    export interface TestSuite extends FolderEntityTestSuite.Raw {
+        type: "TEST_SUITE";
+    }
+
+    export interface Dataset extends FolderEntityDataset.Raw {
+        type: "DATASET";
+    }
 }

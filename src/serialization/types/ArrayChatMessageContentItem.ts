@@ -15,21 +15,50 @@ import { DocumentChatMessageContent } from "./DocumentChatMessageContent";
 export const ArrayChatMessageContentItem: core.serialization.Schema<
     serializers.ArrayChatMessageContentItem.Raw,
     Vellum.ArrayChatMessageContentItem
-> = core.serialization.undiscriminatedUnion([
-    StringChatMessageContent,
-    FunctionCallChatMessageContent,
-    AudioChatMessageContent,
-    VideoChatMessageContent,
-    ImageChatMessageContent,
-    DocumentChatMessageContent,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: StringChatMessageContent,
+        FUNCTION_CALL: FunctionCallChatMessageContent,
+        AUDIO: AudioChatMessageContent,
+        VIDEO: VideoChatMessageContent,
+        IMAGE: ImageChatMessageContent,
+        DOCUMENT: DocumentChatMessageContent,
+    })
+    .transform<Vellum.ArrayChatMessageContentItem>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace ArrayChatMessageContentItem {
     export type Raw =
-        | StringChatMessageContent.Raw
-        | FunctionCallChatMessageContent.Raw
-        | AudioChatMessageContent.Raw
-        | VideoChatMessageContent.Raw
-        | ImageChatMessageContent.Raw
-        | DocumentChatMessageContent.Raw;
+        | ArrayChatMessageContentItem.String
+        | ArrayChatMessageContentItem.FunctionCall
+        | ArrayChatMessageContentItem.Audio
+        | ArrayChatMessageContentItem.Video
+        | ArrayChatMessageContentItem.Image
+        | ArrayChatMessageContentItem.Document;
+
+    export interface String extends StringChatMessageContent.Raw {
+        type: "STRING";
+    }
+
+    export interface FunctionCall extends FunctionCallChatMessageContent.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Audio extends AudioChatMessageContent.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends VideoChatMessageContent.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends ImageChatMessageContent.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends DocumentChatMessageContent.Raw {
+        type: "DOCUMENT";
+    }
 }

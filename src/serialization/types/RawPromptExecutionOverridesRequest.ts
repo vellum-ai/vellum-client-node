@@ -12,7 +12,7 @@ export const RawPromptExecutionOverridesRequest: core.serialization.ObjectSchema
 > = core.serialization.object({
     body: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     headers: core.serialization
-        .record(core.serialization.string(), core.serialization.string().optionalNullable())
+        .record(core.serialization.string(), core.serialization.string().nullable())
         .optionalNullable(),
     url: core.serialization.string().optionalNullable(),
 });
@@ -20,7 +20,7 @@ export const RawPromptExecutionOverridesRequest: core.serialization.ObjectSchema
 export declare namespace RawPromptExecutionOverridesRequest {
     export interface Raw {
         body?: (Record<string, unknown> | null) | null;
-        headers?: (Record<string, (string | null) | null | undefined> | null) | null;
+        headers?: (Record<string, string | null> | null) | null;
         url?: (string | null) | null;
     }
 }

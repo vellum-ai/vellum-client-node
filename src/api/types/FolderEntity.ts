@@ -5,9 +5,35 @@
 import * as Vellum from "../index";
 
 export type FolderEntity =
-    | Vellum.FolderEntityFolder
-    | Vellum.FolderEntityPromptSandbox
-    | Vellum.FolderEntityWorkflowSandbox
-    | Vellum.FolderEntityDocumentIndex
-    | Vellum.FolderEntityTestSuite
-    | Vellum.FolderEntityDataset;
+    | Vellum.FolderEntity.Folder
+    | Vellum.FolderEntity.PromptSandbox
+    | Vellum.FolderEntity.WorkflowSandbox
+    | Vellum.FolderEntity.DocumentIndex
+    | Vellum.FolderEntity.TestSuite
+    | Vellum.FolderEntity.Dataset;
+
+export namespace FolderEntity {
+    export interface Folder extends Vellum.FolderEntityFolder {
+        type: "FOLDER";
+    }
+
+    export interface PromptSandbox extends Vellum.FolderEntityPromptSandbox {
+        type: "PROMPT_SANDBOX";
+    }
+
+    export interface WorkflowSandbox extends Vellum.FolderEntityWorkflowSandbox {
+        type: "WORKFLOW_SANDBOX";
+    }
+
+    export interface DocumentIndex extends Vellum.FolderEntityDocumentIndex {
+        type: "DOCUMENT_INDEX";
+    }
+
+    export interface TestSuite extends Vellum.FolderEntityTestSuite {
+        type: "TEST_SUITE";
+    }
+
+    export interface Dataset extends Vellum.FolderEntityDataset {
+        type: "DATASET";
+    }
+}

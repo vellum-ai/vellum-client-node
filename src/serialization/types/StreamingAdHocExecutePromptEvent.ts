@@ -12,7 +12,6 @@ export const StreamingAdHocExecutePromptEvent: core.serialization.ObjectSchema<
     serializers.StreamingAdHocExecutePromptEvent.Raw,
     Vellum.StreamingAdHocExecutePromptEvent
 > = core.serialization.object({
-    state: core.serialization.stringLiteral("STREAMING"),
     output: PromptOutput,
     outputIndex: core.serialization.property("output_index", core.serialization.number()),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
@@ -22,7 +21,6 @@ export const StreamingAdHocExecutePromptEvent: core.serialization.ObjectSchema<
 
 export declare namespace StreamingAdHocExecutePromptEvent {
     export interface Raw {
-        state: "STREAMING";
         output: PromptOutput.Raw;
         output_index: number;
         execution_id: string;

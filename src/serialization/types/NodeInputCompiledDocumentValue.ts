@@ -13,15 +13,13 @@ export const NodeInputCompiledDocumentValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("DOCUMENT"),
-    value: VellumDocument.optionalNullable(),
+    value: VellumDocument.nullable(),
 });
 
 export declare namespace NodeInputCompiledDocumentValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "DOCUMENT";
-        value?: (VellumDocument.Raw | null) | null;
+        value: VellumDocument.Raw | null;
     }
 }

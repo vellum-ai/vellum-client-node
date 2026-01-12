@@ -13,15 +13,13 @@ export const TestCaseErrorVariableValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("ERROR"),
-    value: VellumError.optionalNullable(),
+    value: VellumError.nullable(),
 });
 
 export declare namespace TestCaseErrorVariableValue {
     export interface Raw {
         variable_id: string;
         name: string;
-        type: "ERROR";
-        value?: (VellumError.Raw | null) | null;
+        value: VellumError.Raw | null;
     }
 }

@@ -11,7 +11,6 @@ export const TestSuiteRunPromptSandboxHistoryItemExecConfigRequest: core.seriali
     serializers.TestSuiteRunPromptSandboxHistoryItemExecConfigRequest.Raw,
     Vellum.TestSuiteRunPromptSandboxHistoryItemExecConfigRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("PROMPT_SANDBOX_HISTORY_ITEM"),
     data: TestSuiteRunPromptSandboxHistoryItemExecConfigDataRequest,
     testCaseIds: core.serialization.property(
         "test_case_ids",
@@ -21,7 +20,6 @@ export const TestSuiteRunPromptSandboxHistoryItemExecConfigRequest: core.seriali
 
 export declare namespace TestSuiteRunPromptSandboxHistoryItemExecConfigRequest {
     export interface Raw {
-        type: "PROMPT_SANDBOX_HISTORY_ITEM";
         data: TestSuiteRunPromptSandboxHistoryItemExecConfigDataRequest.Raw;
         test_case_ids?: (string[] | null) | null;
     }

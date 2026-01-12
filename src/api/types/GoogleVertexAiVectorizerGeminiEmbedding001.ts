@@ -5,6 +5,5 @@
 import * as Vellum from "../index";
 
 export interface GoogleVertexAiVectorizerGeminiEmbedding001 {
-    modelName: "gemini-embedding-001";
     config: Vellum.GoogleVertexAiVectorizerConfig;
 }

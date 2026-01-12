@@ -5,7 +5,6 @@
 import * as Vellum from "../index";
 
 export interface NamedTestCaseImageVariableValueRequest {
-    type: "IMAGE";
-    value?: Vellum.VellumImageRequest | null;
+    value: Vellum.VellumImageRequest | null;
     name: string;
 }

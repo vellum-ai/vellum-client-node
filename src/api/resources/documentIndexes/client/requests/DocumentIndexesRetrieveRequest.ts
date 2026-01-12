@@ -10,5 +10,5 @@ export interface DocumentIndexesRetrieveRequest {
     /**
      * Whether to mask the indexing configuration in the response
      */
-    maskIndexingConfig?: boolean | null;
+    maskIndexingConfig?: boolean;
 }

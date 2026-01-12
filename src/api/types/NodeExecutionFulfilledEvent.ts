@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface NodeExecutionFulfilledEvent {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    name: "node.execution.fulfilled";
     body: Vellum.NodeExecutionFulfilledBody;
     id: string;
     timestamp: Date;

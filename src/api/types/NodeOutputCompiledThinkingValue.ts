@@ -8,8 +8,7 @@ import * as Vellum from "../index";
  * An output returned by a node that is of type THINKING.
  */
 export interface NodeOutputCompiledThinkingValue {
-    type: "THINKING";
-    value?: Vellum.StringVellumValue | null;
+    value: Vellum.StringVellumValue | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

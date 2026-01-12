@@ -5,6 +5,5 @@
 import * as Vellum from "../index";
 
 export interface DelimiterChunkingRequest {
-    chunkerName: "delimiter-chunker";
     chunkerConfig?: Vellum.DelimiterChunkerConfigRequest;
 }

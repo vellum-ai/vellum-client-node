@@ -58,23 +58,23 @@ export class DocumentIndexes {
     ): Promise<core.WithRawResponse<Vellum.PaginatedDocumentIndexReadList>> {
         const { limit, offset, ordering, search, status } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
         }
 
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
+        if (offset != null) {
+            _queryParams["offset"] = offset.toString();
         }
 
-        if (ordering !== undefined) {
+        if (ordering != null) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (search !== undefined) {
+        if (search != null) {
             _queryParams["search"] = search;
         }
 
-        if (status !== undefined) {
+        if (status != null) {
             _queryParams["status"] = serializers.DocumentIndexesListRequestStatus.jsonOrThrow(status, {
                 unrecognizedObjectKeys: "strip",
             });
@@ -94,11 +94,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -160,8 +160,8 @@ export class DocumentIndexes {
      *         name: "x",
      *         indexingConfig: {
      *             vectorizer: {
-     *                 config: {},
-     *                 modelName: "text-embedding-3-small"
+     *                 modelName: "text-embedding-3-small",
+     *                 config: {}
      *             }
      *         }
      *     })
@@ -191,11 +191,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -270,8 +270,8 @@ export class DocumentIndexes {
     ): Promise<core.WithRawResponse<Vellum.DocumentIndexRead>> {
         const { maskIndexingConfig } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (maskIndexingConfig !== undefined) {
-            _queryParams["mask_indexing_config"] = maskIndexingConfig?.toString() ?? null;
+        if (maskIndexingConfig != null) {
+            _queryParams["mask_indexing_config"] = maskIndexingConfig.toString();
         }
 
         const _response = await core.fetcher({
@@ -288,11 +288,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -381,11 +381,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -439,17 +439,23 @@ export class DocumentIndexes {
      * Used to delete a Document Index given its ID or name.
      *
      * @param {string} id - Either the Document Index's ID or its unique name
+     * @param {Vellum.DocumentIndexesDestroyRequest} request
      * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.documentIndexes.destroy("id")
      */
-    public destroy(id: string, requestOptions?: DocumentIndexes.RequestOptions): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__destroy(id, requestOptions));
+    public destroy(
+        id: string,
+        request: Vellum.DocumentIndexesDestroyRequest = {},
+        requestOptions?: DocumentIndexes.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__destroy(id, request, requestOptions));
     }
 
     private async __destroy(
         id: string,
+        request: Vellum.DocumentIndexesDestroyRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _response = await core.fetcher({
@@ -466,11 +472,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -548,11 +554,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -607,24 +613,27 @@ export class DocumentIndexes {
     /**
      * Adds a previously uploaded Document to the specified Document Index.
      *
-     * @param {string} documentId - Either the Vellum-generated ID or the originally supplied external_id that uniquely identifies the Document you'd like to add.
      * @param {string} id - Either the Vellum-generated ID or the originally specified name that uniquely identifies the Document Index to which you'd like to add the Document.
+     * @param {string} documentId - Either the Vellum-generated ID or the originally supplied external_id that uniquely identifies the Document you'd like to add.
+     * @param {Vellum.AddDocumentRequest} request
      * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.documentIndexes.addDocument("document_id", "id")
+     *     await client.documentIndexes.addDocument("id", "document_id")
      */
     public addDocument(
-        documentId: string,
         id: string,
+        documentId: string,
+        request: Vellum.AddDocumentRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__addDocument(documentId, id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__addDocument(id, documentId, request, requestOptions));
     }
 
     private async __addDocument(
-        documentId: string,
         id: string,
+        documentId: string,
+        request: Vellum.AddDocumentRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _response = await core.fetcher({
@@ -641,11 +650,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -691,24 +700,27 @@ export class DocumentIndexes {
     /**
      * Removes a Document from a Document Index without deleting the Document itself.
      *
-     * @param {string} documentId - Either the Vellum-generated ID or the originally supplied external_id that uniquely identifies the Document you'd like to remove.
      * @param {string} id - Either the Vellum-generated ID or the originally specified name that uniquely identifies the Document Index from which you'd like to remove a Document.
+     * @param {string} documentId - Either the Vellum-generated ID or the originally supplied external_id that uniquely identifies the Document you'd like to remove.
+     * @param {Vellum.RemoveDocumentRequest} request
      * @param {DocumentIndexes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.documentIndexes.removeDocument("document_id", "id")
+     *     await client.documentIndexes.removeDocument("id", "document_id")
      */
     public removeDocument(
-        documentId: string,
         id: string,
+        documentId: string,
+        request: Vellum.RemoveDocumentRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__removeDocument(documentId, id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__removeDocument(id, documentId, request, requestOptions));
     }
 
     private async __removeDocument(
-        documentId: string,
         id: string,
+        documentId: string,
+        request: Vellum.RemoveDocumentRequest = {},
         requestOptions?: DocumentIndexes.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _response = await core.fetcher({
@@ -725,11 +737,11 @@ export class DocumentIndexes {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

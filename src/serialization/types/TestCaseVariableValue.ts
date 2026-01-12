@@ -21,33 +21,86 @@ import { TestCaseDocumentVariableValue } from "./TestCaseDocumentVariableValue";
 export const TestCaseVariableValue: core.serialization.Schema<
     serializers.TestCaseVariableValue.Raw,
     Vellum.TestCaseVariableValue
-> = core.serialization.undiscriminatedUnion([
-    TestCaseStringVariableValue,
-    TestCaseNumberVariableValue,
-    TestCaseJsonVariableValue,
-    TestCaseChatHistoryVariableValue,
-    TestCaseSearchResultsVariableValue,
-    TestCaseErrorVariableValue,
-    TestCaseFunctionCallVariableValue,
-    TestCaseArrayVariableValue,
-    TestCaseAudioVariableValue,
-    TestCaseImageVariableValue,
-    TestCaseVideoVariableValue,
-    TestCaseDocumentVariableValue,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: TestCaseStringVariableValue,
+        NUMBER: TestCaseNumberVariableValue,
+        JSON: TestCaseJsonVariableValue,
+        CHAT_HISTORY: TestCaseChatHistoryVariableValue,
+        SEARCH_RESULTS: TestCaseSearchResultsVariableValue,
+        ERROR: TestCaseErrorVariableValue,
+        FUNCTION_CALL: TestCaseFunctionCallVariableValue,
+        ARRAY: TestCaseArrayVariableValue,
+        AUDIO: TestCaseAudioVariableValue,
+        IMAGE: TestCaseImageVariableValue,
+        VIDEO: TestCaseVideoVariableValue,
+        DOCUMENT: TestCaseDocumentVariableValue,
+    })
+    .transform<Vellum.TestCaseVariableValue>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace TestCaseVariableValue {
     export type Raw =
-        | TestCaseStringVariableValue.Raw
-        | TestCaseNumberVariableValue.Raw
-        | TestCaseJsonVariableValue.Raw
-        | TestCaseChatHistoryVariableValue.Raw
-        | TestCaseSearchResultsVariableValue.Raw
-        | TestCaseErrorVariableValue.Raw
-        | TestCaseFunctionCallVariableValue.Raw
-        | TestCaseArrayVariableValue.Raw
-        | TestCaseAudioVariableValue.Raw
-        | TestCaseImageVariableValue.Raw
-        | TestCaseVideoVariableValue.Raw
-        | TestCaseDocumentVariableValue.Raw;
+        | TestCaseVariableValue.String
+        | TestCaseVariableValue.Number
+        | TestCaseVariableValue.Json
+        | TestCaseVariableValue.ChatHistory
+        | TestCaseVariableValue.SearchResults
+        | TestCaseVariableValue.Error
+        | TestCaseVariableValue.FunctionCall
+        | TestCaseVariableValue.Array
+        | TestCaseVariableValue.Audio
+        | TestCaseVariableValue.Image
+        | TestCaseVariableValue.Video
+        | TestCaseVariableValue.Document;
+
+    export interface String extends TestCaseStringVariableValue.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends TestCaseNumberVariableValue.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends TestCaseJsonVariableValue.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends TestCaseChatHistoryVariableValue.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends TestCaseSearchResultsVariableValue.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends TestCaseErrorVariableValue.Raw {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends TestCaseFunctionCallVariableValue.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Array extends TestCaseArrayVariableValue.Raw {
+        type: "ARRAY";
+    }
+
+    export interface Audio extends TestCaseAudioVariableValue.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Image extends TestCaseImageVariableValue.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Video extends TestCaseVideoVariableValue.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Document extends TestCaseDocumentVariableValue.Raw {
+        type: "DOCUMENT";
+    }
 }

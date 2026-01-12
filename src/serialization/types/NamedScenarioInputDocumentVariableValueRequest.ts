@@ -11,14 +11,12 @@ export const NamedScenarioInputDocumentVariableValueRequest: core.serialization.
     serializers.NamedScenarioInputDocumentVariableValueRequest.Raw,
     Vellum.NamedScenarioInputDocumentVariableValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("DOCUMENT"),
     value: VellumDocumentRequest,
     name: core.serialization.string(),
 });
 
 export declare namespace NamedScenarioInputDocumentVariableValueRequest {
     export interface Raw {
-        type: "DOCUMENT";
         value: VellumDocumentRequest.Raw;
         name: string;
     }
