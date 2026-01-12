@@ -7,8 +7,8 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
 export const ApiActorTypeEnum: core.serialization.Schema<serializers.ApiActorTypeEnum.Raw, Vellum.ApiActorTypeEnum> =
-    core.serialization.enum_(["WORKSPACE_API_KEY", "ENVIRONMENT_API_KEY", "JWT", "SERVICE_TOKEN"]);
+    core.serialization.enum_(["ANONYMOUS", "WORKSPACE_API_KEY", "ENVIRONMENT_API_KEY", "JWT", "SERVICE_TOKEN"]);
 
 export declare namespace ApiActorTypeEnum {
-    export type Raw = "WORKSPACE_API_KEY" | "ENVIRONMENT_API_KEY" | "JWT" | "SERVICE_TOKEN";
+    export type Raw = "ANONYMOUS" | "WORKSPACE_API_KEY" | "ENVIRONMENT_API_KEY" | "JWT" | "SERVICE_TOKEN";
 }

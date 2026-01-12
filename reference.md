@@ -4243,6 +4243,80 @@ await client.workflowDeployments.retrieve("id");
 </dl>
 </details>
 
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">executeStream</a>(id, { ...params }) -> core.Stream<Vellum.WorkflowEvent></code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Executes a deployed Workflow and streams back its results.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.workflowDeployments.executeStream("id");
+for await (const item of response) {
+    console.log(item);
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Either the Workflow Deployment's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.ExecuteWorkflowDeploymentStreamRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WorkflowDeployments.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">listWorkflowDeploymentEventExecutions</a>(id, { ...params }) -> Vellum.WorkflowDeploymentEventExecutionsResponse</code></summary>
 <dl>
 <dd>
@@ -5018,6 +5092,59 @@ await client.workflows.retrieveState("span_id");
 <dd>
 
 **spanId:** `string` — The span ID of the workflow execution to retrieve state for
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Workflows.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">executeNode</a>({ ...params }) -> Vellum.WorkflowSandboxExecuteNodeResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workflows.executeNode({
+    files: {
+        files: "files",
+    },
+    node: "x",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Vellum.WorkflowRunNodeRequest`
 
 </dd>
 </dl>
