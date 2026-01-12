@@ -15,21 +15,50 @@ import { DocumentChatMessageContentRequest } from "./DocumentChatMessageContentR
 export const ArrayChatMessageContentItemRequest: core.serialization.Schema<
     serializers.ArrayChatMessageContentItemRequest.Raw,
     Vellum.ArrayChatMessageContentItemRequest
-> = core.serialization.undiscriminatedUnion([
-    StringChatMessageContentRequest,
-    FunctionCallChatMessageContentRequest,
-    AudioChatMessageContentRequest,
-    VideoChatMessageContentRequest,
-    ImageChatMessageContentRequest,
-    DocumentChatMessageContentRequest,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: StringChatMessageContentRequest,
+        FUNCTION_CALL: FunctionCallChatMessageContentRequest,
+        AUDIO: AudioChatMessageContentRequest,
+        VIDEO: VideoChatMessageContentRequest,
+        IMAGE: ImageChatMessageContentRequest,
+        DOCUMENT: DocumentChatMessageContentRequest,
+    })
+    .transform<Vellum.ArrayChatMessageContentItemRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace ArrayChatMessageContentItemRequest {
     export type Raw =
-        | StringChatMessageContentRequest.Raw
-        | FunctionCallChatMessageContentRequest.Raw
-        | AudioChatMessageContentRequest.Raw
-        | VideoChatMessageContentRequest.Raw
-        | ImageChatMessageContentRequest.Raw
-        | DocumentChatMessageContentRequest.Raw;
+        | ArrayChatMessageContentItemRequest.String
+        | ArrayChatMessageContentItemRequest.FunctionCall
+        | ArrayChatMessageContentItemRequest.Audio
+        | ArrayChatMessageContentItemRequest.Video
+        | ArrayChatMessageContentItemRequest.Image
+        | ArrayChatMessageContentItemRequest.Document;
+
+    export interface String extends StringChatMessageContentRequest.Raw {
+        type: "STRING";
+    }
+
+    export interface FunctionCall extends FunctionCallChatMessageContentRequest.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Audio extends AudioChatMessageContentRequest.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends VideoChatMessageContentRequest.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends ImageChatMessageContentRequest.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends DocumentChatMessageContentRequest.Raw {
+        type: "DOCUMENT";
+    }
 }

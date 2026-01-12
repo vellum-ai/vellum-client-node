@@ -8,6 +8,5 @@ export interface NodeParentContext {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
     nodeDefinition: Vellum.VellumCodeResourceDefinition;
-    type: "WORKFLOW_NODE";
     spanId: string;
 }

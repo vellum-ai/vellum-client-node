@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A video value that is used in a chat message.
  */
 export interface VideoChatMessageContentRequest {
-    type: "VIDEO";
     value: Vellum.VellumVideoRequest;
 }

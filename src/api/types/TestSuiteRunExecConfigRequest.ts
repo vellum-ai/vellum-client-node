@@ -5,10 +5,40 @@
 import * as Vellum from "../index";
 
 export type TestSuiteRunExecConfigRequest =
-    | Vellum.TestSuiteRunDeploymentReleaseTagExecConfigRequest
-    | Vellum.TestSuiteRunPromptSandboxExecConfigRequest
-    | Vellum.TestSuiteRunPromptSandboxHistoryItemExecConfigRequest
-    | Vellum.TestSuiteRunWorkflowReleaseTagExecConfigRequest
-    | Vellum.TestSuiteRunWorkflowSandboxExecConfigRequest
-    | Vellum.TestSuiteRunWorkflowSandboxHistoryItemExecConfigRequest
-    | Vellum.TestSuiteRunExternalExecConfigRequest;
+    | Vellum.TestSuiteRunExecConfigRequest.DeploymentReleaseTag
+    | Vellum.TestSuiteRunExecConfigRequest.PromptSandbox
+    | Vellum.TestSuiteRunExecConfigRequest.PromptSandboxHistoryItem
+    | Vellum.TestSuiteRunExecConfigRequest.WorkflowReleaseTag
+    | Vellum.TestSuiteRunExecConfigRequest.WorkflowSandbox
+    | Vellum.TestSuiteRunExecConfigRequest.WorkflowSandboxHistoryItem
+    | Vellum.TestSuiteRunExecConfigRequest.External;
+
+export namespace TestSuiteRunExecConfigRequest {
+    export interface DeploymentReleaseTag extends Vellum.TestSuiteRunDeploymentReleaseTagExecConfigRequest {
+        type: "DEPLOYMENT_RELEASE_TAG";
+    }
+
+    export interface PromptSandbox extends Vellum.TestSuiteRunPromptSandboxExecConfigRequest {
+        type: "PROMPT_SANDBOX";
+    }
+
+    export interface PromptSandboxHistoryItem extends Vellum.TestSuiteRunPromptSandboxHistoryItemExecConfigRequest {
+        type: "PROMPT_SANDBOX_HISTORY_ITEM";
+    }
+
+    export interface WorkflowReleaseTag extends Vellum.TestSuiteRunWorkflowReleaseTagExecConfigRequest {
+        type: "WORKFLOW_RELEASE_TAG";
+    }
+
+    export interface WorkflowSandbox extends Vellum.TestSuiteRunWorkflowSandboxExecConfigRequest {
+        type: "WORKFLOW_SANDBOX";
+    }
+
+    export interface WorkflowSandboxHistoryItem extends Vellum.TestSuiteRunWorkflowSandboxHistoryItemExecConfigRequest {
+        type: "WORKFLOW_SANDBOX_HISTORY_ITEM";
+    }
+
+    export interface External extends Vellum.TestSuiteRunExternalExecConfigRequest {
+        type: "EXTERNAL";
+    }
+}

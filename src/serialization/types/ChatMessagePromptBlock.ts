@@ -13,7 +13,6 @@ export const ChatMessagePromptBlock: core.serialization.ObjectSchema<
     serializers.ChatMessagePromptBlock.Raw,
     Vellum.ChatMessagePromptBlock
 > = core.serialization.object({
-    blockType: core.serialization.property("block_type", core.serialization.stringLiteral("CHAT_MESSAGE")),
     state: PromptBlockState.optional(),
     cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     chatRole: core.serialization.property("chat_role", ChatMessageRole),
@@ -27,7 +26,6 @@ export const ChatMessagePromptBlock: core.serialization.ObjectSchema<
 
 export declare namespace ChatMessagePromptBlock {
     export interface Raw {
-        block_type: "CHAT_MESSAGE";
         state?: PromptBlockState.Raw | null;
         cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         chat_role: ChatMessageRole.Raw;

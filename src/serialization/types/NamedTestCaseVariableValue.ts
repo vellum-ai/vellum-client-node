@@ -21,33 +21,86 @@ import { NamedTestCaseDocumentVariableValue } from "./NamedTestCaseDocumentVaria
 export const NamedTestCaseVariableValue: core.serialization.Schema<
     serializers.NamedTestCaseVariableValue.Raw,
     Vellum.NamedTestCaseVariableValue
-> = core.serialization.undiscriminatedUnion([
-    NamedTestCaseStringVariableValue,
-    NamedTestCaseNumberVariableValue,
-    NamedTestCaseJsonVariableValue,
-    NamedTestCaseChatHistoryVariableValue,
-    NamedTestCaseSearchResultsVariableValue,
-    NamedTestCaseErrorVariableValue,
-    NamedTestCaseFunctionCallVariableValue,
-    NamedTestCaseArrayVariableValue,
-    NamedTestCaseAudioVariableValue,
-    NamedTestCaseVideoVariableValue,
-    NamedTestCaseImageVariableValue,
-    NamedTestCaseDocumentVariableValue,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: NamedTestCaseStringVariableValue,
+        NUMBER: NamedTestCaseNumberVariableValue,
+        JSON: NamedTestCaseJsonVariableValue,
+        CHAT_HISTORY: NamedTestCaseChatHistoryVariableValue,
+        SEARCH_RESULTS: NamedTestCaseSearchResultsVariableValue,
+        ERROR: NamedTestCaseErrorVariableValue,
+        FUNCTION_CALL: NamedTestCaseFunctionCallVariableValue,
+        ARRAY: NamedTestCaseArrayVariableValue,
+        AUDIO: NamedTestCaseAudioVariableValue,
+        VIDEO: NamedTestCaseVideoVariableValue,
+        IMAGE: NamedTestCaseImageVariableValue,
+        DOCUMENT: NamedTestCaseDocumentVariableValue,
+    })
+    .transform<Vellum.NamedTestCaseVariableValue>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace NamedTestCaseVariableValue {
     export type Raw =
-        | NamedTestCaseStringVariableValue.Raw
-        | NamedTestCaseNumberVariableValue.Raw
-        | NamedTestCaseJsonVariableValue.Raw
-        | NamedTestCaseChatHistoryVariableValue.Raw
-        | NamedTestCaseSearchResultsVariableValue.Raw
-        | NamedTestCaseErrorVariableValue.Raw
-        | NamedTestCaseFunctionCallVariableValue.Raw
-        | NamedTestCaseArrayVariableValue.Raw
-        | NamedTestCaseAudioVariableValue.Raw
-        | NamedTestCaseVideoVariableValue.Raw
-        | NamedTestCaseImageVariableValue.Raw
-        | NamedTestCaseDocumentVariableValue.Raw;
+        | NamedTestCaseVariableValue.String
+        | NamedTestCaseVariableValue.Number
+        | NamedTestCaseVariableValue.Json
+        | NamedTestCaseVariableValue.ChatHistory
+        | NamedTestCaseVariableValue.SearchResults
+        | NamedTestCaseVariableValue.Error
+        | NamedTestCaseVariableValue.FunctionCall
+        | NamedTestCaseVariableValue.Array
+        | NamedTestCaseVariableValue.Audio
+        | NamedTestCaseVariableValue.Video
+        | NamedTestCaseVariableValue.Image
+        | NamedTestCaseVariableValue.Document;
+
+    export interface String extends NamedTestCaseStringVariableValue.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends NamedTestCaseNumberVariableValue.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends NamedTestCaseJsonVariableValue.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends NamedTestCaseChatHistoryVariableValue.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends NamedTestCaseSearchResultsVariableValue.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends NamedTestCaseErrorVariableValue.Raw {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends NamedTestCaseFunctionCallVariableValue.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Array extends NamedTestCaseArrayVariableValue.Raw {
+        type: "ARRAY";
+    }
+
+    export interface Audio extends NamedTestCaseAudioVariableValue.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends NamedTestCaseVideoVariableValue.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends NamedTestCaseImageVariableValue.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends NamedTestCaseDocumentVariableValue.Raw {
+        type: "DOCUMENT";
+    }
 }

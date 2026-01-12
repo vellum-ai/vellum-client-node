@@ -16,13 +16,11 @@ export const TestSuiteRunExternalExecConfigRequest: core.serialization.ObjectSch
         "test_case_ids",
         core.serialization.list(core.serialization.string()).optionalNullable(),
     ),
-    type: core.serialization.stringLiteral("EXTERNAL"),
 });
 
 export declare namespace TestSuiteRunExternalExecConfigRequest {
     export interface Raw {
         data: TestSuiteRunExternalExecConfigDataRequest.Raw;
         test_case_ids?: (string[] | null) | null;
-        type: "EXTERNAL";
     }
 }

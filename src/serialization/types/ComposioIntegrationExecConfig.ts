@@ -10,7 +10,6 @@ export const ComposioIntegrationExecConfig: core.serialization.ObjectSchema<
     serializers.ComposioIntegrationExecConfig.Raw,
     Vellum.ComposioIntegrationExecConfig
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("COMPOSIO"),
     slug: core.serialization.string(),
     supportsWebhookTriggers: core.serialization.property(
         "supports_webhook_triggers",
@@ -20,7 +19,6 @@ export const ComposioIntegrationExecConfig: core.serialization.ObjectSchema<
 
 export declare namespace ComposioIntegrationExecConfig {
     export interface Raw {
-        type: "COMPOSIO";
         slug: string;
         supports_webhook_triggers?: boolean | null;
     }

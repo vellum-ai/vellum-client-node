@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledVideoValue {
     nodeInputId: string;
     key: string;
-    type: "VIDEO";
-    value?: Vellum.VellumVideo | null;
+    value: Vellum.VellumVideo | null;
 }

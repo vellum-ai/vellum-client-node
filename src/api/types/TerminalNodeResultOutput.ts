@@ -5,11 +5,45 @@
 import * as Vellum from "../index";
 
 export type TerminalNodeResultOutput =
-    | Vellum.TerminalNodeStringResult
-    | Vellum.TerminalNodeNumberResult
-    | Vellum.TerminalNodeJsonResult
-    | Vellum.TerminalNodeChatHistoryResult
-    | Vellum.TerminalNodeSearchResultsResult
-    | Vellum.TerminalNodeErrorResult
-    | Vellum.TerminalNodeArrayResult
-    | Vellum.TerminalNodeFunctionCallResult;
+    | Vellum.TerminalNodeResultOutput.String
+    | Vellum.TerminalNodeResultOutput.Number
+    | Vellum.TerminalNodeResultOutput.Json
+    | Vellum.TerminalNodeResultOutput.ChatHistory
+    | Vellum.TerminalNodeResultOutput.SearchResults
+    | Vellum.TerminalNodeResultOutput.Error_
+    | Vellum.TerminalNodeResultOutput.Array
+    | Vellum.TerminalNodeResultOutput.FunctionCall;
+
+export namespace TerminalNodeResultOutput {
+    export interface String extends Vellum.TerminalNodeStringResult {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.TerminalNodeNumberResult {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.TerminalNodeJsonResult {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.TerminalNodeChatHistoryResult {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.TerminalNodeSearchResultsResult {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.TerminalNodeErrorResult {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.TerminalNodeArrayResult {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends Vellum.TerminalNodeFunctionCallResult {
+        type: "FUNCTION_CALL";
+    }
+}

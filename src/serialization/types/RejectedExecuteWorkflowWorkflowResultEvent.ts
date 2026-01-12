@@ -12,7 +12,6 @@ export const RejectedExecuteWorkflowWorkflowResultEvent: core.serialization.Obje
     Vellum.RejectedExecuteWorkflowWorkflowResultEvent
 > = core.serialization.object({
     id: core.serialization.string(),
-    state: core.serialization.stringLiteral("REJECTED"),
     ts: core.serialization.date(),
     error: WorkflowEventError,
 });
@@ -20,7 +19,6 @@ export const RejectedExecuteWorkflowWorkflowResultEvent: core.serialization.Obje
 export declare namespace RejectedExecuteWorkflowWorkflowResultEvent {
     export interface Raw {
         id: string;
-        state: "REJECTED";
         ts: string;
         error: WorkflowEventError.Raw;
     }

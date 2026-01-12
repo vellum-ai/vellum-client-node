@@ -12,7 +12,6 @@ export const FulfilledAdHocExecutePromptEvent: core.serialization.ObjectSchema<
     serializers.FulfilledAdHocExecutePromptEvent.Raw,
     Vellum.FulfilledAdHocExecutePromptEvent
 > = core.serialization.object({
-    state: core.serialization.stringLiteral("FULFILLED"),
     outputs: core.serialization.list(PromptOutput),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
     meta: AdHocFulfilledPromptExecutionMeta.optional(),
@@ -20,7 +19,6 @@ export const FulfilledAdHocExecutePromptEvent: core.serialization.ObjectSchema<
 
 export declare namespace FulfilledAdHocExecutePromptEvent {
     export interface Raw {
-        state: "FULFILLED";
         outputs: PromptOutput.Raw[];
         execution_id: string;
         meta?: AdHocFulfilledPromptExecutionMeta.Raw | null;

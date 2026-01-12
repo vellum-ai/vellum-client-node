@@ -10,29 +10,29 @@ export interface ListIntegrationToolsRequest {
     /**
      * Whether to filter the tools by important
      */
-    important?: boolean | null;
+    important?: boolean;
     /**
      * Whether to include deprecated tools
      */
-    includeDeprecated?: boolean | null;
+    includeDeprecated?: boolean;
     /**
      * The Vellum Integration name
      */
-    integrationName?: string | null;
+    integrationName?: string;
     /**
      * Number of results to return per page.
      */
-    limit?: number | null;
+    limit?: number;
     /**
      * The initial index from which to return the results.
      */
-    offset?: number | null;
+    offset?: number;
     /**
      * The search term to filter the tools by
      */
-    search?: string | null;
+    search?: string;
     /**
      * The version of the toolkit to lookup. Pass 'latest' to get the latest version, or a specific version string to pin it. If not provided, uses the provider's default.
      */
-    toolkitVersion?: string | null;
+    toolkitVersion?: string;
 }

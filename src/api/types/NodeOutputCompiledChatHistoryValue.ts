@@ -8,8 +8,7 @@ import * as Vellum from "../index";
  * An output returned by a node that is of type CHAT_HISTORY.
  */
 export interface NodeOutputCompiledChatHistoryValue {
-    type: "CHAT_HISTORY";
-    value?: Vellum.ChatMessage[] | null;
+    value: Vellum.ChatMessage[] | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

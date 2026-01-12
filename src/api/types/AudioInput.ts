@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface AudioInput {
     /** The variable's name */
     name: string;
-    type: "AUDIO";
     value: Vellum.VellumAudio;
 }

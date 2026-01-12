@@ -10,13 +10,11 @@ export const ComposioExecuteToolResponse: core.serialization.ObjectSchema<
     serializers.ComposioExecuteToolResponse.Raw,
     Vellum.ComposioExecuteToolResponse
 > = core.serialization.object({
-    provider: core.serialization.stringLiteral("COMPOSIO"),
     data: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
 });
 
 export declare namespace ComposioExecuteToolResponse {
     export interface Raw {
-        provider: "COMPOSIO";
         data: Record<string, unknown>;
     }
 }

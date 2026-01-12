@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A block that holds a plain text string value.
  */
 export interface PlainTextPromptBlock {
-    blockType: "PLAIN_TEXT";
     state?: Vellum.PromptBlockState;
     cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     text: string;

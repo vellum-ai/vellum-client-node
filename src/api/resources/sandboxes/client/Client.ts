@@ -77,8 +77,8 @@ export class Sandboxes {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -184,8 +184,8 @@ export class Sandboxes {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -240,6 +240,7 @@ export class Sandboxes {
      *
      * @param {string} id - A UUID string identifying this sandbox.
      * @param {string} scenarioId - An id identifying the scenario that you'd like to delete
+     * @param {Vellum.DeleteSandboxScenarioRequest} request
      * @param {Sandboxes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -248,14 +249,18 @@ export class Sandboxes {
     public deleteSandboxScenario(
         id: string,
         scenarioId: string,
+        request: Vellum.DeleteSandboxScenarioRequest = {},
         requestOptions?: Sandboxes.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteSandboxScenario(id, scenarioId, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__deleteSandboxScenario(id, scenarioId, request, requestOptions),
+        );
     }
 
     private async __deleteSandboxScenario(
         id: string,
         scenarioId: string,
+        request: Vellum.DeleteSandboxScenarioRequest = {},
         requestOptions?: Sandboxes.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _response = await core.fetcher({
@@ -275,8 +280,8 @@ export class Sandboxes {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -6,6 +6,5 @@
  * A value representing a number.
  */
 export interface NumberVellumValue {
-    type: "NUMBER";
-    value?: number | null;
+    value: number | null;
 }

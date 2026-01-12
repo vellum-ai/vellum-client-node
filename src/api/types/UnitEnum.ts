@@ -6,3 +6,6 @@
  * * `USD` - USD
  */
 export type UnitEnum = "USD";
+export const UnitEnum = {
+    Usd: "USD",
+} as const;

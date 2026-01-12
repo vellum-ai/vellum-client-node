@@ -5,10 +5,40 @@
 import * as Vellum from "../index";
 
 export type NamedScenarioInputRequest =
-    | Vellum.NamedScenarioInputStringVariableValueRequest
-    | Vellum.NamedScenarioInputJsonVariableValueRequest
-    | Vellum.NamedScenarioInputChatHistoryVariableValueRequest
-    | Vellum.NamedScenarioInputAudioVariableValueRequest
-    | Vellum.NamedScenarioInputVideoVariableValueRequest
-    | Vellum.NamedScenarioInputImageVariableValueRequest
-    | Vellum.NamedScenarioInputDocumentVariableValueRequest;
+    | Vellum.NamedScenarioInputRequest.String
+    | Vellum.NamedScenarioInputRequest.Json
+    | Vellum.NamedScenarioInputRequest.ChatHistory
+    | Vellum.NamedScenarioInputRequest.Audio
+    | Vellum.NamedScenarioInputRequest.Video
+    | Vellum.NamedScenarioInputRequest.Image
+    | Vellum.NamedScenarioInputRequest.Document;
+
+export namespace NamedScenarioInputRequest {
+    export interface String extends Vellum.NamedScenarioInputStringVariableValueRequest {
+        type: "STRING";
+    }
+
+    export interface Json extends Vellum.NamedScenarioInputJsonVariableValueRequest {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.NamedScenarioInputChatHistoryVariableValueRequest {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Audio extends Vellum.NamedScenarioInputAudioVariableValueRequest {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.NamedScenarioInputVideoVariableValueRequest {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.NamedScenarioInputImageVariableValueRequest {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.NamedScenarioInputDocumentVariableValueRequest {
+        type: "DOCUMENT";
+    }
+}

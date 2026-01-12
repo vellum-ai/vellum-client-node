@@ -11,13 +11,11 @@ export const VideoChatMessageContent: core.serialization.ObjectSchema<
     serializers.VideoChatMessageContent.Raw,
     Vellum.VideoChatMessageContent
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("VIDEO"),
     value: VellumVideo,
 });
 
 export declare namespace VideoChatMessageContent {
     export interface Raw {
-        type: "VIDEO";
         value: VellumVideo.Raw;
     }
 }

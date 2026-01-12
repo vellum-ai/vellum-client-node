@@ -7,6 +7,6 @@ import * as Vellum from "../index";
 export interface ExternalInputDescriptor {
     types: Vellum.CodeResourceDefinition[];
     inputsClass?: Vellum.CodeResourceDefinition | null;
-    instance?: unknown;
+    instance?: unknown | null;
     name: string;
 }

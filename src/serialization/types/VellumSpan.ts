@@ -8,9 +8,24 @@ import * as core from "../../core";
 import { WorkflowExecutionSpan } from "./WorkflowExecutionSpan";
 import { NodeExecutionSpan } from "./NodeExecutionSpan";
 
-export const VellumSpan: core.serialization.Schema<serializers.VellumSpan.Raw, Vellum.VellumSpan> =
-    core.serialization.undiscriminatedUnion([WorkflowExecutionSpan, NodeExecutionSpan]);
+export const VellumSpan: core.serialization.Schema<serializers.VellumSpan.Raw, Vellum.VellumSpan> = core.serialization
+    .union("name", {
+        "workflow.execution": WorkflowExecutionSpan,
+        "node.execution": NodeExecutionSpan,
+    })
+    .transform<Vellum.VellumSpan>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace VellumSpan {
-    export type Raw = WorkflowExecutionSpan.Raw | NodeExecutionSpan.Raw;
+    export type Raw = VellumSpan.WorkflowExecution | VellumSpan.NodeExecution;
+
+    export interface WorkflowExecution extends WorkflowExecutionSpan.Raw {
+        name: "workflow.execution";
+    }
+
+    export interface NodeExecution extends NodeExecutionSpan.Raw {
+        name: "node.execution";
+    }
 }

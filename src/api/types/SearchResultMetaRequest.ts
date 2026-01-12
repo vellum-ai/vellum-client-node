@@ -5,5 +5,5 @@
 import * as Vellum from "../index";
 
 export interface SearchResultMetaRequest {
-    source?: Vellum.ComponentsSchemasPdfSearchResultMetaSourceRequest | null;
+    source?: Vellum.SearchResultMetaSourceRequest | null;
 }

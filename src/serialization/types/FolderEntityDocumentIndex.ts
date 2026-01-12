@@ -12,14 +12,12 @@ export const FolderEntityDocumentIndex: core.serialization.ObjectSchema<
     Vellum.FolderEntityDocumentIndex
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("DOCUMENT_INDEX"),
     data: FolderEntityDocumentIndexData,
 });
 
 export declare namespace FolderEntityDocumentIndex {
     export interface Raw {
         id: string;
-        type: "DOCUMENT_INDEX";
         data: FolderEntityDocumentIndexData.Raw;
     }
 }

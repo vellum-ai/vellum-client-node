@@ -12,19 +12,19 @@ export const WorkflowSandboxExample: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     label: core.serialization.string(),
-    description: core.serialization.string().optionalNullable(),
-    iconName: core.serialization.property("icon_name", core.serialization.string().optionalNullable()),
-    uiImageUrl: core.serialization.property("ui_image_url", core.serialization.string().optionalNullable()),
-    codeImageUrl: core.serialization.property("code_image_url", core.serialization.string().optionalNullable()),
+    description: core.serialization.string().nullable(),
+    iconName: core.serialization.property("icon_name", core.serialization.string().nullable()),
+    uiImageUrl: core.serialization.property("ui_image_url", core.serialization.string().nullable()),
+    codeImageUrl: core.serialization.property("code_image_url", core.serialization.string().nullable()),
 });
 
 export declare namespace WorkflowSandboxExample {
     export interface Raw {
         id: string;
         label: string;
-        description?: (string | null) | null;
-        icon_name?: (string | null) | null;
-        ui_image_url?: (string | null) | null;
-        code_image_url?: (string | null) | null;
+        description: string | null;
+        icon_name: string | null;
+        ui_image_url: string | null;
+        code_image_url: string | null;
     }
 }

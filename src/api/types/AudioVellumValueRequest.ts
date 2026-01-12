@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A base Vellum primitive value representing audio.
  */
 export interface AudioVellumValueRequest {
-    type: "AUDIO";
-    value?: Vellum.VellumAudioRequest | null;
+    value: Vellum.VellumAudioRequest | null;
 }

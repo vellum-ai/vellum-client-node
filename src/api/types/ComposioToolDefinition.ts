@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * Serializer for Composio tool definition response.
  */
 export interface ComposioToolDefinition {
-    provider: "COMPOSIO";
     integration: Vellum.Integration;
     name: string;
     label: string;

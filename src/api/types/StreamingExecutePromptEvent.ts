@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * The data returned for each delta during the prompt execution stream.
  */
 export interface StreamingExecutePromptEvent {
-    state: "STREAMING";
     output: Vellum.PromptOutput;
     outputIndex: number;
     executionId: string;

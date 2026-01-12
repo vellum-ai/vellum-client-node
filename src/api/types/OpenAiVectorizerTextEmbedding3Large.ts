@@ -9,5 +9,4 @@ import * as Vellum from "../index";
  */
 export interface OpenAiVectorizerTextEmbedding3Large {
     config: Vellum.OpenAiVectorizerConfig;
-    modelName: "text-embedding-3-large";
 }

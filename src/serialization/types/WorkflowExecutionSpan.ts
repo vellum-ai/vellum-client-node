@@ -13,7 +13,6 @@ export const WorkflowExecutionSpan: core.serialization.ObjectSchema<
     serializers.WorkflowExecutionSpan.Raw,
     Vellum.WorkflowExecutionSpan
 > = core.serialization.object({
-    name: core.serialization.stringLiteral("workflow.execution"),
     events: core.serialization.list(VellumWorkflowExecutionEvent),
     attributes: WorkflowExecutionSpanAttributes,
     usageResult: core.serialization.property(
@@ -23,18 +22,17 @@ export const WorkflowExecutionSpan: core.serialization.ObjectSchema<
     spanId: core.serialization.property("span_id", core.serialization.string()),
     startTs: core.serialization.property("start_ts", core.serialization.date()),
     endTs: core.serialization.property("end_ts", core.serialization.date()),
-    parentSpanId: core.serialization.property("parent_span_id", core.serialization.string().optionalNullable()),
+    parentSpanId: core.serialization.property("parent_span_id", core.serialization.string().nullable()),
 });
 
 export declare namespace WorkflowExecutionSpan {
     export interface Raw {
-        name: "workflow.execution";
         events: VellumWorkflowExecutionEvent.Raw[];
         attributes: WorkflowExecutionSpanAttributes.Raw;
         usage_result?: (WorkflowExecutionUsageCalculationFulfilledBody.Raw | null) | null;
         span_id: string;
         start_ts: string;
         end_ts: string;
-        parent_span_id?: (string | null) | null;
+        parent_span_id: string | null;
     }
 }

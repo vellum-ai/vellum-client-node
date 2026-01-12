@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface TestCaseVideoVariableValue {
     variableId: string;
     name?: string;
-    type: "VIDEO";
-    value?: Vellum.VellumVideo | null;
+    value: Vellum.VellumVideo | null;
 }

@@ -9,14 +9,12 @@ import * as core from "../../core";
 export const JsonInput: core.serialization.ObjectSchema<serializers.JsonInput.Raw, Vellum.JsonInput> =
     core.serialization.object({
         name: core.serialization.string(),
-        type: core.serialization.stringLiteral("JSON"),
-        value: core.serialization.unknown(),
+        value: core.serialization.unknown().nullable(),
     });
 
 export declare namespace JsonInput {
     export interface Raw {
         name: string;
-        type: "JSON";
-        value?: unknown;
+        value: unknown | null;
     }
 }

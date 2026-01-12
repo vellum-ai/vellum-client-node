@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface TestCaseFunctionCallVariableValue {
     variableId: string;
     name: string;
-    type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall | null;
+    value: Vellum.FunctionCall | null;
 }

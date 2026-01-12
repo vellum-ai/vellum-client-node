@@ -12,16 +12,14 @@ export const TestSuiteRunExecutionFunctionCallOutput: core.serialization.ObjectS
     Vellum.TestSuiteRunExecutionFunctionCallOutput
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optionalNullable(),
+    value: FunctionCall.nullable(),
     outputVariableId: core.serialization.property("output_variable_id", core.serialization.string()),
 });
 
 export declare namespace TestSuiteRunExecutionFunctionCallOutput {
     export interface Raw {
         name: string;
-        type: "FUNCTION_CALL";
-        value?: (FunctionCall.Raw | null) | null;
+        value: FunctionCall.Raw | null;
         output_variable_id: string;
     }
 }

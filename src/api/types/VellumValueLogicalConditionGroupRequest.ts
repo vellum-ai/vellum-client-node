@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A higher-order condition that combines one or more basic conditions or other higher-order conditions.
  */
 export interface VellumValueLogicalConditionGroupRequest {
-    type: "LOGICAL_CONDITION_GROUP";
     conditions: Vellum.VellumValueLogicalExpressionRequest[];
     combinator: Vellum.ConditionCombinator;
     negated: boolean;

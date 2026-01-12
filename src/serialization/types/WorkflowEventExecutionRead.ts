@@ -18,19 +18,19 @@ export const WorkflowEventExecutionRead: core.serialization.ObjectSchema<
 > = core.serialization.object({
     spanId: core.serialization.property("span_id", core.serialization.string()),
     start: core.serialization.date(),
-    end: core.serialization.date().optionalNullable(),
+    end: core.serialization.date().nullable(),
     inputs: core.serialization.list(ExecutionVellumValue),
     outputs: core.serialization.list(ExecutionVellumValue),
-    error: WorkflowError.optionalNullable(),
+    error: WorkflowError.nullable(),
     usageResults: core.serialization.property(
         "usage_results",
-        core.serialization.list(WorkflowExecutionUsageResult).optionalNullable(),
+        core.serialization.list(WorkflowExecutionUsageResult).nullable(),
     ),
     parentContext: core.serialization.property(
         "parent_context",
-        core.serialization.lazyObject(() => serializers.WorkflowDeploymentParentContext).optionalNullable(),
+        core.serialization.lazyObject(() => serializers.WorkflowDeploymentParentContext).nullable(),
     ),
-    latestActual: core.serialization.property("latest_actual", WorkflowExecutionActual.optionalNullable()),
+    latestActual: core.serialization.property("latest_actual", WorkflowExecutionActual.nullable()),
     metricResults: core.serialization.property(
         "metric_results",
         core.serialization.list(WorkflowExecutionViewOnlineEvalMetricResult),
@@ -43,13 +43,13 @@ export declare namespace WorkflowEventExecutionRead {
     export interface Raw {
         span_id: string;
         start: string;
-        end?: (string | null) | null;
+        end: string | null;
         inputs: ExecutionVellumValue.Raw[];
         outputs: ExecutionVellumValue.Raw[];
-        error?: (WorkflowError.Raw | null) | null;
-        usage_results?: (WorkflowExecutionUsageResult.Raw[] | null) | null;
-        parent_context?: (serializers.WorkflowDeploymentParentContext.Raw | null) | null;
-        latest_actual?: (WorkflowExecutionActual.Raw | null) | null;
+        error: WorkflowError.Raw | null;
+        usage_results: WorkflowExecutionUsageResult.Raw[] | null;
+        parent_context: serializers.WorkflowDeploymentParentContext.Raw | null;
+        latest_actual: WorkflowExecutionActual.Raw | null;
         metric_results: WorkflowExecutionViewOnlineEvalMetricResult.Raw[];
         spans: VellumSpan.Raw[];
         state?: (Record<string, unknown> | null) | null;

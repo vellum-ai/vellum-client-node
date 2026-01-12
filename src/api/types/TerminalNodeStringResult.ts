@@ -6,6 +6,5 @@ export interface TerminalNodeStringResult {
     id?: string | null;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
-    type: "STRING";
-    value?: string | null;
+    value: string | null;
 }

@@ -14,6 +14,5 @@ export interface WorkflowResultEventOutputDataError {
     nodeId?: string | null;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string | null;
-    type: "ERROR";
-    value?: Vellum.VellumError | null;
+    value: Vellum.VellumError | null;
 }

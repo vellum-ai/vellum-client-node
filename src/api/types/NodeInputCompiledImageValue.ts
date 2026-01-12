@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledImageValue {
     nodeInputId: string;
     key: string;
-    type: "IMAGE";
-    value?: Vellum.VellumImage | null;
+    value: Vellum.VellumImage | null;
 }

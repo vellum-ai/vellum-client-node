@@ -5,6 +5,4 @@
 /**
  * FastEmbed vectorizer for BAAI/bge-small-en-v1.5.
  */
-export interface FastEmbedVectorizerBaaiBgeSmallEnV15 {
-    modelName: "BAAI/bge-small-en-v1.5";
-}
+export interface FastEmbedVectorizerBaaiBgeSmallEnV15 {}

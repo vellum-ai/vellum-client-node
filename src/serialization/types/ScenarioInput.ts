@@ -14,23 +14,56 @@ import { ScenarioInputImageVariableValue } from "./ScenarioInputImageVariableVal
 import { ScenarioInputDocumentVariableValue } from "./ScenarioInputDocumentVariableValue";
 
 export const ScenarioInput: core.serialization.Schema<serializers.ScenarioInput.Raw, Vellum.ScenarioInput> =
-    core.serialization.undiscriminatedUnion([
-        ScenarioInputStringVariableValue,
-        ScenarioInputJsonVariableValue,
-        ScenarioInputChatHistoryVariableValue,
-        ScenarioInputAudioVariableValue,
-        ScenarioInputVideoVariableValue,
-        ScenarioInputImageVariableValue,
-        ScenarioInputDocumentVariableValue,
-    ]);
+    core.serialization
+        .union("type", {
+            STRING: ScenarioInputStringVariableValue,
+            JSON: ScenarioInputJsonVariableValue,
+            CHAT_HISTORY: ScenarioInputChatHistoryVariableValue,
+            AUDIO: ScenarioInputAudioVariableValue,
+            VIDEO: ScenarioInputVideoVariableValue,
+            IMAGE: ScenarioInputImageVariableValue,
+            DOCUMENT: ScenarioInputDocumentVariableValue,
+        })
+        .transform<Vellum.ScenarioInput>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace ScenarioInput {
     export type Raw =
-        | ScenarioInputStringVariableValue.Raw
-        | ScenarioInputJsonVariableValue.Raw
-        | ScenarioInputChatHistoryVariableValue.Raw
-        | ScenarioInputAudioVariableValue.Raw
-        | ScenarioInputVideoVariableValue.Raw
-        | ScenarioInputImageVariableValue.Raw
-        | ScenarioInputDocumentVariableValue.Raw;
+        | ScenarioInput.String
+        | ScenarioInput.Json
+        | ScenarioInput.ChatHistory
+        | ScenarioInput.Audio
+        | ScenarioInput.Video
+        | ScenarioInput.Image
+        | ScenarioInput.Document;
+
+    export interface String extends ScenarioInputStringVariableValue.Raw {
+        type: "STRING";
+    }
+
+    export interface Json extends ScenarioInputJsonVariableValue.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends ScenarioInputChatHistoryVariableValue.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Audio extends ScenarioInputAudioVariableValue.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends ScenarioInputVideoVariableValue.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends ScenarioInputImageVariableValue.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends ScenarioInputDocumentVariableValue.Raw {
+        type: "DOCUMENT";
+    }
 }

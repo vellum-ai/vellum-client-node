@@ -8,8 +8,7 @@ import * as Vellum from "../index";
  * An output returned by a node that is of type JSON.
  */
 export interface NodeOutputCompiledJsonValue {
-    type: "JSON";
-    value?: unknown;
+    value: unknown | null;
     nodeOutputId: string;
     state?: Vellum.WorkflowNodeResultEventState;
 }

@@ -17,25 +17,62 @@ import { TerminalNodeFunctionCallResult } from "./TerminalNodeFunctionCallResult
 export const TerminalNodeResultOutput: core.serialization.Schema<
     serializers.TerminalNodeResultOutput.Raw,
     Vellum.TerminalNodeResultOutput
-> = core.serialization.undiscriminatedUnion([
-    TerminalNodeStringResult,
-    TerminalNodeNumberResult,
-    TerminalNodeJsonResult,
-    TerminalNodeChatHistoryResult,
-    TerminalNodeSearchResultsResult,
-    TerminalNodeErrorResult,
-    TerminalNodeArrayResult,
-    TerminalNodeFunctionCallResult,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: TerminalNodeStringResult,
+        NUMBER: TerminalNodeNumberResult,
+        JSON: TerminalNodeJsonResult,
+        CHAT_HISTORY: TerminalNodeChatHistoryResult,
+        SEARCH_RESULTS: TerminalNodeSearchResultsResult,
+        ERROR: TerminalNodeErrorResult,
+        ARRAY: TerminalNodeArrayResult,
+        FUNCTION_CALL: TerminalNodeFunctionCallResult,
+    })
+    .transform<Vellum.TerminalNodeResultOutput>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace TerminalNodeResultOutput {
     export type Raw =
-        | TerminalNodeStringResult.Raw
-        | TerminalNodeNumberResult.Raw
-        | TerminalNodeJsonResult.Raw
-        | TerminalNodeChatHistoryResult.Raw
-        | TerminalNodeSearchResultsResult.Raw
-        | TerminalNodeErrorResult.Raw
-        | TerminalNodeArrayResult.Raw
-        | TerminalNodeFunctionCallResult.Raw;
+        | TerminalNodeResultOutput.String
+        | TerminalNodeResultOutput.Number
+        | TerminalNodeResultOutput.Json
+        | TerminalNodeResultOutput.ChatHistory
+        | TerminalNodeResultOutput.SearchResults
+        | TerminalNodeResultOutput.Error
+        | TerminalNodeResultOutput.Array
+        | TerminalNodeResultOutput.FunctionCall;
+
+    export interface String extends TerminalNodeStringResult.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends TerminalNodeNumberResult.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends TerminalNodeJsonResult.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends TerminalNodeChatHistoryResult.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends TerminalNodeSearchResultsResult.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends TerminalNodeErrorResult.Raw {
+        type: "ERROR";
+    }
+
+    export interface Array extends TerminalNodeArrayResult.Raw {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends TerminalNodeFunctionCallResult.Raw {
+        type: "FUNCTION_CALL";
+    }
 }

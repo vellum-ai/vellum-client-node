@@ -9,12 +9,12 @@ import * as Vellum from "../../../../index";
  *     {
  *         mlModel: "x",
  *         inputValues: [{
- *                 name: "x",
  *                 type: "STRING",
+ *                 name: "x",
  *                 value: "value"
  *             }, {
- *                 name: "x",
  *                 type: "STRING",
+ *                 name: "x",
  *                 value: "value"
  *             }],
  *         inputVariables: [{

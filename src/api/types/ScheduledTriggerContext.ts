@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface ScheduledTriggerContext {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    type: "SCHEDULED";
     triggerId?: string | null;
     spanId: string;
 }

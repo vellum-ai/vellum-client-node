@@ -6,7 +6,6 @@
  * Payload for executing a Composio tool with provider id and tool arguments.
  */
 export interface ComposioExecuteToolRequest {
-    provider: "COMPOSIO";
     arguments: Record<string, unknown>;
     toolkitVersion?: string | null;
 }

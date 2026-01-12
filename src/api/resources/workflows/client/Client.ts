@@ -58,31 +58,31 @@ export class Workflows {
     ): Promise<core.WithRawResponse<stream.Readable>> {
         const { excludeCode, excludeDisplay, includeJson, includeSandbox, releaseTag, strict, version } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (excludeCode !== undefined) {
-            _queryParams["exclude_code"] = excludeCode?.toString() ?? null;
+        if (excludeCode != null) {
+            _queryParams["exclude_code"] = excludeCode.toString();
         }
 
-        if (excludeDisplay !== undefined) {
-            _queryParams["exclude_display"] = excludeDisplay?.toString() ?? null;
+        if (excludeDisplay != null) {
+            _queryParams["exclude_display"] = excludeDisplay.toString();
         }
 
-        if (includeJson !== undefined) {
-            _queryParams["include_json"] = includeJson?.toString() ?? null;
+        if (includeJson != null) {
+            _queryParams["include_json"] = includeJson.toString();
         }
 
-        if (includeSandbox !== undefined) {
-            _queryParams["include_sandbox"] = includeSandbox?.toString() ?? null;
+        if (includeSandbox != null) {
+            _queryParams["include_sandbox"] = includeSandbox.toString();
         }
 
-        if (releaseTag !== undefined) {
+        if (releaseTag != null) {
             _queryParams["release_tag"] = releaseTag;
         }
 
-        if (strict !== undefined) {
-            _queryParams["strict"] = strict?.toString() ?? null;
+        if (strict != null) {
+            _queryParams["strict"] = strict.toString();
         }
 
-        if (version !== undefined) {
+        if (version != null) {
             _queryParams["version"] = version;
         }
 
@@ -103,8 +103,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -158,6 +158,7 @@ export class Workflows {
      * **Note:** Uses a base url of `https://predict.vellum.ai`.
      *
      * @param {string} spanId - The span ID of the workflow execution to retrieve state for
+     * @param {Vellum.WorkflowsRetrieveStateRequest} request
      * @param {Workflows.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -165,13 +166,15 @@ export class Workflows {
      */
     public retrieveState(
         spanId: string,
+        request: Vellum.WorkflowsRetrieveStateRequest = {},
         requestOptions?: Workflows.RequestOptions,
     ): core.HttpResponsePromise<Vellum.WorkflowResolvedState> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieveState(spanId, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieveState(spanId, request, requestOptions));
     }
 
     private async __retrieveState(
         spanId: string,
+        request: Vellum.WorkflowsRetrieveStateRequest = {},
         requestOptions?: Workflows.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.WorkflowResolvedState>> {
         const _response = await core.fetcher({
@@ -191,8 +194,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -284,8 +287,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -347,6 +350,7 @@ export class Workflows {
      * Uses the ClickHouse Prime summary materialized view.
      *
      * @param {string} executionId
+     * @param {Vellum.WorkflowExecutionStatusRequest} request
      * @param {Workflows.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vellum.BadRequestError}
@@ -358,13 +362,17 @@ export class Workflows {
      */
     public workflowExecutionStatus(
         executionId: string,
+        request: Vellum.WorkflowExecutionStatusRequest = {},
         requestOptions?: Workflows.RequestOptions,
     ): core.HttpResponsePromise<Vellum.CheckWorkflowExecutionStatusResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__workflowExecutionStatus(executionId, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__workflowExecutionStatus(executionId, request, requestOptions),
+        );
     }
 
     private async __workflowExecutionStatus(
         executionId: string,
+        request: Vellum.WorkflowExecutionStatusRequest = {},
         requestOptions?: Workflows.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.CheckWorkflowExecutionStatusResponse>> {
         const _response = await core.fetcher({
@@ -384,8 +392,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -525,8 +533,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -620,8 +628,8 @@ export class Workflows {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

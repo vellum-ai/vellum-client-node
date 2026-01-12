@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface WorkflowRequestVideoInputRequest {
     /** The variable's name, as defined in the Workflow. */
     name: string;
-    type: "VIDEO";
     value: Vellum.VellumVideoRequest;
 }

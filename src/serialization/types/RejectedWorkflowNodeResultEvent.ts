@@ -15,9 +15,8 @@ export const RejectedWorkflowNodeResultEvent: core.serialization.ObjectSchema<
     id: core.serialization.string(),
     nodeId: core.serialization.property("node_id", core.serialization.string()),
     nodeResultId: core.serialization.property("node_result_id", core.serialization.string()),
-    state: core.serialization.stringLiteral("REJECTED"),
     ts: core.serialization.date().optionalNullable(),
-    data: WorkflowNodeResultData.optionalNullable(),
+    data: WorkflowNodeResultData.nullable(),
     sourceExecutionId: core.serialization.property(
         "source_execution_id",
         core.serialization.string().optionalNullable(),
@@ -30,9 +29,8 @@ export declare namespace RejectedWorkflowNodeResultEvent {
         id: string;
         node_id: string;
         node_result_id: string;
-        state: "REJECTED";
         ts?: (string | null) | null;
-        data?: (WorkflowNodeResultData.Raw | null) | null;
+        data: WorkflowNodeResultData.Raw | null;
         source_execution_id?: (string | null) | null;
         error: WorkflowEventError.Raw;
     }

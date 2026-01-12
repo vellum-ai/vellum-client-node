@@ -21,33 +21,86 @@ import { NamedTestCaseDocumentVariableValueRequest } from "./NamedTestCaseDocume
 export const NamedTestCaseVariableValueRequest: core.serialization.Schema<
     serializers.NamedTestCaseVariableValueRequest.Raw,
     Vellum.NamedTestCaseVariableValueRequest
-> = core.serialization.undiscriminatedUnion([
-    NamedTestCaseStringVariableValueRequest,
-    NamedTestCaseNumberVariableValueRequest,
-    NamedTestCaseJsonVariableValueRequest,
-    NamedTestCaseChatHistoryVariableValueRequest,
-    NamedTestCaseSearchResultsVariableValueRequest,
-    NamedTestCaseErrorVariableValueRequest,
-    NamedTestCaseFunctionCallVariableValueRequest,
-    NamedTestCaseArrayVariableValueRequest,
-    NamedTestCaseAudioVariableValueRequest,
-    NamedTestCaseVideoVariableValueRequest,
-    NamedTestCaseImageVariableValueRequest,
-    NamedTestCaseDocumentVariableValueRequest,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: NamedTestCaseStringVariableValueRequest,
+        NUMBER: NamedTestCaseNumberVariableValueRequest,
+        JSON: NamedTestCaseJsonVariableValueRequest,
+        CHAT_HISTORY: NamedTestCaseChatHistoryVariableValueRequest,
+        SEARCH_RESULTS: NamedTestCaseSearchResultsVariableValueRequest,
+        ERROR: NamedTestCaseErrorVariableValueRequest,
+        FUNCTION_CALL: NamedTestCaseFunctionCallVariableValueRequest,
+        ARRAY: NamedTestCaseArrayVariableValueRequest,
+        AUDIO: NamedTestCaseAudioVariableValueRequest,
+        VIDEO: NamedTestCaseVideoVariableValueRequest,
+        IMAGE: NamedTestCaseImageVariableValueRequest,
+        DOCUMENT: NamedTestCaseDocumentVariableValueRequest,
+    })
+    .transform<Vellum.NamedTestCaseVariableValueRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace NamedTestCaseVariableValueRequest {
     export type Raw =
-        | NamedTestCaseStringVariableValueRequest.Raw
-        | NamedTestCaseNumberVariableValueRequest.Raw
-        | NamedTestCaseJsonVariableValueRequest.Raw
-        | NamedTestCaseChatHistoryVariableValueRequest.Raw
-        | NamedTestCaseSearchResultsVariableValueRequest.Raw
-        | NamedTestCaseErrorVariableValueRequest.Raw
-        | NamedTestCaseFunctionCallVariableValueRequest.Raw
-        | NamedTestCaseArrayVariableValueRequest.Raw
-        | NamedTestCaseAudioVariableValueRequest.Raw
-        | NamedTestCaseVideoVariableValueRequest.Raw
-        | NamedTestCaseImageVariableValueRequest.Raw
-        | NamedTestCaseDocumentVariableValueRequest.Raw;
+        | NamedTestCaseVariableValueRequest.String
+        | NamedTestCaseVariableValueRequest.Number
+        | NamedTestCaseVariableValueRequest.Json
+        | NamedTestCaseVariableValueRequest.ChatHistory
+        | NamedTestCaseVariableValueRequest.SearchResults
+        | NamedTestCaseVariableValueRequest.Error
+        | NamedTestCaseVariableValueRequest.FunctionCall
+        | NamedTestCaseVariableValueRequest.Array
+        | NamedTestCaseVariableValueRequest.Audio
+        | NamedTestCaseVariableValueRequest.Video
+        | NamedTestCaseVariableValueRequest.Image
+        | NamedTestCaseVariableValueRequest.Document;
+
+    export interface String extends NamedTestCaseStringVariableValueRequest.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends NamedTestCaseNumberVariableValueRequest.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends NamedTestCaseJsonVariableValueRequest.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends NamedTestCaseChatHistoryVariableValueRequest.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends NamedTestCaseSearchResultsVariableValueRequest.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends NamedTestCaseErrorVariableValueRequest.Raw {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends NamedTestCaseFunctionCallVariableValueRequest.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Array extends NamedTestCaseArrayVariableValueRequest.Raw {
+        type: "ARRAY";
+    }
+
+    export interface Audio extends NamedTestCaseAudioVariableValueRequest.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends NamedTestCaseVideoVariableValueRequest.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends NamedTestCaseImageVariableValueRequest.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends NamedTestCaseDocumentVariableValueRequest.Raw {
+        type: "DOCUMENT";
+    }
 }

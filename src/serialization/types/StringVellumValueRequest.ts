@@ -5,18 +5,19 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { StringEnum } from "./StringEnum";
 
 export const StringVellumValueRequest: core.serialization.ObjectSchema<
     serializers.StringVellumValueRequest.Raw,
     Vellum.StringVellumValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optionalNullable(),
+    type: StringEnum,
+    value: core.serialization.string().nullable(),
 });
 
 export declare namespace StringVellumValueRequest {
     export interface Raw {
-        type: "STRING";
-        value?: (string | null) | null;
+        type: StringEnum.Raw;
+        value: string | null;
     }
 }

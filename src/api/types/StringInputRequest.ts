@@ -8,6 +8,5 @@
 export interface StringInputRequest {
     /** The variable's name */
     name: string;
-    type: "STRING";
     value: string;
 }

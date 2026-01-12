@@ -6,7 +6,6 @@
  * Named Test Case value that is of type NUMBER
  */
 export interface NamedTestCaseNumberVariableValueRequest {
-    type: "NUMBER";
-    value?: number | null;
+    value: number | null;
     name: string;
 }

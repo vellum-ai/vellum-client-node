@@ -11,6 +11,5 @@ export interface WorkflowOutputDocument {
     id: string;
     /** The output's name, as defined in the workflow */
     name: string;
-    type: "DOCUMENT";
-    value?: Vellum.VellumDocument | null;
+    value: Vellum.VellumDocument | null;
 }

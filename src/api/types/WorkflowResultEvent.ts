@@ -8,7 +8,7 @@ export interface WorkflowResultEvent {
     id: string;
     state: Vellum.WorkflowResultEventState;
     ts: Date;
-    output?: Vellum.WorkflowResultEventOutputData | null;
+    output: Vellum.WorkflowResultEventOutputData | null;
     error?: Vellum.WorkflowEventError | null;
     outputs?: Vellum.WorkflowOutput[] | null;
     inputs?: Vellum.ExecutionVellumValue[] | null;

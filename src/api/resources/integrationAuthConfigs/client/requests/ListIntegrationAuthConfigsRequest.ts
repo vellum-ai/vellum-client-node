@@ -13,22 +13,22 @@ export interface ListIntegrationAuthConfigsRequest {
      * - 'additional_parameters' (retrieve only) fetches additional parameter requirements for the auth config.
      */
     expand?: string | string[];
-    integrationName?: string | null;
-    integrationProvider?: string | null;
+    integrationName?: string;
+    integrationProvider?: string;
     /**
      * Number of results to return per page.
      */
-    limit?: number | null;
+    limit?: number;
     /**
      * The initial index from which to return the results.
      */
-    offset?: number | null;
+    offset?: number;
     /**
      * Which field to use when ordering the results.
      */
-    ordering?: string | null;
+    ordering?: string;
     /**
      * A search term.
      */
-    search?: string | null;
+    search?: string;
 }

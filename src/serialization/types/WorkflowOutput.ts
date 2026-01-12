@@ -19,33 +19,86 @@ import { WorkflowOutputVideo } from "./WorkflowOutputVideo";
 import { WorkflowOutputDocument } from "./WorkflowOutputDocument";
 
 export const WorkflowOutput: core.serialization.Schema<serializers.WorkflowOutput.Raw, Vellum.WorkflowOutput> =
-    core.serialization.undiscriminatedUnion([
-        WorkflowOutputString,
-        WorkflowOutputNumber,
-        WorkflowOutputJson,
-        WorkflowOutputChatHistory,
-        WorkflowOutputSearchResults,
-        WorkflowOutputArray,
-        WorkflowOutputError,
-        WorkflowOutputFunctionCall,
-        WorkflowOutputImage,
-        WorkflowOutputAudio,
-        WorkflowOutputVideo,
-        WorkflowOutputDocument,
-    ]);
+    core.serialization
+        .union("type", {
+            STRING: WorkflowOutputString,
+            NUMBER: WorkflowOutputNumber,
+            JSON: WorkflowOutputJson,
+            CHAT_HISTORY: WorkflowOutputChatHistory,
+            SEARCH_RESULTS: WorkflowOutputSearchResults,
+            ARRAY: WorkflowOutputArray,
+            ERROR: WorkflowOutputError,
+            FUNCTION_CALL: WorkflowOutputFunctionCall,
+            IMAGE: WorkflowOutputImage,
+            AUDIO: WorkflowOutputAudio,
+            VIDEO: WorkflowOutputVideo,
+            DOCUMENT: WorkflowOutputDocument,
+        })
+        .transform<Vellum.WorkflowOutput>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace WorkflowOutput {
     export type Raw =
-        | WorkflowOutputString.Raw
-        | WorkflowOutputNumber.Raw
-        | WorkflowOutputJson.Raw
-        | WorkflowOutputChatHistory.Raw
-        | WorkflowOutputSearchResults.Raw
-        | WorkflowOutputArray.Raw
-        | WorkflowOutputError.Raw
-        | WorkflowOutputFunctionCall.Raw
-        | WorkflowOutputImage.Raw
-        | WorkflowOutputAudio.Raw
-        | WorkflowOutputVideo.Raw
-        | WorkflowOutputDocument.Raw;
+        | WorkflowOutput.String
+        | WorkflowOutput.Number
+        | WorkflowOutput.Json
+        | WorkflowOutput.ChatHistory
+        | WorkflowOutput.SearchResults
+        | WorkflowOutput.Array
+        | WorkflowOutput.Error
+        | WorkflowOutput.FunctionCall
+        | WorkflowOutput.Image
+        | WorkflowOutput.Audio
+        | WorkflowOutput.Video
+        | WorkflowOutput.Document;
+
+    export interface String extends WorkflowOutputString.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends WorkflowOutputNumber.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends WorkflowOutputJson.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends WorkflowOutputChatHistory.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends WorkflowOutputSearchResults.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Array extends WorkflowOutputArray.Raw {
+        type: "ARRAY";
+    }
+
+    export interface Error extends WorkflowOutputError.Raw {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends WorkflowOutputFunctionCall.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Image extends WorkflowOutputImage.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Audio extends WorkflowOutputAudio.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends WorkflowOutputVideo.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Document extends WorkflowOutputDocument.Raw {
+        type: "DOCUMENT";
+    }
 }

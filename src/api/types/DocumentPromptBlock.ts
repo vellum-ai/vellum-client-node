@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A block that represents a document in a prompt template.
  */
 export interface DocumentPromptBlock {
-    blockType: "DOCUMENT";
     state?: Vellum.PromptBlockState;
     cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     src: string;

@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A block that represents a chat message in a prompt template.
  */
 export interface ChatMessagePromptBlock {
-    blockType: "CHAT_MESSAGE";
     state?: Vellum.PromptBlockState;
     cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     chatRole: Vellum.ChatMessageRole;

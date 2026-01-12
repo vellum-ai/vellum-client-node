@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface NodeExecutionPausedEvent {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    name: "node.execution.paused";
     body: Vellum.NodeExecutionPausedBody;
     id: string;
     timestamp: Date;

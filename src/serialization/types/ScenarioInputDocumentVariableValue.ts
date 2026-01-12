@@ -11,15 +11,13 @@ export const ScenarioInputDocumentVariableValue: core.serialization.ObjectSchema
     serializers.ScenarioInputDocumentVariableValue.Raw,
     Vellum.ScenarioInputDocumentVariableValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("DOCUMENT"),
-    value: VellumDocument.optionalNullable(),
+    value: VellumDocument.nullable(),
     inputVariableId: core.serialization.property("input_variable_id", core.serialization.string()),
 });
 
 export declare namespace ScenarioInputDocumentVariableValue {
     export interface Raw {
-        type: "DOCUMENT";
-        value?: (VellumDocument.Raw | null) | null;
+        value: VellumDocument.Raw | null;
         input_variable_id: string;
     }
 }

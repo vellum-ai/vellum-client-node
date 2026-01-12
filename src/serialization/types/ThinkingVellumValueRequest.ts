@@ -11,13 +11,11 @@ export const ThinkingVellumValueRequest: core.serialization.ObjectSchema<
     serializers.ThinkingVellumValueRequest.Raw,
     Vellum.ThinkingVellumValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("THINKING"),
-    value: StringVellumValueRequest.optionalNullable(),
+    value: StringVellumValueRequest.nullable(),
 });
 
 export declare namespace ThinkingVellumValueRequest {
     export interface Raw {
-        type: "THINKING";
-        value?: (StringVellumValueRequest.Raw | null) | null;
+        value: StringVellumValueRequest.Raw | null;
     }
 }

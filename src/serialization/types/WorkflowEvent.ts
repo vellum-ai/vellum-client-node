@@ -21,37 +21,98 @@ import { WorkflowExecutionResumedEvent } from "./WorkflowExecutionResumedEvent";
 import { WorkflowExecutionSnapshottedEvent } from "./WorkflowExecutionSnapshottedEvent";
 
 export const WorkflowEvent: core.serialization.Schema<serializers.WorkflowEvent.Raw, Vellum.WorkflowEvent> =
-    core.serialization.undiscriminatedUnion([
-        NodeExecutionInitiatedEvent,
-        NodeExecutionStreamingEvent,
-        NodeExecutionFulfilledEvent,
-        NodeExecutionRejectedEvent,
-        NodeExecutionPausedEvent,
-        NodeExecutionResumedEvent,
-        NodeExecutionLogEvent,
-        WorkflowExecutionInitiatedEvent,
-        WorkflowExecutionStreamingEvent,
-        WorkflowExecutionRejectedEvent,
-        WorkflowExecutionFulfilledEvent,
-        WorkflowExecutionPausedEvent,
-        WorkflowExecutionResumedEvent,
-        WorkflowExecutionSnapshottedEvent,
-    ]);
+    core.serialization
+        .union("name", {
+            "node.execution.initiated": NodeExecutionInitiatedEvent,
+            "node.execution.streaming": NodeExecutionStreamingEvent,
+            "node.execution.fulfilled": NodeExecutionFulfilledEvent,
+            "node.execution.rejected": NodeExecutionRejectedEvent,
+            "node.execution.paused": NodeExecutionPausedEvent,
+            "node.execution.resumed": NodeExecutionResumedEvent,
+            "node.execution.log": NodeExecutionLogEvent,
+            "workflow.execution.initiated": WorkflowExecutionInitiatedEvent,
+            "workflow.execution.streaming": WorkflowExecutionStreamingEvent,
+            "workflow.execution.rejected": WorkflowExecutionRejectedEvent,
+            "workflow.execution.fulfilled": WorkflowExecutionFulfilledEvent,
+            "workflow.execution.paused": WorkflowExecutionPausedEvent,
+            "workflow.execution.resumed": WorkflowExecutionResumedEvent,
+            "workflow.execution.snapshotted": WorkflowExecutionSnapshottedEvent,
+        })
+        .transform<Vellum.WorkflowEvent>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace WorkflowEvent {
     export type Raw =
-        | NodeExecutionInitiatedEvent.Raw
-        | NodeExecutionStreamingEvent.Raw
-        | NodeExecutionFulfilledEvent.Raw
-        | NodeExecutionRejectedEvent.Raw
-        | NodeExecutionPausedEvent.Raw
-        | NodeExecutionResumedEvent.Raw
-        | NodeExecutionLogEvent.Raw
-        | WorkflowExecutionInitiatedEvent.Raw
-        | WorkflowExecutionStreamingEvent.Raw
-        | WorkflowExecutionRejectedEvent.Raw
-        | WorkflowExecutionFulfilledEvent.Raw
-        | WorkflowExecutionPausedEvent.Raw
-        | WorkflowExecutionResumedEvent.Raw
-        | WorkflowExecutionSnapshottedEvent.Raw;
+        | WorkflowEvent.NodeExecutionInitiated
+        | WorkflowEvent.NodeExecutionStreaming
+        | WorkflowEvent.NodeExecutionFulfilled
+        | WorkflowEvent.NodeExecutionRejected
+        | WorkflowEvent.NodeExecutionPaused
+        | WorkflowEvent.NodeExecutionResumed
+        | WorkflowEvent.NodeExecutionLog
+        | WorkflowEvent.WorkflowExecutionInitiated
+        | WorkflowEvent.WorkflowExecutionStreaming
+        | WorkflowEvent.WorkflowExecutionRejected
+        | WorkflowEvent.WorkflowExecutionFulfilled
+        | WorkflowEvent.WorkflowExecutionPaused
+        | WorkflowEvent.WorkflowExecutionResumed
+        | WorkflowEvent.WorkflowExecutionSnapshotted;
+
+    export interface NodeExecutionInitiated extends NodeExecutionInitiatedEvent.Raw {
+        name: "node.execution.initiated";
+    }
+
+    export interface NodeExecutionStreaming extends NodeExecutionStreamingEvent.Raw {
+        name: "node.execution.streaming";
+    }
+
+    export interface NodeExecutionFulfilled extends NodeExecutionFulfilledEvent.Raw {
+        name: "node.execution.fulfilled";
+    }
+
+    export interface NodeExecutionRejected extends NodeExecutionRejectedEvent.Raw {
+        name: "node.execution.rejected";
+    }
+
+    export interface NodeExecutionPaused extends NodeExecutionPausedEvent.Raw {
+        name: "node.execution.paused";
+    }
+
+    export interface NodeExecutionResumed extends NodeExecutionResumedEvent.Raw {
+        name: "node.execution.resumed";
+    }
+
+    export interface NodeExecutionLog extends NodeExecutionLogEvent.Raw {
+        name: "node.execution.log";
+    }
+
+    export interface WorkflowExecutionInitiated extends WorkflowExecutionInitiatedEvent.Raw {
+        name: "workflow.execution.initiated";
+    }
+
+    export interface WorkflowExecutionStreaming extends WorkflowExecutionStreamingEvent.Raw {
+        name: "workflow.execution.streaming";
+    }
+
+    export interface WorkflowExecutionRejected extends WorkflowExecutionRejectedEvent.Raw {
+        name: "workflow.execution.rejected";
+    }
+
+    export interface WorkflowExecutionFulfilled extends WorkflowExecutionFulfilledEvent.Raw {
+        name: "workflow.execution.fulfilled";
+    }
+
+    export interface WorkflowExecutionPaused extends WorkflowExecutionPausedEvent.Raw {
+        name: "workflow.execution.paused";
+    }
+
+    export interface WorkflowExecutionResumed extends WorkflowExecutionResumedEvent.Raw {
+        name: "workflow.execution.resumed";
+    }
+
+    export interface WorkflowExecutionSnapshotted extends WorkflowExecutionSnapshottedEvent.Raw {
+        name: "workflow.execution.snapshotted";
+    }
 }

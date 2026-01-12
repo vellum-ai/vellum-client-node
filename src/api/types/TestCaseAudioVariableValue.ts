@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface TestCaseAudioVariableValue {
     variableId: string;
     name?: string;
-    type: "AUDIO";
-    value?: Vellum.VellumAudio | null;
+    value: Vellum.VellumAudio | null;
 }

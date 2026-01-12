@@ -11,16 +11,11 @@ export const TokenOverlappingWindowChunkingRequest: core.serialization.ObjectSch
     serializers.TokenOverlappingWindowChunkingRequest.Raw,
     Vellum.TokenOverlappingWindowChunkingRequest
 > = core.serialization.object({
-    chunkerName: core.serialization.property(
-        "chunker_name",
-        core.serialization.stringLiteral("token-overlapping-window-chunker"),
-    ),
     chunkerConfig: core.serialization.property("chunker_config", TokenOverlappingWindowChunkerConfigRequest.optional()),
 });
 
 export declare namespace TokenOverlappingWindowChunkingRequest {
     export interface Raw {
-        chunker_name: "token-overlapping-window-chunker";
         chunker_config?: TokenOverlappingWindowChunkerConfigRequest.Raw | null;
     }
 }

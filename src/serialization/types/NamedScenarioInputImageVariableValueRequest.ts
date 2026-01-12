@@ -11,14 +11,12 @@ export const NamedScenarioInputImageVariableValueRequest: core.serialization.Obj
     serializers.NamedScenarioInputImageVariableValueRequest.Raw,
     Vellum.NamedScenarioInputImageVariableValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("IMAGE"),
     value: VellumImageRequest,
     name: core.serialization.string(),
 });
 
 export declare namespace NamedScenarioInputImageVariableValueRequest {
     export interface Raw {
-        type: "IMAGE";
         value: VellumImageRequest.Raw;
         name: string;
     }

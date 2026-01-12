@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface NodeExecutionLogEvent {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    name: "node.execution.log";
     body: Vellum.NodeExecutionLogBody;
     id: string;
     timestamp: Date;

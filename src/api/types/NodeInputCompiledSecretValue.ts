@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledSecretValue {
     nodeInputId: string;
     key: string;
-    type: "SECRET";
     value: Vellum.VellumSecret;
 }

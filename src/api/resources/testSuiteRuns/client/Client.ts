@@ -80,8 +80,8 @@ export class TestSuiteRuns {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -135,6 +135,7 @@ export class TestSuiteRuns {
      * Retrieve a specific Test Suite Run by ID
      *
      * @param {string} id - A UUID string identifying this test suite run.
+     * @param {Vellum.TestSuiteRunsRetrieveRequest} request
      * @param {TestSuiteRuns.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -142,13 +143,15 @@ export class TestSuiteRuns {
      */
     public retrieve(
         id: string,
+        request: Vellum.TestSuiteRunsRetrieveRequest = {},
         requestOptions?: TestSuiteRuns.RequestOptions,
     ): core.HttpResponsePromise<Vellum.TestSuiteRunRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.TestSuiteRunsRetrieveRequest = {},
         requestOptions?: TestSuiteRuns.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.TestSuiteRunRead>> {
         const _response = await core.fetcher({
@@ -168,8 +171,8 @@ export class TestSuiteRuns {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -249,12 +252,12 @@ export class TestSuiteRuns {
             }
         }
 
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
         }
 
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
+        if (offset != null) {
+            _queryParams["offset"] = offset.toString();
         }
 
         const _response = await core.fetcher({
@@ -274,8 +277,8 @@ export class TestSuiteRuns {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

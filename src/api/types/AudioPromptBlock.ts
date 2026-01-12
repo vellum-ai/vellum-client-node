@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A block that represents an audio file in a prompt template.
  */
 export interface AudioPromptBlock {
-    blockType: "AUDIO";
     state?: Vellum.PromptBlockState;
     cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     src: string;

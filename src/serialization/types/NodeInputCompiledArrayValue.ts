@@ -12,15 +12,13 @@ export const NodeInputCompiledArrayValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("ARRAY"),
-    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
+    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).nullable(),
 });
 
 export declare namespace NodeInputCompiledArrayValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "ARRAY";
-        value?: (serializers.VellumValue.Raw[] | null) | null;
+        value: serializers.VellumValue.Raw[] | null;
     }
 }

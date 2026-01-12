@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A base Vellum primitive value representing a document.
  */
 export interface DocumentVellumValueRequest {
-    type: "DOCUMENT";
-    value?: Vellum.VellumDocumentRequest | null;
+    value: Vellum.VellumDocumentRequest | null;
 }

@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface PromptRequestDocumentInput {
     /** The variable's name, as defined in the Prompt. */
     key: string;
-    type: "DOCUMENT";
     value: Vellum.VellumDocument;
 }

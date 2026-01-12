@@ -12,15 +12,13 @@ export const NodeInputCompiledNumberValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("NUMBER"),
-    value: core.serialization.number().optionalNullable(),
+    value: core.serialization.number().nullable(),
 });
 
 export declare namespace NodeInputCompiledNumberValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "NUMBER";
-        value?: (number | null) | null;
+        value: number | null;
     }
 }

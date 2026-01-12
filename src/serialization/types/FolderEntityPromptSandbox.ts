@@ -12,14 +12,12 @@ export const FolderEntityPromptSandbox: core.serialization.ObjectSchema<
     Vellum.FolderEntityPromptSandbox
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("PROMPT_SANDBOX"),
     data: FolderEntityPromptSandboxData,
 });
 
 export declare namespace FolderEntityPromptSandbox {
     export interface Raw {
         id: string;
-        type: "PROMPT_SANDBOX";
         data: FolderEntityPromptSandboxData.Raw;
     }
 }

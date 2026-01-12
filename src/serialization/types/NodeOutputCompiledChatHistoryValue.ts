@@ -12,16 +12,14 @@ export const NodeOutputCompiledChatHistoryValue: core.serialization.ObjectSchema
     serializers.NodeOutputCompiledChatHistoryValue.Raw,
     Vellum.NodeOutputCompiledChatHistoryValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optionalNullable(),
+    value: core.serialization.list(ChatMessage).nullable(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledChatHistoryValue {
     export interface Raw {
-        type: "CHAT_HISTORY";
-        value?: (ChatMessage.Raw[] | null) | null;
+        value: ChatMessage.Raw[] | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

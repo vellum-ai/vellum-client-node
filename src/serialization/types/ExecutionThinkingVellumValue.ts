@@ -13,15 +13,13 @@ export const ExecutionThinkingVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("THINKING"),
-    value: StringVellumValue.optionalNullable(),
+    value: StringVellumValue.nullable(),
 });
 
 export declare namespace ExecutionThinkingVellumValue {
     export interface Raw {
         id: string;
         name: string;
-        type: "THINKING";
-        value?: (StringVellumValue.Raw | null) | null;
+        value: StringVellumValue.Raw | null;
     }
 }

@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A document value that is used in a chat message.
  */
 export interface DocumentChatMessageContent {
-    type: "DOCUMENT";
     value: Vellum.VellumDocument;
 }

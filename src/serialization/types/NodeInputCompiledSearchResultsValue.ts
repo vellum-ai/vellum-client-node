@@ -13,15 +13,13 @@ export const NodeInputCompiledSearchResultsValue: core.serialization.ObjectSchem
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optionalNullable(),
+    value: core.serialization.list(SearchResult).nullable(),
 });
 
 export declare namespace NodeInputCompiledSearchResultsValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "SEARCH_RESULTS";
-        value?: (SearchResult.Raw[] | null) | null;
+        value: SearchResult.Raw[] | null;
     }
 }

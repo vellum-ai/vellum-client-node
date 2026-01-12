@@ -12,14 +12,12 @@ export const PromptRequestVideoInput: core.serialization.ObjectSchema<
     Vellum.PromptRequestVideoInput
 > = core.serialization.object({
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("VIDEO"),
     value: VellumVideo,
 });
 
 export declare namespace PromptRequestVideoInput {
     export interface Raw {
         key: string;
-        type: "VIDEO";
         value: VellumVideo.Raw;
     }
 }

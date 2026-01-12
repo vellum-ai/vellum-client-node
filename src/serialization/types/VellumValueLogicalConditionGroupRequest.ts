@@ -11,7 +11,6 @@ export const VellumValueLogicalConditionGroupRequest: core.serialization.ObjectS
     serializers.VellumValueLogicalConditionGroupRequest.Raw,
     Vellum.VellumValueLogicalConditionGroupRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("LOGICAL_CONDITION_GROUP"),
     conditions: core.serialization.list(core.serialization.lazy(() => serializers.VellumValueLogicalExpressionRequest)),
     combinator: ConditionCombinator,
     negated: core.serialization.boolean(),
@@ -19,7 +18,6 @@ export const VellumValueLogicalConditionGroupRequest: core.serialization.ObjectS
 
 export declare namespace VellumValueLogicalConditionGroupRequest {
     export interface Raw {
-        type: "LOGICAL_CONDITION_GROUP";
         conditions: serializers.VellumValueLogicalExpressionRequest.Raw[];
         combinator: ConditionCombinator.Raw;
         negated: boolean;

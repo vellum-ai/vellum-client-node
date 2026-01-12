@@ -5,17 +5,75 @@
 import * as Vellum from "../index";
 
 export type WorkflowEvent =
-    | Vellum.NodeExecutionInitiatedEvent
-    | Vellum.NodeExecutionStreamingEvent
-    | Vellum.NodeExecutionFulfilledEvent
-    | Vellum.NodeExecutionRejectedEvent
-    | Vellum.NodeExecutionPausedEvent
-    | Vellum.NodeExecutionResumedEvent
-    | Vellum.NodeExecutionLogEvent
-    | Vellum.WorkflowExecutionInitiatedEvent
-    | Vellum.WorkflowExecutionStreamingEvent
-    | Vellum.WorkflowExecutionRejectedEvent
-    | Vellum.WorkflowExecutionFulfilledEvent
-    | Vellum.WorkflowExecutionPausedEvent
-    | Vellum.WorkflowExecutionResumedEvent
-    | Vellum.WorkflowExecutionSnapshottedEvent;
+    | Vellum.WorkflowEvent.NodeExecutionInitiated
+    | Vellum.WorkflowEvent.NodeExecutionStreaming
+    | Vellum.WorkflowEvent.NodeExecutionFulfilled
+    | Vellum.WorkflowEvent.NodeExecutionRejected
+    | Vellum.WorkflowEvent.NodeExecutionPaused
+    | Vellum.WorkflowEvent.NodeExecutionResumed
+    | Vellum.WorkflowEvent.NodeExecutionLog
+    | Vellum.WorkflowEvent.WorkflowExecutionInitiated
+    | Vellum.WorkflowEvent.WorkflowExecutionStreaming
+    | Vellum.WorkflowEvent.WorkflowExecutionRejected
+    | Vellum.WorkflowEvent.WorkflowExecutionFulfilled
+    | Vellum.WorkflowEvent.WorkflowExecutionPaused
+    | Vellum.WorkflowEvent.WorkflowExecutionResumed
+    | Vellum.WorkflowEvent.WorkflowExecutionSnapshotted;
+
+export namespace WorkflowEvent {
+    export interface NodeExecutionInitiated extends Vellum.NodeExecutionInitiatedEvent {
+        name: "node.execution.initiated";
+    }
+
+    export interface NodeExecutionStreaming extends Vellum.NodeExecutionStreamingEvent {
+        name: "node.execution.streaming";
+    }
+
+    export interface NodeExecutionFulfilled extends Vellum.NodeExecutionFulfilledEvent {
+        name: "node.execution.fulfilled";
+    }
+
+    export interface NodeExecutionRejected extends Vellum.NodeExecutionRejectedEvent {
+        name: "node.execution.rejected";
+    }
+
+    export interface NodeExecutionPaused extends Vellum.NodeExecutionPausedEvent {
+        name: "node.execution.paused";
+    }
+
+    export interface NodeExecutionResumed extends Vellum.NodeExecutionResumedEvent {
+        name: "node.execution.resumed";
+    }
+
+    export interface NodeExecutionLog extends Vellum.NodeExecutionLogEvent {
+        name: "node.execution.log";
+    }
+
+    export interface WorkflowExecutionInitiated extends Vellum.WorkflowExecutionInitiatedEvent {
+        name: "workflow.execution.initiated";
+    }
+
+    export interface WorkflowExecutionStreaming extends Vellum.WorkflowExecutionStreamingEvent {
+        name: "workflow.execution.streaming";
+    }
+
+    export interface WorkflowExecutionRejected extends Vellum.WorkflowExecutionRejectedEvent {
+        name: "workflow.execution.rejected";
+    }
+
+    export interface WorkflowExecutionFulfilled extends Vellum.WorkflowExecutionFulfilledEvent {
+        name: "workflow.execution.fulfilled";
+    }
+
+    export interface WorkflowExecutionPaused extends Vellum.WorkflowExecutionPausedEvent {
+        name: "workflow.execution.paused";
+    }
+
+    export interface WorkflowExecutionResumed extends Vellum.WorkflowExecutionResumedEvent {
+        name: "workflow.execution.resumed";
+    }
+
+    export interface WorkflowExecutionSnapshotted extends Vellum.WorkflowExecutionSnapshottedEvent {
+        name: "workflow.execution.snapshotted";
+    }
+}

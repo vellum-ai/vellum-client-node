@@ -5,7 +5,6 @@
 import * as Vellum from "../index";
 
 export interface NamedTestCaseVideoVariableValue {
-    type: "VIDEO";
-    value?: Vellum.VellumVideo | null;
+    value: Vellum.VellumVideo | null;
     name: string;
 }

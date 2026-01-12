@@ -7,7 +7,7 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
 export const DocumentStatus: core.serialization.Schema<serializers.DocumentStatus.Raw, Vellum.DocumentStatus> =
-    core.serialization.stringLiteral("ACTIVE");
+    core.serialization.enum_(["ACTIVE"]);
 
 export declare namespace DocumentStatus {
     export type Raw = "ACTIVE";

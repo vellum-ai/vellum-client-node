@@ -12,5 +12,5 @@ export interface FolderEntityWorkflowSandboxData {
     status: Vellum.EntityStatus;
     description?: string | null;
     lastDeployedOn?: Date | null;
-    displayData?: Vellum.WorkflowSandboxDisplayData | null;
+    displayData: Vellum.WorkflowSandboxDisplayData | null;
 }

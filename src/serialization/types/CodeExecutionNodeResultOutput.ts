@@ -17,25 +17,62 @@ import { CodeExecutionNodeFunctionCallResult } from "./CodeExecutionNodeFunction
 export const CodeExecutionNodeResultOutput: core.serialization.Schema<
     serializers.CodeExecutionNodeResultOutput.Raw,
     Vellum.CodeExecutionNodeResultOutput
-> = core.serialization.undiscriminatedUnion([
-    CodeExecutionNodeStringResult,
-    CodeExecutionNodeNumberResult,
-    CodeExecutionNodeJsonResult,
-    CodeExecutionNodeChatHistoryResult,
-    CodeExecutionNodeSearchResultsResult,
-    CodeExecutionNodeErrorResult,
-    CodeExecutionNodeArrayResult,
-    CodeExecutionNodeFunctionCallResult,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: CodeExecutionNodeStringResult,
+        NUMBER: CodeExecutionNodeNumberResult,
+        JSON: CodeExecutionNodeJsonResult,
+        CHAT_HISTORY: CodeExecutionNodeChatHistoryResult,
+        SEARCH_RESULTS: CodeExecutionNodeSearchResultsResult,
+        ERROR: CodeExecutionNodeErrorResult,
+        ARRAY: CodeExecutionNodeArrayResult,
+        FUNCTION_CALL: CodeExecutionNodeFunctionCallResult,
+    })
+    .transform<Vellum.CodeExecutionNodeResultOutput>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace CodeExecutionNodeResultOutput {
     export type Raw =
-        | CodeExecutionNodeStringResult.Raw
-        | CodeExecutionNodeNumberResult.Raw
-        | CodeExecutionNodeJsonResult.Raw
-        | CodeExecutionNodeChatHistoryResult.Raw
-        | CodeExecutionNodeSearchResultsResult.Raw
-        | CodeExecutionNodeErrorResult.Raw
-        | CodeExecutionNodeArrayResult.Raw
-        | CodeExecutionNodeFunctionCallResult.Raw;
+        | CodeExecutionNodeResultOutput.String
+        | CodeExecutionNodeResultOutput.Number
+        | CodeExecutionNodeResultOutput.Json
+        | CodeExecutionNodeResultOutput.ChatHistory
+        | CodeExecutionNodeResultOutput.SearchResults
+        | CodeExecutionNodeResultOutput.Error
+        | CodeExecutionNodeResultOutput.Array
+        | CodeExecutionNodeResultOutput.FunctionCall;
+
+    export interface String extends CodeExecutionNodeStringResult.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends CodeExecutionNodeNumberResult.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends CodeExecutionNodeJsonResult.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends CodeExecutionNodeChatHistoryResult.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends CodeExecutionNodeSearchResultsResult.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends CodeExecutionNodeErrorResult.Raw {
+        type: "ERROR";
+    }
+
+    export interface Array extends CodeExecutionNodeArrayResult.Raw {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends CodeExecutionNodeFunctionCallResult.Raw {
+        type: "FUNCTION_CALL";
+    }
 }

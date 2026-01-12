@@ -5,6 +5,5 @@
 export interface PromptRequestStringInput {
     /** The variable's name, as defined in the Prompt. */
     key: string;
-    type: "STRING";
     value: string;
 }

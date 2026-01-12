@@ -8,12 +8,12 @@ import * as Vellum from "../../index";
  * @example
  *     {
  *         inputs: [{
- *                 name: "x",
  *                 type: "STRING",
+ *                 name: "x",
  *                 value: "value"
  *             }, {
- *                 name: "x",
  *                 type: "STRING",
+ *                 name: "x",
  *                 value: "value"
  *             }]
  *     }

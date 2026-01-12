@@ -13,15 +13,13 @@ export const NodeInputCompiledImageValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("IMAGE"),
-    value: VellumImage.optionalNullable(),
+    value: VellumImage.nullable(),
 });
 
 export declare namespace NodeInputCompiledImageValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "IMAGE";
-        value?: (VellumImage.Raw | null) | null;
+        value: VellumImage.Raw | null;
     }
 }

@@ -9,14 +9,12 @@ import * as core from "../../core";
 export const ArrayInput: core.serialization.ObjectSchema<serializers.ArrayInput.Raw, Vellum.ArrayInput> =
     core.serialization.object({
         name: core.serialization.string(),
-        type: core.serialization.stringLiteral("ARRAY"),
         value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)),
     });
 
 export declare namespace ArrayInput {
     export interface Raw {
         name: string;
-        type: "ARRAY";
         value: serializers.VellumValue.Raw[];
     }
 }

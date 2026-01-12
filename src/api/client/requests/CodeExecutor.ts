@@ -10,12 +10,12 @@ import * as Vellum from "../../index";
  *         code: "x",
  *         runtime: "PYTHON_3_11_6",
  *         inputValues: [{
- *                 name: "x",
  *                 type: "STRING",
+ *                 name: "x",
  *                 value: "value"
  *             }, {
- *                 name: "x",
  *                 type: "STRING",
+ *                 name: "x",
  *                 value: "value"
  *             }],
  *         packages: [{

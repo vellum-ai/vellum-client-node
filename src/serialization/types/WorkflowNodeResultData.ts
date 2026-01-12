@@ -20,31 +20,80 @@ import { MapNodeResult } from "./MapNodeResult";
 export const WorkflowNodeResultData: core.serialization.Schema<
     serializers.WorkflowNodeResultData.Raw,
     Vellum.WorkflowNodeResultData
-> = core.serialization.undiscriminatedUnion([
-    PromptNodeResult,
-    SearchNodeResult,
-    TemplatingNodeResult,
-    CodeExecutionNodeResult,
-    ConditionalNodeResult,
-    ApiNodeResult,
-    TerminalNodeResult,
-    MergeNodeResult,
-    SubworkflowNodeResult,
-    MetricNodeResult,
-    MapNodeResult,
-]);
+> = core.serialization
+    .union("type", {
+        PROMPT: PromptNodeResult,
+        SEARCH: SearchNodeResult,
+        TEMPLATING: TemplatingNodeResult,
+        CODE_EXECUTION: CodeExecutionNodeResult,
+        CONDITIONAL: ConditionalNodeResult,
+        API: ApiNodeResult,
+        TERMINAL: TerminalNodeResult,
+        MERGE: MergeNodeResult,
+        SUBWORKFLOW: SubworkflowNodeResult,
+        METRIC: MetricNodeResult,
+        MAP: MapNodeResult,
+    })
+    .transform<Vellum.WorkflowNodeResultData>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace WorkflowNodeResultData {
     export type Raw =
-        | PromptNodeResult.Raw
-        | SearchNodeResult.Raw
-        | TemplatingNodeResult.Raw
-        | CodeExecutionNodeResult.Raw
-        | ConditionalNodeResult.Raw
-        | ApiNodeResult.Raw
-        | TerminalNodeResult.Raw
-        | MergeNodeResult.Raw
-        | SubworkflowNodeResult.Raw
-        | MetricNodeResult.Raw
-        | MapNodeResult.Raw;
+        | WorkflowNodeResultData.Prompt
+        | WorkflowNodeResultData.Search
+        | WorkflowNodeResultData.Templating
+        | WorkflowNodeResultData.CodeExecution
+        | WorkflowNodeResultData.Conditional
+        | WorkflowNodeResultData.Api
+        | WorkflowNodeResultData.Terminal
+        | WorkflowNodeResultData.Merge
+        | WorkflowNodeResultData.Subworkflow
+        | WorkflowNodeResultData.Metric
+        | WorkflowNodeResultData.Map;
+
+    export interface Prompt extends PromptNodeResult.Raw {
+        type: "PROMPT";
+    }
+
+    export interface Search extends SearchNodeResult.Raw {
+        type: "SEARCH";
+    }
+
+    export interface Templating extends TemplatingNodeResult.Raw {
+        type: "TEMPLATING";
+    }
+
+    export interface CodeExecution extends CodeExecutionNodeResult.Raw {
+        type: "CODE_EXECUTION";
+    }
+
+    export interface Conditional extends ConditionalNodeResult.Raw {
+        type: "CONDITIONAL";
+    }
+
+    export interface Api extends ApiNodeResult.Raw {
+        type: "API";
+    }
+
+    export interface Terminal extends TerminalNodeResult.Raw {
+        type: "TERMINAL";
+    }
+
+    export interface Merge extends MergeNodeResult.Raw {
+        type: "MERGE";
+    }
+
+    export interface Subworkflow extends SubworkflowNodeResult.Raw {
+        type: "SUBWORKFLOW";
+    }
+
+    export interface Metric extends MetricNodeResult.Raw {
+        type: "METRIC";
+    }
+
+    export interface Map extends MapNodeResult.Raw {
+        type: "MAP";
+    }
 }

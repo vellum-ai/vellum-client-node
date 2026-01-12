@@ -5,7 +5,6 @@
 import * as Vellum from "../index";
 
 export interface ScenarioInputVideoVariableValue {
-    type: "VIDEO";
-    value?: Vellum.VellumVideo | null;
+    value: Vellum.VellumVideo | null;
     inputVariableId: string;
 }

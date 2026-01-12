@@ -5,8 +5,30 @@
 import * as Vellum from "../index";
 
 export type PromptOutput =
-    | Vellum.StringVellumValue
-    | Vellum.JsonVellumValue
-    | Vellum.ErrorVellumValue
-    | Vellum.FunctionCallVellumValue
-    | Vellum.ThinkingVellumValue;
+    | Vellum.PromptOutput.String
+    | Vellum.PromptOutput.Json
+    | Vellum.PromptOutput.Error_
+    | Vellum.PromptOutput.FunctionCall
+    | Vellum.PromptOutput.Thinking;
+
+export namespace PromptOutput {
+    export interface String extends Vellum.StringVellumValue {
+        type: "STRING";
+    }
+
+    export interface Json extends Vellum.JsonVellumValue {
+        type: "JSON";
+    }
+
+    export interface Error_ extends Vellum.ErrorVellumValue {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends Vellum.FunctionCallVellumValue {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Thinking extends Vellum.ThinkingVellumValue {
+        type: "THINKING";
+    }
+}

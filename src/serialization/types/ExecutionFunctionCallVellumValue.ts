@@ -13,15 +13,13 @@ export const ExecutionFunctionCallVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optionalNullable(),
+    value: FunctionCall.nullable(),
 });
 
 export declare namespace ExecutionFunctionCallVellumValue {
     export interface Raw {
         id: string;
         name: string;
-        type: "FUNCTION_CALL";
-        value?: (FunctionCall.Raw | null) | null;
+        value: FunctionCall.Raw | null;
     }
 }

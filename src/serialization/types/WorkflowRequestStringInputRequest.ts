@@ -11,14 +11,12 @@ export const WorkflowRequestStringInputRequest: core.serialization.ObjectSchema<
     Vellum.WorkflowRequestStringInputRequest
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("STRING"),
     value: core.serialization.string(),
 });
 
 export declare namespace WorkflowRequestStringInputRequest {
     export interface Raw {
         name: string;
-        type: "STRING";
         value: string;
     }
 }

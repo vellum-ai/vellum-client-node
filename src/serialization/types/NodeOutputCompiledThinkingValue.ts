@@ -12,16 +12,14 @@ export const NodeOutputCompiledThinkingValue: core.serialization.ObjectSchema<
     serializers.NodeOutputCompiledThinkingValue.Raw,
     Vellum.NodeOutputCompiledThinkingValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("THINKING"),
-    value: StringVellumValue.optionalNullable(),
+    value: StringVellumValue.nullable(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledThinkingValue {
     export interface Raw {
-        type: "THINKING";
-        value?: (StringVellumValue.Raw | null) | null;
+        value: StringVellumValue.Raw | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

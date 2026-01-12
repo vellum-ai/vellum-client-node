@@ -5,11 +5,45 @@
 import * as Vellum from "../index";
 
 export type TestSuiteRunExecutionOutput =
-    | Vellum.TestSuiteRunExecutionStringOutput
-    | Vellum.TestSuiteRunExecutionNumberOutput
-    | Vellum.TestSuiteRunExecutionJsonOutput
-    | Vellum.TestSuiteRunExecutionChatHistoryOutput
-    | Vellum.TestSuiteRunExecutionSearchResultsOutput
-    | Vellum.TestSuiteRunExecutionErrorOutput
-    | Vellum.TestSuiteRunExecutionFunctionCallOutput
-    | Vellum.TestSuiteRunExecutionArrayOutput;
+    | Vellum.TestSuiteRunExecutionOutput.String
+    | Vellum.TestSuiteRunExecutionOutput.Number
+    | Vellum.TestSuiteRunExecutionOutput.Json
+    | Vellum.TestSuiteRunExecutionOutput.ChatHistory
+    | Vellum.TestSuiteRunExecutionOutput.SearchResults
+    | Vellum.TestSuiteRunExecutionOutput.Error_
+    | Vellum.TestSuiteRunExecutionOutput.FunctionCall
+    | Vellum.TestSuiteRunExecutionOutput.Array;
+
+export namespace TestSuiteRunExecutionOutput {
+    export interface String extends Vellum.TestSuiteRunExecutionStringOutput {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.TestSuiteRunExecutionNumberOutput {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.TestSuiteRunExecutionJsonOutput {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.TestSuiteRunExecutionChatHistoryOutput {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.TestSuiteRunExecutionSearchResultsOutput {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.TestSuiteRunExecutionErrorOutput {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends Vellum.TestSuiteRunExecutionFunctionCallOutput {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Array extends Vellum.TestSuiteRunExecutionArrayOutput {
+        type: "ARRAY";
+    }
+}

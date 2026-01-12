@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * Named Test Case value that is of type ERROR
  */
 export interface NamedTestCaseErrorVariableValueRequest {
-    type: "ERROR";
-    value?: Vellum.VellumErrorRequest | null;
+    value: Vellum.VellumErrorRequest | null;
     name: string;
 }

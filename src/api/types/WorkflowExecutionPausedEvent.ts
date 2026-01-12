@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface WorkflowExecutionPausedEvent {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    name: "workflow.execution.paused";
     body: Vellum.WorkflowExecutionPausedBody;
     id: string;
     timestamp: Date;

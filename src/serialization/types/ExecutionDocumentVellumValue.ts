@@ -13,15 +13,13 @@ export const ExecutionDocumentVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("DOCUMENT"),
-    value: VellumDocument.optionalNullable(),
+    value: VellumDocument.nullable(),
 });
 
 export declare namespace ExecutionDocumentVellumValue {
     export interface Raw {
         id: string;
         name: string;
-        type: "DOCUMENT";
-        value?: (VellumDocument.Raw | null) | null;
+        value: VellumDocument.Raw | null;
     }
 }

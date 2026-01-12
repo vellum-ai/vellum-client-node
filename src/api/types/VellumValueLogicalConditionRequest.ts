@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A basic condition comparing two Vellum values.
  */
 export interface VellumValueLogicalConditionRequest {
-    type: "LOGICAL_CONDITION";
     lhsVariable: Vellum.VellumValueRequest;
     operator: Vellum.LogicalOperator;
     rhsVariable: Vellum.VellumValueRequest;

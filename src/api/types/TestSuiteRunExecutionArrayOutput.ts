@@ -9,7 +9,6 @@ import * as Vellum from "../index";
  */
 export interface TestSuiteRunExecutionArrayOutput {
     name: string;
-    type: "ARRAY";
-    value?: Vellum.VellumValue[] | null;
+    value: Vellum.VellumValue[] | null;
     outputVariableId: string;
 }

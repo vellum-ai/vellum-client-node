@@ -6,5 +6,5 @@ import * as Vellum from "../index";
 
 export interface DeploymentProviderPayloadResponse {
     payload: Vellum.DeploymentProviderPayloadResponsePayload;
-    meta?: Vellum.CompilePromptMeta | null;
+    meta: Vellum.CompilePromptMeta | null;
 }

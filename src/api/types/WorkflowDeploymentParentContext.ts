@@ -7,7 +7,7 @@ import * as Vellum from "../index";
 export interface WorkflowDeploymentParentContext {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    type: "WORKFLOW_RELEASE_TAG";
+    type: Vellum.WorkflowReleaseTagEnum;
     spanId: string;
     deploymentId: string;
     deploymentName: string;

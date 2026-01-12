@@ -11,15 +11,13 @@ export const NamedScenarioInputChatHistoryVariableValueRequest: core.serializati
     serializers.NamedScenarioInputChatHistoryVariableValueRequest.Raw,
     Vellum.NamedScenarioInputChatHistoryVariableValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessageRequest).optionalNullable(),
+    value: core.serialization.list(ChatMessageRequest).nullable(),
     name: core.serialization.string(),
 });
 
 export declare namespace NamedScenarioInputChatHistoryVariableValueRequest {
     export interface Raw {
-        type: "CHAT_HISTORY";
-        value?: (ChatMessageRequest.Raw[] | null) | null;
+        value: ChatMessageRequest.Raw[] | null;
         name: string;
     }
 }

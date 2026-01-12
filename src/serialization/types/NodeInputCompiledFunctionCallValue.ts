@@ -13,15 +13,13 @@ export const NodeInputCompiledFunctionCallValue: core.serialization.ObjectSchema
 > = core.serialization.object({
     nodeInputId: core.serialization.property("node_input_id", core.serialization.string()),
     key: core.serialization.string(),
-    type: core.serialization.stringLiteral("FUNCTION_CALL"),
-    value: FunctionCall.optionalNullable(),
+    value: FunctionCall.nullable(),
 });
 
 export declare namespace NodeInputCompiledFunctionCallValue {
     export interface Raw {
         node_input_id: string;
         key: string;
-        type: "FUNCTION_CALL";
-        value?: (FunctionCall.Raw | null) | null;
+        value: FunctionCall.Raw | null;
     }
 }

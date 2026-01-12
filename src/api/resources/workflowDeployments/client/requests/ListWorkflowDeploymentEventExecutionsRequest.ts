@@ -7,14 +7,14 @@
  *     {}
  */
 export interface ListWorkflowDeploymentEventExecutionsRequest {
-    filters?: string | null;
+    filters?: string;
     /**
      * Number of executions to return per page.
      */
-    limit?: number | null;
+    limit?: number;
     /**
      * The initial index from which to return the executions.
      */
-    offset?: number | null;
-    ordering?: string | null;
+    offset?: number;
+    ordering?: string;
 }

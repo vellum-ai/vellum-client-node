@@ -14,7 +14,6 @@ export const WorkflowParentContext: core.serialization.ObjectSchema<
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
     workflowDefinition: core.serialization.property("workflow_definition", VellumCodeResourceDefinition),
-    type: core.serialization.stringLiteral("WORKFLOW"),
     spanId: core.serialization.property("span_id", core.serialization.string()),
 });
 
@@ -23,7 +22,6 @@ export declare namespace WorkflowParentContext {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
         workflow_definition: VellumCodeResourceDefinition.Raw;
-        type: "WORKFLOW";
         span_id: string;
     }
 }

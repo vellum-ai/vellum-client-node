@@ -10,14 +10,12 @@ import { VellumVideo } from "./VellumVideo";
 export const VideoInput: core.serialization.ObjectSchema<serializers.VideoInput.Raw, Vellum.VideoInput> =
     core.serialization.object({
         name: core.serialization.string(),
-        type: core.serialization.stringLiteral("VIDEO"),
         value: VellumVideo,
     });
 
 export declare namespace VideoInput {
     export interface Raw {
         name: string;
-        type: "VIDEO";
         value: VellumVideo.Raw;
     }
 }

@@ -12,7 +12,6 @@ export const ImagePromptBlock: core.serialization.ObjectSchema<
     serializers.ImagePromptBlock.Raw,
     Vellum.ImagePromptBlock
 > = core.serialization.object({
-    blockType: core.serialization.property("block_type", core.serialization.stringLiteral("IMAGE")),
     state: PromptBlockState.optional(),
     cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     src: core.serialization.string(),
@@ -21,7 +20,6 @@ export const ImagePromptBlock: core.serialization.ObjectSchema<
 
 export declare namespace ImagePromptBlock {
     export interface Raw {
-        block_type: "IMAGE";
         state?: PromptBlockState.Raw | null;
         cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         src: string;

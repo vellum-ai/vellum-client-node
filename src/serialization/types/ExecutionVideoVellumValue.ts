@@ -13,15 +13,13 @@ export const ExecutionVideoVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("VIDEO"),
-    value: VellumVideo.optionalNullable(),
+    value: VellumVideo.nullable(),
 });
 
 export declare namespace ExecutionVideoVellumValue {
     export interface Raw {
         id: string;
         name: string;
-        type: "VIDEO";
-        value?: (VellumVideo.Raw | null) | null;
+        value: VellumVideo.Raw | null;
     }
 }

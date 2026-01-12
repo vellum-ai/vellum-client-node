@@ -13,15 +13,13 @@ export const WorkflowOutputSearchResults: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optionalNullable(),
+    value: core.serialization.list(SearchResult).nullable(),
 });
 
 export declare namespace WorkflowOutputSearchResults {
     export interface Raw {
         id: string;
         name: string;
-        type: "SEARCH_RESULTS";
-        value?: (SearchResult.Raw[] | null) | null;
+        value: SearchResult.Raw[] | null;
     }
 }

@@ -11,8 +11,26 @@ import { NodeExecutionRejectedEvent } from "./NodeExecutionRejectedEvent";
 export const WorkflowSandboxExecuteNodeResponse: core.serialization.Schema<
     serializers.WorkflowSandboxExecuteNodeResponse.Raw,
     Vellum.WorkflowSandboxExecuteNodeResponse
-> = core.serialization.undiscriminatedUnion([NodeExecutionFulfilledEvent, NodeExecutionRejectedEvent]);
+> = core.serialization
+    .union("name", {
+        "node.execution.fulfilled": NodeExecutionFulfilledEvent,
+        "node.execution.rejected": NodeExecutionRejectedEvent,
+    })
+    .transform<Vellum.WorkflowSandboxExecuteNodeResponse>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace WorkflowSandboxExecuteNodeResponse {
-    export type Raw = NodeExecutionFulfilledEvent.Raw | NodeExecutionRejectedEvent.Raw;
+    export type Raw =
+        | WorkflowSandboxExecuteNodeResponse.NodeExecutionFulfilled
+        | WorkflowSandboxExecuteNodeResponse.NodeExecutionRejected;
+
+    export interface NodeExecutionFulfilled extends NodeExecutionFulfilledEvent.Raw {
+        name: "node.execution.fulfilled";
+    }
+
+    export interface NodeExecutionRejected extends NodeExecutionRejectedEvent.Raw {
+        name: "node.execution.rejected";
+    }
 }

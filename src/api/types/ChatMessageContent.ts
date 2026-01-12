@@ -5,10 +5,40 @@
 import * as Vellum from "../index";
 
 export type ChatMessageContent =
-    | Vellum.StringChatMessageContent
-    | Vellum.FunctionCallChatMessageContent
-    | Vellum.ArrayChatMessageContent
-    | Vellum.AudioChatMessageContent
-    | Vellum.VideoChatMessageContent
-    | Vellum.ImageChatMessageContent
-    | Vellum.DocumentChatMessageContent;
+    | Vellum.ChatMessageContent.String
+    | Vellum.ChatMessageContent.FunctionCall
+    | Vellum.ChatMessageContent.Array
+    | Vellum.ChatMessageContent.Audio
+    | Vellum.ChatMessageContent.Video
+    | Vellum.ChatMessageContent.Image
+    | Vellum.ChatMessageContent.Document;
+
+export namespace ChatMessageContent {
+    export interface String extends Vellum.StringChatMessageContent {
+        type: "STRING";
+    }
+
+    export interface FunctionCall extends Vellum.FunctionCallChatMessageContent {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Array extends Vellum.ArrayChatMessageContent {
+        type: "ARRAY";
+    }
+
+    export interface Audio extends Vellum.AudioChatMessageContent {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.VideoChatMessageContent {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.ImageChatMessageContent {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.DocumentChatMessageContent {
+        type: "DOCUMENT";
+    }
+}

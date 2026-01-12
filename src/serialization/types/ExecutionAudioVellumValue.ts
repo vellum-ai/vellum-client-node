@@ -13,15 +13,13 @@ export const ExecutionAudioVellumValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("AUDIO"),
-    value: VellumAudio.optionalNullable(),
+    value: VellumAudio.nullable(),
 });
 
 export declare namespace ExecutionAudioVellumValue {
     export interface Raw {
         id: string;
         name: string;
-        type: "AUDIO";
-        value?: (VellumAudio.Raw | null) | null;
+        value: VellumAudio.Raw | null;
     }
 }

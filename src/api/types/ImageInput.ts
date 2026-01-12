@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface ImageInput {
     /** The variable's name */
     name: string;
-    type: "IMAGE";
     value: Vellum.VellumImage;
 }

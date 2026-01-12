@@ -6,9 +6,8 @@
  * The source of a search result from a PDF document.
  */
 export interface PdfSearchResultMetaSource {
-    documentType: "PDF";
     /** The 1-indexed page number where the chunk starts in the document. Only available for supported chunking strategies and document types. */
-    startPageNum?: number | null;
+    startPageNum: number | null;
     /** The 1-indexed page number where the chunk ends in the document. Only available for supported chunking strategies and document types. */
-    endPageNum?: number | null;
+    endPageNum: number | null;
 }

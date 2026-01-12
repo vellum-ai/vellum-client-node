@@ -8,6 +8,5 @@ export interface TerminalNodeSearchResultsResult {
     id?: string | null;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
-    type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[] | null;
+    value: Vellum.SearchResult[] | null;
 }

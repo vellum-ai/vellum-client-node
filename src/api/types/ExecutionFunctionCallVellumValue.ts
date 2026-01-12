@@ -11,6 +11,5 @@ export interface ExecutionFunctionCallVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall | null;
+    value: Vellum.FunctionCall | null;
 }

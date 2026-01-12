@@ -14,6 +14,5 @@ export interface WorkflowResultEventOutputDataFunctionCall {
     nodeId?: string | null;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string | null;
-    type: "FUNCTION_CALL";
-    value?: Vellum.FunctionCall | null;
+    value: Vellum.FunctionCall | null;
 }

@@ -11,6 +11,5 @@ export interface WorkflowOutputAudio {
     id: string;
     /** The output's name, as defined in the workflow */
     name: string;
-    type: "AUDIO";
-    value?: Vellum.VellumAudio | null;
+    value: Vellum.VellumAudio | null;
 }

@@ -15,9 +15,8 @@ export const WorkflowResultEventOutputDataString: core.serialization.ObjectSchem
     name: core.serialization.string(),
     state: WorkflowNodeResultEventState,
     nodeId: core.serialization.property("node_id", core.serialization.string().optionalNullable()),
-    delta: core.serialization.string().optionalNullable(),
-    type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optionalNullable(),
+    delta: core.serialization.string().nullable(),
+    value: core.serialization.string().nullable(),
 });
 
 export declare namespace WorkflowResultEventOutputDataString {
@@ -26,8 +25,7 @@ export declare namespace WorkflowResultEventOutputDataString {
         name: string;
         state: WorkflowNodeResultEventState.Raw;
         node_id?: (string | null) | null;
-        delta?: (string | null) | null;
-        type: "STRING";
-        value?: (string | null) | null;
+        delta: string | null;
+        value: string | null;
     }
 }

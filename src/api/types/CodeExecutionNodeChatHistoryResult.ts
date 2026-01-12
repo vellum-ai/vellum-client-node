@@ -6,6 +6,5 @@ import * as Vellum from "../index";
 
 export interface CodeExecutionNodeChatHistoryResult {
     id: string;
-    type: "CHAT_HISTORY";
-    value?: Vellum.ChatMessage[] | null;
+    value: Vellum.ChatMessage[] | null;
 }

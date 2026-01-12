@@ -58,19 +58,19 @@ export class Deployments {
     ): Promise<core.WithRawResponse<Vellum.PaginatedSlimDeploymentReadList>> {
         const { limit, offset, ordering, status } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
         }
 
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
+        if (offset != null) {
+            _queryParams["offset"] = offset.toString();
         }
 
-        if (ordering !== undefined) {
+        if (ordering != null) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (status !== undefined) {
+        if (status != null) {
             _queryParams["status"] = serializers.DeploymentsListRequestStatus.jsonOrThrow(status, {
                 unrecognizedObjectKeys: "strip",
             });
@@ -93,8 +93,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -148,6 +148,7 @@ export class Deployments {
      * Used to retrieve a Prompt Deployment given its ID or name.
      *
      * @param {string} id - Either the Prompt Deployment's ID or its unique name
+     * @param {Vellum.DeploymentsRetrieveRequest} request
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -155,13 +156,15 @@ export class Deployments {
      */
     public retrieve(
         id: string,
+        request: Vellum.DeploymentsRetrieveRequest = {},
         requestOptions?: Deployments.RequestOptions,
     ): core.HttpResponsePromise<Vellum.DeploymentRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.DeploymentsRetrieveRequest = {},
         requestOptions?: Deployments.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.DeploymentRead>> {
         const _response = await core.fetcher({
@@ -181,8 +184,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -235,26 +238,29 @@ export class Deployments {
      * DEPRECATED: This endpoint is deprecated and will be removed in a future release. Please use the
      * `retrieve_prompt_deployment_release` xendpoint instead.
      *
-     * @param {string} historyIdOrReleaseTag - Either the UUID of Deployment History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Deployment History Item you'd like to retrieve.
      * @param {string} id - Either the Prompt Deployment's ID or its unique name
+     * @param {string} historyIdOrReleaseTag - Either the UUID of Deployment History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Deployment History Item you'd like to retrieve.
+     * @param {Vellum.DeploymentHistoryItemRetrieveRequest} request
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.deployments.deploymentHistoryItemRetrieve("history_id_or_release_tag", "id")
+     *     await client.deployments.deploymentHistoryItemRetrieve("id", "history_id_or_release_tag")
      */
     public deploymentHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
         id: string,
+        historyIdOrReleaseTag: string,
+        request: Vellum.DeploymentHistoryItemRetrieveRequest = {},
         requestOptions?: Deployments.RequestOptions,
     ): core.HttpResponsePromise<Vellum.DeploymentHistoryItem> {
         return core.HttpResponsePromise.fromPromise(
-            this.__deploymentHistoryItemRetrieve(historyIdOrReleaseTag, id, requestOptions),
+            this.__deploymentHistoryItemRetrieve(id, historyIdOrReleaseTag, request, requestOptions),
         );
     }
 
     private async __deploymentHistoryItemRetrieve(
-        historyIdOrReleaseTag: string,
         id: string,
+        historyIdOrReleaseTag: string,
+        request: Vellum.DeploymentHistoryItemRetrieveRequest = {},
         requestOptions?: Deployments.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.DeploymentHistoryItem>> {
         const _response = await core.fetcher({
@@ -274,8 +280,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -351,19 +357,19 @@ export class Deployments {
     ): Promise<core.WithRawResponse<Vellum.PaginatedDeploymentReleaseTagReadList>> {
         const { limit, offset, ordering, source } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (limit !== undefined) {
-            _queryParams["limit"] = limit?.toString() ?? null;
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
         }
 
-        if (offset !== undefined) {
-            _queryParams["offset"] = offset?.toString() ?? null;
+        if (offset != null) {
+            _queryParams["offset"] = offset.toString();
         }
 
-        if (ordering !== undefined) {
+        if (ordering != null) {
             _queryParams["ordering"] = ordering;
         }
 
-        if (source !== undefined) {
+        if (source != null) {
             _queryParams["source"] = serializers.ListDeploymentReleaseTagsRequestSource.jsonOrThrow(source, {
                 unrecognizedObjectKeys: "strip",
             });
@@ -386,8 +392,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -444,6 +450,7 @@ export class Deployments {
      *
      * @param {string} id - Either the Prompt Deployment's ID or its unique name
      * @param {string} name - The name of the Release Tag associated with this Deployment that you'd like to retrieve.
+     * @param {Vellum.RetrieveDeploymentReleaseTagRequest} request
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -452,14 +459,18 @@ export class Deployments {
     public retrieveDeploymentReleaseTag(
         id: string,
         name: string,
+        request: Vellum.RetrieveDeploymentReleaseTagRequest = {},
         requestOptions?: Deployments.RequestOptions,
     ): core.HttpResponsePromise<Vellum.DeploymentReleaseTagRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieveDeploymentReleaseTag(id, name, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__retrieveDeploymentReleaseTag(id, name, request, requestOptions),
+        );
     }
 
     private async __retrieveDeploymentReleaseTag(
         id: string,
         name: string,
+        request: Vellum.RetrieveDeploymentReleaseTagRequest = {},
         requestOptions?: Deployments.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.DeploymentReleaseTagRead>> {
         const _response = await core.fetcher({
@@ -479,8 +490,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -576,8 +587,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -636,6 +647,7 @@ export class Deployments {
      *
      * @param {string} id - Either the Prompt Deployment's ID or its unique name
      * @param {string} releaseIdOrReleaseTag - Either the UUID of Prompt Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Prompt Deployment Release you'd like to retrieve.
+     * @param {Vellum.RetrievePromptDeploymentReleaseRequest} request
      * @param {Deployments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -644,16 +656,18 @@ export class Deployments {
     public retrievePromptDeploymentRelease(
         id: string,
         releaseIdOrReleaseTag: string,
+        request: Vellum.RetrievePromptDeploymentReleaseRequest = {},
         requestOptions?: Deployments.RequestOptions,
     ): core.HttpResponsePromise<Vellum.PromptDeploymentRelease> {
         return core.HttpResponsePromise.fromPromise(
-            this.__retrievePromptDeploymentRelease(id, releaseIdOrReleaseTag, requestOptions),
+            this.__retrievePromptDeploymentRelease(id, releaseIdOrReleaseTag, request, requestOptions),
         );
     }
 
     private async __retrievePromptDeploymentRelease(
         id: string,
         releaseIdOrReleaseTag: string,
+        request: Vellum.RetrievePromptDeploymentReleaseRequest = {},
         requestOptions?: Deployments.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.PromptDeploymentRelease>> {
         const _response = await core.fetcher({
@@ -673,8 +687,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -748,12 +762,12 @@ export class Deployments {
      * @example
      *     await client.deployments.retrieveProviderPayload({
      *         inputs: [{
-     *                 name: "x",
      *                 type: "STRING",
+     *                 name: "x",
      *                 value: "value"
      *             }, {
-     *                 name: "x",
      *                 type: "STRING",
+     *                 name: "x",
      *                 value: "value"
      *             }]
      *     })
@@ -786,8 +800,8 @@ export class Deployments {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

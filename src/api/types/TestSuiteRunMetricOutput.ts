@@ -5,8 +5,30 @@
 import * as Vellum from "../index";
 
 export type TestSuiteRunMetricOutput =
-    | Vellum.TestSuiteRunMetricStringOutput
-    | Vellum.TestSuiteRunMetricNumberOutput
-    | Vellum.TestSuiteRunMetricJsonOutput
-    | Vellum.TestSuiteRunMetricErrorOutput
-    | Vellum.TestSuiteRunMetricArrayOutput;
+    | Vellum.TestSuiteRunMetricOutput.String
+    | Vellum.TestSuiteRunMetricOutput.Number
+    | Vellum.TestSuiteRunMetricOutput.Json
+    | Vellum.TestSuiteRunMetricOutput.Error_
+    | Vellum.TestSuiteRunMetricOutput.Array;
+
+export namespace TestSuiteRunMetricOutput {
+    export interface String extends Vellum.TestSuiteRunMetricStringOutput {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.TestSuiteRunMetricNumberOutput {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.TestSuiteRunMetricJsonOutput {
+        type: "JSON";
+    }
+
+    export interface Error_ extends Vellum.TestSuiteRunMetricErrorOutput {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.TestSuiteRunMetricArrayOutput {
+        type: "ARRAY";
+    }
+}

@@ -13,17 +13,38 @@ import { RejectedWorkflowNodeResultEvent } from "./RejectedWorkflowNodeResultEve
 export const WorkflowNodeResultEvent: core.serialization.Schema<
     serializers.WorkflowNodeResultEvent.Raw,
     Vellum.WorkflowNodeResultEvent
-> = core.serialization.undiscriminatedUnion([
-    InitiatedWorkflowNodeResultEvent,
-    StreamingWorkflowNodeResultEvent,
-    FulfilledWorkflowNodeResultEvent,
-    RejectedWorkflowNodeResultEvent,
-]);
+> = core.serialization
+    .union("state", {
+        INITIATED: InitiatedWorkflowNodeResultEvent,
+        STREAMING: StreamingWorkflowNodeResultEvent,
+        FULFILLED: FulfilledWorkflowNodeResultEvent,
+        REJECTED: RejectedWorkflowNodeResultEvent,
+    })
+    .transform<Vellum.WorkflowNodeResultEvent>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace WorkflowNodeResultEvent {
     export type Raw =
-        | InitiatedWorkflowNodeResultEvent.Raw
-        | StreamingWorkflowNodeResultEvent.Raw
-        | FulfilledWorkflowNodeResultEvent.Raw
-        | RejectedWorkflowNodeResultEvent.Raw;
+        | WorkflowNodeResultEvent.Initiated
+        | WorkflowNodeResultEvent.Streaming
+        | WorkflowNodeResultEvent.Fulfilled
+        | WorkflowNodeResultEvent.Rejected;
+
+    export interface Initiated extends InitiatedWorkflowNodeResultEvent.Raw {
+        state: "INITIATED";
+    }
+
+    export interface Streaming extends StreamingWorkflowNodeResultEvent.Raw {
+        state: "STREAMING";
+    }
+
+    export interface Fulfilled extends FulfilledWorkflowNodeResultEvent.Raw {
+        state: "FULFILLED";
+    }
+
+    export interface Rejected extends RejectedWorkflowNodeResultEvent.Raw {
+        state: "REJECTED";
+    }
 }

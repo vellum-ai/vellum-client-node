@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledDocumentValue {
     nodeInputId: string;
     key: string;
-    type: "DOCUMENT";
-    value?: Vellum.VellumDocument | null;
+    value: Vellum.VellumDocument | null;
 }

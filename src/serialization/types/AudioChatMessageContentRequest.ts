@@ -11,13 +11,11 @@ export const AudioChatMessageContentRequest: core.serialization.ObjectSchema<
     serializers.AudioChatMessageContentRequest.Raw,
     Vellum.AudioChatMessageContentRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("AUDIO"),
     value: VellumAudioRequest,
 });
 
 export declare namespace AudioChatMessageContentRequest {
     export interface Raw {
-        type: "AUDIO";
         value: VellumAudioRequest.Raw;
     }
 }

@@ -5,6 +5,5 @@
 import * as Vellum from "../index";
 
 export interface GoogleVertexAiVectorizerTextMultilingualEmbedding002 {
-    modelName: "text-multilingual-embedding-002";
     config: Vellum.GoogleVertexAiVectorizerConfig;
 }

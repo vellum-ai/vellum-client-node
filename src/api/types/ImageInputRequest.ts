@@ -10,6 +10,5 @@ import * as Vellum from "../index";
 export interface ImageInputRequest {
     /** The variable's name */
     name: string;
-    type: "IMAGE";
     value: Vellum.VellumImageRequest;
 }

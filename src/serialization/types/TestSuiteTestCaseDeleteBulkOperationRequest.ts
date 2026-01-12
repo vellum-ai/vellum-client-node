@@ -12,14 +12,12 @@ export const TestSuiteTestCaseDeleteBulkOperationRequest: core.serialization.Obj
     Vellum.TestSuiteTestCaseDeleteBulkOperationRequest
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("DELETE"),
     data: TestSuiteTestCaseDeleteBulkOperationDataRequest,
 });
 
 export declare namespace TestSuiteTestCaseDeleteBulkOperationRequest {
     export interface Raw {
         id: string;
-        type: "DELETE";
         data: TestSuiteTestCaseDeleteBulkOperationDataRequest.Raw;
     }
 }

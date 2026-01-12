@@ -11,14 +11,12 @@ export const CodeExecutionNodeStringResult: core.serialization.ObjectSchema<
     Vellum.CodeExecutionNodeStringResult
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optionalNullable(),
+    value: core.serialization.string().nullable(),
 });
 
 export declare namespace CodeExecutionNodeStringResult {
     export interface Raw {
         id: string;
-        type: "STRING";
-        value?: (string | null) | null;
+        value: string | null;
     }
 }

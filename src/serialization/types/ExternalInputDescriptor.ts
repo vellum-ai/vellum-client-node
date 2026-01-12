@@ -13,7 +13,7 @@ export const ExternalInputDescriptor: core.serialization.ObjectSchema<
 > = core.serialization.object({
     types: core.serialization.list(CodeResourceDefinition),
     inputsClass: core.serialization.property("inputs_class", CodeResourceDefinition.optionalNullable()),
-    instance: core.serialization.unknown().optional(),
+    instance: core.serialization.unknown().optionalNullable(),
     name: core.serialization.string(),
 });
 
@@ -21,7 +21,7 @@ export declare namespace ExternalInputDescriptor {
     export interface Raw {
         types: CodeResourceDefinition.Raw[];
         inputs_class?: (CodeResourceDefinition.Raw | null) | null;
-        instance?: unknown | null;
+        instance?: (unknown | null) | null;
         name: string;
     }
 }

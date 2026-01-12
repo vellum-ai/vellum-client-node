@@ -11,12 +11,10 @@ export const NormalizedTokenLogProbs: core.serialization.ObjectSchema<
     Vellum.NormalizedTokenLogProbs
 > = core.serialization.object({
     token: core.serialization.string(),
-    logprob: core.serialization.number().optionalNullable(),
+    logprob: core.serialization.number().nullable(),
     topLogprobs: core.serialization.property(
         "top_logprobs",
-        core.serialization
-            .record(core.serialization.string(), core.serialization.number().optionalNullable())
-            .optionalNullable(),
+        core.serialization.record(core.serialization.string(), core.serialization.number().nullable()).nullable(),
     ),
     textOffset: core.serialization.property("text_offset", core.serialization.number()),
 });
@@ -24,8 +22,8 @@ export const NormalizedTokenLogProbs: core.serialization.ObjectSchema<
 export declare namespace NormalizedTokenLogProbs {
     export interface Raw {
         token: string;
-        logprob?: (number | null) | null;
-        top_logprobs?: (Record<string, (number | null) | null | undefined> | null) | null;
+        logprob: number | null;
+        top_logprobs: Record<string, number | null> | null;
         text_offset: number;
     }
 }

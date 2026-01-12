@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface ApiRequestParentContext {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    type: "API_REQUEST";
     spanId: string;
     apiActorId?: string | null;
     apiActorType?: Vellum.ApiActorTypeEnum | null;

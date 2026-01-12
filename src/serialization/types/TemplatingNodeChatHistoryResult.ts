@@ -12,14 +12,12 @@ export const TemplatingNodeChatHistoryResult: core.serialization.ObjectSchema<
     Vellum.TemplatingNodeChatHistoryResult
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("CHAT_HISTORY"),
-    value: core.serialization.list(ChatMessage).optionalNullable(),
+    value: core.serialization.list(ChatMessage).nullable(),
 });
 
 export declare namespace TemplatingNodeChatHistoryResult {
     export interface Raw {
         id: string;
-        type: "CHAT_HISTORY";
-        value?: (ChatMessage.Raw[] | null) | null;
+        value: ChatMessage.Raw[] | null;
     }
 }

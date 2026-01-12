@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface PromptRequestVideoInput {
     /** The variable's name, as defined in the Prompt. */
     key: string;
-    type: "VIDEO";
     value: Vellum.VellumVideo;
 }

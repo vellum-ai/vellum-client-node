@@ -9,12 +9,8 @@ import * as core from "../../core";
 export const FastEmbedVectorizerBaaiBgeSmallEnV15Request: core.serialization.ObjectSchema<
     serializers.FastEmbedVectorizerBaaiBgeSmallEnV15Request.Raw,
     Vellum.FastEmbedVectorizerBaaiBgeSmallEnV15Request
-> = core.serialization.object({
-    modelName: core.serialization.property("model_name", core.serialization.stringLiteral("BAAI/bge-small-en-v1.5")),
-});
+> = core.serialization.object({});
 
 export declare namespace FastEmbedVectorizerBaaiBgeSmallEnV15Request {
-    export interface Raw {
-        model_name: "BAAI/bge-small-en-v1.5";
-    }
+    export interface Raw {}
 }

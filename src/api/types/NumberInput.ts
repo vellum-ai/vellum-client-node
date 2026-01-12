@@ -8,6 +8,5 @@
 export interface NumberInput {
     /** The variable's name */
     name: string;
-    type: "NUMBER";
     value: number;
 }

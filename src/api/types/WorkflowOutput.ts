@@ -5,15 +5,65 @@
 import * as Vellum from "../index";
 
 export type WorkflowOutput =
-    | Vellum.WorkflowOutputString
-    | Vellum.WorkflowOutputNumber
-    | Vellum.WorkflowOutputJson
-    | Vellum.WorkflowOutputChatHistory
-    | Vellum.WorkflowOutputSearchResults
-    | Vellum.WorkflowOutputArray
-    | Vellum.WorkflowOutputError
-    | Vellum.WorkflowOutputFunctionCall
-    | Vellum.WorkflowOutputImage
-    | Vellum.WorkflowOutputAudio
-    | Vellum.WorkflowOutputVideo
-    | Vellum.WorkflowOutputDocument;
+    | Vellum.WorkflowOutput.String
+    | Vellum.WorkflowOutput.Number
+    | Vellum.WorkflowOutput.Json
+    | Vellum.WorkflowOutput.ChatHistory
+    | Vellum.WorkflowOutput.SearchResults
+    | Vellum.WorkflowOutput.Array
+    | Vellum.WorkflowOutput.Error_
+    | Vellum.WorkflowOutput.FunctionCall
+    | Vellum.WorkflowOutput.Image
+    | Vellum.WorkflowOutput.Audio
+    | Vellum.WorkflowOutput.Video
+    | Vellum.WorkflowOutput.Document;
+
+export namespace WorkflowOutput {
+    export interface String extends Vellum.WorkflowOutputString {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.WorkflowOutputNumber {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.WorkflowOutputJson {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.WorkflowOutputChatHistory {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.WorkflowOutputSearchResults {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Array extends Vellum.WorkflowOutputArray {
+        type: "ARRAY";
+    }
+
+    export interface Error_ extends Vellum.WorkflowOutputError {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends Vellum.WorkflowOutputFunctionCall {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Image extends Vellum.WorkflowOutputImage {
+        type: "IMAGE";
+    }
+
+    export interface Audio extends Vellum.WorkflowOutputAudio {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.WorkflowOutputVideo {
+        type: "VIDEO";
+    }
+
+    export interface Document extends Vellum.WorkflowOutputDocument {
+        type: "DOCUMENT";
+    }
+}

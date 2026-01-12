@@ -4,4 +4,14 @@
 
 import * as Vellum from "../index";
 
-export type ExecutePromptResponse = Vellum.FulfilledExecutePromptResponse | Vellum.RejectedExecutePromptResponse;
+export type ExecutePromptResponse = Vellum.ExecutePromptResponse.Fulfilled | Vellum.ExecutePromptResponse.Rejected;
+
+export namespace ExecutePromptResponse {
+    export interface Fulfilled extends Vellum.FulfilledExecutePromptResponse {
+        state: "FULFILLED";
+    }
+
+    export interface Rejected extends Vellum.RejectedExecutePromptResponse {
+        state: "REJECTED";
+    }
+}

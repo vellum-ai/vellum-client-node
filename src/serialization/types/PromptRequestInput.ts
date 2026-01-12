@@ -16,23 +16,56 @@ import { PromptRequestDocumentInput } from "./PromptRequestDocumentInput";
 export const PromptRequestInput: core.serialization.Schema<
     serializers.PromptRequestInput.Raw,
     Vellum.PromptRequestInput
-> = core.serialization.undiscriminatedUnion([
-    PromptRequestStringInput,
-    PromptRequestJsonInput,
-    PromptRequestChatHistoryInput,
-    PromptRequestAudioInput,
-    PromptRequestVideoInput,
-    PromptRequestImageInput,
-    PromptRequestDocumentInput,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: PromptRequestStringInput,
+        JSON: PromptRequestJsonInput,
+        CHAT_HISTORY: PromptRequestChatHistoryInput,
+        AUDIO: PromptRequestAudioInput,
+        VIDEO: PromptRequestVideoInput,
+        IMAGE: PromptRequestImageInput,
+        DOCUMENT: PromptRequestDocumentInput,
+    })
+    .transform<Vellum.PromptRequestInput>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace PromptRequestInput {
     export type Raw =
-        | PromptRequestStringInput.Raw
-        | PromptRequestJsonInput.Raw
-        | PromptRequestChatHistoryInput.Raw
-        | PromptRequestAudioInput.Raw
-        | PromptRequestVideoInput.Raw
-        | PromptRequestImageInput.Raw
-        | PromptRequestDocumentInput.Raw;
+        | PromptRequestInput.String
+        | PromptRequestInput.Json
+        | PromptRequestInput.ChatHistory
+        | PromptRequestInput.Audio
+        | PromptRequestInput.Video
+        | PromptRequestInput.Image
+        | PromptRequestInput.Document;
+
+    export interface String extends PromptRequestStringInput.Raw {
+        type: "STRING";
+    }
+
+    export interface Json extends PromptRequestJsonInput.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends PromptRequestChatHistoryInput.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Audio extends PromptRequestAudioInput.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends PromptRequestVideoInput.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends PromptRequestImageInput.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends PromptRequestDocumentInput.Raw {
+        type: "DOCUMENT";
+    }
 }

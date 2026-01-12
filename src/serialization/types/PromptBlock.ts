@@ -15,27 +15,68 @@ import { ImagePromptBlock } from "./ImagePromptBlock";
 import { DocumentPromptBlock } from "./DocumentPromptBlock";
 
 export const PromptBlock: core.serialization.Schema<serializers.PromptBlock.Raw, Vellum.PromptBlock> =
-    core.serialization.undiscriminatedUnion([
-        JinjaPromptBlock,
-        core.serialization.lazyObject(() => serializers.ChatMessagePromptBlock),
-        VariablePromptBlock,
-        RichTextPromptBlock,
-        FunctionCallPromptBlock,
-        AudioPromptBlock,
-        VideoPromptBlock,
-        ImagePromptBlock,
-        DocumentPromptBlock,
-    ]);
+    core.serialization
+        .union(core.serialization.discriminant("blockType", "block_type"), {
+            JINJA: JinjaPromptBlock,
+            CHAT_MESSAGE: core.serialization.lazyObject(() => serializers.ChatMessagePromptBlock),
+            VARIABLE: VariablePromptBlock,
+            RICH_TEXT: RichTextPromptBlock,
+            FUNCTION_CALL: FunctionCallPromptBlock,
+            AUDIO: AudioPromptBlock,
+            VIDEO: VideoPromptBlock,
+            IMAGE: ImagePromptBlock,
+            DOCUMENT: DocumentPromptBlock,
+        })
+        .transform<Vellum.PromptBlock>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace PromptBlock {
     export type Raw =
-        | JinjaPromptBlock.Raw
-        | serializers.ChatMessagePromptBlock.Raw
-        | VariablePromptBlock.Raw
-        | RichTextPromptBlock.Raw
-        | FunctionCallPromptBlock.Raw
-        | AudioPromptBlock.Raw
-        | VideoPromptBlock.Raw
-        | ImagePromptBlock.Raw
-        | DocumentPromptBlock.Raw;
+        | PromptBlock.Jinja
+        | PromptBlock.ChatMessage
+        | PromptBlock.Variable
+        | PromptBlock.RichText
+        | PromptBlock.FunctionCall
+        | PromptBlock.Audio
+        | PromptBlock.Video
+        | PromptBlock.Image
+        | PromptBlock.Document;
+
+    export interface Jinja extends JinjaPromptBlock.Raw {
+        block_type: "JINJA";
+    }
+
+    export interface ChatMessage extends serializers.ChatMessagePromptBlock.Raw {
+        block_type: "CHAT_MESSAGE";
+    }
+
+    export interface Variable extends VariablePromptBlock.Raw {
+        block_type: "VARIABLE";
+    }
+
+    export interface RichText extends RichTextPromptBlock.Raw {
+        block_type: "RICH_TEXT";
+    }
+
+    export interface FunctionCall extends FunctionCallPromptBlock.Raw {
+        block_type: "FUNCTION_CALL";
+    }
+
+    export interface Audio extends AudioPromptBlock.Raw {
+        block_type: "AUDIO";
+    }
+
+    export interface Video extends VideoPromptBlock.Raw {
+        block_type: "VIDEO";
+    }
+
+    export interface Image extends ImagePromptBlock.Raw {
+        block_type: "IMAGE";
+    }
+
+    export interface Document extends DocumentPromptBlock.Raw {
+        block_type: "DOCUMENT";
+    }
 }

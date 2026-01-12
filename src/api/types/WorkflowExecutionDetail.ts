@@ -6,13 +6,13 @@ import * as Vellum from "../index";
 
 export interface WorkflowExecutionDetail {
     spanId: string;
-    parentContext?: Vellum.ParentContext | null;
+    parentContext: Vellum.ParentContext | null;
     start: Date;
-    end?: Date | null;
+    end: Date | null;
     inputs: Vellum.ExecutionVellumValue[];
     outputs: Vellum.ExecutionVellumValue[];
-    error?: Vellum.WorkflowError | null;
-    usageResults?: Vellum.WorkflowExecutionUsageResult[] | null;
+    error: Vellum.WorkflowError | null;
+    usageResults: Vellum.WorkflowExecutionUsageResult[] | null;
     spans: Vellum.VellumSpan[];
     state?: Record<string, unknown> | null;
 }

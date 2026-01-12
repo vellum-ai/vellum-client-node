@@ -5,14 +5,60 @@
 import * as Vellum from "../index";
 
 export type WorkflowNodeResultData =
-    | Vellum.PromptNodeResult
-    | Vellum.SearchNodeResult
-    | Vellum.TemplatingNodeResult
-    | Vellum.CodeExecutionNodeResult
-    | Vellum.ConditionalNodeResult
-    | Vellum.ApiNodeResult
-    | Vellum.TerminalNodeResult
-    | Vellum.MergeNodeResult
-    | Vellum.SubworkflowNodeResult
-    | Vellum.MetricNodeResult
-    | Vellum.MapNodeResult;
+    | Vellum.WorkflowNodeResultData.Prompt
+    | Vellum.WorkflowNodeResultData.Search
+    | Vellum.WorkflowNodeResultData.Templating
+    | Vellum.WorkflowNodeResultData.CodeExecution
+    | Vellum.WorkflowNodeResultData.Conditional
+    | Vellum.WorkflowNodeResultData.Api
+    | Vellum.WorkflowNodeResultData.Terminal
+    | Vellum.WorkflowNodeResultData.Merge
+    | Vellum.WorkflowNodeResultData.Subworkflow
+    | Vellum.WorkflowNodeResultData.Metric
+    | Vellum.WorkflowNodeResultData.Map;
+
+export namespace WorkflowNodeResultData {
+    export interface Prompt extends Vellum.PromptNodeResult {
+        type: "PROMPT";
+    }
+
+    export interface Search extends Vellum.SearchNodeResult {
+        type: "SEARCH";
+    }
+
+    export interface Templating extends Vellum.TemplatingNodeResult {
+        type: "TEMPLATING";
+    }
+
+    export interface CodeExecution extends Vellum.CodeExecutionNodeResult {
+        type: "CODE_EXECUTION";
+    }
+
+    export interface Conditional extends Vellum.ConditionalNodeResult {
+        type: "CONDITIONAL";
+    }
+
+    export interface Api extends Vellum.ApiNodeResult {
+        type: "API";
+    }
+
+    export interface Terminal extends Vellum.TerminalNodeResult {
+        type: "TERMINAL";
+    }
+
+    export interface Merge extends Vellum.MergeNodeResult {
+        type: "MERGE";
+    }
+
+    export interface Subworkflow extends Vellum.SubworkflowNodeResult {
+        type: "SUBWORKFLOW";
+    }
+
+    export interface Metric extends Vellum.MetricNodeResult {
+        type: "METRIC";
+    }
+
+    export interface Map extends Vellum.MapNodeResult {
+        type: "MAP";
+    }
+}

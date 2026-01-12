@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Merge Node.
  */
 export interface MergeNodeResult {
-    type: "MERGE";
     data: Vellum.MergeNodeResultData;
 }

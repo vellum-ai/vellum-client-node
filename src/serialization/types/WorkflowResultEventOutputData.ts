@@ -17,25 +17,62 @@ import { WorkflowResultEventOutputDataError } from "./WorkflowResultEventOutputD
 export const WorkflowResultEventOutputData: core.serialization.Schema<
     serializers.WorkflowResultEventOutputData.Raw,
     Vellum.WorkflowResultEventOutputData
-> = core.serialization.undiscriminatedUnion([
-    WorkflowResultEventOutputDataString,
-    WorkflowResultEventOutputDataNumber,
-    WorkflowResultEventOutputDataJson,
-    WorkflowResultEventOutputDataChatHistory,
-    WorkflowResultEventOutputDataSearchResults,
-    WorkflowResultEventOutputDataArray,
-    WorkflowResultEventOutputDataFunctionCall,
-    WorkflowResultEventOutputDataError,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: WorkflowResultEventOutputDataString,
+        NUMBER: WorkflowResultEventOutputDataNumber,
+        JSON: WorkflowResultEventOutputDataJson,
+        CHAT_HISTORY: WorkflowResultEventOutputDataChatHistory,
+        SEARCH_RESULTS: WorkflowResultEventOutputDataSearchResults,
+        ARRAY: WorkflowResultEventOutputDataArray,
+        FUNCTION_CALL: WorkflowResultEventOutputDataFunctionCall,
+        ERROR: WorkflowResultEventOutputDataError,
+    })
+    .transform<Vellum.WorkflowResultEventOutputData>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace WorkflowResultEventOutputData {
     export type Raw =
-        | WorkflowResultEventOutputDataString.Raw
-        | WorkflowResultEventOutputDataNumber.Raw
-        | WorkflowResultEventOutputDataJson.Raw
-        | WorkflowResultEventOutputDataChatHistory.Raw
-        | WorkflowResultEventOutputDataSearchResults.Raw
-        | WorkflowResultEventOutputDataArray.Raw
-        | WorkflowResultEventOutputDataFunctionCall.Raw
-        | WorkflowResultEventOutputDataError.Raw;
+        | WorkflowResultEventOutputData.String
+        | WorkflowResultEventOutputData.Number
+        | WorkflowResultEventOutputData.Json
+        | WorkflowResultEventOutputData.ChatHistory
+        | WorkflowResultEventOutputData.SearchResults
+        | WorkflowResultEventOutputData.Array
+        | WorkflowResultEventOutputData.FunctionCall
+        | WorkflowResultEventOutputData.Error;
+
+    export interface String extends WorkflowResultEventOutputDataString.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends WorkflowResultEventOutputDataNumber.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends WorkflowResultEventOutputDataJson.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends WorkflowResultEventOutputDataChatHistory.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends WorkflowResultEventOutputDataSearchResults.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Array extends WorkflowResultEventOutputDataArray.Raw {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends WorkflowResultEventOutputDataFunctionCall.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Error extends WorkflowResultEventOutputDataError.Raw {
+        type: "ERROR";
+    }
 }

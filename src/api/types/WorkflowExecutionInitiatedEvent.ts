@@ -7,7 +7,6 @@ import * as Vellum from "../index";
 export interface WorkflowExecutionInitiatedEvent {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    name: "workflow.execution.initiated";
     body: Vellum.WorkflowExecutionInitiatedBody;
     id: string;
     timestamp: Date;

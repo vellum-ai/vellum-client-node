@@ -6,6 +6,5 @@
  * Response payload with provider id and execution output from a Composio tool.
  */
 export interface ComposioExecuteToolResponse {
-    provider: "COMPOSIO";
     data: Record<string, unknown>;
 }

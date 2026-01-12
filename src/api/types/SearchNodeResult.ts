@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Search Node.
  */
 export interface SearchNodeResult {
-    type: "SEARCH";
     data: Vellum.SearchNodeResultData;
 }

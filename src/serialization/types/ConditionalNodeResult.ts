@@ -11,13 +11,11 @@ export const ConditionalNodeResult: core.serialization.ObjectSchema<
     serializers.ConditionalNodeResult.Raw,
     Vellum.ConditionalNodeResult
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("CONDITIONAL"),
     data: ConditionalNodeResultData,
 });
 
 export declare namespace ConditionalNodeResult {
     export interface Raw {
-        type: "CONDITIONAL";
         data: ConditionalNodeResultData.Raw;
     }
 }

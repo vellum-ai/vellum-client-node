@@ -9,7 +9,7 @@ import * as core from "../../core";
 export const EphemeralPromptCacheConfigTypeEnum: core.serialization.Schema<
     serializers.EphemeralPromptCacheConfigTypeEnum.Raw,
     Vellum.EphemeralPromptCacheConfigTypeEnum
-> = core.serialization.stringLiteral("EPHEMERAL");
+> = core.serialization.enum_(["EPHEMERAL"]);
 
 export declare namespace EphemeralPromptCacheConfigTypeEnum {
     export type Raw = "EPHEMERAL";

@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A base Vellum primitive value representing a video.
  */
 export interface VideoVellumValue {
-    type: "VIDEO";
-    value?: Vellum.VellumVideo | null;
+    value: Vellum.VellumVideo | null;
 }

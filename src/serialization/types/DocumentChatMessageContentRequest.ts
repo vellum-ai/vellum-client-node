@@ -11,13 +11,11 @@ export const DocumentChatMessageContentRequest: core.serialization.ObjectSchema<
     serializers.DocumentChatMessageContentRequest.Raw,
     Vellum.DocumentChatMessageContentRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("DOCUMENT"),
     value: VellumDocumentRequest,
 });
 
 export declare namespace DocumentChatMessageContentRequest {
     export interface Raw {
-        type: "DOCUMENT";
         value: VellumDocumentRequest.Raw;
     }
 }

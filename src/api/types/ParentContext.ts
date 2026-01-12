@@ -5,12 +5,50 @@
 import * as Vellum from "../index";
 
 export type ParentContext =
-    | Vellum.WorkflowParentContext
-    | Vellum.NodeParentContext
-    | Vellum.WorkflowDeploymentParentContext
-    | Vellum.WorkflowSandboxParentContext
-    | Vellum.PromptDeploymentParentContext
-    | Vellum.ApiRequestParentContext
-    | Vellum.ExternalParentContext
-    | Vellum.ScheduledTriggerContext
-    | Vellum.IntegrationTriggerContext;
+    | Vellum.ParentContext.Workflow
+    | Vellum.ParentContext.WorkflowNode
+    | Vellum.ParentContext.WorkflowReleaseTag
+    | Vellum.ParentContext.WorkflowSandbox
+    | Vellum.ParentContext.PromptReleaseTag
+    | Vellum.ParentContext.ApiRequest
+    | Vellum.ParentContext.External
+    | Vellum.ParentContext.Scheduled
+    | Vellum.ParentContext.Integration;
+
+export namespace ParentContext {
+    export interface Workflow extends Vellum.WorkflowParentContext {
+        type: "WORKFLOW";
+    }
+
+    export interface WorkflowNode extends Vellum.NodeParentContext {
+        type: "WORKFLOW_NODE";
+    }
+
+    export interface WorkflowReleaseTag extends Vellum.WorkflowDeploymentParentContext {
+        type: "WORKFLOW_RELEASE_TAG";
+    }
+
+    export interface WorkflowSandbox extends Vellum.WorkflowSandboxParentContext {
+        type: "WORKFLOW_SANDBOX";
+    }
+
+    export interface PromptReleaseTag extends Vellum.PromptDeploymentParentContext {
+        type: "PROMPT_RELEASE_TAG";
+    }
+
+    export interface ApiRequest extends Vellum.ApiRequestParentContext {
+        type: "API_REQUEST";
+    }
+
+    export interface External extends Vellum.ExternalParentContext {
+        type: "EXTERNAL";
+    }
+
+    export interface Scheduled extends Vellum.ScheduledTriggerContext {
+        type: "SCHEDULED";
+    }
+
+    export interface Integration extends Vellum.IntegrationTriggerContext {
+        type: "INTEGRATION";
+    }
+}

@@ -17,25 +17,62 @@ import { TestSuiteRunExecutionArrayOutput } from "./TestSuiteRunExecutionArrayOu
 export const TestSuiteRunExecutionOutput: core.serialization.Schema<
     serializers.TestSuiteRunExecutionOutput.Raw,
     Vellum.TestSuiteRunExecutionOutput
-> = core.serialization.undiscriminatedUnion([
-    TestSuiteRunExecutionStringOutput,
-    TestSuiteRunExecutionNumberOutput,
-    TestSuiteRunExecutionJsonOutput,
-    TestSuiteRunExecutionChatHistoryOutput,
-    TestSuiteRunExecutionSearchResultsOutput,
-    TestSuiteRunExecutionErrorOutput,
-    TestSuiteRunExecutionFunctionCallOutput,
-    TestSuiteRunExecutionArrayOutput,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: TestSuiteRunExecutionStringOutput,
+        NUMBER: TestSuiteRunExecutionNumberOutput,
+        JSON: TestSuiteRunExecutionJsonOutput,
+        CHAT_HISTORY: TestSuiteRunExecutionChatHistoryOutput,
+        SEARCH_RESULTS: TestSuiteRunExecutionSearchResultsOutput,
+        ERROR: TestSuiteRunExecutionErrorOutput,
+        FUNCTION_CALL: TestSuiteRunExecutionFunctionCallOutput,
+        ARRAY: TestSuiteRunExecutionArrayOutput,
+    })
+    .transform<Vellum.TestSuiteRunExecutionOutput>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace TestSuiteRunExecutionOutput {
     export type Raw =
-        | TestSuiteRunExecutionStringOutput.Raw
-        | TestSuiteRunExecutionNumberOutput.Raw
-        | TestSuiteRunExecutionJsonOutput.Raw
-        | TestSuiteRunExecutionChatHistoryOutput.Raw
-        | TestSuiteRunExecutionSearchResultsOutput.Raw
-        | TestSuiteRunExecutionErrorOutput.Raw
-        | TestSuiteRunExecutionFunctionCallOutput.Raw
-        | TestSuiteRunExecutionArrayOutput.Raw;
+        | TestSuiteRunExecutionOutput.String
+        | TestSuiteRunExecutionOutput.Number
+        | TestSuiteRunExecutionOutput.Json
+        | TestSuiteRunExecutionOutput.ChatHistory
+        | TestSuiteRunExecutionOutput.SearchResults
+        | TestSuiteRunExecutionOutput.Error
+        | TestSuiteRunExecutionOutput.FunctionCall
+        | TestSuiteRunExecutionOutput.Array;
+
+    export interface String extends TestSuiteRunExecutionStringOutput.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends TestSuiteRunExecutionNumberOutput.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends TestSuiteRunExecutionJsonOutput.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends TestSuiteRunExecutionChatHistoryOutput.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends TestSuiteRunExecutionSearchResultsOutput.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends TestSuiteRunExecutionErrorOutput.Raw {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends TestSuiteRunExecutionFunctionCallOutput.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Array extends TestSuiteRunExecutionArrayOutput.Raw {
+        type: "ARRAY";
+    }
 }

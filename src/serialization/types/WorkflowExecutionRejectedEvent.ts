@@ -14,7 +14,6 @@ export const WorkflowExecutionRejectedEvent: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    name: core.serialization.stringLiteral("workflow.execution.rejected"),
     body: WorkflowExecutionRejectedBody,
     id: core.serialization.string(),
     timestamp: core.serialization.date(),
@@ -27,7 +26,6 @@ export declare namespace WorkflowExecutionRejectedEvent {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        name: "workflow.execution.rejected";
         body: WorkflowExecutionRejectedBody.Raw;
         id: string;
         timestamp: string;

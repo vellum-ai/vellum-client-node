@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * Execution configuration for running a Test Suite against a Workflow Sandbox
  */
 export interface TestSuiteRunWorkflowSandboxExecConfigRequest {
-    type: "WORKFLOW_SANDBOX";
     data: Vellum.TestSuiteRunWorkflowSandboxExecConfigDataRequest;
     /** Optionally specify a subset of test case ids to run. If not provided, all test cases within the test suite will be run by default. */
     testCaseIds?: string[] | null;

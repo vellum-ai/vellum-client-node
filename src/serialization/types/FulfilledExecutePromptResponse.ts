@@ -15,7 +15,6 @@ export const FulfilledExecutePromptResponse: core.serialization.ObjectSchema<
     meta: PromptExecutionMeta.optional(),
     raw: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
-    state: core.serialization.stringLiteral("FULFILLED"),
     outputs: core.serialization.list(PromptOutput),
 });
 
@@ -24,7 +23,6 @@ export declare namespace FulfilledExecutePromptResponse {
         meta?: PromptExecutionMeta.Raw | null;
         raw?: Record<string, unknown> | null;
         execution_id: string;
-        state: "FULFILLED";
         outputs: PromptOutput.Raw[];
     }
 }

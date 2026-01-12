@@ -8,6 +8,5 @@ export interface TerminalNodeArrayResult {
     id?: string | null;
     /** The unique name given to the terminal node that produced this output. */
     name: string;
-    type: "ARRAY";
-    value?: Vellum.VellumValue[] | null;
+    value: Vellum.VellumValue[] | null;
 }

@@ -11,6 +11,5 @@ export interface WorkflowOutputVideo {
     id: string;
     /** The output's name, as defined in the workflow */
     name: string;
-    type: "VIDEO";
-    value?: Vellum.VellumVideo | null;
+    value: Vellum.VellumVideo | null;
 }

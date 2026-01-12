@@ -1,3 +1,5 @@
+export * as integrations from "./integrations";
+export * from "./integrations/types";
 export * as deployments from "./deployments";
 export * from "./deployments/types";
 export * as documentIndexes from "./documentIndexes";

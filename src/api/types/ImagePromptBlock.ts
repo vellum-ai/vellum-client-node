@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * A block that represents an image in a prompt template.
  */
 export interface ImagePromptBlock {
-    blockType: "IMAGE";
     state?: Vellum.PromptBlockState;
     cacheConfig?: Vellum.EphemeralPromptCacheConfig | null;
     src: string;

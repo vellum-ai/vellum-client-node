@@ -78,7 +78,7 @@ await client.submitWorkflowExecutionActuals({
 
 ## Integrations
 
-<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieveIntegrationToolDefinition</a>(integrationName, integrationProvider, toolName, { ...params }) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieveIntegrationToolDefinition</a>(integrationProvider, integrationName, toolName, { ...params }) -> Vellum.ToolDefinition</code></summary>
 <dl>
 <dd>
 
@@ -91,7 +91,7 @@ await client.submitWorkflowExecutionActuals({
 <dd>
 
 ```typescript
-await client.integrations.retrieveIntegrationToolDefinition("integration_name", "integration_provider", "tool_name");
+await client.integrations.retrieveIntegrationToolDefinition("integration_provider", "integration_name", "tool_name");
 ```
 
 </dd>
@@ -107,7 +107,7 @@ await client.integrations.retrieveIntegrationToolDefinition("integration_name", 
 <dl>
 <dd>
 
-**integrationName:** `string` — The integration name
+**integrationProvider:** `string` — The integration provider name
 
 </dd>
 </dl>
@@ -115,7 +115,7 @@ await client.integrations.retrieveIntegrationToolDefinition("integration_name", 
 <dl>
 <dd>
 
-**integrationProvider:** `string` — The integration provider name
+**integrationName:** `string` — The integration name
 
 </dd>
 </dl>
@@ -150,7 +150,7 @@ await client.integrations.retrieveIntegrationToolDefinition("integration_name", 
 </dl>
 </details>
 
-<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">executeIntegrationTool</a>(integrationName, integrationProvider, toolName, { ...params }) -> Vellum.ComponentsSchemasComposioExecuteToolResponse</code></summary>
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">executeIntegrationTool</a>(integrationProvider, integrationName, toolName, { ...params }) -> Vellum.ExecuteToolResponse</code></summary>
 <dl>
 <dd>
 
@@ -163,11 +163,13 @@ await client.integrations.retrieveIntegrationToolDefinition("integration_name", 
 <dd>
 
 ```typescript
-await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
-    provider: "COMPOSIO",
-    arguments: {
+await client.integrations.executeIntegrationTool("integration_provider", "integration_name", "tool_name", {
+    body: {
+        provider: "COMPOSIO",
         arguments: {
-            key: "value",
+            arguments: {
+                key: "value",
+            },
         },
     },
 });
@@ -186,7 +188,7 @@ await client.integrations.executeIntegrationTool("integration_name", "integratio
 <dl>
 <dd>
 
-**integrationName:** `string` — The integration name
+**integrationProvider:** `string` — The integration provider name
 
 </dd>
 </dl>
@@ -194,7 +196,7 @@ await client.integrations.executeIntegrationTool("integration_name", "integratio
 <dl>
 <dd>
 
-**integrationProvider:** `string` — The integration provider name
+**integrationName:** `string` — The integration name
 
 </dd>
 </dl>
@@ -210,7 +212,7 @@ await client.integrations.executeIntegrationTool("integration_name", "integratio
 <dl>
 <dd>
 
-**request:** `Vellum.ComponentsSchemasComposioExecuteToolRequest`
+**request:** `Vellum.ExecuteIntegrationToolRequest`
 
 </dd>
 </dl>
@@ -292,7 +294,7 @@ await client.integrations.list();
 </dl>
 </details>
 
-<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieve</a>(id) -> Vellum.IntegrationRead</code></summary>
+<details><summary><code>client.integrations.<a href="/src/api/resources/integrations/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.IntegrationRead</code></summary>
 <dl>
 <dd>
 
@@ -337,6 +339,14 @@ await client.integrations.retrieve("id");
 <dd>
 
 **id:** `string` — A UUID string identifying this integration.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.IntegrationsRetrieveRequest`
 
 </dd>
 </dl>
@@ -478,13 +488,13 @@ await client.adHoc.adhocExecutePrompt({
     mlModel: "x",
     inputValues: [
         {
-            name: "x",
             type: "STRING",
+            name: "x",
             value: "value",
         },
         {
-            name: "x",
             type: "STRING",
+            name: "x",
             value: "value",
         },
     ],
@@ -563,13 +573,13 @@ const response = await client.adHoc.adhocExecutePromptStream({
     mlModel: "x",
     inputValues: [
         {
-            name: "x",
             type: "STRING",
+            name: "x",
             value: "value",
         },
         {
-            name: "x",
             type: "STRING",
+            name: "x",
             value: "value",
         },
     ],
@@ -775,7 +785,7 @@ await client.containerImages.createContainerImage({
 </dl>
 </details>
 
-<details><summary><code>client.containerImages.<a href="/src/api/resources/containerImages/client/Client.ts">retrieve</a>(id) -> Vellum.ContainerImageRead</code></summary>
+<details><summary><code>client.containerImages.<a href="/src/api/resources/containerImages/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.ContainerImageRead</code></summary>
 <dl>
 <dd>
 
@@ -820,6 +830,14 @@ await client.containerImages.retrieve("id");
 <dd>
 
 **id:** `string` — Either the Container Image's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.ContainerImagesRetrieveRequest`
 
 </dd>
 </dl>
@@ -1078,7 +1096,7 @@ await client.deployments.list();
 </dl>
 </details>
 
-<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrieve</a>(id) -> Vellum.DeploymentRead</code></summary>
+<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.DeploymentRead</code></summary>
 <dl>
 <dd>
 
@@ -1130,6 +1148,14 @@ await client.deployments.retrieve("id");
 <dl>
 <dd>
 
+**request:** `Vellum.DeploymentsRetrieveRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **requestOptions:** `Deployments.RequestOptions`
 
 </dd>
@@ -1141,7 +1167,7 @@ await client.deployments.retrieve("id");
 </dl>
 </details>
 
-<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">deploymentHistoryItemRetrieve</a>(historyIdOrReleaseTag, id) -> Vellum.DeploymentHistoryItem</code></summary>
+<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">deploymentHistoryItemRetrieve</a>(id, historyIdOrReleaseTag, { ...params }) -> Vellum.DeploymentHistoryItem</code></summary>
 <dl>
 <dd>
 
@@ -1170,7 +1196,7 @@ DEPRECATED: This endpoint is deprecated and will be removed in a future release.
 <dd>
 
 ```typescript
-await client.deployments.deploymentHistoryItemRetrieve("history_id_or_release_tag", "id");
+await client.deployments.deploymentHistoryItemRetrieve("id", "history_id_or_release_tag");
 ```
 
 </dd>
@@ -1186,6 +1212,14 @@ await client.deployments.deploymentHistoryItemRetrieve("history_id_or_release_ta
 <dl>
 <dd>
 
+**id:** `string` — Either the Prompt Deployment's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **historyIdOrReleaseTag:** `string` — Either the UUID of Deployment History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Deployment History Item you'd like to retrieve.
 
 </dd>
@@ -1194,7 +1228,7 @@ await client.deployments.deploymentHistoryItemRetrieve("history_id_or_release_ta
 <dl>
 <dd>
 
-**id:** `string` — Either the Prompt Deployment's ID or its unique name
+**request:** `Vellum.DeploymentHistoryItemRetrieveRequest`
 
 </dd>
 </dl>
@@ -1284,7 +1318,7 @@ await client.deployments.listDeploymentReleaseTags("id");
 </dl>
 </details>
 
-<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrieveDeploymentReleaseTag</a>(id, name) -> Vellum.DeploymentReleaseTagRead</code></summary>
+<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrieveDeploymentReleaseTag</a>(id, name, { ...params }) -> Vellum.DeploymentReleaseTagRead</code></summary>
 <dl>
 <dd>
 
@@ -1337,6 +1371,14 @@ await client.deployments.retrieveDeploymentReleaseTag("id", "name");
 <dd>
 
 **name:** `string` — The name of the Release Tag associated with this Deployment that you'd like to retrieve.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.RetrieveDeploymentReleaseTagRequest`
 
 </dd>
 </dl>
@@ -1434,7 +1476,7 @@ await client.deployments.updateDeploymentReleaseTag("id", "name");
 </dl>
 </details>
 
-<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrievePromptDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.PromptDeploymentRelease</code></summary>
+<details><summary><code>client.deployments.<a href="/src/api/resources/deployments/client/Client.ts">retrievePromptDeploymentRelease</a>(id, releaseIdOrReleaseTag, { ...params }) -> Vellum.PromptDeploymentRelease</code></summary>
 <dl>
 <dd>
 
@@ -1494,6 +1536,14 @@ await client.deployments.retrievePromptDeploymentRelease("id", "release_id_or_re
 <dl>
 <dd>
 
+**request:** `Vellum.RetrievePromptDeploymentReleaseRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **requestOptions:** `Deployments.RequestOptions`
 
 </dd>
@@ -1545,13 +1595,13 @@ We encourage you to seek advise from Vellum Support before integrating with this
 await client.deployments.retrieveProviderPayload({
     inputs: [
         {
-            name: "x",
             type: "STRING",
+            name: "x",
             value: "value",
         },
         {
-            name: "x",
             type: "STRING",
+            name: "x",
             value: "value",
         },
     ],
@@ -1688,8 +1738,8 @@ await client.documentIndexes.create({
     name: "x",
     indexingConfig: {
         vectorizer: {
-            config: {},
             modelName: "text-embedding-3-small",
+            config: {},
         },
     },
 });
@@ -1871,7 +1921,7 @@ await client.documentIndexes.update("id", {
 </dl>
 </details>
 
-<details><summary><code>client.documentIndexes.<a href="/src/api/resources/documentIndexes/client/Client.ts">destroy</a>(id) -> void</code></summary>
+<details><summary><code>client.documentIndexes.<a href="/src/api/resources/documentIndexes/client/Client.ts">destroy</a>(id, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -1916,6 +1966,14 @@ await client.documentIndexes.destroy("id");
 <dd>
 
 **id:** `string` — Either the Document Index's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.DocumentIndexesDestroyRequest`
 
 </dd>
 </dl>
@@ -2005,7 +2063,7 @@ await client.documentIndexes.partialUpdate("id");
 </dl>
 </details>
 
-<details><summary><code>client.documentIndexes.<a href="/src/api/resources/documentIndexes/client/Client.ts">addDocument</a>(documentId, id) -> void</code></summary>
+<details><summary><code>client.documentIndexes.<a href="/src/api/resources/documentIndexes/client/Client.ts">addDocument</a>(id, documentId, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -2033,7 +2091,7 @@ Adds a previously uploaded Document to the specified Document Index.
 <dd>
 
 ```typescript
-await client.documentIndexes.addDocument("document_id", "id");
+await client.documentIndexes.addDocument("id", "document_id");
 ```
 
 </dd>
@@ -2049,6 +2107,14 @@ await client.documentIndexes.addDocument("document_id", "id");
 <dl>
 <dd>
 
+**id:** `string` — Either the Vellum-generated ID or the originally specified name that uniquely identifies the Document Index to which you'd like to add the Document.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **documentId:** `string` — Either the Vellum-generated ID or the originally supplied external_id that uniquely identifies the Document you'd like to add.
 
 </dd>
@@ -2057,7 +2123,7 @@ await client.documentIndexes.addDocument("document_id", "id");
 <dl>
 <dd>
 
-**id:** `string` — Either the Vellum-generated ID or the originally specified name that uniquely identifies the Document Index to which you'd like to add the Document.
+**request:** `Vellum.AddDocumentRequest`
 
 </dd>
 </dl>
@@ -2076,7 +2142,7 @@ await client.documentIndexes.addDocument("document_id", "id");
 </dl>
 </details>
 
-<details><summary><code>client.documentIndexes.<a href="/src/api/resources/documentIndexes/client/Client.ts">removeDocument</a>(documentId, id) -> void</code></summary>
+<details><summary><code>client.documentIndexes.<a href="/src/api/resources/documentIndexes/client/Client.ts">removeDocument</a>(id, documentId, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -2104,7 +2170,7 @@ Removes a Document from a Document Index without deleting the Document itself.
 <dd>
 
 ```typescript
-await client.documentIndexes.removeDocument("document_id", "id");
+await client.documentIndexes.removeDocument("id", "document_id");
 ```
 
 </dd>
@@ -2120,6 +2186,14 @@ await client.documentIndexes.removeDocument("document_id", "id");
 <dl>
 <dd>
 
+**id:** `string` — Either the Vellum-generated ID or the originally specified name that uniquely identifies the Document Index from which you'd like to remove a Document.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **documentId:** `string` — Either the Vellum-generated ID or the originally supplied external_id that uniquely identifies the Document you'd like to remove.
 
 </dd>
@@ -2128,7 +2202,7 @@ await client.documentIndexes.removeDocument("document_id", "id");
 <dl>
 <dd>
 
-**id:** `string` — Either the Vellum-generated ID or the originally specified name that uniquely identifies the Document Index from which you'd like to remove a Document.
+**request:** `Vellum.RemoveDocumentRequest`
 
 </dd>
 </dl>
@@ -2212,7 +2286,7 @@ await client.documents.list();
 </dl>
 </details>
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">retrieve</a>(id) -> Vellum.DocumentRead</code></summary>
+<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.DocumentRead</code></summary>
 <dl>
 <dd>
 
@@ -2264,6 +2338,14 @@ await client.documents.retrieve("id");
 <dl>
 <dd>
 
+**request:** `Vellum.DocumentsRetrieveRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **requestOptions:** `Documents.RequestOptions`
 
 </dd>
@@ -2275,7 +2357,7 @@ await client.documents.retrieve("id");
 </dl>
 </details>
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">destroy</a>(id) -> void</code></summary>
+<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">destroy</a>(id, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -2320,6 +2402,14 @@ await client.documents.destroy("id");
 <dd>
 
 **id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.DocumentsDestroyRequest`
 
 </dd>
 </dl>
@@ -2683,7 +2773,7 @@ await client.integrationAuthConfigs.listIntegrationAuthConfigs();
 
 ## IntegrationProviders
 
-<details><summary><code>client.integrationProviders.<a href="/src/api/resources/integrationProviders/client/Client.ts">retrieveIntegrationProviderToolDefinition</a>(integrationName, integrationProvider, toolName, { ...params }) -> Vellum.ComponentsSchemasComposioToolDefinition</code></summary>
+<details><summary><code>client.integrationProviders.<a href="/src/api/resources/integrationProviders/client/Client.ts">retrieveIntegrationProviderToolDefinition</a>(integrationProvider, integrationName, toolName, { ...params }) -> Vellum.ToolDefinition</code></summary>
 <dl>
 <dd>
 
@@ -2712,8 +2802,8 @@ Retrieve a specific integration tool definition.
 
 ```typescript
 await client.integrationProviders.retrieveIntegrationProviderToolDefinition(
-    "integration_name",
     "integration_provider",
+    "integration_name",
     "tool_name",
 );
 ```
@@ -2731,7 +2821,7 @@ await client.integrationProviders.retrieveIntegrationProviderToolDefinition(
 <dl>
 <dd>
 
-**integrationName:** `string` — The integration name
+**integrationProvider:** `string` — The integration provider name
 
 </dd>
 </dl>
@@ -2739,7 +2829,7 @@ await client.integrationProviders.retrieveIntegrationProviderToolDefinition(
 <dl>
 <dd>
 
-**integrationProvider:** `string` — The integration provider name
+**integrationName:** `string` — The integration name
 
 </dd>
 </dl>
@@ -2863,13 +2953,13 @@ await client.integrationProviders.listIntegrationTools("integration_provider");
 await client.metricDefinitions.executeMetricDefinition("id", {
     inputs: [
         {
-            name: "x",
             type: "STRING",
+            name: "x",
             value: "value",
         },
         {
-            name: "x",
             type: "STRING",
+            name: "x",
             value: "value",
         },
     ],
@@ -2916,7 +3006,7 @@ await client.metricDefinitions.executeMetricDefinition("id", {
 </dl>
 </details>
 
-<details><summary><code>client.metricDefinitions.<a href="/src/api/resources/metricDefinitions/client/Client.ts">metricDefinitionHistoryItemRetrieve</a>(historyIdOrReleaseTag, id) -> Vellum.MetricDefinitionHistoryItem</code></summary>
+<details><summary><code>client.metricDefinitions.<a href="/src/api/resources/metricDefinitions/client/Client.ts">metricDefinitionHistoryItemRetrieve</a>(id, historyIdOrReleaseTag, { ...params }) -> Vellum.MetricDefinitionHistoryItem</code></summary>
 <dl>
 <dd>
 
@@ -2929,7 +3019,7 @@ await client.metricDefinitions.executeMetricDefinition("id", {
 <dd>
 
 ```typescript
-await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_or_release_tag", "id");
+await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("id", "history_id_or_release_tag");
 ```
 
 </dd>
@@ -2945,6 +3035,14 @@ await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_o
 <dl>
 <dd>
 
+**id:** `string` — A UUID string identifying this metric definition.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **historyIdOrReleaseTag:** `string` — Either the UUID of Metric Definition History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Metric Definition History Item you'd like to retrieve.
 
 </dd>
@@ -2953,7 +3051,7 @@ await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_o
 <dl>
 <dd>
 
-**id:** `string` — A UUID string identifying this metric definition.
+**request:** `Vellum.MetricDefinitionHistoryItemRetrieveRequest`
 
 </dd>
 </dl>
@@ -2974,7 +3072,7 @@ await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_o
 
 ## MlModels
 
-<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">retrieve</a>(id) -> Vellum.MlModelRead</code></summary>
+<details><summary><code>client.mlModels.<a href="/src/api/resources/mlModels/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.MlModelRead</code></summary>
 <dl>
 <dd>
 
@@ -3019,6 +3117,14 @@ await client.mlModels.retrieve("id");
 <dd>
 
 **id:** `string` — Either the ML Model's ID, its unique name, or its ID in the workspace.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.MlModelsRetrieveRequest`
 
 </dd>
 </dl>
@@ -3411,7 +3517,7 @@ await client.sandboxes.upsertSandboxScenario("id", {
 </dl>
 </details>
 
-<details><summary><code>client.sandboxes.<a href="/src/api/resources/sandboxes/client/Client.ts">deleteSandboxScenario</a>(id, scenarioId) -> void</code></summary>
+<details><summary><code>client.sandboxes.<a href="/src/api/resources/sandboxes/client/Client.ts">deleteSandboxScenario</a>(id, scenarioId, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -3464,6 +3570,14 @@ await client.sandboxes.deleteSandboxScenario("id", "scenario_id");
 <dd>
 
 **scenarioId:** `string` — An id identifying the scenario that you'd like to delete
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.DeleteSandboxScenarioRequest`
 
 </dd>
 </dl>
@@ -3554,7 +3668,7 @@ await client.testSuiteRuns.create({
 </dl>
 </details>
 
-<details><summary><code>client.testSuiteRuns.<a href="/src/api/resources/testSuiteRuns/client/Client.ts">retrieve</a>(id) -> Vellum.TestSuiteRunRead</code></summary>
+<details><summary><code>client.testSuiteRuns.<a href="/src/api/resources/testSuiteRuns/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.TestSuiteRunRead</code></summary>
 <dl>
 <dd>
 
@@ -3599,6 +3713,14 @@ await client.testSuiteRuns.retrieve("id");
 <dd>
 
 **id:** `string` — A UUID string identifying this test suite run.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.TestSuiteRunsRetrieveRequest`
 
 </dd>
 </dl>
@@ -3781,26 +3903,28 @@ or overwritten with default values.
 
 ```typescript
 await client.testSuites.upsertTestSuiteTestCase("id", {
-    inputValues: [
-        {
-            type: "STRING",
-            name: "x",
-        },
-        {
-            type: "STRING",
-            name: "x",
-        },
-    ],
-    evaluationValues: [
-        {
-            type: "STRING",
-            name: "x",
-        },
-        {
-            type: "STRING",
-            name: "x",
-        },
-    ],
+    body: {
+        inputValues: [
+            {
+                type: "STRING",
+                name: "x",
+            },
+            {
+                type: "STRING",
+                name: "x",
+            },
+        ],
+        evaluationValues: [
+            {
+                type: "STRING",
+                name: "x",
+            },
+            {
+                type: "STRING",
+                name: "x",
+            },
+        ],
+    },
 });
 ```
 
@@ -3872,60 +3996,62 @@ Created, replace, and delete Test Cases within the specified Test Suite in bulk
 <dd>
 
 ```typescript
-const response = await client.testSuites.testSuiteTestCasesBulk("id", [
-    {
-        id: "id",
-        type: "CREATE",
-        data: {
-            inputValues: [
-                {
-                    type: "STRING",
-                    name: "x",
-                },
-                {
-                    type: "STRING",
-                    name: "x",
-                },
-            ],
-            evaluationValues: [
-                {
-                    type: "STRING",
-                    name: "x",
-                },
-                {
-                    type: "STRING",
-                    name: "x",
-                },
-            ],
+const response = await client.testSuites.testSuiteTestCasesBulk("id", {
+    body: [
+        {
+            type: "CREATE",
+            id: "id",
+            data: {
+                inputValues: [
+                    {
+                        type: "STRING",
+                        name: "x",
+                    },
+                    {
+                        type: "STRING",
+                        name: "x",
+                    },
+                ],
+                evaluationValues: [
+                    {
+                        type: "STRING",
+                        name: "x",
+                    },
+                    {
+                        type: "STRING",
+                        name: "x",
+                    },
+                ],
+            },
         },
-    },
-    {
-        id: "id",
-        type: "CREATE",
-        data: {
-            inputValues: [
-                {
-                    type: "STRING",
-                    name: "x",
-                },
-                {
-                    type: "STRING",
-                    name: "x",
-                },
-            ],
-            evaluationValues: [
-                {
-                    type: "STRING",
-                    name: "x",
-                },
-                {
-                    type: "STRING",
-                    name: "x",
-                },
-            ],
+        {
+            type: "CREATE",
+            id: "id",
+            data: {
+                inputValues: [
+                    {
+                        type: "STRING",
+                        name: "x",
+                    },
+                    {
+                        type: "STRING",
+                        name: "x",
+                    },
+                ],
+                evaluationValues: [
+                    {
+                        type: "STRING",
+                        name: "x",
+                    },
+                    {
+                        type: "STRING",
+                        name: "x",
+                    },
+                ],
+            },
         },
-    },
-]);
+    ],
+});
 for await (const item of response) {
     console.log(item);
 }
@@ -3952,7 +4078,7 @@ for await (const item of response) {
 <dl>
 <dd>
 
-**request:** `Vellum.TestSuiteTestCaseBulkOperationRequest[]`
+**request:** `Vellum.TestSuiteTestCasesBulkRequest`
 
 </dd>
 </dl>
@@ -3971,7 +4097,7 @@ for await (const item of response) {
 </dl>
 </details>
 
-<details><summary><code>client.testSuites.<a href="/src/api/resources/testSuites/client/Client.ts">deleteTestSuiteTestCase</a>(id, testCaseId) -> void</code></summary>
+<details><summary><code>client.testSuites.<a href="/src/api/resources/testSuites/client/Client.ts">deleteTestSuiteTestCase</a>(id, testCaseId, { ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -4024,6 +4150,14 @@ await client.testSuites.deleteTestSuiteTestCase("id", "test_case_id");
 <dd>
 
 **testCaseId:** `string` — An id identifying the test case that you'd like to delete
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.DeleteTestSuiteTestCaseRequest`
 
 </dd>
 </dl>
@@ -4180,7 +4314,7 @@ await client.workflowDeployments.list();
 </dl>
 </details>
 
-<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">retrieve</a>(id) -> Vellum.WorkflowDeploymentRead</code></summary>
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.WorkflowDeploymentRead</code></summary>
 <dl>
 <dd>
 
@@ -4225,6 +4359,14 @@ await client.workflowDeployments.retrieve("id");
 <dd>
 
 **id:** `string` — Either the Workflow Deployment's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.WorkflowDeploymentsRetrieveRequest`
 
 </dd>
 </dl>
@@ -4373,7 +4515,7 @@ await client.workflowDeployments.listWorkflowDeploymentEventExecutions("id");
 </dl>
 </details>
 
-<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">workflowDeploymentEventExecution</a>(executionId, id) -> Vellum.WorkflowEventExecutionRead</code></summary>
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">workflowDeploymentEventExecution</a>(id, executionId, { ...params }) -> Vellum.WorkflowEventExecutionRead</code></summary>
 <dl>
 <dd>
 
@@ -4386,7 +4528,7 @@ await client.workflowDeployments.listWorkflowDeploymentEventExecutions("id");
 <dd>
 
 ```typescript
-await client.workflowDeployments.workflowDeploymentEventExecution("execution_id", "id");
+await client.workflowDeployments.workflowDeploymentEventExecution("id", "execution_id");
 ```
 
 </dd>
@@ -4402,6 +4544,14 @@ await client.workflowDeployments.workflowDeploymentEventExecution("execution_id"
 <dl>
 <dd>
 
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **executionId:** `string`
 
 </dd>
@@ -4410,7 +4560,7 @@ await client.workflowDeployments.workflowDeploymentEventExecution("execution_id"
 <dl>
 <dd>
 
-**id:** `string`
+**request:** `Vellum.WorkflowDeploymentEventExecutionRequest`
 
 </dd>
 </dl>
@@ -4429,7 +4579,7 @@ await client.workflowDeployments.workflowDeploymentEventExecution("execution_id"
 </dl>
 </details>
 
-<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">workflowDeploymentHistoryItemRetrieve</a>(historyIdOrReleaseTag, id) -> Vellum.WorkflowDeploymentHistoryItem</code></summary>
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">workflowDeploymentHistoryItemRetrieve</a>(id, historyIdOrReleaseTag, { ...params }) -> Vellum.WorkflowDeploymentHistoryItem</code></summary>
 <dl>
 <dd>
 
@@ -4458,7 +4608,7 @@ DEPRECATED: This endpoint is deprecated and will be removed in a future release.
 <dd>
 
 ```typescript
-await client.workflowDeployments.workflowDeploymentHistoryItemRetrieve("history_id_or_release_tag", "id");
+await client.workflowDeployments.workflowDeploymentHistoryItemRetrieve("id", "history_id_or_release_tag");
 ```
 
 </dd>
@@ -4474,6 +4624,14 @@ await client.workflowDeployments.workflowDeploymentHistoryItemRetrieve("history_
 <dl>
 <dd>
 
+**id:** `string` — Either the Workflow Deployment's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
 **historyIdOrReleaseTag:** `string` — Either the UUID of Workflow Deployment History Item you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment History Item you'd like to retrieve.
 
 </dd>
@@ -4482,7 +4640,7 @@ await client.workflowDeployments.workflowDeploymentHistoryItemRetrieve("history_
 <dl>
 <dd>
 
-**id:** `string` — Either the Workflow Deployment's ID or its unique name
+**request:** `Vellum.WorkflowDeploymentHistoryItemRetrieveRequest`
 
 </dd>
 </dl>
@@ -4572,7 +4730,7 @@ await client.workflowDeployments.listWorkflowReleaseTags("id");
 </dl>
 </details>
 
-<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">retrieveWorkflowReleaseTag</a>(id, name) -> Vellum.WorkflowReleaseTagRead</code></summary>
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">retrieveWorkflowReleaseTag</a>(id, name, { ...params }) -> Vellum.WorkflowReleaseTagRead</code></summary>
 <dl>
 <dd>
 
@@ -4625,6 +4783,14 @@ await client.workflowDeployments.retrieveWorkflowReleaseTag("id", "name");
 <dd>
 
 **name:** `string` — The name of the Release Tag associated with this Workflow Deployment that you'd like to retrieve.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.RetrieveWorkflowReleaseTagRequest`
 
 </dd>
 </dl>
@@ -4793,7 +4959,7 @@ await client.workflowDeployments.listWorkflowDeploymentReleases("id");
 </dl>
 </details>
 
-<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">retrieveWorkflowDeploymentRelease</a>(id, releaseIdOrReleaseTag) -> Vellum.WorkflowDeploymentRelease</code></summary>
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">retrieveWorkflowDeploymentRelease</a>(id, releaseIdOrReleaseTag, { ...params }) -> Vellum.WorkflowDeploymentRelease</code></summary>
 <dl>
 <dd>
 
@@ -4846,6 +5012,14 @@ await client.workflowDeployments.retrieveWorkflowDeploymentRelease("id", "releas
 <dd>
 
 **releaseIdOrReleaseTag:** `string` — Either the UUID of Workflow Deployment Release you'd like to retrieve, or the name of a Release Tag that's pointing to the Workflow Deployment Release you'd like to retrieve.
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.RetrieveWorkflowDeploymentReleaseRequest`
 
 </dd>
 </dl>
@@ -5045,7 +5219,63 @@ await client.workflowSandboxes.listWorkflowSandboxExamples();
 
 ## Workflows
 
-<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">retrieveState</a>(spanId) -> Vellum.WorkflowResolvedState</code></summary>
+<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">pull</a>(id, { ...params }) -> stream.Readable</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.workflows.pull("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the Workflow to pull from
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.WorkflowsPullRequest`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Workflows.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">retrieveState</a>(spanId, { ...params }) -> Vellum.WorkflowResolvedState</code></summary>
 <dl>
 <dd>
 
@@ -5092,6 +5322,14 @@ await client.workflows.retrieveState("span_id");
 <dd>
 
 **spanId:** `string` — The span ID of the workflow execution to retrieve state for
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.WorkflowsRetrieveStateRequest`
 
 </dd>
 </dl>
@@ -5163,7 +5401,7 @@ await client.workflows.executeNode({
 </dl>
 </details>
 
-<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">workflowExecutionStatus</a>(executionId) -> Vellum.CheckWorkflowExecutionStatusResponse</code></summary>
+<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">workflowExecutionStatus</a>(executionId, { ...params }) -> Vellum.CheckWorkflowExecutionStatusResponse</code></summary>
 <dl>
 <dd>
 
@@ -5209,6 +5447,14 @@ await client.workflows.workflowExecutionStatus("execution_id");
 <dd>
 
 **executionId:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.WorkflowExecutionStatusRequest`
 
 </dd>
 </dl>
@@ -5298,7 +5544,7 @@ await client.workflows.serializeWorkflowFiles({
 
 ## WorkspaceSecrets
 
-<details><summary><code>client.workspaceSecrets.<a href="/src/api/resources/workspaceSecrets/client/Client.ts">retrieve</a>(id) -> Vellum.WorkspaceSecretRead</code></summary>
+<details><summary><code>client.workspaceSecrets.<a href="/src/api/resources/workspaceSecrets/client/Client.ts">retrieve</a>(id, { ...params }) -> Vellum.WorkspaceSecretRead</code></summary>
 <dl>
 <dd>
 
@@ -5343,6 +5589,14 @@ await client.workspaceSecrets.retrieve("id");
 <dd>
 
 **id:** `string` — Either the Workspace Secret's ID or its unique name
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Vellum.WorkspaceSecretsRetrieveRequest`
 
 </dd>
 </dl>

@@ -11,7 +11,6 @@ export const VellumValueLogicalConditionRequest: core.serialization.ObjectSchema
     serializers.VellumValueLogicalConditionRequest.Raw,
     Vellum.VellumValueLogicalConditionRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("LOGICAL_CONDITION"),
     lhsVariable: core.serialization.property(
         "lhs_variable",
         core.serialization.lazy(() => serializers.VellumValueRequest),
@@ -25,7 +24,6 @@ export const VellumValueLogicalConditionRequest: core.serialization.ObjectSchema
 
 export declare namespace VellumValueLogicalConditionRequest {
     export interface Raw {
-        type: "LOGICAL_CONDITION";
         lhs_variable: serializers.VellumValueRequest.Raw;
         operator: LogicalOperator.Raw;
         rhs_variable: serializers.VellumValueRequest.Raw;

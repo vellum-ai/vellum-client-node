@@ -12,14 +12,12 @@ export const FolderEntityWorkflowSandbox: core.serialization.ObjectSchema<
     Vellum.FolderEntityWorkflowSandbox
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("WORKFLOW_SANDBOX"),
     data: FolderEntityWorkflowSandboxData,
 });
 
 export declare namespace FolderEntityWorkflowSandbox {
     export interface Raw {
         id: string;
-        type: "WORKFLOW_SANDBOX";
         data: FolderEntityWorkflowSandboxData.Raw;
     }
 }

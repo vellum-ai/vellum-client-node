@@ -12,16 +12,14 @@ export const NodeOutputCompiledSearchResultsValue: core.serialization.ObjectSche
     serializers.NodeOutputCompiledSearchResultsValue.Raw,
     Vellum.NodeOutputCompiledSearchResultsValue
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optionalNullable(),
+    value: core.serialization.list(SearchResult).nullable(),
     nodeOutputId: core.serialization.property("node_output_id", core.serialization.string()),
     state: WorkflowNodeResultEventState.optional(),
 });
 
 export declare namespace NodeOutputCompiledSearchResultsValue {
     export interface Raw {
-        type: "SEARCH_RESULTS";
-        value?: (SearchResult.Raw[] | null) | null;
+        value: SearchResult.Raw[] | null;
         node_output_id: string;
         state?: WorkflowNodeResultEventState.Raw | null;
     }

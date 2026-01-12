@@ -11,13 +11,11 @@ export const FunctionCallChatMessageContentRequest: core.serialization.ObjectSch
     serializers.FunctionCallChatMessageContentRequest.Raw,
     Vellum.FunctionCallChatMessageContentRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("FUNCTION_CALL"),
     value: FunctionCallChatMessageContentValueRequest,
 });
 
 export declare namespace FunctionCallChatMessageContentRequest {
     export interface Raw {
-        type: "FUNCTION_CALL";
         value: FunctionCallChatMessageContentValueRequest.Raw;
     }
 }

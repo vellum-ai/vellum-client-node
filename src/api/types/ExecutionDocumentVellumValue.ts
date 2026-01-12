@@ -11,6 +11,5 @@ export interface ExecutionDocumentVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    type: "DOCUMENT";
-    value?: Vellum.VellumDocument | null;
+    value: Vellum.VellumDocument | null;
 }

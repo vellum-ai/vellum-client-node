@@ -13,7 +13,6 @@ export const ApiRequestParentContext: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    type: core.serialization.stringLiteral("API_REQUEST"),
     spanId: core.serialization.property("span_id", core.serialization.string()),
     apiActorId: core.serialization.property("api_actor_id", core.serialization.string().optionalNullable()),
     apiActorType: core.serialization.property("api_actor_type", ApiActorTypeEnum.optionalNullable()),
@@ -24,7 +23,6 @@ export declare namespace ApiRequestParentContext {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        type: "API_REQUEST";
         span_id: string;
         api_actor_id?: (string | null) | null;
         api_actor_type?: (ApiActorTypeEnum.Raw | null) | null;

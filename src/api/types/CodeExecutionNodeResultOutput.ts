@@ -5,11 +5,45 @@
 import * as Vellum from "../index";
 
 export type CodeExecutionNodeResultOutput =
-    | Vellum.CodeExecutionNodeStringResult
-    | Vellum.CodeExecutionNodeNumberResult
-    | Vellum.CodeExecutionNodeJsonResult
-    | Vellum.CodeExecutionNodeChatHistoryResult
-    | Vellum.CodeExecutionNodeSearchResultsResult
-    | Vellum.CodeExecutionNodeErrorResult
-    | Vellum.CodeExecutionNodeArrayResult
-    | Vellum.CodeExecutionNodeFunctionCallResult;
+    | Vellum.CodeExecutionNodeResultOutput.String
+    | Vellum.CodeExecutionNodeResultOutput.Number
+    | Vellum.CodeExecutionNodeResultOutput.Json
+    | Vellum.CodeExecutionNodeResultOutput.ChatHistory
+    | Vellum.CodeExecutionNodeResultOutput.SearchResults
+    | Vellum.CodeExecutionNodeResultOutput.Error_
+    | Vellum.CodeExecutionNodeResultOutput.Array
+    | Vellum.CodeExecutionNodeResultOutput.FunctionCall;
+
+export namespace CodeExecutionNodeResultOutput {
+    export interface String extends Vellum.CodeExecutionNodeStringResult {
+        type: "STRING";
+    }
+
+    export interface Number extends Vellum.CodeExecutionNodeNumberResult {
+        type: "NUMBER";
+    }
+
+    export interface Json extends Vellum.CodeExecutionNodeJsonResult {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.CodeExecutionNodeChatHistoryResult {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends Vellum.CodeExecutionNodeSearchResultsResult {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.CodeExecutionNodeErrorResult {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.CodeExecutionNodeArrayResult {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends Vellum.CodeExecutionNodeFunctionCallResult {
+        type: "FUNCTION_CALL";
+    }
+}

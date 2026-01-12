@@ -11,6 +11,5 @@ export interface ExecutionVideoVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    type: "VIDEO";
-    value?: Vellum.VellumVideo | null;
+    value: Vellum.VellumVideo | null;
 }

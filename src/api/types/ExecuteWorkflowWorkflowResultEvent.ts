@@ -5,5 +5,15 @@
 import * as Vellum from "../index";
 
 export type ExecuteWorkflowWorkflowResultEvent =
-    | Vellum.FulfilledExecuteWorkflowWorkflowResultEvent
-    | Vellum.RejectedExecuteWorkflowWorkflowResultEvent;
+    | Vellum.ExecuteWorkflowWorkflowResultEvent.Fulfilled
+    | Vellum.ExecuteWorkflowWorkflowResultEvent.Rejected;
+
+export namespace ExecuteWorkflowWorkflowResultEvent {
+    export interface Fulfilled extends Vellum.FulfilledExecuteWorkflowWorkflowResultEvent {
+        state: "FULFILLED";
+    }
+
+    export interface Rejected extends Vellum.RejectedExecuteWorkflowWorkflowResultEvent {
+        state: "REJECTED";
+    }
+}

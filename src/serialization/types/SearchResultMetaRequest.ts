@@ -5,17 +5,17 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { ComponentsSchemasPdfSearchResultMetaSourceRequest } from "./ComponentsSchemasPdfSearchResultMetaSourceRequest";
+import { SearchResultMetaSourceRequest } from "./SearchResultMetaSourceRequest";
 
 export const SearchResultMetaRequest: core.serialization.ObjectSchema<
     serializers.SearchResultMetaRequest.Raw,
     Vellum.SearchResultMetaRequest
 > = core.serialization.object({
-    source: ComponentsSchemasPdfSearchResultMetaSourceRequest.optionalNullable(),
+    source: SearchResultMetaSourceRequest.optionalNullable(),
 });
 
 export declare namespace SearchResultMetaRequest {
     export interface Raw {
-        source?: (ComponentsSchemasPdfSearchResultMetaSourceRequest.Raw | null) | null;
+        source?: (SearchResultMetaSourceRequest.Raw | null) | null;
     }
 }

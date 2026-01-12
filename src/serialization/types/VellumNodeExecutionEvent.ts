@@ -16,23 +16,56 @@ import { NodeExecutionLogEvent } from "./NodeExecutionLogEvent";
 export const VellumNodeExecutionEvent: core.serialization.Schema<
     serializers.VellumNodeExecutionEvent.Raw,
     Vellum.VellumNodeExecutionEvent
-> = core.serialization.undiscriminatedUnion([
-    NodeExecutionInitiatedEvent,
-    NodeExecutionStreamingEvent,
-    NodeExecutionFulfilledEvent,
-    NodeExecutionRejectedEvent,
-    NodeExecutionPausedEvent,
-    NodeExecutionResumedEvent,
-    NodeExecutionLogEvent,
-]);
+> = core.serialization
+    .union("name", {
+        "node.execution.initiated": NodeExecutionInitiatedEvent,
+        "node.execution.streaming": NodeExecutionStreamingEvent,
+        "node.execution.fulfilled": NodeExecutionFulfilledEvent,
+        "node.execution.rejected": NodeExecutionRejectedEvent,
+        "node.execution.paused": NodeExecutionPausedEvent,
+        "node.execution.resumed": NodeExecutionResumedEvent,
+        "node.execution.log": NodeExecutionLogEvent,
+    })
+    .transform<Vellum.VellumNodeExecutionEvent>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace VellumNodeExecutionEvent {
     export type Raw =
-        | NodeExecutionInitiatedEvent.Raw
-        | NodeExecutionStreamingEvent.Raw
-        | NodeExecutionFulfilledEvent.Raw
-        | NodeExecutionRejectedEvent.Raw
-        | NodeExecutionPausedEvent.Raw
-        | NodeExecutionResumedEvent.Raw
-        | NodeExecutionLogEvent.Raw;
+        | VellumNodeExecutionEvent.NodeExecutionInitiated
+        | VellumNodeExecutionEvent.NodeExecutionStreaming
+        | VellumNodeExecutionEvent.NodeExecutionFulfilled
+        | VellumNodeExecutionEvent.NodeExecutionRejected
+        | VellumNodeExecutionEvent.NodeExecutionPaused
+        | VellumNodeExecutionEvent.NodeExecutionResumed
+        | VellumNodeExecutionEvent.NodeExecutionLog;
+
+    export interface NodeExecutionInitiated extends NodeExecutionInitiatedEvent.Raw {
+        name: "node.execution.initiated";
+    }
+
+    export interface NodeExecutionStreaming extends NodeExecutionStreamingEvent.Raw {
+        name: "node.execution.streaming";
+    }
+
+    export interface NodeExecutionFulfilled extends NodeExecutionFulfilledEvent.Raw {
+        name: "node.execution.fulfilled";
+    }
+
+    export interface NodeExecutionRejected extends NodeExecutionRejectedEvent.Raw {
+        name: "node.execution.rejected";
+    }
+
+    export interface NodeExecutionPaused extends NodeExecutionPausedEvent.Raw {
+        name: "node.execution.paused";
+    }
+
+    export interface NodeExecutionResumed extends NodeExecutionResumedEvent.Raw {
+        name: "node.execution.resumed";
+    }
+
+    export interface NodeExecutionLog extends NodeExecutionLogEvent.Raw {
+        name: "node.execution.log";
+    }
 }

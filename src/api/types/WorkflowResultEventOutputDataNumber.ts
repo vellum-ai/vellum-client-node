@@ -14,6 +14,5 @@ export interface WorkflowResultEventOutputDataNumber {
     nodeId?: string | null;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string | null;
-    type: "NUMBER";
-    value?: number | null;
+    value: number | null;
 }

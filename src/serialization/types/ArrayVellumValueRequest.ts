@@ -10,13 +10,11 @@ export const ArrayVellumValueRequest: core.serialization.ObjectSchema<
     serializers.ArrayVellumValueRequest.Raw,
     Vellum.ArrayVellumValueRequest
 > = core.serialization.object({
-    type: core.serialization.stringLiteral("ARRAY"),
-    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValueRequest)).optionalNullable(),
+    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValueRequest)).nullable(),
 });
 
 export declare namespace ArrayVellumValueRequest {
     export interface Raw {
-        type: "ARRAY";
-        value?: (serializers.VellumValueRequest.Raw[] | null) | null;
+        value: serializers.VellumValueRequest.Raw[] | null;
     }
 }

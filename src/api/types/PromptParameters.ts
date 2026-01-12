@@ -10,6 +10,6 @@ export interface PromptParameters {
     topK?: number | null;
     frequencyPenalty?: number | null;
     presencePenalty?: number | null;
-    logitBias?: Record<string, (number | null) | undefined> | null;
+    logitBias?: Record<string, number | null> | null;
     customParameters?: Record<string, unknown> | null;
 }

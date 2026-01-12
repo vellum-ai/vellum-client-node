@@ -8,6 +8,5 @@
 export interface TestCaseNumberVariableValue {
     variableId: string;
     name: string;
-    type: "NUMBER";
-    value?: number | null;
+    value: number | null;
 }

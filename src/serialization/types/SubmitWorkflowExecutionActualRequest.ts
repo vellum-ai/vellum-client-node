@@ -12,15 +12,32 @@ import { WorkflowExecutionActualChatHistoryRequest } from "./WorkflowExecutionAc
 export const SubmitWorkflowExecutionActualRequest: core.serialization.Schema<
     serializers.SubmitWorkflowExecutionActualRequest.Raw,
     Vellum.SubmitWorkflowExecutionActualRequest
-> = core.serialization.undiscriminatedUnion([
-    WorkflowExecutionActualStringRequest,
-    WorkflowExecutionActualJsonRequest,
-    WorkflowExecutionActualChatHistoryRequest,
-]);
+> = core.serialization
+    .union(core.serialization.discriminant("outputType", "output_type"), {
+        STRING: WorkflowExecutionActualStringRequest,
+        JSON: WorkflowExecutionActualJsonRequest,
+        CHAT_HISTORY: WorkflowExecutionActualChatHistoryRequest,
+    })
+    .transform<Vellum.SubmitWorkflowExecutionActualRequest>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace SubmitWorkflowExecutionActualRequest {
     export type Raw =
-        | WorkflowExecutionActualStringRequest.Raw
-        | WorkflowExecutionActualJsonRequest.Raw
-        | WorkflowExecutionActualChatHistoryRequest.Raw;
+        | SubmitWorkflowExecutionActualRequest.String
+        | SubmitWorkflowExecutionActualRequest.Json
+        | SubmitWorkflowExecutionActualRequest.ChatHistory;
+
+    export interface String extends WorkflowExecutionActualStringRequest.Raw {
+        output_type: "STRING";
+    }
+
+    export interface Json extends WorkflowExecutionActualJsonRequest.Raw {
+        output_type: "JSON";
+    }
+
+    export interface ChatHistory extends WorkflowExecutionActualChatHistoryRequest.Raw {
+        output_type: "CHAT_HISTORY";
+    }
 }

@@ -5,7 +5,6 @@
 import * as Vellum from "../index";
 
 export interface NamedScenarioInputAudioVariableValueRequest {
-    type: "AUDIO";
     value: Vellum.VellumAudioRequest;
     name: string;
 }

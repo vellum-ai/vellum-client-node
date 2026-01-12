@@ -5,21 +5,19 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { UpsertTestSuiteTestCaseRequest } from "./UpsertTestSuiteTestCaseRequest";
+import { UpsertTestSuiteTestCaseRequestBody } from "./UpsertTestSuiteTestCaseRequestBody";
 
 export const TestSuiteTestCaseUpsertBulkOperationRequest: core.serialization.ObjectSchema<
     serializers.TestSuiteTestCaseUpsertBulkOperationRequest.Raw,
     Vellum.TestSuiteTestCaseUpsertBulkOperationRequest
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("UPSERT"),
-    data: UpsertTestSuiteTestCaseRequest,
+    data: UpsertTestSuiteTestCaseRequestBody,
 });
 
 export declare namespace TestSuiteTestCaseUpsertBulkOperationRequest {
     export interface Raw {
         id: string;
-        type: "UPSERT";
-        data: UpsertTestSuiteTestCaseRequest.Raw;
+        data: UpsertTestSuiteTestCaseRequestBody.Raw;
     }
 }

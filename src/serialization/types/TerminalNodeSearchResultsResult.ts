@@ -13,15 +13,13 @@ export const TerminalNodeSearchResultsResult: core.serialization.ObjectSchema<
 > = core.serialization.object({
     id: core.serialization.string().optionalNullable(),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("SEARCH_RESULTS"),
-    value: core.serialization.list(SearchResult).optionalNullable(),
+    value: core.serialization.list(SearchResult).nullable(),
 });
 
 export declare namespace TerminalNodeSearchResultsResult {
     export interface Raw {
         id?: (string | null) | null;
         name: string;
-        type: "SEARCH_RESULTS";
-        value?: (SearchResult.Raw[] | null) | null;
+        value: SearchResult.Raw[] | null;
     }
 }

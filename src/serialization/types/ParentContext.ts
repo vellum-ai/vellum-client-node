@@ -7,27 +7,68 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
 export const ParentContext: core.serialization.Schema<serializers.ParentContext.Raw, Vellum.ParentContext> =
-    core.serialization.undiscriminatedUnion([
-        core.serialization.lazyObject(() => serializers.WorkflowParentContext),
-        core.serialization.lazyObject(() => serializers.NodeParentContext),
-        core.serialization.lazyObject(() => serializers.WorkflowDeploymentParentContext),
-        core.serialization.lazyObject(() => serializers.WorkflowSandboxParentContext),
-        core.serialization.lazyObject(() => serializers.PromptDeploymentParentContext),
-        core.serialization.lazyObject(() => serializers.ApiRequestParentContext),
-        core.serialization.lazyObject(() => serializers.ExternalParentContext),
-        core.serialization.lazyObject(() => serializers.ScheduledTriggerContext),
-        core.serialization.lazyObject(() => serializers.IntegrationTriggerContext),
-    ]);
+    core.serialization
+        .union("type", {
+            WORKFLOW: core.serialization.lazyObject(() => serializers.WorkflowParentContext),
+            WORKFLOW_NODE: core.serialization.lazyObject(() => serializers.NodeParentContext),
+            WORKFLOW_RELEASE_TAG: core.serialization.lazyObject(() => serializers.WorkflowDeploymentParentContext),
+            WORKFLOW_SANDBOX: core.serialization.lazyObject(() => serializers.WorkflowSandboxParentContext),
+            PROMPT_RELEASE_TAG: core.serialization.lazyObject(() => serializers.PromptDeploymentParentContext),
+            API_REQUEST: core.serialization.lazyObject(() => serializers.ApiRequestParentContext),
+            EXTERNAL: core.serialization.lazyObject(() => serializers.ExternalParentContext),
+            SCHEDULED: core.serialization.lazyObject(() => serializers.ScheduledTriggerContext),
+            INTEGRATION: core.serialization.lazyObject(() => serializers.IntegrationTriggerContext),
+        })
+        .transform<Vellum.ParentContext>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace ParentContext {
     export type Raw =
-        | serializers.WorkflowParentContext.Raw
-        | serializers.NodeParentContext.Raw
-        | serializers.WorkflowDeploymentParentContext.Raw
-        | serializers.WorkflowSandboxParentContext.Raw
-        | serializers.PromptDeploymentParentContext.Raw
-        | serializers.ApiRequestParentContext.Raw
-        | serializers.ExternalParentContext.Raw
-        | serializers.ScheduledTriggerContext.Raw
-        | serializers.IntegrationTriggerContext.Raw;
+        | ParentContext.Workflow
+        | ParentContext.WorkflowNode
+        | ParentContext.WorkflowReleaseTag
+        | ParentContext.WorkflowSandbox
+        | ParentContext.PromptReleaseTag
+        | ParentContext.ApiRequest
+        | ParentContext.External
+        | ParentContext.Scheduled
+        | ParentContext.Integration;
+
+    export interface Workflow extends serializers.WorkflowParentContext.Raw {
+        type: "WORKFLOW";
+    }
+
+    export interface WorkflowNode extends serializers.NodeParentContext.Raw {
+        type: "WORKFLOW_NODE";
+    }
+
+    export interface WorkflowReleaseTag extends serializers.WorkflowDeploymentParentContext.Raw {
+        type: "WORKFLOW_RELEASE_TAG";
+    }
+
+    export interface WorkflowSandbox extends serializers.WorkflowSandboxParentContext.Raw {
+        type: "WORKFLOW_SANDBOX";
+    }
+
+    export interface PromptReleaseTag extends serializers.PromptDeploymentParentContext.Raw {
+        type: "PROMPT_RELEASE_TAG";
+    }
+
+    export interface ApiRequest extends serializers.ApiRequestParentContext.Raw {
+        type: "API_REQUEST";
+    }
+
+    export interface External extends serializers.ExternalParentContext.Raw {
+        type: "EXTERNAL";
+    }
+
+    export interface Scheduled extends serializers.ScheduledTriggerContext.Raw {
+        type: "SCHEDULED";
+    }
+
+    export interface Integration extends serializers.IntegrationTriggerContext.Raw {
+        type: "INTEGRATION";
+    }
 }

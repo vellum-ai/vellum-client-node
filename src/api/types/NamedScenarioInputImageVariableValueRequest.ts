@@ -5,7 +5,6 @@
 import * as Vellum from "../index";
 
 export interface NamedScenarioInputImageVariableValueRequest {
-    type: "IMAGE";
     value: Vellum.VellumImageRequest;
     name: string;
 }

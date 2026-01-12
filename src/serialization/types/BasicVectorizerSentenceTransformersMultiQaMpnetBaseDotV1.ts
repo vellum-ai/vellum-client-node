@@ -10,16 +10,11 @@ export const BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1: core.seri
     serializers.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1.Raw,
     Vellum.BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1
 > = core.serialization.object({
-    modelName: core.serialization.property(
-        "model_name",
-        core.serialization.stringLiteral("sentence-transformers/multi-qa-mpnet-base-dot-v1"),
-    ),
     config: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
 });
 
 export declare namespace BasicVectorizerSentenceTransformersMultiQaMpnetBaseDotV1 {
     export interface Raw {
-        model_name: "sentence-transformers/multi-qa-mpnet-base-dot-v1";
         config?: (Record<string, unknown> | null) | null;
     }
 }

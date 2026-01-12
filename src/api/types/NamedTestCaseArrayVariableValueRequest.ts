@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * Named Test Case value that is of type ARRAY
  */
 export interface NamedTestCaseArrayVariableValueRequest {
-    type: "ARRAY";
-    value?: Vellum.VellumValueRequest[] | null;
+    value: Vellum.VellumValueRequest[] | null;
     name: string;
 }

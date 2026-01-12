@@ -9,6 +9,5 @@ export interface ExecutionJsonVellumValue {
     /** The variable's uniquely identifying internal id. */
     id: string;
     name: string;
-    type: "JSON";
-    value?: unknown;
+    value: unknown | null;
 }

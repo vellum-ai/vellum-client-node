@@ -12,7 +12,6 @@ export const PlainTextPromptBlock: core.serialization.ObjectSchema<
     serializers.PlainTextPromptBlock.Raw,
     Vellum.PlainTextPromptBlock
 > = core.serialization.object({
-    blockType: core.serialization.property("block_type", core.serialization.stringLiteral("PLAIN_TEXT")),
     state: PromptBlockState.optional(),
     cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     text: core.serialization.string(),
@@ -20,7 +19,6 @@ export const PlainTextPromptBlock: core.serialization.ObjectSchema<
 
 export declare namespace PlainTextPromptBlock {
     export interface Raw {
-        block_type: "PLAIN_TEXT";
         state?: PromptBlockState.Raw | null;
         cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         text: string;

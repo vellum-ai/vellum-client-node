@@ -8,6 +8,5 @@ import * as Vellum from "../index";
  * A Node Result Event emitted from a Map Node.
  */
 export interface MapNodeResult {
-    type: "MAP";
     data?: Vellum.MapNodeResultData;
 }

@@ -40,6 +40,7 @@ export class MlModels {
      * Retrieve details about an ML Model
      *
      * @param {string} id - Either the ML Model's ID, its unique name, or its ID in the workspace.
+     * @param {Vellum.MlModelsRetrieveRequest} request
      * @param {MlModels.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -47,13 +48,15 @@ export class MlModels {
      */
     public retrieve(
         id: string,
+        request: Vellum.MlModelsRetrieveRequest = {},
         requestOptions?: MlModels.RequestOptions,
     ): core.HttpResponsePromise<Vellum.MlModelRead> {
-        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__retrieve(id, request, requestOptions));
     }
 
     private async __retrieve(
         id: string,
+        request: Vellum.MlModelsRetrieveRequest = {},
         requestOptions?: MlModels.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.MlModelRead>> {
         const _response = await core.fetcher({
@@ -73,8 +76,8 @@ export class MlModels {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.1",
-                "User-Agent": "vellum-ai/1.13.1",
+                "X-Fern-SDK-Version": "1.11.16",
+                "User-Agent": "vellum-ai/1.11.16",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

@@ -12,7 +12,6 @@ export const IntegrationTriggerContext: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    type: core.serialization.stringLiteral("INTEGRATION"),
     triggerId: core.serialization.property("trigger_id", core.serialization.string().optionalNullable()),
     spanId: core.serialization.property("span_id", core.serialization.string()),
 });
@@ -21,7 +20,6 @@ export declare namespace IntegrationTriggerContext {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        type: "INTEGRATION";
         trigger_id?: (string | null) | null;
         span_id: string;
     }

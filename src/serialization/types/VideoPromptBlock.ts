@@ -12,7 +12,6 @@ export const VideoPromptBlock: core.serialization.ObjectSchema<
     serializers.VideoPromptBlock.Raw,
     Vellum.VideoPromptBlock
 > = core.serialization.object({
-    blockType: core.serialization.property("block_type", core.serialization.stringLiteral("VIDEO")),
     state: PromptBlockState.optional(),
     cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     src: core.serialization.string(),
@@ -21,7 +20,6 @@ export const VideoPromptBlock: core.serialization.ObjectSchema<
 
 export declare namespace VideoPromptBlock {
     export interface Raw {
-        block_type: "VIDEO";
         state?: PromptBlockState.Raw | null;
         cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         src: string;

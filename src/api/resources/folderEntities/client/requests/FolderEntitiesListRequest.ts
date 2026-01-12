@@ -17,19 +17,19 @@ export interface FolderEntitiesListRequest {
      * * `ACTIVE` - Active
      * * `ARCHIVED` - Archived
      */
-    entityStatus?: Vellum.FolderEntitiesListRequestEntityStatus | null;
+    entityStatus?: Vellum.FolderEntitiesListRequestEntityStatus;
     /**
      * Number of results to return per page.
      */
-    limit?: number | null;
+    limit?: number;
     /**
      * The initial index from which to return the results.
      */
-    offset?: number | null;
+    offset?: number;
     /**
      * Which field to use when ordering the results.
      */
-    ordering?: string | null;
+    ordering?: string;
     /**
      * Filter down to only those entities whose parent folder has the specified ID.
      *

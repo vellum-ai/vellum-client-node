@@ -12,7 +12,6 @@ export const WorkflowSandboxParentContext: core.serialization.ObjectSchema<
 > = core.serialization.object({
     parent: core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     links: core.serialization.list(core.serialization.lazyObject(() => serializers.SpanLink)).optionalNullable(),
-    type: core.serialization.stringLiteral("WORKFLOW_SANDBOX"),
     spanId: core.serialization.property("span_id", core.serialization.string()),
     sandboxId: core.serialization.property("sandbox_id", core.serialization.string()),
     sandboxHistoryItemId: core.serialization.property("sandbox_history_item_id", core.serialization.string()),
@@ -23,7 +22,6 @@ export declare namespace WorkflowSandboxParentContext {
     export interface Raw {
         parent?: (serializers.ParentContext.Raw | null) | null;
         links?: (serializers.SpanLink.Raw[] | null) | null;
-        type: "WORKFLOW_SANDBOX";
         span_id: string;
         sandbox_id: string;
         sandbox_history_item_id: string;

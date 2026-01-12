@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface PromptRequestAudioInput {
     /** The variable's name, as defined in the Prompt. */
     key: string;
-    type: "AUDIO";
     value: Vellum.VellumAudio;
 }

@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface ExternalParentContext {
     parent?: Vellum.ParentContext | null;
     links?: Vellum.SpanLink[] | null;
-    type: "EXTERNAL";
     spanId: string;
 }

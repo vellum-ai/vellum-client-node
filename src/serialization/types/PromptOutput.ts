@@ -12,19 +12,44 @@ import { FunctionCallVellumValue } from "./FunctionCallVellumValue";
 import { ThinkingVellumValue } from "./ThinkingVellumValue";
 
 export const PromptOutput: core.serialization.Schema<serializers.PromptOutput.Raw, Vellum.PromptOutput> =
-    core.serialization.undiscriminatedUnion([
-        StringVellumValue,
-        JsonVellumValue,
-        ErrorVellumValue,
-        FunctionCallVellumValue,
-        ThinkingVellumValue,
-    ]);
+    core.serialization
+        .union("type", {
+            STRING: StringVellumValue,
+            JSON: JsonVellumValue,
+            ERROR: ErrorVellumValue,
+            FUNCTION_CALL: FunctionCallVellumValue,
+            THINKING: ThinkingVellumValue,
+        })
+        .transform<Vellum.PromptOutput>({
+            transform: (value) => value,
+            untransform: (value) => value,
+        });
 
 export declare namespace PromptOutput {
     export type Raw =
-        | StringVellumValue.Raw
-        | JsonVellumValue.Raw
-        | ErrorVellumValue.Raw
-        | FunctionCallVellumValue.Raw
-        | ThinkingVellumValue.Raw;
+        | PromptOutput.String
+        | PromptOutput.Json
+        | PromptOutput.Error
+        | PromptOutput.FunctionCall
+        | PromptOutput.Thinking;
+
+    export interface String extends StringVellumValue.Raw {
+        type: "STRING";
+    }
+
+    export interface Json extends JsonVellumValue.Raw {
+        type: "JSON";
+    }
+
+    export interface Error extends ErrorVellumValue.Raw {
+        type: "ERROR";
+    }
+
+    export interface FunctionCall extends FunctionCallVellumValue.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Thinking extends ThinkingVellumValue.Raw {
+        type: "THINKING";
+    }
 }

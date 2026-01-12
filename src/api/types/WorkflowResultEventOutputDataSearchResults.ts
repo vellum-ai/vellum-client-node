@@ -14,6 +14,5 @@ export interface WorkflowResultEventOutputDataSearchResults {
     nodeId?: string | null;
     /** The newly output string value. Only relevant for string outputs with a state of STREAMING. */
     delta?: string | null;
-    type: "SEARCH_RESULTS";
-    value?: Vellum.SearchResult[] | null;
+    value: Vellum.SearchResult[] | null;
 }

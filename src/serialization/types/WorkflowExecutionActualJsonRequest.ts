@@ -15,7 +15,6 @@ export const WorkflowExecutionActualJsonRequest: core.serialization.ObjectSchema
     quality: core.serialization.number().optionalNullable(),
     metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     timestamp: core.serialization.number().optionalNullable(),
-    outputType: core.serialization.property("output_type", core.serialization.stringLiteral("JSON")),
     desiredOutputValue: core.serialization.property(
         "desired_output_value",
         core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
@@ -29,7 +28,6 @@ export declare namespace WorkflowExecutionActualJsonRequest {
         quality?: (number | null) | null;
         metadata?: (Record<string, unknown> | null) | null;
         timestamp?: (number | null) | null;
-        output_type: "JSON";
         desired_output_value?: (Record<string, unknown> | null) | null;
     }
 }

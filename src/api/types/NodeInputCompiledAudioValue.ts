@@ -7,6 +7,5 @@ import * as Vellum from "../index";
 export interface NodeInputCompiledAudioValue {
     nodeInputId: string;
     key: string;
-    type: "AUDIO";
-    value?: Vellum.VellumAudio | null;
+    value: Vellum.VellumAudio | null;
 }

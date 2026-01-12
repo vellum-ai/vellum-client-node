@@ -11,14 +11,12 @@ export const TemplatingNodeArrayResult: core.serialization.ObjectSchema<
     Vellum.TemplatingNodeArrayResult
 > = core.serialization.object({
     id: core.serialization.string(),
-    type: core.serialization.stringLiteral("ARRAY"),
-    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).optionalNullable(),
+    value: core.serialization.list(core.serialization.lazy(() => serializers.VellumValue)).nullable(),
 });
 
 export declare namespace TemplatingNodeArrayResult {
     export interface Raw {
         id: string;
-        type: "ARRAY";
-        value?: (serializers.VellumValue.Raw[] | null) | null;
+        value: serializers.VellumValue.Raw[] | null;
     }
 }

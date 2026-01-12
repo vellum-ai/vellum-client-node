@@ -12,7 +12,6 @@ export const DocumentPromptBlock: core.serialization.ObjectSchema<
     serializers.DocumentPromptBlock.Raw,
     Vellum.DocumentPromptBlock
 > = core.serialization.object({
-    blockType: core.serialization.property("block_type", core.serialization.stringLiteral("DOCUMENT")),
     state: PromptBlockState.optional(),
     cacheConfig: core.serialization.property("cache_config", EphemeralPromptCacheConfig.optionalNullable()),
     src: core.serialization.string(),
@@ -21,7 +20,6 @@ export const DocumentPromptBlock: core.serialization.ObjectSchema<
 
 export declare namespace DocumentPromptBlock {
     export interface Raw {
-        block_type: "DOCUMENT";
         state?: PromptBlockState.Raw | null;
         cache_config?: (EphemeralPromptCacheConfig.Raw | null) | null;
         src: string;

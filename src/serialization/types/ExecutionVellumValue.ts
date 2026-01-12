@@ -22,35 +22,92 @@ import { ExecutionDocumentVellumValue } from "./ExecutionDocumentVellumValue";
 export const ExecutionVellumValue: core.serialization.Schema<
     serializers.ExecutionVellumValue.Raw,
     Vellum.ExecutionVellumValue
-> = core.serialization.undiscriminatedUnion([
-    ExecutionStringVellumValue,
-    ExecutionNumberVellumValue,
-    ExecutionJsonVellumValue,
-    ExecutionChatHistoryVellumValue,
-    ExecutionSearchResultsVellumValue,
-    ExecutionErrorVellumValue,
-    ExecutionArrayVellumValue,
-    ExecutionFunctionCallVellumValue,
-    ExecutionThinkingVellumValue,
-    ExecutionAudioVellumValue,
-    ExecutionVideoVellumValue,
-    ExecutionImageVellumValue,
-    ExecutionDocumentVellumValue,
-]);
+> = core.serialization
+    .union("type", {
+        STRING: ExecutionStringVellumValue,
+        NUMBER: ExecutionNumberVellumValue,
+        JSON: ExecutionJsonVellumValue,
+        CHAT_HISTORY: ExecutionChatHistoryVellumValue,
+        SEARCH_RESULTS: ExecutionSearchResultsVellumValue,
+        ERROR: ExecutionErrorVellumValue,
+        ARRAY: ExecutionArrayVellumValue,
+        FUNCTION_CALL: ExecutionFunctionCallVellumValue,
+        THINKING: ExecutionThinkingVellumValue,
+        AUDIO: ExecutionAudioVellumValue,
+        VIDEO: ExecutionVideoVellumValue,
+        IMAGE: ExecutionImageVellumValue,
+        DOCUMENT: ExecutionDocumentVellumValue,
+    })
+    .transform<Vellum.ExecutionVellumValue>({
+        transform: (value) => value,
+        untransform: (value) => value,
+    });
 
 export declare namespace ExecutionVellumValue {
     export type Raw =
-        | ExecutionStringVellumValue.Raw
-        | ExecutionNumberVellumValue.Raw
-        | ExecutionJsonVellumValue.Raw
-        | ExecutionChatHistoryVellumValue.Raw
-        | ExecutionSearchResultsVellumValue.Raw
-        | ExecutionErrorVellumValue.Raw
-        | ExecutionArrayVellumValue.Raw
-        | ExecutionFunctionCallVellumValue.Raw
-        | ExecutionThinkingVellumValue.Raw
-        | ExecutionAudioVellumValue.Raw
-        | ExecutionVideoVellumValue.Raw
-        | ExecutionImageVellumValue.Raw
-        | ExecutionDocumentVellumValue.Raw;
+        | ExecutionVellumValue.String
+        | ExecutionVellumValue.Number
+        | ExecutionVellumValue.Json
+        | ExecutionVellumValue.ChatHistory
+        | ExecutionVellumValue.SearchResults
+        | ExecutionVellumValue.Error
+        | ExecutionVellumValue.Array
+        | ExecutionVellumValue.FunctionCall
+        | ExecutionVellumValue.Thinking
+        | ExecutionVellumValue.Audio
+        | ExecutionVellumValue.Video
+        | ExecutionVellumValue.Image
+        | ExecutionVellumValue.Document;
+
+    export interface String extends ExecutionStringVellumValue.Raw {
+        type: "STRING";
+    }
+
+    export interface Number extends ExecutionNumberVellumValue.Raw {
+        type: "NUMBER";
+    }
+
+    export interface Json extends ExecutionJsonVellumValue.Raw {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends ExecutionChatHistoryVellumValue.Raw {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface SearchResults extends ExecutionSearchResultsVellumValue.Raw {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error extends ExecutionErrorVellumValue.Raw {
+        type: "ERROR";
+    }
+
+    export interface Array extends ExecutionArrayVellumValue.Raw {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends ExecutionFunctionCallVellumValue.Raw {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Thinking extends ExecutionThinkingVellumValue.Raw {
+        type: "THINKING";
+    }
+
+    export interface Audio extends ExecutionAudioVellumValue.Raw {
+        type: "AUDIO";
+    }
+
+    export interface Video extends ExecutionVideoVellumValue.Raw {
+        type: "VIDEO";
+    }
+
+    export interface Image extends ExecutionImageVellumValue.Raw {
+        type: "IMAGE";
+    }
+
+    export interface Document extends ExecutionDocumentVellumValue.Raw {
+        type: "DOCUMENT";
+    }
 }

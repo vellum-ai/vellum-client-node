@@ -8,7 +8,6 @@ import * as Vellum from "../index";
  * Output for a test suite run metric that is of type ARRAY
  */
 export interface TestSuiteRunMetricArrayOutput {
-    value?: Vellum.VellumValue[] | null;
-    type: "ARRAY";
+    value: Vellum.VellumValue[] | null;
     name: string;
 }

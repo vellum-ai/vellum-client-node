@@ -12,15 +12,13 @@ export const TestCaseStringVariableValue: core.serialization.ObjectSchema<
 > = core.serialization.object({
     variableId: core.serialization.property("variable_id", core.serialization.string()),
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("STRING"),
-    value: core.serialization.string().optionalNullable(),
+    value: core.serialization.string().nullable(),
 });
 
 export declare namespace TestCaseStringVariableValue {
     export interface Raw {
         variable_id: string;
         name: string;
-        type: "STRING";
-        value?: (string | null) | null;
+        value: string | null;
     }
 }

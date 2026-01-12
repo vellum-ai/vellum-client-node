@@ -5,8 +5,30 @@
 import * as Vellum from "../index";
 
 export type TestSuiteRunExecConfig =
-    | Vellum.TestSuiteRunDeploymentReleaseTagExecConfig
-    | Vellum.TestSuiteRunPromptSandboxHistoryItemExecConfig
-    | Vellum.TestSuiteRunWorkflowReleaseTagExecConfig
-    | Vellum.TestSuiteRunWorkflowSandboxHistoryItemExecConfig
-    | Vellum.TestSuiteRunExternalExecConfig;
+    | Vellum.TestSuiteRunExecConfig.DeploymentReleaseTag
+    | Vellum.TestSuiteRunExecConfig.PromptSandboxHistoryItem
+    | Vellum.TestSuiteRunExecConfig.WorkflowReleaseTag
+    | Vellum.TestSuiteRunExecConfig.WorkflowSandboxHistoryItem
+    | Vellum.TestSuiteRunExecConfig.External;
+
+export namespace TestSuiteRunExecConfig {
+    export interface DeploymentReleaseTag extends Vellum.TestSuiteRunDeploymentReleaseTagExecConfig {
+        type: "DEPLOYMENT_RELEASE_TAG";
+    }
+
+    export interface PromptSandboxHistoryItem extends Vellum.TestSuiteRunPromptSandboxHistoryItemExecConfig {
+        type: "PROMPT_SANDBOX_HISTORY_ITEM";
+    }
+
+    export interface WorkflowReleaseTag extends Vellum.TestSuiteRunWorkflowReleaseTagExecConfig {
+        type: "WORKFLOW_RELEASE_TAG";
+    }
+
+    export interface WorkflowSandboxHistoryItem extends Vellum.TestSuiteRunWorkflowSandboxHistoryItemExecConfig {
+        type: "WORKFLOW_SANDBOX_HISTORY_ITEM";
+    }
+
+    export interface External extends Vellum.TestSuiteRunExternalExecConfig {
+        type: "EXTERNAL";
+    }
+}

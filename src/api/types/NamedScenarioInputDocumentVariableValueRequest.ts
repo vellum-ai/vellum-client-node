@@ -5,7 +5,6 @@
 import * as Vellum from "../index";
 
 export interface NamedScenarioInputDocumentVariableValueRequest {
-    type: "DOCUMENT";
     value: Vellum.VellumDocumentRequest;
     name: string;
 }

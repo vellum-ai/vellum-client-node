@@ -5,12 +5,50 @@
 import * as Vellum from "../index";
 
 export type PromptBlock =
-    | Vellum.JinjaPromptBlock
-    | Vellum.ChatMessagePromptBlock
-    | Vellum.VariablePromptBlock
-    | Vellum.RichTextPromptBlock
-    | Vellum.FunctionCallPromptBlock
-    | Vellum.AudioPromptBlock
-    | Vellum.VideoPromptBlock
-    | Vellum.ImagePromptBlock
-    | Vellum.DocumentPromptBlock;
+    | Vellum.PromptBlock.Jinja
+    | Vellum.PromptBlock.ChatMessage
+    | Vellum.PromptBlock.Variable
+    | Vellum.PromptBlock.RichText
+    | Vellum.PromptBlock.FunctionCall
+    | Vellum.PromptBlock.Audio
+    | Vellum.PromptBlock.Video
+    | Vellum.PromptBlock.Image
+    | Vellum.PromptBlock.Document;
+
+export namespace PromptBlock {
+    export interface Jinja extends Vellum.JinjaPromptBlock {
+        blockType: "JINJA";
+    }
+
+    export interface ChatMessage extends Vellum.ChatMessagePromptBlock {
+        blockType: "CHAT_MESSAGE";
+    }
+
+    export interface Variable extends Vellum.VariablePromptBlock {
+        blockType: "VARIABLE";
+    }
+
+    export interface RichText extends Vellum.RichTextPromptBlock {
+        blockType: "RICH_TEXT";
+    }
+
+    export interface FunctionCall extends Vellum.FunctionCallPromptBlock {
+        blockType: "FUNCTION_CALL";
+    }
+
+    export interface Audio extends Vellum.AudioPromptBlock {
+        blockType: "AUDIO";
+    }
+
+    export interface Video extends Vellum.VideoPromptBlock {
+        blockType: "VIDEO";
+    }
+
+    export interface Image extends Vellum.ImagePromptBlock {
+        blockType: "IMAGE";
+    }
+
+    export interface Document extends Vellum.DocumentPromptBlock {
+        blockType: "DOCUMENT";
+    }
+}

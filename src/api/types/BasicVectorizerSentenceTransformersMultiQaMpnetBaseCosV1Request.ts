@@ -7,5 +7,4 @@
  */
 export interface BasicVectorizerSentenceTransformersMultiQaMpnetBaseCosV1Request {
     config?: Record<string, unknown> | null;
-    modelName: "sentence-transformers/multi-qa-mpnet-base-cos-v1";
 }

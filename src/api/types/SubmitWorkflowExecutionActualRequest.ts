@@ -5,6 +5,20 @@
 import * as Vellum from "../index";
 
 export type SubmitWorkflowExecutionActualRequest =
-    | Vellum.WorkflowExecutionActualStringRequest
-    | Vellum.WorkflowExecutionActualJsonRequest
-    | Vellum.WorkflowExecutionActualChatHistoryRequest;
+    | Vellum.SubmitWorkflowExecutionActualRequest.String
+    | Vellum.SubmitWorkflowExecutionActualRequest.Json
+    | Vellum.SubmitWorkflowExecutionActualRequest.ChatHistory;
+
+export namespace SubmitWorkflowExecutionActualRequest {
+    export interface String extends Vellum.WorkflowExecutionActualStringRequest {
+        outputType: "STRING";
+    }
+
+    export interface Json extends Vellum.WorkflowExecutionActualJsonRequest {
+        outputType: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.WorkflowExecutionActualChatHistoryRequest {
+        outputType: "CHAT_HISTORY";
+    }
+}

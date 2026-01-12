@@ -5,23 +5,23 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
-import { ComponentsSchemasSlimComposioToolDefinition } from "./ComponentsSchemasSlimComposioToolDefinition";
+import { SlimToolDefinition } from "./SlimToolDefinition";
 
 export const PaginatedSlimToolDefinitionList: core.serialization.ObjectSchema<
     serializers.PaginatedSlimToolDefinitionList.Raw,
     Vellum.PaginatedSlimToolDefinitionList
 > = core.serialization.object({
     count: core.serialization.number(),
-    next: core.serialization.string().optionalNullable(),
-    previous: core.serialization.string().optionalNullable(),
-    results: core.serialization.list(ComponentsSchemasSlimComposioToolDefinition),
+    next: core.serialization.string().nullable(),
+    previous: core.serialization.string().nullable(),
+    results: core.serialization.list(SlimToolDefinition),
 });
 
 export declare namespace PaginatedSlimToolDefinitionList {
     export interface Raw {
         count: number;
-        next?: (string | null) | null;
-        previous?: (string | null) | null;
-        results: ComponentsSchemasSlimComposioToolDefinition.Raw[];
+        next: string | null;
+        previous: string | null;
+        results: SlimToolDefinition.Raw[];
     }
 }

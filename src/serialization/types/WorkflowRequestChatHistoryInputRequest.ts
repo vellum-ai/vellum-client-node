@@ -12,14 +12,12 @@ export const WorkflowRequestChatHistoryInputRequest: core.serialization.ObjectSc
     Vellum.WorkflowRequestChatHistoryInputRequest
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("CHAT_HISTORY"),
     value: core.serialization.list(ChatMessageRequest),
 });
 
 export declare namespace WorkflowRequestChatHistoryInputRequest {
     export interface Raw {
         name: string;
-        type: "CHAT_HISTORY";
         value: ChatMessageRequest.Raw[];
     }
 }

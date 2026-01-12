@@ -5,15 +5,65 @@
 import * as Vellum from "../index";
 
 export type WorkflowInput =
-    | Vellum.StringInput
-    | Vellum.JsonInput
-    | Vellum.ChatHistoryInput
-    | Vellum.NumberInput
-    | Vellum.SearchResultsInput
-    | Vellum.ErrorInput
-    | Vellum.ArrayInput
-    | Vellum.FunctionCallInput
-    | Vellum.AudioInput
-    | Vellum.VideoInput
-    | Vellum.ImageInput
-    | Vellum.DocumentInput;
+    | Vellum.WorkflowInput.String
+    | Vellum.WorkflowInput.Json
+    | Vellum.WorkflowInput.ChatHistory
+    | Vellum.WorkflowInput.Number
+    | Vellum.WorkflowInput.SearchResults
+    | Vellum.WorkflowInput.Error_
+    | Vellum.WorkflowInput.Array
+    | Vellum.WorkflowInput.FunctionCall
+    | Vellum.WorkflowInput.Audio
+    | Vellum.WorkflowInput.Video
+    | Vellum.WorkflowInput.Image
+    | Vellum.WorkflowInput.Document;
+
+export namespace WorkflowInput {
+    export interface String extends Vellum.StringInput {
+        type: "STRING";
+    }
+
+    export interface Json extends Vellum.JsonInput {
+        type: "JSON";
+    }
+
+    export interface ChatHistory extends Vellum.ChatHistoryInput {
+        type: "CHAT_HISTORY";
+    }
+
+    export interface Number extends Vellum.NumberInput {
+        type: "NUMBER";
+    }
+
+    export interface SearchResults extends Vellum.SearchResultsInput {
+        type: "SEARCH_RESULTS";
+    }
+
+    export interface Error_ extends Vellum.ErrorInput {
+        type: "ERROR";
+    }
+
+    export interface Array extends Vellum.ArrayInput {
+        type: "ARRAY";
+    }
+
+    export interface FunctionCall extends Vellum.FunctionCallInput {
+        type: "FUNCTION_CALL";
+    }
+
+    export interface Audio extends Vellum.AudioInput {
+        type: "AUDIO";
+    }
+
+    export interface Video extends Vellum.VideoInput {
+        type: "VIDEO";
+    }
+
+    export interface Image extends Vellum.ImageInput {
+        type: "IMAGE";
+    }
+
+    export interface Document extends Vellum.DocumentInput {
+        type: "DOCUMENT";
+    }
+}

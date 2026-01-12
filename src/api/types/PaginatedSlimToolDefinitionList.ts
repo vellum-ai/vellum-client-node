@@ -6,7 +6,7 @@ import * as Vellum from "../index";
 
 export interface PaginatedSlimToolDefinitionList {
     count: number;
-    next?: string | null;
-    previous?: string | null;
-    results: Vellum.ComponentsSchemasSlimComposioToolDefinition[];
+    next: string | null;
+    previous: string | null;
+    results: Vellum.SlimToolDefinition[];
 }

@@ -11,14 +11,12 @@ export const CodeExecutorSecretInput: core.serialization.ObjectSchema<
     Vellum.CodeExecutorSecretInput
 > = core.serialization.object({
     name: core.serialization.string(),
-    type: core.serialization.stringLiteral("SECRET"),
     value: core.serialization.string(),
 });
 
 export declare namespace CodeExecutorSecretInput {
     export interface Raw {
         name: string;
-        type: "SECRET";
         value: string;
     }
 }
