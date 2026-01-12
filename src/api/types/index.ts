@@ -708,6 +708,7 @@ export * from "./WorkflowResultEventOutputDataString";
 export * from "./WorkflowResultEventState";
 export * from "./WorkflowSandboxDisplayData";
 export * from "./WorkflowSandboxExample";
+export * from "./WorkflowSandboxExecuteNodeResponse";
 export * from "./WorkflowSandboxParentContext";
 export * from "./WorkflowStreamEvent";
 export * from "./WorkspaceDisplayConfig";
