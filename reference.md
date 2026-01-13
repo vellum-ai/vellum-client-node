@@ -546,7 +546,7 @@ await client.adHoc.adhocExecutePrompt({
 </dl>
 </details>
 
-<details><summary><code>client.adHoc.<a href="/src/api/resources/adHoc/client/Client.ts">adhocExecutePromptStream</a>({ ...params }) -> core.Stream<Vellum.AdHocExecutePromptEvent></code></summary>
+<details><summary><code>client.adHoc.<a href="/src/api/resources/adHoc/client/Client.ts">adhocExecutePromptStream</a>({ ...params }) -> core.Stream&lt;Vellum.AdHocExecutePromptEvent&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3844,7 +3844,7 @@ await client.testSuites.upsertTestSuiteTestCase("id", {
 </dl>
 </details>
 
-<details><summary><code>client.testSuites.<a href="/src/api/resources/testSuites/client/Client.ts">testSuiteTestCasesBulk</a>(id, { ...params }) -> core.Stream<Vellum.TestSuiteTestCaseBulkResult[]></code></summary>
+<details><summary><code>client.testSuites.<a href="/src/api/resources/testSuites/client/Client.ts">testSuiteTestCasesBulk</a>(id, { ...params }) -> core.Stream&lt;Vellum.TestSuiteTestCaseBulkResult[]&gt;</code></summary>
 <dl>
 <dd>
 
@@ -4243,7 +4243,7 @@ await client.workflowDeployments.retrieve("id");
 </dl>
 </details>
 
-<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">executeStream</a>(id, { ...params }) -> core.Stream<Vellum.WorkflowEvent></code></summary>
+<details><summary><code>client.workflowDeployments.<a href="/src/api/resources/workflowDeployments/client/Client.ts">executeStream</a>(id, { ...params }) -> core.Stream&lt;Vellum.WorkflowEvent&gt;</code></summary>
 <dl>
 <dd>
 
@@ -5227,7 +5227,7 @@ await client.workflows.workflowExecutionStatus("execution_id");
 </dl>
 </details>
 
-<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">serializeWorkflowFiles</a>({ ...params }) -> Record<string, unknown></code></summary>
+<details><summary><code>client.workflows.<a href="/src/api/resources/workflows/client/Client.ts">serializeWorkflowFiles</a>({ ...params }) -> Record&lt;string, unknown&gt;</code></summary>
 <dl>
 <dd>
 
