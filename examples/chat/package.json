@@ -1,0 +1,17 @@
+{
+    "name": "vellum-chat-example",
+    "version": "1.0.0",
+    "description": "Example chat application using the Vellum Node SDK",
+    "main": "chat.js",
+    "scripts": {
+        "start": "npx ts-node chat.ts"
+    },
+    "dependencies": {
+        "vellum-ai": "^1.13.0"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "ts-node": "^10.9.0",
+        "typescript": "^5.0.0"
+    }
+}
