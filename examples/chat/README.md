@@ -1,11 +1,11 @@
 # Chat Example
 
-This example demonstrates how to build a simple interactive chat application using the Vellum Node SDK. It shows how to execute prompts with streaming responses and maintain chat history across multiple turns.
+This example demonstrates how to build a simple interactive chat application using the Vellum Node SDK. It shows how to execute workflow deployments with streaming responses and maintain conversation state across multiple turns using the `previousExternalId` parameter.
 
 ## Prerequisites
 
 1. A Vellum account with an API key
-2. A deployed prompt in Vellum that accepts a `chat_history` input variable of type `CHAT_HISTORY`
+2. A deployed workflow in Vellum that accepts a `user_message` input variable of type `STRING`
 
 ## Setup
 
@@ -24,14 +24,14 @@ export VELLUM_API_KEY=your-api-key-here
 ## Running the Example
 
 ```bash
-npx ts-node chat.ts
+npx ts-node chat-api.ts
 ```
 
 Or if you prefer to compile first:
 
 ```bash
-npx tsc chat.ts
-node chat.js
+npx tsc chat-api.ts
+node chat-api.js
 ```
 
 ## How It Works
@@ -39,11 +39,14 @@ node chat.js
 The example creates an interactive chat loop that:
 
 1. Prompts the user for input
-2. Sends the message along with the chat history to a deployed Vellum prompt
+2. Sends the message to a deployed Vellum workflow using `workflowDeployments.executeStream`
 3. Streams the response back to the console in real-time
-4. Appends both the user message and assistant response to the chat history
-5. Repeats until the user types "quit" or "exit"
+4. Captures the execution ID from the fulfilled event
+5. Uses the previous execution ID to resume the conversation on subsequent turns
+6. Repeats until the user types "quit" or "exit"
+
+This pattern mirrors the Python SDK's chatbot example, which uses `previous_execution_id` to maintain conversation state across executions.
 
 ## Configuration
 
-Update the `PROMPT_DEPLOYMENT_NAME` constant in `chat.ts` to match your deployed prompt's name.
+Update the `WORKFLOW_DEPLOYMENT_NAME` constant in `chat-api.ts` to match your deployed workflow's name.
