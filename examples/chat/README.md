@@ -1,11 +1,11 @@
 # Chat Example
 
-This example demonstrates how to build a simple interactive chat application using the Vellum Node SDK. It shows how to execute workflow deployments with streaming responses and maintain conversation state across multiple turns using the `previousExternalId` parameter.
+This example demonstrates how to build a simple interactive chat application using the Vellum Node SDK. It shows how to execute workflow deployments with streaming responses and maintain conversation state across multiple turns using the `previousExecutionId` parameter.
 
 ## Prerequisites
 
 1. A Vellum account with an API key
-2. A deployed workflow in Vellum that accepts a `user_message` input variable of type `STRING`
+2. A deployed workflow in Vellum that accepts a `message` input
 
 ## Setup
 

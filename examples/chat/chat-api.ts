@@ -15,14 +15,10 @@ async function chat(userMessage: string, previousExecutionId: string | null): Pr
     // Execute the workflow with streaming
     const response = await client.workflowDeployments.executeStream(WORKFLOW_DEPLOYMENT_NAME, {
         releaseTag: "LATEST",
-        inputs: [
-            {
-                type: "STRING",
-                name: "user_message",
-                value: userMessage,
-            },
-        ],
-        previousExternalId: previousExecutionId ?? undefined,
+        inputs: {
+            message: userMessage,
+        },
+        previousExecutionId: previousExecutionId ?? undefined,
     });
 
     let currentExecutionId: string | null = null;
