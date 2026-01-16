@@ -5,7 +5,7 @@ This example demonstrates how to build a simple interactive chat application usi
 ## Prerequisites
 
 1. A Vellum account with an API key
-2. A deployed workflow in Vellum that accepts a `message` input
+2. A deployed Agent in Vellum that has a Chat Message Trigger configured
 
 ## Setup
 

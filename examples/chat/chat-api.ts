@@ -1,9 +1,12 @@
 import * as readline from "readline";
 
 import { VellumClient } from "vellum-ai";
+import dotenv from "dotenv";
+dotenv.config();
 
 // Configuration - update this to match your deployed workflow's name
-const WORKFLOW_DEPLOYMENT_NAME = "your-workflow-deployment-name";
+// Find this one at https://app.vellum.ai/public/workflow-deployments/44f311f0-3951-4088-bbc7-6707ee41672c?releaseTag=LATEST&condensedNodeView=1&showOpenInVellum=1
+const WORKFLOW_DEPLOYMENT_NAME = "basic-chatbot";
 
 // Initialize the Vellum client
 // The API key is read from the VELLUM_API_KEY environment variable by default
@@ -11,36 +14,34 @@ const client = new VellumClient({
     apiKey: process.env.VELLUM_API_KEY || "",
 });
 
-async function chat(userMessage: string, previousExecutionId: string | null): Promise<string | null> {
+async function chat(userMessage: string, previousExecutionId?: string): Promise<string | undefined> {
     // Execute the workflow with streaming
     const response = await client.workflowDeployments.executeStream(WORKFLOW_DEPLOYMENT_NAME, {
-        releaseTag: "LATEST",
         inputs: {
             message: userMessage,
         },
-        previousExecutionId: previousExecutionId ?? undefined,
+        previousExecutionId,
+        trigger: "chat",
     });
-
-    let currentExecutionId: string | null = null;
 
     // Process the stream
     for await (const event of response) {
         if (event.name === "workflow.execution.streaming") {
             // Handle streaming chunks - output the streaming content
             const output = event.body.output;
-            if (output.type === "STRING" && output.value) {
-                process.stdout.write(output.value);
+            if (typeof output.delta === "string") {
+                process.stdout.write(output.delta);
             }
         } else if (event.name === "workflow.execution.fulfilled") {
             // Handle the final fulfilled event
-            console.log("\nworkflow.execution.fulfilled", event.body.outputs);
-            currentExecutionId = event.spanId;
+            process.stdout.write("\n");
+            return event.spanId;
         } else if (event.name === "workflow.execution.rejected") {
-            throw new Error("Workflow execution failed");
+            throw new Error(`Workflow execution failed: ${event.body.error.message}`);
         }
     }
 
-    return currentExecutionId;
+    throw new Error("Workflow execution ended without a valid fulfilled event");
 }
 
 async function main(): Promise<void> {
@@ -49,7 +50,7 @@ async function main(): Promise<void> {
         output: process.stdout,
     });
 
-    let previousExecutionId: string | null = null;
+    let previousExecutionId: string | undefined = undefined;
     let iterations = 1;
 
     console.log("Chat Example - Using Vellum Node SDK (Workflow Deployment API)");
@@ -73,15 +74,8 @@ async function main(): Promise<void> {
             }
 
             try {
-                if (previousExecutionId) {
-                    console.log(`Resuming from previous execution ID: ${previousExecutionId}`);
-                } else {
-                    console.log("Starting new conversation");
-                }
-
                 const currentExecutionId = await chat(trimmedMessage, previousExecutionId);
 
-                console.log(`Current Execution ID: ${currentExecutionId}`);
                 previousExecutionId = currentExecutionId;
                 iterations++;
             } catch (error) {
