@@ -96,8 +96,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.2",
-                "User-Agent": "vellum-ai/1.13.2",
+                "X-Fern-SDK-Version": "1.13.3",
+                "User-Agent": "vellum-ai/1.13.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -164,6 +164,7 @@ export class Integrations {
      * @throws {@link Vellum.BadRequestError}
      * @throws {@link Vellum.ForbiddenError}
      * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.TooManyRequestsError}
      *
      * @example
      *     await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
@@ -211,8 +212,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.2",
-                "User-Agent": "vellum-ai/1.13.2",
+                "X-Fern-SDK-Version": "1.13.3",
+                "User-Agent": "vellum-ai/1.13.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -247,6 +248,8 @@ export class Integrations {
                     throw new Vellum.ForbiddenError(_response.error.body, _response.rawResponse);
                 case 404:
                     throw new Vellum.NotFoundError(_response.error.body, _response.rawResponse);
+                case 429:
+                    throw new Vellum.TooManyRequestsError(_response.error.body, _response.rawResponse);
                 default:
                     throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
@@ -338,8 +341,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.2",
-                "User-Agent": "vellum-ai/1.13.2",
+                "X-Fern-SDK-Version": "1.13.3",
+                "User-Agent": "vellum-ai/1.13.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -426,8 +429,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.2",
-                "User-Agent": "vellum-ai/1.13.2",
+                "X-Fern-SDK-Version": "1.13.3",
+                "User-Agent": "vellum-ai/1.13.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
