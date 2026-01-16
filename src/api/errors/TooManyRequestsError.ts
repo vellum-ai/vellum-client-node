@@ -3,11 +3,10 @@
  */
 
 import * as errors from "../../errors/index";
-import * as Vellum from "../index";
 import * as core from "../../core";
 
 export class TooManyRequestsError extends errors.VellumError {
-    constructor(body: Vellum.ErrorDetailResponse, rawResponse?: core.RawResponse) {
+    constructor(body?: unknown, rawResponse?: core.RawResponse) {
         super({
             message: "TooManyRequestsError",
             statusCode: 429,
