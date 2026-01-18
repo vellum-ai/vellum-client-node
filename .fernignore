@@ -1,5 +1,6 @@
 # Specify files that shouldn't be modified by Fern
 
+examples/
 README.md
 LICENSE
 src/core/fetcher/getFetchFn.ts
