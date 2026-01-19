@@ -84,12 +84,14 @@ export default function ChatPage() {
 
                             if (event.type === "delta") {
                                 setMessages((prev) => {
-                                    const updated = [...prev];
-                                    const lastMessage = updated[updated.length - 1];
+                                    const lastMessage = prev[prev.length - 1];
                                     if (lastMessage?.role === "assistant") {
-                                        lastMessage.content += event.content;
+                                        return [
+                                            ...prev.slice(0, -1),
+                                            { ...lastMessage, content: lastMessage.content + event.content },
+                                        ];
                                     }
-                                    return updated;
+                                    return prev;
                                 });
                                 scrollToBottom();
                             } else if (event.type === "done") {
@@ -117,14 +119,16 @@ export default function ChatPage() {
             } catch (error) {
                 const errorMessage = error instanceof Error ? error.message : "An error occurred";
                 setMessages((prev) => {
-                    const updated = [...prev];
-                    const lastMessage = updated[updated.length - 1];
+                    const lastMessage = prev[prev.length - 1];
                     if (lastMessage?.role === "assistant") {
-                        lastMessage.content = `Error: ${errorMessage}`;
+                        return [
+                            ...prev.slice(0, -1),
+                            { ...lastMessage, content: `Error: ${errorMessage}` },
+                        ];
                     }
-                    return updated;
+                    return prev;
                 });
-            } finally {
+            }finally {
                 setIsLoading(false);
                 scrollToBottom();
             }

@@ -44,13 +44,6 @@ npm run dev
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-For production:
-
-```bash
-npm run build
-npm start
-```
-
 ## How It Works
 
 Both the CLI and web frontend create an interactive chat that:

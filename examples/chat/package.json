@@ -5,11 +5,9 @@
     "main": "chat-api.js",
     "scripts": {
         "api": "npx ts-node chat-api.ts",
-        "build": "next build",
         "dev": "next dev",
         "fetch": "npx ts-node chat-fetch.ts",
-        "lint": "next lint",
-        "start": "next start"
+        "lint": "next lint"
     },
     "dependencies": {
         "dotenv": "^16.6.1",
