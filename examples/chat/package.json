@@ -4,7 +4,8 @@
     "description": "Example chat application using the Vellum Node SDK",
     "main": "chat-api.js",
     "scripts": {
-        "api": "npx ts-node chat-api.ts"
+        "api": "npx ts-node chat-api.ts",
+        "fetch": "npx ts-node chat-fetch.ts"
     },
     "dependencies": {
         "dotenv": "^16.6.1",
