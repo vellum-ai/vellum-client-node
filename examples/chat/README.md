@@ -50,3 +50,7 @@ This pattern mirrors the Python SDK's chatbot example, which uses `previous_exec
 ## Configuration
 
 Update the `WORKFLOW_DEPLOYMENT_NAME` constant in `chat-api.ts` to match your deployed workflow's name.
+
+## Web Frontend
+
+For a browser-based chat interface, see the [frontend](./frontend) directory which provides a simple Next.js application with streaming support.
