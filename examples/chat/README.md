@@ -15,38 +15,47 @@ This example demonstrates how to build a simple interactive chat application usi
 npm install
 ```
 
-2. Set your Vellum API key as an environment variable:
+2. Set your environment variables:
 
 ```bash
 export VELLUM_API_KEY=your-api-key-here
+export WORKFLOW_DEPLOYMENT_NAME=basic-chatbot  # Optional, defaults to "basic-chatbot"
 ```
 
-## Running the Example
+## Running the CLI Example
 
 ```bash
-npx ts-node chat-api.ts
+npm run api
 ```
 
-Or if you prefer to compile first:
+Or using the fetch-based implementation:
 
 ```bash
-npx tsc chat-api.ts
-node chat-api.js
+npm run fetch
 ```
+
+## Running the Web Frontend
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## How It Works
 
-The example creates an interactive chat loop that:
+Both the CLI and web frontend create an interactive chat that:
 
-1. Prompts the user for input
+1. Accepts user input (via terminal or browser)
 2. Sends the message to a deployed Vellum workflow using `workflowDeployments.executeStream`
-3. Streams the response back to the console in real-time
+3. Streams the response back in real-time
 4. Captures the execution ID from the fulfilled event
 5. Uses the previous execution ID to resume the conversation on subsequent turns
-6. Repeats until the user types "quit" or "exit"
 
 This pattern mirrors the Python SDK's chatbot example, which uses `previous_execution_id` to maintain conversation state across executions.
 
 ## Configuration
 
-Update the `WORKFLOW_DEPLOYMENT_NAME` constant in `chat-api.ts` to match your deployed workflow's name.
+The workflow deployment name can be configured via the `WORKFLOW_DEPLOYMENT_NAME` environment variable. If not set, it defaults to "basic-chatbot". You can also update the constant directly in `chat-api.ts` or `chat-fetch.ts`.
