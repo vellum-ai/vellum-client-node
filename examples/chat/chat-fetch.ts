@@ -22,7 +22,7 @@ interface WorkflowStreamingEvent {
 
 interface WorkflowFulfilledEvent {
     name: "workflow.execution.fulfilled";
-    spanId: string;
+    span_id: string;
 }
 
 interface WorkflowRejectedEvent {
@@ -93,7 +93,7 @@ async function chat(userMessage: string, previousExecutionId?: string): Promise<
     };
 
     if (previousExecutionId) {
-        requestBody.previousExecutionId = previousExecutionId;
+        requestBody.previous_execution_id = previousExecutionId;
     }
 
     const response = await fetch(url, {
@@ -121,7 +121,7 @@ async function chat(userMessage: string, previousExecutionId?: string): Promise<
         } else if (event.name === "workflow.execution.fulfilled") {
             // Handle the final fulfilled event
             process.stdout.write("\n");
-            return event.spanId;
+            return event.span_id;
         } else if (event.name === "workflow.execution.rejected") {
             throw new Error(`Workflow execution failed: ${event.body.error.message}`);
         }
