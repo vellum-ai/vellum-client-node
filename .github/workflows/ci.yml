@@ -1,6 +1,14 @@
 name: ci
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publish to NPM'
+        required: true
+        type: boolean
+        default: false
 
 jobs:
   compile:
@@ -31,13 +39,21 @@ jobs:
 
   publish:
     needs: [ compile, test ]
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    if: (github.event_name == 'push' && contains(github.ref, 'refs/tags/')) || (github.event_name == 'workflow_dispatch' && inputs.publish)
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
       - name: Set up node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install npm 11.5.1+ for OIDC support
+        run: npm install -g npm@latest
       - name: Install dependencies
         run: yarn install
       - name: Build
@@ -45,13 +61,10 @@ jobs:
 
       - name: Publish to npm
         run: |
-          npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           if [[ ${GITHUB_REF} == *alpha* ]]; then
-            npm publish --access public --tag alpha
+            npm publish --access public --provenance --tag alpha
           elif [[ ${GITHUB_REF} == *beta* ]]; then
-            npm publish --access public --tag beta
+            npm publish --access public --provenance --tag beta
           else
-            npm publish --access public
+            npm publish --access public --provenance
           fi
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
