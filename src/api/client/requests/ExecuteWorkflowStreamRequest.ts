@@ -7,14 +7,11 @@ import * as Vellum from "../../index";
 /**
  * @example
  *     {
+ *         workflowDeploymentName: "my-workflow",
  *         inputs: [{
- *                 name: "x",
+ *                 name: "question",
  *                 type: "STRING",
- *                 value: "value"
- *             }, {
- *                 name: "x",
- *                 type: "STRING",
- *                 value: "value"
+ *                 value: "What is the capital of France?"
  *             }]
  *     }
  */
