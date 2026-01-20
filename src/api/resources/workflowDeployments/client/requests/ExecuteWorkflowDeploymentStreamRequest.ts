@@ -4,7 +4,31 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         inputs: {
+ *             "question": "What is the capital of France?"
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         inputs: {
+ *             "chat_history": [
+ *                 {
+ *                     "role": "USER",
+ *                     "content": "Hello, how can you help me today?"
+ *                 },
+ *                 {
+ *                     "role": "ASSISTANT",
+ *                     "content": "I can help you with a variety of tasks. What would you like to know?"
+ *                 },
+ *                 {
+ *                     "role": "USER",
+ *                     "content": "What is machine learning?"
+ *                 }
+ *             ]
+ *         }
+ *     }
  */
 export interface ExecuteWorkflowDeploymentStreamRequest {
     /** A mapping from input name to value. */
