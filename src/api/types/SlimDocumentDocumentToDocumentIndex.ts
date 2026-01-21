@@ -24,4 +24,5 @@ export interface SlimDocumentDocumentToDocumentIndex {
      * * `FAILED` - Failed
      */
     indexingState?: Vellum.IndexingStateEnum;
+    processingState?: string | null;
 }

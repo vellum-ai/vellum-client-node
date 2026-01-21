@@ -4,7 +4,20 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         inputs: {
+ *             "question": "What is the capital of France?"
+ *         }
+ *     }
+ *
+ * @example
+ *     {
+ *         trigger: "chat",
+ *         previousExecutionId: "550e8400-e29b-41d4-a716-446655440099",
+ *         inputs: {
+ *             "message": "What is machine learning?"
+ *         }
+ *     }
  */
 export interface ExecuteWorkflowDeploymentStreamRequest {
     /** A mapping from input name to value. */
