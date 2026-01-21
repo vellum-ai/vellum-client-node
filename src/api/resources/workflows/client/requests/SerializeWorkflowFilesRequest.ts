@@ -18,4 +18,12 @@ export interface SerializeWorkflowFilesRequest {
     files: Record<string, unknown>;
     module?: string | null;
     runnerConfig?: Vellum.RunnerConfigRequest | null;
+    /**
+     * Optional type checker to run during serialization. Supported values: mypy, zuban, default.
+     *
+     * * `mypy` - Mypy
+     * * `zuban` - Zuban
+     * * `default` - Default
+     */
+    typeChecker?: Vellum.TypeCheckerEnum | null;
 }
