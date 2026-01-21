@@ -4271,7 +4271,11 @@ Executes a deployed Workflow and streams back its results.
 <dd>
 
 ```typescript
-const response = await client.workflowDeployments.executeStream("id");
+const response = await client.workflowDeployments.executeStream("my-workflow", {
+    inputs: {
+        question: "What is the capital of France?",
+    },
+});
 for await (const item of response) {
     console.log(item);
 }
