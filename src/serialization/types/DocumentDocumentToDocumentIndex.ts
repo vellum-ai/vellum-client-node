@@ -22,6 +22,7 @@ export const DocumentDocumentToDocumentIndex: core.serialization.ObjectSchema<
         "extracted_text_file_url",
         core.serialization.string().optionalNullable(),
     ),
+    processingState: core.serialization.property("processing_state", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace DocumentDocumentToDocumentIndex {
@@ -31,5 +32,6 @@ export declare namespace DocumentDocumentToDocumentIndex {
         document_index_id?: (string | null) | null;
         indexing_state?: IndexingStateEnum.Raw | null;
         extracted_text_file_url?: (string | null) | null;
+        processing_state?: (string | null) | null;
     }
 }

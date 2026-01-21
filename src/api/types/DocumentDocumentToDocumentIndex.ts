@@ -25,4 +25,5 @@ export interface DocumentDocumentToDocumentIndex {
      */
     indexingState?: Vellum.IndexingStateEnum;
     extractedTextFileUrl?: string | null;
+    processingState?: string | null;
 }

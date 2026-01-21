@@ -578,6 +578,7 @@ export * from "./TokenOverlappingWindowChunkerConfigRequest";
 export * from "./TokenOverlappingWindowChunking";
 export * from "./TokenOverlappingWindowChunkingRequest";
 export * from "./ComponentsSchemasComposioToolDefinition";
+export * from "./TypeCheckerEnum";
 export * from "./UnitEnum";
 export * from "./UpdateActiveWorkspaceResponse";
 export * from "./UploadDocumentResponse";
