@@ -18,6 +18,7 @@ export const SlimDocumentDocumentToDocumentIndex: core.serialization.ObjectSchem
     ),
     documentIndexId: core.serialization.property("document_index_id", core.serialization.string().optionalNullable()),
     indexingState: core.serialization.property("indexing_state", IndexingStateEnum.optional()),
+    processingState: core.serialization.property("processing_state", core.serialization.string().optionalNullable()),
 });
 
 export declare namespace SlimDocumentDocumentToDocumentIndex {
@@ -26,5 +27,6 @@ export declare namespace SlimDocumentDocumentToDocumentIndex {
         environment_document_index_id: string;
         document_index_id?: (string | null) | null;
         indexing_state?: IndexingStateEnum.Raw | null;
+        processing_state?: (string | null) | null;
     }
 }

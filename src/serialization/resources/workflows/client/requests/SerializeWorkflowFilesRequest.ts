@@ -6,6 +6,7 @@ import * as serializers from "../../../../index";
 import * as Vellum from "../../../../../api/index";
 import * as core from "../../../../../core";
 import { RunnerConfigRequest } from "../../../../types/RunnerConfigRequest";
+import { TypeCheckerEnum } from "../../../../types/TypeCheckerEnum";
 
 export const SerializeWorkflowFilesRequest: core.serialization.Schema<
     serializers.SerializeWorkflowFilesRequest.Raw,
@@ -14,6 +15,7 @@ export const SerializeWorkflowFilesRequest: core.serialization.Schema<
     files: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     module: core.serialization.string().optionalNullable(),
     runnerConfig: core.serialization.property("runner_config", RunnerConfigRequest.optionalNullable()),
+    typeChecker: core.serialization.property("type_checker", TypeCheckerEnum.optionalNullable()),
 });
 
 export declare namespace SerializeWorkflowFilesRequest {
@@ -21,5 +23,6 @@ export declare namespace SerializeWorkflowFilesRequest {
         files: Record<string, unknown>;
         module?: (string | null) | null;
         runner_config?: (RunnerConfigRequest.Raw | null) | null;
+        type_checker?: (TypeCheckerEnum.Raw | null) | null;
     }
 }
