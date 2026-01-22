@@ -19,7 +19,7 @@ export const WorkflowExecutionDetail: core.serialization.ObjectSchema<
         "parent_context",
         core.serialization.lazy(() => serializers.ParentContext).optionalNullable(),
     ),
-    start: core.serialization.date(),
+    start: core.serialization.date().optionalNullable(),
     end: core.serialization.date().optionalNullable(),
     inputs: core.serialization.list(ExecutionVellumValue),
     outputs: core.serialization.list(ExecutionVellumValue),
@@ -36,7 +36,7 @@ export declare namespace WorkflowExecutionDetail {
     export interface Raw {
         span_id: string;
         parent_context?: (serializers.ParentContext.Raw | null) | null;
-        start: string;
+        start?: (string | null) | null;
         end?: (string | null) | null;
         inputs: ExecutionVellumValue.Raw[];
         outputs: ExecutionVellumValue.Raw[];

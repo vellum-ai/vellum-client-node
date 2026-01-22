@@ -7,7 +7,7 @@ import * as Vellum from "../index";
 export interface WorkflowExecutionDetail {
     spanId: string;
     parentContext?: Vellum.ParentContext | null;
-    start: Date;
+    start?: Date | null;
     end?: Date | null;
     inputs: Vellum.ExecutionVellumValue[];
     outputs: Vellum.ExecutionVellumValue[];
