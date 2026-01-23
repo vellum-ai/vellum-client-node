@@ -13,11 +13,13 @@ export const WorkflowExecutionInitiatedBody: core.serialization.ObjectSchema<
 > = core.serialization.object({
     workflowDefinition: core.serialization.property("workflow_definition", VellumCodeResourceDefinition),
     inputs: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    trigger: VellumCodeResourceDefinition.optionalNullable(),
 });
 
 export declare namespace WorkflowExecutionInitiatedBody {
     export interface Raw {
         workflow_definition: VellumCodeResourceDefinition.Raw;
         inputs: Record<string, unknown>;
+        trigger?: (VellumCodeResourceDefinition.Raw | null) | null;
     }
 }

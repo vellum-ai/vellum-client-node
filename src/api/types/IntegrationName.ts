@@ -31,6 +31,7 @@
  * * `GMAIL` - Gmail
  * * `GOOGLE_ADS` - Google Ads
  * * `GOOGLE_ANALYTICS` - Google Analytics
+ * * `GOOGLE_BIGQUERY` - Google BigQuery
  * * `GOOGLE_DOCS` - Google Docs
  * * `GOOGLE_PHOTOS` - Google Photos
  * * `GOOGLE_SEARCH_CONSOLE` - Google Search Console
@@ -133,6 +134,7 @@ export type IntegrationName =
     | "GMAIL"
     | "GOOGLE_ADS"
     | "GOOGLE_ANALYTICS"
+    | "GOOGLE_BIGQUERY"
     | "GOOGLE_DOCS"
     | "GOOGLE_PHOTOS"
     | "GOOGLE_SEARCH_CONSOLE"
@@ -234,6 +236,7 @@ export const IntegrationName = {
     Gmail: "GMAIL",
     GoogleAds: "GOOGLE_ADS",
     GoogleAnalytics: "GOOGLE_ANALYTICS",
+    GoogleBigquery: "GOOGLE_BIGQUERY",
     GoogleDocs: "GOOGLE_DOCS",
     GooglePhotos: "GOOGLE_PHOTOS",
     GoogleSearchConsole: "GOOGLE_SEARCH_CONSOLE",
