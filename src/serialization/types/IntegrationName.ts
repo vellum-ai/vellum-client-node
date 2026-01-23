@@ -36,6 +36,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "GMAIL",
         "GOOGLE_ADS",
         "GOOGLE_ANALYTICS",
+        "GOOGLE_BIGQUERY",
         "GOOGLE_DOCS",
         "GOOGLE_PHOTOS",
         "GOOGLE_SEARCH_CONSOLE",
@@ -140,6 +141,7 @@ export declare namespace IntegrationName {
         | "GMAIL"
         | "GOOGLE_ADS"
         | "GOOGLE_ANALYTICS"
+        | "GOOGLE_BIGQUERY"
         | "GOOGLE_DOCS"
         | "GOOGLE_PHOTOS"
         | "GOOGLE_SEARCH_CONSOLE"

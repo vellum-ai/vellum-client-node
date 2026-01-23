@@ -7,8 +7,8 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
 export const AuthTypeEnum: core.serialization.Schema<serializers.AuthTypeEnum.Raw, Vellum.AuthTypeEnum> =
-    core.serialization.enum_(["API_KEY", "OAUTH2"]);
+    core.serialization.enum_(["API_KEY", "GOOGLE_SERVICE_ACCOUNT", "OAUTH2"]);
 
 export declare namespace AuthTypeEnum {
-    export type Raw = "API_KEY" | "OAUTH2";
+    export type Raw = "API_KEY" | "GOOGLE_SERVICE_ACCOUNT" | "OAUTH2";
 }
