@@ -9,8 +9,6 @@ export interface ComposioExecuteToolRequest {
     provider: "COMPOSIO";
     arguments: Record<string, unknown>;
     toolkitVersion?: string | null;
-    integrationName?: string | null;
     integration?: string | null;
-    toolName?: string | null;
     tool?: string | null;
 }

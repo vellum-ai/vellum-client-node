@@ -13,9 +13,7 @@ export const ComposioExecuteToolRequest: core.serialization.ObjectSchema<
     provider: core.serialization.stringLiteral("COMPOSIO"),
     arguments: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
     toolkitVersion: core.serialization.property("toolkit_version", core.serialization.string().optionalNullable()),
-    integrationName: core.serialization.property("integration_name", core.serialization.string().optionalNullable()),
     integration: core.serialization.string().optionalNullable(),
-    toolName: core.serialization.property("tool_name", core.serialization.string().optionalNullable()),
     tool: core.serialization.string().optionalNullable(),
 });
 
@@ -24,9 +22,7 @@ export declare namespace ComposioExecuteToolRequest {
         provider: "COMPOSIO";
         arguments: Record<string, unknown>;
         toolkit_version?: (string | null) | null;
-        integration_name?: (string | null) | null;
         integration?: (string | null) | null;
-        tool_name?: (string | null) | null;
         tool?: (string | null) | null;
     }
 }
