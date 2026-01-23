@@ -4,10 +4,12 @@
 
 /**
  * * `API_KEY` - API Key
+ * * `GOOGLE_SERVICE_ACCOUNT` - Google Service Account
  * * `OAUTH2` - OAuth2
  */
-export type AuthTypeEnum = "API_KEY" | "OAUTH2";
+export type AuthTypeEnum = "API_KEY" | "GOOGLE_SERVICE_ACCOUNT" | "OAUTH2";
 export const AuthTypeEnum = {
     ApiKey: "API_KEY",
+    GoogleServiceAccount: "GOOGLE_SERVICE_ACCOUNT",
     Oauth2: "OAUTH2",
 } as const;
