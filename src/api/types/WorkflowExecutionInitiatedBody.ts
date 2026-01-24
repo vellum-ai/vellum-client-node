@@ -7,5 +7,4 @@ import * as Vellum from "../index";
 export interface WorkflowExecutionInitiatedBody {
     workflowDefinition: Vellum.VellumCodeResourceDefinition;
     inputs: Record<string, unknown>;
-    trigger?: Vellum.VellumCodeResourceDefinition | null;
 }
