@@ -117,7 +117,6 @@ export * from "./EnvironmentEnum";
 export * from "./EnvironmentRead";
 export * from "./EphemeralPromptCacheConfig";
 export * from "./EphemeralPromptCacheConfigTypeEnum";
-export * from "./ErrorDetailResponse";
 export * from "./ErrorInput";
 export * from "./ErrorVellumValue";
 export * from "./ErrorVellumValueRequest";

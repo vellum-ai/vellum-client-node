@@ -14,6 +14,9 @@ export const ChatMessage: core.serialization.ObjectSchema<serializers.ChatMessag
         role: ChatMessageRole,
         content: ChatMessageContent.optionalNullable(),
         source: core.serialization.string().optionalNullable(),
+        metadata: core.serialization
+            .record(core.serialization.string(), core.serialization.unknown())
+            .optionalNullable(),
     });
 
 export declare namespace ChatMessage {
@@ -22,5 +25,6 @@ export declare namespace ChatMessage {
         role: ChatMessageRole.Raw;
         content?: (ChatMessageContent.Raw | null) | null;
         source?: (string | null) | null;
+        metadata?: (Record<string, unknown> | null) | null;
     }
 }
