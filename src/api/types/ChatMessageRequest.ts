@@ -10,4 +10,5 @@ export interface ChatMessageRequest {
     content?: Vellum.ChatMessageContentRequest | null;
     /** An optional identifier representing who or what generated this message. */
     source?: string | null;
+    metadata?: Record<string, unknown> | null;
 }
