@@ -3,11 +3,10 @@
  */
 
 import * as errors from "../../errors/index";
-import * as Vellum from "../index";
 import * as core from "../../core";
 
 export class UnauthorizedError extends errors.VellumError {
-    constructor(body: Vellum.ErrorDetailResponse, rawResponse?: core.RawResponse) {
+    constructor(body?: unknown, rawResponse?: core.RawResponse) {
         super({
             message: "UnauthorizedError",
             statusCode: 401,

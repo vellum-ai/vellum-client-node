@@ -93,11 +93,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.6",
-                "User-Agent": "vellum-ai/1.13.6",
+                "X-Fern-SDK-Version": "1.13.7",
+                "User-Agent": "vellum-ai/1.13.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -162,9 +162,15 @@ export class Integrations {
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vellum.BadRequestError}
+     * @throws {@link Vellum.UnauthorizedError}
      * @throws {@link Vellum.ForbiddenError}
      * @throws {@link Vellum.NotFoundError}
+     * @throws {@link Vellum.GoneError}
+     * @throws {@link Vellum.ContentTooLargeError}
+     * @throws {@link Vellum.UnprocessableEntityError}
      * @throws {@link Vellum.TooManyRequestsError}
+     * @throws {@link Vellum.BadGatewayError}
+     * @throws {@link Vellum.ServiceUnavailableError}
      *
      * @example
      *     await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
@@ -209,11 +215,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.6",
-                "User-Agent": "vellum-ai/1.13.6",
+                "X-Fern-SDK-Version": "1.13.7",
+                "User-Agent": "vellum-ai/1.13.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -244,12 +250,64 @@ export class Integrations {
             switch (_response.error.statusCode) {
                 case 400:
                     throw new Vellum.BadRequestError(_response.error.body, _response.rawResponse);
+                case 401:
+                    throw new Vellum.UnauthorizedError(_response.error.body, _response.rawResponse);
                 case 403:
                     throw new Vellum.ForbiddenError(_response.error.body, _response.rawResponse);
                 case 404:
                     throw new Vellum.NotFoundError(_response.error.body, _response.rawResponse);
+                case 410:
+                    throw new Vellum.GoneError(
+                        serializers.GoneError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                case 413:
+                    throw new Vellum.ContentTooLargeError(
+                        serializers.ContentTooLargeError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                case 422:
+                    throw new Vellum.UnprocessableEntityError(
+                        serializers.UnprocessableEntityError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
                 case 429:
                     throw new Vellum.TooManyRequestsError(_response.error.body, _response.rawResponse);
+                case 502:
+                    throw new Vellum.BadGatewayError(
+                        serializers.BadGatewayError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
+                case 503:
+                    throw new Vellum.ServiceUnavailableError(
+                        serializers.ServiceUnavailableError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
+                        }),
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.VellumError({
                         statusCode: _response.error.statusCode,
@@ -338,11 +396,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.6",
-                "User-Agent": "vellum-ai/1.13.6",
+                "X-Fern-SDK-Version": "1.13.7",
+                "User-Agent": "vellum-ai/1.13.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -426,11 +484,11 @@ export class Integrations {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.6",
-                "User-Agent": "vellum-ai/1.13.6",
+                "X-Fern-SDK-Version": "1.13.7",
+                "User-Agent": "vellum-ai/1.13.7",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
