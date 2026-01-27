@@ -5,22 +5,20 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { VellumSdkErrorRawData } from "./VellumSdkErrorRawData";
 import { VellumSdkErrorCodeEnum } from "./VellumSdkErrorCodeEnum";
 
 export const VellumSdkError: core.serialization.ObjectSchema<serializers.VellumSdkError.Raw, Vellum.VellumSdkError> =
     core.serialization.object({
         message: core.serialization.string(),
+        rawData: core.serialization.property("raw_data", VellumSdkErrorRawData.optionalNullable()),
         code: VellumSdkErrorCodeEnum,
-        rawData: core.serialization.property(
-            "raw_data",
-            core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
-        ),
     });
 
 export declare namespace VellumSdkError {
     export interface Raw {
         message: string;
+        raw_data?: (VellumSdkErrorRawData.Raw | null) | null;
         code: VellumSdkErrorCodeEnum.Raw;
-        raw_data?: (Record<string, unknown> | null) | null;
     }
 }

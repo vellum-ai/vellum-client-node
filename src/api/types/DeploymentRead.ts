@@ -19,6 +19,7 @@ export interface DeploymentRead {
      *
      * * `ACTIVE` - Active
      * * `ARCHIVED` - Archived
+     * * `PENDING_DELETION` - Pending Deletion
      */
     status?: Vellum.EntityStatus;
     /** Deprecated. The value returned will always be 'PRODUCTION'. */

@@ -18,6 +18,7 @@ export interface DocumentIndexUpdateRequest {
      *
      * * `ACTIVE` - Active
      * * `ARCHIVED` - Archived
+     * * `PENDING_DELETION` - Pending Deletion
      */
     status?: Vellum.EntityStatus;
 }

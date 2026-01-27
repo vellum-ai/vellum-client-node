@@ -16,6 +16,7 @@ export interface FolderEntitiesListRequest {
      *
      * * `ACTIVE` - Active
      * * `ARCHIVED` - Archived
+     * * `PENDING_DELETION` - Pending Deletion
      */
     entityStatus?: Vellum.FolderEntitiesListRequestEntityStatus | null;
     /**

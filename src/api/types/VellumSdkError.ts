@@ -6,6 +6,6 @@ import * as Vellum from "../index";
 
 export interface VellumSdkError {
     message: string;
+    rawData?: Vellum.VellumSdkErrorRawData | null;
     code: Vellum.VellumSdkErrorCodeEnum;
-    rawData?: Record<string, unknown> | null;
 }

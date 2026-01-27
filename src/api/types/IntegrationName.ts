@@ -86,6 +86,7 @@
  * * `SUPABASE` - Supabase
  * * `TAVILY` - Tavily
  * * `TELEGRAM` - Telegram
+ * * `TIKTOK` - TikTok
  * * `TODOIST` - Todoist
  * * `WEBFLOW` - Webflow
  * * `YOUSEARCH` - You Search
@@ -189,6 +190,7 @@ export type IntegrationName =
     | "SUPABASE"
     | "TAVILY"
     | "TELEGRAM"
+    | "TIKTOK"
     | "TODOIST"
     | "WEBFLOW"
     | "YOUSEARCH"
@@ -291,6 +293,7 @@ export const IntegrationName = {
     Supabase: "SUPABASE",
     Tavily: "TAVILY",
     Telegram: "TELEGRAM",
+    Tiktok: "TIKTOK",
     Todoist: "TODOIST",
     Webflow: "WEBFLOW",
     Yousearch: "YOUSEARCH",
