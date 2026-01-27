@@ -91,6 +91,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "SUPABASE",
         "TAVILY",
         "TELEGRAM",
+        "TIKTOK",
         "TODOIST",
         "WEBFLOW",
         "YOUSEARCH",
@@ -196,6 +197,7 @@ export declare namespace IntegrationName {
         | "SUPABASE"
         | "TAVILY"
         | "TELEGRAM"
+        | "TIKTOK"
         | "TODOIST"
         | "WEBFLOW"
         | "YOUSEARCH"

@@ -9,8 +9,8 @@ import * as core from "../../../../core";
 export const FolderEntitiesListRequestEntityStatus: core.serialization.Schema<
     serializers.FolderEntitiesListRequestEntityStatus.Raw,
     Vellum.FolderEntitiesListRequestEntityStatus
-> = core.serialization.enum_(["ACTIVE", "ARCHIVED"]);
+> = core.serialization.enum_(["ACTIVE", "ARCHIVED", "PENDING_DELETION"]);
 
 export declare namespace FolderEntitiesListRequestEntityStatus {
-    export type Raw = "ACTIVE" | "ARCHIVED";
+    export type Raw = "ACTIVE" | "ARCHIVED" | "PENDING_DELETION";
 }
