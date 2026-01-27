@@ -5,9 +5,11 @@
 /**
  * * `ACTIVE` - Active
  * * `ARCHIVED` - Archived
+ * * `PENDING_DELETION` - Pending Deletion
  */
-export type EntityStatus = "ACTIVE" | "ARCHIVED";
+export type EntityStatus = "ACTIVE" | "ARCHIVED" | "PENDING_DELETION";
 export const EntityStatus = {
     Active: "ACTIVE",
     Archived: "ARCHIVED",
+    PendingDeletion: "PENDING_DELETION",
 } as const;

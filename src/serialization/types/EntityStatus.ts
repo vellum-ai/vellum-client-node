@@ -7,8 +7,8 @@ import * as Vellum from "../../api/index";
 import * as core from "../../core";
 
 export const EntityStatus: core.serialization.Schema<serializers.EntityStatus.Raw, Vellum.EntityStatus> =
-    core.serialization.enum_(["ACTIVE", "ARCHIVED"]);
+    core.serialization.enum_(["ACTIVE", "ARCHIVED", "PENDING_DELETION"]);
 
 export declare namespace EntityStatus {
-    export type Raw = "ACTIVE" | "ARCHIVED";
+    export type Raw = "ACTIVE" | "ARCHIVED" | "PENDING_DELETION";
 }

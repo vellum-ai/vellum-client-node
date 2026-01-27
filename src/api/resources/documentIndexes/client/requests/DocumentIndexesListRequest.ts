@@ -30,6 +30,7 @@ export interface DocumentIndexesListRequest {
      *
      * * `ACTIVE` - Active
      * * `ARCHIVED` - Archived
+     * * `PENDING_DELETION` - Pending Deletion
      */
     status?: Vellum.DocumentIndexesListRequestStatus | null;
 }

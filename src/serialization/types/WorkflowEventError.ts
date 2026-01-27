@@ -5,6 +5,7 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { WorkflowEventErrorRawData } from "./WorkflowEventErrorRawData";
 import { WorkflowExecutionEventErrorCode } from "./WorkflowExecutionEventErrorCode";
 
 export const WorkflowEventError: core.serialization.ObjectSchema<
@@ -12,19 +13,16 @@ export const WorkflowEventError: core.serialization.ObjectSchema<
     Vellum.WorkflowEventError
 > = core.serialization.object({
     message: core.serialization.string(),
+    rawData: core.serialization.property("raw_data", WorkflowEventErrorRawData.optionalNullable()),
     code: WorkflowExecutionEventErrorCode,
-    rawData: core.serialization.property(
-        "raw_data",
-        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
-    ),
     stacktrace: core.serialization.string().optionalNullable(),
 });
 
 export declare namespace WorkflowEventError {
     export interface Raw {
         message: string;
+        raw_data?: (WorkflowEventErrorRawData.Raw | null) | null;
         code: WorkflowExecutionEventErrorCode.Raw;
-        raw_data?: (Record<string, unknown> | null) | null;
         stacktrace?: (string | null) | null;
     }
 }
