@@ -10,6 +10,14 @@ import * as Vellum from "../../../../index";
  */
 export interface WorkflowDeploymentsListRequest {
     /**
+     * has_story_config
+     */
+    hasStoryConfig?: string | null;
+    /**
+     * is_public
+     */
+    isPublic?: string | null;
+    /**
      * Number of results to return per page.
      */
     limit?: number | null;
@@ -21,6 +29,10 @@ export interface WorkflowDeploymentsListRequest {
      * Which field to use when ordering the results.
      */
     ordering?: string | null;
+    /**
+     * owned_by
+     */
+    ownedBy?: string | null;
     /**
      * status
      */
