@@ -16,6 +16,10 @@ export const FulfilledAdHocExecutePromptEvent: core.serialization.ObjectSchema<
     outputs: core.serialization.list(PromptOutput),
     executionId: core.serialization.property("execution_id", core.serialization.string()),
     meta: AdHocFulfilledPromptExecutionMeta.optional(),
+    chatMessageMetadata: core.serialization.property(
+        "chat_message_metadata",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    ),
 });
 
 export declare namespace FulfilledAdHocExecutePromptEvent {
@@ -24,5 +28,6 @@ export declare namespace FulfilledAdHocExecutePromptEvent {
         outputs: PromptOutput.Raw[];
         execution_id: string;
         meta?: AdHocFulfilledPromptExecutionMeta.Raw | null;
+        chat_message_metadata?: (Record<string, unknown> | null) | null;
     }
 }
