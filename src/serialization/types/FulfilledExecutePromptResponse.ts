@@ -17,6 +17,10 @@ export const FulfilledExecutePromptResponse: core.serialization.ObjectSchema<
     executionId: core.serialization.property("execution_id", core.serialization.string()),
     state: core.serialization.stringLiteral("FULFILLED"),
     outputs: core.serialization.list(PromptOutput),
+    chatMessageMetadata: core.serialization.property(
+        "chat_message_metadata",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
+    ),
 });
 
 export declare namespace FulfilledExecutePromptResponse {
@@ -26,5 +30,6 @@ export declare namespace FulfilledExecutePromptResponse {
         execution_id: string;
         state: "FULFILLED";
         outputs: PromptOutput.Raw[];
+        chat_message_metadata?: (Record<string, unknown> | null) | null;
     }
 }
