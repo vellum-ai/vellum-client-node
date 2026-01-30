@@ -164,10 +164,12 @@ await client.integrations.retrieveIntegrationToolDefinition("integration_name", 
 
 ```typescript
 await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
-    provider: "COMPOSIO",
-    arguments: {
+    body: {
+        provider: "COMPOSIO",
         arguments: {
-            key: "value",
+            arguments: {
+                key: "value",
+            },
         },
     },
 });
@@ -210,7 +212,7 @@ await client.integrations.executeIntegrationTool("integration_name", "integratio
 <dl>
 <dd>
 
-**request:** `Vellum.ComponentsSchemasComposioExecuteToolRequest`
+**request:** `Vellum.ExecuteIntegrationToolRequest`
 
 </dd>
 </dl>

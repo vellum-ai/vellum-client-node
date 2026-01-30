@@ -27,6 +27,7 @@
  * * `GITHUB` - Github
  * * `GOOGLE_SHEETS` - Google Sheets
  * * `GOOGLE_CALENDAR` - Google Calendar
+ * * `GOOGLE_CLASSROOM` - Google Classroom
  * * `GOOGLE_DRIVE` - Google Drive
  * * `GMAIL` - Gmail
  * * `GOOGLE_ADS` - Google Ads
@@ -61,6 +62,7 @@
  * * `FIGMA` - Figma
  * * `FIREFLIES` - Fireflies
  * * `GOOGLE_MAPS` - Google Maps
+ * * `GOOGLEMEET` - Google Meet
  * * `HEYGEN` - HeyGen
  * * `JIRA` - Jira
  * * `JUNGLESCOUT` - Jungle Scout
@@ -71,6 +73,7 @@
  * * `PERPLEXITY` - Perplexity
  * * `POSTHOG` - PostHog
  * * `PRODUCTBOARD` - Productboard
+ * * `QUICKBOOKS` - QuickBooks
  * * `REDDIT` - Reddit
  * * `SALESFORCE` - Salesforce
  * * `SEMRUSH` - Semrush
@@ -100,11 +103,13 @@
  * * `DISCORD` - Discord
  * * `DOCUSIGN` - DocuSign
  * * `TRELLO` - Trello
+ * * `TWITTER` - Twitter
  * * `HEYREACH` - HeyReach
  * * `ACTIVE_CAMPAIGN` - Active Campaign
  * * `CUSTOMER_IO` - Customer.io
  * * `SEGMENT` - Segment
  * * `WHATSAPP` - WhatsApp
+ * * `YOUTUBE` - YouTube
  */
 export type IntegrationName =
     | "SLACK"
@@ -131,6 +136,7 @@ export type IntegrationName =
     | "GITHUB"
     | "GOOGLE_SHEETS"
     | "GOOGLE_CALENDAR"
+    | "GOOGLE_CLASSROOM"
     | "GOOGLE_DRIVE"
     | "GMAIL"
     | "GOOGLE_ADS"
@@ -165,6 +171,7 @@ export type IntegrationName =
     | "FIGMA"
     | "FIREFLIES"
     | "GOOGLE_MAPS"
+    | "GOOGLEMEET"
     | "HEYGEN"
     | "JIRA"
     | "JUNGLESCOUT"
@@ -175,6 +182,7 @@ export type IntegrationName =
     | "PERPLEXITY"
     | "POSTHOG"
     | "PRODUCTBOARD"
+    | "QUICKBOOKS"
     | "REDDIT"
     | "SALESFORCE"
     | "SEMRUSH"
@@ -204,11 +212,13 @@ export type IntegrationName =
     | "DISCORD"
     | "DOCUSIGN"
     | "TRELLO"
+    | "TWITTER"
     | "HEYREACH"
     | "ACTIVE_CAMPAIGN"
     | "CUSTOMER_IO"
     | "SEGMENT"
-    | "WHATSAPP";
+    | "WHATSAPP"
+    | "YOUTUBE";
 export const IntegrationName = {
     Slack: "SLACK",
     Notion: "NOTION",
@@ -234,6 +244,7 @@ export const IntegrationName = {
     Github: "GITHUB",
     GoogleSheets: "GOOGLE_SHEETS",
     GoogleCalendar: "GOOGLE_CALENDAR",
+    GoogleClassroom: "GOOGLE_CLASSROOM",
     GoogleDrive: "GOOGLE_DRIVE",
     Gmail: "GMAIL",
     GoogleAds: "GOOGLE_ADS",
@@ -268,6 +279,7 @@ export const IntegrationName = {
     Figma: "FIGMA",
     Fireflies: "FIREFLIES",
     GoogleMaps: "GOOGLE_MAPS",
+    Googlemeet: "GOOGLEMEET",
     Heygen: "HEYGEN",
     Jira: "JIRA",
     Junglescout: "JUNGLESCOUT",
@@ -278,6 +290,7 @@ export const IntegrationName = {
     Perplexity: "PERPLEXITY",
     Posthog: "POSTHOG",
     Productboard: "PRODUCTBOARD",
+    Quickbooks: "QUICKBOOKS",
     Reddit: "REDDIT",
     Salesforce: "SALESFORCE",
     Semrush: "SEMRUSH",
@@ -307,9 +320,11 @@ export const IntegrationName = {
     Discord: "DISCORD",
     Docusign: "DOCUSIGN",
     Trello: "TRELLO",
+    Twitter: "TWITTER",
     Heyreach: "HEYREACH",
     ActiveCampaign: "ACTIVE_CAMPAIGN",
     CustomerIo: "CUSTOMER_IO",
     Segment: "SEGMENT",
     Whatsapp: "WHATSAPP",
+    Youtube: "YOUTUBE",
 } as const;

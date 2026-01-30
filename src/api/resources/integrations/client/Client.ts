@@ -96,8 +96,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.8",
-                "User-Agent": "vellum-ai/1.13.8",
+                "X-Fern-SDK-Version": "1.14.0",
+                "User-Agent": "vellum-ai/1.14.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -158,7 +158,7 @@ export class Integrations {
      * @param {string} integrationName - The integration name
      * @param {string} integrationProvider - The integration provider name
      * @param {string} toolName - The tool's unique name, as specified by the integration provider
-     * @param {Vellum.ComponentsSchemasComposioExecuteToolRequest} request
+     * @param {Vellum.ExecuteIntegrationToolRequest} request
      * @param {Integrations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Vellum.BadRequestError}
@@ -174,10 +174,12 @@ export class Integrations {
      *
      * @example
      *     await client.integrations.executeIntegrationTool("integration_name", "integration_provider", "tool_name", {
-     *         provider: "COMPOSIO",
-     *         arguments: {
-     *             "arguments": {
-     *                 "key": "value"
+     *         body: {
+     *             provider: "COMPOSIO",
+     *             arguments: {
+     *                 "arguments": {
+     *                     "key": "value"
+     *                 }
      *             }
      *         }
      *     })
@@ -186,7 +188,7 @@ export class Integrations {
         integrationName: string,
         integrationProvider: string,
         toolName: string,
-        request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
+        request: Vellum.ExecuteIntegrationToolRequest,
         requestOptions?: Integrations.RequestOptions,
     ): core.HttpResponsePromise<Vellum.ComponentsSchemasComposioExecuteToolResponse> {
         return core.HttpResponsePromise.fromPromise(
@@ -198,9 +200,19 @@ export class Integrations {
         integrationName: string,
         integrationProvider: string,
         toolName: string,
-        request: Vellum.ComponentsSchemasComposioExecuteToolRequest,
+        request: Vellum.ExecuteIntegrationToolRequest,
         requestOptions?: Integrations.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.ComponentsSchemasComposioExecuteToolResponse>> {
+        const { expand, body: _body } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (expand != null) {
+            if (Array.isArray(expand)) {
+                _queryParams["expand"] = expand.map((item) => item);
+            } else {
+                _queryParams["expand"] = expand;
+            }
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -218,16 +230,17 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.8",
-                "User-Agent": "vellum-ai/1.13.8",
+                "X-Fern-SDK-Version": "1.14.0",
+                "User-Agent": "vellum-ai/1.14.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
                 ...requestOptions?.headers,
             },
             contentType: "application/json",
+            queryParameters: _queryParams,
             requestType: "json",
-            body: serializers.ComponentsSchemasComposioExecuteToolRequest.jsonOrThrow(request, {
+            body: serializers.ComponentsSchemasComposioExecuteToolRequest.jsonOrThrow(_body, {
                 unrecognizedObjectKeys: "strip",
             }),
             timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : undefined,
@@ -399,8 +412,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.8",
-                "User-Agent": "vellum-ai/1.13.8",
+                "X-Fern-SDK-Version": "1.14.0",
+                "User-Agent": "vellum-ai/1.14.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
@@ -487,8 +500,8 @@ export class Integrations {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.13.8",
-                "User-Agent": "vellum-ai/1.13.8",
+                "X-Fern-SDK-Version": "1.14.0",
+                "User-Agent": "vellum-ai/1.14.0",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

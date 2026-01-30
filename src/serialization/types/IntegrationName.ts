@@ -32,6 +32,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "GITHUB",
         "GOOGLE_SHEETS",
         "GOOGLE_CALENDAR",
+        "GOOGLE_CLASSROOM",
         "GOOGLE_DRIVE",
         "GMAIL",
         "GOOGLE_ADS",
@@ -66,6 +67,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "FIGMA",
         "FIREFLIES",
         "GOOGLE_MAPS",
+        "GOOGLEMEET",
         "HEYGEN",
         "JIRA",
         "JUNGLESCOUT",
@@ -76,6 +78,7 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "PERPLEXITY",
         "POSTHOG",
         "PRODUCTBOARD",
+        "QUICKBOOKS",
         "REDDIT",
         "SALESFORCE",
         "SEMRUSH",
@@ -105,11 +108,13 @@ export const IntegrationName: core.serialization.Schema<serializers.IntegrationN
         "DISCORD",
         "DOCUSIGN",
         "TRELLO",
+        "TWITTER",
         "HEYREACH",
         "ACTIVE_CAMPAIGN",
         "CUSTOMER_IO",
         "SEGMENT",
         "WHATSAPP",
+        "YOUTUBE",
     ]);
 
 export declare namespace IntegrationName {
@@ -138,6 +143,7 @@ export declare namespace IntegrationName {
         | "GITHUB"
         | "GOOGLE_SHEETS"
         | "GOOGLE_CALENDAR"
+        | "GOOGLE_CLASSROOM"
         | "GOOGLE_DRIVE"
         | "GMAIL"
         | "GOOGLE_ADS"
@@ -172,6 +178,7 @@ export declare namespace IntegrationName {
         | "FIGMA"
         | "FIREFLIES"
         | "GOOGLE_MAPS"
+        | "GOOGLEMEET"
         | "HEYGEN"
         | "JIRA"
         | "JUNGLESCOUT"
@@ -182,6 +189,7 @@ export declare namespace IntegrationName {
         | "PERPLEXITY"
         | "POSTHOG"
         | "PRODUCTBOARD"
+        | "QUICKBOOKS"
         | "REDDIT"
         | "SALESFORCE"
         | "SEMRUSH"
@@ -211,9 +219,11 @@ export declare namespace IntegrationName {
         | "DISCORD"
         | "DOCUSIGN"
         | "TRELLO"
+        | "TWITTER"
         | "HEYREACH"
         | "ACTIVE_CAMPAIGN"
         | "CUSTOMER_IO"
         | "SEGMENT"
-        | "WHATSAPP";
+        | "WHATSAPP"
+        | "YOUTUBE";
 }
