@@ -6,6 +6,7 @@ import * as Vellum from "../index";
 
 export interface PromptDeploymentReleasePromptVersion {
     id: string;
+    mlModelToWorkspaceId: string;
     /** Configuration used to build this prompt version. */
     buildConfig: Vellum.ComponentsSchemasPromptVersionBuildConfigSandbox;
 }

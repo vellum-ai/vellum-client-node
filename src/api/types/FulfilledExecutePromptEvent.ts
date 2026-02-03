@@ -12,4 +12,5 @@ export interface FulfilledExecutePromptEvent {
     outputs: Vellum.PromptOutput[];
     executionId: string;
     meta?: Vellum.FulfilledPromptExecutionMeta;
+    chatMessageMetadata?: Record<string, unknown> | null;
 }

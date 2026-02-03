@@ -5,11 +5,13 @@
 import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
+import { MlModelHostingInterface } from "./MlModelHostingInterface";
 
 export const MlModelRead: core.serialization.ObjectSchema<serializers.MlModelRead.Raw, Vellum.MlModelRead> =
     core.serialization.object({
         id: core.serialization.string(),
         name: core.serialization.string(),
+        hostedBy: core.serialization.property("hosted_by", MlModelHostingInterface),
         introducedOn: core.serialization.property("introduced_on", core.serialization.date()),
     });
 
@@ -17,6 +19,7 @@ export declare namespace MlModelRead {
     export interface Raw {
         id: string;
         name: string;
+        hosted_by: MlModelHostingInterface.Raw;
         introduced_on: string;
     }
 }
