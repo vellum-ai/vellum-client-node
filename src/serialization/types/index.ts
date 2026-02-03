@@ -234,6 +234,7 @@ export * from "./JsonVellumValue";
 export * from "./JsonVellumValueRequest";
 export * from "./LogicalOperator";
 export * from "./LogprobsEnum";
+export * from "./MlModelHostingInterface";
 export * from "./MlModelRead";
 export * from "./MlModelUsage";
 export * from "./MlModelUsageWrapper";
