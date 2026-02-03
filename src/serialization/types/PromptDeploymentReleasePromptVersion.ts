@@ -12,12 +12,14 @@ export const PromptDeploymentReleasePromptVersion: core.serialization.ObjectSche
     Vellum.PromptDeploymentReleasePromptVersion
 > = core.serialization.object({
     id: core.serialization.string(),
+    mlModelToWorkspaceId: core.serialization.property("ml_model_to_workspace_id", core.serialization.string()),
     buildConfig: core.serialization.property("build_config", ComponentsSchemasPromptVersionBuildConfigSandbox),
 });
 
 export declare namespace PromptDeploymentReleasePromptVersion {
     export interface Raw {
         id: string;
+        ml_model_to_workspace_id: string;
         build_config: ComponentsSchemasPromptVersionBuildConfigSandbox.Raw;
     }
 }

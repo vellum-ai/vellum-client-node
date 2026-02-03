@@ -24,6 +24,7 @@
  * * `MONDAY` - Monday
  * * `NEON` - Neon
  * * `OUTLOOK` - Outlook
+ * * `MICROSOFT_TEAMS` - Microsoft Teams
  * * `GITHUB` - Github
  * * `GOOGLE_SHEETS` - Google Sheets
  * * `GOOGLE_CALENDAR` - Google Calendar
@@ -133,6 +134,7 @@ export type IntegrationName =
     | "MONDAY"
     | "NEON"
     | "OUTLOOK"
+    | "MICROSOFT_TEAMS"
     | "GITHUB"
     | "GOOGLE_SHEETS"
     | "GOOGLE_CALENDAR"
@@ -241,6 +243,7 @@ export const IntegrationName = {
     Monday: "MONDAY",
     Neon: "NEON",
     Outlook: "OUTLOOK",
+    MicrosoftTeams: "MICROSOFT_TEAMS",
     Github: "GITHUB",
     GoogleSheets: "GOOGLE_SHEETS",
     GoogleCalendar: "GOOGLE_CALENDAR",
