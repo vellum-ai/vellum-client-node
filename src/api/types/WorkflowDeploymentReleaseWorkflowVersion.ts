@@ -8,4 +8,5 @@ export interface WorkflowDeploymentReleaseWorkflowVersion {
     id: string;
     inputVariables: Vellum.VellumVariable[];
     outputVariables: Vellum.VellumVariable[];
+    dependencies: Vellum.WorkflowDependency[];
 }
