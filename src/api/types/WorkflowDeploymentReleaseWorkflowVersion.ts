@@ -4,8 +4,12 @@
 
 import * as Vellum from "../index";
 
+/**
+ * The workflow version associated with a workflow deployment release.
+ */
 export interface WorkflowDeploymentReleaseWorkflowVersion {
     id: string;
     inputVariables: Vellum.VellumVariable[];
     outputVariables: Vellum.VellumVariable[];
+    dependencies?: Vellum.WorkflowDependency[] | null;
 }

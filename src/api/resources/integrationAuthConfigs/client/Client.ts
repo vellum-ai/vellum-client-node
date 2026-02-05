@@ -56,7 +56,8 @@ export class IntegrationAuthConfigs {
         request: Vellum.ListIntegrationAuthConfigsRequest = {},
         requestOptions?: IntegrationAuthConfigs.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.PaginatedSlimIntegrationAuthConfigReadList>> {
-        const { expand, integrationName, integrationProvider, limit, offset, ordering, search } = request;
+        const { expand, integrationName, integrationNames, integrationProvider, limit, offset, ordering, search } =
+            request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (expand != null) {
             if (Array.isArray(expand)) {
@@ -68,6 +69,14 @@ export class IntegrationAuthConfigs {
 
         if (integrationName !== undefined) {
             _queryParams["integration_name"] = integrationName;
+        }
+
+        if (integrationNames != null) {
+            if (Array.isArray(integrationNames)) {
+                _queryParams["integration_names"] = integrationNames.map((item) => item);
+            } else {
+                _queryParams["integration_names"] = integrationNames;
+            }
         }
 
         if (integrationProvider !== undefined) {
@@ -107,8 +116,8 @@ export class IntegrationAuthConfigs {
                         : "2025-07-30",
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.14.2",
-                "User-Agent": "vellum-ai/1.14.2",
+                "X-Fern-SDK-Version": "1.14.3",
+                "User-Agent": "vellum-ai/1.14.3",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),
