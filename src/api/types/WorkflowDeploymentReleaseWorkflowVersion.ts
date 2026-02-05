@@ -4,8 +4,19 @@
 
 import * as Vellum from "../index";
 
+/**
+ * Mixin for serializers using VellumSerializerMethodField to enable custom OpenAPI required behavior.
+ *
+ * This mixin must be used with any serializer that contains VellumSerializerMethodField fields
+ * for the custom required behavior to work correctly.
+ *
+ * Usage:
+ *     class MySerializer(VellumSerializerMethodFieldMixin, serializers.Serializer):
+ *         computed = VellumSerializerMethodField(required=True)
+ */
 export interface WorkflowDeploymentReleaseWorkflowVersion {
     id: string;
     inputVariables: Vellum.VellumVariable[];
     outputVariables: Vellum.VellumVariable[];
+    dependencies?: Vellum.WorkflowDependency[] | null;
 }

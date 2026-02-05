@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { VellumVariable } from "./VellumVariable";
+import { WorkflowDependency } from "./WorkflowDependency";
 
 export const WorkflowDeploymentReleaseWorkflowVersion: core.serialization.ObjectSchema<
     serializers.WorkflowDeploymentReleaseWorkflowVersion.Raw,
@@ -14,6 +15,7 @@ export const WorkflowDeploymentReleaseWorkflowVersion: core.serialization.Object
     id: core.serialization.string(),
     inputVariables: core.serialization.property("input_variables", core.serialization.list(VellumVariable)),
     outputVariables: core.serialization.property("output_variables", core.serialization.list(VellumVariable)),
+    dependencies: core.serialization.list(WorkflowDependency).optionalNullable(),
 });
 
 export declare namespace WorkflowDeploymentReleaseWorkflowVersion {
@@ -21,5 +23,6 @@ export declare namespace WorkflowDeploymentReleaseWorkflowVersion {
         id: string;
         input_variables: VellumVariable.Raw[];
         output_variables: VellumVariable.Raw[];
+        dependencies?: (WorkflowDependency.Raw[] | null) | null;
     }
 }
