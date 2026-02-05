@@ -14,6 +14,10 @@ export interface ListIntegrationAuthConfigsRequest {
      */
     expand?: string | string[];
     integrationName?: string | null;
+    /**
+     * Multiple values may be separated by commas.
+     */
+    integrationNames?: string | string[];
     integrationProvider?: string | null;
     /**
      * Number of results to return per page.
