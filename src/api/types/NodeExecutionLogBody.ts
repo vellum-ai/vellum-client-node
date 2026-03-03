@@ -6,7 +6,7 @@ import * as Vellum from "../index";
 
 export interface NodeExecutionLogBody {
     nodeDefinition: Vellum.VellumCodeResourceDefinition;
+    message: string;
     attributes?: Record<string, unknown> | null;
     severity: Vellum.SeverityEnum;
-    message: string;
 }
