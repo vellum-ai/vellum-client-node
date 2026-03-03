@@ -13,16 +13,16 @@ export const NodeExecutionLogBody: core.serialization.ObjectSchema<
     Vellum.NodeExecutionLogBody
 > = core.serialization.object({
     nodeDefinition: core.serialization.property("node_definition", VellumCodeResourceDefinition),
+    message: core.serialization.string(),
     attributes: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optionalNullable(),
     severity: SeverityEnum,
-    message: core.serialization.string(),
 });
 
 export declare namespace NodeExecutionLogBody {
     export interface Raw {
         node_definition: VellumCodeResourceDefinition.Raw;
+        message: string;
         attributes?: (Record<string, unknown> | null) | null;
         severity: SeverityEnum.Raw;
-        message: string;
     }
 }
