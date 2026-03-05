@@ -42,5 +42,8 @@
         "os": false,
         "path": false
     },
-    "packageManager": "yarn@1.22.22"
+    "packageManager": "yarn@1.22.22",
+    "resolutions": {
+        "strip-ansi": "^6.0.1"
+    }
 }
