@@ -22,8 +22,5 @@ export const DocumentIndexChunking: core.serialization.Schema<
 
 export declare namespace DocumentIndexChunking {
     export type Raw =
-        | ReductoChunking.Raw
-        | SentenceChunking.Raw
-        | TokenOverlappingWindowChunking.Raw
-        | DelimiterChunking.Raw;
+        ReductoChunking.Raw | SentenceChunking.Raw | TokenOverlappingWindowChunking.Raw | DelimiterChunking.Raw;
 }

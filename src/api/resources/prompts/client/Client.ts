@@ -39,7 +39,7 @@ export class Prompts {
     /**
      * Used to pull the definition of a Prompt from Vellum.
      *
-     * @param {string} id - The ID of the Prompt to pull from. Prompt Sandbox IDs are currently supported.
+     * @param {string} id - The ID of the Prompt to pull from. Prompt Deployment IDs or names, Prompt Sandbox IDs, and Prompt Version IDs are currently supported.
      * @param {Vellum.PromptsPullRequest} request
      * @param {Prompts.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -62,10 +62,14 @@ export class Prompts {
         request: Vellum.PromptsPullRequest = {},
         requestOptions?: Prompts.RequestOptions,
     ): Promise<core.WithRawResponse<Vellum.PromptExecConfig>> {
-        const { promptVariantId } = request;
+        const { promptVariantId, releaseTag } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (promptVariantId !== undefined) {
             _queryParams["prompt_variant_id"] = promptVariantId;
+        }
+
+        if (releaseTag !== undefined) {
+            _queryParams["release_tag"] = releaseTag;
         }
 
         const _response = await core.fetcher({
@@ -82,11 +86,11 @@ export class Prompts {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.14.7",
-                "User-Agent": "vellum-ai/1.14.7",
+                "X-Fern-SDK-Version": "1.14.8",
+                "User-Agent": "vellum-ai/1.14.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 Accept: "application/json",
@@ -202,11 +206,11 @@ export class Prompts {
                         ? serializers.ApiVersionEnum.jsonOrThrow(await core.Supplier.get(this._options.apiVersion), {
                               unrecognizedObjectKeys: "strip",
                           })
-                        : "2025-07-30",
+                        : undefined,
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "vellum-ai",
-                "X-Fern-SDK-Version": "1.14.7",
-                "User-Agent": "vellum-ai/1.14.7",
+                "X-Fern-SDK-Version": "1.14.8",
+                "User-Agent": "vellum-ai/1.14.8",
                 "X-Fern-Runtime": core.RUNTIME.type,
                 "X-Fern-Runtime-Version": core.RUNTIME.version,
                 ...(await this._getCustomAuthorizationHeaders()),

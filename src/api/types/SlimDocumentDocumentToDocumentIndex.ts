@@ -25,4 +25,12 @@ export interface SlimDocumentDocumentToDocumentIndex {
      */
     indexingState?: Vellum.IndexingStateEnum;
     processingState?: string | null;
+    /**
+     * An enum value representing why the document could not be processed for this index. Is null unless processing_state is FAILED.
+     *
+     * * `EXCEEDED_CHARACTER_LIMIT` - Exceeded Character Limit
+     * * `INVALID_FILE` - Invalid File
+     * * `INVALID_CREDENTIALS` - Invalid Credentials
+     */
+    processingFailureReason?: Vellum.ProcessingFailureReasonEnum | null;
 }

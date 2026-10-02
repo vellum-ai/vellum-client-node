@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { IndexingStateEnum } from "./IndexingStateEnum";
+import { ProcessingFailureReasonEnum } from "./ProcessingFailureReasonEnum";
 
 export const DocumentDocumentToDocumentIndex: core.serialization.ObjectSchema<
     serializers.DocumentDocumentToDocumentIndex.Raw,
@@ -23,6 +24,10 @@ export const DocumentDocumentToDocumentIndex: core.serialization.ObjectSchema<
         core.serialization.string().optionalNullable(),
     ),
     processingState: core.serialization.property("processing_state", core.serialization.string().optionalNullable()),
+    processingFailureReason: core.serialization.property(
+        "processing_failure_reason",
+        ProcessingFailureReasonEnum.optionalNullable(),
+    ),
 });
 
 export declare namespace DocumentDocumentToDocumentIndex {
@@ -33,5 +38,6 @@ export declare namespace DocumentDocumentToDocumentIndex {
         indexing_state?: IndexingStateEnum.Raw | null;
         extracted_text_file_url?: (string | null) | null;
         processing_state?: (string | null) | null;
+        processing_failure_reason?: (ProcessingFailureReasonEnum.Raw | null) | null;
     }
 }

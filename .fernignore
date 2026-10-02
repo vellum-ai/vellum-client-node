@@ -5,3 +5,6 @@ README.md
 LICENSE
 src/core/fetcher/getFetchFn.ts
 tests/unit/fetcher/stream-wrappers/webpack.test.ts
+.fern/replay.lock
+.fern/replay.yml
+.gitattributes
