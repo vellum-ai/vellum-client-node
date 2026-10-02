@@ -244,7 +244,6 @@ await client.integrations.executeIntegrationTool("integration_name", "integratio
 <dd>
 
 List all integrations
-
 </dd>
 </dl>
 </dd>
@@ -307,7 +306,6 @@ await client.integrations.list();
 <dd>
 
 Retrieve an integration
-
 </dd>
 </dl>
 </dd>
@@ -372,7 +370,6 @@ await client.integrations.retrieve("id");
 <dd>
 
 Accept an event or list of events and publish them to ClickHouse for analytics processing.
-
 </dd>
 </dl>
 </dd>
@@ -651,7 +648,6 @@ for await (const item of response) {
 <dd>
 
 Retrieve a list of container images for the organization.
-
 </dd>
 </dl>
 </dd>
@@ -714,7 +710,6 @@ await client.containerImages.list();
 <dd>
 
 Create a new Container Image.
-
 </dd>
 </dl>
 </dd>
@@ -790,7 +785,6 @@ await client.containerImages.createContainerImage({
 <dd>
 
 Retrieve a Container Image by its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -853,7 +847,6 @@ await client.containerImages.retrieve("id");
 <dd>
 
 Update an existing Container Image.
-
 </dd>
 </dl>
 </dd>
@@ -1030,7 +1023,6 @@ await client.containerImages.pushContainerImage({
 <dd>
 
 Used to list all Prompt Deployments.
-
 </dd>
 </dl>
 </dd>
@@ -1093,7 +1085,6 @@ await client.deployments.list();
 <dd>
 
 Used to retrieve a Prompt Deployment given its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -1157,7 +1148,6 @@ await client.deployments.retrieve("id");
 
 DEPRECATED: This endpoint is deprecated and will be removed in a future release. Please use the
 `retrieve_prompt_deployment_release` xendpoint instead.
-
 </dd>
 </dl>
 </dd>
@@ -1228,7 +1218,6 @@ await client.deployments.deploymentHistoryItemRetrieve("history_id_or_release_ta
 <dd>
 
 List Release Tags associated with the specified Prompt Deployment
-
 </dd>
 </dl>
 </dd>
@@ -1299,7 +1288,6 @@ await client.deployments.listDeploymentReleaseTags("id");
 <dd>
 
 Retrieve a Deployment Release Tag by tag name, associated with a specified Deployment.
-
 </dd>
 </dl>
 </dd>
@@ -1370,7 +1358,6 @@ await client.deployments.retrieveDeploymentReleaseTag("id", "name");
 <dd>
 
 Updates an existing Release Tag associated with the specified Prompt Deployment.
-
 </dd>
 </dl>
 </dd>
@@ -1449,7 +1436,6 @@ await client.deployments.updateDeploymentReleaseTag("id", "name");
 <dd>
 
 Retrieve a specific Prompt Deployment Release by either its UUID or the name of a Release Tag that points to it.
-
 </dd>
 </dl>
 </dd>
@@ -1529,7 +1515,6 @@ that it will be a valid payload for the configured model provider. It's not reco
 derive meaning from the response body and instead, should simply pass it directly to the model provider as is.
 
 We encourage you to seek advise from Vellum Support before integrating with this API for production use.
-
 </dd>
 </dl>
 </dd>
@@ -1607,7 +1592,6 @@ await client.deployments.retrieveProviderPayload({
 <dd>
 
 Used to retrieve a list of Document Indexes.
-
 </dd>
 </dl>
 </dd>
@@ -1670,7 +1654,6 @@ await client.documentIndexes.list();
 <dd>
 
 Creates a new document index.
-
 </dd>
 </dl>
 </dd>
@@ -1742,7 +1725,6 @@ await client.documentIndexes.create({
 <dd>
 
 Used to retrieve a Document Index given its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -1813,7 +1795,6 @@ await client.documentIndexes.retrieve("id");
 <dd>
 
 Used to fully update a Document Index given its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -1886,7 +1867,6 @@ await client.documentIndexes.update("id", {
 <dd>
 
 Used to delete a Document Index given its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -1949,7 +1929,6 @@ await client.documentIndexes.destroy("id");
 <dd>
 
 Used to partial update a Document Index given its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -2020,7 +1999,6 @@ await client.documentIndexes.partialUpdate("id");
 <dd>
 
 Adds a previously uploaded Document to the specified Document Index.
-
 </dd>
 </dl>
 </dd>
@@ -2091,7 +2069,6 @@ await client.documentIndexes.addDocument("document_id", "id");
 <dd>
 
 Removes a Document from a Document Index without deleting the Document itself.
-
 </dd>
 </dl>
 </dd>
@@ -2164,7 +2141,6 @@ await client.documentIndexes.removeDocument("document_id", "id");
 <dd>
 
 Used to list documents. Optionally filter on supported fields.
-
 </dd>
 </dl>
 </dd>
@@ -2227,7 +2203,6 @@ await client.documents.list();
 <dd>
 
 Retrieve a Document, keying off of either its Vellum-generated ID or its external ID.
-
 </dd>
 </dl>
 </dd>
@@ -2290,7 +2265,6 @@ await client.documents.retrieve("id");
 <dd>
 
 Delete a Document, keying off of either its Vellum-generated ID or its external ID.
-
 </dd>
 </dl>
 </dd>
@@ -2353,7 +2327,6 @@ await client.documents.destroy("id");
 <dd>
 
 Update a Document, keying off of either its Vellum-generated ID or its external ID. Particularly useful for updating its metadata.
-
 </dd>
 </dl>
 </dd>
@@ -2426,7 +2399,6 @@ await client.documents.partialUpdate("id");
 <dd>
 
 Retrieves information about the active Environment
-
 </dd>
 </dl>
 </dd>
@@ -2483,7 +2455,6 @@ await client.environments.environmentIdentity();
 <dd>
 
 List all folder entities within a specified folder.
-
 </dd>
 </dl>
 </dd>
@@ -2550,7 +2521,6 @@ await client.folderEntities.list({
 Add an entity to a specific folder or root directory.
 
 Adding an entity to a folder will remove it from any other folders it might have been a member of.
-
 </dd>
 </dl>
 </dd>
@@ -2633,7 +2603,6 @@ directory. Supported root directories include:
 <dd>
 
 List Integration Auth Configs
-
 </dd>
 </dl>
 </dd>
@@ -2698,7 +2667,6 @@ await client.integrationAuthConfigs.listIntegrationAuthConfigs();
 <dd>
 
 Retrieve a specific integration tool definition.
-
 </dd>
 </dl>
 </dd>
@@ -2789,7 +2757,6 @@ await client.integrationProviders.retrieveIntegrationProviderToolDefinition(
 <dd>
 
 List all integration tools for a given provider and integration.
-
 </dd>
 </dl>
 </dd>
@@ -2989,7 +2956,6 @@ await client.metricDefinitions.metricDefinitionHistoryItemRetrieve("history_id_o
 <dd>
 
 Retrieve details about an ML Model
-
 </dd>
 </dl>
 </dd>
@@ -3054,7 +3020,6 @@ await client.mlModels.retrieve("id");
 <dd>
 
 Retrieves information about the active Organization
-
 </dd>
 </dl>
 </dd>
@@ -3111,7 +3076,6 @@ await client.organizations.organizationIdentity();
 <dd>
 
 Used to pull the definition of a Prompt from Vellum.
-
 </dd>
 </dl>
 </dd>
@@ -3142,7 +3106,7 @@ await client.prompts.pull("id");
 <dl>
 <dd>
 
-**id:** `string` — The ID of the Prompt to pull from. Prompt Sandbox IDs are currently supported.
+**id:** `string` — The ID of the Prompt to pull from. Prompt Deployment IDs or names, Prompt Sandbox IDs, and Prompt Version IDs are currently supported.
 
 </dd>
 </dl>
@@ -3182,7 +3146,6 @@ await client.prompts.pull("id");
 <dd>
 
 Used to push updates to a Prompt in Vellum.
-
 </dd>
 </dl>
 </dd>
@@ -3344,7 +3307,6 @@ is found, a new scenario will be appended to the end.
 
 Note that a full replacement of the scenario is performed, so any fields not provided will be removed
 or overwritten with default values.
-
 </dd>
 </dl>
 </dd>
@@ -3426,7 +3388,6 @@ await client.sandboxes.upsertSandboxScenario("id", {
 <dd>
 
 Deletes an existing scenario from a sandbox, keying off of the provided scenario id.
-
 </dd>
 </dl>
 </dd>
@@ -3499,7 +3460,6 @@ await client.sandboxes.deleteSandboxScenario("id", "scenario_id");
 <dd>
 
 Trigger a Test Suite and create a new Test Suite Run
-
 </dd>
 </dl>
 </dd>
@@ -3569,7 +3529,6 @@ await client.testSuiteRuns.create({
 <dd>
 
 Retrieve a specific Test Suite Run by ID
-
 </dd>
 </dl>
 </dd>
@@ -3690,7 +3649,6 @@ await client.testSuiteRuns.listExecutions("id");
 <dd>
 
 List the Test Cases associated with a Test Suite
-
 </dd>
 </dl>
 </dd>
@@ -3767,7 +3725,6 @@ is found, a new test case will be appended to the end.
 
 Note that a full replacement of the test case is performed, so any fields not provided will be removed
 or overwritten with default values.
-
 </dd>
 </dl>
 </dd>
@@ -3859,7 +3816,6 @@ await client.testSuites.upsertTestSuiteTestCase("id", {
 <dd>
 
 Created, replace, and delete Test Cases within the specified Test Suite in bulk
-
 </dd>
 </dl>
 </dd>
@@ -3986,7 +3942,6 @@ for await (const item of response) {
 <dd>
 
 Deletes an existing test case for a test suite, keying off of the test case id.
-
 </dd>
 </dl>
 </dd>
@@ -4059,7 +4014,6 @@ await client.testSuites.deleteTestSuiteTestCase("id", "test_case_id");
 <dd>
 
 Retrieve a previously uploaded file by its ID
-
 </dd>
 </dl>
 </dd>
@@ -4132,7 +4086,6 @@ await client.uploadedFiles.retrieve("id");
 <dd>
 
 Used to list all Workflow Deployments.
-
 </dd>
 </dl>
 </dd>
@@ -4195,7 +4148,6 @@ await client.workflowDeployments.list();
 <dd>
 
 Used to retrieve a workflow deployment given its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -4258,7 +4210,6 @@ await client.workflowDeployments.retrieve("id");
 <dd>
 
 Executes a deployed Workflow and streams back its results.
-
 </dd>
 </dl>
 </dd>
@@ -4449,7 +4400,6 @@ await client.workflowDeployments.workflowDeploymentEventExecution("execution_id"
 
 DEPRECATED: This endpoint is deprecated and will be removed in a future release. Please use the
 `retrieve_workflow_deployment_release` endpoint instead.
-
 </dd>
 </dl>
 </dd>
@@ -4520,7 +4470,6 @@ await client.workflowDeployments.workflowDeploymentHistoryItemRetrieve("history_
 <dd>
 
 List Release Tags associated with the specified Workflow Deployment
-
 </dd>
 </dl>
 </dd>
@@ -4591,7 +4540,6 @@ await client.workflowDeployments.listWorkflowReleaseTags("id");
 <dd>
 
 Retrieve a Workflow Release Tag by tag name, associated with a specified Workflow Deployment.
-
 </dd>
 </dl>
 </dd>
@@ -4662,7 +4610,6 @@ await client.workflowDeployments.retrieveWorkflowReleaseTag("id", "name");
 <dd>
 
 Updates an existing Release Tag associated with the specified Workflow Deployment.
-
 </dd>
 </dl>
 </dd>
@@ -4741,7 +4688,6 @@ await client.workflowDeployments.updateWorkflowReleaseTag("id", "name");
 <dd>
 
 List the Releases of the specified Workflow Deployment for the current Environment.
-
 </dd>
 </dl>
 </dd>
@@ -4812,7 +4758,6 @@ await client.workflowDeployments.listWorkflowDeploymentReleases("id");
 <dd>
 
 Retrieve a specific Workflow Deployment Release by either its UUID or the name of a Release Tag that points to it.
-
 </dd>
 </dl>
 </dd>
@@ -4999,7 +4944,6 @@ await client.workflowSandboxes.deployWorkflow("id");
 <dd>
 
 List Workflow Sandbox examples that were previously cloned into the User's Workspace
-
 </dd>
 </dl>
 </dd>
@@ -5066,7 +5010,6 @@ await client.workflowSandboxes.listWorkflowSandboxExamples();
 Retrieve the current state of a workflow execution.
 
 **Note:** Uses a base url of `https://predict.vellum.ai`.
-
 </dd>
 </dl>
 </dd>
@@ -5183,7 +5126,6 @@ await client.workflows.executeNode({
 
 Checks if a workflow execution is currently executing (not fulfilled, not rejected, and has no end time).
 Uses the ClickHouse Prime summary materialized view.
-
 </dd>
 </dl>
 </dd>
@@ -5246,7 +5188,6 @@ await client.workflows.workflowExecutionStatus("execution_id");
 <dd>
 
 Serialize files
-
 </dd>
 </dl>
 </dd>
@@ -5317,7 +5258,6 @@ await client.workflows.serializeWorkflowFiles({
 <dd>
 
 Used to retrieve a Workspace Secret given its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -5380,7 +5320,6 @@ await client.workspaceSecrets.retrieve("id");
 <dd>
 
 Used to update a Workspace Secret given its ID or name.
-
 </dd>
 </dl>
 </dd>
@@ -5453,7 +5392,6 @@ await client.workspaceSecrets.partialUpdate("id");
 <dd>
 
 Retrieves information about the active Workspace
-
 </dd>
 </dl>
 </dd>

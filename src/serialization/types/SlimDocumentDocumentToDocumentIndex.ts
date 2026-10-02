@@ -6,6 +6,7 @@ import * as serializers from "../index";
 import * as Vellum from "../../api/index";
 import * as core from "../../core";
 import { IndexingStateEnum } from "./IndexingStateEnum";
+import { ProcessingFailureReasonEnum } from "./ProcessingFailureReasonEnum";
 
 export const SlimDocumentDocumentToDocumentIndex: core.serialization.ObjectSchema<
     serializers.SlimDocumentDocumentToDocumentIndex.Raw,
@@ -19,6 +20,10 @@ export const SlimDocumentDocumentToDocumentIndex: core.serialization.ObjectSchem
     documentIndexId: core.serialization.property("document_index_id", core.serialization.string().optionalNullable()),
     indexingState: core.serialization.property("indexing_state", IndexingStateEnum.optional()),
     processingState: core.serialization.property("processing_state", core.serialization.string().optionalNullable()),
+    processingFailureReason: core.serialization.property(
+        "processing_failure_reason",
+        ProcessingFailureReasonEnum.optionalNullable(),
+    ),
 });
 
 export declare namespace SlimDocumentDocumentToDocumentIndex {
@@ -28,5 +33,6 @@ export declare namespace SlimDocumentDocumentToDocumentIndex {
         document_index_id?: (string | null) | null;
         indexing_state?: IndexingStateEnum.Raw | null;
         processing_state?: (string | null) | null;
+        processing_failure_reason?: (ProcessingFailureReasonEnum.Raw | null) | null;
     }
 }

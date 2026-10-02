@@ -17,7 +17,5 @@ export const NewMemberJoinBehaviorEnum: core.serialization.Schema<
 
 export declare namespace NewMemberJoinBehaviorEnum {
     export type Raw =
-        | "AUTO_ACCEPT_FROM_SHARED_DOMAIN"
-        | "ALLOW_REQUESTS_FROM_SHARED_DOMAIN"
-        | "REQUIRE_EXPLICIT_INVITE";
+        "AUTO_ACCEPT_FROM_SHARED_DOMAIN" | "ALLOW_REQUESTS_FROM_SHARED_DOMAIN" | "REQUIRE_EXPLICIT_INVITE";
 }

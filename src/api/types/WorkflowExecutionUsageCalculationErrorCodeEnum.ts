@@ -9,10 +9,7 @@
  * * `INTERNAL_SERVER_ERROR` - INTERNAL_SERVER_ERROR
  */
 export type WorkflowExecutionUsageCalculationErrorCodeEnum =
-    | "UNKNOWN"
-    | "DEPENDENCIES_FAILED"
-    | "NO_USAGE_CALCULATED"
-    | "INTERNAL_SERVER_ERROR";
+    "UNKNOWN" | "DEPENDENCIES_FAILED" | "NO_USAGE_CALCULATED" | "INTERNAL_SERVER_ERROR";
 export const WorkflowExecutionUsageCalculationErrorCodeEnum = {
     Unknown: "UNKNOWN",
     DependenciesFailed: "DEPENDENCIES_FAILED",

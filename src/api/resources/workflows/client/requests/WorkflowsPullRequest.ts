@@ -3,14 +3,29 @@
  */
 
 export interface WorkflowsPullRequest {
+    /**
+     * If true, omit the Workflow's code from the response.
+     */
     excludeCode?: boolean | null;
+    /**
+     * If true, omit UI display metadata files when pulling from a Workflow Sandbox.
+     */
     excludeDisplay?: boolean | null;
+    /**
+     * If true, include a JSON representation of the Workflow's definition alongside its code.
+     */
     includeJson?: boolean | null;
+    /**
+     * If true, include the Workflow Sandbox's scenarios as sandbox inputs when pulling from a Workflow Sandbox.
+     */
     includeSandbox?: boolean | null;
     /**
      * Release tag to use when pulling from deployment (implies deployment-only lookup)
      */
     releaseTag?: string | null;
+    /**
+     * If true, fail on any code generation error instead of returning best-effort code.
+     */
     strict?: boolean | null;
     /**
      * Semantic version range to validate against the Workflow SDK version (e.g., '>=1.0.0,<1.2.3')

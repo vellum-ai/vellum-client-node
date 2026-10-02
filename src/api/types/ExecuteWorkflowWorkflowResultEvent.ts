@@ -5,5 +5,4 @@
 import * as Vellum from "../index";
 
 export type ExecuteWorkflowWorkflowResultEvent =
-    | Vellum.FulfilledExecuteWorkflowWorkflowResultEvent
-    | Vellum.RejectedExecuteWorkflowWorkflowResultEvent;
+    Vellum.FulfilledExecuteWorkflowWorkflowResultEvent | Vellum.RejectedExecuteWorkflowWorkflowResultEvent;
